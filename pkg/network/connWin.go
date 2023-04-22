@@ -18,9 +18,9 @@ func init() {
 
 }
 
-var handlerProcess GameEventHandler
+var handlerProcess EventHandler
 
-func ClientStart(handler GameEventHandler, options ...gnet.Option) error {
+func ClientStart(handler EventHandler, options ...gnet.Option) error {
 	handlerProcess = handler
 	return nil
 }

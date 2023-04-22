@@ -64,12 +64,12 @@ func (context *ChannelContextUnix) ReadN(n int) (size int, buf []byte) {
 	return context.conn.ReadN(n)
 }
 
-// ShiftN shifts "read" pointer in the internal buffers with the given length.
+// ShiftN shifts "read" pointer in the gateway buffers with the given length.
 func (context *ChannelContextUnix) ShiftN(n int) (size int) {
 	return context.ShiftN(n)
 }
 
-// BufferLength returns the length of available data in the internal buffers.
+// BufferLength returns the length of available data in the gateway buffers.
 func (context *ChannelContextUnix) BufferLength() (size int) {
 	return context.conn.BufferLength()
 }

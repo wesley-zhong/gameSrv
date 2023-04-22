@@ -3,7 +3,7 @@ package network
 import "time"
 
 type (
-	GameEventHandler interface {
+	EventHandler interface {
 		// OnInitComplete fires when the server is ready for accepting connections.
 
 		// OnOpened fires when a new connection has been opened.

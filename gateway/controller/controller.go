@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"gameSvr/internal/client"
-	"gameSvr/internal/message"
-	"gameSvr/internal/player"
+	"gameSvr/gateway/message"
+	"gameSvr/gateway/player"
+	client2 "gameSvr/pkg/client"
 	"gameSvr/pkg/core"
 	"gameSvr/pkg/log"
 	"gameSvr/pkg/network"
@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var gameInnerClient *client.ConnInnerClientContext
+var gameInnerClient *client2.ConnInnerClientContext
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
@@ -26,7 +26,7 @@ func Init() {
 		log.Error(err)
 		return
 	}
-	gameInnerClient = client.NewInnerClientContext(context)
+	gameInnerClient = client2.NewInnerClientContext(context)
 	//add  msg  to game server to add me
 	header := &protoGen.InnerHead{
 		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
@@ -38,7 +38,7 @@ func Init() {
 		CallbackId:       0,
 	}
 
-	innerMessage := &client.InnerMessage{
+	innerMessage := &client2.InnerMessage{
 		InnerHeader: header,
 		Body:        nil,
 	}
@@ -48,7 +48,7 @@ func Init() {
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
 
 func login(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnClientContext)
+	context := ctx.Context().(*client2.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
 	innerLoginReq := &protoGen.InnerLoginRequest{
@@ -66,7 +66,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		CallbackId:       0,
 	}
 
-	innerMsg := &client.InnerMessage{
+	innerMsg := &client2.InnerMessage{
 		InnerHeader: msgHeader,
 		Body:        innerLoginReq,
 	}
@@ -78,7 +78,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 }
 
 func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnInnerClientContext)
+	context := ctx.Context().(*client2.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
 	log.Infof("login response = %d  sid =%d", innerLoginResponse.RoleId, context.Sid)
 	response := &protoGen.LoginResponse{
@@ -117,7 +117,7 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 }
 
 func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnInnerClientContext)
+	context := ctx.Context().(*client2.ConnInnerClientContext)
 	kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("login response = %d  sid =%d", kickOut.Reason, context.Sid)
 }

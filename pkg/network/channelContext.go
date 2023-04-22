@@ -43,10 +43,10 @@ type (
 		// to that new goroutine.
 		ReadN(n int) (size int, buf []byte)
 
-		// ShiftN shifts "read" pointer in the internal buffers with the given length.
+		// ShiftN shifts "read" pointer in the gateway buffers with the given length.
 		ShiftN(n int) (size int)
 
-		// BufferLength returns the length of available data in the internal buffers.
+		// BufferLength returns the length of available data in the gateway buffers.
 		BufferLength() (size int)
 
 		// ==================================== Concurrency-safe API's ====================================

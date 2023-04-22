@@ -14,7 +14,7 @@ type Client struct {
 
 type gnetHandler struct {
 	server      gnet.Server
-	gameHandler GameEventHandler
+	gameHandler EventHandler
 }
 
 func (handler *gnetHandler) OnInitComplete(server gnet.Server) (action gnet.Action) {
@@ -80,7 +80,7 @@ func (handler *gnetHandler) Tick() (delay time.Duration, action gnet.Action) {
 
 var gClient *gnet.Client
 
-func ClientStart(handler GameEventHandler, opts ...gnet.Option) error {
+func ClientStart(handler EventHandler, opts ...gnet.Option) error {
 	gnetHandler := &gnetHandler{gameHandler: handler}
 	client, err := gnet.NewClient(gnetHandler, opts...)
 	client.Start()

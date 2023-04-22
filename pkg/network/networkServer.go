@@ -16,7 +16,7 @@ type tcpServer struct {
 
 func (ts tcpServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
 	log.Infof("conn =%s React", c.RemoteAddr())
-	gGameEventHandler.React(frame, c)
+	gEventHandler.React(frame, c)
 	return
 }
 
@@ -41,14 +41,14 @@ func (ts tcpServer) OnShutdown(server gnet.Server) {
 // Note that the bytes returned by OnOpened will be sent back to the peer without being encoded.
 func (ts tcpServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
 	log.Infof("conn =%s opened", c.RemoteAddr())
-	gGameEventHandler.OnOpened(c)
+	gEventHandler.OnOpened(c)
 	return
 }
 
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (ts tcpServer) OnClosed(c gnet.Conn, err error) (action gnet.Action) {
-	gGameEventHandler.OnClosed(c, err)
+	gEventHandler.OnClosed(c, err)
 	return
 
 }
@@ -56,14 +56,14 @@ func (ts tcpServer) OnClosed(c gnet.Conn, err error) (action gnet.Action) {
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (ts tcpServer) PreWrite(c gnet.Conn) {
-	gGameEventHandler.PreWrite(c)
+	gEventHandler.PreWrite(c)
 	return
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
 // you put the []byte returned from React() back to your memory pool.
 func (ts tcpServer) AfterWrite(c gnet.Conn, b []byte) {
-	gGameEventHandler.AfterWrite(c, b)
+	gEventHandler.AfterWrite(c, b)
 	return
 }
 
@@ -74,13 +74,13 @@ func (ts tcpServer) Tick() (delay time.Duration, action gnet.Action) {
 	return 2 * time.Second, gnet.None
 }
 
-var gGameEventHandler GameEventHandler
+var gEventHandler EventHandler
 
-func ServerStart(port int32, gameEventHandler GameEventHandler) {
+func ServerStart(port int32, eventHandler EventHandler) {
 	p := goroutine.Default()
 	defer p.Release()
 
-	gGameEventHandler = gameEventHandler
+	gEventHandler = eventHandler
 
 	ts := &tcpServer{pool: p}
 	err := gnet.Serve(ts, "tcp://:"+strconv.Itoa(int(port)),

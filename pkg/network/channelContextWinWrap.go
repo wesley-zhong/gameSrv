@@ -14,7 +14,7 @@ import (
 type ChannelContextWin struct {
 	conn           net.Conn
 	recBuf         *ringbuff.RingBuffer
-	handlerProcess GameEventHandler
+	handlerProcess EventHandler
 	ctx            interface{}
 }
 
@@ -89,12 +89,12 @@ func (context *ChannelContextWin) ReadN(n int) (size int, buf []byte) {
 	return 0, nil
 }
 
-// ShiftN shifts "read" pointer in the internal buffers with the given length.
+// ShiftN shifts "read" pointer in the gateway buffers with the given length.
 func (context *ChannelContextWin) ShiftN(n int) (size int) {
 	return context.ShiftN(n)
 }
 
-// BufferLength returns the length of available data in the internal buffers.
+// BufferLength returns the length of available data in the gateway buffers.
 func (context *ChannelContextWin) BufferLength() (size int) {
 	//return context.recBuf.BufferLength()
 	return 0

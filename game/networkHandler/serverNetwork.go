@@ -3,8 +3,8 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
-	"gameSvr/internal/client"
-	"gameSvr/internal/player"
+	"gameSvr/gateway/player"
+	"gameSvr/pkg/client"
 	"gameSvr/pkg/core"
 	"gameSvr/pkg/gopool"
 	"gameSvr/pkg/log"

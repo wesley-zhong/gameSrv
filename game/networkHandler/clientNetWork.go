@@ -3,9 +3,9 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
-	"gameSvr/internal/client"
-	"gameSvr/internal/constants"
-	"gameSvr/internal/player"
+	"gameSvr/gateway/constants"
+	"gameSvr/gateway/player"
+	"gameSvr/pkg/client"
 	"gameSvr/pkg/core"
 	"gameSvr/pkg/log"
 	"gameSvr/pkg/network"

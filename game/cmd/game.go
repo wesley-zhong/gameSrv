@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gameSvr/internal/controller"
-	"gameSvr/internal/networkHandler"
+	"gameSvr/game/controller"
+	"gameSvr/gateway/networkHandler"
 	"gameSvr/pkg/network"
-
 	"github.com/panjf2000/gnet"
 )
 
@@ -25,5 +24,5 @@ func main() {
 	controller.Init()
 
 	controller := &networkHandler.ServerNetWork{}
-	network.ServerStart(9005, controller)
+	network.ServerStart(9002, controller)
 }

@@ -16,14 +16,8 @@ func genSid() int64 {
 	return atomic.AddInt64(&sId, 1)
 }
 
-// ConnInnerClientContext -------------player  client------------
+// ConnInnerClientContext -------------server inner client ---------------
 type ConnInnerClientContext struct {
-	Ctx network.ChannelContext
-	Sid int64
-}
-
-// ConnClientContext -------------- server innner client ----------------
-type ConnClientContext struct {
 	Ctx network.ChannelContext
 	Sid int64
 }
@@ -60,7 +54,13 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	client.Ctx.AsyncWrite(buffer.Bytes())
 }
 
-// - ------ user client -------------------
+// ConnClientContext ====================================================================================
+type ConnClientContext struct {
+	Ctx network.ChannelContext
+	Sid int64
+}
+
+// NewClientContext - ------ user client -------------------
 func NewClientContext(context network.ChannelContext) *ConnClientContext {
 	return &ConnClientContext{Ctx: context, Sid: genSid()}
 }
