@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gameSvr/game/controller"
-	"gameSvr/game/networkHandler"
+	"gameSvr/gateway/controller"
+	"gameSvr/gateway/networkHandler"
 	"gameSvr/pkg/network"
 
 	"github.com/panjf2000/gnet"

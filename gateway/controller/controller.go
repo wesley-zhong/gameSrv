@@ -3,7 +3,7 @@ package controller
 import (
 	"gameSvr/gateway/message"
 	"gameSvr/gateway/player"
-	client2 "gameSvr/pkg/client"
+	"gameSvr/pkg/client"
 	"gameSvr/pkg/core"
 	"gameSvr/pkg/log"
 	"gameSvr/pkg/network"
@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var gameInnerClient *client2.ConnInnerClientContext
+var gameInnerClient *client.ConnInnerClientContext
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
@@ -21,12 +21,12 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 
-	context, err := network.Dial("tcp", "127.0.0.1:9007")
+	context, err := network.Dial("tcp", "127.0.0.1:9002")
 	if err != nil {
 		log.Error(err)
 		return
 	}
-	gameInnerClient = client2.NewInnerClientContext(context)
+	gameInnerClient = client.NewInnerClientContext(context)
 	//add  msg  to game server to add me
 	header := &protoGen.InnerHead{
 		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
@@ -38,7 +38,7 @@ func Init() {
 		CallbackId:       0,
 	}
 
-	innerMessage := &client2.InnerMessage{
+	innerMessage := &client.InnerMessage{
 		InnerHeader: header,
 		Body:        nil,
 	}
@@ -48,7 +48,7 @@ func Init() {
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
 
 func login(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client2.ConnClientContext)
+	context := ctx.Context().(*client.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
 	innerLoginReq := &protoGen.InnerLoginRequest{
@@ -66,7 +66,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		CallbackId:       0,
 	}
 
-	innerMsg := &client2.InnerMessage{
+	innerMsg := &client.InnerMessage{
 		InnerHeader: msgHeader,
 		Body:        innerLoginReq,
 	}
@@ -78,7 +78,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 }
 
 func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client2.ConnInnerClientContext)
+	context := ctx.Context().(*client.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
 	log.Infof("login response = %d  sid =%d", innerLoginResponse.RoleId, context.Sid)
 	response := &protoGen.LoginResponse{
@@ -117,7 +117,7 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 }
 
 func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client2.ConnInnerClientContext)
+	context := ctx.Context().(*client.ConnInnerClientContext)
 	kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("login response = %d  sid =%d", kickOut.Reason, context.Sid)
 }

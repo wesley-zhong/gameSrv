@@ -20,7 +20,7 @@ type ClientNetwork struct {
 
 func (clientNetwork *ClientNetwork) OnOpened(c network.ChannelContext) (out []byte, action int) {
 	context := client.NewClientContext(c)
-	log.Infof("----------  client opened  addr=%s, id=%d", context.Ctx.RemoteAddr(), context.Sid)
+	log.Infof("----------inner  client opened  addr=%s, id=%d", context.Ctx.RemoteAddr(), context.Sid)
 	return nil, 0
 }
 

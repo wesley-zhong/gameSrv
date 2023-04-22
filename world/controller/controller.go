@@ -3,7 +3,7 @@ package controller
 import (
 	"gameSvr/gateway/message"
 	"gameSvr/gateway/player"
-	client2 "gameSvr/pkg/client"
+	"gameSvr/pkg/client"
 	"gameSvr/pkg/core"
 	"gameSvr/pkg/log"
 	"gameSvr/pkg/network"
@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var gameInnerClient *client2.ConnInnerClientContext
+var gameInnerClient *client.ConnInnerClientContext
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
@@ -23,7 +23,7 @@ func Init() {
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
 
 func login(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client2.ConnClientContext)
+	context := ctx.Context().(*client.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
 	innerLoginReq := &protoGen.InnerLoginRequest{
@@ -41,7 +41,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		CallbackId:       0,
 	}
 
-	innerMsg := &client2.InnerMessage{
+	innerMsg := &client.InnerMessage{
 		InnerHeader: msgHeader,
 		Body:        innerLoginReq,
 	}
