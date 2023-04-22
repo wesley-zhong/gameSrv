@@ -13,20 +13,13 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var gameInnerClient *client.ConnInnerClientContext
-
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
 	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 
-	context, err := network.Dial("tcp", "127.0.0.1:9003")
-	if err != nil {
-		log.Error(err)
-		return
-	}
-	gameInnerClient = client.NewInnerClientContext(context)
+	innclient := client.InnerClientConn(client.InnerClientType_WORLD, "127.0.0.1:9003")
 	//add  msg  to game server to add me
 	header := &protoGen.InnerHead{
 		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
@@ -42,7 +35,7 @@ func Init() {
 		InnerHeader: header,
 		Body:        nil,
 	}
-	gameInnerClient.Send(innerMessage)
+	innclient.Send(innerMessage)
 }
 
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
@@ -70,7 +63,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		InnerHeader: msgHeader,
 		Body:        innerLoginReq,
 	}
-	gameInnerClient.Send(innerMsg)
+	client.GetInnerClient(client.InnerClientType_WORLD).Send(innerMsg)
 	//PlayerContext[loginRequest.RoleId] = ctx
 	player := player.NewPlayer(loginRequest.GetRoleId(), context)
 	PlayerMgr.Add(player)

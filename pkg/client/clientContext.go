@@ -17,6 +17,30 @@ func genSid() int64 {
 }
 
 // ConnInnerClientContext -------------server inner client ---------------
+
+const (
+	InnerClientType_GATE_WAY = 1
+	InnerClientType_GAME     = 2
+	InnerClientType_WORLD    = 3
+)
+
+var InnerClientMap = make(map[int32]*ConnInnerClientContext)
+
+func InnerClientConn(key int32, addr string) *ConnInnerClientContext {
+	context, err := network.Dial("tcp", addr)
+	if err != nil {
+		log.Error(err)
+		return nil
+	}
+	gameInnerClient := NewInnerClientContext(context)
+	InnerClientMap[key] = gameInnerClient
+	return gameInnerClient
+}
+
+func GetInnerClient(clientType int32) *ConnInnerClientContext {
+	return InnerClientMap[clientType]
+}
+
 type ConnInnerClientContext struct {
 	Ctx network.ChannelContext
 	Sid int64
