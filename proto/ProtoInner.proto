@@ -1,0 +1,87 @@
+syntax = "proto3";
+option java_package = "com.game.proto";
+option go_package= "/protoGen";
+
+
+enum  InnerProtoCode{
+  INNER_INVALID = 0;
+  INNER_SERVER_HAND_SHAKE = 1;
+  INNER_HEART_BEAT_REQ = 2;
+  INNER_HEART_BEAT_RES = 3;
+
+  INNER_LOGIN_REQ = 4;
+  INNER_LOGIN_RES =5;
+
+}
+
+message InnerHead {
+  int64 fromServerUid = 1;
+  int64 toServerUid = 2;
+  int64 receiveServerUid = 3;
+  int64 id = 4;
+  int32 sendType = 5;
+  int32 protoCode = 6;
+  int64 callbackId = 7;
+}
+
+message  InnerHeartBeatRequest{
+
+}
+
+message  InnerHeartBeatResponse{
+
+}
+
+message InnerLoginRequest {
+  int64 sessionId = 1;
+  int64 accountId = 2;
+  int64 roleId = 3;
+}
+
+message InnerLoginResponse {
+  int64 roleId = 2;
+}
+
+message InnerBuildingLevelUpSuccess {
+  int64 buildingId = 1;
+  int32 configId = 2;
+}
+
+
+
+message InnerCitySimple {
+  int64 unitId = 1;
+  int64 roleId = 2;
+  int32 worldPositionX = 3;
+  int32 worldPositionZ = 4;
+  int32 gameServerId = 5;
+}
+
+message InnerLoginWorldRequest {
+  int64 roleId = 1;
+  int64 gatewayServerUid = 2;
+  int64 gameServerUid = 3;
+  string name = 4;
+  int64 sessionId = 5; // 网关id
+}
+
+message InnerLoginWorldResponse {
+  int32 errorCode = 1;
+  int64 unitId = 2;
+}
+
+message InnerLogoutNotify {
+  int64 roleId = 1;
+  int64 sessionId = 2;
+}
+
+message InnerLoginInitNotify {
+  int64 roleId = 1;
+}
+
+
+message InnerServerHandShake{
+
+}
+
+

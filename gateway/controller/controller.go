@@ -7,7 +7,7 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	protoGen "gameSrv/proto"
+	protoGen "gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"
@@ -78,7 +78,7 @@ func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Messa
 		ErrorCode:  0,
 		ServerTime: time.Now().UnixMilli(),
 	}
-	//marshal, err := proto.Marshal(response)
+	//marshal, err := protoGen.Marshal(response)
 	//if err != nil {
 	//	log.Error(err)
 	//	return

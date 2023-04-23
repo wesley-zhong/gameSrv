@@ -6,7 +6,6 @@ import (
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
-	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"time"
@@ -16,14 +15,14 @@ type ServerNetWork struct {
 }
 
 func (serverNetWork *ServerNetWork) OnOpened(c network.ChannelContext) (out []byte, action int) {
-	clientContext := client.NewClientContext(c)
+	clientContext := client.NewInnerClientContext(c)
 	c.SetContext(clientContext)
 	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
-	workerPool := gopool.StartNewWorkerPool(2, 4)
-	workerPool.SubmitTask(func() {
-		log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
-	})
+	//workerPool := gopool.StartNewWorkerPool(2, 4)
+	//workerPool.SubmitTask(func() {
+	//	log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
+	//})
 	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
 	return nil, 0
 }

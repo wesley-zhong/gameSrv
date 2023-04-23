@@ -9,7 +9,7 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	msg "gameSrv/proto"
+	msg "gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"

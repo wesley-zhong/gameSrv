@@ -1,0 +1,41 @@
+syntax = "proto3";
+option java_package = "com.game.proto";
+option go_package = "/protoGen";
+enum ProtoError {
+  SUCCESS = 0;
+  FAILED = 1;
+  INVALID_LOGIN_TOKEN = 2;
+  INVALID_GAME_TICKET = 3;
+  INVALID_PARAM = 10;
+  NAME_LENGTH_INVALID = 11;
+  NOTICE_LENGTH_INVALID = 12;
+  COST_NOT_ENOUGH = 13;
+}
+
+enum ProtoCode {
+  INVALID = 0;
+  ERROR_MESSAGE = 1;
+  HEART_BEAT_REQUEST = 2;
+  HEART_BEAT_RESPONSE = 3;
+  LOGIN_REQUEST = 10;
+  LOGIN_RESPONSE = 11;
+  LOGOUT_REQUEST = 12;
+  LOGOUT_RESPONSE = 13;
+  KICK_OUT_REQUEST = 14;
+  KICK_OUT_RESPONSE = 15;
+
+  LOGIN_INIT_REQUEST = 20;
+}
+
+message ErrorMessage {
+  int32 errCode = 1;    // 错误码
+}
+
+message HeartBeatRequest {
+  int64 clientTime = 1; // 客户端时间
+}
+
+message HeartBeatResponse {
+  int64 clientTime = 1; // 客户端时间
+  int64 serverTime = 2; // 服务器时间
+}

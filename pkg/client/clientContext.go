@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
+	"gameSrv/protoGen"
 	"sync/atomic"
 
 	"google.golang.org/protobuf/proto"
@@ -59,6 +60,41 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	}
 
 	body, err := proto.Marshal(msg.Body)
+
+	headerLen := len(header)
+	bodyLen := 0
+	if body != nil {
+		bodyLen = len(body)
+	}
+
+	msgLen := headerLen + bodyLen + 4
+	buffer := bytes.Buffer{}
+
+	buffer.Write(writeInt(msgLen))
+	buffer.Write(writeInt(headerLen))
+	buffer.Write(header)
+	if bodyLen > 0 {
+		buffer.Write(body)
+	}
+	client.Ctx.AsyncWrite(buffer.Bytes())
+}
+
+func (client *ConnInnerClientContext) SendMsg(protoCode int32, msg proto.Message) {
+	head := &protoGen.InnerHead{
+		FromServerUid:    0,
+		ToServerUid:      0,
+		ReceiveServerUid: 0,
+		Id:               0,
+		SendType:         0,
+		ProtoCode:        protoCode,
+		CallbackId:       0,
+	}
+	header, err := proto.Marshal(head)
+	if err != nil {
+		log.Error(err)
+	}
+
+	body, err := proto.Marshal(msg)
 
 	headerLen := len(header)
 	bodyLen := 0

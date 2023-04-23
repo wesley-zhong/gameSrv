@@ -143,8 +143,8 @@ func (context *ChannelContextWin) Close() error {
 	return context.conn.Close()
 }
 
-//func (context *ChannelContextWin) Send(msgId int32, msg proto.Message) {
-//	marshal, err := proto.Marshal(msg)
+//func (context *ChannelContextWin) Send(msgId int32, msg protoGen.Message) {
+//	marshal, err := protoGen.Marshal(msg)
 //	if err != nil {
 //		log.Error(err)
 //		return

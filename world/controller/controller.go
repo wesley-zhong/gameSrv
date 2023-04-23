@@ -7,23 +7,37 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	protoGen "gameSrv/proto"
-	"time"
-
+	protoGen "gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 )
 
-var gameInnerClient *client.ConnInnerClientContext
-
 func Init() {
-	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
-	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), &protoGen.InnerServerHandShake{}, handShake)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.LoginRequest{}, playerLogin)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), &protoGen.InnerHeartBeatRequest{}, innerHeartBeat)
 }
 
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
+var innerClientMap = make(map[int32]*client.ConnInnerClientContext)
 
-func login(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnClientContext)
+func handShake(ctx network.ChannelContext, request proto.Message) {
+	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
+	innerClientMap[client.InnerClientType_GAME] = validInnerClient
+	log.Infof("client id =%d  addr =%s handshade finished", validInnerClient.Sid, validInnerClient.Ctx.RemoteAddr())
+}
+
+func innerHeartBeat(ctx network.ChannelContext, request proto.Message) {
+	innerClient := ctx.Context().(*client.ConnInnerClientContext)
+	log.Infof(" addr =%s  heartbeat time", ctx.RemoteAddr())
+
+	response := &protoGen.InnerHeartBeatResponse{}
+	//	PlayerMgr.Get()
+	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+	innerClient.SendMsg(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+}
+
+func playerLogin(ctx network.ChannelContext, request proto.Message) {
+	context := ctx.Context().(*client.ConnInnerClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
 	innerLoginReq := &protoGen.InnerLoginRequest{
@@ -45,24 +59,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		InnerHeader: msgHeader,
 		Body:        innerLoginReq,
 	}
-	gameInnerClient.Send(innerMsg)
-	//PlayerContext[loginRequest.RoleId] = ctx
-	player := player.NewPlayer(loginRequest.GetRoleId(), context)
-	PlayerMgr.Add(player)
-	context.Ctx.SetContext(player)
-}
-
-func heartBeat(ctx network.ChannelContext, request proto.Message) {
-	player := ctx.Context().(*player.Player)
-	//context := ctx.Context().(*client.ConnClientContext)
-	heartBeat := request.(*protoGen.HeartBeatRequest)
-	log.Infof(" contex= %d  heartbeat time = %d", player.Context.Sid, heartBeat.ClientTime)
-
-	response := &protoGen.HeartBeatResponse{
-		ClientTime: heartBeat.ClientTime,
-		ServerTime: time.Now().UnixMilli(),
-	}
-	//	PlayerMgr.Get()
-	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
-	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+	innerClientMap[client.InnerClientType_GAME].Send(innerMsg)
+	//player := player.NewPlayer(loginRequest.GetRoleId(), context)
+	//	PlayerMgr.Add(player)
 }

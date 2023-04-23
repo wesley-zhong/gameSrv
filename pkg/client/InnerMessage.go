@@ -1,7 +1,7 @@
 package client
 
 import (
-	protoGen "gameSrv/proto"
+	protoGen "gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 )
 
