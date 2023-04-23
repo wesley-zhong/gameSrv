@@ -3,8 +3,8 @@ package client
 import (
 	"bytes"
 	"encoding/binary"
-	"gameSvr/pkg/log"
-	"gameSvr/pkg/network"
+	"gameSrv/pkg/log"
+	"gameSrv/pkg/network"
 	"sync/atomic"
 
 	"google.golang.org/protobuf/proto"

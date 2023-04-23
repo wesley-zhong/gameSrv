@@ -1,4 +1,4 @@
-module gameSvr
+module gameSrv
 
 go 1.19
 

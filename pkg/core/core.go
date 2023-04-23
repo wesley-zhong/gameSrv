@@ -1,8 +1,8 @@
 package core
 
 import (
-	"gameSvr/pkg/log"
-	"gameSvr/pkg/network"
+	"gameSrv/pkg/log"
+	"gameSrv/pkg/network"
 	"google.golang.org/protobuf/proto"
 )
 

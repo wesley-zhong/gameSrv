@@ -1,13 +1,13 @@
 package controller
 
 import (
-	"gameSvr/gateway/message"
-	"gameSvr/gateway/player"
-	"gameSvr/pkg/client"
-	"gameSvr/pkg/core"
-	"gameSvr/pkg/log"
-	"gameSvr/pkg/network"
-	protoGen "gameSvr/proto"
+	"gameSrv/gateway/message"
+	"gameSrv/gateway/player"
+	"gameSrv/pkg/client"
+	"gameSrv/pkg/core"
+	"gameSrv/pkg/log"
+	"gameSrv/pkg/network"
+	protoGen "gameSrv/proto"
 	"time"
 
 	"google.golang.org/protobuf/proto"

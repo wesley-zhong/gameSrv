@@ -7,7 +7,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	ringbuff "gameSrv/pkg/buff"
-	"gateway/pkg/log"
+	"gameSrv/pkg/log"
 	"net"
 )
 

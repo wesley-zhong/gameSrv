@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gameSvr/pkg/network"
-	"gameSvr/world/controller"
-	"gameSvr/world/networkHandler"
+	"gameSrv/pkg/network"
+	"gameSrv/world/controller"
+	"gameSrv/world/networkHandler"
 )
 
 func main() {
