@@ -8,6 +8,7 @@ import (
 	ringbuff "gameSrv/pkg/buff"
 	"net"
 	"sync"
+	"time"
 
 	"github.com/panjf2000/gnet"
 )
@@ -22,6 +23,7 @@ var handlerProcess EventHandler
 
 func ClientStart(handler EventHandler, options ...gnet.Option) error {
 	handlerProcess = handler
+	go timerTick(handler)
 	return nil
 }
 
@@ -42,5 +44,16 @@ func Dial(network, address string) (ChannelContext, error) {
 func receiveMsg(context ChannelContext) {
 	for {
 		context.Read()
+	}
+}
+
+func timerTick(handler EventHandler) {
+	timer := time.NewTimer(3 * time.Second)
+	for {
+		timer.Reset(3 * time.Second)
+		select {
+		case <-timer.C:
+			handler.Tick()
+		}
 	}
 }

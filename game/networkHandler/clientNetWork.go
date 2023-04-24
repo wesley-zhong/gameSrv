@@ -9,7 +9,7 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	msg "gameSrv/protoGen"
+	"gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"
@@ -57,7 +57,7 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContex
 	var innerHeaderLen int32
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
-	innerMsg := &msg.InnerHead{}
+	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
 	binary.Read(bytebuffer, binary.BigEndian, innerBody)
 
@@ -86,5 +86,13 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContex
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientNetwork) Tick() (delay time.Duration, action int) {
+	innerClient := client.GetInnerClient(client.InnerClientType_WORLD)
+	if innerClient == nil {
+		log.Infof("no found connect type =%d", client.InnerClientType_WORLD)
+		return 1000 * time.Millisecond, 0
+	}
+	heartBeat := &protoGen.InnerHeartBeatRequest{}
+	innerClient.SendMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), heartBeat)
+	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }
