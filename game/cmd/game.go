@@ -19,6 +19,7 @@ func main() {
 	network.ClientStart(&clientNetwork,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
+		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(0))
 
 	controller.Init()
