@@ -1,10 +1,12 @@
 package main
 
 import (
+	"encoding/binary"
 	"fmt"
 	"gameSrv/pkg/network"
 	"gameSrv/world/controller"
 	"gameSrv/world/networkHandler"
+	"github.com/panjf2000/gnet"
 )
 
 func main() {
@@ -24,5 +26,14 @@ func main() {
 	controller.Init()
 
 	controller := &networkHandler.ServerNetWork{}
-	network.ServerStart(9003, controller)
+	network.ServerStartWithDeCode(9003, controller, gnet.NewLengthFieldBasedFrameCodec(gnet.EncoderConfig{
+		LengthFieldLength:               4,
+		LengthAdjustment:                0,
+		LengthIncludesLengthFieldLength: false,
+	}, gnet.DecoderConfig{
+		ByteOrder:           binary.BigEndian,
+		LengthFieldOffset:   0,
+		LengthFieldLength:   4,
+		LengthAdjustment:    0,
+		InitialBytesToStrip: 4}))
 }

@@ -5,9 +5,10 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
+	"gameSrv/protoGen"
+	"google.golang.org/protobuf/proto"
 	"time"
 )
 
@@ -31,15 +32,15 @@ func (serverNetWork *ServerNetWork) OnOpened(c network.ChannelContext) (out []by
 // The parameter err is the last known connection error.
 func (serverNetWork *ServerNetWork) OnClosed(c network.ChannelContext, err error) (action int) {
 	switch c.Context().(type) {
-	case *client.ConnClientContext:
+	case *client.ConnInnerClientContext:
 		log.Infof("addr =%s not login", c.RemoteAddr())
-		return 1
+		return 0
 	case *player.Player:
 		player := c.Context().(*player.Player)
 		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
-		return 1
+		return 0
 	default:
-		return 1
+		return 0
 
 	}
 
@@ -67,13 +68,21 @@ func (serverNetWork *ServerNetWork) AfterWrite(c network.ChannelContext, b []byt
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelContext) (out []byte, action int) {
-	var msgId int32
+	var headerSize int32
 	bytebuffer := bytes.NewBuffer(packet)
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-	var length uint32
-	binary.Read(bytebuffer, binary.BigEndian, &length)
-	log.Infof("------receive msgId = %d length =%d", msgId, length)
-	core.CallMethod(msgId, packet[8:], ctx)
+	binary.Read(bytebuffer, binary.BigEndian, &headerSize)
+	headerBody := make([]byte, headerSize)
+	binary.Read(bytebuffer, binary.BigEndian, headerBody)
+	innerHeader := &protoGen.InnerHead{}
+	log.Infof("##############  receive headerSize =%d", headerSize)
+	err := proto.Unmarshal(headerBody, innerHeader)
+	if err != nil {
+		log.Error(err)
+		return nil, 0
+	}
+	bodyLen := bytebuffer.Len()
+	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
+	//core.CallMethod(msgId, packet[4:], ctx)
 	return nil, 0
 }
 

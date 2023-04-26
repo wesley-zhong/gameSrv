@@ -93,3 +93,21 @@ func ServerStart(port int32, eventHandler EventHandler) {
 		log.Error(err)
 	}
 }
+
+func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec gnet.ICodec) {
+	p := goroutine.Default()
+	defer p.Release()
+
+	gEventHandler = eventHandler
+
+	ts := &tcpServer{pool: p}
+	err := gnet.Serve(ts, "tcp://:"+strconv.Itoa(int(port)),
+		gnet.WithMulticore(true),
+		gnet.WithReusePort(true),
+		gnet.WithTCPNoDelay(0),
+		gnet.WithTicker(true),
+		gnet.WithCodec(codec))
+	if err != nil {
+		log.Error(err)
+	}
+}
