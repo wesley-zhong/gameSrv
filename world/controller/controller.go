@@ -33,7 +33,7 @@ func innerHeartBeat(ctx network.ChannelContext, request proto.Message) {
 	response := &protoGen.InnerHeartBeatResponse{}
 	//	PlayerMgr.Get()
 	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
-	innerClient.SendMsg(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+	innerClient.SendInnerMsg(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 }
 
 func playerLogin(ctx network.ChannelContext, request proto.Message) {

@@ -92,7 +92,7 @@ func (clientNetwork *ClientNetwork) Tick() (delay time.Duration, action int) {
 		return 1000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), heartBeat)
+	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), heartBeat)
 	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }

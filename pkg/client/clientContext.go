@@ -79,7 +79,11 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	client.Ctx.AsyncWrite(buffer.Bytes())
 }
 
-func (client *ConnInnerClientContext) SendMsg(protoCode int32, msg proto.Message) {
+func (client *ConnInnerClientContext) SendInnerMsgProtoCode(innerCode protoGen.InnerProtoCode, msg proto.Message) {
+	client.SendInnerMsg(int32(innerCode), msg)
+}
+
+func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, msg proto.Message) {
 	head := &protoGen.InnerHead{
 		FromServerUid:    0,
 		ToServerUid:      0,

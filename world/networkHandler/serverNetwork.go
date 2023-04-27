@@ -74,10 +74,13 @@ func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelCont
 	headerBody := make([]byte, headerSize)
 	binary.Read(bytebuffer, binary.BigEndian, headerBody)
 	innerHeader := &protoGen.InnerHead{}
-	log.Infof("##############  receive headerSize =%d", headerSize)
 	err := proto.Unmarshal(headerBody, innerHeader)
 	if err != nil {
 		log.Error(err)
+		return nil, 0
+	}
+	if innerHeader.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
+		ctx.Context().(*client.ConnInnerClientContext).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES, &protoGen.InnerHeartBeatResponse{})
 		return nil, 0
 	}
 	bodyLen := bytebuffer.Len()
