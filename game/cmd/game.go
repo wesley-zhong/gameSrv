@@ -20,7 +20,8 @@ func main() {
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
-		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
+		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
 	controller.Init()
 

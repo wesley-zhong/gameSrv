@@ -20,7 +20,9 @@ func main() {
 	network.ClientStart(&clientNetwork,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
-		gnet.WithTCPNoDelay(0))
+		gnet.WithTCPNoDelay(0),
+		gnet.WithTicker(true),
+		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
 	controller.Init()
 

@@ -36,6 +36,7 @@ func (clientNetwork *ClientNetwork) OnClosed(c network.ChannelContext, err error
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (clientNetwork *ClientNetwork) PreWrite(c network.ChannelContext) {
+	log.Infof("pppppppppppppppppp")
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
