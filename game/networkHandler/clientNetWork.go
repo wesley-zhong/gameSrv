@@ -3,8 +3,6 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
-	"gameSrv/gateway/constants"
-	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
@@ -67,16 +65,16 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContex
 	binary.Read(bytebuffer, binary.BigEndian, body)
 
 	//directly send to client
-	if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
-		//playerMgr
-		targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
-		if targetPlayer == nil {
-			log.Infof("pid = %d not found", innerMsg.Id)
-			return
-		}
-		targetPlayer.Context.Ctx.AsyncWrite(body)
-		return
-	}
+	//if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
+	//	//playerMgr
+	//	targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
+	//	if targetPlayer == nil {
+	//		log.Infof("pid = %d not found", innerMsg.Id)
+	//		return
+	//	}
+	//	targetPlayer.Context.Ctx.AsyncWrite(body)
+	//	return
+	//}
 
 	core.CallMethod(innerMsg.ProtoCode, body, c)
 	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive innerMsgLen = %d  innerMsgBody  =%s  protoCode =%d", innerHeaderLen, innerMsg, innerMsg.ProtoCode)

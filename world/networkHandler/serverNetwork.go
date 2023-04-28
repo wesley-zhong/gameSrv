@@ -33,7 +33,7 @@ func (serverNetWork *ServerNetWork) OnOpened(c network.ChannelContext) (out []by
 func (serverNetWork *ServerNetWork) OnClosed(c network.ChannelContext, err error) (action int) {
 	switch c.Context().(type) {
 	case *client.ConnInnerClientContext:
-		log.Infof("addr =%s not login", c.RemoteAddr())
+		log.Infof("-----addr =%s not login", c.RemoteAddr())
 		return 0
 	case *player.Player:
 		player := c.Context().(*player.Player)
