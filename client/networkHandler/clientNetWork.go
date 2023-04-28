@@ -3,11 +3,13 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
+	"gameSrv/gateway/constants"
+	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	"gameSrv/protoGen"
+	protoGen "gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"
@@ -17,8 +19,8 @@ type ClientNetwork struct {
 }
 
 func (clientNetwork *ClientNetwork) OnOpened(c network.ChannelContext) (out []byte, action int) {
-	//context := client.NewClientContext(c)
-	log.Infof("----------  client opened  addr=%s", c.RemoteAddr())
+	context := client.NewClientContext(c)
+	log.Infof("----------  client opened  addr=%s, id=%d", context.Ctx.RemoteAddr(), context.Sid)
 	return nil, 0
 }
 
@@ -34,6 +36,7 @@ func (clientNetwork *ClientNetwork) OnClosed(c network.ChannelContext, err error
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (clientNetwork *ClientNetwork) PreWrite(c network.ChannelContext) {
+	log.Infof("pppppppppppppppppp")
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
@@ -63,18 +66,22 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContex
 
 	body := make([]byte, bytebuffer.Len())
 	binary.Read(bytebuffer, binary.BigEndian, body)
+	if innerMsg.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES) {
+		log.Infof("================== client receive heatbeat")
+		return nil, 0
+	}
 
 	//directly send to client
-	//if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
-	//	//playerMgr
-	//	targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
-	//	if targetPlayer == nil {
-	//		log.Infof("pid = %d not found", innerMsg.Id)
-	//		return
-	//	}
-	//	targetPlayer.Context.Ctx.AsyncWrite(body)
-	//	return
-	//}
+	if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
+		//playerMgr
+		targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
+		if targetPlayer == nil {
+			log.Infof("pid = %d not found", innerMsg.Id)
+			return
+		}
+		targetPlayer.Context.Ctx.AsyncWrite(body)
+		return
+	}
 
 	core.CallMethod(innerMsg.ProtoCode, body, c)
 	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive innerMsgLen = %d  innerMsgBody  =%s  protoCode =%d", innerHeaderLen, innerMsg, innerMsg.ProtoCode)
@@ -84,9 +91,9 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContex
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientNetwork) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(client.InnerClientType_WORLD)
+	innerClient := client.GetInnerClient(client.InnerClientType_GAME)
 	if innerClient == nil {
-		log.Infof("no found connect type =%d", client.InnerClientType_WORLD)
+		log.Infof("no found connect type =%d", client.InnerClientType_GAME)
 		return 1000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
