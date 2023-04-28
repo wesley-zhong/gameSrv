@@ -5,10 +5,11 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
+	"gameSrv/protoGen"
+	"google.golang.org/protobuf/proto"
 	"time"
 )
 
@@ -16,7 +17,7 @@ type ServerNetWork struct {
 }
 
 func (serverNetWork *ServerNetWork) OnOpened(c network.ChannelContext) (out []byte, action int) {
-	clientContext := client.NewClientContext(c)
+	clientContext := client.NewInnerClientContext(c)
 	c.SetContext(clientContext)
 	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
@@ -68,13 +69,24 @@ func (serverNetWork *ServerNetWork) AfterWrite(c network.ChannelContext, b []byt
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelContext) (out []byte, action int) {
-	var msgId int32
+	var headerSize int32
 	bytebuffer := bytes.NewBuffer(packet)
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-	var length uint32
-	binary.Read(bytebuffer, binary.BigEndian, &length)
-	log.Infof("------receive msgId = %d length =%d", msgId, length)
-	core.CallMethod(msgId, packet[8:], ctx)
+	binary.Read(bytebuffer, binary.BigEndian, &headerSize)
+	headerBody := make([]byte, headerSize)
+	binary.Read(bytebuffer, binary.BigEndian, headerBody)
+	innerHeader := &protoGen.InnerHead{}
+	err := proto.Unmarshal(headerBody, innerHeader)
+	if err != nil {
+		log.Error(err)
+		return nil, 0
+	}
+	if innerHeader.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
+		ctx.Context().(*client.ConnInnerClientContext).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES, &protoGen.InnerHeartBeatResponse{})
+		return nil, 0
+	}
+	bodyLen := bytebuffer.Len()
+	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
+	//core.CallMethod(msgId, packet[4:], ctx)
 	return nil, 0
 }
 

@@ -20,10 +20,10 @@ func main() {
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
-		gnet.WithTCPNoDelay(0))
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	controller.Init()
 
 	controller := &networkHandler.ServerNetWork{}
-	network.ServerStart(9002, controller)
+	network.ServerStartWithDeCode(9002, controller, network.NewInnerLengthFieldBasedFrameCodecEx())
 }

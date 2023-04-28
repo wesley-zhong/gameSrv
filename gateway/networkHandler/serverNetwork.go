@@ -74,6 +74,7 @@ func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelCont
 	var length uint32
 	binary.Read(bytebuffer, binary.BigEndian, &length)
 	log.Infof("------receive msgId = %d length =%d", msgId, length)
+
 	core.CallMethod(msgId, packet[8:], ctx)
 	return nil, 0
 }
