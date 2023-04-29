@@ -32,6 +32,7 @@ func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 		log.Infof("msgId = %d not found method", msgId)
 		return
 	}
-	proto.Unmarshal(body, method.param)
-	method.methodFuc(ctx, method.param)
+	param := method.param.ProtoReflect().New().Interface()
+	proto.Unmarshal(body, param)
+	method.methodFuc(ctx, param)
 }
