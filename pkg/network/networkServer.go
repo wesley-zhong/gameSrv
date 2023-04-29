@@ -70,8 +70,9 @@ func (ts tcpServer) AfterWrite(c gnet.Conn, b []byte) {
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (ts tcpServer) Tick() (delay time.Duration, action gnet.Action) {
-	//log.Infof("-----------------Tick")
-	return 2 * time.Second, gnet.None
+	delay, intAction := gEventHandler.Tick()
+	action = gnet.Action(intAction)
+	return delay, action
 }
 
 var gEventHandler EventHandler

@@ -19,7 +19,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 
-	go startConnection(1000)
+	go startConnection(30)
 
 }
 
@@ -51,10 +51,18 @@ func performanceRes(ctx network.ChannelContext, res proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		client := client.ClientConnect("124.222.26.216:9001")
+		//client := client.ClientConnect("124.222.26.216:9001")
+		client := client.ClientConnect("localhost:9001")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
-
+		request := &protoGen.LoginRequest{
+			AccountId:  int64(i),
+			RoleId:     int64(i + 100000),
+			LoginToken: "",
+			GameTicket: 0,
+			ServerId:   0,
+		}
+		client.SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
 	}
 
 	req := &protoGen.PerformanceTestReq{

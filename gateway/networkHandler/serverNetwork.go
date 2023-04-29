@@ -8,6 +8,7 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
+	"gameSrv/protoGen"
 	"time"
 )
 
@@ -35,21 +36,20 @@ func (serverNetWork *ServerNetWork) OnClosed(c network.ChannelContext, err error
 		log.Infof("addr =%s not login", c.RemoteAddr())
 		return 1
 	case *player.Player:
-		player := c.Context().(*player.Player)
-		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
+		disConnPlayer := c.Context().(*player.Player)
+		player.PlayerMgr.Remove(disConnPlayer)
+		log.Infof("conn =%s  sid=%d pid=%d  closed now playerCount=%d",
+			c.RemoteAddr(), disConnPlayer.Context.Sid, disConnPlayer.Pid, player.PlayerMgr.GetSize())
 		return 1
 	default:
 		return 1
-
 	}
-
 }
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (serverNetWork *ServerNetWork) PreWrite(c network.ChannelContext) {
 	log.Infof("conn =%s PreWrite", c.RemoteAddr())
-
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
@@ -81,5 +81,21 @@ func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelCont
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (serverNetWork *ServerNetWork) Tick() (delay time.Duration, action int) {
-	return 1000 * time.Millisecond, 0
+
+	playerList := player.PlayerMgr.GetPlayerList()
+	if len(playerList) == 0 {
+		return 5000 * time.Millisecond, 0
+	}
+
+	response := &protoGen.HeartBeatResponse{
+		ClientTime: time.Now().UnixMilli(),
+		ServerTime: time.Now().UnixMilli(),
+	}
+	//	PlayerMgr.Get()
+	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+
+	for _, player := range playerList {
+		player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+	}
+	return 5000 * time.Millisecond, 0
 }

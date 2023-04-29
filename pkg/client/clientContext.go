@@ -143,6 +143,10 @@ func ClientConnect(addr string) *ConnClientContext {
 
 }
 
+func (client *ConnClientContext) SendMsg(code protoGen.ProtoCode, message proto.Message) {
+	client.Send(int32(code), message)
+}
+
 func (client *ConnClientContext) Send(msgId int32, msg proto.Message) {
 	buffer := bytes.Buffer{}
 	buffer.Write(writeInt(int(msgId)))

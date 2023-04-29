@@ -7,7 +7,7 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	protoGen "gameSrv/protoGen"
+	"gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"
@@ -44,31 +44,32 @@ var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
 func login(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
-	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
-	innerLoginReq := &protoGen.InnerLoginRequest{
-		SessionId: context.Sid,
-		AccountId: loginRequest.AccountId,
-		RoleId:    loginRequest.RoleId,
-	}
-	msgHeader := &protoGen.InnerHead{
-		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
-		ToServerUid:      message.BuildServerUid(message.TypeGame, 35),
-		ReceiveServerUid: 0,
-		Id:               loginRequest.RoleId,
-		SendType:         0,
-		ProtoCode:        message.INNER_PROTO_LOGIN_REQUEST,
-		CallbackId:       0,
-	}
-
-	innerMsg := &client.InnerMessage{
-		InnerHeader: msgHeader,
-		Body:        innerLoginReq,
-	}
-	client.GetInnerClient(client.InnerClientType_GAME).Send(innerMsg)
+	//log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
+	//innerLoginReq := &protoGen.InnerLoginRequest{
+	//	SessionId: context.Sid,
+	//	AccountId: loginRequest.AccountId,
+	//	RoleId:    loginRequest.RoleId,
+	//}
+	//msgHeader := &protoGen.InnerHead{
+	//	FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
+	//	ToServerUid:      message.BuildServerUid(message.TypeGame, 35),
+	//	ReceiveServerUid: 0,
+	//	Id:               loginRequest.RoleId,
+	//	SendType:         0,
+	//	ProtoCode:        message.INNER_PROTO_LOGIN_REQUEST,
+	//	CallbackId:       0,
+	//}
+	//
+	//innerMsg := &client.InnerMessage{
+	//	InnerHeader: msgHeader,
+	//	Body:        innerLoginReq,
+	//}
+	//client.GetInnerClient(client.InnerClientType_GAME).Send(innerMsg)
 	//PlayerContext[loginRequest.RoleId] = ctx
 	player := player.NewPlayer(loginRequest.GetRoleId(), context)
 	PlayerMgr.Add(player)
 	context.Ctx.SetContext(player)
+	log.Infof("====== now loginCount =%d", PlayerMgr.GetSize())
 }
 
 func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {
@@ -124,6 +125,5 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 		SomeIdAdd: testReq.SomeId + 1,
 	}
 	log.Infof("==========  performanceTest %d", testReq.SomeId)
-	ctx.Context().(*client.ConnClientContext).Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
-
+	ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
 }
