@@ -21,7 +21,7 @@ run:
 	sleep 5
 	nohup ./$(BIN_GAME) >>./game.log 2>&1 &
 	sleep 5
-	nohup ./$(BIN_GATE_WAY) >>./gateway.log 2>$1 &
+	nohup ./$(BIN_GATE_WAY) >>./gateway.log 2>&1 &
 stop:
 	 ps -ef|grep gateway|grep -v grep|awk '{print $2}' | xargs kill -9
 	 ps -ef|grep game|grep -v grep|awk '{print $2}' | xargs kill -9
