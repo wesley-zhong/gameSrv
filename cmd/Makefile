@@ -17,5 +17,7 @@ clean:
 	rm -f $(BIN_GATE_WAY)
 run:
 	nohup ./$(BIN_WORLD) &
+	sleep 5
 	nohup ./$(BIN_GAME) &
+	sleep 5
 	nohup ./$(BIN_GATE_WAY)&
