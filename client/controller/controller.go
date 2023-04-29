@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
@@ -15,33 +14,18 @@ import (
 var playerConn = make(map[int64]*client.ConnClientContext)
 
 func Init() {
-	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
-	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
+	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 
-	go startConnection(30)
+	go startConnection(2000)
 
 }
 
-func heartBeat(ctx network.ChannelContext, request proto.Message) {
-	player := ctx.Context().(*player.Player)
-	//context := ctx.Context().(*client.ConnClientContext)
-	heartBeat := request.(*protoGen.HeartBeatRequest)
-	log.Infof(" contex= %d  heartbeat time = %d", player.Context.Sid, heartBeat.ClientTime)
-
-	response := &protoGen.HeartBeatResponse{
-		ClientTime: heartBeat.ClientTime,
-		ServerTime: time.Now().UnixMilli(),
-	}
-	//	PlayerMgr.Get()
-	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
-	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
-}
-
-func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnInnerClientContext)
-	kickOut := request.(*protoGen.KickOutResponse)
-	log.Infof("login response = %d  sid =%d", kickOut.Reason, context.Sid)
+func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
+	context := ctx.Context().(*client.ConnClientContext)
+	response := request.(*protoGen.HeartBeatResponse)
+	//kickOut := request.(*protoGen.KickOutResponse)
+	log.Infof("pigd =%d heatbeat response = %d  ", context.Sid, response.ServerTime)
 }
 
 func performanceRes(ctx network.ChannelContext, res proto.Message) {
@@ -51,8 +35,8 @@ func performanceRes(ctx network.ChannelContext, res proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		//client := client.ClientConnect("124.222.26.216:9001")
-		client := client.ClientConnect("localhost:9001")
+		client := client.ClientConnect("124.222.26.216:9001")
+		//client := client.ClientConnect("localhost:9001")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
 		request := &protoGen.LoginRequest{
