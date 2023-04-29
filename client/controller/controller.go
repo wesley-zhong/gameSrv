@@ -18,7 +18,6 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 
 	go startConnection(1000)
-
 }
 
 func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {

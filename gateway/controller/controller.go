@@ -69,7 +69,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 	player := player.NewPlayer(loginRequest.GetRoleId(), context)
 	PlayerMgr.Add(player)
 	context.Ctx.SetContext(player)
-	log.Infof("====== now loginCount =%d", PlayerMgr.GetSize())
+	log.Infof("====== loginAddr=%s now loginCount =%d", ctx.RemoteAddr(), PlayerMgr.GetSize())
 }
 
 func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {
@@ -124,6 +124,6 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 		ResBody:   testReq.SomeBody,
 		SomeIdAdd: testReq.SomeId + 1,
 	}
-	log.Infof("==========  performanceTest %d", testReq.SomeId)
+	log.Infof("==========  performanceTest %d  remomoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
 }
