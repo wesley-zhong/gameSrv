@@ -48,3 +48,15 @@ message KickOutRequest {
 message KickOutResponse {
   int32 reason = 1;
 }
+
+
+message  PerformanceTestReq{
+  int64 someId = 1;
+  string someBody = 2;
+}
+
+message PerformanceTestRes{
+  int64  someId = 1;
+  string resBody = 2;
+  int64  someIdAdd =3;
+}

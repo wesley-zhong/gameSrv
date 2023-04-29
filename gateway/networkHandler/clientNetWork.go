@@ -36,7 +36,7 @@ func (clientNetwork *ClientNetwork) OnClosed(c network.ChannelContext, err error
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (clientNetwork *ClientNetwork) PreWrite(c network.ChannelContext) {
-	log.Infof("pppppppppppppppppp")
+	//log.Infof("pppppppppppppppppp")
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
@@ -54,7 +54,7 @@ func (clientNetwork *ClientNetwork) AfterWrite(c network.ChannelContext, b []byt
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContext) (out []byte, action int) {
-	log.Infof("  client React receive addr =%s", c.RemoteAddr())
+	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
 	var innerHeaderLen int32
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
@@ -67,7 +67,7 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c network.ChannelContex
 	body := make([]byte, bytebuffer.Len())
 	binary.Read(bytebuffer, binary.BigEndian, body)
 	if innerMsg.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES) {
-		log.Infof("================== client receive heatbeat")
+		//log.Infof("================== client receive heatbeat")
 		return nil, 0
 	}
 
@@ -98,6 +98,6 @@ func (clientNetwork *ClientNetwork) Tick() (delay time.Duration, action int) {
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
 	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), heartBeat)
-	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
+	//	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }

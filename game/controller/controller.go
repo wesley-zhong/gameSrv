@@ -19,7 +19,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 
-	innclient := client.InnerClientConn(client.InnerClientType_WORLD, "127.0.0.1:9003")
+	innclient := client.InnerClientConnect(client.InnerClientType_WORLD, "127.0.0.1:9003")
 	//add  msg  to game server to add me
 	header := &protoGen.InnerHead{
 		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),

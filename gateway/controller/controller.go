@@ -18,8 +18,9 @@ func Init() {
 	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
+	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
-	innclient := client.InnerClientConn(client.InnerClientType_GAME, "127.0.0.1:9002")
+	innclient := client.InnerClientConnect(client.InnerClientType_GAME, "127.0.0.1:9002")
 	//add  msg  to game server to add me
 	header := &protoGen.InnerHead{
 		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
@@ -113,4 +114,16 @@ func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnInnerClientContext)
 	kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("login response = %d  sid =%d", kickOut.Reason, context.Sid)
+}
+
+func performanceTest(ctx network.ChannelContext, req proto.Message) {
+	testReq := req.(*protoGen.PerformanceTestReq)
+	res := &protoGen.PerformanceTestRes{
+		SomeId:    testReq.SomeId,
+		ResBody:   testReq.SomeBody,
+		SomeIdAdd: testReq.SomeId + 1,
+	}
+	log.Infof("==========  performanceTest %d", testReq.SomeId)
+	ctx.Context().(*client.ConnClientContext).Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
+
 }

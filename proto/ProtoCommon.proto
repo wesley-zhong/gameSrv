@@ -25,6 +25,9 @@ enum ProtoCode {
   KICK_OUT_RESPONSE = 15;
 
   LOGIN_INIT_REQUEST = 20;
+  PERFORMANCE_TEST_REQ = 21;
+  PERFORMANCE_TEST_RES = 22;
+
 }
 
 message ErrorMessage {

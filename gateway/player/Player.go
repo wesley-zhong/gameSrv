@@ -33,7 +33,7 @@ type PlayerMgrWrap struct {
 }
 
 func (playerMgr *PlayerMgrWrap) Add(player *Player) {
-	playerMgr.playerIdMap[int64(player.Pid)] = player
+	playerMgr.playerIdMap[player.Pid] = player
 	playerMgr.playerSidMap[player.Context.Sid] = player
 }
 

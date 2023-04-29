@@ -23,11 +23,12 @@ const (
 	InnerClientType_GATE_WAY = 1
 	InnerClientType_GAME     = 2
 	InnerClientType_WORLD    = 3
+	PLAYER                   = 4
 )
 
 var InnerClientMap = make(map[int32]*ConnInnerClientContext)
 
-func InnerClientConn(key int32, addr string) *ConnInnerClientContext {
+func InnerClientConnect(key int32, addr string) *ConnInnerClientContext {
 	context, err := network.Dial("tcp", addr)
 	if err != nil {
 		log.Error(err)
@@ -127,6 +128,19 @@ type ConnClientContext struct {
 // NewClientContext - ------ user client -------------------
 func NewClientContext(context network.ChannelContext) *ConnClientContext {
 	return &ConnClientContext{Ctx: context, Sid: genSid()}
+}
+
+func ClientConnect(addr string) *ConnClientContext {
+	context, err := network.Dial("tcp", addr)
+	if err != nil {
+		log.Error(err)
+		return nil
+	}
+	clientContext := NewClientContext(context)
+	context.SetContext(clientContext)
+	//InnerClientMap[key] = gameInnerClient
+	return clientContext
+
 }
 
 func (client *ConnClientContext) Send(msgId int32, msg proto.Message) {
