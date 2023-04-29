@@ -19,18 +19,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 
-	client := client.ClientConnect("127.0.0.1:9001")
-	//add  msg  to game server to add me
-
-	req := &protoGen.PerformanceTestReq{
-		SomeId:   2,
-		SomeBody: "hello",
-	}
-	playerConn[client.Sid] = client
-
-	for i := 0; i < 10; i++ {
-		client.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
-	}
+	go startConnection(1000)
 
 }
 
@@ -58,4 +47,34 @@ func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
 func performanceRes(ctx network.ChannelContext, res proto.Message) {
 	performanceRes := res.(*protoGen.PerformanceTestRes)
 	log.Infof("------response id =%d", performanceRes.SomeIdAdd)
+}
+
+func startConnection(count int) {
+	for i := 0; i < count; i++ {
+		client := client.ClientConnect("124.222.26.216:9001")
+		//add  msg  to game server to add me
+		playerConn[client.Sid] = client
+
+	}
+
+	req := &protoGen.PerformanceTestReq{
+		SomeId:   2,
+		SomeBody: "hello",
+	}
+	timer := time.NewTimer(3 * time.Second)
+
+	go func() {
+		for i := 0; i < 10000; i++ {
+			for {
+				timer.Reset(100 * time.Millisecond)
+				select {
+				case <-timer.C:
+					for _, v := range playerConn {
+						v.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+					}
+				}
+			}
+		}
+	}()
+
 }
