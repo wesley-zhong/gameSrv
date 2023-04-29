@@ -16,7 +16,7 @@ clean:
 	rm -f $(BIN_WORLD)
 	rm -f $(BIN_GAME)
 	rm -f $(BIN_GATE_WAY)
-	rm -rf./logs/*
+	rm -f ./logs/*
 run:
 	nohup ./$(BIN_WORLD) >>./logs/world.log 2>&1 &
 	sleep 5
