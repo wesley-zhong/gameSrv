@@ -16,12 +16,13 @@ clean:
 	rm -f $(BIN_WORLD)
 	rm -f $(BIN_GAME)
 	rm -f $(BIN_GATE_WAY)
+	rm -rf logs
 run:
-	nohup ./$(BIN_WORLD) >>./world.log 2>&1 &
+	nohup ./$(BIN_WORLD) >>./logs/world.log 2>&1 &
 	sleep 5
-	nohup ./$(BIN_GAME) >>./game.log 2>&1 &
+	nohup ./$(BIN_GAME) >>./logs/game.log 2>&1 &
 	sleep 5
-	nohup ./$(BIN_GATE_WAY) >>./gateway.log 2>&1 &
+	nohup ./$(BIN_GATE_WAY) >>./logs/gateway.log 2>&1 &
 stop:
 	 ps -ef|grep gateway|grep -v grep|awk '{print $2}' | xargs kill -9
 	 ps -ef|grep game|grep -v grep|awk '{print $2}' | xargs kill -9
