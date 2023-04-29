@@ -8,14 +8,14 @@ BIN_GAME=game
 BIN_GATE_WAY=gateway
 all: clean  build
 build:
-        $(GOBUILD) -o $(BIN_WORLD)  ../world/cmd/world.go
-        $(GOBUILD) -o $(BIN_GAME) ../game/cmd/game.go
-        $(GOBUILD) -o $(BIN_GATE_WAY) ../gateway/cmd/gateway.go
+	$(GOBUILD) -o $(BIN_WORLD)  ../world/cmd/world.go
+	$(GOBUILD) -o $(BIN_GAME) ../game/cmd/game.go
+	$(GOBUILD) -o $(BIN_GATE_WAY) ../gateway/cmd/gateway.go
 clean:
-        rm -f $(BIN_WORLD)
-        rm -f $(BIN_GAME)
-        rm -f $(BIN_GATE_WAY)
+	rm -f $(BIN_WORLD)
+	rm -f $(BIN_GAME)
+	rm -f $(BIN_GATE_WAY)
 run:
-         ./$(BIN_WORLD)
-         ./$(BIN_GAME)
-         ./$(BIN_GATE_WAY)
+	nohup ./$(BIN_WORLD) &
+	nohup ./$(BIN_GAME) &
+	nohup ./$(BIN_GATE_WAY)&
