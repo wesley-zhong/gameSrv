@@ -95,6 +95,7 @@ func (serverNetWork *ServerNetWork) Tick() (delay time.Duration, action int) {
 	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 
 	for _, player := range playerList {
+
 		player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 	}
 	return 5000 * time.Millisecond, 0
