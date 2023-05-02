@@ -19,9 +19,9 @@ clean:
 	rm -f ./logs/*
 run:
 	nohup ./$(BIN_WORLD) >>./logs/world.log 2>&1 &
-	sleep 5
+	sleep 1
 	nohup ./$(BIN_GAME) >>./logs/game.log 2>&1 &
-	sleep 5
+	sleep 1
 	nohup ./$(BIN_GATE_WAY) >>./logs/gateway.log 2>&1 &
 stop:
 	 ps -ef|grep gateway|grep -v grep|awk '{print $2}' | xargs kill -9
