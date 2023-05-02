@@ -1,4 +1,4 @@
-package controller
+package game
 
 import (
 	"gameSrv/gateway/message"
@@ -7,35 +7,22 @@ import (
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
-	protoGen "gameSrv/protoGen"
+	"gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"
 )
 
-func Init() {
+func init() {
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), &protoGen.InnerServerHandShake{}, handShake)
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
 	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
+	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
-	innclient := client.InnerClientConnect(client.InnerClientType_WORLD, "127.0.0.1:9003")
+	client.InnerClientConnect(client.InnerClientType_WORLD, "127.0.0.1:9003")
 	//add  msg  to game server to add me
-	header := &protoGen.InnerHead{
-		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
-		ToServerUid:      0,
-		ReceiveServerUid: 0,
-		Id:               0,
-		SendType:         0,
-		ProtoCode:        message.INNER_PROTO_ADD_SERVER,
-		CallbackId:       0,
-	}
-
-	innerMessage := &client.InnerMessage{
-		InnerHeader: header,
-		Body:        nil,
-	}
-	innclient.Send(innerMessage)
 }
 
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
@@ -113,4 +100,23 @@ func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnInnerClientContext)
 	kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("login response = %d  sid =%d", kickOut.Reason, context.Sid)
+}
+
+func performanceTest(ctx network.ChannelContext, req proto.Message) {
+	testReq := req.(*protoGen.PerformanceTestReq)
+	//res := &protoGen.PerformanceTestRes{
+	//	SomeId:    testReq.SomeId,
+	//	ResBody:   testReq.SomeBody,
+	//	SomeIdAdd: testReq.SomeId + 1,
+	//}
+	log.Infof("========== game performanceTest %d  remomoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
+	//ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
+	client.GetInnerClient(client.InnerClientType_WORLD).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+}
+
+func handShake(ctx network.ChannelContext, request proto.Message) {
+	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
+	//innerClientMap[client.InnerClientType_GAME] = validInnerClient
+	client.AddInnerClientConnect(client.InnerClientType_GAME, validInnerClient)
+	log.Infof("client id =%d  addr =%s handshake finished", validInnerClient.Sid, validInnerClient.Ctx.RemoteAddr())
 }

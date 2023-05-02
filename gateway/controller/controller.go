@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"gameSrv/gateway/message"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
@@ -20,23 +19,23 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
-	innclient := client.InnerClientConnect(client.InnerClientType_GAME, "127.0.0.1:9002")
+	client.InnerClientConnect(client.InnerClientType_GAME, "127.0.0.1:9002")
 	//add  msg  to game server to add me
-	header := &protoGen.InnerHead{
-		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
-		ToServerUid:      0,
-		ReceiveServerUid: 0,
-		Id:               0,
-		SendType:         0,
-		ProtoCode:        message.INNER_PROTO_ADD_SERVER,
-		CallbackId:       0,
-	}
-
-	innerMessage := &client.InnerMessage{
-		InnerHeader: header,
-		Body:        nil,
-	}
-	innclient.Send(innerMessage)
+	//header := &protoGen.InnerHead{
+	//	FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
+	//	ToServerUid:      0,
+	//	ReceiveServerUid: 0,
+	//	Id:               0,
+	//	SendType:         0,
+	//	ProtoCode:        message.INNER_PROTO_ADD_SERVER,
+	//	CallbackId:       0,
+	//}
+	//
+	//innerMessage := &client.InnerMessage{
+	//	InnerHeader: header,
+	//	Body:        nil,
+	//}
+	//innclient.Send(innerMessage)
 }
 
 var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
@@ -126,4 +125,5 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 	}
 	log.Infof("==========  performanceTest %d  remomoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
+	client.GetInnerClient(client.InnerClientType_GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
 }

@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
@@ -85,7 +86,7 @@ func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelCont
 	}
 	bodyLen := bytebuffer.Len()
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-	//core.CallMethod(msgId, packet[4:], ctx)
+	core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 	return nil, 0
 }
 

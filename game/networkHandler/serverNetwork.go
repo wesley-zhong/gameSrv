@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/gopool"
+	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
@@ -21,10 +21,10 @@ func (serverNetWork *ServerNetWork) OnOpened(c network.ChannelContext) (out []by
 	c.SetContext(clientContext)
 	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
-	workerPool := gopool.StartNewWorkerPool(2, 4)
-	workerPool.SubmitTask(func() {
-		log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
-	})
+	//workerPool := gopool.StartNewWorkerPool(2, 4)
+	//workerPool.SubmitTask(func() {
+	//	log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
+	//})
 	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
 	return nil, 0
 }
@@ -42,9 +42,7 @@ func (serverNetWork *ServerNetWork) OnClosed(c network.ChannelContext, err error
 		return 1
 	default:
 		return 1
-
 	}
-
 }
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
@@ -86,7 +84,7 @@ func (serverNetWork *ServerNetWork) React(packet []byte, ctx network.ChannelCont
 	}
 	bodyLen := bytebuffer.Len()
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-	//core.CallMethod(msgId, packet[4:], ctx)
+	core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 	return nil, 0
 }
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gameSrv/game/controller"
+	"gameSrv/client/controller"
 	"gameSrv/game/networkHandler"
 	"gameSrv/pkg/network"
 	"github.com/panjf2000/gnet"
@@ -24,7 +24,6 @@ func main() {
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
 	controller.Init()
-
-	controller := &networkHandler.ServerNetWork{}
-	network.ServerStartWithDeCode(9002, controller, network.NewInnerLengthFieldBasedFrameCodecEx())
+	networkHandler := &networkHandler.ServerNetWork{}
+	network.ServerStartWithDeCode(9002, networkHandler, network.NewInnerLengthFieldBasedFrameCodecEx())
 }

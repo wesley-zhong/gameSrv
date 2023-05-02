@@ -6,6 +6,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
+	"gameSrv/world/message"
 	"sync/atomic"
 
 	"google.golang.org/protobuf/proto"
@@ -36,7 +37,27 @@ func InnerClientConnect(key int32, addr string) *ConnInnerClientContext {
 	}
 	gameInnerClient := NewInnerClientContext(context)
 	InnerClientMap[key] = gameInnerClient
+
+	header := &protoGen.InnerHead{
+		FromServerUid:    message.BuildServerUid(int(key), 35),
+		ToServerUid:      0,
+		ReceiveServerUid: 0,
+		Id:               0,
+		SendType:         0,
+		ProtoCode:        int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE),
+		CallbackId:       0,
+	}
+
+	innerMessage := &InnerMessage{
+		InnerHeader: header,
+		Body:        nil,
+	}
+	gameInnerClient.Send(innerMessage)
 	return gameInnerClient
+}
+
+func AddInnerClientConnect(key int32, ctx *ConnInnerClientContext) {
+	InnerClientMap[key] = ctx
 }
 
 func GetInnerClient(clientType int32) *ConnInnerClientContext {
