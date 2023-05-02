@@ -23,9 +23,6 @@ func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.Chann
 	msgIdMap[msgId] = method
 }
 
-func Init() {
-
-}
 func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 	method := msgIdMap[msgId]
 	if method == nil {

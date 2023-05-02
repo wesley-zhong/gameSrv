@@ -20,7 +20,10 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
+	core.RegisterMethod(int32(protoGen.ProtoCode_LOGOUT_REQUEST), &protoGen.LogoutRequest{}, logout)
+
 	client.InnerClientConnect(client.InnerClientType_WORLD, "127.0.0.1:9003")
+
 	//add  msg  to game server to add me
 }
 
