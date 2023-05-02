@@ -15,7 +15,7 @@ func main() {
 		}
 	}()
 
-	clientNetwork := networkHandler.ClientNetwork{}
+	clientNetwork := networkHandler.ClientEventHandler{}
 	network.ClientStart(&clientNetwork,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
@@ -24,6 +24,6 @@ func main() {
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
 	controller.Init()
-	networkHandler := &networkHandler.ServerNetWork{}
+	networkHandler := &networkHandler.ServerEventHandler{}
 	network.ServerStartWithDeCode(9002, networkHandler, network.NewInnerLengthFieldBasedFrameCodecEx())
 }

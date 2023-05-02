@@ -16,7 +16,7 @@ func main() {
 		}
 	}()
 
-	clientNetwork := networkHandler.ClientNetwork{}
+	clientNetwork := networkHandler.ClientEventHandler{}
 	network.ClientStart(&clientNetwork,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
@@ -26,6 +26,6 @@ func main() {
 
 	controller.Init()
 
-	controller := &networkHandler.ServerNetWork{}
+	controller := &networkHandler.ServerEventHandler{}
 	network.ServerStart(9001, controller)
 }

@@ -15,7 +15,7 @@ func main() {
 	}()
 
 	// no need to connect other server  so do not need init
-	//clientNetwork := networkHandler.ClientNetwork{}
+	//clientNetwork := networkHandler.ClientEventHandler{}
 	//network.ClientStart(&clientNetwork,
 	//	gnet.WithMulticore(true),
 	//	gnet.WithReusePort(true),
@@ -23,6 +23,6 @@ func main() {
 
 	controller.Init()
 
-	controller := &networkHandler.ServerNetWork{}
+	controller := &networkHandler.ServerEventHandler{}
 	network.ServerStartWithDeCode(9003, controller, network.NewInnerLengthFieldBasedFrameCodecEx())
 }
