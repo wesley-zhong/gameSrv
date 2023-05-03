@@ -5,6 +5,7 @@ import (
 	"gameSrv/pkg/network"
 	"gameSrv/world/controller"
 	"gameSrv/world/networkHandler"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -13,6 +14,16 @@ func main() {
 			fmt.Printf("run time panic: %v", x)
 		}
 	}()
+
+	viper.SetConfigName("config")             // 配置文件名，不需要后缀名
+	viper.SetConfigType("yml")                // 配置文件格式
+	viper.AddConfigPath("/etc/world/config/") // 查找配置文件的路径
+	viper.AddConfigPath("./config/")
+	viper.AddConfigPath("./world/config/") // 查找配置文件的路径
+	err := viper.ReadInConfig()            // 查找并读取配置文件
+	if err != nil {                        // 处理错误
+		panic(fmt.Errorf("Fatal error config file: %w \n", err))
+	}
 
 	// no need to connect other server  so do not need init
 	//clientNetwork := networkHandler.ClientEventHandler{}
@@ -24,5 +35,5 @@ func main() {
 	controller.Init()
 
 	controller := &networkHandler.ServerEventHandler{}
-	network.ServerStartWithDeCode(9003, controller, network.NewInnerLengthFieldBasedFrameCodecEx())
+	network.ServerStartWithDeCode(viper.GetInt32("port"), controller, network.NewInnerLengthFieldBasedFrameCodecEx())
 }

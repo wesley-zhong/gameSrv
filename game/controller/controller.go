@@ -8,6 +8,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
+	"github.com/spf13/viper"
 	"google.golang.org/protobuf/proto"
 	"time"
 )
@@ -22,7 +23,7 @@ func Init() {
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGOUT_REQUEST), &protoGen.LogoutRequest{}, logout)
 
-	client.InnerClientConnect(client.InnerClientType_WORLD, "127.0.0.1:9003")
+	client.InnerClientConnect(client.InnerClientType_WORLD, viper.GetString("worldServerAddr"))
 
 	//add  msg  to game server to add me
 }
@@ -111,7 +112,7 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 	//	ResBody:   testReq.SomeBody,
 	//	SomeIdAdd: testReq.SomeId + 1,
 	//}
-	log.Infof("========== game performanceTest %d  remomoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
+	log.Infof("========== game performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	//ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
 	client.GetInnerClient(client.InnerClientType_WORLD).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
 }

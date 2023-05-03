@@ -7,6 +7,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
+	"github.com/spf13/viper"
 	"time"
 
 	"google.golang.org/protobuf/proto"
@@ -19,7 +20,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
-	client.InnerClientConnect(client.InnerClientType_GAME, "127.0.0.1:9002")
+	client.InnerClientConnect(client.InnerClientType_GAME, viper.GetString("gameServerAddr"))
 	//add  msg  to game server to add me
 	//header := &protoGen.InnerHead{
 	//	FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
