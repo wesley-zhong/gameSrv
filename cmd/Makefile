@@ -21,9 +21,9 @@ clean:
 	rm -rf $(BIN_GATE_WAY)
 	rm -rf ./logs/*
 run:
-	nohup ./$(BIN_WORLD) >>./logs/world.log 2>&1 &
+	nohup ./$(BIN_WORLD)/$(BIN_WORLD) >>./logs/world.log 2>&1 &
 	sleep 1
-	nohup ./$(BIN_GAME) >>./logs/game.log 2>&1 &
+	nohup ./$(BIN_GAME)/$(BIN_GAME) >>./logs/game.log 2>&1 &
 	sleep 1
-	nohup ./$(BIN_GATE_WAY) >>./logs/gateway.log 2>&1 &
+	nohup ./$(BIN_GATE_WAY)/$(BIN_GATE_WAY) >>./logs/gateway.log 2>&1 &
 
