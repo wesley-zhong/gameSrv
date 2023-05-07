@@ -18,7 +18,7 @@ func newWorker(taskCount int) *Worker {
 	}
 }
 
-func (worker *Worker) AsyExcute(task func()) {
+func (worker *Worker) AsyExecute(task func()) {
 	atomic.AddInt64(&worker.taskCount, 1)
 	worker.taskChan <- task
 }

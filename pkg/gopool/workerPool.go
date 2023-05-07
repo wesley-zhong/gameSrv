@@ -24,5 +24,5 @@ func StartNewWorkerPool(workerCount int, workQueSize int) *WorkerPool {
 func (pool *WorkerPool) SubmitTask(task func()) {
 	//hashCode := pool.goHashFuc()
 	//index := hashCode % uint(pool.workerCount)
-	pool.workers[0].AsyExcute(task)
+	pool.workers[0].AsyExecute(task)
 }
