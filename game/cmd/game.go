@@ -3,8 +3,11 @@ package main
 import (
 	"fmt"
 	"gameSrv/game/controller"
+	"gameSrv/game/dal"
 	"gameSrv/game/networkHandler"
+	"gameSrv/game/service"
 	"gameSrv/pkg/network"
+	"gameSrv/pkg/orm"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
 )
@@ -15,6 +18,10 @@ func main() {
 			fmt.Printf("run time panic: %v", x)
 		}
 	}()
+
+	orm.Init()
+	dal.Init()
+	service.AccountLogin("andy")
 
 	viper.SetConfigName("config")            // 配置文件名，不需要后缀名
 	viper.SetConfigType("yml")               // 配置文件格式
