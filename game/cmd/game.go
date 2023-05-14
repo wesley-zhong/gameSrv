@@ -21,7 +21,8 @@ func main() {
 
 	orm.Init()
 	dal.Init()
-	service.AccountLogin("andy")
+	account := service.AccountLogin("andy")
+	service.UpdateAccount(account)
 
 	viper.SetConfigName("config")            // 配置文件名，不需要后缀名
 	viper.SetConfigType("yml")               // 配置文件格式

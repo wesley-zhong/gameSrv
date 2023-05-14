@@ -30,3 +30,9 @@ func AccountLogin(account string) *module.AccountDO {
 	}
 	return player
 }
+
+func UpdateAccount(do *module.AccountDO) {
+	do.Pid = 100001
+	//dal.AccountDAO.Save(do.Id, do)
+	dal.AccountDAO.AsynSave(do.Id, do)
+}
