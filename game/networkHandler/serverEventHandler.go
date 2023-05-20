@@ -83,6 +83,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		return nil, 0
 	}
 	bodyLen := bytebuffer.Len()
+	if bodyLen <= 4 {
+		log.Infof("------XXXXXXXX errror eceive msgId = %d length =%d should be cloesed", innerHeader.ProtoCode, bodyLen)
+		ctx.Close()
+		return nil, 0
+	}
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
 	core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 	return nil, 0

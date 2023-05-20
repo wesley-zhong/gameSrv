@@ -34,7 +34,7 @@ func (serverNetWork *ServerEventHandler) OnOpened(c network.ChannelContext) (out
 func (serverNetWork *ServerEventHandler) OnClosed(c network.ChannelContext, err error) (action int) {
 	switch c.Context().(type) {
 	case *client.ConnInnerClientContext:
-		log.Infof("-----addr =%s not login", c.RemoteAddr())
+		log.Infof(" OnClosed-----addr =%s not login", c.RemoteAddr())
 		return 0
 	case *player.Player:
 		player := c.Context().(*player.Player)
@@ -78,6 +78,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 	err := proto.Unmarshal(headerBody, innerHeader)
 	if err != nil {
 		log.Error(err)
+		ctx.Close()
 		return nil, 0
 	}
 	if innerHeader.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
@@ -85,6 +86,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		return nil, 0
 	}
 	bodyLen := bytebuffer.Len()
+	if bodyLen <= 4 {
+		log.Infof("------XXXXXXXX errror eceive msgId = %d length =%d should be cloesed", innerHeader.ProtoCode, bodyLen)
+		ctx.Close()
+		return nil, 0
+	}
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
 	core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 	return nil, 0

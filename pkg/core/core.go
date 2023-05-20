@@ -6,7 +6,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-type MsgIdFuc[T any, T2 any] func(T, T2)
+type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
 var msgIdMap = make(map[int32]*protoMethod)
 
@@ -31,5 +31,10 @@ func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 	}
 	param := method.param.ProtoReflect().New().Interface()
 	proto.Unmarshal(body, param)
+	defer func() {
+		if r := recover(); r != nil {
+			log.Infof("=======Recovered:", r)
+		}
+	}()
 	method.methodFuc(ctx, param)
 }
