@@ -32,6 +32,9 @@ func AccountLogin(account string) *module.AccountDO {
 }
 
 func UpdateAccount(do *module.AccountDO) {
+	if do == nil {
+		return
+	}
 	do.Pid = 100001
 	//dal.AccountDAO.Save(do.Id, do)
 	dal.AccountDAO.AsynSave(do.Id, do)

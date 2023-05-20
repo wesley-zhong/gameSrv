@@ -14,8 +14,10 @@ var mongoClient *mongo.Client
 func Init() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
+
+	//124.222.26.216:
 	client, err := mongo.Connect(ctx,
-		options.Client().ApplyURI("mongodb://localhost:27017").SetAuth(options.Credential{Username: "admin", Password: "password"}))
+		options.Client().ApplyURI("mongodb://localhost.:27017").SetAuth(options.Credential{Username: "admin", Password: "admin"}))
 	if err != nil {
 		panic(" connect mong db failed")
 	}
