@@ -15,7 +15,7 @@ type tcpServer struct {
 }
 
 func (ts tcpServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
-	log.Infof("conn =%s React", c.RemoteAddr())
+	//log.Infof("conn =%s React", c.RemoteAddr())
 	gEventHandler.React(frame, c)
 	return
 }
@@ -40,7 +40,7 @@ func (ts tcpServer) OnShutdown(server gnet.Server) {
 //
 // Note that the bytes returned by OnOpened will be sent back to the peer without being encoded.
 func (ts tcpServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
-	log.Infof("conn =%s opened", c.RemoteAddr())
+	//log.Infof("conn =%s opened", c.RemoteAddr())
 	gEventHandler.OnOpened(c)
 	return
 }

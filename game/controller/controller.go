@@ -18,11 +18,13 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
 	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES), &protoGen.HeartBeatResponse{}, heartBeatResponse)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGOUT_REQUEST), &protoGen.LogoutRequest{}, logout)
 
+	//connect world server
 	client.InnerClientConnect(client.InnerClientType_WORLD, viper.GetString("worldServerAddr"))
 
 	//add  msg  to game server to add me
@@ -97,6 +99,12 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 	//	PlayerMgr.Get()
 	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+}
+
+func heartBeatResponse(ctx network.ChannelContext, request proto.Message) {
+	context := ctx.Context().(*client.ConnInnerClientContext)
+	log.Infof("==== receive sid=%d  addr %s ", context.Sid, ctx.RemoteAddr())
+
 }
 
 func innerServerKickout(ctx network.ChannelContext, request proto.Message) {

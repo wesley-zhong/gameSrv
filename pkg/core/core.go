@@ -24,17 +24,19 @@ func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.Chann
 }
 
 func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Infof("=======Recovered:", r)
+		}
+	}()
 	method := msgIdMap[msgId]
 	if method == nil {
 		log.Infof("msgId = %d not found method", msgId)
 		return
 	}
 	param := method.param.ProtoReflect().New().Interface()
-	proto.Unmarshal(body, param)
-	defer func() {
-		if r := recover(); r != nil {
-			log.Infof("=======Recovered:", r)
-		}
-	}()
+	if body != nil {
+		proto.Unmarshal(body, param)
+	}
 	method.methodFuc(ctx, param)
 }

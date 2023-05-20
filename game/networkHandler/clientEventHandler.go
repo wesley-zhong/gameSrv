@@ -26,7 +26,7 @@ func (clientNetwork *ClientEventHandler) OnOpened(c network.ChannelContext) (out
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c network.ChannelContext, err error) (action int) {
 	context := c.Context().(*client.ConnInnerClientContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr ={} id ={}", c.RemoteAddr(), context)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context.Sid)
 	return 1
 
 }
@@ -51,7 +51,7 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c network.ChannelContext, b 
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelContext) (out []byte, action int) {
-	log.Infof("  client React receive addr =%s", c.RemoteAddr())
+	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
 	var innerHeaderLen int32
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
@@ -77,7 +77,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 	//}
 
 	core.CallMethod(innerMsg.ProtoCode, body, c)
-	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive innerMsgLen = %d  innerMsgBody  =%s  protoCode =%d", innerHeaderLen, innerMsg, innerMsg.ProtoCode)
+	//log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive innerMsgLen = %d  innerMsgBody  =%s  protoCode =%d", innerHeaderLen, innerMsg, innerMsg.ProtoCode)
 	return nil, 0
 }
 
@@ -91,6 +91,6 @@ func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
 	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), heartBeat)
-	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
+	//.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }
