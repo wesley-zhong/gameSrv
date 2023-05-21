@@ -9,7 +9,8 @@ var PlayerDAO *orm.DAOIterface
 var ItemDAO *orm.DAOIterface
 var AccountDAO *orm.DAOIterface
 
-func Init() {
+func Init(addr string, userName string, pwd string) {
+	orm.Init(addr, userName, pwd)
 	AccountDAO = &orm.DAOIterface{Collection: orm.GetDBConnTable("game", "account"), Object: &module.AccountDO{}}
 	PlayerDAO = &orm.DAOIterface{Collection: orm.GetDBConnTable("game", "player"), Object: &module.PlayerDO{}}
 	ItemDAO = &orm.DAOIterface{Collection: orm.GetDBConnTable("game", "item"), Object: &module.ItemDO{}}

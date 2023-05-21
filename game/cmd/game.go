@@ -7,7 +7,6 @@ import (
 	"gameSrv/game/networkHandler"
 	"gameSrv/game/service"
 	"gameSrv/pkg/network"
-	"gameSrv/pkg/orm"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
 )
@@ -19,19 +18,14 @@ func main() {
 		}
 	}()
 
-	orm.Init()
-	dal.Init()
-	account := service.AccountLogin("andy")
-	service.UpdateAccount(account)
-
-	viper.SetConfigName("config")            // 配置文件名，不需要后缀名
-	viper.SetConfigType("yml")               // 配置文件格式
-	viper.AddConfigPath("/etc/game/config/") // 查找配置文件的路径
-	viper.AddConfigPath("./config/")
-	viper.AddConfigPath("./game/config/") // 查找配置文件的路径
-	err := viper.ReadInConfig()           // 查找并读取配置文件
-	if err != nil {                       // 处理错误
-		panic(fmt.Errorf("Fatal error config file: %w \n", err))
+	viper.SetConfigName("config")             // 配置文件名，不需要后缀名
+	viper.SetConfigType("yml")                // 配置文件格式
+	viper.AddConfigPath("/etc/game/configs/") // 查找配置文件的路径
+	viper.AddConfigPath("./configs/")
+	viper.AddConfigPath("./game/configs/") // 查找配置文件的路径
+	err := viper.ReadInConfig()            // 查找并读取配置文件
+	if err != nil {                        // 处理错误
+		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 	clientNetwork := networkHandler.ClientEventHandler{}
 	network.ClientStart(&clientNetwork,
@@ -40,6 +34,10 @@ func main() {
 		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
+
+	dal.Init(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	account := service.AccountLogin("andy")
+	service.UpdateAccount(account)
 
 	controller.Init()
 	networkHandler := &networkHandler.ServerEventHandler{}

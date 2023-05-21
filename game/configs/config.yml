@@ -1,0 +1,6 @@
+port: 9002
+worldServerAddr: 127.0.0.1:9003
+mongo:
+  addr: localhost
+  userName: admin
+  password: admin

@@ -11,13 +11,13 @@ import (
 
 var mongoClient *mongo.Client
 
-func Init() {
+func Init(addr string, userName string, pwd string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	//124.222.26.216:
+	mongoUrl := "mongodb://" + addr
 	client, err := mongo.Connect(ctx,
-		options.Client().ApplyURI("mongodb://localhost.:27017").SetAuth(options.Credential{Username: "admin", Password: "admin"}))
+		options.Client().ApplyURI(mongoUrl).SetAuth(options.Credential{Username: userName, Password: pwd}))
 	if err != nil {
 		panic(" connect mong db failed")
 	}

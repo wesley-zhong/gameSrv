@@ -15,14 +15,14 @@ func main() {
 		}
 	}()
 
-	viper.SetConfigName("config")             // 配置文件名，不需要后缀名
-	viper.SetConfigType("yml")                // 配置文件格式
-	viper.AddConfigPath("/etc/world/config/") // 查找配置文件的路径
-	viper.AddConfigPath("./config/")
-	viper.AddConfigPath("./world/config/") // 查找配置文件的路径
-	err := viper.ReadInConfig()            // 查找并读取配置文件
-	if err != nil {                        // 处理错误
-		panic(fmt.Errorf("Fatal error config file: %w \n", err))
+	viper.SetConfigName("config")              // 配置文件名，不需要后缀名
+	viper.SetConfigType("yml")                 // 配置文件格式
+	viper.AddConfigPath("/etc/world/configs/") // 查找配置文件的路径
+	viper.AddConfigPath("./configs/")
+	viper.AddConfigPath("./world/configs/") // 查找配置文件的路径
+	err := viper.ReadInConfig()             // 查找并读取配置文件
+	if err != nil {                         // 处理错误
+		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
 	// no need to connect other server  so do not need init
