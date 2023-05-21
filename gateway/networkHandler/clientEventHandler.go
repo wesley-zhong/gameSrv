@@ -67,7 +67,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 	body := make([]byte, bytebuffer.Len())
 	binary.Read(bytebuffer, binary.BigEndian, body)
 	if innerMsg.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES) {
-		//log.Infof("================== client receive heatbeat")
+		//log.Infof("================== client receive heartbeat")
 		return nil, 0
 	}
 

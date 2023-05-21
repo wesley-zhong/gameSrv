@@ -102,9 +102,8 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 }
 
 func heartBeatResponse(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnInnerClientContext)
-	log.Infof("==== receive sid=%d  addr %s ", context.Sid, ctx.RemoteAddr())
-
+	//context := ctx.Context().(*client.ConnInnerClientContext)
+	//log.Infof("==== receive sid=%d  addr %s ", context.Sid, ctx.RemoteAddr())
 }
 
 func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
@@ -128,6 +127,6 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 func handShake(ctx network.ChannelContext, request proto.Message) {
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	//innerClientMap[client.InnerClientType_GAME] = validInnerClient
-	client.AddInnerClientConnect(client.InnerClientType_GAME, validInnerClient)
+	client.AddInnerClientConnect(client.InnerClientType_GATE_WAY, validInnerClient)
 	log.Infof("client id =%d  addr =%s handshake finished", validInnerClient.Sid, validInnerClient.Ctx.RemoteAddr())
 }

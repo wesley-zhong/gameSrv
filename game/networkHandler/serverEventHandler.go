@@ -82,9 +82,14 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		ctx.Context().(*client.ConnInnerClientContext).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES, &protoGen.InnerHeartBeatResponse{})
 		return nil, 0
 	}
+
 	bodyLen := bytebuffer.Len()
+	if bodyLen == 0 {
+		core.CallMethod(innerHeader.ProtoCode, nil, ctx)
+		return nil, 0
+	}
 	if bodyLen <= 4 {
-		log.Infof("------XXXXXXXX errror eceive msgId = %d length =%d should be cloesed", innerHeader.ProtoCode, bodyLen)
+		log.Infof("------XXXXXXXX error receive msgId = %d length =%d should be closed", innerHeader.ProtoCode, bodyLen)
 		ctx.Close()
 		return nil, 0
 	}
