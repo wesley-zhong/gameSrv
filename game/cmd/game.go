@@ -3,9 +3,7 @@ package main
 import (
 	"fmt"
 	"gameSrv/game/controller"
-	"gameSrv/game/dal"
 	"gameSrv/game/networkHandler"
-	"gameSrv/game/service"
 	"gameSrv/pkg/network"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
@@ -35,9 +33,9 @@ func main() {
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
-	dal.Init(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
-	account := service.AccountLogin("andy")
-	service.UpdateAccount(account)
+	//dal.Init(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	//account := service.AccountLogin("andy")
+	//service.UpdateAccount(account)
 
 	controller.Init()
 	networkHandler := &networkHandler.ServerEventHandler{}
