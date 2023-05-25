@@ -40,6 +40,9 @@ func (serverNetWork *ServerEventHandler) OnClosed(c network.ChannelContext, err 
 		player := c.Context().(*player.Player)
 		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
 		return 1
+	case *client.ConnInnerClientContext:
+		log.Infof("addr =%s innerClient disconnected", c.RemoteAddr())
+		return 1
 	default:
 		return 1
 	}

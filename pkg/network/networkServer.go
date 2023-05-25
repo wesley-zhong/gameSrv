@@ -41,16 +41,14 @@ func (ts tcpServer) OnShutdown(server gnet.Server) {
 // Note that the bytes returned by OnOpened will be sent back to the peer without being encoded.
 func (ts tcpServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
 	//log.Infof("conn =%s opened", c.RemoteAddr())
-	gEventHandler.OnOpened(c)
-	return
+	out, act := gEventHandler.OnOpened(c)
+	return out, gnet.Action(act)
 }
 
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (ts tcpServer) OnClosed(c gnet.Conn, err error) (action gnet.Action) {
-	gEventHandler.OnClosed(c, err)
-	return
-
+	return gnet.Action(gEventHandler.OnClosed(c, err))
 }
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
