@@ -27,9 +27,14 @@ run:
 	sleep 1
 	nohup ./$(BIN_GATE_WAY)/$(BIN_GATE_WAY) >>./logs/gateway.log 2>&1 &
 	sleep 1
-	"======================== server started "
+	@echo "======================== server started "
 	ps -aux | grep gateway
 	ps -aux | grep game
 	ps -aux | grep world
+ps:
+	ps -aux | grep gateway
+	ps -aux | grep game
+	ps -aux | grep world
+
 
 
