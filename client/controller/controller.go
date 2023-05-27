@@ -34,8 +34,8 @@ func performanceRes(ctx network.ChannelContext, res proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		client := client.ClientConnect("124.222.26.216:9001")
-		//client := client.ClientConnect("127.0.0.1:9001")
+		//client := client.ClientConnect("124.222.26.216:9101")
+		client := client.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
 		request := &protoGen.LoginRequest{
