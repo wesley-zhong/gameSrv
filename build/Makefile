@@ -29,6 +29,6 @@ run:
 	sleep 1
 	ps -aux | grep gateway
 	ps -aux | grep game
-	ps -aux | gep world
+	ps -aux | grep world
 
 
