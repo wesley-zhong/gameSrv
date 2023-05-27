@@ -10,11 +10,11 @@ all: clean  build
 restart: stop run
 build:
 	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../world/cmd/world.go
-	cp  -r ../world/config   ./$(BIN_WORLD)/
+	cp  -r ../world/configs   ./$(BIN_WORLD)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
-	cp -r ../game/config ./$(BIN_GAME)
+	cp -r ../game/configs ./$(BIN_GAME)
 	$(GOBUILD) -o $(BIN_GATE_WAY)/$(BIN_GATE_WAY) ../gateway/cmd/gateway.go
-	cp -r ../gateway/config ./$(BIN_GATE_WAY)
+	cp -r ../gateway/configs ./$(BIN_GATE_WAY)
 clean:
 	rm -rf $(BIN_WORLD)
 	rm -rf $(BIN_GAME)
