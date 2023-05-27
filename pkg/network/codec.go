@@ -137,7 +137,8 @@ func NewLengthFieldBasedFrameCodecEx() *LengthFieldBasedFrameCodecEx {
 		LengthFieldOffset:   4,
 		LengthFieldLength:   4,
 		LengthAdjustment:    0,
-		InitialBytesToStrip: 0}}
+		InitialBytesToStrip: 0,
+		PackageMaxLen:       uint64(maxPackageLen)}}
 }
 
 // NewInnerLengthFieldBasedFrameCodecEx for inner client

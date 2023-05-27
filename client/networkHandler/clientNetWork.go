@@ -24,7 +24,7 @@ func (clientNetwork *ClientNetwork) OnOpened(ctx network.ChannelContext) (out []
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientNetwork) OnClosed(c network.ChannelContext, err error) (action int) {
 	context := c.Context().(*client.ConnClientContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr ={} id ={}", c.RemoteAddr(), context)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context)
 	return 1
 
 }
