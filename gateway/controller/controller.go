@@ -18,9 +18,11 @@ func Init() {
 	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
-	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 
-	client.InnerClientConnect(client.InnerClientType_GAME, viper.GetString("gameServerAddr"))
+	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
+	//core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceTestResFromWorld)
+
+	client.InnerClientConnect(client.GAME, viper.GetString("gameServerAddr"))
 	//add  msg  to game server to add me
 	//header := &protoGen.InnerHead{
 	//	FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
@@ -64,7 +66,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 	//	InnerHeader: msgHeader,
 	//	Body:        innerLoginReq,
 	//}
-	//client.GetInnerClient(client.InnerClientType_GAME).Send(innerMsg)
+	//client.GetInnerClient(client.GAME).Send(innerMsg)
 	//PlayerContext[loginRequest.RoleId] = ctx
 	player := player.NewPlayer(loginRequest.GetRoleId(), context)
 	PlayerMgr.Add(player)
@@ -124,7 +126,13 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 		ResBody:   testReq.SomeBody,
 		SomeIdAdd: testReq.SomeId + 1,
 	}
-	log.Infof("==========  performanceTest %d  remomoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
+	log.Infof("==========  performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	ctx.Context().(*client.ConnClientContext).Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
-	client.GetInnerClient(client.InnerClientType_GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
 }
+
+//func performanceTestResFromWorld(ctx network.ChannelContext, res proto.Message) {
+//	PlayerMgr.GetBySid()
+//	testRes := res.(*protoGen.PerformanceTestRes)
+//	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
+//}

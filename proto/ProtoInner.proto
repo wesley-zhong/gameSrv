@@ -15,13 +15,10 @@ enum  InnerProtoCode{
 }
 
 message InnerHead {
-  int64 fromServerUid = 1;
-  int64 toServerUid = 2;
-  int64 receiveServerUid = 3;
-  int64 id = 4;
-  int32 sendType = 5;
-  int32 protoCode = 6;
-  int64 callbackId = 7;
+  int64 id = 1;
+  int32 sendType = 2;
+  int32 protoCode = 3;
+  int64 callbackId = 4;
 }
 
 message  InnerHeartBeatRequest{
@@ -81,7 +78,8 @@ message InnerLoginInitNotify {
 
 
 message InnerServerHandShake{
-
+  int64 fromServerId = 1;
+  int32  serverType =2;
 }
 
 

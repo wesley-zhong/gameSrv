@@ -67,7 +67,6 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 	body := make([]byte, bytebuffer.Len())
 	binary.Read(bytebuffer, binary.BigEndian, body)
 	if innerMsg.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES) {
-		//log.Infof("================== client receive heartbeat")
 		return nil, 0
 	}
 
@@ -91,9 +90,9 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(client.InnerClientType_GAME)
+	innerClient := client.GetInnerClient(client.GAME)
 	if innerClient == nil {
-		log.Infof("no found connect type =%d", client.InnerClientType_GAME)
+		//	log.Infof("no found connect type =%d", client.GAME)
 		return 1000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}

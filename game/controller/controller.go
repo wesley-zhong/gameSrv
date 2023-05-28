@@ -15,17 +15,21 @@ import (
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), &protoGen.InnerServerHandShake{}, handShake)
-	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
-	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES), &protoGen.HeartBeatResponse{}, heartBeatResponse)
+
+	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
+	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
+
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
+	//performance test
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
+	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceTestResFromWorld)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGOUT_REQUEST), &protoGen.LogoutRequest{}, logout)
 
 	//connect world server
-	client.InnerClientConnect(client.InnerClientType_WORLD, viper.GetString("worldServerAddr"))
+	client.InnerClientConnect(client.WORLD, viper.GetString("worldServerAddr"))
 
 	//add  msg  to game server to add me
 }
@@ -42,20 +46,17 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		RoleId:    loginRequest.RoleId,
 	}
 	msgHeader := &protoGen.InnerHead{
-		FromServerUid:    message.BuildServerUid(message.TypeGateway, 35),
-		ToServerUid:      message.BuildServerUid(message.TypeGame, 35),
-		ReceiveServerUid: 0,
-		Id:               loginRequest.RoleId,
-		SendType:         0,
-		ProtoCode:        message.INNER_PROTO_LOGIN_REQUEST,
-		CallbackId:       0,
+		Id:         loginRequest.RoleId,
+		SendType:   0,
+		ProtoCode:  message.INNER_PROTO_LOGIN_REQUEST,
+		CallbackId: 0,
 	}
 
 	innerMsg := &client.InnerMessage{
 		InnerHeader: msgHeader,
 		Body:        innerLoginReq,
 	}
-	client.GetInnerClient(client.InnerClientType_WORLD).Send(innerMsg)
+	client.GetInnerClient(client.WORLD).Send(innerMsg)
 	//PlayerContext[loginRequest.RoleId] = ctx
 	player := player.NewPlayer(loginRequest.GetRoleId(), context)
 	PlayerMgr.Add(player)
@@ -121,12 +122,21 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 	//}
 	log.Infof("========== game performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	//ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
-	client.GetInnerClient(client.InnerClientType_WORLD).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+}
+
+func performanceTestResFromWorld(ctx network.ChannelContext, res proto.Message) {
+	testRes := res.(*protoGen.PerformanceTestRes)
+	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
+
 }
 
 func handShake(ctx network.ChannelContext, request proto.Message) {
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
-	//innerClientMap[client.InnerClientType_GAME] = validInnerClient
-	client.AddInnerClientConnect(client.InnerClientType_GATE_WAY, validInnerClient)
-	log.Infof("client id =%d  addr =%s handshake finished", validInnerClient.Sid, validInnerClient.Ctx.RemoteAddr())
+	handShake := request.(*protoGen.InnerServerHandShake)
+	validInnerClient.ServerId = handShake.FromServerId
+	serverType := handShake.ServerType
+	client.AddInnerClientConnect(client.GameServerType(serverType), validInnerClient)
+	log.Infof("client id =%d from serverId=%d  serverType= %d addr =%s handshake finished",
+		validInnerClient.Sid, validInnerClient.ServerId, serverType, validInnerClient.Ctx.RemoteAddr())
 }

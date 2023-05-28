@@ -90,12 +90,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		core.CallMethod(innerHeader.ProtoCode, nil, ctx)
 		return nil, 0
 	}
-	//if body not nil the body len must > 4
-	if bodyLen < 5 {
-		log.Infof("------XXXXXXXX error receive msgId = %d length =%d should be closed", innerHeader.ProtoCode, bodyLen)
-		ctx.Close()
-		return nil, 0
-	}
+
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
 	core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 	return nil, 0

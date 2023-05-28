@@ -8,6 +8,7 @@ import (
 	"gameSrv/protoGen"
 	"gameSrv/world/message"
 	"sync/atomic"
+	"time"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -18,55 +19,60 @@ func genSid() int64 {
 	return atomic.AddInt64(&sId, 1)
 }
 
-// ConnInnerClientContext -------------server inner client ---------------
+type GameServerType int32
 
+// ConnInnerClientContext -------------server inner client ---------------
 const (
-	InnerClientType_GATE_WAY = 1
-	InnerClientType_GAME     = 2
-	InnerClientType_WORLD    = 3
-	PLAYER                   = 4
+	GATE_WAY GameServerType = 1
+	GAME     GameServerType = 2
+	WORLD    GameServerType = 3
 )
 
-var InnerClientMap = make(map[int32]*ConnInnerClientContext)
+var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 
-func InnerClientConnect(key int32, addr string) *ConnInnerClientContext {
+func InnerClientConnect(serverType GameServerType, addr string) *ConnInnerClientContext {
+connect:
 	context, err := network.Dial("tcp", addr)
 	if err != nil {
-		log.Error(err)
-		return nil
+		log.Infof("----- connect failed 3 s after reconnect ", err.Error())
+		time.Sleep(3 * time.Second)
+		goto connect
 	}
+
 	gameInnerClient := NewInnerClientContext(context)
-	InnerClientMap[key] = gameInnerClient
+	InnerClientMap[serverType] = gameInnerClient
+	handShake := &protoGen.InnerServerHandShake{
+		FromServerId: message.BuildServerUid(int(serverType), 35),
+		ServerType:   int32(serverType),
+	}
 
 	header := &protoGen.InnerHead{
-		FromServerUid:    message.BuildServerUid(int(key), 35),
-		ToServerUid:      0,
-		ReceiveServerUid: 0,
-		Id:               0,
-		SendType:         0,
-		ProtoCode:        int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE),
-		CallbackId:       0,
+		Id:         0,
+		SendType:   0,
+		ProtoCode:  int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE),
+		CallbackId: 0,
 	}
 
 	innerMessage := &InnerMessage{
 		InnerHeader: header,
-		Body:        nil,
+		Body:        handShake,
 	}
 	gameInnerClient.Send(innerMessage)
 	return gameInnerClient
 }
 
-func AddInnerClientConnect(key int32, ctx *ConnInnerClientContext) {
+func AddInnerClientConnect(key GameServerType, ctx *ConnInnerClientContext) {
 	InnerClientMap[key] = ctx
 }
 
-func GetInnerClient(clientType int32) *ConnInnerClientContext {
+func GetInnerClient(clientType GameServerType) *ConnInnerClientContext {
 	return InnerClientMap[clientType]
 }
 
 type ConnInnerClientContext struct {
-	Ctx network.ChannelContext
-	Sid int64
+	Ctx      network.ChannelContext
+	Sid      int64
+	ServerId int64 //this client from which server
 }
 
 func NewInnerClientContext(context network.ChannelContext) *ConnInnerClientContext {
@@ -82,7 +88,6 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	}
 
 	body, err := proto.Marshal(msg.Body)
-
 	headerLen := len(header)
 	bodyLen := 0
 	if body != nil {
@@ -107,13 +112,10 @@ func (client *ConnInnerClientContext) SendInnerMsgProtoCode(innerCode protoGen.I
 
 func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, msg proto.Message) {
 	head := &protoGen.InnerHead{
-		FromServerUid:    0,
-		ToServerUid:      0,
-		ReceiveServerUid: 0,
-		Id:               0,
-		SendType:         0,
-		ProtoCode:        protoCode,
-		CallbackId:       0,
+		Id:         0,
+		SendType:   0,
+		ProtoCode:  protoCode,
+		CallbackId: 0,
 	}
 	header, err := proto.Marshal(head)
 	if err != nil {
@@ -159,7 +161,6 @@ func ClientConnect(addr string) *ConnClientContext {
 	}
 	clientContext := NewClientContext(context)
 	context.SetContext(clientContext)
-	//InnerClientMap[key] = gameInnerClient
 	return clientContext
 
 }
