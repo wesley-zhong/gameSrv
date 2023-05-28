@@ -106,13 +106,13 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	client.Ctx.AsyncWrite(buffer.Bytes())
 }
 
-func (client *ConnInnerClientContext) SendInnerMsgProtoCode(innerCode protoGen.InnerProtoCode, msg proto.Message) {
-	client.SendInnerMsg(int32(innerCode), msg)
+func (client *ConnInnerClientContext) SendInnerMsgProtoCode(innerCode protoGen.InnerProtoCode, roleId int64, msg proto.Message) {
+	client.SendInnerMsg(int32(innerCode), roleId, msg)
 }
 
-func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, msg proto.Message) {
+func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, roleId int64, msg proto.Message) {
 	head := &protoGen.InnerHead{
-		Id:         0,
+		Id:         roleId,
 		SendType:   0,
 		ProtoCode:  protoCode,
 		CallbackId: 0,

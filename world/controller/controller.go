@@ -13,8 +13,10 @@ import (
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), &protoGen.InnerServerHandShake{}, handShake)
-	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.LoginRequest{}, playerLogin)
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), &protoGen.InnerHeartBeatRequest{}, innerHeartBeat)
+
+	core.RegisterMethod(int32(message.INNER_PROTO_LOGIN_REQUEST), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
+
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 }
 
@@ -34,31 +36,15 @@ func handShake(ctx network.ChannelContext, request proto.Message) {
 func innerHeartBeat(ctx network.ChannelContext, request proto.Message) {
 	innerClient := ctx.Context().(*client.ConnInnerClientContext)
 	response := &protoGen.InnerHeartBeatResponse{}
-	innerClient.SendInnerMsg(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+	innerClient.SendInnerMsg(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), 0, response)
 	log.Infof(" addr =%s  heartbeat time", ctx.RemoteAddr())
 }
 
-func playerLogin(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnInnerClientContext)
-	loginRequest := request.(*protoGen.LoginRequest)
-	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
-	innerLoginReq := &protoGen.InnerLoginRequest{
-		SessionId: context.Sid,
-		AccountId: loginRequest.AccountId,
-		RoleId:    loginRequest.RoleId,
-	}
-	msgHeader := &protoGen.InnerHead{
-		Id:         loginRequest.RoleId,
-		SendType:   0,
-		ProtoCode:  message.INNER_PROTO_LOGIN_REQUEST,
-		CallbackId: 0,
-	}
+func innerPlayerLogin(ctx network.ChannelContext, request proto.Message) {
+	//context := ctx.Context().(*client.ConnInnerClientContext)
+	loginRequest := request.(*protoGen.InnerLoginRequest)
+	log.Infof("world inner login sessionId = %s id = %d from %s ", loginRequest.Sid, loginRequest.RoleId, ctx.RemoteAddr())
 
-	innerMsg := &client.InnerMessage{
-		InnerHeader: msgHeader,
-		Body:        innerLoginReq,
-	}
-	client.GetInnerClient(client.GAME).Send(innerMsg)
 }
 
 func performanceTest(ctx network.ChannelContext, req proto.Message) {
@@ -69,5 +55,5 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 		SomeIdAdd: testReq.SomeId + 1,
 	}
 	log.Infof("========== world performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
-	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
+	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), 0, res)
 }

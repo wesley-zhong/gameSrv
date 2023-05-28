@@ -6,8 +6,6 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
-	"time"
-
 	"google.golang.org/protobuf/proto"
 )
 
@@ -17,7 +15,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 
-	go startConnection(100)
+	go startConnection(1)
 }
 
 func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
@@ -34,38 +32,38 @@ func performanceRes(ctx network.ChannelContext, res proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		client := client.ClientConnect("124.222.26.216:9101")
-		//client := client.ClientConnect("127.0.0.1:9101")
+		//client := client.ClientConnect("124.222.26.216:9101")
+		client := client.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
 		request := &protoGen.LoginRequest{
-			AccountId:  int64(i),
+			AccountId:  int64(i + 100),
 			RoleId:     int64(i + 100000),
-			LoginToken: "",
+			LoginToken: "abc",
 			GameTicket: 0,
 			ServerId:   0,
 		}
 		client.SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
 	}
 
-	req := &protoGen.PerformanceTestReq{
-		SomeId:   2,
-		SomeBody: "hello",
-	}
-	timer := time.NewTimer(3 * time.Second)
+	//req := &protoGen.PerformanceTestReq{
+	//	SomeId:   2,
+	//	SomeBody: "hello",
+	//}
+	//timer := time.NewTimer(3 * time.Second)
 
-	go func() {
-		for i := 0; i < 10000; i++ {
-			for {
-				timer.Reset(100 * time.Millisecond)
-				select {
-				case <-timer.C:
-					for _, v := range playerConn {
-						v.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
-					}
-				}
-			}
-		}
-	}()
+	//go func() {
+	//	for i := 0; i < 10000; i++ {
+	//		for {
+	//			timer.Reset(100 * time.Millisecond)
+	//			select {
+	//			case <-timer.C:
+	//				for _, v := range playerConn {
+	//					v.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+	//				}
+	//			}
+	//		}
+	//	}
+	//}()
 
 }

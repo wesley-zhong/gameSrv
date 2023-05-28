@@ -1,10 +1,11 @@
 package message
 
 const (
-	TypeGateway               = 2
-	TypeGame                  = 3
-	INNER_PROTO_LOGIN_REQUEST = -5
-	INNER_PROTO_ADD_SERVER    = -1
+	TypeGateway                = 2
+	TypeGame                   = 3
+	INNER_PROTO_LOGIN_REQUEST  = -5
+	INNER_PROTO_LOGIN_RESPONSE = -6
+	INNER_PROTO_ADD_SERVER     = -1
 )
 
 func BuildServerUid(serverType, serverId int) int64 {

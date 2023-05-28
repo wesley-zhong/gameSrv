@@ -30,12 +30,12 @@ message  InnerHeartBeatResponse{
 }
 
 message InnerLoginRequest {
-  int64 sessionId = 1;
-  int64 accountId = 2;
-  int64 roleId = 3;
+  int64 sid = 1; //sessionId
+  int64 roleId = 2;
 }
 
 message InnerLoginResponse {
+  int64 sid = 1; //sessionId
   int64 roleId = 2;
 }
 

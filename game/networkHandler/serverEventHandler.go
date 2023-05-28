@@ -82,7 +82,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		return nil, 0
 	}
 	if innerHeader.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
-		ctx.Context().(*client.ConnInnerClientContext).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES, &protoGen.InnerHeartBeatResponse{})
+		ctx.Context().(*client.ConnInnerClientContext).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES, 0, &protoGen.InnerHeartBeatResponse{})
 		return nil, 0
 	}
 

@@ -69,7 +69,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 	//directly send to client
 	if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
 		//playerMgr
-		targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
+		targetPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
 		if targetPlayer == nil {
 			log.Infof("pid = %d not found", innerMsg.Id)
 			return

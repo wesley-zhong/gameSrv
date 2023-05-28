@@ -3,6 +3,7 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
+	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
@@ -36,10 +37,7 @@ func (serverNetWork *ServerEventHandler) OnClosed(c network.ChannelContext, err 
 		log.Infof("addr =%s not login", c.RemoteAddr())
 		return 1
 	case *player.Player:
-		disConnPlayer := c.Context().(*player.Player)
-		player.PlayerMgr.Remove(disConnPlayer)
-		log.Infof("conn =%s  sid=%d pid=%d  closed now playerCount=%d",
-			c.RemoteAddr(), disConnPlayer.Context.Sid, disConnPlayer.Pid, player.PlayerMgr.GetSize())
+		controller.ClientDisConnect(c)
 		return 1
 	default:
 		return 1
@@ -75,10 +73,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 	log.Infof("------receive msgId = %d length =%d", msgId, length)
 
 	bodyLen := bytebuffer.Len()
-	if bodyLen < 8 {
-		log.Infof("error body length should left %d", bodyLen)
+	if bodyLen == 0 {
+		core.CallMethod(msgId, nil, ctx)
 		return nil, 0
 	}
+	log.Infof("------#########receive msgId = %d length =%d", msgId, bodyLen)
 	core.CallMethod(msgId, packet[8:], ctx)
 	return nil, 0
 }

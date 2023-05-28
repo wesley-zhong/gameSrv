@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"gameSrv/game/role"
 	"gameSrv/gateway/message"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
@@ -18,8 +19,8 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES), &protoGen.HeartBeatResponse{}, heartBeatResponse)
 
-	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
-	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
+	core.RegisterMethod(int32(message.INNER_PROTO_LOGIN_REQUEST), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
+	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromWorldServer)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	//performance test
@@ -34,57 +35,42 @@ func Init() {
 	//add  msg  to game server to add me
 }
 
-var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
+var RoleMgr = role.NewRoleMgr() //make(map[int64]network.ChannelContext)
 
-func login(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnClientContext)
-	loginRequest := request.(*protoGen.LoginRequest)
-	log.Infof("login token = %s id = %d", loginRequest.LoginToken, loginRequest.RoleId)
+func innerPlayerLogin(ctx network.ChannelContext, request proto.Message) {
+	context := ctx.Context().(*client.ConnInnerClientContext)
+	loginRequest := request.(*protoGen.InnerLoginRequest)
+	log.Infof("login pid = %d s = %d", loginRequest.RoleId, loginRequest.GetSid())
+
+	existRole := RoleMgr.GetByRoleId(loginRequest.GetRoleId())
+	if existRole != nil {
+		log.Infof("roleId =%d have login no need process", existRole.RoleId)
+		return
+	}
 	innerLoginReq := &protoGen.InnerLoginRequest{
-		SessionId: context.Sid,
-		AccountId: loginRequest.AccountId,
-		RoleId:    loginRequest.RoleId,
+		Sid:    context.Sid,
+		RoleId: loginRequest.RoleId,
 	}
-	msgHeader := &protoGen.InnerHead{
-		Id:         loginRequest.RoleId,
-		SendType:   0,
-		ProtoCode:  message.INNER_PROTO_LOGIN_REQUEST,
-		CallbackId: 0,
-	}
-
-	innerMsg := &client.InnerMessage{
-		InnerHeader: msgHeader,
-		Body:        innerLoginReq,
-	}
-	client.GetInnerClient(client.WORLD).Send(innerMsg)
-	//PlayerContext[loginRequest.RoleId] = ctx
-	player := player.NewPlayer(loginRequest.GetRoleId(), context)
-	PlayerMgr.Add(player)
-	context.Ctx.SetContext(player)
+	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(message.INNER_PROTO_LOGIN_REQUEST), loginRequest.RoleId, innerLoginReq)
+	gameRole := role.NewRole(loginRequest.RoleId)
+	RoleMgr.AddRole(gameRole)
 }
 
-func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {
+func loginResponseFromWorldServer(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
-	log.Infof("login response = %d  sid =%d", innerLoginResponse.RoleId, context.Sid)
+	roleId := innerLoginResponse.RoleId
+	log.Infof("login response = %d  sid =%d", roleId, context.Sid)
+	player := player.PlayerMgr.GetByRoleId(roleId)
+	if player == nil {
+		log.Infof(" role id = %d not found or have disconnected", roleId)
+		return
+	}
 	response := &protoGen.LoginResponse{
 		ErrorCode:  0,
 		ServerTime: time.Now().UnixMilli(),
 	}
-	//marshal, err := protoGen.Marshal(response)
-	//if err != nil {
-	//	log.Error(err)
-	//	return
-	//}
-	//body := make([]byte, len(marshal)+8)
-	//writeBuffer := bytes.NewBuffer(body)
-	//writeBuffer.Reset()
-	//binary.Write(writeBuffer, binary.BigEndian, int32(protoGen.ProtoCode_LOGIN_RESPONSE))
-	//binary.Write(writeBuffer, binary.BigEndian, int32(len(marshal)))
-	//binary.Write(writeBuffer, binary.BigEndian, marshal)
-	//PlayerMgr.GetByRoleId(innerLoginResponse.RoleId).Context.Ctx.AsyncWrite(writeBuffer.Bytes())
-
-	PlayerMgr.GetByRoleId(innerLoginResponse.RoleId).Context.Send(int32(protoGen.ProtoCode_LOGIN_RESPONSE), response)
+	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(message.INNER_PROTO_LOGIN_RESPONSE), roleId, response)
 }
 
 func heartBeat(ctx network.ChannelContext, request proto.Message) {
@@ -122,12 +108,12 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 	//}
 	log.Infof("========== game performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	//ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
-	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
+	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), 0, req)
 }
 
 func performanceTestResFromWorld(ctx network.ChannelContext, res proto.Message) {
 	testRes := res.(*protoGen.PerformanceTestRes)
-	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
+	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), 0, testRes)
 
 }
 

@@ -73,7 +73,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 	//directly send to client
 	if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
 		//playerMgr
-		targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
+		targetPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
 		if targetPlayer == nil {
 			log.Infof("pid = %d not found", innerMsg.Id)
 			return
@@ -96,7 +96,7 @@ func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int
 		return 1000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), heartBeat)
+	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), 0, heartBeat)
 	//	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }

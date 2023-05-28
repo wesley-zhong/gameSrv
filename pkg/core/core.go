@@ -8,7 +8,8 @@ import (
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdMap = make(map[int32]*protoMethod[network.ChannelContext])
+var msgIdContextMap = make(map[int32]*protoMethod[network.ChannelContext])
+var msgIdRoleIdMap = make(map[int32]*protoMethod[int64])
 
 type protoMethod[T1 any] struct {
 	methodFuc MsgIdFuc[T1, proto.Message]
@@ -20,7 +21,33 @@ func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.Chann
 		methodFuc: fuc,
 		param:     param,
 	}
-	msgIdMap[msgId] = method
+	msgIdContextMap[msgId] = method
+}
+
+func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
+	method := &protoMethod[int64]{
+		methodFuc: fuc,
+		param:     param,
+	}
+	msgIdRoleIdMap[msgId] = method
+}
+
+func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte, ctx network.ChannelContext) {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Infof("=======Recovered:", r)
+		}
+	}()
+	method := msgIdRoleIdMap[msgId]
+	if method == nil {
+		log.Infof("msgId = %d not found method", msgId)
+		return
+	}
+	param := method.param.ProtoReflect().New().Interface()
+	if body != nil {
+		proto.Unmarshal(body, param)
+	}
+	method.methodFuc(roleId, param)
 }
 
 func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
@@ -29,7 +56,7 @@ func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 			log.Infof("=======Recovered:", r)
 		}
 	}()
-	method := msgIdMap[msgId]
+	method := msgIdContextMap[msgId]
 	if method == nil {
 		log.Infof("msgId = %d not found method", msgId)
 		return
