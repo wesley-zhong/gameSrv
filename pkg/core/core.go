@@ -8,15 +8,15 @@ import (
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdMap = make(map[int32]*protoMethod)
+var msgIdMap = make(map[int32]*protoMethod[network.ChannelContext])
 
-type protoMethod struct {
-	methodFuc MsgIdFuc[network.ChannelContext, proto.Message]
+type protoMethod[T1 any] struct {
+	methodFuc MsgIdFuc[T1, proto.Message]
 	param     proto.Message
 }
 
 func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.ChannelContext, proto.Message]) {
-	method := &protoMethod{
+	method := &protoMethod[network.ChannelContext]{
 		methodFuc: fuc,
 		param:     param,
 	}

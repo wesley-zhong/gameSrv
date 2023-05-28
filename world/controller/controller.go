@@ -27,7 +27,6 @@ func handShake(ctx network.ChannelContext, request proto.Message) {
 	validInnerClient.ServerId = handShake.FromServerId
 	serverType := handShake.ServerType
 	client.AddInnerClientConnect(client.GameServerType(serverType), validInnerClient)
-
 	log.Infof("client id =%d from serverId=%d  serverType= %d addr =%s handshake finished",
 		validInnerClient.Sid, validInnerClient.ServerId, serverType, validInnerClient.Ctx.RemoteAddr())
 }
@@ -60,8 +59,6 @@ func playerLogin(ctx network.ChannelContext, request proto.Message) {
 		Body:        innerLoginReq,
 	}
 	client.GetInnerClient(client.GAME).Send(innerMsg)
-	//player := player.NewPlayer(loginRequest.GetRoleId(), context)
-	//	PlayerMgr.Add(player)
 }
 
 func performanceTest(ctx network.ChannelContext, req proto.Message) {
@@ -71,6 +68,6 @@ func performanceTest(ctx network.ChannelContext, req proto.Message) {
 		ResBody:   testReq.SomeBody,
 		SomeIdAdd: testReq.SomeId + 1,
 	}
-	log.Infof("========== world performanceTest %d  remomoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
+	log.Infof("========== world performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
 }
