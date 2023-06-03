@@ -31,6 +31,7 @@ message LoginRequest {
 message LoginResponse {
   int32 errorCode = 1; // 错误码
   int64 serverTime = 2; // 服务器当前时间
+  int64 roleId = 3;
 }
 
 message LogoutRequest {

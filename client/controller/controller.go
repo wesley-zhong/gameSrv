@@ -14,6 +14,7 @@ var playerConn = make(map[int64]*client.ConnClientContext)
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
+	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
 
 	go startConnection(1)
 }
@@ -28,6 +29,12 @@ func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
 func performanceRes(ctx network.ChannelContext, res proto.Message) {
 	performanceRes := res.(*protoGen.PerformanceTestRes)
 	log.Infof("------response id =%d", performanceRes.SomeIdAdd)
+}
+
+func loginResponse(ctx network.ChannelContext, msg proto.Message) {
+	res := msg.(*protoGen.LoginResponse)
+	log.Infof("------login response roleId=%d", res.RoleId)
+
 }
 
 func startConnection(count int) {

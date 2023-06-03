@@ -40,16 +40,16 @@ func innerHeartBeat(ctx network.ChannelContext, request proto.Message) {
 }
 
 func innerPlayerLogin(ctx network.ChannelContext, request proto.Message) {
-	gameClient := ctx.Context().(*client.ConnInnerClientContext)
+	//	gameClient := ctx.Context().(*client.ConnInnerClientContext)
 	loginRequest := request.(*protoGen.InnerLoginRequest)
-	log.Infof("world inner login sessionId = %s id = %d from %s  finished", loginRequest.Sid, loginRequest.RoleId, ctx.RemoteAddr())
+	log.Infof("world inner login sessionId = %d = %d from %s  finished", loginRequest.Sid, loginRequest.RoleId, ctx.RemoteAddr())
 
 	res := &protoGen.InnerLoginResponse{
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.RoleId,
 	}
-	gameClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
-	//client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
+	//	gameClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
+	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
 }
 
 func performanceTest(ctx network.ChannelContext, req proto.Message) {

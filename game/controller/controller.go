@@ -65,11 +65,7 @@ func loginResponseFromWorldServer(ctx network.ChannelContext, request proto.Mess
 		log.Infof(" role id = %d not found or have disconnected", roleId)
 		return
 	}
-	response := &protoGen.LoginResponse{
-		ErrorCode:  0,
-		ServerTime: time.Now().UnixMilli(),
-	}
-	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), roleId, response)
+	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), roleId, innerLoginResponse)
 }
 
 func heartBeat(ctx network.ChannelContext, request proto.Message) {

@@ -15,7 +15,7 @@ import (
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
-	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 
@@ -71,6 +71,7 @@ func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Messa
 	response := &protoGen.LoginResponse{
 		ErrorCode:  0,
 		ServerTime: time.Now().UnixMilli(),
+		RoleId:     roleId,
 	}
 	PlayerMgr.GetByRoleId(innerLoginResponse.RoleId).Context.Send(int32(protoGen.ProtoCode_LOGIN_RESPONSE), response)
 }

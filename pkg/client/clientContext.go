@@ -34,7 +34,7 @@ func InnerClientConnect(serverType GameServerType, addr string, myServerType Gam
 connect:
 	context, err := network.Dial("tcp", addr)
 	if err != nil {
-		log.Infof("----- connect failed 3 s after reconnect ", err.Error())
+		log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
 		time.Sleep(3 * time.Second)
 		goto connect
 	}
