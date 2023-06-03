@@ -17,7 +17,7 @@ type tcpServer struct {
 func (ts tcpServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
 	//log.Infof("conn =%s React", c.RemoteAddr())
 	gEventHandler.React(frame, c)
-	return
+	return nil, 0
 }
 
 func (ts tcpServer) OnInitComplete(srv gnet.Server) (action gnet.Action) {

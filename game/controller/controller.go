@@ -2,7 +2,6 @@ package controller
 
 import (
 	"gameSrv/game/role"
-	"gameSrv/gateway/message"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
@@ -19,8 +18,8 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES), &protoGen.HeartBeatResponse{}, heartBeatResponse)
 
-	core.RegisterMethod(int32(message.INNER_PROTO_LOGIN_REQUEST), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
-	core.RegisterMethod(int32(-6), &protoGen.InnerLoginResponse{}, loginResponseFromWorldServer)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), &protoGen.InnerLoginResponse{}, loginResponseFromWorldServer)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	//performance test
@@ -30,7 +29,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGOUT_REQUEST), &protoGen.LogoutRequest{}, logout)
 
 	//connect world server
-	client.InnerClientConnect(client.WORLD, viper.GetString("worldServerAddr"))
+	client.InnerClientConnect(client.WORLD, viper.GetString("worldServerAddr"), client.GAME)
 
 	//add  msg  to game server to add me
 }
@@ -40,7 +39,7 @@ var RoleMgr = role.NewRoleMgr() //make(map[int64]network.ChannelContext)
 func innerPlayerLogin(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnInnerClientContext)
 	loginRequest := request.(*protoGen.InnerLoginRequest)
-	log.Infof("login pid = %d s = %d", loginRequest.RoleId, loginRequest.GetSid())
+	log.Infof(" innerPlayerLogin login pid = %d s = %d", loginRequest.RoleId, loginRequest.GetSid())
 
 	existRole := RoleMgr.GetByRoleId(loginRequest.GetRoleId())
 	if existRole != nil {
@@ -51,7 +50,7 @@ func innerPlayerLogin(ctx network.ChannelContext, request proto.Message) {
 		Sid:    context.Sid,
 		RoleId: loginRequest.RoleId,
 	}
-	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(message.INNER_PROTO_LOGIN_REQUEST), loginRequest.RoleId, innerLoginReq)
+	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), loginRequest.RoleId, innerLoginReq)
 	gameRole := role.NewRole(loginRequest.RoleId)
 	RoleMgr.AddRole(gameRole)
 }
@@ -61,7 +60,7 @@ func loginResponseFromWorldServer(ctx network.ChannelContext, request proto.Mess
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
 	roleId := innerLoginResponse.RoleId
 	log.Infof("login response = %d  sid =%d", roleId, context.Sid)
-	player := player.PlayerMgr.GetByRoleId(roleId)
+	player := RoleMgr.GetByRoleId(roleId)
 	if player == nil {
 		log.Infof(" role id = %d not found or have disconnected", roleId)
 		return
@@ -70,7 +69,7 @@ func loginResponseFromWorldServer(ctx network.ChannelContext, request proto.Mess
 		ErrorCode:  0,
 		ServerTime: time.Now().UnixMilli(),
 	}
-	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(message.INNER_PROTO_LOGIN_RESPONSE), roleId, response)
+	client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), roleId, response)
 }
 
 func heartBeat(ctx network.ChannelContext, request proto.Message) {
@@ -121,8 +120,8 @@ func handShake(ctx network.ChannelContext, request proto.Message) {
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	handShake := request.(*protoGen.InnerServerHandShake)
 	validInnerClient.ServerId = handShake.FromServerId
-	serverType := handShake.ServerType
-	client.AddInnerClientConnect(client.GameServerType(serverType), validInnerClient)
+	fromServerType := handShake.FromServerType
+	client.AddInnerClientConnect(client.GameServerType(fromServerType), validInnerClient)
 	log.Infof("client id =%d from serverId=%d  serverType= %d addr =%s handshake finished",
-		validInnerClient.Sid, validInnerClient.ServerId, serverType, validInnerClient.Ctx.RemoteAddr())
+		validInnerClient.Sid, validInnerClient.ServerId, fromServerType, validInnerClient.Ctx.RemoteAddr())
 }

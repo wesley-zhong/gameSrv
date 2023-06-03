@@ -4,6 +4,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"google.golang.org/protobuf/proto"
+	"runtime/debug"
 )
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
@@ -53,7 +54,8 @@ func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte, ctx network.C
 func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 	defer func() {
 		if r := recover(); r != nil {
-			log.Infof("=======Recovered:", r)
+			s := string(debug.Stack())
+			log.Infof("err=%v, stack=%s", r, s)
 		}
 	}()
 	method := msgIdContextMap[msgId]

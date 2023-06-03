@@ -31,7 +31,6 @@ var PlayerMgr *PlayerMgrWrap
 func NewPlayerMgr() *PlayerMgrWrap {
 	PlayerMgr = &PlayerMgrWrap{
 		playerIdMap: make(map[int64]*Player),
-		//playerSidMap: make(map[int64]*Player),
 	}
 	return PlayerMgr
 }

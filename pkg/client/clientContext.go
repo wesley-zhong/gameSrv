@@ -3,10 +3,10 @@ package client
 import (
 	"bytes"
 	"encoding/binary"
+	"gameSrv/pkg/common"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
-	"gameSrv/world/message"
 	"sync/atomic"
 	"time"
 
@@ -30,7 +30,7 @@ const (
 
 var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 
-func InnerClientConnect(serverType GameServerType, addr string) *ConnInnerClientContext {
+func InnerClientConnect(serverType GameServerType, addr string, myServerType GameServerType) *ConnInnerClientContext {
 connect:
 	context, err := network.Dial("tcp", addr)
 	if err != nil {
@@ -42,8 +42,8 @@ connect:
 	gameInnerClient := NewInnerClientContext(context)
 	InnerClientMap[serverType] = gameInnerClient
 	handShake := &protoGen.InnerServerHandShake{
-		FromServerId: message.BuildServerUid(int(serverType), 35),
-		ServerType:   int32(serverType),
+		FromServerId:   common.BuildServerUid(int(serverType), 35),
+		FromServerType: int32(myServerType),
 	}
 
 	header := &protoGen.InnerHead{

@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"gameSrv/gateway/message"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
@@ -25,10 +24,10 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 	//core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceTestResFromWorld)
 
-	client.InnerClientConnect(client.GAME, viper.GetString("gameServerAddr"))
+	client.InnerClientConnect(client.GAME, viper.GetString("gameServerAddr"), client.GATE_WAY)
 }
 
-var PlayerMgr = player.NewPlayerMgr() //make(map[int64]network.ChannelContext)
+var PlayerMgr = player.NewPlayerMgr()
 
 func login(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
@@ -49,7 +48,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 		RoleId: existPlayer.Pid,
 	}
 	log.Infof("====== loginAddr=%s now loginCount =%d", ctx.RemoteAddr(), PlayerMgr.GetSize())
-	client.GetInnerClient(client.GAME).SendInnerMsg(int32(message.INNER_PROTO_LOGIN_REQUEST), existPlayer.Pid, innerRequest)
+	client.GetInnerClient(client.GAME).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 
 func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {

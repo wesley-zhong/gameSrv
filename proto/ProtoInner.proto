@@ -5,12 +5,12 @@ option go_package= "/protoGen";
 
 enum  InnerProtoCode{
   INNER_INVALID = 0;
-  INNER_SERVER_HAND_SHAKE = 1;
-  INNER_HEART_BEAT_REQ = 2;
-  INNER_HEART_BEAT_RES = 3;
+  INNER_SERVER_HAND_SHAKE = -1;
+  INNER_HEART_BEAT_REQ = -2;
+  INNER_HEART_BEAT_RES = -3;
 
-  INNER_LOGIN_REQ = 4;
-  INNER_LOGIN_RES =5;
+  INNER_LOGIN_REQ = -4;
+  INNER_LOGIN_RES =-5;
 
 }
 
@@ -79,7 +79,7 @@ message InnerLoginInitNotify {
 
 message InnerServerHandShake{
   int64 fromServerId = 1;
-  int32  serverType =2;
+  int32  fromServerType =2;
 }
 
 
