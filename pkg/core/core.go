@@ -33,10 +33,11 @@ func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int
 	msgIdRoleIdMap[msgId] = method
 }
 
-func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte, ctx network.ChannelContext) {
+func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte) {
 	defer func() {
 		if r := recover(); r != nil {
-			log.Infof("=======Recovered:", r)
+			s := string(debug.Stack())
+			log.Infof("err=%v, stack=%s", r, s)
 		}
 	}()
 	method := msgIdRoleIdMap[msgId]

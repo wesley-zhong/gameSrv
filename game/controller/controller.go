@@ -21,6 +21,8 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), &protoGen.InnerLoginResponse{}, loginResponseFromWorldServer)
 
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ), &protoGen.InnerPlayerDisconnectRequest{}, innerPlayerDisconnect)
+
 	core.RegisterMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 	//performance test
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
@@ -92,6 +94,17 @@ func innerServerKickout(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnInnerClientContext)
 	kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("login response = %d  sid =%d", kickOut.Reason, context.Sid)
+}
+
+func innerPlayerDisconnect(ctx network.ChannelContext, request proto.Message) {
+
+	//disconnectRequest := &protoGen.InnerPlayerDisconnectRequest{
+	//	Sid:    disConnPlayer.Context.Sid,
+	//	RoleId: disConnPlayer.Pid,
+	//}
+
+	//client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ), disConnPlayer.Pid, disconnectRequest)
+
 }
 
 func performanceTest(ctx network.ChannelContext, req proto.Message) {

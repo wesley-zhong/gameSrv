@@ -98,6 +98,12 @@ func ClientDisConnect(ctx network.ChannelContext) {
 	player.PlayerMgr.Remove(disConnPlayer)
 	log.Infof("conn =%s  sid=%d pid=%d  closed now playerCount=%d",
 		ctx.RemoteAddr(), disConnPlayer.Context.Sid, disConnPlayer.Pid, player.PlayerMgr.GetSize())
+
+	disconnectRequest := &protoGen.InnerPlayerDisconnectRequest{
+		Sid:    disConnPlayer.Context.Sid,
+		RoleId: disConnPlayer.Pid,
+	}
+	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ), disConnPlayer.Pid, disconnectRequest)
 }
 
 func innerServerKickout(ctx network.ChannelContext, request proto.Message) {

@@ -15,6 +15,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), &protoGen.InnerHeartBeatRequest{}, innerHeartBeat)
 
 	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
+	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ), &protoGen.InnerPlayerDisconnectRequest{}, innerPlayerDisconnect)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 }
@@ -50,6 +51,10 @@ func innerPlayerLogin(ctx network.ChannelContext, request proto.Message) {
 	}
 	//	gameClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
 	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
+}
+
+func innerPlayerDisconnect(ctx network.ChannelContext, request proto.Message) {
+
 }
 
 func performanceTest(ctx network.ChannelContext, req proto.Message) {

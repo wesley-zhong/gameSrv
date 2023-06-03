@@ -16,7 +16,7 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
 
-	go startConnection(1)
+	go startConnection(1000)
 }
 
 func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
@@ -39,8 +39,8 @@ func loginResponse(ctx network.ChannelContext, msg proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		//client := client.ClientConnect("124.222.26.216:9101")
-		client := client.ClientConnect("127.0.0.1:9101")
+		client := client.ClientConnect("124.222.26.216:9101")
+		//	client := client.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
 		request := &protoGen.LoginRequest{

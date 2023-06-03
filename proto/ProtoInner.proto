@@ -1,6 +1,6 @@
 syntax = "proto3";
 option java_package = "com.game.proto";
-option go_package= "/protoGen";
+option go_package = "/protoGen";
 
 
 enum  InnerProtoCode{
@@ -10,8 +10,10 @@ enum  InnerProtoCode{
   INNER_HEART_BEAT_RES = -3;
 
   INNER_LOGIN_REQ = -4;
-  INNER_LOGIN_RES =-5;
+  INNER_LOGIN_RES = -5;
 
+  INNER_PLAYER_DISCONNECT_REQ = -6;
+  INNER_PLAYER_DISCONNECT_RES = -7;
 }
 
 message InnerHead {
@@ -39,20 +41,17 @@ message InnerLoginResponse {
   int64 roleId = 2;
 }
 
-message InnerBuildingLevelUpSuccess {
-  int64 buildingId = 1;
-  int32 configId = 2;
+message  InnerPlayerDisconnectRequest{
+  int64 sid = 1;
+  int64 roleId  = 2;
+}
+
+message InnerPlayerDisconnectResponse{
+  int64  sid = 1;
+  int64  roleId = 2;
 }
 
 
-
-message InnerCitySimple {
-  int64 unitId = 1;
-  int64 roleId = 2;
-  int32 worldPositionX = 3;
-  int32 worldPositionZ = 4;
-  int32 gameServerId = 5;
-}
 
 message InnerLoginWorldRequest {
   int64 roleId = 1;
@@ -79,7 +78,7 @@ message InnerLoginInitNotify {
 
 message InnerServerHandShake{
   int64 fromServerId = 1;
-  int32  fromServerType =2;
+  int32  fromServerType = 2;
 }
 
 
