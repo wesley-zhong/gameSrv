@@ -16,14 +16,14 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
 
-	go startConnection(1)
+	go startConnection(1000)
 }
 
 func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	response := request.(*protoGen.HeartBeatResponse)
 	//kickOut := request.(*protoGen.KickOutResponse)
-	log.Infof("pigd =%d heatbeat response = %d  ", context.Sid, response.ServerTime)
+	log.Infof("pid =%d heat beat response = %d  ", context.Sid, response.ServerTime)
 }
 
 func performanceRes(ctx network.ChannelContext, res proto.Message) {
@@ -39,13 +39,13 @@ func loginResponse(ctx network.ChannelContext, msg proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		//	client := client.ClientConnect("124.222.26.216:9101")
-		client := client.ClientConnect("127.0.0.1:9101")
+		client := client.ClientConnect("124.222.26.216:9101")
+		//client := client.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
 		request := &protoGen.LoginRequest{
-			AccountId:  int64(i + 100),
-			RoleId:     int64(i + 100000),
+			AccountId:  int64(i + 10011),
+			RoleId:     int64(i + 1000001),
 			LoginToken: "abc",
 			GameTicket: 0,
 			ServerId:   0,
