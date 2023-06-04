@@ -17,6 +17,15 @@ type protoMethod[T1 any] struct {
 	param     proto.Message
 }
 
+func (method *protoMethod[T1]) execute(any T1, body []byte) {
+	param := method.param.ProtoReflect().New().Interface()
+	if body == nil {
+		method.methodFuc(any, nil)
+	}
+	proto.Unmarshal(body, param)
+	method.methodFuc(any, param)
+}
+
 func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.ChannelContext, proto.Message]) {
 	method := &protoMethod[network.ChannelContext]{
 		methodFuc: fuc,
@@ -42,14 +51,10 @@ func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte) {
 	}()
 	method := msgIdRoleIdMap[msgId]
 	if method == nil {
-		log.Infof("msgId = %d not found method", msgId)
+		log.Infof(" CallMethodWitheRoleId msgId = %d not found method", msgId)
 		return
 	}
-	param := method.param.ProtoReflect().New().Interface()
-	if body != nil {
-		proto.Unmarshal(body, param)
-	}
-	method.methodFuc(roleId, param)
+	method.execute(roleId, body)
 }
 
 func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
@@ -61,12 +66,8 @@ func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 	}()
 	method := msgIdContextMap[msgId]
 	if method == nil {
-		log.Infof("msgId = %d not found method", msgId)
+		log.Infof("CallMethod  msgId = %d not found method", msgId)
 		return
 	}
-	param := method.param.ProtoReflect().New().Interface()
-	if body != nil {
-		proto.Unmarshal(body, param)
-	}
-	method.methodFuc(ctx, param)
+	method.execute(ctx, body)
 }

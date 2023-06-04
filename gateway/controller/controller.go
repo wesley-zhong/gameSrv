@@ -15,7 +15,7 @@ import (
 
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
-	core.RegisterMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
+	core.RegisterCallPlayerMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 
@@ -51,10 +51,9 @@ func login(ctx network.ChannelContext, request proto.Message) {
 	client.GetInnerClient(client.GAME).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 
-func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Message) {
-	context := ctx.Context().(*client.ConnInnerClientContext)
+func loginResponseFromGameServer(roleId int64, request proto.Message) {
+	//	context := ctx.Context().(*client.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
-	roleId := innerLoginResponse.GetRoleId()
 	player := PlayerMgr.GetByRoleId(roleId)
 	if player == nil {
 		log.Infof("roleId = %d have disconnected", roleId)
@@ -65,7 +64,7 @@ func loginResponseFromGameServer(ctx network.ChannelContext, request proto.Messa
 		log.Infof("roleId =%d have reconnected now sid =%d longRes sid =%d", roleId, sid, innerLoginResponse.GetSid())
 		return
 	}
-	log.Infof("login response =roleId =%d siId= %d login success =", roleId, context.Sid)
+	log.Infof("login response =roleId =%d siId= %d login success =", roleId, innerLoginResponse.Sid)
 	player.SetValid()
 
 	response := &protoGen.LoginResponse{

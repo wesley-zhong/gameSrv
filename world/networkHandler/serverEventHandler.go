@@ -86,13 +86,25 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		return nil, 0
 	}
 	bodyLen := bytebuffer.Len()
-	if bodyLen == 0 {
-		core.CallMethod(innerHeader.ProtoCode, nil, ctx)
+	//servers internal  system call
+	if innerHeader.Id == 0 {
+		if bodyLen == 0 {
+			core.CallMethod(innerHeader.ProtoCode, nil, ctx)
+			return nil, 0
+		}
+
+		log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
+		core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 		return nil, 0
 	}
-
+	// server send player msg
+	if bodyLen == 0 {
+		//core.CallMethod(innerHeader.ProtoCode, nil, ctx)
+		core.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, nil)
+		return nil, 0
+	}
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-	core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
+	core.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, packet[headerSize+4:])
 	return nil, 0
 }
 

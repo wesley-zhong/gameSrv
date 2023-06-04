@@ -51,7 +51,7 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c network.ChannelContext, b 
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelContext) (out []byte, action int) {
+func (clientNetwork *ClientEventHandler) React(packet []byte, ctx network.ChannelContext) (out []byte, action int) {
 	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
 	var innerHeaderLen int32
 	bytebuffer := bytes.NewBuffer(packet)
@@ -62,10 +62,14 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 
 	proto.Unmarshal(innerBody, innerMsg)
 
-	body := make([]byte, bytebuffer.Len())
-	binary.Read(bytebuffer, binary.BigEndian, body)
 	if innerMsg.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES) {
 		return nil, 0
+	}
+
+	bodyLen := bytebuffer.Len()
+	if bodyLen > 0 {
+		body := make([]byte, bodyLen)
+		binary.Read(bytebuffer, binary.BigEndian, body)
 	}
 
 	//directly send to client
@@ -80,8 +84,25 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, c network.ChannelC
 	//	return
 	//}
 
-	core.CallMethod(innerMsg.ProtoCode, body, c)
-	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive innerMsgLen = %d  innerMsgBody  =%s  protoCode =%d", innerHeaderLen, innerMsg, innerMsg.ProtoCode)
+	//servers internal  system call
+	if innerMsg.Id == 0 {
+		if bodyLen == 0 {
+			core.CallMethod(innerMsg.ProtoCode, nil, ctx)
+			return nil, 0
+		}
+
+		log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
+		core.CallMethod(innerMsg.ProtoCode, packet[innerHeaderLen+4:], ctx)
+		return nil, 0
+	}
+	// server send player msg
+	if bodyLen == 0 {
+		//core.CallMethod(innerMsg.ProtoCode, nil, ctx)
+		core.CallMethodWitheRoleId(innerMsg.ProtoCode, innerMsg.Id, nil)
+		return nil, 0
+	}
+	log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
+	core.CallMethodWitheRoleId(innerMsg.ProtoCode, innerMsg.Id, packet[innerHeaderLen+4:])
 	return nil, 0
 }
 
