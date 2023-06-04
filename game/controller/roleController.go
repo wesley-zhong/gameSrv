@@ -9,7 +9,6 @@ import (
 )
 
 func innerPlayerLogin(roleId int64, request proto.Message) {
-	//context := ctx.Context().(*client.ConnInnerClientContext)
 	loginRequest := request.(*protoGen.InnerLoginRequest)
 	log.Infof(" innerPlayerLogin login pid = %d s = %d", loginRequest.RoleId, loginRequest.GetSid())
 
@@ -28,9 +27,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 }
 
 func loginResponseFromWorldServer(roleId int64, request proto.Message) {
-	//context := ctx.Context().(*client.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
-	//roleId := innerLoginResponse.RoleId
 	log.Infof("login response = %d  sid =%d", roleId, innerLoginResponse.Sid)
 	player := RoleMgr.GetByRoleId(roleId)
 	if player == nil {
