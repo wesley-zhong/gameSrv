@@ -12,24 +12,31 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
 	log.Infof(" innerPlayerLogin login pid = %d s = %d", loginRequest.RoleId, loginRequest.GetSid())
 
-	existRole := RoleMgr.GetByRoleId(loginRequest.GetRoleId())
+	existRole := RoleOlineMgr.GetByRoleId(loginRequest.GetRoleId())
 	if existRole != nil {
 		log.Infof("roleId =%d have login no need process", existRole.RoleId)
 		return
 	}
+	// load role data form db
+	//roleDO := service.FindRoleData(loginRequest.RoleId)
+	//if roleDO == nil {
+	//	log.Errorf("not found roleId=%d ", roleId)
+	//	return
+	//}
+
 	innerLoginReq := &protoGen.InnerLoginRequest{
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.RoleId,
 	}
 	client.GetInnerClient(client.WORLD).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), loginRequest.RoleId, innerLoginReq)
-	gameRole := role.NewRole(loginRequest.RoleId)
-	RoleMgr.AddRole(gameRole)
+	gameRole := role.NewRole(loginRequest.RoleId, nil)
+	RoleOlineMgr.AddRole(gameRole)
 }
 
 func loginResponseFromWorldServer(roleId int64, request proto.Message) {
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
 	log.Infof("login response = %d  sid =%d", roleId, innerLoginResponse.Sid)
-	player := RoleMgr.GetByRoleId(roleId)
+	player := RoleOlineMgr.GetByRoleId(roleId)
 	if player == nil {
 		log.Infof(" role id = %d not found or have disconnected", roleId)
 		return
@@ -38,7 +45,7 @@ func loginResponseFromWorldServer(roleId int64, request proto.Message) {
 }
 
 func innerPlayerDisconnect(roleId int64, request proto.Message) {
-	gameRole := RoleMgr.GetByRoleId(roleId)
+	gameRole := RoleOlineMgr.GetByRoleId(roleId)
 	if gameRole == nil {
 		log.Infof("roleId =%d not found", roleId)
 		return

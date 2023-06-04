@@ -1,6 +1,6 @@
 package module
 
-type PlayerDO struct {
+type RoleDO struct {
 	Id   int64
 	Name string
 }

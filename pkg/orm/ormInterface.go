@@ -23,14 +23,14 @@ var replaceOneOptions = &options.ReplaceOptions{Upsert: &Upsert}
 
 var workerPool = gopool.StartNewWorkerPool(16, 256)
 
-func (dao *DAOIterface) FindOneById(id int64) {
+func (dao *DAOIterface) FindOneById(id int64) any {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
-	dao.Collection.FindOne(ctx, filter)
+	return dao.Collection.FindOne(ctx, filter)
 }
 
-func (dao *DAOIterface) FindOne(filter interface{}) interface{} {
+func (dao *DAOIterface) FindOne(filter interface{}) any {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	singleResult := dao.Collection.FindOne(ctx, filter)

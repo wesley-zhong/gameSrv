@@ -31,6 +31,15 @@ func AccountLogin(account string) *module.AccountDO {
 	return player
 }
 
+func FindRoleData(roleId int64) *module.RoleDO {
+	roleDO := dal.RoleDAO.FindOneById(roleId)
+	if roleDO == nil {
+		return nil
+	}
+	return roleDO.(*module.RoleDO)
+
+}
+
 func UpdateAccount(do *module.AccountDO) {
 	if do == nil {
 		return

@@ -1,15 +1,19 @@
 package role
 
+import "gameSrv/game/module"
+
 type GameRole struct {
 	Sid      int64
 	RoleId   int64
 	RoleName string
 	ServerId int64
+	RoleDo   *module.RoleDO
 }
 
-func NewRole(roleId int64) *GameRole {
+func NewRole(roleId int64, roleDO *module.RoleDO) *GameRole {
 	return &GameRole{
 		RoleId: roleId,
+		RoleDo: roleDO,
 	}
 }
 func (role *GameRole) GetRoleId() int64 {

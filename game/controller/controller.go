@@ -28,4 +28,4 @@ func Init() {
 	//add  msg  to game server to add me
 }
 
-var RoleMgr = role.NewRoleMgr()
+var RoleOlineMgr = role.NewRoleMgr()
