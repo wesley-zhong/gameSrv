@@ -1,6 +1,7 @@
 package role
 
 type GameRole struct {
+	Sid      int64
 	RoleId   int64
 	RoleName string
 	ServerId int64
