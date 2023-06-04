@@ -42,15 +42,6 @@ message LogoutResponse {
   int32 errorCode = 1;
 }
 
-message KickOutRequest {
-  int64 roleId = 1;
-  int64 sid = 2;
-}
-
-message KickOutResponse {
-  int32 reason = 1;
-}
-
 
 message  PerformanceTestReq{
   int64 someId = 1;

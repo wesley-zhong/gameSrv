@@ -43,7 +43,7 @@ message InnerLoginResponse {
 
 message  InnerPlayerDisconnectRequest{
   int64 sid = 1;
-  int64 roleId  = 2;
+  int64 roleId = 2;
 }
 
 message InnerPlayerDisconnectResponse{
@@ -80,5 +80,16 @@ message InnerServerHandShake{
   int64 fromServerId = 1;
   int32  fromServerType = 2;
 }
+
+message KickOutRequest {
+  int64 roleId = 1;
+  int64 sid = 2;
+  int32  reason = 3;
+}
+
+message KickOutResponse {
+  int32 reason = 1;
+}
+
 
 
