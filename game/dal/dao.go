@@ -5,13 +5,13 @@ import (
 	"gameSrv/pkg/orm"
 )
 
-var AccountDAO *orm.DAOIterface
-var RoleDAO *orm.DAOIterface
-var ItemDAO *orm.DAOIterface
+var AccountDAO *orm.DAOInterface[module.AccountDO]
+var RoleDAO *orm.DAOInterface[module.RoleDO]
+var ItemDAO *orm.DAOInterface[module.ItemDO]
 
 func Init(addr string, userName string, pwd string) {
 	orm.Init(addr, userName, pwd)
-	AccountDAO = &orm.DAOIterface{Collection: orm.GetDBConnTable("game", "account"), Object: &module.AccountDO{}}
-	RoleDAO = &orm.DAOIterface{Collection: orm.GetDBConnTable("game", "role"), Object: &module.RoleDO{}}
-	ItemDAO = &orm.DAOIterface{Collection: orm.GetDBConnTable("game", "item"), Object: &module.ItemDO{}}
+	AccountDAO = &orm.DAOInterface[module.AccountDO]{Collection: orm.GetDBConnTable("game", "account")}
+	RoleDAO = &orm.DAOInterface[module.RoleDO]{Collection: orm.GetDBConnTable("game", "role")}
+	ItemDAO = &orm.DAOInterface[module.ItemDO]{Collection: orm.GetDBConnTable("game", "item")}
 }

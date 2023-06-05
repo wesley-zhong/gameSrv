@@ -50,8 +50,8 @@ func (context *ChannelContextWin) Read() (buf []byte) {
 	body := make([]byte, 4096)
 	readLen, err := context.conn.Read(body)
 	if err != nil {
+		context.conn.Close()
 		return nil
-		panic(err)
 	}
 
 	context.recBuf.Write(body[:readLen])

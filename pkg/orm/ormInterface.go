@@ -10,9 +10,8 @@ import (
 	"time"
 )
 
-type DAOIterface struct {
+type DAOInterface[T1 any] struct {
 	Collection *mongo.Collection
-	Object     interface{}
 }
 
 var Upsert = true
@@ -23,14 +22,25 @@ var replaceOneOptions = &options.ReplaceOptions{Upsert: &Upsert}
 
 var workerPool = gopool.StartNewWorkerPool(16, 256)
 
-func (dao *DAOIterface) FindOneById(id int64) any {
+func (dao *DAOInterface[T1]) FindOneById(id int64) *T1 {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
-	return dao.Collection.FindOne(ctx, filter)
+	singleResult := dao.Collection.FindOne(ctx, filter)
+	if singleResult.Err() != nil {
+		log.Error(singleResult.Err())
+		return nil
+	}
+	obj := new(T1)
+	err := singleResult.Decode(obj)
+	if err != nil {
+		log.Error(err)
+		return nil
+	}
+	return obj
 }
 
-func (dao *DAOIterface) FindOne(filter interface{}) any {
+func (dao *DAOInterface[T1]) FindOne(filter interface{}) any {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	singleResult := dao.Collection.FindOne(ctx, filter)
@@ -38,7 +48,7 @@ func (dao *DAOIterface) FindOne(filter interface{}) any {
 		log.Error(singleResult.Err())
 		return nil
 	}
-	newObject := dao.Object //this must be a new object instance
+	newObject := new(T1) //this must be a new object instance
 	err := singleResult.Decode(newObject)
 	if err != nil {
 		log.Error(err)
@@ -47,14 +57,14 @@ func (dao *DAOIterface) FindOne(filter interface{}) any {
 	return newObject
 }
 
-func (dao *DAOIterface) Insert(obj interface{}) error {
+func (dao *DAOInterface[T1]) Insert(obj interface{}) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	dao.Collection.InsertOne(ctx, obj)
 	return nil
 }
 
-func (dao *DAOIterface) Save(id int64, obj interface{}) error {
+func (dao *DAOInterface[T1]) Save(id int64, obj interface{}) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
@@ -65,7 +75,7 @@ func (dao *DAOIterface) Save(id int64, obj interface{}) error {
 	return err
 }
 
-func (dao *DAOIterface) AsynSave(id int64, obj interface{}) error {
+func (dao *DAOInterface[T1]) AsynSave(id int64, obj interface{}) error {
 	return workerPool.SubmitTask(func() {
 		dao.Save(id, obj)
 	})
