@@ -36,7 +36,7 @@ func FindRoleData(roleId int64) *module.RoleDO {
 	if roleDO == nil {
 		return nil
 	}
-	return roleDO.(*module.RoleDO)
+	return roleDO
 
 }
 
