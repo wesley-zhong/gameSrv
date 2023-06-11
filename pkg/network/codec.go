@@ -70,7 +70,7 @@ func (cc *LengthFieldBasedFrameCodecEx) Decode(c gnet.Conn) ([]byte, error) {
 	}
 	if frameLength > cc.decoderConfig.PackageMaxLen {
 		err := errors.New("XXXXXX msg len too large  error ")
-		log.Warnf("XXXXXX msg len too large  error maxLen=%d receiveLen=%d should be closed", maxPackageLen, frameLength)
+		log.Warnf("XXXXXX %s msg len too large  error maxLen=%d receiveLen=%d should be closed", c.RemoteAddr(), maxPackageLen, frameLength)
 		c.Close()
 		return nil, err
 	}
