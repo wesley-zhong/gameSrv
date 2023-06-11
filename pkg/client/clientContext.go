@@ -95,11 +95,15 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	}
 
 	msgLen := headerLen + bodyLen + 4
-	buffer := bytes.Buffer{}
+	buffer := &bytes.Buffer{}
+	buffer.Reset()
 
-	buffer.Write(writeInt(msgLen))
-	buffer.Write(writeInt(headerLen))
-	buffer.Write(header)
+	//buffer.Write(writeInt(msgLen))
+	//buffer.Write(writeInt(headerLen))
+	//buffer.Write(header)
+	binary.Write(buffer, binary.BigEndian, int32(msgLen))
+	binary.Write(buffer, binary.BigEndian, int32(headerLen))
+	binary.Write(buffer, binary.BigEndian, header)
 	if bodyLen > 0 {
 		buffer.Write(body)
 	}
@@ -131,11 +135,15 @@ func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, roleId int64
 	}
 
 	msgLen := headerLen + bodyLen + 4
-	buffer := bytes.Buffer{}
+	buffer := &bytes.Buffer{}
+	buffer.Reset()
 
-	buffer.Write(writeInt(msgLen))
-	buffer.Write(writeInt(headerLen))
-	buffer.Write(header)
+	//buffer.Write(writeInt(msgLen))
+	//	buffer.Write(writeInt(headerLen))
+	//	buffer.Write(header)
+	binary.Write(buffer, binary.BigEndian, int32(msgLen))
+	binary.Write(buffer, binary.BigEndian, int32(headerLen))
+	binary.Write(buffer, binary.BigEndian, header)
 	if bodyLen > 0 {
 		buffer.Write(body)
 	}
@@ -170,30 +178,25 @@ func (client *ConnClientContext) SendMsg(code protoGen.ProtoCode, message proto.
 }
 
 func (client *ConnClientContext) Send(msgId int32, msg proto.Message) {
-	buffer := bytes.Buffer{}
-	buffer.Write(writeInt(int(msgId)))
+	buffer := &bytes.Buffer{}
+	buffer.Reset()
+	binary.Write(buffer, binary.BigEndian, msgId)
+	//buffer.Write(writeInt(int(msgId)))
 	marshal, err := proto.Marshal(msg)
 	if err != nil {
 		log.Error(err)
 		return
 	}
 	bodyLen := len(marshal)
-	buffer.Write(writeInt(bodyLen))
-	buffer.Write(marshal)
+	//buffer.Write(writeInt(bodyLen))
+	binary.Write(buffer, binary.BigEndian, int32(bodyLen))
+	//buffer.Write(marshal)
+	binary.Write(buffer, binary.BigEndian, marshal)
 	client.Ctx.AsyncWrite(buffer.Bytes())
 }
 
-func readInt(byteBuf *bytes.Buffer) int {
-	b := make([]byte, 4)
-	_, err := byteBuf.Read(b)
-	if err != nil {
-		return 0
-	}
-	return int(int32(binary.BigEndian.Uint32(b)))
-}
-
-func writeInt(value int) []byte {
-	b := make([]byte, 4)
-	binary.BigEndian.PutUint32(b, uint32(value))
-	return b
-}
+//func writeInt(value int) []byte {
+//	b := make([]byte, 4)
+//	binary.BigEndian.PutUint32(b, uint32(value))
+//	return b
+//}
