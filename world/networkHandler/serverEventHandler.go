@@ -72,6 +72,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 	var headerSize int32
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &headerSize)
+	if headerSize < 0 || headerSize > int32(network.MaxPackageLen) {
+		log.Warnf("XXXXXXXXXX headerSize =%d too large addr=%s", headerSize, ctx.RemoteAddr())
+		ctx.Close()
+		return nil, 0
+	}
 	headerBody := make([]byte, headerSize)
 	binary.Read(bytebuffer, binary.BigEndian, headerBody)
 	innerHeader := &protoGen.InnerHead{}

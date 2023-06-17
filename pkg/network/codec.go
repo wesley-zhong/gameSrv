@@ -8,7 +8,7 @@ import (
 	gerrors "github.com/panjf2000/gnet/pkg/errors"
 )
 
-var maxPackageLen = 2048 * 2048
+var MaxPackageLen = 2048 * 2048
 
 // EncoderConfig config for encoder.
 type EncoderConfig struct {
@@ -70,7 +70,7 @@ func (cc *LengthFieldBasedFrameCodecEx) Decode(c gnet.Conn) ([]byte, error) {
 	}
 	if frameLength > cc.decoderConfig.PackageMaxLen {
 		err := errors.New("XXXXXX msg len too large  error ")
-		log.Warnf("XXXXXX %s msg len too large  error maxLen=%d receiveLen=%d should be closed", c.RemoteAddr(), maxPackageLen, frameLength)
+		log.Warnf("XXXXXX %s msg len too large  error maxLen=%d receiveLen=%d should be closed", c.RemoteAddr(), MaxPackageLen, frameLength)
 		c.Close()
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func NewLengthFieldBasedFrameCodecEx() *LengthFieldBasedFrameCodecEx {
 		LengthFieldLength:   4,
 		LengthAdjustment:    0,
 		InitialBytesToStrip: 0,
-		PackageMaxLen:       uint64(maxPackageLen)}}
+		PackageMaxLen:       uint64(MaxPackageLen)}}
 }
 
 // NewInnerLengthFieldBasedFrameCodecEx for inner client
@@ -153,6 +153,6 @@ func NewInnerLengthFieldBasedFrameCodecEx() *LengthFieldBasedFrameCodecEx {
 		LengthFieldLength:   4,
 		LengthAdjustment:    0,
 		InitialBytesToStrip: 4,
-		PackageMaxLen:       uint64(maxPackageLen),
+		PackageMaxLen:       uint64(MaxPackageLen),
 	}}
 }
