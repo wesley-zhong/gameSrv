@@ -38,7 +38,7 @@ network.ServerStart(viper.GetInt32("port"), handler)
 controller.Init()
 
 ```
-//register client process handler
+//register client msg process handler
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
 	}
