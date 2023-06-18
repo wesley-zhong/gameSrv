@@ -7,6 +7,9 @@ import (
 	"gameSrv/pkg/network"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
+
+	"net/http"
+	_ "net/http/pprof"
 )
 
 func main() {
@@ -14,6 +17,10 @@ func main() {
 		if x := recover(); x != nil {
 			fmt.Printf("run time panic: %v", x)
 		}
+	}()
+	//for performance
+	go func() {
+		http.ListenAndServe("localhost:6060", nil)
 	}()
 
 	viper.SetConfigName("config")             // 配置文件名，不需要后缀名
