@@ -6,6 +6,7 @@ GOGET=$(GOCMD) get
 BIN_WORLD=world
 BIN_GAME=game
 BIN_GATE_WAY=gateway
+BIN_CLIENT=client
 all: clean  build
 restart: stop run
 build:
@@ -15,10 +16,14 @@ build:
 	cp -r ../game/configs ./$(BIN_GAME)
 	$(GOBUILD) -o $(BIN_GATE_WAY)/$(BIN_GATE_WAY) ../gateway/cmd/gateway.go
 	cp -r ../gateway/configs ./$(BIN_GATE_WAY)
+	$(GOBUILD) -o $(BIN_CLIENT)/$(BIN_CLIENT) ../client/cmd/client.go
+	cp -r ../client/configs ./$(BIN_CLIENT)
+
 clean:
 	rm -rf $(BIN_WORLD)
 	rm -rf $(BIN_GAME)
 	rm -rf $(BIN_GATE_WAY)
+	rm -rf $(BIN_CLIENT)
 	rm -rf ./logs/*
 run:
 	nohup ./$(BIN_WORLD)/$(BIN_WORLD) >>./logs/world.log 2>&1 &

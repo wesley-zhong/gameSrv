@@ -6,6 +6,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"gameSrv/protoGen"
+	"github.com/spf13/viper"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -16,7 +17,8 @@ func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
 
-	go startConnection(1000)
+	startClientCount := viper.GetInt("client.count")
+	go startConnection(startClientCount)
 }
 
 func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
@@ -39,7 +41,12 @@ func loginResponse(ctx network.ChannelContext, msg proto.Message) {
 
 func startConnection(count int) {
 	for i := 0; i < count; i++ {
-		client := client.ClientConnect("124.222.26.216:9101")
+
+		//24.222.26.216:9101
+		serverAddr := viper.GetString("serverAddr")
+		log.Infof("client  connnet addr = %s", serverAddr)
+
+		client := client.ClientConnect(serverAddr)
 		//client := client.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 		playerConn[client.Sid] = client
