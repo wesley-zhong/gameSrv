@@ -1,5 +1,5 @@
 
-GameSrv is a lightweight online game framework  written with Golang.Inlcude 3 types server Gateway GameSrv  World .It can be used in many types of online game.
+GameSrv is a lightweight online game framework  written with Golang.Inlcude 3 types server Gateway GameSrv  World .It can be used in many types of online game.Tcp network use [gnet](https://github.com/panjf2000/gnet)
 
 **Build**
 ---
@@ -45,7 +45,7 @@ func Init() {
 
 ```
 
-InnerClient : server's tcp connection 
+InnerClient : server's tcp connection
 ```
 //init InnerClient
 clientNetwork := networkHandler.ClientEventHandler{}
