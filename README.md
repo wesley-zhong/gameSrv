@@ -22,6 +22,8 @@ cd build/client
 
 **How To Use**
 ---
+
+start server
 ```
 // msg Register
 controller.Init()
