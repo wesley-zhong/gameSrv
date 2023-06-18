@@ -35,8 +35,10 @@ func main() {
 		gnet.WithTicker(true),
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
+	// msg Register
 	controller.Init()
-
-	controller := &networkHandler.ServerEventHandler{}
-	network.ServerStart(viper.GetInt32("port"), controller)
+	//package receive handler
+	handler := &networkHandler.ServerEventHandler{}
+	//start server
+	network.ServerStart(viper.GetInt32("port"), handler)
 }

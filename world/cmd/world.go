@@ -34,6 +34,6 @@ func main() {
 
 	controller.Init()
 
-	controller := &networkHandler.ServerEventHandler{}
-	network.ServerStartWithDeCode(viper.GetInt32("port"), controller, network.NewInnerLengthFieldBasedFrameCodecEx())
+	handler := &networkHandler.ServerEventHandler{}
+	network.ServerStartWithDeCode(viper.GetInt32("port"), handler, network.NewInnerLengthFieldBasedFrameCodecEx())
 }

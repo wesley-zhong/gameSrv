@@ -23,14 +23,14 @@ cd build/client
 **How To Use**
 ---
 ```
-	// msg Register
-	controller.Init()
-	//package receive handler
+// msg Register
+controller.Init()
+
+//package receive handler
+handler := &networkHandler.ServerEventHandler{}
 	
-	handler := &networkHandler.ServerEventHandler{}
-	
-	//start server
-	network.ServerStart(viper.GetInt32("port"), handler)
+//start server
+network.ServerStart(viper.GetInt32("port"), handler)
 ```
 
 controller.Init()
@@ -46,13 +46,13 @@ func Init() {
 InnerClient : server's tcp connection 
 ```
 //init InnerClient
-	clientNetwork := networkHandler.ClientEventHandler{}
-	network.ClientStart(&clientNetwork,
-		gnet.WithMulticore(true),
-		gnet.WithReusePort(true),
-		gnet.WithTCPNoDelay(0),
-		gnet.WithTicker(true),
-		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
+clientNetwork := networkHandler.ClientEventHandler{}
+network.ClientStart(&clientNetwork,
+	gnet.WithMulticore(true),
+	gnet.WithReusePort(true),
+	gnet.WithTCPNoDelay(0),
+	gnet.WithTicker(true),
+	gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 		
 //connect server
 client.InnerClientConnect(client.GAME, viper.GetString("gameServerAddr"), client.GATE_WAY)
