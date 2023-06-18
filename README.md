@@ -3,13 +3,17 @@ GameSrv is a lightweight online game framework  written with Golang.Inlcude 3 ty
 
 **Build**
 ---
-
+**Linux**
 
 ```
 git clone https://github.com/wesley-zhong/gameSrv.git
 cd gameSrv
 make  clean/build
 ```
+**GoLand**
+
+Open directly
+
 **Run And  Test**
 ---
 ```
