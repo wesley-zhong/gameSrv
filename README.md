@@ -39,15 +39,17 @@ handler := &networkHandler.ServerEventHandler{}
 network.ServerStart(viper.GetInt32("port"), handler)
 ```
 
-controller.Init()
+register client msg process handler
 
 ```
-//register client msg process handler
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
 	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 }
 	
+```
+function implement
+```
 func login(ctx network.ChannelContext, request proto.Message) {
 // logic code here
 
@@ -68,7 +70,6 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 	//send to client
 	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 }
-
 
 ```
 
