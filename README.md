@@ -45,7 +45,30 @@ controller.Init()
 //register client msg process handler
 func Init() {
 	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
+	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
+}
+	
+func login(ctx network.ChannelContext, request proto.Message) {
+// logic code here
+
+// wrap inner msg and inner msgId to  send to game server 
+log.Infof("====== loginAddr=%s now loginCount =%d", ctx.RemoteAddr(), PlayerMgr.GetSize())
+client.GetInnerClient(client.GAME).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
+}
+
+func heartBeat(ctx network.ChannelContext, request proto.Message) {
+	player := ctx.Context().(*player.Player)
+	heartBeat := request.(*protoGen.HeartBeatRequest)
+	log.Infof(" context= %d  heartbeat time = %d", player.Context.Sid, heartBeat.ClientTime)
+
+	response := &protoGen.HeartBeatResponse{
+		ClientTime: heartBeat.ClientTime,
+		ServerTime: time.Now().UnixMilli(),
 	}
+	//send to client
+	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+}
+
 
 ```
 
@@ -60,6 +83,6 @@ network.ClientStart(&clientNetwork,
 	gnet.WithTicker(true),
 	gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 		
-//connect server
+//build a connection from GateWay(client.GATE_WAY) to Game(client.GAME)
 client.InnerClientConnect(client.GAME, viper.GetString("gameServerAddr"), client.GATE_WAY)
 ```
