@@ -98,9 +98,6 @@ func (client *ConnInnerClientContext) Send(msg *InnerMessage) {
 	buffer := &bytes.Buffer{}
 	buffer.Reset()
 
-	//buffer.Write(writeInt(msgLen))
-	//buffer.Write(writeInt(headerLen))
-	//buffer.Write(header)
 	binary.Write(buffer, binary.BigEndian, int32(msgLen))
 	binary.Write(buffer, binary.BigEndian, int32(headerLen))
 	binary.Write(buffer, binary.BigEndian, header)
@@ -188,15 +185,7 @@ func (client *ConnClientContext) Send(msgId int32, msg proto.Message) {
 		return
 	}
 	bodyLen := len(marshal)
-	//buffer.Write(writeInt(bodyLen))
 	binary.Write(buffer, binary.BigEndian, int32(bodyLen))
-	//buffer.Write(marshal)
 	binary.Write(buffer, binary.BigEndian, marshal)
 	client.Ctx.AsyncWrite(buffer.Bytes())
 }
-
-//func writeInt(value int) []byte {
-//	b := make([]byte, 4)
-//	binary.BigEndian.PutUint32(b, uint32(value))
-//	return b
-//}
