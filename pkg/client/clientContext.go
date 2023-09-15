@@ -178,7 +178,6 @@ func (client *ConnClientContext) Send(msgId int32, msg proto.Message) {
 	buffer := &bytes.Buffer{}
 	buffer.Reset()
 	binary.Write(buffer, binary.BigEndian, msgId)
-	//buffer.Write(writeInt(int(msgId)))
 	marshal, err := proto.Marshal(msg)
 	if err != nil {
 		log.Error(err)

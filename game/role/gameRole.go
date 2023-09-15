@@ -1,6 +1,9 @@
 package role
 
-import "gameSrv/game/module"
+import (
+	"gameSrv/game/module"
+	"sync"
+)
 
 type GameRole struct {
 	Sid      int64
@@ -29,17 +32,25 @@ type IGameRole interface {
 }
 
 type RoleMgrWrap struct {
-	roles map[int64]*GameRole
+	roles  map[int64]*GameRole
+	rwLock sync.RWMutex
 }
 
 func NewRoleMgr() *RoleMgrWrap {
-	return &RoleMgrWrap{roles: make(map[int64]*GameRole)}
+	return &RoleMgrWrap{
+		roles:  make(map[int64]*GameRole),
+		rwLock: sync.RWMutex{},
+	}
 }
 
 func (roleMgr *RoleMgrWrap) AddRole(role *GameRole) {
+	roleMgr.rwLock.Lock()
+	defer roleMgr.rwLock.Unlock()
 	roleMgr.roles[role.RoleId] = role
 }
 
 func (roleMgr *RoleMgrWrap) GetByRoleId(roleId int64) *GameRole {
+	roleMgr.rwLock.RLock()
+	defer roleMgr.rwLock.RUnlock()
 	return roleMgr.roles[roleId]
 }

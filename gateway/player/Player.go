@@ -3,6 +3,7 @@ package player
 import (
 	"gameSrv/pkg/client"
 	"sync"
+	"sync/atomic"
 )
 
 //------player
@@ -30,42 +31,47 @@ var PlayerMgr *PlayerMgrWrap
 // player mgr----
 func NewPlayerMgr() *PlayerMgrWrap {
 	PlayerMgr = &PlayerMgrWrap{
-		playerIdMap: make(map[int64]*Player),
+		playerIdMap: &sync.Map{},
 	}
 	return PlayerMgr
 }
 
 type PlayerMgrWrap struct {
-	playerIdMap map[int64]*Player
-	//playerSidMap map[int64]*Player
+	playerIdMap *sync.Map
+	size        atomic.Int32
 }
 
 func (playerMgr *PlayerMgrWrap) Add(player *Player) {
-	playerMutex.Lock()
-	defer playerMutex.Unlock()
-	playerMgr.playerIdMap[player.Pid] = player
-	//playerMgr.playerSidMap[player.Context.Sid] = player
+	_, loaded := playerMgr.playerIdMap.LoadOrStore(player.Pid, player)
+	if loaded {
+		playerMgr.playerIdMap.Store(player.Pid, player)
+		return
+	}
+	playerMgr.size.Add(1)
 }
 
 func (playerMgr *PlayerMgrWrap) Remove(player *Player) {
-	playerMutex.Lock()
-	defer playerMutex.Unlock()
-	delete(playerMgr.playerIdMap, player.Pid)
-	//delete(playerMgr.playerSidMap, player.Context.Sid)
+	_, ok := playerMgr.playerIdMap.LoadAndDelete(player.Pid)
+	if ok {
+		playerMgr.size.Add(-1)
+	}
 }
 
 func (playerMgr *PlayerMgrWrap) GetByRoleId(pid int64) *Player {
-	playerMutex.Lock()
-	defer playerMutex.Unlock()
-	return playerMgr.playerIdMap[pid]
+	value, ok := playerMgr.playerIdMap.Load(pid)
+	if ok {
+		return value.(*Player)
+	}
+	return nil
 }
 
-func (playerMgr *PlayerMgrWrap) GetSize() int {
-	playerMutex.Lock()
-	defer playerMutex.Unlock()
-	return len(playerMgr.playerIdMap)
+func (playerMgr *PlayerMgrWrap) GetSize() int32 {
+	return playerMgr.size.Load()
 }
 
-func (playerMgr *PlayerMgrWrap) GetPlayerList() map[int64]*Player {
-	return playerMgr.playerIdMap
+func (playerMgr *PlayerMgrWrap) Range(iter func(player *Player)) {
+	playerMgr.playerIdMap.Range(func(key, value any) bool {
+		iter(value.(*Player))
+		return true
+	})
 }

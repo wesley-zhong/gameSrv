@@ -85,21 +85,15 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int) {
-
-	playerList := player.PlayerMgr.GetPlayerList()
-	if len(playerList) == 0 {
+	if player.PlayerMgr.GetSize() == 0 {
 		return 5000 * time.Millisecond, 0
 	}
-
-	response := &protoGen.HeartBeatResponse{
-		ClientTime: time.Now().UnixMilli(),
-		ServerTime: time.Now().UnixMilli(),
-	}
-	//	PlayerMgr.Get()
-	//PlayerMgr.GetByContext(context).Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
-
-	for _, player := range playerList {
+	player.PlayerMgr.Range(func(player *player.Player) {
+		response := &protoGen.HeartBeatResponse{
+			ClientTime: time.Now().UnixMilli(),
+			ServerTime: time.Now().UnixMilli(),
+		}
 		player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
-	}
+	})
 	return 5000 * time.Millisecond, 0
 }
