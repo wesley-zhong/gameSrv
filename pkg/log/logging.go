@@ -2,12 +2,13 @@ package log
 
 import (
 	"errors"
+	"gopkg.in/natefinch/lumberjack.v2"
 	"os"
 	"strconv"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"gopkg.in/natefinch/lumberjack.v2"
+	_ "gopkg.in/natefinch/lumberjack.v2"
 )
 
 var (
