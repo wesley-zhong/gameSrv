@@ -135,9 +135,6 @@ func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, roleId int64
 	buffer := &bytes.Buffer{}
 	buffer.Reset()
 
-	//buffer.Write(writeInt(msgLen))
-	//	buffer.Write(writeInt(headerLen))
-	//	buffer.Write(header)
 	binary.Write(buffer, binary.BigEndian, int32(msgLen))
 	binary.Write(buffer, binary.BigEndian, int32(headerLen))
 	binary.Write(buffer, binary.BigEndian, header)
