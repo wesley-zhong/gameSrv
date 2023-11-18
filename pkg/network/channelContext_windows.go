@@ -88,7 +88,7 @@ func (context *ChannelContextWin) ReadN(n int) (size int, buf []byte) {
 
 // ShiftN shifts "read" pointer in the gateway buffers with the given length.
 func (context *ChannelContextWin) ShiftN(n int) (size int) {
-	return context.ShiftN(n)
+	return 0
 }
 
 // BufferLength returns the length of available data in the gateway buffers.
