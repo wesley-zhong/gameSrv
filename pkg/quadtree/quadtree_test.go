@@ -96,3 +96,16 @@ func acceptValue(person Person) {
 func acceptPoint(person *Person) {
 	person.Name = "hello1"
 }
+
+func Test_run(t *testing.T) {
+	t.Run("hello", func(t *testing.T) {
+		fmt.Println("pring hello")
+
+	})
+
+	t.Run("hello2", func(t *testing.T) {
+		fmt.Println("pring hello2")
+
+	})
+
+}
