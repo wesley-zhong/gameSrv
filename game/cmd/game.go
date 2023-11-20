@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gameSrv/game/controller"
 	"gameSrv/game/networkHandler"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/network"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
@@ -40,11 +41,18 @@ func main() {
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 
-	//dal.Init(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	//dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	//dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
+	//
 	//account := service.AccountLogin("andy")
 	//service.UpdateAccount(account)
 
 	controller.Init()
+
+	//connect world server
+	client.InnerClientConnect(client.WORLD, viper.GetString("worldServerAddr"), client.GAME)
+
+	//start server
 	networkHandler := &networkHandler.ServerEventHandler{}
 	network.ServerStartWithDeCode(viper.GetInt32("port"), networkHandler, network.NewInnerLengthFieldBasedFrameCodecEx())
 }
