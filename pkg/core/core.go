@@ -1,6 +1,7 @@
 package core
 
 import (
+	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
 	"google.golang.org/protobuf/proto"
@@ -11,6 +12,8 @@ type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
 var msgIdContextMap = make(map[int32]*protoMethod[network.ChannelContext])
 var msgIdRoleIdMap = make(map[int32]*protoMethod[int64])
+
+var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
 
 type protoMethod[T1 any] struct {
 	methodFuc MsgIdFuc[T1, proto.Message]
@@ -23,7 +26,9 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 		method.methodFuc(any, nil)
 	}
 	proto.Unmarshal(body, param)
-	method.methodFuc(any, param)
+	msgGoPool.SubmitTask(func() {
+		method.methodFuc(any, param)
+	})
 }
 
 func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.ChannelContext, proto.Message]) {
