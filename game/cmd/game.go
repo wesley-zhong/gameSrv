@@ -48,7 +48,6 @@ func main() {
 	//service.UpdateAccount(account)
 
 	controller.Init()
-
 	//connect world server
 	client.InnerClientConnect(client.WORLD, viper.GetString("worldServerAddr"), client.GAME)
 
