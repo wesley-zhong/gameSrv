@@ -6,7 +6,7 @@ FROM golang:1.19
 WORKDIR /cmd
 
 # Download Go modules
-COPY ../go.mod go.sum ./
+COPY ../go.mod ../go.sum ./
 RUN go mod download
 
 # Copy the source code. Note the slash at the end, as explained in
