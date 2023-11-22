@@ -12,9 +12,9 @@ restart: stop run
 docker: stop clean build docker_build
 build:
 	set GOARCH=amd64
-    go env -w GOARCH=amd64
-    set GOOS=linux
-    go env -w GOOS=linux
+	go env -w GOARCH=amd64
+	set GOOS=linux
+	go env -w GOOS=linux
 	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../world/cmd/world.go
 	cp  -r ../world/configs   ./$(BIN_WORLD)/
 	cp  ../world/Dockerfile  ./$(BIN_WORLD)/
