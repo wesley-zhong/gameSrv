@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Copy the source code. Note the slash at the end, as explained in
 # https://docs.docker.com/engine/reference/builder/#copy
-COPY  ../build/gateway/  ./
+COPY  ../build/gateway  ./
 
 # Build
 #RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gsw

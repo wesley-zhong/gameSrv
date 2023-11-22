@@ -12,10 +12,13 @@ restart: stop run
 build:
 	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../world/cmd/world.go
 	cp  -r ../world/configs   ./$(BIN_WORLD)/
+	cp Dockerfile  ./$(BIN_WORLD)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
 	cp -r ../game/configs ./$(BIN_GAME)
+	cp Dockerfile  ./$(BIN_GAME)/
 	$(GOBUILD) -o $(BIN_GATE_WAY)/$(BIN_GATE_WAY) ../gateway/cmd/gateway.go
 	cp -r ../gateway/configs ./$(BIN_GATE_WAY)
+	cp Dockerfile  ./$(BIN_GATE_WAY)/
 	$(GOBUILD) -o $(BIN_CLIENT)/$(BIN_CLIENT) ../client/cmd/client.go
 	cp -r ../client/configs ./$(BIN_CLIENT)
 
