@@ -9,6 +9,7 @@ BIN_GATE_WAY=gateway
 BIN_CLIENT=client
 all: clean  build
 restart: stop run
+docker: stop clean build docker_build
 build:
 	set GOARCH=amd64
     go env -w GOARCH=amd64
@@ -47,6 +48,11 @@ ps:
 	ps -aux | grep gateway
 	ps -aux | grep game
 	ps -aux | grep world
+docker_build:
+	docker build --tag docker-gateway .
+	docker build --tag docker-game .
+	docker build --tag docker-world .
+
 
 
 
