@@ -55,9 +55,9 @@ ps:
 	ps -aux | grep game
 	ps -aux | grep world
 docker_build:
-	docker build --tag docker-gateway .
-	docker build --tag docker-game .
-	docker build --tag docker-world .
+	cd gateway; docker build --tag docker-gateway .
+	cd game; docker build --tag docker-game .
+	cd world; docker build --tag docker-world .
 
 
 
