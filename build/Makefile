@@ -9,7 +9,7 @@ BIN_GATE_WAY=gateway
 BIN_CLIENT=client
 all: clean  build
 restart: stop run
-docker: stop clean build docker_build
+docker:  clean build docker_build
 build:
 	set GOARCH=amd64
 	go env -w GOARCH=amd64
@@ -26,7 +26,6 @@ build:
 	cp ../gateway/Dockerfile  ./$(BIN_GATE_WAY)/
 	$(GOBUILD) -o $(BIN_CLIENT)/$(BIN_CLIENT) ../client/cmd/client.go
 	cp -r ../client/configs ./$(BIN_CLIENT)
-
 clean:
 	rm -rf $(BIN_WORLD)
 	rm -rf $(BIN_GAME)
@@ -43,6 +42,13 @@ run:
 	@echo "======================== server started "
 	ps -aux | grep gateway
 	ps -aux | grep game
+	ps -aux | grep world
+stop:
+	ps -ef|grep gateway|grep -v grep|awk '{print $2}' | xargs kill -9
+	ps -ef|grep game|grep -v grep|awk '{print $2}' | xargs kill -9
+	ps -ef|grep world|grep -v grep|awk '{print $2}' | xargs kill -9
+	ps -aux | grep game
+	ps -aux | grep gateway
 	ps -aux | grep world
 ps:
 	ps -aux | grep gateway
