@@ -1,2 +1,2 @@
 port: 9101
-gameServerAddr: 127.0.0.1:9102
+gameServerAddr: 10.0.4.4:9102

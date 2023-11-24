@@ -1,5 +1,5 @@
 port: 9102
-worldServerAddr: 127.0.0.1:9103
+worldServerAddr: 10.0.4.4:9103
 mongo:
   addr: localhost
   userName: admin
