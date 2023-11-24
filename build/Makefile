@@ -58,7 +58,10 @@ docker_build:
 	cd gateway; docker build --tag docker-gateway .
 	cd game; docker build --tag docker-game .
 	cd world; docker build --tag docker-world .
-
+docker_run:
+	docker run -d -p 9101:9101 --name gateway  docker-gateway
+	docker run -d -p 9002:9002 --name game  docker-game
+	docker run -d -p 9103:9103 --name world  docker-world
 
 
 

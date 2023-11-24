@@ -1,4 +1,4 @@
-port: 9002
+port: 9102
 worldServerAddr: 127.0.0.1:9103
 mongo:
   addr: localhost
