@@ -24,4 +24,4 @@ COPY  configs/*  ./configs/
 EXPOSE 8082
 
 # Run
-CMD ["/gateway"]
+CMD ["./world"]

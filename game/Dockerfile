@@ -24,4 +24,4 @@ COPY  configs/*  ./configs/
 EXPOSE 8081
 
 # Run
-CMD ["/gateway"]
+CMD ["./game"]
