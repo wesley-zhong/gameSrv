@@ -27,3 +27,9 @@ func (pool *WorkerPool) SubmitTask(task func()) error {
 	pool.workers[0].AsyExecute(task)
 	return nil
 }
+
+func (pool *WorkerPool) HashWorker(hashCode int) *Worker {
+	size := len(pool.workers)
+	return pool.workers[hashCode%size]
+
+}

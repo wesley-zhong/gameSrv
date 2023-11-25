@@ -1,66 +1,31 @@
 package actor
 
 import (
-	"gameSrv/pkg/log"
-	"time"
+	"gameSrv/pkg/gopool"
+	"runtime"
 )
 
 type Actor struct {
-	id       uint32
-	mq       chan *CallMethod
-	cbActors map[int64]*Actor
-}
-type CallMethod struct {
-	id   int64
-	call func()
-	cb   func()
+	id           uint32
+	routerWorker *gopool.Worker
 }
 
-func NewActor(msgCap int) *Actor {
+var routerPool = gopool.StartNewWorkerPool(runtime.NumCPU(), 1024)
+
+func NewActor(id int) *Actor {
 	return &Actor{
-		id:       1,
-		mq:       make(chan *CallMethod, msgCap),
-		cbActors: make(map[int64]*Actor, 0),
+		id:           1,
+		routerWorker: routerPool.HashWorker(id),
 	}
 }
 
 func (actor *Actor) Call(call func()) {
-	callmethod := &CallMethod{
-		id:   int64(0),
-		call: call,
-	}
-	actor.mq <- callmethod
+	actor.routerWorker.AsyExecute(call)
 }
 
 func (actor *Actor) CallWithBack(call func(), callBack func(), calledActor *Actor) {
-	id := 444 //gen 64
-	actor.cbActors[int64(id)] = calledActor
-	callMethod := &CallMethod{
-		id:   int64(id),
-		call: call,
-		cb:   callBack,
-	}
-	actor.mq <- callMethod
-
-}
-
-func (actor *Actor) Run() {
-	for {
-		select {
-		case callMethod, ok := <-actor.mq:
-			if ok {
-				callMethod.call()
-				if callMethod.id == 0 {
-					return
-				}
-				actor.cbActors[callMethod.id].Call(callMethod.cb)
-
-			} else {
-				log.Infof("------ some error")
-			}
-		default:
-			time.Sleep(1 * time.Millisecond)
-			//log.Infof("-------- default")
-		}
-	}
+	actor.routerWorker.AsyExecute(func() {
+		call()
+		calledActor.routerWorker.AsyExecute(callBack)
+	})
 }
