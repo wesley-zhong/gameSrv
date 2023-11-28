@@ -5,18 +5,24 @@ import (
 	"gameSrv/game/controller"
 	"gameSrv/game/networkHandler"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/discover"
 	"gameSrv/pkg/network"
+	"gameSrv/pkg/utils"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
+	"sync"
 
 	"net/http"
 	_ "net/http/pprof"
 )
 
 func main() {
+	var loopWG sync.WaitGroup
+	loopWG.Add(1)
 	defer func() {
 		if x := recover(); x != nil {
 			fmt.Printf("run time panic: %v", x)
+			loopWG.Add(-1)
 		}
 	}()
 	//for performance
@@ -53,5 +59,16 @@ func main() {
 
 	//start server
 	networkHandler := &networkHandler.ServerEventHandler{}
-	network.ServerStartWithDeCode(viper.GetInt32("port"), networkHandler, network.NewInnerLengthFieldBasedFrameCodecEx())
+	go network.ServerStartWithDeCode(viper.GetInt32("port"), networkHandler, network.NewInnerLengthFieldBasedFrameCodecEx())
+
+	//register to etcd
+	discoverUrls := viper.GetStringSlice("discover.url")
+	discover.InitDiscovery(discoverUrls, []string{"world"})
+
+	serviceName := viper.GetString("service.name")
+	serviceId := utils.CreateServiceUnitName(serviceName)
+	metaData := make(map[string]string)
+	metaData["mk1"] = "hello"
+	discover.RegisterService(discoverUrls, serviceName, serviceId, metaData)
+	loopWG.Wait()
 }

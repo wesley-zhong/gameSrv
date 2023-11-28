@@ -1,6 +1,11 @@
 port: 9102
-worldServerAddr: 10.0.4.4:9103
+service:
+  name: game.V1
+worldServerAddr: 127.0.0.1:9103
 mongo:
   addr: localhost
   userName: admin
   password: admin
+discover:
+  url: [localhost:2379]
+  watchServ: [world]
