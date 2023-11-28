@@ -1,4 +1,4 @@
-#serverAddr: 124.222.26.216:9101
-serverAddr: 127.0.0.1:9101
+serverAddr: 124.222.26.216:9101
+#serverAddr: 127.0.0.1:9101
 client:
   count: 1000
