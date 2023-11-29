@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
 	"go.etcd.io/etcd/api/v3/mvccpb"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"sync"
@@ -27,7 +26,7 @@ type Node struct {
 	Addr           string                `json:"addr"`
 	MetaData       map[string]string     `json:"metaData"`
 	Type           client.GameServerType `json:"type"`
-	channelContext network.ChannelContext
+	channelContext *client.ConnInnerClientContext
 }
 
 func (node *Node) getKey() string {
@@ -103,14 +102,24 @@ func (s *ServiceDiscovery) SetServiceList(key, val string) {
 		log.Error(err)
 		return
 	}
+	existNode := s.serverList[key]
+	if existNode != nil && existNode.channelContext != nil {
+		return
+	}
 	s.serverList[key] = node
 	log.Infof("### discover service :ServiceId  %s:  ServiceName: %s", key, val)
+	connectNode(node)
 }
 
 // DelServiceList 删除服务地址
 func (s *ServiceDiscovery) DelServiceList(key string) {
 	s.lock.Lock()
 	defer s.lock.Unlock()
+	node := s.serverList[key]
+	//关闭
+	if node != nil {
+		node.channelContext.Ctx.Close()
+	}
 	delete(s.serverList, key)
 	log.Infof("-------del ServiceId: %s", key)
 }

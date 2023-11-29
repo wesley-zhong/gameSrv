@@ -45,6 +45,7 @@ connect:
 		goto connect
 	}
 
+	log.Infof("----- connect  success  %s ", addr)
 	gameInnerClient := NewInnerClientContext(context)
 	InnerClientMap[serverType] = gameInnerClient
 	handShake := &protoGen.InnerServerHandShake{

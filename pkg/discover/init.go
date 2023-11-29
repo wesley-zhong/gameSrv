@@ -2,6 +2,7 @@ package discover
 
 import (
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/network"
 	"gameSrv/pkg/utils"
 	"github.com/panjf2000/gnet"
@@ -9,6 +10,7 @@ import (
 )
 
 func InitDiscoverAndRegister(v *viper.Viper, handler network.EventHandler, selfType client.GameServerType) error {
+	global.SelfServerType = selfType
 	//discover from etcd
 	discoverUrls := v.GetStringSlice("discover.url")
 	watchServs := v.GetStringSlice("discover.watchServ")
@@ -19,7 +21,6 @@ func InitDiscoverAndRegister(v *viper.Viper, handler network.EventHandler, selfT
 		if err != nil {
 			return err
 		}
-		connect(DiscoverService.serverList, selfType)
 	}
 	//register  myself to etcd
 	serviceName := v.GetString("service.name")
@@ -41,8 +42,8 @@ func InitClient(handler network.EventHandler) {
 		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
 }
 
-func connect(serverList map[string]*Node, selfType client.GameServerType) {
-	for _, node := range serverList {
-		client.InnerClientConnect(node.Type, node.Addr, selfType)
-	}
+func connectNode(node *Node) {
+	clientConnect := client.InnerClientConnect(node.Type, node.Addr, global.SelfServerType)
+	node.channelContext = clientConnect
+
 }
