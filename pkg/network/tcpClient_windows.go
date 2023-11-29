@@ -19,9 +19,16 @@ func init() {
 var handlerProcess EventHandler
 
 func ClientStart(handler EventHandler, options ...gnet.Option) error {
+	if handlerProcess != nil {
+		return nil
+	}
 	handlerProcess = handler
 	go timerTick(handler)
 	return nil
+}
+func ClientInited() bool {
+	return handlerProcess != nil
+
 }
 
 func Dial(network, address string) (ChannelContext, error) {

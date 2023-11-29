@@ -3,6 +3,7 @@ package client
 import (
 	"bytes"
 	"encoding/binary"
+	"errors"
 	"gameSrv/pkg/common"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/network"
@@ -31,6 +32,11 @@ const (
 var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 
 func InnerClientConnect(serverType GameServerType, addr string, myServerType GameServerType) *ConnInnerClientContext {
+	if !network.ClientInited() {
+		log.Error(errors.New(" XXXXXXXX  net work client not init ，pleaser init first！"))
+		return nil
+	}
+
 connect:
 	context, err := network.Dial("tcp", addr)
 	if err != nil {

@@ -1,7 +1,6 @@
 port: 9101
 service:
   name: gateway.V1
-gameServerAddr: 10.0.4.4:9102
 discover:
   url: [localhost:2379]
   watchServ: [game]

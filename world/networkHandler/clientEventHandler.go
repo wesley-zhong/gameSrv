@@ -75,7 +75,6 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx network.Channe
 			core.CallMethod(innerMsg.ProtoCode, nil, ctx)
 			return nil, 0
 		}
-
 		log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
 		core.CallMethod(innerMsg.ProtoCode, packet[innerHeaderLen+4:], ctx)
 		return nil, 0

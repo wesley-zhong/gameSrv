@@ -3,7 +3,9 @@ package discover
 import (
 	"context"
 	"encoding/json"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
+	"gameSrv/pkg/network"
 	"go.etcd.io/etcd/api/v3/mvccpb"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"sync"
@@ -19,11 +21,13 @@ type ServiceDiscovery struct {
 	lock       sync.Mutex
 }
 type Node struct {
-	ServiceName  string            `json:"serviceName"`
-	ServiceId    string            `json:"serviceId"`
-	RegisterTime int64             `json:"registerTime"`
-	Addr         string            `json:"addr"`
-	MetaData     map[string]string `json:"MetaData"`
+	ServiceName    string                `json:"serviceName"`
+	ServiceId      string                `json:"serviceId"`
+	RegisterTime   int64                 `json:"registerTime"`
+	Addr           string                `json:"addr"`
+	MetaData       map[string]string     `json:"metaData"`
+	Type           client.GameServerType `json:"type"`
+	channelContext network.ChannelContext
 }
 
 func (node *Node) getKey() string {

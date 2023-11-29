@@ -4,13 +4,11 @@ import (
 	"fmt"
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/networkHandler"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/network"
-	"gameSrv/pkg/utils"
 	"github.com/spf13/viper"
 	"sync"
-
-	"github.com/panjf2000/gnet"
 )
 
 func main() {
@@ -34,31 +32,19 @@ func main() {
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
-	clientNetwork := networkHandler.ClientEventHandler{}
-	network.ClientStart(&clientNetwork,
-		gnet.WithMulticore(true),
-		gnet.WithReusePort(true),
-		gnet.WithTCPNoDelay(0),
-		gnet.WithTicker(true),
-		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
-
 	// msg Register
 	controller.Init()
 	//package receive handler
 	handler := &networkHandler.ServerEventHandler{}
 	//start server
-	network.ServerStart(viper.GetInt32("port"), handler)
+	go network.ServerStartWithDeCode(viper.GetInt32("port"), handler, network.NewLengthFieldBasedFrameCodecEx())
 
-	//register to etcd
-	discoverUrls := viper.GetStringSlice("discover.url")
-	discover.InitDiscovery(discoverUrls, []string{"game"})
-
-	serviceName := viper.GetString("service.name")
-	serviceId := utils.CreateServiceUnitName(serviceName)
-
-	metaData := make(map[string]string)
-	metaData["mk1"] = "hello"
-	discover.RegisterService(discoverUrls, serviceName, serviceId, metaData)
-
+	////register to etcd
+	clientNetwork := &networkHandler.ClientEventHandler{}
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.GATE_WAY)
+	if err != nil {
+		panic(err)
+		return
+	}
 	loopWG.Wait()
 }

@@ -139,19 +139,3 @@ func (context *ChannelContextWin) Close() error {
 	context.handlerProcess.OnClosed(context, nil)
 	return context.conn.Close()
 }
-
-//func (context *ChannelContextWin) Send(msgId int32, msg protoGen.Message) {
-//	marshal, err := protoGen.Marshal(msg)
-//	if err != nil {
-//		log.Error(err)
-//		return
-//	}
-//	body := make([]byte, len(marshal)+8)
-//	writeBuffer := bytes.NewBuffer(body)
-//	writeBuffer.Reset()
-//	binary.Write(writeBuffer, binary.BigEndian, msgId)
-//	binary.Write(writeBuffer, binary.BigEndian, int32(len(marshal)))
-//	binary.Write(writeBuffer, binary.BigEndian, marshal)
-//	context.AsyncWrite(writeBuffer.Bytes())
-//
-//}

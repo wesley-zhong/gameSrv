@@ -75,24 +75,6 @@ func (ts tcpServer) Tick() (delay time.Duration, action gnet.Action) {
 
 var gEventHandler EventHandler
 
-func ServerStart(port int32, eventHandler EventHandler) {
-	p := goroutine.Default()
-	defer p.Release()
-
-	gEventHandler = eventHandler
-
-	ts := &tcpServer{pool: p}
-	err := gnet.Serve(ts, "tcp://:"+strconv.Itoa(int(port)),
-		gnet.WithMulticore(true),
-		gnet.WithReusePort(true),
-		gnet.WithTCPNoDelay(0),
-		gnet.WithTicker(true),
-		gnet.WithCodec(NewLengthFieldBasedFrameCodecEx()))
-	if err != nil {
-		log.Error(err)
-	}
-}
-
 func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec gnet.ICodec) {
 	p := goroutine.Default()
 	defer p.Release()

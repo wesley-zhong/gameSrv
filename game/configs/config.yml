@@ -1,7 +1,6 @@
 port: 9102
 service:
   name: game.V1
-worldServerAddr: 127.0.0.1:9103
 mongo:
   addr: localhost
   userName: admin

@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/network"
 	"gameSrv/world/controller"
 	"gameSrv/world/networkHandler"
+	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
 	"sync"
 )
@@ -32,18 +34,18 @@ func main() {
 	}
 
 	// no need to connect other server  so do not need init
-	//clientNetwork := networkHandler.ClientEventHandler{}
-	//network.ClientStart(&clientNetwork,
-	//	gnet.WithMulticore(true),
-	//	gnet.WithReusePort(true),
-	//	gnet.WithTCPNoDelay(0))
+	clientNetwork := networkHandler.ClientEventHandler{}
+	network.ClientStart(&clientNetwork,
+		gnet.WithMulticore(true),
+		gnet.WithReusePort(true),
+		gnet.WithTCPNoDelay(0))
 
 	controller.Init()
 
 	handler := &networkHandler.ServerEventHandler{}
 	go network.ServerStartWithDeCode(viper.GetInt32("port"), handler, network.NewInnerLengthFieldBasedFrameCodecEx())
 
-	err = discover.InitDiscoverAndRegister(viper.GetViper())
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), handler, client.WORLD)
 	if err != nil {
 		loopWG.Done()
 		panic(err)

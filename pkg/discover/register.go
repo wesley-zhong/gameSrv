@@ -2,6 +2,8 @@ package discover
 
 import (
 	"context"
+	"fmt"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
 	clientv3 "go.etcd.io/etcd/client/v3"
@@ -21,10 +23,11 @@ type ServiceRegister struct {
 	serviceName   string //value
 	MetaData      map[string]string
 	localAddr     string
+	serverType    client.GameServerType
 }
 
 // NewServiceRegister create new service
-func NewServiceRegister(endpoints []string, key, val string, lease int64, metaData map[string]string) (*ServiceRegister, error) {
+func NewServiceRegister(endpoints []string, key, val string, port int32, severType client.GameServerType, lease int64, metaData map[string]string) (*ServiceRegister, error) {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   endpoints,
 		DialTimeout: 5 * time.Second,
@@ -44,7 +47,8 @@ func NewServiceRegister(endpoints []string, key, val string, lease int64, metaDa
 		serviceId:   key,
 		serviceName: val,
 		MetaData:    metaData,
-		localAddr:   strIp,
+		localAddr:   fmt.Sprintf(strIp+":%d", port),
+		serverType:  severType,
 	}
 
 	if err := serv.putKeyWithLease(lease); err != nil {
@@ -67,6 +71,7 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 		RegisterTime: time.Now().UnixMilli(),
 		Addr:         s.localAddr,
 		MetaData:     s.MetaData,
+		Type:         s.serverType,
 	}
 
 	_, err = s.cli.Put(context.Background(), node.getKey(), node.getValue(), clientv3.WithLease(resp.ID))
@@ -125,8 +130,8 @@ func (s *ServiceRegister) Close() error {
 	return s.cli.Close()
 }
 
-func RegisterService(endpoints []string, serviceName string, serviceId string, metaData map[string]string) error {
-	service, err := NewServiceRegister(endpoints, serviceId, serviceName, 5, metaData)
+func RegisterService(endpoints []string, serviceName string, serviceId string, port int32, serveType client.GameServerType, metaData map[string]string) error {
+	service, err := NewServiceRegister(endpoints, serviceId, serviceName, port, serveType, 5, metaData)
 	ServiceRegisterInstance = service
 	if err != nil {
 		log.Error(err)
