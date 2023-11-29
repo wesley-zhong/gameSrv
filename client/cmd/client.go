@@ -10,7 +10,7 @@ import (
 	"sync"
 )
 
-func main1() {
+func main() {
 	wait := sync.WaitGroup{}
 	wait.Add(1)
 	defer func() {
