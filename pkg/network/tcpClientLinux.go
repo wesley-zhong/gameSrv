@@ -92,6 +92,10 @@ func ClientStop() {
 
 }
 
+func ClientInited() bool {
+	return gClient != nil
+}
+
 func Dial(network, address string) (ChannelContext, error) {
 	return gClient.Dial(network, address)
 }

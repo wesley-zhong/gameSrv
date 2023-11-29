@@ -28,7 +28,6 @@ func ClientStart(handler EventHandler, options ...gnet.Option) error {
 }
 func ClientInited() bool {
 	return handlerProcess != nil
-
 }
 
 func Dial(network, address string) (ChannelContext, error) {
