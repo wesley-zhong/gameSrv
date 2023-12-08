@@ -100,7 +100,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx network.Channe
 		}
 
 		log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-		core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
+		core.CallMethod1(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 		return nil, 0
 	}
 	// server send player msg
