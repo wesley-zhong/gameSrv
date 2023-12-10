@@ -22,9 +22,9 @@ func Init() {
 	core.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceTestResFromWorld)
 
 	//
-	core.RegisterMethods[protoGen.InnerServerHandShake](int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), handShake1)
+	//core.RegisterMethods[protoGen.InnerServerHandShake](int32(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), handShake1)
 
-	//add  msg  to game server to add me
+	//add  msg  to game server
 }
 
 var RoleOlineMgr = role.NewRoleMgr()

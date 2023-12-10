@@ -8,6 +8,7 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/network"
 	"github.com/spf13/viper"
+	"runtime/debug"
 	"sync"
 )
 
@@ -16,7 +17,8 @@ func main() {
 	loopWG.Add(1)
 	defer func() {
 		if x := recover(); x != nil {
-			fmt.Printf("run time panic: %v", x)
+			s := string(debug.Stack())
+			fmt.Printf("err=%v, stack=%s", x, s)
 			loopWG.Add(-1)
 		}
 	}()

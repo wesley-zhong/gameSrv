@@ -25,7 +25,6 @@ type protoMethod[T1 any] struct {
 
 type protoMethod1[T1 any, T2 any] struct {
 	param     *T2
-	methodFuc MsgIdFuc[T1, *T2]
 	methodCmm func(channelContext network.ChannelContext, body []byte)
 }
 
@@ -47,20 +46,6 @@ func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.Chann
 	}
 	msgIdContextMap[msgId] = method
 
-}
-
-func RegisterMethods[T any](msgId int32, fuc MsgIdFuc[network.ChannelContext, *T]) {
-	method := &protoMethod1[network.ChannelContext, T]{
-		methodFuc: fuc,
-		methodCmm: func(channelContext network.ChannelContext, body []byte) {
-			var pars *T = new(T)
-			msg := (*proto.Message)(unsafe.Pointer(pars))
-			proto.Unmarshal(body, *msg)
-			fuc(channelContext, pars)
-		},
-	}
-	msgIdMap[msgId] = unsafe.Pointer(method)
-	log.Infof("----- value = %s", method)
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
@@ -101,21 +86,21 @@ func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 	method.execute(ctx, body)
 }
 
-func CallMethod1(msgId int32, body []byte, ctx network.ChannelContext) {
-	defer func() {
-		if r := recover(); r != nil {
-			s := string(debug.Stack())
-			log.Infof("err=%v, stack=%s", r, s)
-		}
-	}()
-	methodPtr := msgIdMap[msgId]
-	if methodPtr == nil {
-		log.Infof("CallMethod  msgId = %d not found method", msgId)
-		return
-	}
-
-	method1 := (*protoMethod1[interface{}, interface{}])(methodPtr)
-	method1.methodCmm(ctx, body)
-
-	log.Infof(" value = %s")
-}
+//func CallMethod1(msgId int32, body []byte, ctx network.ChannelContext) {
+//	defer func() {
+//		if r := recover(); r != nil {
+//			s := string(debug.Stack())
+//			log.Infof("err=%v, stack=%s", r, s)
+//		}
+//	}()
+//	methodPtr := msgIdMap[msgId]
+//	if methodPtr == nil {
+//		log.Infof("CallMethod  msgId = %d not found method", msgId)
+//		return
+//	}
+//
+//	method1 := (*protoMethod1[interface{}, interface{}])(methodPtr)
+//	method1.methodCmm(ctx, body)
+//
+//	log.Infof(" value = %s")
+//}

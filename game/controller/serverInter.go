@@ -20,7 +20,7 @@ func handShake(ctx network.ChannelContext, request proto.Message) {
 		validInnerClient.Sid, validInnerClient.ServerId, fromServerType, validInnerClient.Ctx.RemoteAddr())
 }
 
-func handShake1(ctx network.ChannelContext, request *protoGen.InnerServerHandShake) {
+func handShake1(ctx network.ChannelContext, request **protoGen.InnerServerHandShake) {
 	log.Infof("hjahah")
 
 }
