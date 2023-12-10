@@ -1,4 +1,4 @@
-package network
+package tcp
 
 import (
 	"github.com/panjf2000/gnet"

@@ -1,6 +1,6 @@
 //go:build darwin || linux
 
-package network
+package tcp
 
 import (
 	"time"

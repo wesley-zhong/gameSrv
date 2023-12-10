@@ -4,7 +4,7 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 	"github.com/spf13/viper"
 	"google.golang.org/protobuf/proto"
@@ -21,19 +21,19 @@ func Init() {
 	go startConnection(startClientCount)
 }
 
-func hearBeatResponse(ctx network.ChannelContext, request proto.Message) {
+func hearBeatResponse(ctx tcp.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	response := request.(*protoGen.HeartBeatResponse)
 	//kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("pid =%d heat beat response = %d  ", context.Sid, response.ServerTime)
 }
 
-func performanceRes(ctx network.ChannelContext, res proto.Message) {
+func performanceRes(ctx tcp.ChannelContext, res proto.Message) {
 	performanceRes := res.(*protoGen.PerformanceTestRes)
 	log.Infof("------response id =%d", performanceRes.SomeIdAdd)
 }
 
-func loginResponse(ctx network.ChannelContext, msg proto.Message) {
+func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.LoginResponse)
 	log.Infof("------login response roleId=%d", res.RoleId)
 

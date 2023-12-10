@@ -3,7 +3,7 @@ package core
 import (
 	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"google.golang.org/protobuf/proto"
 	"runtime/debug"
 	"unsafe"
@@ -11,7 +11,7 @@ import (
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdContextMap = make(map[int32]*protoMethod[network.ChannelContext])
+var msgIdContextMap = make(map[int32]*protoMethod[tcp.ChannelContext])
 var msgIdRoleIdMap = make(map[int32]*protoMethod[int64])
 
 var msgIdMap = make(map[int32]unsafe.Pointer)
@@ -21,11 +21,6 @@ var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
 type protoMethod[T1 any] struct {
 	methodFuc MsgIdFuc[T1, proto.Message]
 	param     proto.Message
-}
-
-type protoMethod1[T1 any, T2 any] struct {
-	param     *T2
-	methodCmm func(channelContext network.ChannelContext, body []byte)
 }
 
 func (method *protoMethod[T1]) execute(any T1, body []byte) {
@@ -39,8 +34,8 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	})
 }
 
-func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[network.ChannelContext, proto.Message]) {
-	method := &protoMethod[network.ChannelContext]{
+func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[tcp.ChannelContext, proto.Message]) {
+	method := &protoMethod[tcp.ChannelContext]{
 		methodFuc: fuc,
 		param:     param,
 	}
@@ -71,7 +66,7 @@ func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte) {
 	method.execute(roleId, body)
 }
 
-func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
+func CallMethod(msgId int32, body []byte, ctx tcp.ChannelContext) {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
@@ -85,22 +80,3 @@ func CallMethod(msgId int32, body []byte, ctx network.ChannelContext) {
 	}
 	method.execute(ctx, body)
 }
-
-//func CallMethod1(msgId int32, body []byte, ctx network.ChannelContext) {
-//	defer func() {
-//		if r := recover(); r != nil {
-//			s := string(debug.Stack())
-//			log.Infof("err=%v, stack=%s", r, s)
-//		}
-//	}()
-//	methodPtr := msgIdMap[msgId]
-//	if methodPtr == nil {
-//		log.Infof("CallMethod  msgId = %d not found method", msgId)
-//		return
-//	}
-//
-//	method1 := (*protoMethod1[interface{}, interface{}])(methodPtr)
-//	method1.methodCmm(ctx, body)
-//
-//	log.Infof(" value = %s")
-//}

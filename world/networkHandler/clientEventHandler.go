@@ -6,7 +6,7 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	msg "gameSrv/protoGen"
 	"time"
 
@@ -16,7 +16,7 @@ import (
 type ClientEventHandler struct {
 }
 
-func (clientNetwork *ClientEventHandler) OnOpened(c network.ChannelContext) (out []byte, action int) {
+func (clientNetwork *ClientEventHandler) OnOpened(c tcp.ChannelContext) (out []byte, action int) {
 	context := client.NewClientContext(c)
 	log.Infof("----------inner  client opened  addr=%s, id=%d", context.Ctx.RemoteAddr(), context.Sid)
 	return nil, 0
@@ -24,7 +24,7 @@ func (clientNetwork *ClientEventHandler) OnOpened(c network.ChannelContext) (out
 
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
-func (clientNetwork *ClientEventHandler) OnClosed(c network.ChannelContext, err error) (action int) {
+func (clientNetwork *ClientEventHandler) OnClosed(c tcp.ChannelContext, err error) (action int) {
 	context := c.Context().(*client.ConnInnerClientContext)
 	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context)
 	return 1
@@ -33,12 +33,12 @@ func (clientNetwork *ClientEventHandler) OnClosed(c network.ChannelContext, err 
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
-func (clientNetwork *ClientEventHandler) PreWrite(c network.ChannelContext) {
+func (clientNetwork *ClientEventHandler) PreWrite(c tcp.ChannelContext) {
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
 // you put the []byte returned from React() back to your memory pool.
-func (clientNetwork *ClientEventHandler) AfterWrite(c network.ChannelContext, b []byte) {
+func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.ChannelContext, b []byte) {
 
 }
 
@@ -50,7 +50,7 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c network.ChannelContext, b 
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (clientNetwork *ClientEventHandler) React(packet []byte, ctx network.ChannelContext) (out []byte, action int) {
+func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelContext) (out []byte, action int) {
 	log.Infof("  client React receive addr =%s", ctx.RemoteAddr())
 	var innerHeaderLen int32
 	bytebuffer := bytes.NewBuffer(packet)

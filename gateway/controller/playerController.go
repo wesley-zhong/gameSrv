@@ -4,13 +4,13 @@ import (
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 	"time"
 )
 
-func login(ctx network.ChannelContext, request proto.Message) {
+func login(ctx tcp.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	roleId := loginRequest.RoleId
@@ -32,7 +32,7 @@ func login(ctx network.ChannelContext, request proto.Message) {
 	client.GetInnerClient(client.GAME).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 
-func heartBeat(ctx network.ChannelContext, request proto.Message) {
+func heartBeat(ctx tcp.ChannelContext, request proto.Message) {
 	player := ctx.Context().(*player.Player)
 	heartBeat := request.(*protoGen.HeartBeatRequest)
 	log.Infof(" context= %d  heartbeat time = %d", player.Context.Sid, heartBeat.ClientTime)
@@ -44,7 +44,7 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 }
 
-func ClientDisConnect(ctx network.ChannelContext) {
+func ClientDisConnect(ctx tcp.ChannelContext) {
 	disConnPlayer := ctx.Context().(*player.Player)
 	//check right?
 	if disConnPlayer.Context.Ctx != ctx {

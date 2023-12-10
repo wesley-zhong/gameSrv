@@ -6,7 +6,7 @@ import (
 	"errors"
 	"gameSrv/pkg/common"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 	"sync/atomic"
 	"time"
@@ -32,13 +32,13 @@ const (
 var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 
 func InnerClientConnect(serverType GameServerType, addr string, myServerType GameServerType) *ConnInnerClientContext {
-	if !network.ClientInited() {
+	if !tcp.ClientInited() {
 		log.Error(errors.New(" XXXXXXXX  net work client not init ，pleaser init first！"))
 		return nil
 	}
 
 connect:
-	context, err := network.Dial("tcp", addr)
+	context, err := tcp.Dial("tcp", addr)
 	if err != nil {
 		log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
 		time.Sleep(3 * time.Second)
@@ -77,12 +77,12 @@ func GetInnerClient(clientType GameServerType) *ConnInnerClientContext {
 }
 
 type ConnInnerClientContext struct {
-	Ctx      network.ChannelContext
+	Ctx      tcp.ChannelContext
 	Sid      int64
 	ServerId int64 //this client from which server
 }
 
-func NewInnerClientContext(context network.ChannelContext) *ConnInnerClientContext {
+func NewInnerClientContext(context tcp.ChannelContext) *ConnInnerClientContext {
 	c := &ConnInnerClientContext{Ctx: context, Sid: genSid()}
 	context.SetContext(c)
 	return c
@@ -153,17 +153,17 @@ func (client *ConnInnerClientContext) SendInnerMsg(protoCode int32, roleId int64
 
 // ConnClientContext ====================================================================================
 type ConnClientContext struct {
-	Ctx network.ChannelContext
+	Ctx tcp.ChannelContext
 	Sid int64
 }
 
 // NewClientContext - ------ user client -------------------
-func NewClientContext(context network.ChannelContext) *ConnClientContext {
+func NewClientContext(context tcp.ChannelContext) *ConnClientContext {
 	return &ConnClientContext{Ctx: context, Sid: genSid()}
 }
 
 func ClientConnect(addr string) *ConnClientContext {
-	context, err := network.Dial("tcp", addr)
+	context, err := tcp.Dial("tcp", addr)
 	if err != nil {
 		log.Error(err)
 		return nil

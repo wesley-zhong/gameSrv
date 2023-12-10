@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/world/controller"
 	"gameSrv/world/networkHandler"
 	"github.com/spf13/viper"
@@ -38,7 +38,7 @@ func main() {
 	controller.Init()
 
 	handler := &networkHandler.ServerEventHandler{}
-	go network.ServerStartWithDeCode(viper.GetInt32("port"), handler, network.NewInnerLengthFieldBasedFrameCodecEx())
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, tcp.NewInnerLengthFieldBasedFrameCodecEx())
 
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.WORLD)
 	if err != nil {

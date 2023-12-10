@@ -4,13 +4,13 @@ import (
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 	"time"
 )
 
-func handShake(ctx network.ChannelContext, request proto.Message) {
+func handShake(ctx tcp.ChannelContext, request proto.Message) {
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	handShake := request.(*protoGen.InnerServerHandShake)
 	validInnerClient.ServerId = handShake.FromServerId
@@ -20,12 +20,12 @@ func handShake(ctx network.ChannelContext, request proto.Message) {
 		validInnerClient.Sid, validInnerClient.ServerId, fromServerType, validInnerClient.Ctx.RemoteAddr())
 }
 
-func handShake1(ctx network.ChannelContext, request **protoGen.InnerServerHandShake) {
+func handShake1(ctx tcp.ChannelContext, request **protoGen.InnerServerHandShake) {
 	log.Infof("hjahah")
 
 }
 
-func heartBeat(ctx network.ChannelContext, request proto.Message) {
+func heartBeat(ctx tcp.ChannelContext, request proto.Message) {
 	player := ctx.Context().(*player.Player)
 	//context := ctx.Context().(*client.ConnClientContext)
 	heartBeat := request.(*protoGen.HeartBeatRequest)
@@ -40,7 +40,7 @@ func heartBeat(ctx network.ChannelContext, request proto.Message) {
 	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
 }
 
-func heartBeatResponse(ctx network.ChannelContext, request proto.Message) {
+func heartBeatResponse(ctx tcp.ChannelContext, request proto.Message) {
 	//context := ctx.Context().(*client.ConnInnerClientContext)
 	//log.Infof("==== receive sid=%d  addr %s ", context.Sid, ctx.RemoteAddr())
 }

@@ -6,7 +6,7 @@ import (
 	"gameSrv/gateway/networkHandler"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
@@ -39,7 +39,7 @@ func main() {
 	//package receive handler
 	handler := &networkHandler.ServerEventHandler{}
 	//start server
-	go network.ServerStartWithDeCode(viper.GetInt32("port"), handler, network.NewLengthFieldBasedFrameCodecEx())
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, tcp.NewLengthFieldBasedFrameCodecEx())
 
 	////register to etcd
 	clientNetwork := &networkHandler.ClientEventHandler{}

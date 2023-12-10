@@ -3,12 +3,12 @@ package controller
 import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 )
 
-func performanceTest(ctx network.ChannelContext, req proto.Message) {
+func performanceTest(ctx tcp.ChannelContext, req proto.Message) {
 	testReq := req.(*protoGen.PerformanceTestReq)
 	res := &protoGen.PerformanceTestRes{
 		SomeId:    testReq.SomeId,

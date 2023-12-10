@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gameSrv/client/controller"
 	"gameSrv/client/networkHandler"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
 	"sync"
@@ -31,12 +31,12 @@ func main() {
 	}
 
 	clientNetwork := networkHandler.ClientNetwork{}
-	network.ClientStart(&clientNetwork,
+	tcp.ClientStart(&clientNetwork,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
-		gnet.WithCodec(network.NewLengthFieldBasedFrameCodecEx()))
+		gnet.WithCodec(tcp.NewLengthFieldBasedFrameCodecEx()))
 
 	controller.Init()
 	wait.Wait()

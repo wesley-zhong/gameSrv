@@ -3,13 +3,13 @@ package discover
 import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/global"
-	"gameSrv/pkg/network"
+	"gameSrv/pkg/tcp"
 	"gameSrv/pkg/utils"
 	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
 )
 
-func InitDiscoverAndRegister(v *viper.Viper, handler network.EventHandler, selfType client.GameServerType) error {
+func InitDiscoverAndRegister(v *viper.Viper, handler tcp.EventHandler, selfType client.GameServerType) error {
 	global.SelfServerType = selfType
 	//discover from etcd
 	discoverUrls := v.GetStringSlice("discover.url")
@@ -33,13 +33,13 @@ func InitDiscoverAndRegister(v *viper.Viper, handler network.EventHandler, selfT
 	return nil
 }
 
-func InitClient(handler network.EventHandler) {
-	network.ClientStart(handler,
+func InitClient(handler tcp.EventHandler) {
+	tcp.ClientStart(handler,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
-		gnet.WithCodec(network.NewInnerLengthFieldBasedFrameCodecEx()))
+		gnet.WithCodec(tcp.NewInnerLengthFieldBasedFrameCodecEx()))
 }
 
 func connectNode(node *Node) {
