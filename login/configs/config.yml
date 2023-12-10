@@ -1,0 +1,10 @@
+port: 8102
+service:
+  name: login.V1
+mongo:
+  addr: localhost
+  userName: admin
+  password: admin
+discover:
+  url: [localhost:2379]
+  watchServ: [gateway, game]

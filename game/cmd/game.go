@@ -61,5 +61,10 @@ func main() {
 		panic(err)
 		return
 	}
+	// start http server
+
+	//httpServer := web.NewHttpServer()
+	//httpServer.HttpMethod.RegisterController()
+
 	loopWG.Wait()
 }

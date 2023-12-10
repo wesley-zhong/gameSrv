@@ -27,6 +27,7 @@ const (
 	GATE_WAY GameServerType = 1
 	GAME     GameServerType = 2
 	WORLD    GameServerType = 3
+	LOGIN    GameServerType = 4
 )
 
 var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
