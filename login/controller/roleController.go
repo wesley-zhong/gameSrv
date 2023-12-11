@@ -1,6 +1,6 @@
 package controller
 
-type RoleController struct {
+type Role struct {
 }
 
 type RoleDetailReq struct {
@@ -12,7 +12,7 @@ type RoleDetailRes struct {
 	Name   string
 }
 
-func (roleController *RoleController) GetRoleDetail(req *RoleDetailReq) *RoleDetailRes {
+func (roleController *Role) GetRoleDetail(req *RoleDetailReq) *RoleDetailRes {
 
 	return &RoleDetailRes{
 		RoleId: 111111,

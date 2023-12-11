@@ -6,9 +6,9 @@ import (
 )
 
 func Init(methodInterface web.HttpMethodInterface) {
-	login := new(LoginController)
+	login := new(Login)
 	methodInterface.RegisterController(login)
-	role := new(RoleController)
+	role := new(Role)
 	methodInterface.RegisterController(role)
 
 }
