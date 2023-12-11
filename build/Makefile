@@ -6,6 +6,7 @@ GOGET=$(GOCMD) get
 BIN_WORLD=world
 BIN_GAME=game
 BIN_GATE_WAY=gateway
+BIN_LOGIN=login
 BIN_CLIENT=client
 all: clean  build
 restart: stop run
@@ -24,6 +25,10 @@ build:
 	$(GOBUILD) -o $(BIN_GATE_WAY)/$(BIN_GATE_WAY) ../gateway/cmd/gateway.go
 	cp -r ../gateway/configs ./$(BIN_GATE_WAY)
 	cp ../gateway/Dockerfile  ./$(BIN_GATE_WAY)/
+	$(GOBUILD) -o $(BIN_LOGIN)/$(BIN_LOGIN) ../login/cmd/login.go
+	cp -r ../login/configs ./$(BIN_LOGIN)
+	cp ../login/Dockerfile  ./$(BIN_LOGIN)/
+
 	$(GOBUILD) -o $(BIN_CLIENT)/$(BIN_CLIENT) ../client/cmd/client.go
 	cp -r ../client/configs ./$(BIN_CLIENT)
 clean:
@@ -58,6 +63,7 @@ docker_build:
 	cd gateway; docker build --tag docker-gateway .
 	cd game; docker build --tag docker-game .
 	cd world; docker build --tag docker-world .
+	cd login; docker build --tag docker-login .
 docker_run:
 	docker run -d -p 9101:9101 --name gateway  docker-gateway
 	docker run -d -p 9102:9102 --name game  docker-game

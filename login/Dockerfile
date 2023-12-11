@@ -12,7 +12,6 @@ WORKDIR /app
 COPY   login ./
 COPY  configs/*  ./configs/
 
-00
 # Build
 #RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gsw
 
