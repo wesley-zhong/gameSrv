@@ -89,6 +89,6 @@ func (webApp *Webapp) WebAppStart(port int32) {
 		c.JSON(200, ret[0].Elem().Interface())
 	})
 	addr := fmt.Sprintf("0.0.0.0:%d", port)
-	log.Infof("start webserver:", addr)
+	log.Infof("start webserver %s:", addr)
 	r.Run(addr)
 }

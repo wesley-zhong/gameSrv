@@ -12,7 +12,7 @@ type RoleDetailRes struct {
 	Name   string
 }
 
-func (roleController *RoleController) getRoleDetail(req *RoleDetailReq) *RoleDetailRes {
+func (roleController *RoleController) GetRoleDetail(req *RoleDetailReq) *RoleDetailRes {
 
 	return &RoleDetailRes{
 		RoleId: 111111,
