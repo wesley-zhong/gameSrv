@@ -3,7 +3,7 @@ package orm
 import (
 	"context"
 	"encoding/json"
-	redis "github.com/redis/go-redis/v9"
+	"github.com/redis/go-redis/v9"
 )
 
 type RedisDAOInterface[T any] struct {

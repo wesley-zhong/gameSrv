@@ -6,7 +6,7 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
-	protoGen "gameSrv/protoGen"
+	"gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"

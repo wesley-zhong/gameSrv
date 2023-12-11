@@ -171,7 +171,7 @@ func (qt *Quadtree[T]) getIndex(pRect Bounds) int {
 	topQuadrant := (pRect.Y < horizontalMidpoint) && (pRect.Y+pRect.Height < horizontalMidpoint)
 
 	//pRect can completely fit within the bottom quadrants
-	bottomQuadrant := (pRect.Y > horizontalMidpoint)
+	bottomQuadrant := pRect.Y > horizontalMidpoint
 
 	//pRect can completely fit within the left quadrants
 	if (pRect.X < verticalMidpoint) && (pRect.X+pRect.Width < verticalMidpoint) {
