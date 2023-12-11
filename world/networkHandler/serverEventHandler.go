@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -94,22 +93,22 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 	//servers internal  system call
 	if innerHeader.Id == 0 {
 		if bodyLen == 0 {
-			core.CallMethod(innerHeader.ProtoCode, nil, ctx)
+			tcp.CallMethod(innerHeader.ProtoCode, nil, ctx)
 			return nil, 0
 		}
 
 		log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-		core.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
+		tcp.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
 		return nil, 0
 	}
 	// server send player msg
 	if bodyLen == 0 {
 		//core.CallMethod(innerHeader.ProtoCode, nil, ctx)
-		core.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, nil)
+		tcp.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, nil)
 		return nil, 0
 	}
 	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-	core.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, packet[headerSize+4:])
+	tcp.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, packet[headerSize+4:])
 	return nil, 0
 }
 

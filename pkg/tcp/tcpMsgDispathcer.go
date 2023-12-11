@@ -1,9 +1,8 @@
-package core
+package tcp
 
 import (
 	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/tcp"
 	"google.golang.org/protobuf/proto"
 	"runtime/debug"
 	"unsafe"
@@ -11,7 +10,7 @@ import (
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdContextMap = make(map[int32]*protoMethod[tcp.ChannelContext])
+var msgIdContextMap = make(map[int32]*protoMethod[ChannelContext])
 var msgIdRoleIdMap = make(map[int32]*protoMethod[int64])
 
 var msgIdMap = make(map[int32]unsafe.Pointer)
@@ -34,8 +33,8 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	})
 }
 
-func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[tcp.ChannelContext, proto.Message]) {
-	method := &protoMethod[tcp.ChannelContext]{
+func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[ChannelContext, proto.Message]) {
+	method := &protoMethod[ChannelContext]{
 		methodFuc: fuc,
 		param:     param,
 	}
@@ -66,7 +65,7 @@ func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte) {
 	method.execute(roleId, body)
 }
 
-func CallMethod(msgId int32, body []byte, ctx tcp.ChannelContext) {
+func CallMethod(msgId int32, body []byte, ctx ChannelContext) {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())

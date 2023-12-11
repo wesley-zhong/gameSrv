@@ -1,4 +1,4 @@
-package core
+package web
 
 import (
 	"gameSrv/pkg/log"

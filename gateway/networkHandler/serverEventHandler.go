@@ -6,7 +6,6 @@ import (
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -74,11 +73,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 
 	bodyLen := bytebuffer.Len()
 	if bodyLen == 0 {
-		core.CallMethod(msgId, nil, ctx)
+		tcp.CallMethod(msgId, nil, ctx)
 		return nil, 0
 	}
 	log.Infof("------#########receive msgId = %d length =%d", msgId, bodyLen)
-	core.CallMethod(msgId, packet[8:], ctx)
+	tcp.CallMethod(msgId, packet[8:], ctx)
 	return nil, 0
 }
 

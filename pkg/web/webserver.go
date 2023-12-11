@@ -2,7 +2,6 @@ package web
 
 import (
 	"fmt"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"net/http"
 	"reflect"
@@ -15,21 +14,22 @@ import (
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 type Webapp struct {
-	HttpMethod *core.HttpMethodWrap
+	HttpMethod *HttpMethodWrap
 }
 
 func NewHttpServer() *Webapp {
-	httpMethodController := &core.HttpMethodWrap{}
+	httpMethodController := &HttpMethodWrap{}
 	httpMethodController.HttpInit()
 	return &Webapp{HttpMethod: httpMethodController}
 }
 
 func (webApp *Webapp) WebAppStart(port int32) {
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.SetTrustedProxies([]string{"127.0.0.0"})
 	r.POST("/", func(c *gin.Context) {
 		//inner rpc
-		var rpcReq core.RpcReq
+		var rpcReq RpcReq
 		if err := c.ShouldBind(&rpcReq); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
@@ -89,6 +89,6 @@ func (webApp *Webapp) WebAppStart(port int32) {
 		c.JSON(200, ret[0].Elem().Interface())
 	})
 	addr := fmt.Sprintf("0.0.0.0:%d", port)
-	log.Infof("start webserver %s:", addr)
+	log.Infof(" ####  start http server on %d", port)
 	r.Run(addr)
 }

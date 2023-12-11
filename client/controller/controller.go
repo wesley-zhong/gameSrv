@@ -2,7 +2,6 @@ package controller
 
 import (
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -13,9 +12,9 @@ import (
 var playerConn = make(map[int64]*client.ConnClientContext)
 
 func Init() {
-	core.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
-	core.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
-	core.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
+	tcp.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
+	tcp.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
+	tcp.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
 
 	startClientCount := viper.GetInt("client.count")
 	go startConnection(startClientCount)

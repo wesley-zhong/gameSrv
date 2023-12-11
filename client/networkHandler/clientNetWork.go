@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/binary"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/core"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"time"
@@ -55,7 +54,7 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c tcp.ChannelContext) (
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 
-	core.CallMethod(msgId, packet[8:], c)
+	tcp.CallMethod(msgId, packet[8:], c)
 	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive  protoCode =%d", msgId)
 	return nil, 0
 }

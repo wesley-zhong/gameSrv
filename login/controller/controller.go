@@ -2,10 +2,10 @@ package controller
 
 import (
 	"gameSrv/game/role"
-	"gameSrv/pkg/core"
+	"gameSrv/pkg/web"
 )
 
-func Init(methodInterface core.HttpMethodInterface) {
+func Init(methodInterface web.HttpMethodInterface) {
 	login := new(LoginController)
 	methodInterface.RegisterController(login)
 	role := new(RoleController)
