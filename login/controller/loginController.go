@@ -18,7 +18,7 @@ type LoginRes struct {
 }
 
 func (login *Login) Login(loginDto *LoginReq) *LoginRes {
-	account := service.FindPlayerAccount(loginDto.AccountId)
+	account := service.PlayerService.FindPlayerAccount(loginDto.AccountId)
 	if account == nil {
 		log.Warnf(" countId = %s not found", loginDto.AccountId)
 		return nil

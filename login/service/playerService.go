@@ -6,7 +6,12 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func FindPlayerAccount(account string) *module.AccountDO {
+var PlayerService = new(PlayerServiceImpl)
+
+type PlayerServiceImpl struct {
+}
+
+func (playerService *PlayerServiceImpl) FindPlayerAccount(account string) *module.AccountDO {
 	result := dal.AccountDAO.FindOne(bson.D{{"account", account}})
 	if result == nil {
 		return nil
@@ -14,7 +19,7 @@ func FindPlayerAccount(account string) *module.AccountDO {
 	return result.(*module.AccountDO)
 }
 
-func CreatePlayerAccount(account string) *module.AccountDO {
+func (playerService *PlayerServiceImpl) CreatePlayerAccount(account string) *module.AccountDO {
 	playerAccount := &module.AccountDO{
 		Id:      11,
 		Account: account,
@@ -23,15 +28,15 @@ func CreatePlayerAccount(account string) *module.AccountDO {
 	return nil
 }
 
-func AccountLogin(account string) *module.AccountDO {
-	player := FindPlayerAccount(account)
+func (playerService *PlayerServiceImpl) AccountLogin(account string) *module.AccountDO {
+	player := playerService.FindPlayerAccount(account)
 	if player == nil {
-		player = CreatePlayerAccount(account)
+		player = playerService.CreatePlayerAccount(account)
 	}
 	return player
 }
 
-func UpdateAccount(do *module.AccountDO) {
+func (playerService *PlayerServiceImpl) UpdateAccount(do *module.AccountDO) {
 	if do == nil {
 		return
 	}
