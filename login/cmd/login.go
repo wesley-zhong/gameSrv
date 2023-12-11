@@ -43,8 +43,6 @@ func main() {
 	//account := service.AccountLogin("andy")
 	//service.UpdateAccount(account)
 
-	// msg Register
-
 	//start server
 	server := web.NewHttpServer()
 	controller.Init(server.HttpMethod)
