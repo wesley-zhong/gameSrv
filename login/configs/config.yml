@@ -7,4 +7,4 @@ mongo:
   password: admin
 discover:
   url: [localhost:2379]
-  watchServ: [gateway, game]
+  watchServ: [game]

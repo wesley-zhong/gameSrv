@@ -45,5 +45,4 @@ func InitClient(handler tcp.EventHandler) {
 func connectNode(node *Node) {
 	clientConnect := client.InnerClientConnect(node.Type, node.Addr, global.SelfServerType)
 	node.channelContext = clientConnect
-
 }

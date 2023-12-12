@@ -46,12 +46,12 @@ func main() {
 	//start server
 	server := web.NewHttpServer()
 	controller.Init(server.HttpMethod)
-	server.WebAppStart(viper.GetInt32("port"))
-
 	////register to etcd
 	clientNetwork := &networkHandler.ClientEventHandler{}
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.LOGIN)
 	if err != nil {
 		panic(err)
 	}
+
+	server.WebAppStart(viper.GetInt32("port"))
 }
