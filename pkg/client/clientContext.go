@@ -32,6 +32,15 @@ const (
 
 var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 
+func Connect(addr string) (tcp.ChannelContext, error) {
+	context, err := tcp.Dial("tcp", addr)
+	if err != nil {
+		log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
+		return nil, err
+	}
+	return context, nil
+}
+
 func InnerClientConnect(serverType GameServerType, addr string, myServerType GameServerType) *ConnInnerClientContext {
 	if !tcp.ClientInited() {
 		log.Error(errors.New(" XXXXXXXX  net work client not init ，pleaser init first！"))
@@ -39,7 +48,7 @@ func InnerClientConnect(serverType GameServerType, addr string, myServerType Gam
 	}
 
 connect:
-	context, err := tcp.Dial("tcp", addr)
+	context, err := Connect(addr)
 	if err != nil {
 		log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
 		time.Sleep(3 * time.Second)
