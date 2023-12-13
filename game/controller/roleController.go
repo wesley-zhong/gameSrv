@@ -10,7 +10,7 @@ import (
 
 func innerPlayerLogin(roleId int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
-	log.Infof(" innerPlayerLogin login pid = %d s = %d", loginRequest.RoleId, loginRequest.GetSid())
+	log.Infof("innerPlayerLogin login pid = %d sid = %d", loginRequest.RoleId, loginRequest.GetSid())
 
 	existRole := RoleOlineMgr.GetByRoleId(loginRequest.GetRoleId())
 	if existRole != nil {

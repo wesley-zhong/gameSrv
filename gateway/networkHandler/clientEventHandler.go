@@ -111,10 +111,10 @@ func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int
 	innerClient := client.GetInnerClient(client.GAME)
 	if innerClient == nil {
 		//	log.Infof("no found connect type =%d", client.GAME)
-		return 1000 * time.Millisecond, 0
+		return 5000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
 	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), 0, heartBeat)
 	//	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
-	return 1000 * time.Millisecond, 0
+	return 5000 * time.Millisecond, 0
 }

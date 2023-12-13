@@ -53,15 +53,14 @@ func (clientNetwork *ClientNetwork) React(packet []byte, c tcp.ChannelContext) (
 	var msgId int32
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive  protoCode =%d", msgId)
 
 	tcp.CallMethod(msgId, packet[8:], c)
-	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive  protoCode =%d", msgId)
 	return nil, 0
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientNetwork) Tick() (delay time.Duration, action int) {
-
 	return 1000 * time.Millisecond, 0
 }

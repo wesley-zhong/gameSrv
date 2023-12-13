@@ -87,6 +87,7 @@ func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int
 	if player.PlayerMgr.GetSize() == 0 {
 		return 5000 * time.Millisecond, 0
 	}
+	//sample to do something
 	player.PlayerMgr.Range(func(player *player.Player) {
 		response := &protoGen.HeartBeatResponse{
 			ClientTime: time.Now().UnixMilli(),

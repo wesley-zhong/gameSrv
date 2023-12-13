@@ -15,9 +15,6 @@ func Init() {
 	tcp.RegisterMethod(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
 	tcp.RegisterMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 	tcp.RegisterMethod(int32(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
-
-	startClientCount := viper.GetInt("client.count")
-	go startConnection(startClientCount)
 }
 
 func hearBeatResponse(ctx tcp.ChannelContext, request proto.Message) {
@@ -38,9 +35,8 @@ func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 
 }
 
-func startConnection(count int) {
+func StartConnection(count int) {
 	for i := 0; i < count; i++ {
-
 		//24.222.26.216:9101
 		serverAddr := viper.GetString("serverAddr")
 		log.Infof("client  connnet addr = %s", serverAddr)

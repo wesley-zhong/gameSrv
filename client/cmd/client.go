@@ -39,5 +39,7 @@ func main() {
 		gnet.WithCodec(tcp.NewLengthFieldBasedFrameCodecEx()))
 
 	controller.Init()
+	startClientCount := viper.GetInt("client.count")
+	go controller.StartConnection(startClientCount)
 	wait.Wait()
 }
