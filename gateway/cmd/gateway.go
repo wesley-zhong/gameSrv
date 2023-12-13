@@ -8,6 +8,8 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
 	"github.com/spf13/viper"
+	"net/http"
+	_ "net/http/pprof"
 	"runtime/debug"
 	"sync"
 )
@@ -21,6 +23,11 @@ func main() {
 			fmt.Printf("err=%v, stack=%s", x, s)
 			loopWG.Add(-1)
 		}
+	}()
+
+	//for performance
+	go func() {
+		http.ListenAndServe("localhost:6062", nil)
 	}()
 
 	viper.SetConfigName("config")                // 配置文件名，不需要后缀名
