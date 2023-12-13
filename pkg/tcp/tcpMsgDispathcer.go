@@ -24,9 +24,9 @@ type protoMethod[T1 any] struct {
 
 func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	param := method.param.ProtoReflect().New().Interface()
-	if body == nil {
-		method.methodFuc(any, nil)
-	}
+	//if body == nil {
+	//	method.methodFuc(any, nil)
+	//}
 	proto.Unmarshal(body, param)
 	msgGoPool.SubmitTask(func() {
 		method.methodFuc(any, param)
