@@ -63,7 +63,7 @@ func (cc *LengthFieldBasedFrameCodecEx) Decode(c gnet.Conn) ([]byte, error) {
 
 	lenBuf, frameLength, err := cc.getUnadjustedFrameLength(&in)
 	if err != nil {
-		if err == gerrors.ErrUnsupportedLength {
+		if errors.Is(err, gerrors.ErrUnsupportedLength) {
 			return nil, err
 		}
 		return nil, gerrors.ErrIncompletePacket

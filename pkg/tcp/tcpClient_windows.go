@@ -22,6 +22,7 @@ func ClientStart(handler EventHandler, options ...gnet.Option) error {
 	if handlerProcess != nil {
 		return nil
 	}
+
 	handlerProcess = handler
 	go timerTick(handler)
 	return nil

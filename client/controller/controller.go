@@ -32,7 +32,6 @@ func performanceRes(ctx tcp.ChannelContext, res proto.Message) {
 func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.LoginResponse)
 	log.Infof("------login response roleId=%d", res.RoleId)
-
 }
 
 func StartConnection(count int) {
@@ -54,25 +53,4 @@ func StartConnection(count int) {
 		}
 		client.SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
 	}
-
-	//req := &protoGen.PerformanceTestReq{
-	//	SomeId:   2,
-	//	SomeBody: "hello",
-	//}
-	//timer := time.NewTimer(3 * time.Second)
-
-	//go func() {
-	//	for i := 0; i < 10000; i++ {
-	//		for {
-	//			timer.Reset(100 * time.Millisecond)
-	//			select {
-	//			case <-timer.C:
-	//				for _, v := range playerConn {
-	//					v.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), req)
-	//				}
-	//			}
-	//		}
-	//	}
-	//}()
-
 }
