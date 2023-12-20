@@ -20,8 +20,9 @@ Open directly with Goland  or VsCode
 
 make run  //start the server
 
-//start client
 // client only run linux or mac os
+//start client
+
 cd build/client
 ./client  
 ```
