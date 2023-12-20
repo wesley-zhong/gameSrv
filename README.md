@@ -17,10 +17,11 @@ Open directly with Goland  or VsCode
 **Run And  Test**
 ---
 ```
-//only run linux or mac os
+
 make run  //start the server
 
 //start client
+// client only run linux or mac os
 cd build/client
 ./client  
 ```
