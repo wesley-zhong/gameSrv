@@ -10,9 +10,9 @@ git clone https://github.com/wesley-zhong/gameSrv.git
 cd gameSrv
 make  clean/build
 ```
-**GoLand**
+**Windows**
 
-Open directly
+Open directly with Goland  directly or VsCode
 
 **Run And  Test**
 ---
