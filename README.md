@@ -17,6 +17,7 @@ Open directly
 **Run And  Test**
 ---
 ```
+//only run linux or mac os
 make run  //start the server
 
 //start client
@@ -86,4 +87,12 @@ network.ClientStart(&clientNetwork,
 		
 //build a connection from GateWay(client.GATE_WAY) to Game(client.GAME)
 client.InnerClientConnect(client.GAME, viper.GetString("gameServerAddr"), client.GATE_WAY)
+```
+**Deploy**
+
+*Docker*
+```
+  cd build
+  make  docker_build
+  make docker_run
 ```
