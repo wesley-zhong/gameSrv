@@ -12,7 +12,7 @@ make  clean/build
 ```
 **Windows**
 
-Open directly with Goland  directly or VsCode
+Open directly with Goland  or VsCode
 
 **Run And  Test**
 ---
