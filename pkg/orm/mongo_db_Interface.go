@@ -45,7 +45,7 @@ func (dao *MongodbDAOInterface[T1]) FindOne(filter interface{}) any {
 	defer cancel()
 	singleResult := dao.Collection.FindOne(ctx, filter)
 	if singleResult.Err() != nil {
-		log.Error(singleResult.Err())
+		//log.Error(singleResult.Err())
 		return nil
 	}
 	newObject := new(T1) //this must be a new object instance
@@ -57,14 +57,14 @@ func (dao *MongodbDAOInterface[T1]) FindOne(filter interface{}) any {
 	return newObject
 }
 
-func (dao *MongodbDAOInterface[T1]) Insert(obj interface{}) error {
+func (dao *MongodbDAOInterface[T1]) Insert(obj *T1) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	dao.Collection.InsertOne(ctx, obj)
 	return nil
 }
 
-func (dao *MongodbDAOInterface[T1]) Save(id int64, obj interface{}) error {
+func (dao *MongodbDAOInterface[T1]) Save(id int64, obj *T1) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
@@ -75,7 +75,7 @@ func (dao *MongodbDAOInterface[T1]) Save(id int64, obj interface{}) error {
 	return err
 }
 
-func (dao *MongodbDAOInterface[T1]) AsynSave(id int64, obj interface{}) error {
+func (dao *MongodbDAOInterface[T1]) AsynSave(id int64, obj *T1) error {
 	return workerPool.SubmitTask(func() {
 		dao.Save(id, obj)
 	})

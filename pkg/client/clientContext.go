@@ -35,7 +35,7 @@ var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 func Connect(addr string) (tcp.ChannelContext, error) {
 	context, err := tcp.Dial("tcp", addr)
 	if err != nil {
-		log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
+		//log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
 		return nil, err
 	}
 	return context, nil
@@ -50,7 +50,7 @@ func InnerClientConnect(serverType GameServerType, addr string, myServerType Gam
 connect:
 	context, err := Connect(addr)
 	if err != nil {
-		log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
+		log.Infof("----- connect failed. 3 s later  will  reconnect %v", err.Error())
 		time.Sleep(3 * time.Second)
 		goto connect
 	}

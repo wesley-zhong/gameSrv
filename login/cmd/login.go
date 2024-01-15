@@ -3,9 +3,11 @@ package main
 import (
 	"fmt"
 	"gameSrv/login/controller"
+	"gameSrv/login/dal"
 	"gameSrv/login/networkHandler"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/utils"
 	"gameSrv/pkg/web"
 	"net/http"
 	_ "net/http/pprof"
@@ -25,6 +27,7 @@ func main() {
 	go func() {
 		http.ListenAndServe("localhost:6061", nil)
 	}()
+	utils.IdGenInit(11, 22)
 
 	viper.SetConfigName("config")              // 配置文件名，不需要后缀名
 	viper.SetConfigType("yml")                 // 配置文件格式
@@ -37,21 +40,18 @@ func main() {
 	}
 
 	//mongodb init
-	//dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
-	//dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
-	//
-	//account := service.AccountLogin("andy")
-	//service.UpdateAccount(account)
+	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
 	//start server
 	server := web.NewHttpServer()
 	controller.Init(server.HttpMethod)
 	////register to etcd
 	clientNetwork := &networkHandler.ClientEventHandler{}
+	//go
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.LOGIN)
 	if err != nil {
 		panic(err)
 	}
-
 	server.WebAppStart(viper.GetInt32("port"))
 }

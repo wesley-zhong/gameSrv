@@ -64,7 +64,7 @@ func (s *ServiceDiscovery) WatchService(prefixes []string) error {
 		if err != nil {
 			return err
 		}
-		log.Infof("### get  prefix:%s now...", prefix)
+		log.Infof(" ###  WatchService get  prefix:%s now...", prefix)
 
 		for _, ev := range resp.Kvs {
 			s.SetServiceList(string(ev.Key), string(ev.Value))
@@ -108,7 +108,7 @@ func (s *ServiceDiscovery) SetServiceList(key, val string) {
 	}
 	s.serverList[key] = node
 	log.Infof("### discover service :ServiceId  %s:  ServiceName: %s", key, val)
-	connectNode(node)
+	go connectNode(node)
 }
 
 // DelServiceList 删除服务地址

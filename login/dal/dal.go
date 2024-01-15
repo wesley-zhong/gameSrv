@@ -1,7 +1,7 @@
 package dal
 
 import (
-	"gameSrv/game/module"
+	"gameSrv/login/module"
 	"gameSrv/pkg/orm"
 )
 
