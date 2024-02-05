@@ -4,9 +4,6 @@ import (
 	"fmt"
 	"gameSrv/login/controller"
 	"gameSrv/login/dal"
-	"gameSrv/login/networkHandler"
-	"gameSrv/pkg/client"
-	"gameSrv/pkg/discover"
 	"gameSrv/pkg/utils"
 	"gameSrv/pkg/web"
 	"net/http"
@@ -47,9 +44,9 @@ func main() {
 	server := web.NewHttpServer()
 	controller.Init(server.HttpMethod)
 	////register to etcd
-	clientNetwork := &networkHandler.ClientEventHandler{}
+	//clientNetwork := &networkHandler.ClientEventHandler{}
 	//go
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.LOGIN)
+	//err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.LOGIN)
 	if err != nil {
 		panic(err)
 	}

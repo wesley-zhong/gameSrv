@@ -1,93 +1,101 @@
 package tcp
 
 import (
-	"github.com/panjf2000/gnet"
-	log "github.com/panjf2000/gnet/pkg/logging"
-	"github.com/panjf2000/gnet/pkg/pool/goroutine"
-
-	"strconv"
+	"fmt"
+	"gameSrv/pkg/log"
+	"github.com/panjf2000/gnet/v2"
+	"github.com/panjf2000/gnet/v2/pkg/pool/goroutine"
 	"time"
 )
 
 type tcpServer struct {
-	*gnet.EventServer
-	pool *goroutine.Pool
+	gnet.BuiltinEventEngine
+	eng          gnet.Engine
+	network      string
+	addr         string
+	multicore    bool
+	connected    int32
+	disconnected int32
+	codec        ICodec
 }
 
-func (ts tcpServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
-	//log.Infof("conn =%s React", c.RemoteAddr())
-	gEventHandler.React(frame, c)
-	return nil, 0
-}
-
-func (ts tcpServer) OnInitComplete(srv gnet.Server) (action gnet.Action) {
-	log.Infof("game server is listening on %s (multi-cores: %t, loops: %d)\n",
-		srv.Addr.String(), srv.Multicore, srv.NumEventLoop)
+// OnBoot fires when the engine is ready for accepting connections.
+// The parameter engine has information and various utilities.
+func (ts tcpServer) OnBoot(srv gnet.Engine) (action gnet.Action) {
+	log.Infof("game server  started)\n")
 	return
 }
 
-// OnShutdown fires when the server is being shut down, it is called right after
+// OnShutdown fires when the engine is being shut down, it is called right after
 // all event-loops and connections are closed.
-func (ts tcpServer) OnShutdown(server gnet.Server) {
+func (ts tcpServer) OnShutdown(eng gnet.Engine) {
 	log.Infof("server stop")
-
 }
 
 // OnOpened fires when a new connection has been opened.
 // The Conn c has information about the connection such as it's local and remote address.
 // The parameter out is the return value which is going to be sent back to the peer.
 // It is usually not recommended to send large amounts of data back to the peer in OnOpened.
-//
-// Note that the bytes returned by OnOpened will be sent back to the peer without being encoded.
-func (ts tcpServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
+
+func (ts tcpServer) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
 	//log.Infof("conn =%s opened", c.RemoteAddr())
-	out, act := gEventHandler.OnOpened(c)
+	context := &ChannelContextGnet{
+		c,
+	}
+	out, act := gEventHandler.OnOpened(context)
 	return out, gnet.Action(act)
 }
 
-// OnClosed fires when a connection has been closed.
+// OnClose fires when a connection has been closed.
 // The parameter err is the last known connection error.
-func (ts tcpServer) OnClosed(c gnet.Conn, err error) (action gnet.Action) {
-	return gnet.Action(gEventHandler.OnClosed(c, err))
+func (ts tcpServer) OnClose(c gnet.Conn, err error) (action gnet.Action) {
+	context := &ChannelContextGnet{
+		c,
+	}
+	return gnet.Action(gEventHandler.OnClosed(context, err))
 }
 
-// PreWrite fires just before a packet is written to the peer socket, this event function is usually where
-// you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
-func (ts tcpServer) PreWrite(c gnet.Conn) {
-	gEventHandler.PreWrite(c)
-	return
+// OnTraffic fires when a socket receives data from the peer.
+//
+// Note that the []byte returned from Conn.Peek(int)/Conn.Next(int) is not allowed to be passed to a new goroutine,
+// as this []byte will be reused within event-loop after OnTraffic() returns.
+// If you have to use this []byte in a new goroutine, you should either make a copy of it or call Conn.Read([]byte)
+// to read data into your own []byte, then pass the new []byte to the new goroutine.
+func (ts tcpServer) OnTraffic(c gnet.Conn) (action gnet.Action) {
+	//log.Infof("conn =%s React", c.RemoteAddr())
+	bytes, err := ts.codec.Decode(c)
+	if err != nil {
+		return 0
+	}
+	context := &ChannelContextGnet{
+		c,
+	}
+	gEventHandler.React(bytes, context)
+	return gnet.None
 }
 
-// AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
-// you put the []byte returned from React() back to your memory pool.
-func (ts tcpServer) AfterWrite(c gnet.Conn, b []byte) {
-	gEventHandler.AfterWrite(c, b)
-	return
-}
-
-// Tick fires immediately after the server starts and will fire again
-// following the duration specified by the delay return value.
-func (ts tcpServer) Tick() (delay time.Duration, action gnet.Action) {
+func (ts tcpServer) OnTick() (delay time.Duration, action gnet.Action) {
 	delay, intAction := gEventHandler.Tick()
-	action = gnet.Action(intAction)
-	return delay, action
+	return delay, gnet.Action(intAction)
 }
 
 var gEventHandler EventHandler
 
-func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec gnet.ICodec) {
+func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec ICodec) {
 	p := goroutine.Default()
 	defer p.Release()
 
 	gEventHandler = eventHandler
 
-	ts := &tcpServer{pool: p}
-	err := gnet.Serve(ts, "tcp://:"+strconv.Itoa(int(port)),
-		gnet.WithMulticore(true),
-		gnet.WithReusePort(true),
-		gnet.WithTCPNoDelay(0),
-		gnet.WithTicker(true),
-		gnet.WithCodec(codec))
+	ss := &tcpServer{
+		network:   "tcp",
+		addr:      fmt.Sprintf(":%d", port),
+		multicore: true,
+		codec:     codec,
+	}
+	log.Infof("###### server  start: %v", port)
+	err := gnet.Run(ss, ss.network+"://"+ss.addr, gnet.WithMulticore(true))
+	log.Infof("server exits with error: %v", err)
 	if err != nil {
 		log.Error(err)
 	}

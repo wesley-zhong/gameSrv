@@ -13,6 +13,7 @@ import (
 )
 
 type ClientEventHandler struct {
+	codec tcp.ICodec
 }
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.ChannelContext) (out []byte, action int) {
@@ -50,10 +51,33 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelContext) (out []byte, action int) {
-	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
-	var innerHeaderLen int32
-	bytebuffer := bytes.NewBuffer(packet)
+func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
+	log.Infof("  client React receive addr =%s", ctx.RemoteAddr())
+	bytebuffer := bytes.NewBuffer(packet[4:])
+
+	//-------msg id --
+	var msgId int16
+	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+
+	// read  inner header
+	var innerHeaderLen int16
+	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	innerHeader := &protoGen.InnerHead{}
+	innerHeaderBody := make([]byte, innerHeaderLen)
+	binary.Read(bytebuffer, binary.BigEndian, innerHeader)
+	err := proto.Unmarshal(innerHeaderBody, innerHeader)
+	if err != nil {
+		return 0
+	}
+
+	method := tcp.GetCallMethodById(msgId)
+	//direct to send player
+	if method == nil {
+		return 0
+	}
+
+	tcp.CallMethod(innerHeader.Id, bytebuffer.Bytes(), method)
+
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
@@ -61,48 +85,12 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelCon
 
 	proto.Unmarshal(innerBody, innerMsg)
 
-	if innerMsg.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES) {
-		return nil, 0
-	}
-
 	bodyLen := bytebuffer.Len()
 	if bodyLen > 0 {
 		body := make([]byte, bodyLen)
 		binary.Read(bytebuffer, binary.BigEndian, body)
 	}
-
-	//directly send to client
-	//if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
-	//	//playerMgr
-	//	targetPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
-	//	if targetPlayer == nil {
-	//		log.Infof("pid = %d not found", innerMsg.Id)
-	//		return
-	//	}
-	//	targetPlayer.Context.Ctx.AsyncWrite(body)
-	//	return
-	//}
-
-	//servers internal  system call
-	if innerMsg.Id == 0 {
-		if bodyLen == 0 {
-			tcp.CallMethod(innerMsg.ProtoCode, nil, ctx)
-			return nil, 0
-		}
-
-		log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
-		tcp.CallMethod(innerMsg.ProtoCode, packet[innerHeaderLen+4:], ctx)
-		return nil, 0
-	}
-	// server send player msg
-	if bodyLen == 0 {
-		//core.CallMethod(innerMsg.ProtoCode, nil, ctx)
-		tcp.CallMethodWitheRoleId(innerMsg.ProtoCode, innerMsg.Id, nil)
-		return nil, 0
-	}
-	log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
-	tcp.CallMethodWitheRoleId(innerMsg.ProtoCode, innerMsg.Id, packet[innerHeaderLen+4:])
-	return nil, 0
+	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
@@ -114,7 +102,7 @@ func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int
 		return 5000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), 0, heartBeat)
+	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
 	//	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 5000 * time.Millisecond, 0
 }

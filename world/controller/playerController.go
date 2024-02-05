@@ -15,7 +15,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.RoleId,
 	}
-	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), loginRequest.RoleId, res)
+	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_RES, loginRequest.RoleId, res)
 }
 
 func innerPlayerDisconnect(roleId int64, request proto.Message) {

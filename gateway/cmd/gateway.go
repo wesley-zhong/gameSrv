@@ -46,7 +46,7 @@ func main() {
 	//package receive handler
 	handler := &networkHandler.ServerEventHandler{}
 	//start server
-	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, tcp.NewLengthFieldBasedFrameCodecEx())
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	////register to etcd
 	clientNetwork := &networkHandler.ClientEventHandler{}

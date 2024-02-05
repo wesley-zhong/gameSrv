@@ -63,9 +63,9 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (out []byte, action int) {
-	var msgId int32
-	bytebuffer := bytes.NewBuffer(packet)
+func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
+	var msgId int16
+	bytebuffer := bytes.NewBuffer(packet[4:])
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 	var length uint32
 	binary.Read(bytebuffer, binary.BigEndian, &length)
@@ -73,12 +73,12 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 
 	bodyLen := bytebuffer.Len()
 	if bodyLen == 0 {
-		tcp.CallMethod(msgId, nil, ctx)
-		return nil, 0
+		tcp.CallMethodWithChannelContext(msgId, ctx, nil)
+		return 0
 	}
 	log.Infof("------#########receive msgId = %d length =%d", msgId, bodyLen)
-	tcp.CallMethod(msgId, packet[8:], ctx)
-	return nil, 0
+	tcp.CallMethodWithChannelContext(msgId, ctx, packet[6:])
+	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
@@ -93,7 +93,7 @@ func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int
 			ClientTime: time.Now().UnixMilli(),
 			ServerTime: time.Now().UnixMilli(),
 		}
-		player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+		player.Context.SendMsg(protoGen.ProtoCode_HEART_BEAT_RESPONSE, response)
 	})
 	return 5000 * time.Millisecond, 0
 }

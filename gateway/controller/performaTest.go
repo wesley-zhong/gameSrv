@@ -17,7 +17,7 @@ func performanceTest(ctx tcp.ChannelContext, req proto.Message) {
 	}
 	log.Infof("==========  performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	ctx.Context().(*client.ConnClientContext).SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), 0, req)
+	//client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
 }
 
 func performanceTestResFromWorld(roleId int64, res proto.Message) {

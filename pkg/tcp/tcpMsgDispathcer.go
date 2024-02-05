@@ -5,15 +5,12 @@ import (
 	"gameSrv/pkg/log"
 	"google.golang.org/protobuf/proto"
 	"runtime/debug"
-	"unsafe"
 )
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdContextMap = make(map[int32]*protoMethod[ChannelContext])
-var msgIdRoleIdMap = make(map[int32]*protoMethod[int64])
-
-var msgIdMap = make(map[int32]unsafe.Pointer)
+var msgIdContextMap = make(map[int16]*protoMethod[ChannelContext])
+var msgIdRoleIdMap = make(map[int16]*protoMethod[int64])
 
 var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
 
@@ -33,13 +30,12 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	})
 }
 
-func RegisterMethod(msgId int32, param proto.Message, fuc MsgIdFuc[ChannelContext, proto.Message]) {
+func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[ChannelContext, proto.Message]) {
 	method := &protoMethod[ChannelContext]{
 		methodFuc: fuc,
 		param:     param,
 	}
 	msgIdContextMap[msgId] = method
-
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
@@ -47,25 +43,25 @@ func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int
 		methodFuc: fuc,
 		param:     param,
 	}
-	msgIdRoleIdMap[msgId] = method
+	msgIdRoleIdMap[int16(msgId)] = method
 }
 
-func CallMethodWitheRoleId(msgId int32, roleId int64, body []byte) {
+func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
 			log.Infof("err=%v, stack=%s", r, s)
 		}
 	}()
-	method := msgIdRoleIdMap[msgId]
+	method := msgIdRoleIdMap[int16(msgId)]
 	if method == nil {
-		log.Infof(" CallMethodWitheRoleId msgId = %d not found method", msgId)
+		log.Infof(" CallMethodWithRoleId msgId = %d not found method", msgId)
 		return
 	}
 	method.execute(roleId, body)
 }
 
-func CallMethod(msgId int32, body []byte, ctx ChannelContext) {
+func CallMethodWithChannelContext(msgId int16, context ChannelContext, body []byte) bool {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
@@ -74,8 +70,16 @@ func CallMethod(msgId int32, body []byte, ctx ChannelContext) {
 	}()
 	method := msgIdContextMap[msgId]
 	if method == nil {
-		log.Infof("CallMethod  msgId = %d not found method", msgId)
-		return
+		return false
 	}
-	method.execute(ctx, body)
+	method.execute(context, body)
+	return true
+}
+
+func GetCallMethodById(msgId int16) *protoMethod[int64] {
+	return msgIdRoleIdMap[msgId]
+}
+
+func CallMethod(roleId int64, body []byte, method *protoMethod[int64]) {
+	method.execute(roleId, body)
 }

@@ -1,158 +1,138 @@
 package tcp
 
 import (
+	"bytes"
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"gameSrv/pkg/log"
-	"github.com/panjf2000/gnet"
-	gerrors "github.com/panjf2000/gnet/pkg/errors"
+	"gameSrv/protoGen"
+	"github.com/panjf2000/gnet/v2"
+	"google.golang.org/protobuf/proto"
 )
 
-var MaxPackageLen = 2048 * 2048
+// DefaultCodec Protocol format:
+//
+// * 0     4           2
+// * +-----------+-----------------------+
+// * |body len   |  msgId
+// * +-----------+-----------+-----------+
+// * |                                   |
+// * +                                   +
+// * |           body bytes              |
+// * +                                   +
+// * |            ... ...                |
+// * +-----------------------------------+
 
-// EncoderConfig config for encoder.
-type EncoderConfig struct {
-	// ByteOrder is the ByteOrder of the length field.
-	ByteOrder binary.ByteOrder
-	// LengthFieldLength is the length of the length field.
-	LengthFieldLength int
-	// LengthAdjustment is the compensation value to add to the value of the length field
-	LengthAdjustment int
-	// LengthIncludesLengthFieldLength is true, the length of the prepended length field is added to the value of
-	// the prepended length field
-	LengthIncludesLengthFieldLength bool
+const (
+	bodySize      = 4
+	MaxPackageLen = 16 * 1024
+)
+
+type ICodec interface {
+	Decode(conn gnet.Conn) ([]byte, error)
+	Encode(packet *MsgPacket) ([]byte, error)
+	UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket
 }
 
-// DecoderConfig config for decoder.
-type DecoderConfig struct {
-	// ByteOrder is the ByteOrder of the length field.
-	ByteOrder binary.ByteOrder
-	// LengthFieldOffset is the offset of the length field
-	LengthFieldOffset int
-	// LengthFieldLength is the length of the length field
-	LengthFieldLength int
-	// LengthAdjustment is the compensation value to add to the value of the length field
-	LengthAdjustment int
-	// InitialBytesToStrip is the number of first bytes to strip out from the decoded frame
-	InitialBytesToStrip int
-	PackageMaxLen       uint64
+var ErrIncompletePacket = errors.New("incomplete packet")
+
+type DefaultCodec struct {
 }
 
-type LengthFieldBasedFrameCodecEx struct {
-	encoderConfig *EncoderConfig
-	decoderConfig *DecoderConfig
+type MsgPacket struct {
+	MsgId  int16
+	Header proto.Message
+	Body   proto.Message
 }
 
-func (cc *LengthFieldBasedFrameCodecEx) Encode(c gnet.Conn, buf []byte) (out []byte, err error) {
-	return buf, nil
-}
-
-func (cc *LengthFieldBasedFrameCodecEx) Decode(c gnet.Conn) ([]byte, error) {
-	var (
-		in     innerBuffer
-		header []byte
-		err    error
-	)
-	in = c.Read()
-	if cc.decoderConfig.LengthFieldOffset > 0 { // discard header(offset)
-		header, err = in.readN(cc.decoderConfig.LengthFieldOffset)
-		if err != nil {
-			return nil, gerrors.ErrIncompletePacket
-		}
+func (codec *DefaultCodec) Decode(c gnet.Conn) ([]byte, error) {
+	bodyOffset := bodySize
+	buf, _ := c.Peek(bodyOffset)
+	if len(buf) < bodyOffset {
+		return nil, ErrIncompletePacket
 	}
 
-	lenBuf, frameLength, err := cc.getUnadjustedFrameLength(&in)
-	if err != nil {
-		if errors.Is(err, gerrors.ErrUnsupportedLength) {
+	bodyLen := binary.BigEndian.Uint32(buf[:bodyOffset])
+	msgLen := bodyOffset + int(bodyLen)
+	if c.InboundBuffered() < msgLen {
+		return nil, ErrIncompletePacket
+	}
+	buf, _ = c.Peek(msgLen)
+	_, _ = c.Discard(msgLen)
+
+	return buf[:msgLen], nil
+}
+
+func (code *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error) {
+	headerLen := 0
+	var header []byte
+	if packet.Header != nil {
+		header, err = proto.Marshal(packet.Header)
+		if err != nil {
+			log.Error(err)
+			return
+		}
+		headerLen = len(header)
+	}
+	bodyLen := 0
+	if packet.Body != nil {
+		sendBody, err = proto.Marshal(packet.Body)
+		if err != nil {
+			log.Error(err)
 			return nil, err
 		}
-		return nil, gerrors.ErrIncompletePacket
-	}
-	if frameLength > cc.decoderConfig.PackageMaxLen {
-		err := errors.New("XXXXXX msg len too large  error ")
-		log.Warnf("XXXXXX %s msg len too large  error maxLen=%d receiveLen=%d should be closed", c.RemoteAddr(), MaxPackageLen, frameLength)
-		c.Close()
-		return nil, err
+		bodyLen = len(sendBody)
 	}
 
-	// real message length
-	msgLength := int(frameLength) + cc.decoderConfig.LengthAdjustment
-	msg, err := in.readN(msgLength)
+	msgLen := 2 //msgId
+	msgLen += 2 // header len
+	msgLen += headerLen
+	msgLen += bodyLen
+
+	buffer := &bytes.Buffer{}
+	buffer.Reset()
+
+	binary.Write(buffer, binary.BigEndian, int32(msgLen))
+	binary.Write(buffer, binary.BigEndian, packet.MsgId)
+	binary.Write(buffer, binary.BigEndian, int16(headerLen))
+	if headerLen > 0 {
+		buffer.Write(header)
+	}
+
+	if bodyLen > 0 {
+		buffer.Write(sendBody)
+	}
+	return buffer.Bytes(), nil
+}
+
+func (codec *DefaultCodec) UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket {
+	var shortHeadLen int16
+	binary.Read(body, binary.BigEndian, shortHeadLen)
+	header := &protoGen.InnerHead{}
+
+	headerBody := make([]byte, shortHeadLen)
+	readLen, err := body.Read(headerBody)
 	if err != nil {
-		return nil, gerrors.ErrIncompletePacket
+		return nil
 	}
 
-	fullMessage := make([]byte, len(header)+len(lenBuf)+msgLength)
-	copy(fullMessage, header)
-	copy(fullMessage[len(header):], lenBuf)
-	copy(fullMessage[len(header)+len(lenBuf):], msg)
-	c.ShiftN(len(fullMessage))
-	return fullMessage[cc.decoderConfig.InitialBytesToStrip:], nil
-}
-
-type innerBuffer []byte
-
-func (in *innerBuffer) readN(n int) (buf []byte, err error) {
-	if n == 0 {
-		return nil, nil
+	if readLen != int(shortHeadLen) {
+		log.Error(errors.New(fmt.Sprintf(" read =%d but headLen =%d", readLen, shortHeadLen)))
+		return nil
+	}
+	err = proto.Unmarshal(headerBody, header)
+	if err != nil {
+		log.Error(err)
+		return nil
 	}
 
-	if n < 0 {
-		return nil, errors.New("negative length is invalid")
-	} else if n > len(*in) {
-		return nil, errors.New("exceeding buffer length")
+	bodyBytes := body.Bytes()
+	msg := method.param.ProtoReflect().New().Interface()
+	err = proto.Unmarshal(bodyBytes, msg)
+	if err != nil {
+		log.Error(err)
+		return nil
 	}
-	buf = (*in)[:n]
-	*in = (*in)[n:]
-	return
-}
-
-func (cc *LengthFieldBasedFrameCodecEx) getUnadjustedFrameLength(in *innerBuffer) ([]byte, uint64, error) {
-	switch cc.decoderConfig.LengthFieldLength {
-	case 2:
-		lenBuf, err := in.readN(2)
-		if err != nil {
-			return nil, 0, gerrors.ErrUnexpectedEOF
-		}
-		return lenBuf, uint64(cc.decoderConfig.ByteOrder.Uint16(lenBuf)), nil
-	case 4:
-		lenBuf, err := in.readN(4)
-		if err != nil {
-			return nil, 0, gerrors.ErrUnexpectedEOF
-		}
-		return lenBuf, uint64(cc.decoderConfig.ByteOrder.Uint32(lenBuf)), nil
-	default:
-		return nil, 0, gerrors.ErrUnsupportedLength
-	}
-}
-
-// NewLengthFieldBasedFrameCodecEx for client
-func NewLengthFieldBasedFrameCodecEx() *LengthFieldBasedFrameCodecEx {
-	return &LengthFieldBasedFrameCodecEx{&EncoderConfig{
-		LengthFieldLength:               4,
-		LengthAdjustment:                0,
-		LengthIncludesLengthFieldLength: false,
-	}, &DecoderConfig{
-		ByteOrder:           binary.BigEndian,
-		LengthFieldOffset:   4,
-		LengthFieldLength:   4,
-		LengthAdjustment:    0,
-		InitialBytesToStrip: 0,
-		PackageMaxLen:       uint64(MaxPackageLen)}}
-}
-
-// NewInnerLengthFieldBasedFrameCodecEx for inner client
-func NewInnerLengthFieldBasedFrameCodecEx() *LengthFieldBasedFrameCodecEx {
-	return &LengthFieldBasedFrameCodecEx{&EncoderConfig{
-		LengthFieldLength:               4,
-		LengthAdjustment:                0,
-		LengthIncludesLengthFieldLength: false,
-	}, &DecoderConfig{
-		ByteOrder:           binary.BigEndian,
-		LengthFieldOffset:   0,
-		LengthFieldLength:   4,
-		LengthAdjustment:    0,
-		InitialBytesToStrip: 4,
-		PackageMaxLen:       uint64(MaxPackageLen),
-	}}
+	return &MsgPacket{MsgId: msgId, Header: header, Body: msg}
 }

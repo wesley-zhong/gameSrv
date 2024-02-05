@@ -117,7 +117,7 @@ func (s *ServiceDiscovery) DelServiceList(key string) {
 	defer s.lock.Unlock()
 	node := s.serverList[key]
 	//关闭
-	if node != nil {
+	if node != nil && node.channelContext != nil && node.channelContext.Ctx != nil {
 		node.channelContext.Ctx.Close()
 	}
 	delete(s.serverList, key)

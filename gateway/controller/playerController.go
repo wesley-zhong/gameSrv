@@ -29,7 +29,7 @@ func login(ctx tcp.ChannelContext, request proto.Message) {
 		RoleId: existPlayer.Pid,
 	}
 	log.Infof("====== loginAddr=%s now loginCount =%d", ctx.RemoteAddr(), PlayerMgr.GetSize())
-	client.GetInnerClient(client.GAME).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
+	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 
 func heartBeat(ctx tcp.ChannelContext, request proto.Message) {
@@ -41,7 +41,7 @@ func heartBeat(ctx tcp.ChannelContext, request proto.Message) {
 		ClientTime: heartBeat.ClientTime,
 		ServerTime: time.Now().UnixMilli(),
 	}
-	player.Context.Send(int32(protoGen.ProtoCode_HEART_BEAT_RESPONSE), response)
+	player.Context.SendMsg(protoGen.ProtoCode_HEART_BEAT_RESPONSE, response)
 }
 
 func ClientDisConnect(ctx tcp.ChannelContext) {
@@ -59,7 +59,7 @@ func ClientDisConnect(ctx tcp.ChannelContext) {
 		Sid:    disConnPlayer.Context.Sid,
 		RoleId: disConnPlayer.Pid,
 	}
-	client.GetInnerClient(client.GAME).SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ), disConnPlayer.Pid, disconnectRequest)
+	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disConnPlayer.Pid, disconnectRequest)
 }
 
 func innerServerKickout(roleId int64, request proto.Message) {

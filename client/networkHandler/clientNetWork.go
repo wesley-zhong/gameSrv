@@ -48,15 +48,15 @@ func (clientNetwork *ClientNetwork) AfterWrite(c tcp.ChannelContext, b []byte) {
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (clientNetwork *ClientNetwork) React(packet []byte, c tcp.ChannelContext) (out []byte, action int) {
+func (clientNetwork *ClientNetwork) React(packet []byte, c tcp.ChannelContext) (action int) {
 	log.Infof("  client React receive addr =%s", c.RemoteAddr())
-	var msgId int32
+	var msgId int16
 	bytebuffer := bytes.NewBuffer(packet)
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive  protoCode =%d", msgId)
 
-	tcp.CallMethod(msgId, packet[8:], c)
-	return nil, 0
+	tcp.CallMethodWithChannelContext(msgId, c, packet[6:])
+	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again

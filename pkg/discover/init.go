@@ -5,7 +5,7 @@ import (
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
 	"gameSrv/pkg/utils"
-	"github.com/panjf2000/gnet"
+	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
 )
 
@@ -38,8 +38,7 @@ func InitClient(handler tcp.EventHandler) {
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
-		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
-		gnet.WithCodec(tcp.NewInnerLengthFieldBasedFrameCodecEx()))
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 }
 
 func connectNode(node *Node) {

@@ -1,6 +1,8 @@
 package tcp
 
-import "time"
+import (
+	"time"
+)
 
 type (
 	EventHandler interface {
@@ -34,7 +36,7 @@ type (
 		// as this []byte will be reused within event-loop after React() returns.
 		// If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 		// to that new goroutine.
-		React(packet []byte, c ChannelContext) (out []byte, action int)
+		React(packet []byte, c ChannelContext) (action int)
 
 		// Tick fires immediately after the server starts and will fire again
 		// following the duration specified by the delay return value.

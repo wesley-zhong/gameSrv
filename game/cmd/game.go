@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"gameSrv/game/controller"
+	"gameSrv/game/dal"
 	"gameSrv/game/networkHandler"
+	"gameSrv/game/service"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
@@ -41,18 +43,18 @@ func main() {
 	}
 
 	//mongodb init
-	//dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	//dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
-	//
-	//account := service.AccountLogin("andy")
-	//service.UpdateAccount(account)
+
+	account := service.AccountLogin("andy")
+	service.UpdateAccount(account)
 
 	// msg Register
 	controller.Init()
 
 	//start server
 	serverNetworkHandler := &networkHandler.ServerEventHandler{}
-	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), serverNetworkHandler, tcp.NewInnerLengthFieldBasedFrameCodecEx())
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), serverNetworkHandler, &tcp.DefaultCodec{})
 
 	////register to etcd
 	clientNetwork := &networkHandler.ClientEventHandler{}

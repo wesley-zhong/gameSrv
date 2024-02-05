@@ -38,7 +38,7 @@ func main() {
 	controller.Init()
 
 	handler := &networkHandler.ServerEventHandler{}
-	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, tcp.NewInnerLengthFieldBasedFrameCodecEx())
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.WORLD)
 	if err != nil {

@@ -28,5 +28,5 @@ func loginResponseFromGameServer(roleId int64, request proto.Message) {
 		ServerTime: time.Now().UnixMilli(),
 		RoleId:     roleId,
 	}
-	PlayerMgr.GetByRoleId(innerLoginResponse.RoleId).Context.Send(int32(protoGen.ProtoCode_LOGIN_RESPONSE), response)
+	PlayerMgr.GetByRoleId(innerLoginResponse.RoleId).Context.SendMsg(protoGen.ProtoCode_LOGIN_RESPONSE, response)
 }

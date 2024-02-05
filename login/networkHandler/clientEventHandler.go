@@ -1,15 +1,10 @@
 package networkHandler
 
 import (
-	"bytes"
-	"encoding/binary"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
-	"gameSrv/protoGen"
 	"time"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type ClientEventHandler struct {
@@ -51,65 +46,19 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelContext) (out []byte, action int) {
 	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
-	var innerHeaderLen int32
-	bytebuffer := bytes.NewBuffer(packet)
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
-	innerMsg := &protoGen.InnerHead{}
-	innerBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-
-	proto.Unmarshal(innerBody, innerMsg)
-
-	bodyLen := bytebuffer.Len()
-	if bodyLen > 0 {
-		body := make([]byte, bodyLen)
-		binary.Read(bytebuffer, binary.BigEndian, body)
-	}
-
-	//directly send to client
-	//if innerMsg.GetSendType() == constants.INNER_MSG_SEND_AUTO || innerMsg.GetSendType() == constants.INNER_MSG_SEND_CLIENT {
-	//	//playerMgr
-	//	targetPlayer := player.PlayerMgr.GetBySid(innerMsg.Id)
-	//	if targetPlayer == nil {
-	//		log.Infof("pid = %d not found", innerMsg.Id)
-	//		return
-	//	}
-	//	targetPlayer.Context.Ctx.AsyncWrite(body)
-	//	return
-	//}
-
-	//servers internal  system call
-	if innerMsg.Id == 0 {
-		if bodyLen == 0 {
-			tcp.CallMethod(innerMsg.ProtoCode, nil, ctx)
-			return nil, 0
-		}
-
-		log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
-		tcp.CallMethod(innerMsg.ProtoCode, packet[innerHeaderLen+4:], ctx)
-		return nil, 0
-	}
-	// server send player msg
-	if bodyLen == 0 {
-		//core.CallMethod(innerMsg.ProtoCode, nil, ctx)
-		tcp.CallMethodWitheRoleId(innerMsg.ProtoCode, innerMsg.Id, nil)
-		return nil, 0
-	}
-	log.Infof("------#########receive msgId = %d length =%d", innerMsg.ProtoCode, bodyLen)
-	tcp.CallMethodWitheRoleId(innerMsg.ProtoCode, innerMsg.Id, packet[innerHeaderLen+4:])
 	return nil, 0
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(client.WORLD)
-	if innerClient == nil {
-		//log.Infof("no found connect type =%d", client.WORLD)
-		return 1000 * time.Millisecond, 0
-	}
-	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), 0, heartBeat)
-	//.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
+	//innerClient := client.GetInnerClient(client.WORLD)
+	//if innerClient == nil {
+	//	//log.Infof("no found connect type =%d", client.WORLD)
+	//	return 1000 * time.Millisecond, 0
+	//}
+	//heartBeat := &protoGen.InnerHeartBeatRequest{}
+	////innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), 0, heartBeat)
+	////.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }

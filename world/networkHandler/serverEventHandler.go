@@ -67,49 +67,28 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (out []byte, action int) {
-	var headerSize int32
-	bytebuffer := bytes.NewBuffer(packet)
-	binary.Read(bytebuffer, binary.BigEndian, &headerSize)
-	if headerSize < 0 || headerSize > int32(tcp.MaxPackageLen) {
-		log.Warnf("XXXXXXXXXX headerSize =%d too large addr=%s", headerSize, ctx.RemoteAddr())
-		ctx.Close()
-		return nil, 0
+func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
+	bytebuffer := bytes.NewBuffer(packet[4:])
+	var msgId int16
+	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
+		return 0
 	}
-	headerBody := make([]byte, headerSize)
-	binary.Read(bytebuffer, binary.BigEndian, headerBody)
-	innerHeader := &protoGen.InnerHead{}
-	err := proto.Unmarshal(headerBody, innerHeader)
-	if err != nil {
-		log.Error(err)
-		ctx.Close()
-		return nil, 0
-	}
-	if innerHeader.ProtoCode == int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
-		ctx.Context().(*client.ConnInnerClientContext).SendInnerMsgProtoCode(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES, 0, &protoGen.InnerHeartBeatResponse{})
-		return nil, 0
-	}
-	bodyLen := bytebuffer.Len()
-	//servers internal  system call
-	if innerHeader.Id == 0 {
-		if bodyLen == 0 {
-			tcp.CallMethod(innerHeader.ProtoCode, nil, ctx)
-			return nil, 0
-		}
 
-		log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-		tcp.CallMethod(innerHeader.ProtoCode, packet[headerSize+4:], ctx)
-		return nil, 0
+	var innerHeaderLen int16
+	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	innerMsg := &protoGen.InnerHead{}
+	innerBody := make([]byte, innerHeaderLen)
+	binary.Read(bytebuffer, binary.BigEndian, innerBody)
+	proto.Unmarshal(innerBody, innerMsg)
+
+	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
+	if processed {
+		return 0
 	}
-	// server send player msg
-	if bodyLen == 0 {
-		//core.CallMethod(innerHeader.ProtoCode, nil, ctx)
-		tcp.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, nil)
-		return nil, 0
-	}
-	log.Infof("------#########receive msgId = %d length =%d", innerHeader.ProtoCode, bodyLen)
-	tcp.CallMethodWitheRoleId(innerHeader.ProtoCode, innerHeader.Id, packet[headerSize+4:])
-	return nil, 0
+
+	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
