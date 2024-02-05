@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"gameSrv/gateway/player"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
@@ -10,7 +11,7 @@ import (
 func loginResponseFromGameServer(roleId int64, request proto.Message) {
 	//	context := ctx.Context().(*client.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
-	player := PlayerMgr.GetByRoleId(roleId)
+	player := player.PlayerMgr.GetByRoleId(roleId)
 	if player == nil {
 		log.Infof("roleId = %d have disconnected", roleId)
 		return
@@ -28,5 +29,5 @@ func loginResponseFromGameServer(roleId int64, request proto.Message) {
 		ServerTime: time.Now().UnixMilli(),
 		RoleId:     roleId,
 	}
-	PlayerMgr.GetByRoleId(innerLoginResponse.RoleId).Context.SendMsg(protoGen.ProtoCode_LOGIN_RESPONSE, response)
+	player.Context.SendMsg(protoGen.ProtoCode_LOGIN_RESPONSE, response)
 }
