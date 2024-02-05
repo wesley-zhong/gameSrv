@@ -3,6 +3,7 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
+	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -52,44 +53,40 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
-	log.Infof("  client React receive addr =%s", ctx.RemoteAddr())
 	bytebuffer := bytes.NewBuffer(packet[4:])
-
-	//-------msg id --
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 
-	// read  inner header
 	var innerHeaderLen int16
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
-	innerHeader := &protoGen.InnerHead{}
-	innerHeaderBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerHeader)
-	err := proto.Unmarshal(innerHeaderBody, innerHeader)
-	if err != nil {
-		return 0
-	}
-
-	method := tcp.GetCallMethodById(msgId)
-	//direct to send player
-	if method == nil {
-		return 0
-	}
-
-	tcp.CallMethod(innerHeader.Id, bytebuffer.Bytes(), method)
-
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
 	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-
 	proto.Unmarshal(innerBody, innerMsg)
 
-	bodyLen := bytebuffer.Len()
-	if bodyLen > 0 {
-		body := make([]byte, bodyLen)
-		binary.Read(bytebuffer, binary.BigEndian, body)
+	exist := tcp.HasMethod(msgId)
+	if !exist {
+		//direct to send client
+		existPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
+		if existPlayer == nil {
+			log.Infof(" pid = %d not found", innerMsg.Id)
+		}
+
+		//sendPlayerBuf:=bytes.NewBuffer()
+		//existPlayer.Context.Ctx.SendTo()
+		return 0
 	}
+
+	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
+	if processed {
+		return 0
+	}
+
+	processed = tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	if processed {
+		return 0
+	}
+
 	return 0
 }
 

@@ -92,7 +92,7 @@ func NewInnerClientContext(context tcp.ChannelContext) *ConnInnerClientContext {
 }
 
 func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
-	encode, err := ICodec.Encode(packet)
+	encode, err := ICodec.InnerEncode(packet)
 	if err != nil {
 		log.Error(err)
 		return
@@ -108,4 +108,8 @@ func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProto
 		Body:   body,
 	}
 	client.Send(packet)
+}
+
+func (client *ConnInnerClientContext) SendMsg(body []byte) {
+	client.Ctx.SendTo(body)
 }

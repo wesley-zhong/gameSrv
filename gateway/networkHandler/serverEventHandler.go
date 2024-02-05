@@ -64,11 +64,13 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
-	var msgId int16
-	bytebuffer := bytes.NewBuffer(packet[4:])
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	bytebuffer := bytes.NewBuffer(packet)
 	var length uint32
 	binary.Read(bytebuffer, binary.BigEndian, &length)
+
+	var msgId int16
+	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+
 	log.Infof("------receive msgId = %d length =%d", msgId, length)
 
 	bodyLen := bytebuffer.Len()

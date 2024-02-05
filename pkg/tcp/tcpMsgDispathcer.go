@@ -46,7 +46,7 @@ func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int
 	msgIdRoleIdMap[int16(msgId)] = method
 }
 
-func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) {
+func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
@@ -56,9 +56,10 @@ func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) {
 	method := msgIdRoleIdMap[int16(msgId)]
 	if method == nil {
 		log.Infof(" CallMethodWithRoleId msgId = %d not found method", msgId)
-		return
+		return false
 	}
 	method.execute(roleId, body)
+	return true
 }
 
 func CallMethodWithChannelContext(msgId int16, context ChannelContext, body []byte) bool {
@@ -82,4 +83,8 @@ func GetCallMethodById(msgId int16) *protoMethod[int64] {
 
 func CallMethod(roleId int64, body []byte, method *protoMethod[int64]) {
 	method.execute(roleId, body)
+}
+
+func HasMethod(msgId int16) bool {
+	return msgIdRoleIdMap[msgId] != nil || msgIdContextMap[msgId] != nil
 }

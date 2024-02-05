@@ -14,21 +14,22 @@ func login(ctx tcp.ChannelContext, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	roleId := loginRequest.RoleId
-	existPlayer := PlayerMgr.GetByRoleId(roleId)
+	existPlayer := player.PlayerMgr.GetByRoleId(roleId)
 	if existPlayer != nil {
 		//close exist player
 		existPlayer.Context.Ctx.Close()
 		existPlayer.SetContext(context)
+
 	} else {
 		existPlayer = player.NewPlayer(loginRequest.GetRoleId(), context)
-		PlayerMgr.Add(existPlayer)
+		player.PlayerMgr.Add(existPlayer)
 	}
 	context.Ctx.SetContext(existPlayer)
 	innerRequest := &protoGen.InnerLoginRequest{
 		Sid:    context.Sid,
 		RoleId: existPlayer.Pid,
 	}
-	log.Infof("====== loginAddr=%s now loginCount =%d", ctx.RemoteAddr(), PlayerMgr.GetSize())
+	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), loginRequest)
 	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 
@@ -48,7 +49,7 @@ func ClientDisConnect(ctx tcp.ChannelContext) {
 	disConnPlayer := ctx.Context().(*player.Player)
 	//check right?
 	if disConnPlayer.Context.Ctx != ctx {
-		log.Infof("context =%s disconnected but playerId ={} have reconnected", ctx.RemoteAddr(), disConnPlayer.Pid)
+		log.Infof("context =%s disconnected but playerId =%d have reconnected", ctx.RemoteAddr(), disConnPlayer.Pid)
 		return
 	}
 	player.PlayerMgr.Remove(disConnPlayer)

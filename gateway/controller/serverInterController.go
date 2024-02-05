@@ -20,7 +20,7 @@ func loginResponseFromGameServer(roleId int64, request proto.Message) {
 		log.Infof("roleId =%d have reconnected now sid =%d longRes sid =%d", roleId, sid, innerLoginResponse.GetSid())
 		return
 	}
-	log.Infof("login response =roleId =%d siId= %d login success =", roleId, innerLoginResponse.Sid)
+	log.Infof("login loginResponseFromGameServer =roleId =%d siId= %slogin success =", roleId, innerLoginResponse)
 	player.SetValid()
 
 	response := &protoGen.LoginResponse{

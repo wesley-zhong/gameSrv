@@ -31,6 +31,9 @@ const (
 
 type ICodec interface {
 	Decode(conn gnet.Conn) ([]byte, error)
+	//InnerEncode between server's msg encode
+	InnerEncode(packet *MsgPacket) ([]byte, error)
+	//Encode  user client to server
 	Encode(packet *MsgPacket) ([]byte, error)
 	UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket
 }
@@ -64,7 +67,7 @@ func (codec *DefaultCodec) Decode(c gnet.Conn) ([]byte, error) {
 	return buf[:msgLen], nil
 }
 
-func (code *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error) {
+func (code *DefaultCodec) InnerEncode(packet *MsgPacket) (sendBody []byte, err error) {
 	headerLen := 0
 	var header []byte
 	if packet.Header != nil {
@@ -104,6 +107,36 @@ func (code *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error)
 		buffer.Write(sendBody)
 	}
 	return buffer.Bytes(), nil
+}
+
+func (codec *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error) {
+	if packet.Header != nil {
+		log.Error(errors.New("Encode method  packet.Header should be nil "))
+		return
+	}
+	bodyLen := 0
+	if packet.Body != nil {
+		sendBody, err = proto.Marshal(packet.Body)
+		if err != nil {
+			log.Error(err)
+			return nil, err
+		}
+		bodyLen = len(sendBody)
+	}
+
+	msgLen := 2 //msgId
+	msgLen += bodyLen
+
+	buffer := &bytes.Buffer{}
+	buffer.Reset()
+
+	binary.Write(buffer, binary.BigEndian, int32(msgLen))
+	binary.Write(buffer, binary.BigEndian, packet.MsgId)
+	if bodyLen > 0 {
+		buffer.Write(sendBody)
+	}
+	return buffer.Bytes(), nil
+
 }
 
 func (codec *DefaultCodec) UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket {

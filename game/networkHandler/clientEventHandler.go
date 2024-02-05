@@ -3,6 +3,8 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
+	"errors"
+	"fmt"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -54,6 +56,11 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelCon
 	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	exist := tcp.HasMethod(msgId)
+	if !exist {
+		//direct to send gateway
+		client.GetInnerClient(client.GATE_WAY).SendMsg(packet)
+	}
 
 	var innerHeaderLen int16
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
@@ -67,7 +74,11 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelCon
 		return 0
 	}
 
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	processed = tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	if processed {
+		return 0
+	}
+	log.Error(errors.New(fmt.Sprintf("msgId =%d  process error ", msgId)))
 	return 0
 }
 

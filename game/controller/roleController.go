@@ -10,7 +10,7 @@ import (
 
 func innerPlayerLogin(roleId int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
-	log.Infof("innerPlayerLogin login pid = %d sid = %d", loginRequest.RoleId, loginRequest.GetSid())
+	log.Infof("innerPlayerLogin login pid = %d roleId = %d", loginRequest.RoleId, roleId)
 
 	existRole := RoleOlineMgr.GetByRoleId(loginRequest.GetRoleId())
 	if existRole != nil {
@@ -35,7 +35,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 
 func loginResponseFromWorldServer(roleId int64, request proto.Message) {
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
-	log.Infof("login response = %d  sid =%d", roleId, innerLoginResponse.Sid)
+	log.Infof("------loginResponseFromWorldServer  response = %d   =%s", roleId, innerLoginResponse)
 	player := RoleOlineMgr.GetByRoleId(roleId)
 	if player == nil {
 		log.Infof(" role id = %d not found or have disconnected", roleId)

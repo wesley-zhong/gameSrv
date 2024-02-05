@@ -41,3 +41,7 @@ func (client *ConnClientContext) SendMsg(code protoGen.ProtoCode, body proto.Mes
 	}
 	client.Ctx.SendTo(encode)
 }
+
+func (client *ConnClientContext) Send(body []byte) {
+	client.Ctx.SendTo(body)
+}
