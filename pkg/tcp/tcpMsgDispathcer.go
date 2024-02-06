@@ -53,7 +53,7 @@ func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
 			log.Infof("err=%v, stack=%s", r, s)
 		}
 	}()
-	method := msgIdRoleIdMap[int16(msgId)]
+	method := msgIdRoleIdMap[msgId]
 	if method == nil {
 		log.Infof(" CallMethodWithRoleId msgId = %d not found method", msgId)
 		return false

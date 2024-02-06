@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/json-iterator/go v1.1.12
-	github.com/panjf2000/gnet v1.6.7
 	github.com/panjf2000/gnet/v2 v2.3.4
 	github.com/redis/go-redis/v9 v9.3.0
 	github.com/spf13/viper v1.15.0

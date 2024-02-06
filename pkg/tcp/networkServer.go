@@ -38,7 +38,7 @@ func (ts tcpServer) OnShutdown(eng gnet.Engine) {
 // It is usually not recommended to send large amounts of data back to the peer in OnOpened.
 
 func (ts tcpServer) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
-	//log.Infof("conn =%s opened", c.RemoteAddr())
+	log.Infof("---OnOpen   conn =%s opened", c.RemoteAddr())
 	context := &ChannelContextGnet{
 		c,
 	}
@@ -63,14 +63,16 @@ func (ts tcpServer) OnClose(c gnet.Conn, err error) (action gnet.Action) {
 // to read data into your own []byte, then pass the new []byte to the new goroutine.
 func (ts tcpServer) OnTraffic(c gnet.Conn) (action gnet.Action) {
 	//log.Infof("conn =%s React", c.RemoteAddr())
-	bytes, err := ts.codec.Decode(c)
-	if err != nil {
-		return 0
+	for {
+		bytes, err := ts.codec.Decode(c)
+		if err != nil {
+			return 0
+		}
+		context := &ChannelContextGnet{
+			c,
+		}
+		gEventHandler.React(bytes, context)
 	}
-	context := &ChannelContextGnet{
-		c,
-	}
-	gEventHandler.React(bytes, context)
 	return gnet.None
 }
 
@@ -94,7 +96,7 @@ func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec ICodec) 
 		codec:     codec,
 	}
 	log.Infof("###### server  start: %v", port)
-	err := gnet.Run(ss, ss.network+"://"+ss.addr, gnet.WithMulticore(true))
+	err := gnet.Run(ss, ss.network+"://"+ss.addr, gnet.WithMulticore(true), gnet.WithReuseAddr(true), gnet.WithReusePort(true))
 	log.Infof("server exits with error: %v", err)
 	if err != nil {
 		log.Error(err)

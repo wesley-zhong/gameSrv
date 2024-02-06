@@ -12,6 +12,8 @@ func Init() {
 	tcp.RegisterCallPlayerMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
 	tcp.RegisterCallPlayerMethod(int32(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ), &protoGen.InnerPlayerDisconnectRequest{}, innerPlayerDisconnect)
 	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
+
+	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT), &protoGen.EchoReq{}, directToWorld)
 }
 
 var PlayerMgr = player.NewPlayerMgr()

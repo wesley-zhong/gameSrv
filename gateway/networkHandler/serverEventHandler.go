@@ -3,12 +3,15 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
+	"errors"
+	"fmt"
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
+	"google.golang.org/protobuf/proto"
 	"time"
 )
 
@@ -70,8 +73,31 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-
 	log.Infof("------receive msgId = %d length =%d", msgId, length)
+	hasMethod := tcp.HasMethod(msgId)
+	if !hasMethod {
+		// direct to game server
+		log.Infof("-------- msgId =%d direct to game server", msgId)
+		if ctx.Context() == nil {
+			log.Error(errors.New(fmt.Sprintf("msgId = %d error", msgId)))
+			return 0
+		}
+		player := ctx.Context().(*player.Player)
+		headMsg := &protoGen.InnerHead{Id: player.Pid}
+		headerBytes, _ := proto.Marshal(headMsg)
+		totalLen := 4 + 2 + 2 + len(headerBytes) + int(length)
+
+		directSendByte := make([]byte, totalLen)
+		directSendBuff := bytes.NewBuffer(directSendByte)
+		directSendBuff.Reset()
+		binary.Write(directSendBuff, binary.BigEndian, int32(totalLen))
+		binary.Write(directSendBuff, binary.BigEndian, msgId)
+		binary.Write(directSendBuff, binary.BigEndian, int16(len(headerBytes)))
+		binary.Write(directSendBuff, binary.BigEndian, headerBytes)
+		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
+		client.GetInnerClient(client.GAME).SendBytesMsg(directSendBuff.Bytes())
+		return 0
+	}
 
 	bodyLen := bytebuffer.Len()
 	if bodyLen == 0 {

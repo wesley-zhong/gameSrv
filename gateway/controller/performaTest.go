@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -22,7 +23,7 @@ func performanceTest(ctx tcp.ChannelContext, req proto.Message) {
 
 func performanceTestResFromWorld(roleId int64, res proto.Message) {
 	//	testRes := res.(*protoGen.PerformanceTestRes)
-	perFormancePlayer := PlayerMgr.GetByRoleId(roleId)
+	perFormancePlayer := player.PlayerMgr.GetByRoleId(roleId)
 	if perFormancePlayer == nil {
 		return
 	}

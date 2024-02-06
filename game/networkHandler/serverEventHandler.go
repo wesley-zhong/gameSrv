@@ -3,6 +3,8 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
+	"errors"
+	"fmt"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
@@ -69,13 +71,20 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
-	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
+	if len(packet) == 4 {
+		var msgLen int32
+		bytebuffer1 := bytes.NewBuffer(packet)
+		binary.Read(bytebuffer1, binary.BigEndian, &msgLen)
+
+		log.Error(errors.New(fmt.Sprintf("uuuuuuuuuuuuuu  len =%d", msgLen)))
+	}
 	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
+	log.Infof("  client React receive addr =%s  len =%d", ctx.RemoteAddr(), len(packet))
 
 	var innerHeaderLen int16
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)

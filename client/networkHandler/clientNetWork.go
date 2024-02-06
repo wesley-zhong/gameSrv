@@ -51,7 +51,7 @@ func (clientNetwork *ClientNetwork) AfterWrite(c tcp.ChannelContext, b []byte) {
 func (clientNetwork *ClientNetwork) React(packet []byte, c tcp.ChannelContext) (action int) {
 	log.Infof("  client React receive addr =%s", c.RemoteAddr())
 	var msgId int16
-	bytebuffer := bytes.NewBuffer(packet)
+	bytebuffer := bytes.NewBuffer(packet[4:])
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 	log.Infof("---XXXXXXXXXXXXXXXXXXXX ---receive  protoCode =%d", msgId)
 

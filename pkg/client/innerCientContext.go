@@ -97,6 +97,7 @@ func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
 		log.Error(err)
 		return
 	}
+	log.Infof("------- send msgId=%d len =%d", packet.MsgId, len(encode))
 	client.Ctx.SendTo(encode)
 }
 
@@ -110,6 +111,16 @@ func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProto
 	client.Send(packet)
 }
 
-func (client *ConnInnerClientContext) SendMsg(body []byte) {
+func (client *ConnInnerClientContext) SendMsg(protoCode protoGen.ProtoCode, roleId int64, body proto.Message) {
+	header := &protoGen.InnerHead{Id: roleId}
+	packet := &tcp.MsgPacket{
+		MsgId:  int16(protoCode),
+		Header: header,
+		Body:   body,
+	}
+	client.Send(packet)
+}
+
+func (client *ConnInnerClientContext) SendBytesMsg(body []byte) {
 	client.Ctx.SendTo(body)
 }

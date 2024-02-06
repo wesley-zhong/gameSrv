@@ -20,6 +20,8 @@ func Init() {
 	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceTestResFromWorld)
 
+	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_DIRECT_TO_GAME), &protoGen.EchoReq{}, directToGame)
+
 	//add  msg  to game server
 }
 

@@ -53,7 +53,9 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
-	bytebuffer := bytes.NewBuffer(packet[4:])
+	bytebuffer := bytes.NewBuffer(packet)
+	var totalMsgLen int32
+	binary.Read(bytebuffer, binary.BigEndian, &totalMsgLen)
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 
@@ -69,11 +71,20 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelCon
 		//direct to send client
 		existPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
 		if existPlayer == nil {
-			log.Infof(" pid = %d not found", innerMsg.Id)
+			log.Warnf("XXXXXXXX pid = %d not found", innerMsg.Id)
 		}
+		skipLen := 2 + int32(innerHeaderLen)
 
-		//sendPlayerBuf:=bytes.NewBuffer()
-		//existPlayer.Context.Ctx.SendTo()
+		msgLen := totalMsgLen - skipLen
+		toPlayerBody := make([]byte, msgLen+4)
+		toPlayerBodyBuf := bytes.NewBuffer(toPlayerBody)
+		toPlayerBodyBuf.Reset()
+
+		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgLen)
+		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgId)
+		binary.Write(toPlayerBodyBuf, binary.BigEndian, bytebuffer.Bytes())
+		existPlayer.Context.Send(toPlayerBodyBuf.Bytes())
+		log.Infof("roleId %d msgId =%d not found method direct to send client ", innerMsg.Id, msgId)
 		return 0
 	}
 
@@ -100,6 +111,6 @@ func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
 	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
-	//	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
+	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 5000 * time.Millisecond, 0
 }

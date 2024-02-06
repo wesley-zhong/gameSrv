@@ -26,7 +26,9 @@ func NewPlayer(pid int64, context *client.ConnClientContext) *Player {
 }
 
 var playerMutex sync.Mutex
-var PlayerMgr *PlayerMgrWrap = NewPlayerMgr()
+var PlayerMgr *PlayerMgrWrap = &PlayerMgrWrap{
+	playerIdMap: &sync.Map{},
+}
 
 // player mgr----
 func NewPlayerMgr() *PlayerMgrWrap {

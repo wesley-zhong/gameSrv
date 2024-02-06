@@ -64,7 +64,7 @@ func (codec *DefaultCodec) Decode(c gnet.Conn) ([]byte, error) {
 	buf, _ = c.Peek(msgLen)
 	_, _ = c.Discard(msgLen)
 
-	return buf[:msgLen], nil
+	return buf, nil
 }
 
 func (code *DefaultCodec) InnerEncode(packet *MsgPacket) (sendBody []byte, err error) {
@@ -136,7 +136,6 @@ func (codec *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error
 		buffer.Write(sendBody)
 	}
 	return buffer.Bytes(), nil
-
 }
 
 func (codec *DefaultCodec) UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket {

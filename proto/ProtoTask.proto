@@ -53,3 +53,8 @@ message PerformanceTestRes{
   string resBody = 2;
   int64  someIdAdd =3;
 }
+
+message  EchoReq{
+  string requestBody = 1;
+  int64 someId =2;
+}
