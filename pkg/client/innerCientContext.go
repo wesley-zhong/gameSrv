@@ -32,7 +32,7 @@ var ICodec = &tcp.DefaultCodec{}
 
 var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
 
-func Connect(addr string) (tcp.ChannelContext, error) {
+func Connect(addr string) (tcp.Channel, error) {
 	context, err := tcp.Dial("tcp", addr)
 	if err != nil {
 		//log.Infof("----- connect failed 3 s after reconnect %v", err.Error())
@@ -81,12 +81,12 @@ func GetInnerClient(clientType GameServerType) *ConnInnerClientContext {
 }
 
 type ConnInnerClientContext struct {
-	Ctx      tcp.ChannelContext
+	Ctx      tcp.Channel
 	Sid      int64
 	ServerId int64 //this client from which server
 }
 
-func NewInnerClientContext(context tcp.ChannelContext) *ConnInnerClientContext {
+func NewInnerClientContext(context tcp.Channel) *ConnInnerClientContext {
 	c := &ConnInnerClientContext{Ctx: context, Sid: genSid()}
 	context.SetContext(c)
 	return c

@@ -8,7 +8,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func handShake(ctx tcp.ChannelContext, request proto.Message) {
+func handShake(ctx tcp.Channel, request proto.Message) {
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	handShake := request.(*protoGen.InnerServerHandShake)
 	validInnerClient.ServerId = handShake.FromServerId

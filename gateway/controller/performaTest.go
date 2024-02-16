@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func performanceTest(ctx tcp.ChannelContext, req proto.Message) {
+func performanceTest(ctx tcp.Channel, req proto.Message) {
 	testReq := req.(*protoGen.PerformanceTestReq)
 	res := &protoGen.PerformanceTestRes{
 		SomeId:    testReq.SomeId,

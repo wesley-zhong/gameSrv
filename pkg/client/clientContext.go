@@ -9,12 +9,12 @@ import (
 
 // ConnClientContext ========================== user client -==========================================================
 type ConnClientContext struct {
-	Ctx tcp.ChannelContext
+	Ctx tcp.Channel
 	Sid int64
 }
 
 // NewClientContext - ------ user client -------------------
-func NewClientContext(context tcp.ChannelContext) *ConnClientContext {
+func NewClientContext(context tcp.Channel) *ConnClientContext {
 	return &ConnClientContext{Ctx: context, Sid: genSid()}
 }
 

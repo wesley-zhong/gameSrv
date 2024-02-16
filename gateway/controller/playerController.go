@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func login(ctx tcp.ChannelContext, request proto.Message) {
+func login(ctx tcp.Channel, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	roleId := loginRequest.RoleId
@@ -33,7 +33,7 @@ func login(ctx tcp.ChannelContext, request proto.Message) {
 	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 
-func heartBeat(ctx tcp.ChannelContext, request proto.Message) {
+func heartBeat(ctx tcp.Channel, request proto.Message) {
 	player := ctx.Context().(*player.Player)
 	heartBeat := request.(*protoGen.HeartBeatRequest)
 	log.Infof(" context= %d  heartbeat time = %d", player.Context.Sid, heartBeat.ClientTime)
@@ -45,10 +45,10 @@ func heartBeat(ctx tcp.ChannelContext, request proto.Message) {
 	player.Context.SendMsg(protoGen.ProtoCode_HEART_BEAT_RESPONSE, response)
 }
 
-func ClientDisConnect(ctx tcp.ChannelContext) {
+func ClientDisConnect(ctx tcp.Channel) {
 	disConnPlayer := ctx.Context().(*player.Player)
 	//check right?
-	if disConnPlayer.Context.Ctx != ctx {
+	if disConnPlayer.Context.Ctx.GetId() != ctx.GetId() {
 		log.Infof("context =%s disconnected but playerId =%d have reconnected", ctx.RemoteAddr(), disConnPlayer.Pid)
 		return
 	}

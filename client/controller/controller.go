@@ -20,19 +20,19 @@ func Init() {
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT), &protoGen.EchoReq{}, onDirectFromWorld)
 }
 
-func hearBeatResponse(ctx tcp.ChannelContext, request proto.Message) {
+func hearBeatResponse(ctx tcp.Channel, request proto.Message) {
 	context := ctx.Context().(*client.ConnClientContext)
 	response := request.(*protoGen.HeartBeatResponse)
 	//kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("pid =%d heat beat response = %d  ", context.Sid, response.ServerTime)
 }
 
-func performanceRes(ctx tcp.ChannelContext, res proto.Message) {
+func performanceRes(ctx tcp.Channel, res proto.Message) {
 	performanceRes := res.(*protoGen.PerformanceTestRes)
 	log.Infof("------response id =%d", performanceRes.SomeIdAdd)
 }
 
-func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
+func loginResponse(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.LoginResponse)
 	log.Infof("------login response roleId=%d  remote addr =%s", res.RoleId, ctx.RemoteAddr())
 
@@ -45,14 +45,14 @@ func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 	ctx.SetContext(context)
 }
 
-func onDirectFromGame(ctx tcp.ChannelContext, msg proto.Message) {
+func onDirectFromGame(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
 	context := ctx.Context().(*client.ConnClientContext)
 	log.Infof("-----on   -onDirectFromGame body=%s  ", res)
 	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
 }
 
-func onDirectFromWorld(ctx tcp.ChannelContext, msg proto.Message) {
+func onDirectFromWorld(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
 	log.Infof("-----on -onDirectFromWorld body=%s ", res)
 }

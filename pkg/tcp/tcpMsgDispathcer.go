@@ -9,7 +9,7 @@ import (
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdContextMap = make(map[int16]*protoMethod[ChannelContext])
+var msgIdContextMap = make(map[int16]*protoMethod[Channel])
 var msgIdRoleIdMap = make(map[int16]*protoMethod[int64])
 
 var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
@@ -30,8 +30,8 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	})
 }
 
-func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[ChannelContext, proto.Message]) {
-	method := &protoMethod[ChannelContext]{
+func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, proto.Message]) {
+	method := &protoMethod[Channel]{
 		methodFuc: fuc,
 		param:     param,
 	}
@@ -62,7 +62,7 @@ func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
 	return true
 }
 
-func CallMethodWithChannelContext(msgId int16, context ChannelContext, body []byte) bool {
+func CallMethodWithChannelContext(msgId int16, context Channel, body []byte) bool {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())

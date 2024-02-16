@@ -32,7 +32,7 @@ func (handler *gnetHandler) OnShutdown(server gnet.Engine) {
 // The parameter out is the return value which is going to be sent back to the peer.
 // Sending large amounts of data back to the peer in OnOpen is usually not recommended.
 func (handler *gnetHandler) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
-	context := &ChannelContextGnet{c}
+	context := &ChannelGnet{c}
 	opened, a := handler.gameHandler.OnOpened(context)
 	return opened, gnet.Action(a)
 }
@@ -40,7 +40,7 @@ func (handler *gnetHandler) OnOpen(c gnet.Conn) (out []byte, action gnet.Action)
 // OnClose fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (handler *gnetHandler) OnClose(c gnet.Conn, err error) (action gnet.Action) {
-	context := &ChannelContextGnet{c}
+	context := &ChannelGnet{c}
 	handler.gameHandler.OnClosed(context, err)
 	return gnet.Close
 }
@@ -56,7 +56,7 @@ func (handler *gnetHandler) OnTraffic(c gnet.Conn) (action gnet.Action) {
 	if err != nil {
 		return 0
 	}
-	context := &ChannelContextGnet{c}
+	context := &ChannelGnet{c}
 	a := handler.gameHandler.React(bytes, context)
 	return gnet.Action(a)
 }
@@ -87,10 +87,10 @@ func ClientInited() bool {
 	return gClient != nil
 }
 
-func Dial(network, address string) (ChannelContext, error) {
+func Dial(network, address string) (Channel, error) {
 	conn, err := gClient.Dial(network, address)
 	if err != nil {
-		return &ChannelContextGnet{}, err
+		return &ChannelGnet{}, err
 	}
-	return &ChannelContextGnet{conn}, nil
+	return &ChannelGnet{conn}, nil
 }

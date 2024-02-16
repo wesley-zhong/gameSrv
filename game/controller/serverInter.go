@@ -8,7 +8,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func handShake(ctx tcp.ChannelContext, request proto.Message) {
+func handShake(ctx tcp.Channel, request proto.Message) {
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	handShake := request.(*protoGen.InnerServerHandShake)
 	validInnerClient.ServerId = handShake.FromServerId
@@ -18,6 +18,6 @@ func handShake(ctx tcp.ChannelContext, request proto.Message) {
 		validInnerClient.Sid, validInnerClient.ServerId, fromServerType, validInnerClient.Ctx.RemoteAddr())
 }
 
-func heartBeatResponse(ctx tcp.ChannelContext, request proto.Message) {
+func heartBeatResponse(ctx tcp.Channel, request proto.Message) {
 	log.Infof(" inner  heartBeatResponse context= %s ", ctx.RemoteAddr())
 }
