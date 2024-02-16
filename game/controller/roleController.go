@@ -30,6 +30,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 	}
 	client.GetInnerClient(client.WORLD).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.RoleId, innerLoginReq)
 	gameRole := role.NewRole(loginRequest.RoleId, nil)
+	gameRole.Sid = loginRequest.Sid
 	RoleOlineMgr.AddRole(gameRole)
 }
 

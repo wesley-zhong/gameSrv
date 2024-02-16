@@ -74,7 +74,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-	log.Infof("------receive msgId = %d length =%d", msgId, length)
+	//	log.Infof("------receive msgId = %d length =%d", msgId, length)
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
 		// direct to game server
@@ -98,7 +98,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
 		client.GetInnerClient(client.GAME).SendBytesMsg(directSendBuff.Bytes())
 
-		log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
+		//log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
 		return 0
 	}
 

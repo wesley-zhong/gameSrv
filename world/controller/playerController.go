@@ -19,5 +19,6 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 }
 
 func innerPlayerDisconnect(roleId int64, request proto.Message) {
+
 	log.Infof("---roleId = %d disconnected", roleId)
 }

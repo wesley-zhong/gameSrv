@@ -19,7 +19,6 @@ func login(ctx tcp.Channel, request proto.Message) {
 		//close exist player
 		existPlayer.Context.Ctx.Close()
 		existPlayer.SetContext(context)
-
 	} else {
 		existPlayer = player.NewPlayer(loginRequest.GetRoleId(), context)
 		player.PlayerMgr.Add(existPlayer)
@@ -29,7 +28,7 @@ func login(ctx tcp.Channel, request proto.Message) {
 		Sid:    context.Sid,
 		RoleId: existPlayer.Pid,
 	}
-	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), loginRequest)
+	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), innerRequest)
 	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
 }
 

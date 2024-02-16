@@ -84,7 +84,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgId)
 		binary.Write(toPlayerBodyBuf, binary.BigEndian, bytebuffer.Bytes())
 		existPlayer.Context.Send(toPlayerBodyBuf.Bytes())
-		log.Infof("roleId %d msgId =%d not found method direct to send client ", innerMsg.Id, msgId)
+		//log.Infof("roleId %d msgId =%d not found method direct to send client ", innerMsg.Id, msgId)
 		return 0
 	}
 
