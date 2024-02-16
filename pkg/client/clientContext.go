@@ -3,6 +3,7 @@ package client
 import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
+	"gameSrv/pkg/utils"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 )
@@ -13,20 +14,17 @@ type ConnContext struct {
 	Sid int64
 }
 
-// NewClientContext - ------ user client -------------------
-func NewClientContext(context tcp.Channel) *ConnContext {
-	return &ConnContext{Ctx: context, Sid: genSid()}
+func NewClientContext(ctx tcp.Channel) *ConnContext {
+	return &ConnContext{ctx, utils.NextId()}
 }
 
-func ClientConnect(addr string) *ConnContext {
-	context, err := tcp.Dial("tcp", addr)
+func ClientConnect(addr string) tcp.Channel {
+	channel, err := tcp.Dial("tcp", addr)
 	if err != nil {
 		log.Error(err)
 		return nil
 	}
-	clientContext := NewClientContext(context)
-	context.SetContext(clientContext)
-	return clientContext
+	return channel
 }
 
 func (client *ConnContext) SendMsg(code protoGen.ProtoCode, body proto.Message) {

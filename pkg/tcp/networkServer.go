@@ -41,18 +41,18 @@ func (ts tcpServer) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
 	log.Infof("---OnOpen   conn =%s opened", c.RemoteAddr())
 	context := &ChannelGnet{
 		c,
+		nil,
 	}
 	out, act := gEventHandler.OnOpened(context)
+	c.SetContext(context)
 	return out, gnet.Action(act)
 }
 
 // OnClose fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (ts tcpServer) OnClose(c gnet.Conn, err error) (action gnet.Action) {
-	context := &ChannelGnet{
-		c,
-	}
-	return gnet.Action(gEventHandler.OnClosed(context, err))
+	channel := c.Context().(Channel)
+	return gnet.Action(gEventHandler.OnClosed(channel, err))
 }
 
 // OnTraffic fires when a socket receives data from the peer.
@@ -67,10 +67,8 @@ func (ts tcpServer) OnTraffic(c gnet.Conn) (action gnet.Action) {
 		if err != nil {
 			return 0
 		}
-		context := &ChannelGnet{
-			c,
-		}
-		gEventHandler.React(bytes, context)
+		channel := c.Context().(Channel)
+		gEventHandler.React(bytes, channel)
 	}
 	return gnet.None
 }

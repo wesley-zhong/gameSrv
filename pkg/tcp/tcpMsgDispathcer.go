@@ -26,6 +26,12 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	//}
 	proto.Unmarshal(body, param)
 	msgGoPool.SubmitTask(func() {
+		defer func() {
+			if r := recover(); r != nil {
+				s := string(debug.Stack())
+				log.Infof("err=%v, stack=%s", r, s)
+			}
+		}()
 		method.methodFuc(any, param)
 	})
 }

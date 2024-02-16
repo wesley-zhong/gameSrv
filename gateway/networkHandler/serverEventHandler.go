@@ -21,13 +21,14 @@ type ServerEventHandler struct {
 func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
 	clientContext := client.NewClientContext(c)
 	c.SetContext(clientContext)
-	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
+	//log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
 	//workerPool := gopool.StartNewWorkerPool(2, 4)
 	//workerPool.SubmitTask(func() {
 	//	log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
 	//})
-	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
+	//	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
+	log.Infof("new connect addr =%s ", c.RemoteAddr())
 	return nil, 0
 }
 

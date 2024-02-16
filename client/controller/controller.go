@@ -63,7 +63,7 @@ func StartConnection(count int) {
 		serverAddr := viper.GetString("serverAddr")
 		log.Infof("client  connnet addr = %s", serverAddr)
 
-		client := client.ClientConnect(serverAddr)
+		channel := client.ClientConnect(serverAddr)
 		//client := client.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 
@@ -74,7 +74,7 @@ func StartConnection(count int) {
 			GameTicket: 0,
 			ServerId:   0,
 		}
-		playerConn[request.RoleId] = client
-		client.SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
+		playerConn[request.RoleId] = &client.ConnContext{Ctx: channel, Sid: 111}
+		playerConn[request.RoleId].SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
 	}
 }
