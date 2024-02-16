@@ -77,12 +77,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-	log.Infof("------receive msgId = %d length =%d", msgId, length)
+
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
-	log.Infof("  client React receive addr =%s  len =%d", ctx.RemoteAddr(), len(packet))
-
+	log.Infof("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
 		// direct to game server
@@ -106,7 +105,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 	if processed {
 		return 0
 	}
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	processed = tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	if processed {
+		return 0
+	}
+	log.Infof("msgId = %d process error ", msgId)
 	return 0
 }
 

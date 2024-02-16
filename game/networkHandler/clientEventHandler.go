@@ -60,6 +60,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelCon
 	if !exist {
 		//direct to send gateway
 		client.GetInnerClient(client.GATE_WAY).SendBytesMsg(packet)
+		return 0
 	}
 
 	var innerHeaderLen int16

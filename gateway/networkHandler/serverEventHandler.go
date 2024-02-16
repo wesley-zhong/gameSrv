@@ -77,15 +77,15 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
 		// direct to game server
-		log.Infof("-------- msgId =%d direct to game server", msgId)
 		if ctx.Context() == nil {
 			log.Error(errors.New(fmt.Sprintf("msgId = %d error", msgId)))
 			return 0
 		}
+
 		player := ctx.Context().(*player.Player)
 		headMsg := &protoGen.InnerHead{Id: player.Pid}
 		headerBytes, _ := proto.Marshal(headMsg)
-		totalLen := 4 + 2 + 2 + len(headerBytes) + int(length)
+		totalLen := 4 + 2 + 2 + len(headerBytes) + int(length) - 2
 
 		directSendByte := make([]byte, totalLen)
 		directSendBuff := bytes.NewBuffer(directSendByte)
@@ -96,6 +96,8 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 		binary.Write(directSendBuff, binary.BigEndian, headerBytes)
 		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
 		client.GetInnerClient(client.GAME).SendBytesMsg(directSendBuff.Bytes())
+
+		log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
 		return 0
 	}
 

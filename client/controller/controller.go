@@ -16,8 +16,8 @@ func Init() {
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_GAME_CLIENT), &protoGen.EchoReq{}, directFromGame)
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT), &protoGen.EchoReq{}, directFromWorld)
+	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_GAME_CLIENT), &protoGen.EchoReq{}, onDirectFromGame)
+	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT), &protoGen.EchoReq{}, onDirectFromWorld)
 }
 
 func hearBeatResponse(ctx tcp.ChannelContext, request proto.Message) {
@@ -34,7 +34,7 @@ func performanceRes(ctx tcp.ChannelContext, res proto.Message) {
 
 func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.LoginResponse)
-	log.Infof("------login response roleId=%d", res.RoleId)
+	log.Infof("------login response roleId=%d  remote addr =%s", res.RoleId, ctx.RemoteAddr())
 
 	context := playerConn[res.RoleId]
 	req := &protoGen.EchoReq{
@@ -42,19 +42,19 @@ func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 		SomeId:      99999999999999999,
 	}
 	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_GAME, req)
-	//ctx.SetContext(context)
+	ctx.SetContext(context)
 }
 
-func directFromGame(ctx tcp.ChannelContext, msg proto.Message) {
+func onDirectFromGame(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
-	log.Infof("-----on   -directFromGame roleId=%s ", res)
 	context := ctx.Context().(*client.ConnClientContext)
+	log.Infof("-----on   -onDirectFromGame body=%s  ", res)
 	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
 }
 
-func directFromWorld(ctx tcp.ChannelContext, msg proto.Message) {
+func onDirectFromWorld(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
-	log.Infof("-----on -directFromWorld roleId=%s ", res)
+	log.Infof("-----on -onDirectFromWorld body=%s ", res)
 }
 
 func StartConnection(count int) {
