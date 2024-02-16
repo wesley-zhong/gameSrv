@@ -35,7 +35,7 @@ func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // The parameter err is the last known connection error.
 func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
 	switch c.Context().(type) {
-	case *client.ConnClientContext:
+	case *client.ConnContext:
 		log.Infof("addr =%s not login", c.RemoteAddr())
 		return 1
 	case *player.Player:

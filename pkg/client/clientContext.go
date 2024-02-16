@@ -7,18 +7,18 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// ConnClientContext ========================== user client -==========================================================
-type ConnClientContext struct {
+// ConnContext ========================== user client -==========================================================
+type ConnContext struct {
 	Ctx tcp.Channel
 	Sid int64
 }
 
 // NewClientContext - ------ user client -------------------
-func NewClientContext(context tcp.Channel) *ConnClientContext {
-	return &ConnClientContext{Ctx: context, Sid: genSid()}
+func NewClientContext(context tcp.Channel) *ConnContext {
+	return &ConnContext{Ctx: context, Sid: genSid()}
 }
 
-func ClientConnect(addr string) *ConnClientContext {
+func ClientConnect(addr string) *ConnContext {
 	context, err := tcp.Dial("tcp", addr)
 	if err != nil {
 		log.Error(err)
@@ -29,7 +29,7 @@ func ClientConnect(addr string) *ConnClientContext {
 	return clientContext
 }
 
-func (client *ConnClientContext) SendMsg(code protoGen.ProtoCode, body proto.Message) {
+func (client *ConnContext) SendMsg(code protoGen.ProtoCode, body proto.Message) {
 	packet := &tcp.MsgPacket{
 		MsgId: int16(code),
 		Body:  body,
@@ -42,6 +42,6 @@ func (client *ConnClientContext) SendMsg(code protoGen.ProtoCode, body proto.Mes
 	client.Ctx.SendTo(encode)
 }
 
-func (client *ConnClientContext) Send(body []byte) {
+func (client *ConnContext) Send(body []byte) {
 	client.Ctx.SendTo(body)
 }

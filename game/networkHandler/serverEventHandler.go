@@ -34,7 +34,7 @@ func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // The parameter err is the last known connection error.
 func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
 	switch c.Context().(type) {
-	case *client.ConnClientContext:
+	case *client.ConnContext:
 		log.Infof("addr =%s not login", c.RemoteAddr())
 		return 1
 	case *player.Player:
@@ -105,11 +105,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if processed {
 		return 0
 	}
-	processed = tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
-	if processed {
-		return 0
-	}
-	log.Infof("msgId = %d process error ", msgId)
+	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
 	return 0
 }
 

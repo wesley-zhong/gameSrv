@@ -14,7 +14,7 @@ type ClientNetwork struct {
 
 func (clientNetwork *ClientNetwork) OnOpened(ctx tcp.Channel) (out []byte, action int) {
 	//	context := client.NewClientContext(c)
-	//context := ctx.Context().(*client.ConnClientContext)
+	//context := ctx.Context().(*client.ConnContext)
 	log.Infof("----------  client opened  addr=%s", ctx.RemoteAddr())
 	return nil, 0
 }
@@ -22,7 +22,7 @@ func (clientNetwork *ClientNetwork) OnOpened(ctx tcp.Channel) (out []byte, actio
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientNetwork) OnClosed(c tcp.Channel, err error) (action int) {
-	context := c.Context().(*client.ConnClientContext)
+	context := c.Context().(*client.ConnContext)
 	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context)
 	return 1
 

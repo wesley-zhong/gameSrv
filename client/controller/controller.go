@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var playerConn = make(map[int64]*client.ConnClientContext)
+var playerConn = make(map[int64]*client.ConnContext)
 var icodec = &tcp.DefaultCodec{}
 
 func Init() {
@@ -21,7 +21,7 @@ func Init() {
 }
 
 func hearBeatResponse(ctx tcp.Channel, request proto.Message) {
-	context := ctx.Context().(*client.ConnClientContext)
+	context := ctx.Context().(*client.ConnContext)
 	response := request.(*protoGen.HeartBeatResponse)
 	//kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("pid =%d heat beat response = %d  ", context.Sid, response.ServerTime)
@@ -47,7 +47,7 @@ func loginResponse(ctx tcp.Channel, msg proto.Message) {
 
 func onDirectFromGame(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
-	context := ctx.Context().(*client.ConnClientContext)
+	context := ctx.Context().(*client.ConnContext)
 	log.Infof("-----on   -onDirectFromGame body=%s  ", res)
 	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
 }

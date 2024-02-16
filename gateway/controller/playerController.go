@@ -11,7 +11,7 @@ import (
 )
 
 func login(ctx tcp.Channel, request proto.Message) {
-	context := ctx.Context().(*client.ConnClientContext)
+	context := ctx.Context().(*client.ConnContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	roleId := loginRequest.RoleId
 	existPlayer := player.PlayerMgr.GetByRoleId(roleId)
