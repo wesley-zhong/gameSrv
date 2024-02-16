@@ -36,25 +36,25 @@ func loginResponse(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.LoginResponse)
 	log.Infof("------login response roleId=%d", res.RoleId)
 
-	//context := playerConn[res.RoleId]
-	//req := &protoGen.EchoReq{
-	//	RequestBody: "uuaauuauauau",
-	//	SomeId:      99999999999999999,
-	//}
-	//context.SendMsg(protoGen.ProtoCode_DIRECT_TO_GAME, req)
+	context := playerConn[res.RoleId]
+	req := &protoGen.EchoReq{
+		RequestBody: "uuaauuauauau",
+		SomeId:      99999999999999999,
+	}
+	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_GAME, req)
 	//ctx.SetContext(context)
 }
 
 func directFromGame(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
-	log.Infof("------directFromGame roleId=%s ", res)
-	//context := ctx.Context().(*client.ConnClientContext)
-	//	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
+	log.Infof("-----on   -directFromGame roleId=%s ", res)
+	context := ctx.Context().(*client.ConnClientContext)
+	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
 }
 
 func directFromWorld(ctx tcp.ChannelContext, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
-	log.Infof("------directFromWorld roleId=%s ", res)
+	log.Infof("-----on -directFromWorld roleId=%s ", res)
 }
 
 func StartConnection(count int) {

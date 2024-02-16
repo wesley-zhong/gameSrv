@@ -93,11 +93,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.ChannelCon
 		return 0
 	}
 
-	processed = tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
-	if processed {
-		return 0
-	}
-
+	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
 	return 0
 }
 
@@ -111,6 +107,5 @@ func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
 	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
-	log.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 5000 * time.Millisecond, 0
 }

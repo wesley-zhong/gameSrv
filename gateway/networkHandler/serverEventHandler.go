@@ -90,7 +90,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 		directSendByte := make([]byte, totalLen)
 		directSendBuff := bytes.NewBuffer(directSendByte)
 		directSendBuff.Reset()
-		binary.Write(directSendBuff, binary.BigEndian, int32(totalLen))
+		binary.Write(directSendBuff, binary.BigEndian, int32(totalLen-4))
 		binary.Write(directSendBuff, binary.BigEndian, msgId)
 		binary.Write(directSendBuff, binary.BigEndian, int16(len(headerBytes)))
 		binary.Write(directSendBuff, binary.BigEndian, headerBytes)

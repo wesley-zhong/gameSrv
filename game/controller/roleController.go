@@ -12,11 +12,11 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
 	log.Infof("innerPlayerLogin login pid = %d roleId = %d", loginRequest.RoleId, roleId)
 
-	existRole := RoleOlineMgr.GetByRoleId(loginRequest.GetRoleId())
-	if existRole != nil {
-		log.Infof("roleId =%d have login no need process", existRole.RoleId)
-		return
-	}
+	//existRole := RoleOlineMgr.GetByRoleId(loginRequest.GetRoleId())
+	//if existRole != nil {
+	//	log.Infof("roleId =%d have login no need process", existRole.RoleId)
+	//	return
+	//}
 	// load role data form db
 	//roleDO := service.FindRoleData(loginRequest.RoleId)
 	//if roleDO == nil {
@@ -56,5 +56,5 @@ func innerPlayerDisconnect(roleId int64, request proto.Message) {
 		return
 	}
 	log.Infof("roleId =%d logout", roleId)
-	client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, roleId, playerDisconnectRequest)
+	client.GetInnerClient(client.WORLD).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, roleId, playerDisconnectRequest)
 }

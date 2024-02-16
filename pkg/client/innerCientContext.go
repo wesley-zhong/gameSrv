@@ -2,6 +2,7 @@ package client
 
 import (
 	"errors"
+	"fmt"
 	"gameSrv/pkg/common"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -97,8 +98,14 @@ func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
 		log.Error(err)
 		return
 	}
-	log.Infof("------- send msgId=%d len =%d", packet.MsgId, len(encode))
-	client.Ctx.SendTo(encode)
+	sendLen, err := client.Ctx.SendTo(encode)
+	if err != nil {
+		log.Error(err)
+		return
+	}
+	if sendLen != len(encode) {
+		log.Error(errors.New(fmt.Sprintf(" send = %d  total en = %d", sendLen, len(encode))))
+	}
 }
 
 func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, roleId int64, body proto.Message) {

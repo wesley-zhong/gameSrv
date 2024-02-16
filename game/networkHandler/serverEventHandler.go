@@ -71,20 +71,29 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.ChannelContext, b []by
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelContext) (action int) {
-	if len(packet) == 4 {
-		var msgLen int32
-		bytebuffer1 := bytes.NewBuffer(packet)
-		binary.Read(bytebuffer1, binary.BigEndian, &msgLen)
+	bytebuffer := bytes.NewBuffer(packet)
+	var length uint32
+	binary.Read(bytebuffer, binary.BigEndian, &length)
 
-		log.Error(errors.New(fmt.Sprintf("uuuuuuuuuuuuuu  len =%d", msgLen)))
-	}
-	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	log.Infof("------receive msgId = %d length =%d", msgId, length)
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
 	log.Infof("  client React receive addr =%s  len =%d", ctx.RemoteAddr(), len(packet))
+
+	hasMethod := tcp.HasMethod(msgId)
+	if !hasMethod {
+		// direct to game server
+		log.Infof("-------- msgId =%d direct to world server", msgId)
+		if ctx.Context() == nil {
+			log.Error(errors.New(fmt.Sprintf("msgId = %d error", msgId)))
+			return 0
+		}
+		client.GetInnerClient(client.WORLD).SendBytesMsg(packet)
+		return 0
+	}
 
 	var innerHeaderLen int16
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
@@ -97,7 +106,6 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.ChannelCon
 	if processed {
 		return 0
 	}
-
 	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
 	return 0
 }

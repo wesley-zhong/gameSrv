@@ -51,8 +51,8 @@ type MsgPacket struct {
 
 func (codec *DefaultCodec) Decode(c gnet.Conn) ([]byte, error) {
 	bodyOffset := bodySize
-	buf, _ := c.Peek(bodyOffset)
-	if len(buf) < bodyOffset {
+	buf, err := c.Peek(bodyOffset)
+	if err != nil {
 		return nil, ErrIncompletePacket
 	}
 
