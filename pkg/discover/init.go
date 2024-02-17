@@ -33,16 +33,3 @@ func InitDiscoverAndRegister(v *viper.Viper, onChanged OnWatchServiceChanged, se
 	}
 	return nil
 }
-
-//func InitClient(handler tcp.EventHandler) {
-//	tcp.ClientStart(handler,
-//		gnet.WithMulticore(true),
-//		gnet.WithReusePort(true),
-//		gnet.WithTicker(true),
-//		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
-//}
-
-func connectNode(node *Node) {
-	clientConnect := client.InnerClientConnect(node.Type, node.Addr, global.SelfServerType)
-	node.ChannelContext = clientConnect
-}

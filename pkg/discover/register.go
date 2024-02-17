@@ -44,7 +44,7 @@ func NewServiceRegister(endpoints []string, key, val string, port int32, severTy
 
 	serv := &ServiceRegister{
 		cli:         cli,
-		serviceId:   key,
+		serviceId:   fmt.Sprintf(key+":%d", port),
 		serviceName: val,
 		MetaData:    metaData,
 		localAddr:   fmt.Sprintf(strIp+":%d", port),

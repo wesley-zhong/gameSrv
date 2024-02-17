@@ -26,8 +26,11 @@ func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
-	context := c.Context().(*client.ConnInnerClientContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context.Sid)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s ", c.RemoteAddr())
+	if c.Context() == nil {
+		return 0
+	}
+
 	return 1
 
 }
