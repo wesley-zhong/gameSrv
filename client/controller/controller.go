@@ -10,7 +10,6 @@ import (
 )
 
 var playerConn = make(map[int64]*client.ConnContext)
-var icodec = &tcp.DefaultCodec{}
 
 func Init() {
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)

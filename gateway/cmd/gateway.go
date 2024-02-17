@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"gameSrv/client/networkHandler"
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/dispathcer"
 	"gameSrv/gateway/watcher"
@@ -52,7 +51,7 @@ func main() {
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	//init tcp client
-	clientHandler := &networkHandler.ClientNetwork{}
+	clientHandler := &dispathcer.ClientEventHandler{}
 	tcp.ClientStart(clientHandler,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),

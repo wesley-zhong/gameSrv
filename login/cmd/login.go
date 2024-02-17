@@ -41,7 +41,7 @@ func main() {
 
 	//mongodb init
 	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
-	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
+	//	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
 	//start server
 	server := web.NewHttpServer()
