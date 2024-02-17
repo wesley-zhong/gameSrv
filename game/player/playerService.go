@@ -45,6 +45,6 @@ func UpdateAccount(do *do.AccountDO) {
 		return
 	}
 	do.Pid = 100001
-	//dal.AccountDAO.Save(do.Id, do)
+	//dal.AccountDAO.Save(dos.Id, dos)
 	dal.AccountDAO.AsynSave(do.Id, do)
 }

@@ -1,4 +1,4 @@
-package networkHandler
+package dispatcher
 
 import (
 	"gameSrv/pkg/client"
@@ -11,8 +11,8 @@ type ClientEventHandler struct {
 }
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	//context := client.NewClientContext(c)
-	log.Infof("----------  client opened  addr=%s", c.RemoteAddr())
+
+	log.Infof("----------inner  client opened  addr=%s, id=%d", c.RemoteAddr(), c.GetId())
 	return nil, 0
 }
 
@@ -20,7 +20,7 @@ func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
 	context := c.Context().(*client.ConnInnerClientContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context.Sid)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context)
 	return 1
 
 }
@@ -44,21 +44,13 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (out []byte, action int) {
-	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
-	return nil, 0
+func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
+
+	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	//innerClient := client.GetInnerClient(client.WORLD)
-	//if innerClient == nil {
-	//	//log.Infof("no found connect type =%d", client.WORLD)
-	//	return 1000 * time.Millisecond, 0
-	//}
-	//heartBeat := &protoGen.InnerHeartBeatRequest{}
-	////innerClient.SendInnerMsg(int32(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ), 0, heartBeat)
-	////.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 1000 * time.Millisecond, 0
 }

@@ -2,11 +2,14 @@ package main
 
 import (
 	"fmt"
+	"gameSrv/client/networkHandler"
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/dispathcer"
+	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
+	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
 	"net/http"
 	_ "net/http/pprof"
@@ -48,9 +51,16 @@ func main() {
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
+	//init tcp client
+	clientHandler := &networkHandler.ClientNetwork{}
+	tcp.ClientStart(clientHandler,
+		gnet.WithMulticore(true),
+		gnet.WithReusePort(true),
+		gnet.WithTicker(true),
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
+
 	////register to etcd
-	clientNetwork := &dispathcer.ClientEventHandler{}
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.GATE_WAY)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.GATE_WAY)
 	if err != nil {
 		panic(err)
 		return

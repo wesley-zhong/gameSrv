@@ -7,6 +7,7 @@ import (
 	"gameSrv/pkg/tcp"
 	"gameSrv/world/controller"
 	"gameSrv/world/dispatcher"
+	"gameSrv/world/watcher"
 	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
@@ -34,13 +35,11 @@ func main() {
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
-	clientNetwork := &dispatcher.ClientEventHandler{}
 	controller.Init()
 
 	handler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
-
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.WORLD)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.WORLD)
 	if err != nil {
 		loopWG.Done()
 		panic(err)

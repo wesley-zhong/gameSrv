@@ -82,6 +82,9 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 			log.Error(errors.New(fmt.Sprintf("msgId = %d error", msgId)))
 			return 0
 		}
+		if _, ok := ctx.Context().(*player.Player); !ok {
+			return 0
+		}
 
 		player := ctx.Context().(*player.Player)
 		headMsg := &protoGen.InnerHead{Id: player.Pid}
@@ -118,7 +121,7 @@ func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int
 	if player.PlayerMgr.GetSize() == 0 {
 		return 5000 * time.Millisecond, 0
 	}
-	//sample to do something
+	//sample to dos something
 	player.PlayerMgr.Range(func(player *player.Player) {
 		response := &protoGen.HeartBeatResponse{
 			ClientTime: time.Now().UnixMilli(),

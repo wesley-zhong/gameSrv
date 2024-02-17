@@ -2,7 +2,7 @@ package controller
 
 import (
 	"gameSrv/login/dal"
-	"gameSrv/login/module"
+	"gameSrv/login/dos"
 	"gameSrv/login/service"
 	"gameSrv/pkg/utils"
 )

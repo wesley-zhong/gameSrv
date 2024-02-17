@@ -31,5 +31,5 @@ func (redisDAO *RedisDAOInterface[T]) setByKey(key string, obj *T) error {
 }
 
 /**
-to do other options
+to dos other options
 */
