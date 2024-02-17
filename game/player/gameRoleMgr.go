@@ -1,7 +1,7 @@
-package role
+package player
 
 import (
-	"gameSrv/game/module"
+	"gameSrv/game/do"
 	"sync"
 )
 
@@ -10,10 +10,12 @@ type GameRole struct {
 	RoleId   int64
 	RoleName string
 	ServerId int64
-	RoleDo   *module.RoleDO
+	RoleDo   *do.RoleDO
 }
 
-func NewRole(roleId int64, roleDO *module.RoleDO) *GameRole {
+var RoleOlineMgr = NewRoleMgr()
+
+func NewRole(roleId int64, roleDO *do.RoleDO) *GameRole {
 	return &GameRole{
 		RoleId: roleId,
 		RoleDo: roleDO,

@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"gameSrv/game/role"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 )
@@ -24,5 +23,3 @@ func Init() {
 
 	//add  msg  to game server
 }
-
-var RoleOlineMgr = role.NewRoleMgr()

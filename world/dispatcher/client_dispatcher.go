@@ -1,4 +1,4 @@
-package networkHandler
+package dispatcher
 
 import (
 	"gameSrv/pkg/client"

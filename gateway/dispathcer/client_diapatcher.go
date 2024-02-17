@@ -1,10 +1,9 @@
-package networkHandler
+package dispathcer
 
 import (
 	"bytes"
 	"encoding/binary"
-	"errors"
-	"fmt"
+	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -15,10 +14,11 @@ import (
 )
 
 type ClientEventHandler struct {
+	codec tcp.ICodec
 }
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	//context := client.NewClientContext(c)
+	//	context := client.NewClientContext(c)
 	log.Infof("----------  client opened  addr=%s", c.RemoteAddr())
 	return nil, 0
 }
@@ -35,6 +35,7 @@ func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (act
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (clientNetwork *ClientEventHandler) PreWrite(c tcp.Channel) {
+	//log.Infof("pppppppppppppppppp")
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
@@ -52,16 +53,11 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
-	bytebuffer := bytes.NewBuffer(packet[4:])
+	bytebuffer := bytes.NewBuffer(packet)
+	var totalMsgLen int32
+	binary.Read(bytebuffer, binary.BigEndian, &totalMsgLen)
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-	exist := tcp.HasMethod(msgId)
-	if !exist {
-		//direct to send gateway
-		client.GetInnerClient(client.GATE_WAY).SendBytesMsg(packet)
-		return 0
-	}
 
 	var innerHeaderLen int16
 	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
@@ -70,29 +66,46 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 	binary.Read(bytebuffer, binary.BigEndian, innerBody)
 	proto.Unmarshal(innerBody, innerMsg)
 
+	exist := tcp.HasMethod(msgId)
+	if !exist {
+		//direct to send client
+		existPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
+		if existPlayer == nil {
+			log.Warnf("XXXXXXXX pid = %d not found", innerMsg.Id)
+		}
+		skipLen := 2 + int32(innerHeaderLen)
+
+		msgLen := totalMsgLen - skipLen
+		toPlayerBody := make([]byte, msgLen+4)
+		toPlayerBodyBuf := bytes.NewBuffer(toPlayerBody)
+		toPlayerBodyBuf.Reset()
+
+		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgLen)
+		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgId)
+		binary.Write(toPlayerBodyBuf, binary.BigEndian, bytebuffer.Bytes())
+		existPlayer.Context.Send(toPlayerBodyBuf.Bytes())
+		//log.Infof("roleId %d msgId =%d not found method direct to send client ", innerMsg.Id, msgId)
+		return 0
+	}
+
 	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
 	if processed {
 		return 0
 	}
 
-	processed = tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
-	if processed {
-		return 0
-	}
-	log.Error(errors.New(fmt.Sprintf("msgId =%d  process error ", msgId)))
+	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
 	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(client.WORLD)
+	innerClient := client.GetInnerClient(client.GAME)
 	if innerClient == nil {
-		//log.Infof("no found connect type =%d", client.WORLD)
+		//	log.Infof("no found connect type =%d", client.GAME)
 		return 5000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
 	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
-	//.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
 	return 5000 * time.Millisecond, 0
 }

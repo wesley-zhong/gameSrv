@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"gameSrv/gateway/controller"
-	"gameSrv/gateway/networkHandler"
+	"gameSrv/gateway/dispathcer"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
@@ -44,12 +44,12 @@ func main() {
 	// msg Register
 	controller.Init()
 	//package receive handler
-	handler := &networkHandler.ServerEventHandler{}
+	handler := &dispathcer.ServerEventHandler{}
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	////register to etcd
-	clientNetwork := &networkHandler.ClientEventHandler{}
+	clientNetwork := &dispathcer.ClientEventHandler{}
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.GATE_WAY)
 	if err != nil {
 		panic(err)

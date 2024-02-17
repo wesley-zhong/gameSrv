@@ -6,7 +6,7 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
 	"gameSrv/world/controller"
-	"gameSrv/world/networkHandler"
+	"gameSrv/world/dispatcher"
 	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
@@ -34,10 +34,10 @@ func main() {
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
-	clientNetwork := &networkHandler.ClientEventHandler{}
+	clientNetwork := &dispatcher.ClientEventHandler{}
 	controller.Init()
 
-	handler := &networkHandler.ServerEventHandler{}
+	handler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.WORLD)

@@ -1,10 +1,11 @@
-package networkHandler
+package dispathcer
 
 import (
 	"bytes"
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
@@ -18,15 +19,16 @@ type ServerEventHandler struct {
 }
 
 func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	clientContext := client.NewInnerClientContext(c)
+	clientContext := client.NewClientContext(c)
 	c.SetContext(clientContext)
-	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
+	//log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
 	//workerPool := gopool.StartNewWorkerPool(2, 4)
 	//workerPool.SubmitTask(func() {
 	//	log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
 	//})
-	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
+	//	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
+	log.Infof("new connect addr =%s ", c.RemoteAddr())
 	return nil, 0
 }
 
@@ -38,11 +40,7 @@ func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (act
 		log.Infof("addr =%s not login", c.RemoteAddr())
 		return 1
 	case *player.Player:
-		player := c.Context().(*player.Player)
-		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
-		return 1
-	case *client.ConnInnerClientContext:
-		log.Infof("addr =%s innerClient disconnected", c.RemoteAddr())
+		controller.ClientDisConnect(c)
 		return 1
 	default:
 		return 1
@@ -53,7 +51,6 @@ func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (act
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (serverNetWork *ServerEventHandler) PreWrite(c tcp.Channel) {
 	//log.Infof("conn =%s PreWrite", c.RemoteAddr())
-
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
@@ -77,40 +74,57 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
-
-	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
-		return 0
-	}
-	//log.Infof("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
+	//	log.Infof("------receive msgId = %d length =%d", msgId, length)
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
 		// direct to game server
-		//log.Infof("-------- msgId =%d direct to world server", msgId)
 		if ctx.Context() == nil {
 			log.Error(errors.New(fmt.Sprintf("msgId = %d error", msgId)))
 			return 0
 		}
-		client.GetInnerClient(client.WORLD).SendBytesMsg(packet)
+
+		player := ctx.Context().(*player.Player)
+		headMsg := &protoGen.InnerHead{Id: player.Pid}
+		headerBytes, _ := proto.Marshal(headMsg)
+		totalLen := 4 + 2 + 2 + len(headerBytes) + int(length) - 2
+
+		directSendByte := make([]byte, totalLen)
+		directSendBuff := bytes.NewBuffer(directSendByte)
+		directSendBuff.Reset()
+		binary.Write(directSendBuff, binary.BigEndian, int32(totalLen-4))
+		binary.Write(directSendBuff, binary.BigEndian, msgId)
+		binary.Write(directSendBuff, binary.BigEndian, int16(len(headerBytes)))
+		binary.Write(directSendBuff, binary.BigEndian, headerBytes)
+		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
+		client.GetInnerClient(client.GAME).SendBytesMsg(directSendBuff.Bytes())
+
+		//log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
 		return 0
 	}
 
-	var innerHeaderLen int16
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
-	innerMsg := &protoGen.InnerHead{}
-	innerBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-	proto.Unmarshal(innerBody, innerMsg)
-
-	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
-	if processed {
+	bodyLen := bytebuffer.Len()
+	if bodyLen == 0 {
+		tcp.CallMethodWithChannelContext(msgId, ctx, nil)
 		return 0
 	}
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	log.Infof("------#########receive msgId = %d length =%d", msgId, bodyLen)
+	tcp.CallMethodWithChannelContext(msgId, ctx, packet[6:])
 	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int) {
-	return 1000 * time.Millisecond, 0
+	if player.PlayerMgr.GetSize() == 0 {
+		return 5000 * time.Millisecond, 0
+	}
+	//sample to do something
+	player.PlayerMgr.Range(func(player *player.Player) {
+		response := &protoGen.HeartBeatResponse{
+			ClientTime: time.Now().UnixMilli(),
+			ServerTime: time.Now().UnixMilli(),
+		}
+		player.Context.SendMsg(protoGen.ProtoCode_HEART_BEAT_RESPONSE, response)
+	})
+	return 5000 * time.Millisecond, 0
 }

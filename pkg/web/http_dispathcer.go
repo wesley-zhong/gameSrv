@@ -46,7 +46,7 @@ func (core *HttpMethodWrap) HttpInit() {
 func (core *HttpMethodWrap) RegisterController(controller interface{}) {
 	rtype := reflect.TypeOf(controller)
 	methods := rtype.NumMethod()
-	log.Infof("============register service = %s   methods count = %d ============== begin", rtype.Elem().Name(), methods)
+	log.Infof("============register quest = %s   methods count = %d ============== begin", rtype.Elem().Name(), methods)
 	for i := 0; i < methods; i++ {
 		method := rtype.Method(i)
 		var serviceName = strings.ToLower(rtype.Elem().Name())
@@ -71,7 +71,7 @@ func (core *HttpMethodWrap) RegisterController(controller interface{}) {
 		}
 		val.addMethod(&aresMethod)
 	}
-	log.Infof("============register service = %s  methods count =  %d  ============== end", rtype.Elem().Name(), methods)
+	log.Infof("============register quest = %s  methods count =  %d  ============== end", rtype.Elem().Name(), methods)
 }
 
 func (srviceMethods *ServiceMethods) addMethod(aresMethod *AresMethod) {

@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gameSrv/game/role"
+	"gameSrv/game/player"
 	"gameSrv/pkg/web"
 )
 
@@ -13,4 +13,4 @@ func Init(methodInterface web.HttpMethodInterface) {
 
 }
 
-var RoleOlineMgr = role.NewRoleMgr()
+var RoleOlineMgr = player.NewRoleMgr()

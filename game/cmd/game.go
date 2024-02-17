@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"gameSrv/game/controller"
 	"gameSrv/game/dal"
-	"gameSrv/game/networkHandler"
-	"gameSrv/game/service"
+	"gameSrv/game/dispatcher"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
@@ -46,25 +45,21 @@ func main() {
 	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	//dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
-	account := service.AccountLogin("andy")
-	service.UpdateAccount(account)
-
 	// msg Register
 	controller.Init()
 
 	//start server
-	serverNetworkHandler := &networkHandler.ServerEventHandler{}
+	serverNetworkHandler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), serverNetworkHandler, &tcp.DefaultCodec{})
 
 	////register to etcd
-	clientNetwork := &networkHandler.ClientEventHandler{}
+	clientNetwork := &dispatcher.ClientEventHandler{}
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.GAME)
 	if err != nil {
 		panic(err)
 		return
 	}
 	// start http server
-
 	//httpServer := web.NewHttpServer()
 	//httpServer.HttpMethod.RegisterController()
 

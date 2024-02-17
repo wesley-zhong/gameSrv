@@ -13,7 +13,7 @@ import (
 var ServiceRegisterInstance *ServiceRegister
 var EtcdClient *clientv3.Client
 
-// ServiceRegister create and register service
+// ServiceRegister create and register quest
 type ServiceRegister struct {
 	cli     *clientv3.Client //etcd client
 	leaseID clientv3.LeaseID //lease ID
@@ -26,7 +26,7 @@ type ServiceRegister struct {
 	serverType    client.GameServerType
 }
 
-// NewServiceRegister create new service
+// NewServiceRegister create new quest
 func NewServiceRegister(endpoints []string, key, val string, port int32, severType client.GameServerType, lease int64, metaData map[string]string) (*ServiceRegister, error) {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   endpoints,
@@ -64,7 +64,7 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 	if err != nil {
 		return err
 	}
-	// register service and bind lease
+	// register quest and bind lease
 	node := &Node{
 		ServiceName:  s.serviceName,
 		ServiceId:    s.serviceId,
@@ -91,7 +91,7 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 }
 
 func (s *ServiceRegister) UpdateNodeValue() error {
-	// register service and bind lease
+	// register quest and bind lease
 	node := &Node{
 		ServiceName:  s.serviceName,
 		ServiceId:    s.serviceId,

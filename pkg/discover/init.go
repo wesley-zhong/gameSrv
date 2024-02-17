@@ -23,7 +23,7 @@ func InitDiscoverAndRegister(v *viper.Viper, handler tcp.EventHandler, selfType 
 		}
 	}
 	//register  myself to etcd
-	serviceName := v.GetString("service.name")
+	serviceName := v.GetString("quest.name")
 	serviceId := utils.CreateServiceUnitName(serviceName)
 	metaData := make(map[string]string)
 	err := RegisterService(discoverUrls, serviceName, serviceId, selfPort, selfType, metaData)

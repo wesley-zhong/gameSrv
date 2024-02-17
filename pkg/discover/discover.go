@@ -107,7 +107,7 @@ func (s *ServiceDiscovery) SetServiceList(key, val string) {
 		return
 	}
 	s.serverList[key] = node
-	log.Infof("### discover service :ServiceId  %s:  ServiceName: %s", key, val)
+	log.Infof("### discover quest :ServiceId  %s:  ServiceName: %s", key, val)
 	go connectNode(node)
 }
 

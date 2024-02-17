@@ -1,4 +1,4 @@
-package service
+package quest
 
 import (
 	"gameSrv/gateway/player"
