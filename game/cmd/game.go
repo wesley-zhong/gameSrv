@@ -30,7 +30,7 @@ func main() {
 	}()
 	//for performance
 	go func() {
-		http.ListenAndServe("localhost:6060", nil)
+		http.ListenAndServe(":6060", nil)
 	}()
 
 	viper.SetConfigName("config")             // 配置文件名，不需要后缀名

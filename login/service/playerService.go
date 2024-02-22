@@ -44,3 +44,8 @@ func (playerService *PlayerServiceImpl) UpdateAccount(do *module.AccountDO) {
 	//dal.AccountDAO.Save(dos.Id, dos)
 	dal.AccountDAO.AsynSave(do.Id, do)
 }
+
+func createToken(*module.AccountDO) {
+	//discover.DiscoverService.
+
+}

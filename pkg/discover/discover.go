@@ -144,6 +144,10 @@ func (s *ServiceDiscovery) Close() error {
 	return s.cli.Close()
 }
 
+func (s *ServiceDiscovery) GetKvClient() {
+
+}
+
 func InitDiscovery(endpoints []string, servicePrefixes []string, onChanged OnWatchServiceChanged) error {
 	DiscoverService = NewServiceDiscovery(endpoints)
 	DiscoverService.onChanged = onChanged

@@ -116,6 +116,7 @@ func (s *ServiceRegister) ListenLeaseRespChan() {
 				log.Warnf("XXXXdiscover client lose connect")
 				return
 			}
+			log.Infof("=============== re lease success")
 		}
 	}
 }
@@ -131,7 +132,7 @@ func (s *ServiceRegister) Close() error {
 }
 
 func RegisterService(endpoints []string, serviceName string, serviceId string, port int32, serveType client.GameServerType, metaData map[string]string) error {
-	service, err := NewServiceRegister(endpoints, serviceId, serviceName, port, serveType, 5, metaData)
+	service, err := NewServiceRegister(endpoints, serviceId, serviceName, port, serveType, 6, metaData)
 	ServiceRegisterInstance = service
 	if err != nil {
 		log.Error(err)
