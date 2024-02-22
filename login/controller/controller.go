@@ -10,7 +10,6 @@ func Init(methodInterface web.HttpMethodInterface) {
 	methodInterface.RegisterController(login)
 	role := new(Role)
 	methodInterface.RegisterController(role)
-
 }
 
 var RoleOlineMgr = player.NewRoleMgr()

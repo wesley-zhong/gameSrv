@@ -116,7 +116,6 @@ func (s *ServiceRegister) ListenLeaseRespChan() {
 				log.Warnf("XXXXdiscover client lose connect")
 				return
 			}
-			log.Infof("=============== re lease success")
 		}
 	}
 }
