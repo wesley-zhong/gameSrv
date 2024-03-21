@@ -9,10 +9,11 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
-	"github.com/panjf2000/gnet/v2"
-	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
+
+	"github.com/panjf2000/gnet/v2"
+	"github.com/spf13/viper"
 
 	"net/http"
 	_ "net/http/pprof"
@@ -40,7 +41,7 @@ func main() {
 	viper.AddConfigPath("./game/configs/") // 查找配置文件的路径
 	err := viper.ReadInConfig()            // 查找并读取配置文件
 	if err != nil {                        // 处理错误
-		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
+		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
 	}
 
 	//mongodb init
@@ -66,10 +67,9 @@ func main() {
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.GAME)
 	if err != nil {
 		panic(err)
-		return
 	}
 	// start http server
-	//httpServer := web.NewHttpServer()
-	//httpServer.HttpMethod.RegisterController()
+	// httpServer := web.NewHttpServer()
+	// httpServer.HttpMethod.RegisterController()
 	loopWG.Wait()
 }

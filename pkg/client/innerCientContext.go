@@ -7,9 +7,10 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
-	"google.golang.org/protobuf/proto"
 	"sync/atomic"
 	"time"
+
+	"google.golang.org/protobuf/proto"
 )
 
 var sId int64
@@ -75,15 +76,22 @@ connect:
 func AddInnerClientConnect(key GameServerType, ctx *ConnInnerClientContext) {
 	InnerClientMap[key] = ctx
 }
+func DelInnerClientConnect(key GameServerType, serviceId string) {
+	ctx, ok := InnerClientMap[key]
+	if ok && ctx.ServiceId == serviceId {
+		delete(InnerClientMap, key)
+	}
+}
 
 func GetInnerClient(clientType GameServerType) *ConnInnerClientContext {
 	return InnerClientMap[clientType]
 }
 
 type ConnInnerClientContext struct {
-	Ctx      tcp.Channel
-	Sid      int64
-	ServerId int64 //this client from which server
+	Ctx       tcp.Channel
+	Sid       int64
+	ServerId  int64 //this client from which server
+	ServiceId string
 }
 
 func NewInnerClientContext(context tcp.Channel) *ConnInnerClientContext {
