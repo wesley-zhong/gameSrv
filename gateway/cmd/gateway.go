@@ -8,12 +8,13 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
-	"github.com/panjf2000/gnet/v2"
-	"github.com/spf13/viper"
 	"net/http"
 	_ "net/http/pprof"
 	"runtime/debug"
 	"sync"
+
+	"github.com/panjf2000/gnet/v2"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -62,7 +63,6 @@ func main() {
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.GATE_WAY)
 	if err != nil {
 		panic(err)
-		return
 	}
 	loopWG.Wait()
 }

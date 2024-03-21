@@ -1,5 +1,5 @@
 port: 9104
 service:
-  name: world.V1
+  name: router.V1
 discover:
   url: [localhost:2379]

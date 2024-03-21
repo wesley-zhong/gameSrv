@@ -5,9 +5,9 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
-	"gameSrv/world/controller"
-	"gameSrv/world/dispatcher"
-	"gameSrv/world/watcher"
+	"gameSrv/router/controller"
+	"gameSrv/router/dispatcher"
+	"gameSrv/router/watcher"
 	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
@@ -24,12 +24,12 @@ func main() {
 		}
 	}()
 
-	viper.SetConfigName("config")              // 配置文件名，不需要后缀名
-	viper.SetConfigType("yml")                 // 配置文件格式
-	viper.AddConfigPath("/etc/world/configs/") // 查找配置文件的路径
+	viper.SetConfigName("config")               // 配置文件名，不需要后缀名
+	viper.SetConfigType("yml")                  // 配置文件格式
+	viper.AddConfigPath("/etc/router/configs/") // 查找配置文件的路径
 	viper.AddConfigPath("./configs/")
-	viper.AddConfigPath("./world/configs/") // 查找配置文件的路径
-	err := viper.ReadInConfig()             // 查找并读取配置文件
+	viper.AddConfigPath("./router/configs/") // 查找配置文件的路径
+	err := viper.ReadInConfig()              // 查找并读取配置文件
 	if err != nil {
 		loopWG.Add(-1) // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
@@ -39,7 +39,7 @@ func main() {
 
 	handler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.WORLD)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.ROUTER)
 	if err != nil {
 		loopWG.Done()
 		panic(err)

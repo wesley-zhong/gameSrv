@@ -4,8 +4,9 @@ import (
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
-	"google.golang.org/protobuf/proto"
 	"time"
+
+	"google.golang.org/protobuf/proto"
 )
 
 func loginResponseFromGameServer(roleId int64, request proto.Message) {

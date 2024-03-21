@@ -16,7 +16,7 @@ func performanceTest(roleId int64, req proto.Message) {
 	//}
 	log.Infof("========== game performanceTest %d  roleId=%d", testReq.SomeId, roleId)
 	//ctx.Context().(*player.Player).Context.Send(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), res)
-	//client.GetInnerClient(client.WORLD).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
+	//client.GetInnerClient(client.ROUTER).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
 }
 
 func performanceTestResFromWorld(roleId int64, res proto.Message) {

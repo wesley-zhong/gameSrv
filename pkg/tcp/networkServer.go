@@ -3,9 +3,10 @@ package tcp
 import (
 	"fmt"
 	"gameSrv/pkg/log"
+	"time"
+
 	"github.com/panjf2000/gnet/v2"
 	"github.com/panjf2000/gnet/v2/pkg/pool/goroutine"
-	"time"
 )
 
 type tcpServer struct {
@@ -70,7 +71,6 @@ func (ts tcpServer) OnTraffic(c gnet.Conn) (action gnet.Action) {
 		channel := c.Context().(Channel)
 		gEventHandler.React(bytes, channel)
 	}
-	return gnet.None
 }
 
 func (ts tcpServer) OnTick() (delay time.Duration, action gnet.Action) {

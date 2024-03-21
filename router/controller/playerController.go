@@ -9,7 +9,7 @@ import (
 
 func innerPlayerLogin(roleId int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
-	log.Infof("world inner login sessionId = %d = %d from  finished", loginRequest.Sid, loginRequest.RoleId)
+	log.Infof("router inner login sessionId = %d = %d from  finished", loginRequest.Sid, loginRequest.RoleId)
 
 	res := &protoGen.InnerLoginResponse{
 		Sid:    loginRequest.Sid,

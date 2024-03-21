@@ -86,9 +86,9 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(client.WORLD)
+	innerClient := client.GetInnerClient(client.ROUTER)
 	if innerClient == nil {
-		//log.Infof("no found connect type =%d", client.WORLD)
+		//log.Infof("no found connect type =%d", client.ROUTER)
 		return 5000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}

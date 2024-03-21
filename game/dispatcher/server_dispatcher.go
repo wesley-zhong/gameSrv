@@ -84,7 +84,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if !hasMethod {
 		// direct to game server
 		//log.Infof("-------- msgId =%d direct to world server", msgId)
-		client.GetInnerClient(client.WORLD).SendBytesMsg(packet)
+		client.GetInnerClient(client.ROUTER).SendBytesMsg(packet)
 		return 0
 	}
 

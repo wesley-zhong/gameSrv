@@ -28,7 +28,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.RoleId,
 	}
-	client.GetInnerClient(client.WORLD).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.RoleId, innerLoginReq)
+	client.GetInnerClient(client.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.RoleId, innerLoginReq)
 	gameRole := player.NewRole(loginRequest.RoleId, nil)
 	gameRole.Sid = loginRequest.Sid
 	player.RoleOlineMgr.AddRole(gameRole)
@@ -57,5 +57,5 @@ func innerPlayerDisconnect(roleId int64, request proto.Message) {
 		return
 	}
 	log.Infof("roleId =%d logout", roleId)
-	client.GetInnerClient(client.WORLD).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, roleId, playerDisconnectRequest)
+	client.GetInnerClient(client.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, roleId, playerDisconnectRequest)
 }
