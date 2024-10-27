@@ -10,11 +10,9 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/tcp"
 	"github.com/panjf2000/gnet/v2"
+	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
-
-	_ "github.com/panjf2000/gnet/v2"
-	"github.com/spf13/viper"
 
 	"net/http"
 	_ "net/http/pprof"
@@ -68,9 +66,10 @@ func main() {
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.GAME)
 	if err != nil {
 		panic(err)
+		return
 	}
 	// start http server
-	// httpServer := web.NewHttpServer()
-	// httpServer.HttpMethod.RegisterController()
+	//httpServer := web.NewHttpServer()
+	//httpServer.HttpMethod.RegisterController()
 	loopWG.Wait()
 }
