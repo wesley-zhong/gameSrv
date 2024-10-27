@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"gameSrv/pkg/common"
+	"gameSrv/pkg/discover"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -59,17 +60,20 @@ connect:
 	log.Infof("----- connect  success  %s ", addr)
 	gameInnerClient := NewInnerClientContext(context)
 	InnerClientMap[serverType] = gameInnerClient
-	handShake := &protoGen.InnerServerHandShake{
+
+	handShake := &protoGen.InnerServerHandShakeReq{
 		FromServerId:   common.BuildServerUid(int(serverType), 35),
 		FromServerType: int32(myServerType),
+		FromServerSid:  discover.MySelfNode.ServiceId,
 	}
 
 	header := &protoGen.InnerHead{
 		Id: 0,
 	}
 
-	packet := &tcp.MsgPacket{MsgId: int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE), Header: header, Body: handShake}
+	packet := &tcp.MsgPacket{MsgId: int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_REQ), Header: header, Body: handShake}
 	gameInnerClient.Send(packet)
+	log.Infof("----send handShak req = %s", addr)
 	return gameInnerClient
 }
 

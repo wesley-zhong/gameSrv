@@ -12,6 +12,7 @@ import (
 
 var ServiceRegisterInstance *ServiceRegister
 var EtcdClient *clientv3.Client
+var MySelfNode *Node
 
 // ServiceRegister create and register quest
 type ServiceRegister struct {
@@ -74,6 +75,7 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 		Type:         s.serverType,
 	}
 
+	MySelfNode = node
 	_, err = s.cli.Put(context.Background(), node.getKey(), node.getValue(), clientv3.WithLease(resp.ID))
 	if err != nil {
 		return err
@@ -87,6 +89,7 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 	log.Infof("leaseId = %d", s.leaseID)
 	s.keepAliveChan = leaseRespChan
 	log.Infof("Register ServiceId:%s  ServiceName:%s  success!", s.serviceId, s.serviceName)
+
 	return nil
 }
 

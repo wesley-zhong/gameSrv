@@ -7,6 +7,7 @@ import (
 
 func Init() {
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
+	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_RES), &protoGen.InnerServerHandShakeRes{}, handShakeResp)
 
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 

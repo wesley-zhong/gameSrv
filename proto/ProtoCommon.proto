@@ -33,8 +33,6 @@ enum ProtoCode {
 
   DIRECT_FROM_WORLD_CLIENT = 25;
   DIRECT_FROM_GAME_CLIENT = 26;
-
-
 }
 
 message ErrorMessage {

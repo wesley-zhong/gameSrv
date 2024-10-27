@@ -2,12 +2,21 @@ package controller
 
 import (
 	"gameSrv/gateway/player"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
+	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 	"time"
 
 	"google.golang.org/protobuf/proto"
 )
+
+func handShakeResp(ctx tcp.Channel, request proto.Message) {
+	handShake := request.(*protoGen.InnerServerHandShakeRes)
+	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
+	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
+		handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
+}
 
 func loginResponseFromGameServer(roleId int64, request proto.Message) {
 	//	context := ctx.Context().(*client.ConnInnerClientContext)
