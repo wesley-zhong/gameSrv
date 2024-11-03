@@ -11,7 +11,8 @@ type ClientEventHandler struct {
 }
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-
+	clientContext := client.NewInnerClientContext(c)
+	c.SetContext(clientContext)
 	log.Infof("----------inner  client opened  addr=%s, id=%d", c.RemoteAddr(), c.GetId())
 	return nil, 0
 }

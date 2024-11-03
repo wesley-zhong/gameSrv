@@ -29,6 +29,6 @@ func CreateServiceUnitName(serviceName string) string {
 	if err != nil {
 		return "nil"
 	}
-	return serviceName + ":" + localIp
+	return serviceName + "/" + localIp
 
 }
