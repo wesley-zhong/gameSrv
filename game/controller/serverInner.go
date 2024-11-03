@@ -30,7 +30,7 @@ func handShakeReq(ctx tcp.Channel, request proto.Message) {
 func handShakeResp(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeRes)
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
-	log.Infof("handShake finished from serverId=%s  addr =%s handshake finished  ",
+	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
 		handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 }
 
