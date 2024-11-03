@@ -2,6 +2,7 @@ package controller
 
 import (
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
@@ -27,5 +28,5 @@ func performanceTestResFromWorld(roleId int64, res proto.Message) {
 func directToGame(roleId int64, req proto.Message) {
 	echoMsg := req.(*protoGen.EchoReq)
 	log.Infof("--------- directToGame  body =%s", echoMsg)
-	client.GetInnerClient(client.GATE_WAY).SendMsg(protoGen.ProtoCode_DIRECT_FROM_GAME_CLIENT, roleId, echoMsg)
+	client.GetInnerClient(global.GATE_WAY).SendMsg(protoGen.ProtoCode_DIRECT_FROM_GAME_CLIENT, roleId, echoMsg)
 }

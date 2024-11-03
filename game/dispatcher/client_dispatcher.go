@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -59,7 +60,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 	exist := tcp.HasMethod(msgId)
 	if !exist {
 		//direct to send gateway
-		client.GetInnerClient(client.GATE_WAY).SendBytesMsg(packet)
+		client.GetInnerClient(global.GATE_WAY).SendBytesMsg(packet)
 		return 0
 	}
 
@@ -86,7 +87,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(client.ROUTER)
+	innerClient := client.GetInnerClient(global.ROUTER)
 	if innerClient == nil {
 		//log.Infof("no found connect type =%d", client.ROUTER)
 		return 5000 * time.Millisecond, 0

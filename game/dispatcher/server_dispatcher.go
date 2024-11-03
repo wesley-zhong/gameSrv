@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -84,7 +85,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if !hasMethod {
 		// direct to game server
 		//log.Infof("-------- msgId =%d direct to world server", msgId)
-		client.GetInnerClient(client.ROUTER).SendBytesMsg(packet)
+		client.GetInnerClient(global.ROUTER).SendBytesMsg(packet)
 		return 0
 	}
 

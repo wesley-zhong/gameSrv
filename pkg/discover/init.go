@@ -1,16 +1,32 @@
 package discover
 
 import (
-	"gameSrv/pkg/client"
 	"gameSrv/pkg/global"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
 	"github.com/spf13/viper"
 	"go.etcd.io/etcd/api/v3/mvccpb"
 )
 
+var MySelfNode *Node
+
+func Init(v *viper.Viper) {
+	log.Infof("========")
+	serviceName := v.GetString("service.name")
+	MySelfNode = &Node{
+		ServiceName:    serviceName,
+		ServiceId:      utils.CreateServiceUnitName(serviceName),
+		RegisterTime:   0,
+		Addr:           "",
+		MetaData:       nil,
+		Type:           0,
+		ChannelContext: nil,
+	}
+}
+
 type OnWatchServiceChanged func(node *Node, action mvccpb.Event_EventType)
 
-func InitDiscoverAndRegister(v *viper.Viper, onChanged OnWatchServiceChanged, selfType client.GameServerType) error {
+func InitDiscoverAndRegister(v *viper.Viper, onChanged OnWatchServiceChanged, selfType global.GameServerType) error {
 	global.SelfServerType = selfType
 	//discover from etcd
 	discoverUrls := v.GetStringSlice("discover.url")

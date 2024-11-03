@@ -5,8 +5,8 @@ import (
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/dispathcer"
 	"gameSrv/gateway/watcher"
-	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
 	"net/http"
 	_ "net/http/pprof"
@@ -48,6 +48,7 @@ func main() {
 	controller.Init()
 	//package receive handler
 	handler := &dispathcer.ServerEventHandler{}
+	discover.Init(viper.GetViper())
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
@@ -60,7 +61,7 @@ func main() {
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	////register to etcd
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.GATE_WAY)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.GATE_WAY)
 	if err != nil {
 		panic(err)
 	}

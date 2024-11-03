@@ -6,8 +6,8 @@ import (
 	"gameSrv/game/dal"
 	"gameSrv/game/dispatcher"
 	"gameSrv/game/watcher"
-	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
 	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
@@ -49,6 +49,7 @@ func main() {
 
 	// msg Register
 	controller.Init()
+	discover.Init(viper.GetViper())
 
 	//start server
 	serverNetworkHandler := &dispatcher.ServerEventHandler{}
@@ -63,7 +64,7 @@ func main() {
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	////register to etcd
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.GAME)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.GAME)
 	if err != nil {
 		panic(err)
 		return

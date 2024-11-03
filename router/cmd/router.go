@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
 	"gameSrv/router/controller"
 	"gameSrv/router/dispatcher"
@@ -36,10 +36,11 @@ func main() {
 	}
 
 	controller.Init()
+	discover.Init(viper.GetViper())
 
 	handler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.ROUTER)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.ROUTER)
 	if err != nil {
 		loopWG.Done()
 		panic(err)

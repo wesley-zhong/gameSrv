@@ -3,7 +3,7 @@ package discover
 import (
 	"context"
 	"fmt"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
 	clientv3 "go.etcd.io/etcd/client/v3"
@@ -12,7 +12,6 @@ import (
 
 var ServiceRegisterInstance *ServiceRegister
 var EtcdClient *clientv3.Client
-var MySelfNode *Node
 
 // ServiceRegister create and register quest
 type ServiceRegister struct {
@@ -24,11 +23,11 @@ type ServiceRegister struct {
 	serviceName   string //value
 	MetaData      map[string]string
 	localAddr     string
-	serverType    client.GameServerType
+	serverType    global.GameServerType
 }
 
 // NewServiceRegister create new quest
-func NewServiceRegister(endpoints []string, key, val string, port int32, severType client.GameServerType, lease int64, metaData map[string]string) (*ServiceRegister, error) {
+func NewServiceRegister(endpoints []string, key, val string, port int32, severType global.GameServerType, lease int64, metaData map[string]string) (*ServiceRegister, error) {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   endpoints,
 		DialTimeout: 5 * time.Second,
@@ -76,6 +75,7 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 	}
 
 	MySelfNode = node
+	global.SelfSererSid = MySelfNode.ServiceId
 	_, err = s.cli.Put(context.Background(), node.getKey(), node.getValue(), clientv3.WithLease(resp.ID))
 	if err != nil {
 		return err
@@ -133,7 +133,7 @@ func (s *ServiceRegister) Close() error {
 	return s.cli.Close()
 }
 
-func RegisterService(endpoints []string, serviceName string, serviceId string, port int32, serveType client.GameServerType, metaData map[string]string) error {
+func RegisterService(endpoints []string, serviceName string, serviceId string, port int32, serveType global.GameServerType, metaData map[string]string) error {
 	service, err := NewServiceRegister(endpoints, serviceId, serviceName, port, serveType, 6, metaData)
 	ServiceRegisterInstance = service
 	if err != nil {

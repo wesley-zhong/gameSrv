@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"gameSrv/pkg/common"
-	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -20,19 +20,9 @@ func genSid() int64 {
 	return atomic.AddInt64(&sId, 1)
 }
 
-type GameServerType int32
-
-// ConnInnerClientContext -------------server inner client ---------------
-const (
-	GATE_WAY GameServerType = 1
-	GAME     GameServerType = 2
-	ROUTER   GameServerType = 3
-	LOGIN    GameServerType = 4
-)
-
 var ICodec = &tcp.DefaultCodec{}
 
-var InnerClientMap = make(map[GameServerType]*ConnInnerClientContext)
+var InnerClientMap = make(map[global.GameServerType]*ConnInnerClientContext)
 
 func Connect(addr string) (tcp.Channel, error) {
 	context, err := tcp.Dial("tcp", addr)
@@ -43,7 +33,7 @@ func Connect(addr string) (tcp.Channel, error) {
 	return context, nil
 }
 
-func InnerClientConnect(serverType GameServerType, addr string, myServerType GameServerType) *ConnInnerClientContext {
+func InnerClientConnect(serverType global.GameServerType, addr string, myServerType global.GameServerType) *ConnInnerClientContext {
 	if !tcp.ClientInited() {
 		log.Error(errors.New(" XXXXXXXX  net work client not init ，pleaser init first！"))
 		return nil
@@ -64,7 +54,7 @@ connect:
 	handShake := &protoGen.InnerServerHandShakeReq{
 		FromServerId:   common.BuildServerUid(int(serverType), 35),
 		FromServerType: int32(myServerType),
-		FromServerSid:  discover.MySelfNode.ServiceId,
+		FromServerSid:  global.SelfSererSid,
 	}
 
 	header := &protoGen.InnerHead{
@@ -77,21 +67,21 @@ connect:
 	return gameInnerClient
 }
 
-func AddInnerClientConnect(key GameServerType, ctx *ConnInnerClientContext) {
+func AddInnerClientConnect(key global.GameServerType, ctx *ConnInnerClientContext) {
 	InnerClientMap[key] = ctx
 }
-func DelInnerClientConnect(key GameServerType, serviceId string) {
+func DelInnerClientConnect(key global.GameServerType, serviceId string) {
 	ctx, ok := InnerClientMap[key]
 	if ok && ctx.ServiceId == serviceId {
 		delete(InnerClientMap, key)
 	}
 }
 
-func GetInnerClient(clientType GameServerType) *ConnInnerClientContext {
+func GetInnerClient(clientType global.GameServerType) *ConnInnerClientContext {
 	return InnerClientMap[clientType]
 }
 
-func SendInnerMsg(clientType GameServerType, roleId int64, innerCode protoGen.InnerProtoCode, body proto.Message) {
+func SendInnerMsg(clientType global.GameServerType, roleId int64, innerCode protoGen.InnerProtoCode, body proto.Message) {
 	client := GetInnerClient(clientType)
 	client.SendInnerMsg(innerCode, roleId, body)
 }

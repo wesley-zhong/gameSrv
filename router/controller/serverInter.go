@@ -2,6 +2,7 @@ package controller
 
 import (
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -13,7 +14,7 @@ func handShakeReq(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeReq)
 	validInnerClient.ServerId = handShake.FromServerId
 	fromServerType := handShake.FromServerType
-	client.AddInnerClientConnect(client.GameServerType(fromServerType), validInnerClient)
+	client.AddInnerClientConnect(global.GameServerType(fromServerType), validInnerClient)
 	log.Infof("client id =%d from serverId=%d  serverId= %s addr =%s handshake finished",
 		validInnerClient.Sid, validInnerClient.ServerId, handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 }

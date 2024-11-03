@@ -2,6 +2,7 @@ package controller
 
 import (
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
@@ -20,6 +21,6 @@ func performanceTest(roleId int64, req proto.Message) {
 
 func onDirectToWorld(roleId int64, req proto.Message) {
 	echoMsg := req.(*protoGen.EchoReq)
-	client.GetInnerClient(client.GAME).SendMsg(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT, roleId, echoMsg)
+	client.GetInnerClient(global.GAME).SendMsg(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT, roleId, echoMsg)
 	log.Infof("-------------  on direct to router")
 }

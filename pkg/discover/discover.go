@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"go.etcd.io/etcd/api/v3/mvccpb"
 	clientv3 "go.etcd.io/etcd/client/v3"
@@ -26,7 +27,7 @@ type Node struct {
 	RegisterTime   int64                 `json:"registerTime"`
 	Addr           string                `json:"addr"`
 	MetaData       map[string]string     `json:"metaData"`
-	Type           client.GameServerType `json:"type"`
+	Type           global.GameServerType `json:"type"`
 	ChannelContext *client.ConnInnerClientContext
 }
 
