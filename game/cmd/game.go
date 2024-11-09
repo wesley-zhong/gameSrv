@@ -9,6 +9,7 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
+	"gameSrv/pkg/web"
 	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
 	"runtime/debug"
@@ -63,14 +64,18 @@ func main() {
 		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
+	// start http server
+	httpServer := web.NewHttpServer()
+	loginController := &controller.Login{}
+	httpServer.HttpMethod.RegisterController(loginController)
+	go httpServer.WebAppStart(7788)
+
 	////register to etcd
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.GAME)
 	if err != nil {
 		panic(err)
 		return
 	}
-	// start http server
-	//httpServer := web.NewHttpServer()
-	//httpServer.HttpMethod.RegisterController()
+
 	loopWG.Wait()
 }
