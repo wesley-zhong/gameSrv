@@ -11,7 +11,7 @@ func FindPlayerAccount(account string) *do.AccountDO {
 	if result == nil {
 		return nil
 	}
-	return result.(*do.AccountDO)
+	return result
 }
 
 func CreatePlayerAccount(account string) *do.AccountDO {

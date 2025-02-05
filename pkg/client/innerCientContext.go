@@ -54,7 +54,7 @@ connect:
 	handShake := &protoGen.InnerServerHandShakeReq{
 		FromServerId:   common.BuildServerUid(int(serverType), 35),
 		FromServerType: int32(myServerType),
-		FromServerSid:  global.SelfSererSid,
+		FromServerSid:  global.SelfServiceId,
 	}
 
 	header := &protoGen.InnerHead{

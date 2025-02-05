@@ -28,6 +28,7 @@ type Node struct {
 	Addr           string                `json:"addr"`
 	MetaData       map[string]string     `json:"metaData"`
 	Type           global.GameServerType `json:"type"`
+	Port           int32                 `json:"port"`
 	ChannelContext *client.ConnInnerClientContext
 }
 

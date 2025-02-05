@@ -11,4 +11,5 @@ const (
 )
 
 var SelfServerType GameServerType
-var SelfSererSid string
+
+var SelfServiceId string

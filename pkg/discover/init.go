@@ -1,6 +1,7 @@
 package discover
 
 import (
+	"fmt"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
@@ -10,42 +11,48 @@ import (
 
 var MySelfNode *Node
 
-func Init(v *viper.Viper) {
+func Init(v *viper.Viper, selfType global.GameServerType) error {
 	log.Infof("========")
+
+	port := v.GetInt32("port")
 	serviceName := v.GetString("service.name")
+	addr, err := utils.GetLocalIp()
+	if err != nil {
+		return err
+	}
 	MySelfNode = &Node{
 		ServiceName:    serviceName,
-		ServiceId:      utils.CreateServiceUnitName(serviceName),
+		ServiceId:      fmt.Sprintf(utils.CreateServiceUnitName(serviceName)+":%d", port),
 		RegisterTime:   0,
-		Addr:           "",
-		MetaData:       nil,
-		Type:           0,
+		Addr:           fmt.Sprintf(addr+":%d", port),
+		MetaData:       make(map[string]string),
+		Type:           selfType,
+		Port:           port,
 		ChannelContext: nil,
 	}
+	global.SelfServiceId = MySelfNode.ServiceId
+	return nil
 }
 
 type OnWatchServiceChanged func(node *Node, action mvccpb.Event_EventType)
 
-func InitDiscoverAndRegister(v *viper.Viper, onChanged OnWatchServiceChanged, selfType global.GameServerType) error {
-	global.SelfServerType = selfType
+func InitDiscoverAndRegister(v *viper.Viper, onChanged OnWatchServiceChanged) error {
 	//discover from etcd
 	discoverUrls := v.GetStringSlice("discover.url")
 	watchServs := v.GetStringSlice("discover.watchServ")
-	selfPort := v.GetInt32("port")
+
 	if len(watchServs) > 0 {
-		//InitClient(onChanged)
 		err := InitDiscovery(discoverUrls, watchServs, onChanged)
 		if err != nil {
 			return err
 		}
 	}
 	//register  myself to etcd
-	serviceName := v.GetString("service.name")
-	serviceId := utils.CreateServiceUnitName(serviceName)
+
 	metaData := make(map[string]string)
-	err := RegisterService(discoverUrls, serviceName, serviceId, selfPort, selfType, metaData)
-	if err != nil {
-		return err
+	err1 := RegisterMySelf(discoverUrls, MySelfNode, metaData)
+	if err1 != nil {
+		return err1
 	}
 	return nil
 }

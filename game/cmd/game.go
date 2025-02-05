@@ -34,13 +34,15 @@ func main() {
 		http.ListenAndServe(":6060", nil)
 	}()
 
+	viper.AddConfigPath("./configs/")
+	viper.AddConfigPath("./game/configs/") // 查找配置文件的路径
+
 	viper.SetConfigName("config")             // 配置文件名，不需要后缀名
 	viper.SetConfigType("yml")                // 配置文件格式
 	viper.AddConfigPath("/etc/game/configs/") // 查找配置文件的路径
-	viper.AddConfigPath("./configs/")
-	viper.AddConfigPath("./game/configs/") // 查找配置文件的路径
-	err := viper.ReadInConfig()            // 查找并读取配置文件
-	if err != nil {                        // 处理错误
+
+	err := viper.ReadInConfig() // 查找并读取配置文件
+	if err != nil {             // 处理错误
 		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
 	}
 
@@ -50,7 +52,7 @@ func main() {
 
 	// msg Register
 	controller.Init()
-	discover.Init(viper.GetViper())
+	discover.Init(viper.GetViper(), global.GAME)
 
 	//start server
 	serverNetworkHandler := &dispatcher.ServerEventHandler{}
@@ -71,7 +73,7 @@ func main() {
 	go httpServer.WebAppStart(7788)
 
 	////register to etcd
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.GAME)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		panic(err)
 		return

@@ -36,11 +36,11 @@ func main() {
 	}
 
 	controller.Init()
-	discover.Init(viper.GetViper())
+	discover.Init(viper.GetViper(), global.ROUTER)
 
 	handler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.ROUTER)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		loopWG.Done()
 		panic(err)

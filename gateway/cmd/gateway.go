@@ -48,7 +48,7 @@ func main() {
 	controller.Init()
 	//package receive handler
 	handler := &dispathcer.ServerEventHandler{}
-	discover.Init(viper.GetViper())
+	discover.Init(viper.GetViper(), global.GATE_WAY)
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
@@ -61,7 +61,7 @@ func main() {
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	////register to etcd
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, global.GATE_WAY)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		panic(err)
 	}

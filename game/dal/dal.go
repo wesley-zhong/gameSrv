@@ -34,5 +34,4 @@ func InitRedisDB(addr string, password string) error {
 	AccountRedisDAO = &orm.RedisDAOInterface[do.AccountDO]{Rdb: orm.Rdb}
 
 	return nil
-
 }

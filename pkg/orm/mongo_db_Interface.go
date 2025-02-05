@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-type MongodbDAOInterface[T1 any] struct {
+type MongodbDAOInterface[T any] struct {
 	Collection *mongo.Collection
 }
 
@@ -22,7 +22,7 @@ var replaceOneOptions = &options.ReplaceOptions{Upsert: &Upsert}
 
 var workerPool = gopool.StartNewWorkerPool(16, 256)
 
-func (dao *MongodbDAOInterface[T1]) FindOneById(id int64) *T1 {
+func (dao *MongodbDAOInterface[T]) FindOneById(id int64) *T {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
@@ -31,7 +31,7 @@ func (dao *MongodbDAOInterface[T1]) FindOneById(id int64) *T1 {
 		log.Error(singleResult.Err())
 		return nil
 	}
-	obj := new(T1)
+	obj := new(T)
 	err := singleResult.Decode(obj)
 	if err != nil {
 		log.Error(err)
@@ -40,7 +40,7 @@ func (dao *MongodbDAOInterface[T1]) FindOneById(id int64) *T1 {
 	return obj
 }
 
-func (dao *MongodbDAOInterface[T1]) FindOne(filter interface{}) any {
+func (dao *MongodbDAOInterface[T]) FindOne(filter interface{}) *T {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	singleResult := dao.Collection.FindOne(ctx, filter)
@@ -48,7 +48,7 @@ func (dao *MongodbDAOInterface[T1]) FindOne(filter interface{}) any {
 		//log.Error(singleResult.Err())
 		return nil
 	}
-	newObject := new(T1) //this must be a new object instance
+	newObject := new(T) //this must be a new object instance
 	err := singleResult.Decode(newObject)
 	if err != nil {
 		log.Error(err)
@@ -57,14 +57,14 @@ func (dao *MongodbDAOInterface[T1]) FindOne(filter interface{}) any {
 	return newObject
 }
 
-func (dao *MongodbDAOInterface[T1]) Insert(obj *T1) error {
+func (dao *MongodbDAOInterface[T]) Insert(obj *T) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	dao.Collection.InsertOne(ctx, obj)
 	return nil
 }
 
-func (dao *MongodbDAOInterface[T1]) Save(id int64, obj *T1) error {
+func (dao *MongodbDAOInterface[T]) Save(id int64, obj *T) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
@@ -75,7 +75,7 @@ func (dao *MongodbDAOInterface[T1]) Save(id int64, obj *T1) error {
 	return err
 }
 
-func (dao *MongodbDAOInterface[T1]) AsynSave(id int64, obj *T1) error {
+func (dao *MongodbDAOInterface[T]) AsynSave(id int64, obj *T) error {
 	return workerPool.SubmitTask(func() {
 		dao.Save(id, obj)
 	})
