@@ -1,48 +1,58 @@
 package discover
 
 import (
-	"gameSrv/pkg/client"
+	"fmt"
 	"gameSrv/pkg/global"
-	"gameSrv/pkg/tcp"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
-	"github.com/panjf2000/gnet"
 	"github.com/spf13/viper"
+	"go.etcd.io/etcd/api/v3/mvccpb"
 )
 
-func InitDiscoverAndRegister(v *viper.Viper, handler tcp.EventHandler, selfType client.GameServerType) error {
-	global.SelfServerType = selfType
+var MySelfNode *Node
+
+func Init(v *viper.Viper, selfType global.GameServerType) error {
+	log.Infof("========")
+
+	port := v.GetInt32("port")
+	serviceName := v.GetString("service.name")
+	addr, err := utils.GetLocalIp()
+	if err != nil {
+		return err
+	}
+	MySelfNode = &Node{
+		ServiceName:    serviceName,
+		ServiceId:      fmt.Sprintf(utils.CreateServiceUnitName(serviceName)+":%d", port),
+		RegisterTime:   0,
+		Addr:           fmt.Sprintf(addr+":%d", port),
+		MetaData:       make(map[string]string),
+		Type:           selfType,
+		Port:           port,
+		ChannelContext: nil,
+	}
+	global.SelfServiceId = MySelfNode.ServiceId
+	return nil
+}
+
+type OnWatchServiceChanged func(node *Node, action mvccpb.Event_EventType)
+
+func InitDiscoverAndRegister(v *viper.Viper, onChanged OnWatchServiceChanged) error {
 	//discover from etcd
 	discoverUrls := v.GetStringSlice("discover.url")
 	watchServs := v.GetStringSlice("discover.watchServ")
-	selfPort := v.GetInt32("port")
+
 	if len(watchServs) > 0 {
-		InitClient(handler)
-		err := InitDiscovery(discoverUrls, watchServs)
+		err := InitDiscovery(discoverUrls, watchServs, onChanged)
 		if err != nil {
 			return err
 		}
 	}
 	//register  myself to etcd
-	serviceName := v.GetString("service.name")
-	serviceId := utils.CreateServiceUnitName(serviceName)
+
 	metaData := make(map[string]string)
-	err := RegisterService(discoverUrls, serviceName, serviceId, selfPort, selfType, metaData)
-	if err != nil {
-		return err
+	err1 := RegisterMySelf(discoverUrls, MySelfNode, metaData)
+	if err1 != nil {
+		return err1
 	}
 	return nil
-}
-
-func InitClient(handler tcp.EventHandler) {
-	tcp.ClientStart(handler,
-		gnet.WithMulticore(true),
-		gnet.WithReusePort(true),
-		gnet.WithTicker(true),
-		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
-		gnet.WithCodec(tcp.NewInnerLengthFieldBasedFrameCodecEx()))
-}
-
-func connectNode(node *Node) {
-	clientConnect := client.InnerClientConnect(node.Type, node.Addr, global.SelfServerType)
-	node.channelContext = clientConnect
 }

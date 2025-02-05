@@ -2,7 +2,7 @@ package service
 
 import (
 	"gameSrv/login/dal"
-	"gameSrv/login/module"
+	"gameSrv/login/dos"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
@@ -41,6 +41,11 @@ func (playerService *PlayerServiceImpl) UpdateAccount(do *module.AccountDO) {
 		return
 	}
 	do.Pid = 100001
-	//dal.AccountDAO.Save(do.Id, do)
+	//dal.AccountDAO.Save(dos.Id, dos)
 	dal.AccountDAO.AsynSave(do.Id, do)
+}
+
+func createToken(*module.AccountDO) {
+	//discover.DiscoverService.
+
 }

@@ -3,10 +3,14 @@ package main
 import (
 	"fmt"
 	"gameSrv/game/controller"
-	"gameSrv/game/networkHandler"
-	"gameSrv/pkg/client"
+	"gameSrv/game/dal"
+	"gameSrv/game/dispatcher"
+	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
+	"gameSrv/pkg/web"
+	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
@@ -27,44 +31,53 @@ func main() {
 	}()
 	//for performance
 	go func() {
-		http.ListenAndServe("localhost:6060", nil)
+		http.ListenAndServe(":6060", nil)
 	}()
+
+	viper.AddConfigPath("./configs/")
+	viper.AddConfigPath("./game/configs/") // 查找配置文件的路径
 
 	viper.SetConfigName("config")             // 配置文件名，不需要后缀名
 	viper.SetConfigType("yml")                // 配置文件格式
 	viper.AddConfigPath("/etc/game/configs/") // 查找配置文件的路径
-	viper.AddConfigPath("./configs/")
-	viper.AddConfigPath("./game/configs/") // 查找配置文件的路径
-	err := viper.ReadInConfig()            // 查找并读取配置文件
-	if err != nil {                        // 处理错误
-		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
+
+	err := viper.ReadInConfig() // 查找并读取配置文件
+	if err != nil {             // 处理错误
+		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
 	}
 
 	//mongodb init
-	//dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	//dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
-	//
-	//account := service.AccountLogin("andy")
-	//service.UpdateAccount(account)
 
 	// msg Register
 	controller.Init()
+	discover.Init(viper.GetViper(), global.GAME)
 
 	//start server
-	serverNetworkHandler := &networkHandler.ServerEventHandler{}
-	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), serverNetworkHandler, tcp.NewInnerLengthFieldBasedFrameCodecEx())
+	serverNetworkHandler := &dispatcher.ServerEventHandler{}
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), serverNetworkHandler, &tcp.DefaultCodec{})
+
+	//init tcp client
+	clientHandler := &dispatcher.ClientEventHandler{}
+	tcp.ClientStart(clientHandler,
+		gnet.WithMulticore(true),
+		gnet.WithReusePort(true),
+		gnet.WithTicker(true),
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
+
+	// start http server
+	httpServer := web.NewHttpServer()
+	loginController := &controller.Login{}
+	httpServer.HttpMethod.RegisterController(loginController)
+	go httpServer.WebAppStart(7788)
 
 	////register to etcd
-	clientNetwork := &networkHandler.ClientEventHandler{}
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.GAME)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		panic(err)
 		return
 	}
-	// start http server
-
-	//httpServer := web.NewHttpServer()
-	//httpServer.HttpMethod.RegisterController()
 
 	loopWG.Wait()
 }

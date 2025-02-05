@@ -5,7 +5,7 @@ import (
 	"gameSrv/client/controller"
 	"gameSrv/client/networkHandler"
 	"gameSrv/pkg/tcp"
-	"github.com/panjf2000/gnet"
+	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
 	"sync"
 )
@@ -35,8 +35,7 @@ func main() {
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
-		gnet.WithTCPNoDelay(gnet.TCPNoDelay),
-		gnet.WithCodec(tcp.NewLengthFieldBasedFrameCodecEx()))
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	controller.Init()
 	startClientCount := viper.GetInt("client.count")

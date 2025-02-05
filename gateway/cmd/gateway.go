@@ -3,15 +3,18 @@ package main
 import (
 	"fmt"
 	"gameSrv/gateway/controller"
-	"gameSrv/gateway/networkHandler"
-	"gameSrv/pkg/client"
+	"gameSrv/gateway/dispathcer"
+	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
-	"github.com/spf13/viper"
 	"net/http"
 	_ "net/http/pprof"
 	"runtime/debug"
 	"sync"
+
+	"github.com/panjf2000/gnet/v2"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -44,16 +47,23 @@ func main() {
 	// msg Register
 	controller.Init()
 	//package receive handler
-	handler := &networkHandler.ServerEventHandler{}
+	handler := &dispathcer.ServerEventHandler{}
+	discover.Init(viper.GetViper(), global.GATE_WAY)
 	//start server
-	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, tcp.NewLengthFieldBasedFrameCodecEx())
+	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
+
+	//init tcp client
+	clientHandler := &dispathcer.ClientEventHandler{}
+	tcp.ClientStart(clientHandler,
+		gnet.WithMulticore(true),
+		gnet.WithReusePort(true),
+		gnet.WithTicker(true),
+		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	////register to etcd
-	clientNetwork := &networkHandler.ClientEventHandler{}
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.GATE_WAY)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		panic(err)
-		return
 	}
 	loopWG.Wait()
 }

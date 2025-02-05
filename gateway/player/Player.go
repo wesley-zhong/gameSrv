@@ -9,7 +9,7 @@ import (
 //------player
 
 type Player struct {
-	Context *client.ConnClientContext
+	Context *client.ConnContext
 	Pid     int64
 	valid   bool
 }
@@ -17,16 +17,18 @@ type Player struct {
 func (player *Player) SetValid() {
 	player.valid = true
 }
-func (player *Player) SetContext(context *client.ConnClientContext) {
+func (player *Player) SetContext(context *client.ConnContext) {
 	player.Context = context
 }
 
-func NewPlayer(pid int64, context *client.ConnClientContext) *Player {
+func NewPlayer(pid int64, context *client.ConnContext) *Player {
 	return &Player{Context: context, Pid: pid}
 }
 
 var playerMutex sync.Mutex
-var PlayerMgr *PlayerMgrWrap
+var PlayerMgr *PlayerMgrWrap = &PlayerMgrWrap{
+	playerIdMap: &sync.Map{},
+}
 
 // player mgr----
 func NewPlayerMgr() *PlayerMgrWrap {

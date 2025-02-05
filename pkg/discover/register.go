@@ -2,10 +2,7 @@ package discover
 
 import (
 	"context"
-	"fmt"
-	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
-	"gameSrv/pkg/utils"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"time"
 )
@@ -13,21 +10,16 @@ import (
 var ServiceRegisterInstance *ServiceRegister
 var EtcdClient *clientv3.Client
 
-// ServiceRegister create and register service
+// ServiceRegister create and register quest
 type ServiceRegister struct {
 	cli     *clientv3.Client //etcd client
 	leaseID clientv3.LeaseID //lease ID
 	// lease keep-alive chan
 	keepAliveChan <-chan *clientv3.LeaseKeepAliveResponse
-	serviceId     string //ServiceId
-	serviceName   string //value
-	MetaData      map[string]string
-	localAddr     string
-	serverType    client.GameServerType
+	MySelfNode    *Node
 }
 
-// NewServiceRegister create new service
-func NewServiceRegister(endpoints []string, key, val string, port int32, severType client.GameServerType, lease int64, metaData map[string]string) (*ServiceRegister, error) {
+func Register(endpoints []string, node *Node, lease int64, metaData map[string]string) (*ServiceRegister, error) {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   endpoints,
 		DialTimeout: 5 * time.Second,
@@ -36,44 +28,23 @@ func NewServiceRegister(endpoints []string, key, val string, port int32, severTy
 		log.Fatalf("error =", err)
 	}
 
-	strIp, err := utils.GetLocalIp()
-	if err != nil {
-		log.Error(err)
-		panic(err)
-	}
-
 	serv := &ServiceRegister{
-		cli:         cli,
-		serviceId:   key,
-		serviceName: val,
-		MetaData:    metaData,
-		localAddr:   fmt.Sprintf(strIp+":%d", port),
-		serverType:  severType,
+		cli:        cli,
+		MySelfNode: node,
 	}
 
-	if err := serv.putKeyWithLease(lease); err != nil {
+	if err := serv.registerMeWithLease(node, lease); err != nil {
 		return nil, err
 	}
 	return serv, nil
-}
 
-// set lease
-func (s *ServiceRegister) putKeyWithLease(lease int64) error {
+}
+func (s *ServiceRegister) registerMeWithLease(node *Node, ttl int64) error {
 	// grant lease time
-	resp, err := s.cli.Grant(context.Background(), lease)
+	resp, err := s.cli.Grant(context.Background(), ttl)
 	if err != nil {
 		return err
 	}
-	// register service and bind lease
-	node := &Node{
-		ServiceName:  s.serviceName,
-		ServiceId:    s.serviceId,
-		RegisterTime: time.Now().UnixMilli(),
-		Addr:         s.localAddr,
-		MetaData:     s.MetaData,
-		Type:         s.serverType,
-	}
-
 	_, err = s.cli.Put(context.Background(), node.getKey(), node.getValue(), clientv3.WithLease(resp.ID))
 	if err != nil {
 		return err
@@ -86,26 +57,26 @@ func (s *ServiceRegister) putKeyWithLease(lease int64) error {
 	s.leaseID = resp.ID
 	log.Infof("leaseId = %d", s.leaseID)
 	s.keepAliveChan = leaseRespChan
-	log.Infof("Register ServiceId:%s  ServiceName:%s  success!", s.serviceId, s.serviceName)
+	log.Infof("Register ServiceId:%s  ServiceName:%s  success!", node.ServiceId, node.ServiceName)
 	return nil
 }
 
-func (s *ServiceRegister) UpdateNodeValue() error {
-	// register service and bind lease
-	node := &Node{
-		ServiceName:  s.serviceName,
-		ServiceId:    s.serviceId,
-		RegisterTime: time.Now().UnixMilli(),
-		Addr:         s.localAddr,
-		MetaData:     s.MetaData,
-	}
-
-	_, err := s.cli.Put(context.Background(), node.getKey(), node.getValue())
-	if err != nil {
-		return err
-	}
-	return nil
-}
+//func (s *ServiceRegister) UpdateNodeValue() error {
+//	// register quest and bind lease
+//	node := &Node{
+//		ServiceName:  s.MySelfNode.ServiceName,
+//		ServiceId:    s.MySelfNode.ServiceId,
+//		RegisterTime: time.Now().UnixMilli(),
+//		Addr:         s.MySelfNode.Addr,
+//		MetaData:     s.MySelfNode.MetaData,
+//	}
+//
+//	_, err := s.cli.Put(context.Background(), node.getKey(), node.getValue())
+//	if err != nil {
+//		return err
+//	}
+//	return nil
+//}
 
 // ListenLeaseRespChan listen  and watch
 func (s *ServiceRegister) ListenLeaseRespChan() {
@@ -130,8 +101,8 @@ func (s *ServiceRegister) Close() error {
 	return s.cli.Close()
 }
 
-func RegisterService(endpoints []string, serviceName string, serviceId string, port int32, serveType client.GameServerType, metaData map[string]string) error {
-	service, err := NewServiceRegister(endpoints, serviceId, serviceName, port, serveType, 5, metaData)
+func RegisterMySelf(endpoints []string, node *Node, metaData map[string]string) error {
+	service, err := Register(endpoints, node, 6, metaData)
 	ServiceRegisterInstance = service
 	if err != nil {
 		log.Error(err)

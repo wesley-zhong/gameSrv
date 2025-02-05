@@ -1,7 +1,7 @@
 package dal
 
 import (
-	"gameSrv/login/module"
+	"gameSrv/login/dos"
 	"gameSrv/pkg/orm"
 )
 
@@ -19,8 +19,7 @@ func InitMongoDB(addr string, userName string, pwd string) error {
 	return nil
 }
 
-//------------------------ redis-------------
-
+// ------------------------ redis-------------
 var AccountRedisDAO *orm.RedisDAOInterface[module.AccountDO]
 
 func InitRedisDB(addr string, password string) error {
@@ -31,5 +30,4 @@ func InitRedisDB(addr string, password string) error {
 	AccountRedisDAO = &orm.RedisDAOInterface[module.AccountDO]{Rdb: orm.Rdb}
 
 	return nil
-
 }

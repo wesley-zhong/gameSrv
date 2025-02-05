@@ -1,6 +1,8 @@
 package tcp
 
-import "time"
+import (
+	"time"
+)
 
 type (
 	EventHandler interface {
@@ -12,19 +14,19 @@ type (
 		// It is usually not recommended to send large amounts of data back to the peer in OnOpened.
 		//
 		// Note that the bytes returned by OnOpened will be sent back to the peer without being encoded.
-		OnOpened(c ChannelContext) (out []byte, action int)
+		OnOpened(c Channel) (out []byte, action int)
 
 		// OnClosed fires when a connection has been closed.
 		// The parameter err is the last known connection error.
-		OnClosed(c ChannelContext, err error) (action int)
+		OnClosed(c Channel, err error) (action int)
 
 		// PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 		// you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
-		PreWrite(c ChannelContext)
+		PreWrite(c Channel)
 
 		// AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
 		// you put the []byte returned from React() back to your memory pool.
-		AfterWrite(c ChannelContext, b []byte)
+		AfterWrite(c Channel, b []byte)
 
 		// React fires when a socket receives data from the peer.
 		// Call c.Read() or c.ReadN(n) of Conn c to read incoming data from the peer.
@@ -34,7 +36,7 @@ type (
 		// as this []byte will be reused within event-loop after React() returns.
 		// If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 		// to that new goroutine.
-		React(packet []byte, c ChannelContext) (out []byte, action int)
+		React(packet []byte, c Channel) (action int)
 
 		// Tick fires immediately after the server starts and will fire again
 		// following the duration specified by the delay return value.

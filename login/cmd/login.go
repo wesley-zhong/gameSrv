@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gameSrv/login/controller"
 	"gameSrv/login/dal"
-	"gameSrv/login/networkHandler"
+	"gameSrv/login/watcher"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/utils"
@@ -41,15 +41,16 @@ func main() {
 
 	//mongodb init
 	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
-	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
+	//	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
 	//start server
 	server := web.NewHttpServer()
 	controller.Init(server.HttpMethod)
 	////register to etcd
-	clientNetwork := &networkHandler.ClientEventHandler{}
+
 	//go
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), clientNetwork, client.LOGIN)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.LOGIN)
+
 	if err != nil {
 		panic(err)
 	}

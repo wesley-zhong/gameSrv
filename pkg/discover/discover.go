@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"go.etcd.io/etcd/api/v3/mvccpb"
 	clientv3 "go.etcd.io/etcd/client/v3"
@@ -18,6 +19,7 @@ type ServiceDiscovery struct {
 	cli        *clientv3.Client //etcd client
 	serverList map[string]*Node //服务列表
 	lock       sync.Mutex
+	onChanged  OnWatchServiceChanged
 }
 type Node struct {
 	ServiceName    string                `json:"serviceName"`
@@ -25,8 +27,9 @@ type Node struct {
 	RegisterTime   int64                 `json:"registerTime"`
 	Addr           string                `json:"addr"`
 	MetaData       map[string]string     `json:"metaData"`
-	Type           client.GameServerType `json:"type"`
-	channelContext *client.ConnInnerClientContext
+	Type           global.GameServerType `json:"type"`
+	Port           int32                 `json:"port"`
+	ChannelContext *client.ConnInnerClientContext
 }
 
 func (node *Node) getKey() string {
@@ -103,12 +106,13 @@ func (s *ServiceDiscovery) SetServiceList(key, val string) {
 		return
 	}
 	existNode := s.serverList[key]
-	if existNode != nil && existNode.channelContext != nil {
+	if existNode != nil && existNode.ChannelContext != nil {
 		return
 	}
 	s.serverList[key] = node
-	log.Infof("### discover service :ServiceId  %s:  ServiceName: %s", key, val)
-	go connectNode(node)
+	log.Infof("### discover quest :ServiceId  %s:  ServiceName: %s", key, val)
+	s.onChanged(node, mvccpb.PUT)
+	//go connectNode(node)
 }
 
 // DelServiceList 删除服务地址
@@ -117,10 +121,11 @@ func (s *ServiceDiscovery) DelServiceList(key string) {
 	defer s.lock.Unlock()
 	node := s.serverList[key]
 	//关闭
-	if node != nil {
-		node.channelContext.Ctx.Close()
+	if node != nil && node.ChannelContext != nil && node.ChannelContext.Ctx != nil {
+		node.ChannelContext.Ctx.Close()
 	}
 	delete(s.serverList, key)
+	s.onChanged(node, mvccpb.DELETE)
 	log.Infof("-------del ServiceId: %s", key)
 }
 
@@ -141,8 +146,13 @@ func (s *ServiceDiscovery) Close() error {
 	return s.cli.Close()
 }
 
-func InitDiscovery(endpoints []string, servicePrefixes []string) error {
+func (s *ServiceDiscovery) GetKvClient() {
+
+}
+
+func InitDiscovery(endpoints []string, servicePrefixes []string, onChanged OnWatchServiceChanged) error {
 	DiscoverService = NewServiceDiscovery(endpoints)
+	DiscoverService.onChanged = onChanged
 	err := DiscoverService.WatchService(servicePrefixes)
 	if err != nil {
 		return err
