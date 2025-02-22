@@ -1,37 +1,67 @@
 package modules
 
 import (
+	"errors"
 	"gameSrv/game/dal"
+	"gameSrv/game/do"
 	"gameSrv/pkg/log"
+	"gameSrv/pkg/orm"
 )
 
-type AresModule[DOType any] interface {
-	FromDO(do *DOType) error
-	ToDO() *DOType
+type AresModule interface {
+	LoadFromDB()
+	Destroy()
+}
+
+type AresModuleBase[DOType any] struct {
+	playerId int64
+	DAO      *orm.MongodbDAOInterface[DOType]
+	dataObj  *DOType
+}
+
+func (module *AresModuleBase[DOType]) LoadFromDB() {
+	do := module.DAO.FindOneById(module.playerId)
+	module.FromDO(do)
+}
+func (module *AresModuleBase[DOType]) Destroy() {
+	// do some error log
+	log.Error(errors.New(" sub class not implement"))
+}
+
+func (module *AresModuleBase[DOType]) FromDO(do *DOType) {
+	log.Error(errors.New(" sub class not implement"))
+}
+
+func (module *AresModuleBase[DOType]) ToDO() *DOType {
+	return module.dataObj
 }
 
 type ModuleContainer struct {
-	pid        int64
-	ItemModule ItemModule
-}
-
-func FromDO[DOTYpe any](doObj *DOTYpe, modlue AresModule[DOTYpe]) {
-	modlue.FromDO(doObj)
-}
-func ToDO[DOType any](module AresModule[DOType]) *DOType {
-	return module.ToDO()
+	Pid     int64
+	Modules []AresModule
 }
 
 func NewModuleContainer(pid int64) *ModuleContainer {
 	moduleContainer := &ModuleContainer{}
-	moduleContainer.pid = pid
+	moduleContainer.Pid = pid
 	return moduleContainer
 }
 
-func (moduleContainer *ModuleContainer) initModules() {
-	itemDO := dal.ItemDAO.FindOneById(moduleContainer.pid)
-	itemModue := &ItemModule{}
-	FromDO(itemDO, itemModue)
-	newItemDo := ToDO(itemModue)
-	log.Infof("=-----", newItemDo.Pid)
+func (moduleContainer *ModuleContainer) InitModules() {
+	itemModule := &ItemModule{
+		AresModuleBase: AresModuleBase[do.ItemDO]{
+			playerId: moduleContainer.Pid,
+			DAO:      dal.ItemDAO,
+		},
+		Items: nil,
+	}
+	itemModule.LoadFromDB()
+
+	moduleContainer.Modules[0] = itemModule
+}
+
+func (moduleContainer *ModuleContainer) DestroyModules() {
+	for _, modul := range moduleContainer.Modules {
+		modul.Destroy()
+	}
 }

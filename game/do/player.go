@@ -5,6 +5,11 @@ type RoleDO struct {
 	Name string
 }
 
+type Role struct {
+	Id    int64
+	CnfId int32
+}
+
 type AccountDO struct {
 	Id      int64 `bson:"_id"`
 	Account string
