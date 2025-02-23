@@ -8,9 +8,9 @@ import (
 )
 
 type GamePlayer struct {
-	Pid int64 //player id
-	Sid int64 // session id
 	modules.ModuleContainer
+	Pid            int64 //player id
+	Sid            int64 // session id
 	innerClientCtx *client.ConnInnerClientContext
 }
 

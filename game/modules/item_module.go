@@ -10,7 +10,13 @@ type ItemModule struct {
 func (module *ItemModule) FromDO(do *DO.ItemDO) {
 
 	// fill data from here
-	//module.Items = make(map[int64]*DO.Item)
+	module.Items = make(map[int64]*DO.Item)
+}
+
+func (module *ItemModule) Destroy() {
+
+	// fill data from here
+	//	module.Items = make(map[int64]*DO.Item)
 }
 
 func (module *ItemModule) ToDO() *DO.ItemDO {

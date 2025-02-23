@@ -34,7 +34,8 @@ func (module *AresModuleBase[DOType]) Destroy() {
 }
 
 func (module *AresModuleBase[DOType]) FromDO(do *DOType) {
-	log.Error(errors.New(" sub class not implement"))
+	//log.Error(errors.New(" sub class not implement"))
+	//module.FromDO(do)
 }
 
 func (module *AresModuleBase[DOType]) ToDO() *DOType {
@@ -61,7 +62,6 @@ func (moduleContainer *ModuleContainer) InitModules() {
 		Items: nil,
 	}
 	itemModule.LoadFromDB()
-
 	moduleContainer.Modules[0] = itemModule
 }
 
