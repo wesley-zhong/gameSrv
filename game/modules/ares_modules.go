@@ -27,6 +27,7 @@ func (module *AresModuleBase[DOType]) LoadFromDB() {
 	do := module.DAO.FindOneById(module.playerId)
 	module.FromDO(do)
 }
+
 func (module *AresModuleBase[DOType]) Destroy() {
 	// DO some error log
 	log.Error(errors.New(" sub class not implement"))
