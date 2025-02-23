@@ -8,6 +8,10 @@ import (
 	"gameSrv/pkg/orm"
 )
 
+/**
+base module define  and  modules container define
+*/
+
 type AresModule interface {
 	LoadFromDB()
 	Destroy()
