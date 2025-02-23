@@ -1,4 +1,4 @@
-package do
+package DO
 
 type RoleDO struct {
 	Id   int64

@@ -1,8 +1,8 @@
 package modules
 
-import "gameSrv/game/do"
+import "gameSrv/game/DO"
 
 type RoleModule struct {
-	AresModuleBase[do.RoleDO]
-	Roles map[int64]*do.Role
+	AresModuleBase[DO.RoleDO]
+	Roles map[int64]*DO.Role
 }

@@ -1,12 +1,12 @@
 package player
 
 import (
+	"gameSrv/game/DO"
 	"gameSrv/game/dal"
-	"gameSrv/game/do"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func FindPlayerAccount(account string) *do.AccountDO {
+func FindPlayerAccount(account string) *DO.AccountDO {
 	result := dal.AccountDAO.FindOne(bson.D{{"account", account}})
 	if result == nil {
 		return nil
@@ -14,8 +14,8 @@ func FindPlayerAccount(account string) *do.AccountDO {
 	return result
 }
 
-func CreatePlayerAccount(account string) *do.AccountDO {
-	playerAccount := &do.AccountDO{
+func CreatePlayerAccount(account string) *DO.AccountDO {
+	playerAccount := &DO.AccountDO{
 		Id:      11,
 		Account: account,
 	}
@@ -23,7 +23,7 @@ func CreatePlayerAccount(account string) *do.AccountDO {
 	return nil
 }
 
-func AccountLogin(account string) *do.AccountDO {
+func AccountLogin(account string) *DO.AccountDO {
 	player := FindPlayerAccount(account)
 	if player == nil {
 		player = CreatePlayerAccount(account)
@@ -31,7 +31,7 @@ func AccountLogin(account string) *do.AccountDO {
 	return player
 }
 
-func FindRoleData(roleId int64) *do.RoleDO {
+func FindRoleData(roleId int64) *DO.RoleDO {
 	roleDO := dal.RoleDAO.FindOneById(roleId)
 	if roleDO == nil {
 		return nil
@@ -40,7 +40,7 @@ func FindRoleData(roleId int64) *do.RoleDO {
 
 }
 
-func UpdateAccount(do *do.AccountDO) {
+func UpdateAccount(do *DO.AccountDO) {
 	if do == nil {
 		return
 	}

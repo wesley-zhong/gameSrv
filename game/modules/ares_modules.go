@@ -2,8 +2,8 @@ package modules
 
 import (
 	"errors"
+	"gameSrv/game/DO"
 	"gameSrv/game/dal"
-	"gameSrv/game/do"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/orm"
 )
@@ -24,7 +24,7 @@ func (module *AresModuleBase[DOType]) LoadFromDB() {
 	module.FromDO(do)
 }
 func (module *AresModuleBase[DOType]) Destroy() {
-	// do some error log
+	// DO some error log
 	log.Error(errors.New(" sub class not implement"))
 }
 
@@ -49,7 +49,7 @@ func NewModuleContainer(pid int64) *ModuleContainer {
 
 func (moduleContainer *ModuleContainer) InitModules() {
 	itemModule := &ItemModule{
-		AresModuleBase: AresModuleBase[do.ItemDO]{
+		AresModuleBase: AresModuleBase[DO.ItemDO]{
 			playerId: moduleContainer.Pid,
 			DAO:      dal.ItemDAO,
 		},

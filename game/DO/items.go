@@ -1,4 +1,4 @@
-package do
+package DO
 
 type ItemDO struct {
 	Id      int64
