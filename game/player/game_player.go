@@ -16,6 +16,7 @@ type GamePlayer struct {
 
 func NewGamePlayer(playerId int64, innerClientCtx *client.ConnInnerClientContext) *GamePlayer {
 	player := &GamePlayer{}
+	player.GamePlayer = player
 	player.Init(playerId, innerClientCtx)
 	return player
 }
