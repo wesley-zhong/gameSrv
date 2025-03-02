@@ -27,13 +27,13 @@ func handShakeReq(ctx tcp.Channel, request proto.Message) {
 	validInnerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_RES, 0, res)
 }
 
-func handShakeResp(ctx tcp.Channel, request proto.Message) {
+func handShakeRes(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeRes)
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
 		handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 }
 
-func heartBeatResponse(ctx tcp.Channel, request proto.Message) {
-	log.Infof(" inner  heartBeatResponse context= %s ", ctx.RemoteAddr())
+func heartBeatRes(ctx tcp.Channel, request proto.Message) {
+	log.Infof(" inner  heartBeatRes context= %s ", ctx.RemoteAddr())
 }

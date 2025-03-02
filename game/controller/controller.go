@@ -8,9 +8,9 @@ import (
 func Init() {
 
 	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_REQ), &protoGen.InnerServerHandShakeReq{}, handShakeReq)
-	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_RES), &protoGen.InnerServerHandShakeRes{}, handShakeResp)
+	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_RES), &protoGen.InnerServerHandShakeRes{}, handShakeRes)
 
-	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES), &protoGen.HeartBeatResponse{}, heartBeatResponse)
+	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_RES), &protoGen.HeartBeatResponse{}, heartBeatRes)
 
 	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.InnerLoginRequest{}, innerPlayerLogin)
 
