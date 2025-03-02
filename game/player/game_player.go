@@ -23,9 +23,14 @@ func NewGamePlayer(playerId int64, innerClientCtx *client.ConnInnerClientContext
 
 func (player *GamePlayer) Init(playerId int64, innerClientCtx *client.ConnInnerClientContext) {
 	player.innerClientCtx = innerClientCtx
+	player.Modules = make([]modules.AresModule, modules.MAX_ITEM_MODULES)
+	player.GamePlayer = player
 	player.Pid = playerId
 	player.InitModules()
 }
 func (player *GamePlayer) SendMsg(msgId protoGen.ProtoCode, msg proto.Message) {
 	player.innerClientCtx.SendMsg(msgId, player.Pid, msg)
+}
+func (player *GamePlayer) GetPlayerId() int64 {
+	return player.Pid
 }

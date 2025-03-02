@@ -3,7 +3,6 @@ package modules
 import (
 	"gameSrv/game/DO"
 	"gameSrv/game/dal"
-	"gameSrv/game/player"
 )
 
 type RoleModule struct {
@@ -11,7 +10,7 @@ type RoleModule struct {
 	Roles map[int64]*DO.Role
 }
 
-func (module *RoleModule) InitModule(id ModuleId, player *player.GamePlayer) {
+func (module *RoleModule) InitModule(id ModuleId, player IGmePlayer) {
 	module.ModuleId = id
 	module.Player = player
 	module.DAO = dal.RoleDAO

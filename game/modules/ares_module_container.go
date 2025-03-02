@@ -1,16 +1,25 @@
 package modules
 
-import "gameSrv/game/player"
+import (
+	"gameSrv/protoGen"
+	"google.golang.org/protobuf/proto"
+)
+
+type IGmePlayer interface {
+	GetPlayerId() int64
+	SendMsg(msgId protoGen.ProtoCode, msg proto.Message)
+}
 
 type ModuleContainer struct {
-	GamePlayer *player.GamePlayer
+	GamePlayer IGmePlayer
 	Modules    []AresModule
 }
 
-func NewModuleContainer(player *player.GamePlayer) *ModuleContainer {
-	moduleContainer := &ModuleContainer{}
-	return moduleContainer
-}
+//func NewModuleContainer(player IGmePlayer) *ModuleContainer {
+//	moduleContainer := &ModuleContainer{}
+//
+//	return moduleContainer
+//}
 
 func (moduleContainer *ModuleContainer) InitModules() {
 	itemModule := &ItemModule{}
