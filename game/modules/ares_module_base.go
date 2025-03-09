@@ -46,7 +46,7 @@ func (module *AresModuleBase[DOType]) Init(id ModuleId, player IGmePlayer) {
 	module.Player = player
 }
 
-func (module *AresModuleBase[DOType]) SaveDB() {
+func (module *AresModuleBase[DOType]) AsynSaveDB() {
 	err := DbWriteGoPool.SubmitTaskByHashCode((int)(module.Player.GetPlayerId()), func() {
 		errSave := module.DAO.Save(module.Player.GetPlayerId(), module.toDO())
 		if errSave != nil {

@@ -24,7 +24,7 @@ func (module *ItemModule) FromDO(do *DO.ItemDO) {
 		}
 		module.Items = make(map[int64]*DO.Item)
 		module.dataObj = do
-		module.SaveDB()
+		module.AsynSaveDB()
 	}
 	// fill data from here
 	module.dataObj = do

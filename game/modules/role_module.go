@@ -28,7 +28,7 @@ func (module *RoleModule) FromDO(do *DO.RoleDO) {
 			Name: "haha",
 		}
 		module.dataObj = do
-		module.SaveDB()
+		module.AsynSaveDB()
 	}
 	module.dataObj = do
 }
