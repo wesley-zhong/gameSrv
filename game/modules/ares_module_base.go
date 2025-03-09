@@ -47,9 +47,12 @@ func (module *AresModuleBase[DOType]) Init(id ModuleId, player IGmePlayer) {
 }
 
 func (module *AresModuleBase[DOType]) SaveDB() {
-	DbWriteGoPool.SubmitTaskByHashCode((int)(module.Player.GetPlayerId()), func() {
+	err := DbWriteGoPool.SubmitTaskByHashCode((int)(module.Player.GetPlayerId()), func() {
 		module.DAO.Save(module.Player.GetPlayerId(), module.toDO())
 	})
+	if err != nil {
+		log.Error(err)
+	}
 }
 
 func (module *AresModuleBase[DOType]) Destroy() {
