@@ -21,8 +21,16 @@ func (module *ItemModule) InitModule(id ModuleId, player IGmePlayer) {
 
 func (module *ItemModule) FromDO(do *DO.ItemDO) {
 
+	if do == nil {
+		do = &DO.ItemDO{
+			BaseDO: DO.BaseDO{Id: module.Player.GetPlayerId()},
+		}
+		module.Items = make(map[int64]*DO.Item)
+		module.dataObj = do
+		module.SaveDB()
+	}
 	// fill data from here
-	module.Items = make(map[int64]*DO.Item)
+	module.dataObj = do
 }
 
 func (module *ItemModule) Destroy() {

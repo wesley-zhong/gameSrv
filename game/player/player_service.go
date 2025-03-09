@@ -31,7 +31,7 @@ func AccountLogin(account string) *DO.AccountDO {
 	return player
 }
 
-func FindRoleData(roleId int64) *DO.RoleDO {
+func LoadRoleFromDB(roleId int64) *DO.RoleDO {
 	roleDO := dal.RoleDAO.FindOneById(roleId)
 	if roleDO == nil {
 		return nil

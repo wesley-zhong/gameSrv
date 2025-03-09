@@ -12,26 +12,22 @@ import (
 
 func innerPlayerLogin(ctx tcp.Channel, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
-	log.Infof("innerPlayerLogin login pid = %d player id = %d", loginRequest.RoleId, loginRequest.RoleId)
+	log.Infof("innerPlayerLogin login pid = %d player id = %d", loginRequest.GetPlayerId(), loginRequest.PlayerId)
 
-	//existRole := PlayerOlineMgr.GetPlayerById(loginRequest.GetRoleId())
-	//if existRole != nil {
-	//	log.Infof("roleId =%d have login no need process", existRole.RoleId)
-	//	return
-	//}
-	// load role data form db
-	//roleDO := quest.FindRoleData(loginRequest.RoleId)
-	//if roleDO == nil {
-	//	log.Errorf("not found roleId=%d ", roleId)
-	//	return
-	//}
+	//get from memory
+	existPlayer := player.PlayerOlineMgr.GetPlayerById(loginRequest.PlayerId)
+	if existPlayer != nil {
+		log.Infof("roleId =%d have login no need process", existPlayer.Pid)
+		return
+	}
+
+	gamePlayer := player.NewGamePlayer(loginRequest.PlayerId, ctx.Context().(*client.ConnInnerClientContext))
 
 	innerLoginReq := &protoGen.InnerLoginRequest{
-		Sid:    loginRequest.Sid,
-		RoleId: loginRequest.RoleId,
+		Sid:      loginRequest.Sid,
+		PlayerId: loginRequest.PlayerId,
 	}
-	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.RoleId, innerLoginReq)
-	gamePlayer := player.NewGamePlayer(loginRequest.RoleId, ctx.Context().(*client.ConnInnerClientContext))
+	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.PlayerId, innerLoginReq)
 	player.PlayerOlineMgr.AddPlayer(gamePlayer)
 }
 

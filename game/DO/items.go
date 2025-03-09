@@ -1,13 +1,12 @@
 package DO
 
 type ItemDO struct {
-	Id      int64
+	BaseDO
 	Account string
-	Pid     int64
 }
 
 type Item struct {
-	Id    int64
+	BaseDO
 	CnfId int32
 	//properties
 }
