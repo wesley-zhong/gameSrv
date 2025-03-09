@@ -26,8 +26,8 @@ func login(ctx tcp.Channel, request proto.Message) {
 	}
 	context.Ctx.SetContext(existPlayer)
 	innerRequest := &protoGen.InnerLoginRequest{
-		Sid:    context.Sid,
-		RoleId: existPlayer.Pid,
+		Sid:      context.Sid,
+		PlayerId: existPlayer.Pid,
 	}
 	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), innerRequest)
 	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
@@ -57,8 +57,8 @@ func ClientDisConnect(ctx tcp.Channel) {
 		ctx.RemoteAddr(), disConnPlayer.Context.Sid, disConnPlayer.Pid, player.PlayerMgr.GetSize())
 
 	disconnectRequest := &protoGen.InnerPlayerDisconnectRequest{
-		Sid:    disConnPlayer.Context.Sid,
-		RoleId: disConnPlayer.Pid,
+		Sid:      disConnPlayer.Context.Sid,
+		PlayerId: disConnPlayer.Pid,
 	}
 	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disConnPlayer.Pid, disconnectRequest)
 }

@@ -31,7 +31,7 @@ message  InnerHeartBeatResponse{
 
 message InnerLoginRequest {
   int64 sid = 1; //sessionId
-  int64 roleId = 2;
+  int64 playerId = 2;
 }
 
 message InnerLoginResponse {
@@ -41,7 +41,7 @@ message InnerLoginResponse {
 
 message  InnerPlayerDisconnectRequest{
   int64 sid = 1;
-  int64 roleId = 2;
+  int64 playerId = 2;
 }
 
 message InnerPlayerDisconnectResponse{
