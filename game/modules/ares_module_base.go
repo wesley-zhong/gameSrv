@@ -2,6 +2,7 @@ package modules
 
 import (
 	"errors"
+	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/orm"
 )
@@ -33,6 +34,8 @@ type AresModuleBase[DOType any] struct {
 	toDO     func() *DOType
 }
 
+var DbWriteGoPool = gopool.StartNewWorkerPool(1, 8192)
+
 func (module *AresModuleBase[DOType]) LoadFromDB() {
 	do := module.DAO.FindOneById(module.Player.GetPlayerId())
 	module.onFromDO(do)
@@ -44,7 +47,9 @@ func (module *AresModuleBase[DOType]) Init(id ModuleId, player IGmePlayer) {
 }
 
 func (module *AresModuleBase[DOType]) SaveDB() {
-	module.DAO.Save(module.Player.GetPlayerId(), module.toDO())
+	DbWriteGoPool.SubmitTaskByHashCode((int)(module.Player.GetPlayerId()), func() {
+		module.DAO.Save(module.Player.GetPlayerId(), module.toDO())
+	})
 }
 
 func (module *AresModuleBase[DOType]) Destroy() {
