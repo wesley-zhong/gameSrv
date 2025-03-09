@@ -25,8 +25,12 @@ func (moduleContainer *ModuleContainer) InitModules() {
 	itemModule := &ItemModule{}
 	itemModule.InitModule(ITEM_MODULE, moduleContainer.GamePlayer)
 	itemModule.LoadFromDB()
-
 	moduleContainer.Modules[0] = itemModule
+
+	roleModule := &RoleModule{}
+	roleModule.InitModule(ROLE_MODULE, moduleContainer.GamePlayer)
+	roleModule.LoadFromDB()
+	moduleContainer.Modules = append(moduleContainer.Modules, roleModule)
 }
 func (moduleContainer *ModuleContainer) FindModule(moduleId ModuleId) AresModule {
 	return moduleContainer.Modules[moduleId]

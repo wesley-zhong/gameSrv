@@ -11,8 +11,7 @@ type RoleModule struct {
 }
 
 func (module *RoleModule) InitModule(id ModuleId, player IGmePlayer) {
-	module.ModuleId = id
-	module.Player = player
+	module.Init(id, player)
 	module.DAO = dal.RoleDAO
 	//module.dataObj = nil
 	module.onFromDO = module.FromDO
@@ -23,9 +22,17 @@ func (module *RoleModule) FromDO(do *DO.RoleDO) {
 
 	// fill data from here
 	//module.Items = make(map[int64]*DO.Item)
+	if do == nil {
+		do = &DO.RoleDO{
+			Id:   module.Player.GetPlayerId(),
+			Name: "haha",
+		}
+		module.dataObj = do
+		module.SaveDB()
+	}
+	module.dataObj = do
 }
 
 func (module *RoleModule) ToDO() *DO.RoleDO {
-
 	return module.dataObj
 }

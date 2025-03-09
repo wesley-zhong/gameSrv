@@ -11,19 +11,16 @@ type ItemModule struct {
 }
 
 func (module *ItemModule) InitModule(id ModuleId, player IGmePlayer) {
-	module.ModuleId = id
-	module.Player = player
+	module.Init(id, player)
 	module.DAO = dal.ItemDAO
-	//module.dataObj = nil
 	module.onFromDO = module.FromDO
 	module.toDO = module.ToDO
 }
 
 func (module *ItemModule) FromDO(do *DO.ItemDO) {
-
 	if do == nil {
 		do = &DO.ItemDO{
-			BaseDO: DO.BaseDO{Id: module.Player.GetPlayerId()},
+			Id: module.Player.GetPlayerId(),
 		}
 		module.Items = make(map[int64]*DO.Item)
 		module.dataObj = do

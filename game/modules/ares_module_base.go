@@ -38,6 +38,11 @@ func (module *AresModuleBase[DOType]) LoadFromDB() {
 	module.onFromDO(do)
 }
 
+func (module *AresModuleBase[DOType]) Init(id ModuleId, player IGmePlayer) {
+	module.ModuleId = id
+	module.Player = player
+}
+
 func (module *AresModuleBase[DOType]) SaveDB() {
 	module.DAO.Save(module.Player.GetPlayerId(), module.toDO())
 }
