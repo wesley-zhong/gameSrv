@@ -22,6 +22,7 @@ const (
 
 type AresModule interface {
 	LoadFromDB()
+	AsynSaveDB()
 	Destroy()
 }
 

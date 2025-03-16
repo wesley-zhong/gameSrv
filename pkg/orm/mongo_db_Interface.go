@@ -60,7 +60,10 @@ func (dao *MongodbDAOInterface[T]) FindOne(filter interface{}) *T {
 func (dao *MongodbDAOInterface[T]) Insert(obj *T) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-	dao.Collection.InsertOne(ctx, obj)
+	_, err := dao.Collection.InsertOne(ctx, obj)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
