@@ -25,7 +25,7 @@ func (moduleContainer *ModuleContainer) InitModules() {
 	itemModule := &ItemModule{}
 	itemModule.InitModule(ITEM_MODULE, moduleContainer.GamePlayer)
 	itemModule.LoadFromDB()
-	moduleContainer.Modules[0] = itemModule
+	moduleContainer.Modules = append(moduleContainer.Modules, itemModule)
 
 	roleModule := &RoleModule{}
 	roleModule.InitModule(ROLE_MODULE, moduleContainer.GamePlayer)
