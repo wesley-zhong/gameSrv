@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func handShakeResp(ctx tcp.Channel, request proto.Message) {
+func handShakeRes(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeRes)
 	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
 	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
