@@ -42,6 +42,7 @@ func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, prot
 		param:     param,
 	}
 	msgIdContextMap[msgId] = method
+	log.Infof("======  register msgId=%d funtion name = %s", msgId)
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {

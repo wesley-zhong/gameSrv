@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"gameSrv/gateway/controller"
 	"gameSrv/gateway/dispathcer"
 	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/discover"
@@ -30,7 +29,10 @@ func main() {
 
 	//for performance
 	go func() {
-		http.ListenAndServe("localhost:6062", nil)
+		err := http.ListenAndServe("localhost:6062", nil)
+		if err != nil {
+			panic(err)
+		}
 	}()
 
 	viper.SetConfigName("config")                // 配置文件名，不需要后缀名
@@ -45,7 +47,7 @@ func main() {
 	}
 
 	// msg Register
-	controller.Init()
+	//controller.Init()
 	//package receive handler
 	handler := &dispathcer.ServerEventHandler{}
 	discover.Init(viper.GetViper(), global.GATE_WAY)
@@ -54,11 +56,14 @@ func main() {
 
 	//init tcp client
 	clientHandler := &dispathcer.ClientEventHandler{}
-	tcp.ClientStart(clientHandler,
+	err = tcp.ClientStart(clientHandler,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),
 		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
+	if err != nil {
+		return
+	}
 
 	////register to etcd
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
