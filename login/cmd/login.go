@@ -40,7 +40,10 @@ func main() {
 	}
 
 	//mongodb init
-	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	err = dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	if err != nil {
+		panic(err)
+	}
 	//	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
 	//start server
