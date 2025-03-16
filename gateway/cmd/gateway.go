@@ -16,6 +16,18 @@ import (
 	"github.com/spf13/viper"
 )
 
+func init() {
+	viper.SetConfigName("config")                // 配置文件名，不需要后缀名
+	viper.SetConfigType("yml")                   // 配置文件格式
+	viper.AddConfigPath("/etc/gateway/configs/") // 查找配置文件的路径
+	viper.AddConfigPath("./configs/")
+	viper.AddConfigPath("./gateway/configs/") // 查找配置文件的路径
+	err := viper.ReadInConfig()               // 查找并读取配置文件
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
 	var loopWG sync.WaitGroup
 	loopWG.Add(1)
@@ -35,26 +47,19 @@ func main() {
 		}
 	}()
 
-	viper.SetConfigName("config")                // 配置文件名，不需要后缀名
-	viper.SetConfigType("yml")                   // 配置文件格式
-	viper.AddConfigPath("/etc/gateway/configs/") // 查找配置文件的路径
-	viper.AddConfigPath("./configs/")
-	viper.AddConfigPath("./gateway/configs/") // 查找配置文件的路径
-	err := viper.ReadInConfig()               // 查找并读取配置文件
-	if err != nil {
-		loopWG.Add(-1) // 处理错误
-		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
-	}
-
 	// msg Register
 	//controller.Init()
 	//package receive handler
 	handler := &dispathcer.ServerEventHandler{}
-	discover.Init(viper.GetViper(), global.GATE_WAY)
+
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	//init tcp client
+	err := discover.Init(viper.GetViper(), global.GATE_WAY)
+	if err != nil {
+		panic(err)
+	}
 	clientHandler := &dispathcer.ClientEventHandler{}
 	err = tcp.ClientStart(clientHandler,
 		gnet.WithMulticore(true),
