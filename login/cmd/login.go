@@ -5,8 +5,8 @@ import (
 	"gameSrv/login/controller"
 	"gameSrv/login/dal"
 	"gameSrv/login/watcher"
-	"gameSrv/pkg/client"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/utils"
 	"gameSrv/pkg/web"
 	"net/http"
@@ -49,7 +49,8 @@ func main() {
 	////register to etcd
 
 	//go
-	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange, client.LOGIN)
+	discover.Init(viper.GetViper(), global.LOGIN)
+	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 
 	if err != nil {
 		panic(err)

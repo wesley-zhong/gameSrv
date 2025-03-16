@@ -47,8 +47,6 @@ func main() {
 		}
 	}()
 
-	// msg Register
-	//controller.Init()
 	//package receive handler
 	handler := &dispathcer.ServerEventHandler{}
 

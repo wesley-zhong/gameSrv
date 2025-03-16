@@ -5,13 +5,16 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
-	"gameSrv/router/controller"
 	"gameSrv/router/dispatcher"
 	"gameSrv/router/watcher"
 	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
 )
+
+func init() {
+
+}
 
 func main() {
 	var loopWG sync.WaitGroup
@@ -34,12 +37,16 @@ func main() {
 		loopWG.Add(-1) // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
-
-	controller.Init()
-	discover.Init(viper.GetViper(), global.ROUTER)
-
+	// start serer
 	handler := &dispatcher.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
+
+	//register myself
+	err = discover.Init(viper.GetViper(), global.ROUTER)
+	if err != nil {
+		panic(err)
+	}
+
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		loopWG.Done()

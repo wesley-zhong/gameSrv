@@ -16,7 +16,7 @@ func (playerService *PlayerServiceImpl) FindPlayerAccount(account string) *modul
 	if result == nil {
 		return nil
 	}
-	return result.(*module.AccountDO)
+	return result
 }
 
 func (playerService *PlayerServiceImpl) CreatePlayerAccount(account string) *module.AccountDO {
