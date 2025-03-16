@@ -16,17 +16,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func main() {
-	defer func() {
-		if x := recover(); x != nil {
-			s := string(debug.Stack())
-			fmt.Printf("err=%v, stack=%s", x, s)
-		}
-	}()
-	//for performance
-	go func() {
-		http.ListenAndServe("localhost:6061", nil)
-	}()
+func init() {
 	utils.IdGenInit(11, 22)
 
 	viper.SetConfigName("config")              // 配置文件名，不需要后缀名
@@ -38,9 +28,22 @@ func main() {
 	if err != nil {                         // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
+}
+
+func main() {
+	defer func() {
+		if x := recover(); x != nil {
+			s := string(debug.Stack())
+			fmt.Printf("err=%v, stack=%s", x, s)
+		}
+	}()
+	//for performance
+	go func() {
+		http.ListenAndServe("localhost:6061", nil)
+	}()
 
 	//mongodb init
-	err = dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
+	err := dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	if err != nil {
 		panic(err)
 	}
