@@ -30,7 +30,7 @@ func login(ctx tcp.Channel, request proto.Message) {
 		PlayerId: existPlayer.Pid,
 	}
 	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), innerRequest)
-	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
+	client.SendInnerMsg(global.GAME, existPlayer.Pid, protoGen.InnerProtoCode_INNER_LOGIN_REQ, innerRequest)
 }
 
 func heartBeat(ctx tcp.Channel, request proto.Message) {
@@ -60,7 +60,7 @@ func ClientDisConnect(ctx tcp.Channel) {
 		Sid:      disConnPlayer.Context.Sid,
 		PlayerId: disConnPlayer.Pid,
 	}
-	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disConnPlayer.Pid, disconnectRequest)
+	client.SendInnerMsg(global.GAME, disConnPlayer.Pid, protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disconnectRequest)
 }
 
 func innerServerKickout(roleId int64, request proto.Message) {

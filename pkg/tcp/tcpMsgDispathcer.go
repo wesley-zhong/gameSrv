@@ -24,8 +24,12 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	//if body == nil {
 	//	method.methodFuc(any, nil)
 	//}
-	proto.Unmarshal(body, param)
-	msgGoPool.SubmitTask(func() {
+	err := proto.Unmarshal(body, param)
+	if err != nil {
+		log.Error(err)
+		return
+	}
+	err = msgGoPool.SubmitTask(func() {
 		defer func() {
 			if r := recover(); r != nil {
 				s := string(debug.Stack())
@@ -34,6 +38,10 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 		}()
 		method.methodFuc(any, param)
 	})
+	if err != nil {
+		log.Error(err)
+		return
+	}
 }
 
 func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, proto.Message]) {
@@ -42,7 +50,7 @@ func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, prot
 		param:     param,
 	}
 	msgIdContextMap[msgId] = method
-	log.Infof("======  register msgId=%d funtion name = %s", msgId)
+	log.Infof("======  register msgId=%d funtion name = %s", msgId, fuc)
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
