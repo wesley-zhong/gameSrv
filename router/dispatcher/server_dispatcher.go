@@ -76,11 +76,20 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	}
 
 	var innerHeaderLen int16
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	err := binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	if err != nil {
+		return 0
+	}
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-	proto.Unmarshal(innerBody, innerMsg)
+	err = binary.Read(bytebuffer, binary.BigEndian, innerBody)
+	if err != nil {
+		return 0
+	}
+	err = proto.Unmarshal(innerBody, innerMsg)
+	if err != nil {
+		return 0
+	}
 
 	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
 	if processed {

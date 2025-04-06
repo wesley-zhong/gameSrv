@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"gameSrv/gateway/player"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
 )
@@ -16,4 +15,4 @@ func init() {
 	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_DIRECT_TO_WORLD), &protoGen.EchoReq{}, onDirectToWorld)
 }
 
-var PlayerMgr = player.NewPlayerMgr()
+//var PlayerMgr = player.NewPlayerMgr()
