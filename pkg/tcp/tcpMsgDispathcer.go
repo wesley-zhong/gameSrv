@@ -52,7 +52,7 @@ func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, prot
 		param:     param,
 	}
 	msgIdContextMap[msgId] = method
-	log.Infof("======  register msgId=%d funtion name = %s", msgId, runtime.FuncForPC(reflect.ValueOf(fuc).Pointer()).Name())
+	log.Infof("======  register msgId=%d ##funtion: %s", msgId, runtime.FuncForPC(reflect.ValueOf(fuc).Pointer()).Name())
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
