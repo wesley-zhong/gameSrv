@@ -4,6 +4,8 @@ import (
 	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
 	"google.golang.org/protobuf/proto"
+	"reflect"
+	"runtime"
 	"runtime/debug"
 )
 
@@ -50,7 +52,7 @@ func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, prot
 		param:     param,
 	}
 	msgIdContextMap[msgId] = method
-	log.Infof("======  register msgId=%d funtion name = %s", msgId, fuc)
+	log.Infof("======  register msgId=%d funtion name = %s", msgId, runtime.FuncForPC(reflect.ValueOf(fuc).Pointer()).Name())
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
