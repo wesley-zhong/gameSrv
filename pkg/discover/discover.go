@@ -22,14 +22,14 @@ type ServiceDiscovery struct {
 	onChanged  OnWatchServiceChanged
 }
 type Node struct {
-	ServiceName    string                `json:"serviceName"`
-	ServiceId      string                `json:"serviceId"`
-	RegisterTime   int64                 `json:"registerTime"`
-	Addr           string                `json:"addr"`
-	MetaData       map[string]string     `json:"metaData"`
-	Type           global.GameServerType `json:"type"`
-	Port           int32                 `json:"port"`
-	ChannelContext *client.ConnInnerClientContext
+	ServiceName    string                         `json:"serviceName"`
+	ServiceId      string                         `json:"serviceId"`
+	RegisterTime   int64                          `json:"registerTime"`
+	Addr           string                         `json:"addr"`
+	MetaData       map[string]string              `json:"metaData"`
+	Type           global.GameServerType          `json:"type"`
+	Port           int32                          `json:"port"`
+	ChannelContext *client.ConnInnerClientContext `json:"-"`
 }
 
 func (node *Node) getKey() string {
