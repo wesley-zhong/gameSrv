@@ -31,7 +31,7 @@ func init() {
 
 	err := viper.ReadInConfig() // 查找并读取配置文件
 	if err != nil {             // 处理错误
-		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
+		panic(err)
 	}
 }
 
@@ -82,7 +82,11 @@ func main() {
 
 	////register to etcd
 	// msg Register
-	discover.Init(viper.GetViper(), global.GAME)
+	err = discover.Init(viper.GetViper(), global.GAME)
+	if err != nil {
+		panic(err)
+		return
+	}
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		panic(err)

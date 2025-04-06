@@ -84,7 +84,6 @@ func GetInnerClient(clientType global.GameServerType) *ConnInnerClientContext {
 func SendInnerMsg(clientType global.GameServerType, roleId int64, innerCode protoGen.InnerProtoCode, body proto.Message) {
 	client := GetInnerClient(clientType)
 	if client == nil {
-
 		log.Error(errors.New(fmt.Sprintf("not found  connect of server type:%d", client)))
 		return
 	}
