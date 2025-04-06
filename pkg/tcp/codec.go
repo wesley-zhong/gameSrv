@@ -96,9 +96,18 @@ func (code *DefaultCodec) InnerEncode(packet *MsgPacket) (sendBody []byte, err e
 	buffer := &bytes.Buffer{}
 	buffer.Reset()
 
-	binary.Write(buffer, binary.BigEndian, int32(msgLen))
-	binary.Write(buffer, binary.BigEndian, packet.MsgId)
-	binary.Write(buffer, binary.BigEndian, int16(headerLen))
+	err = binary.Write(buffer, binary.BigEndian, int32(msgLen))
+	if err != nil {
+		return nil, err
+	}
+	err = binary.Write(buffer, binary.BigEndian, packet.MsgId)
+	if err != nil {
+		return nil, err
+	}
+	err = binary.Write(buffer, binary.BigEndian, int16(headerLen))
+	if err != nil {
+		return nil, err
+	}
 	if headerLen > 0 {
 		buffer.Write(header)
 	}
@@ -130,8 +139,14 @@ func (codec *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error
 	buffer := &bytes.Buffer{}
 	buffer.Reset()
 
-	binary.Write(buffer, binary.BigEndian, int32(msgLen))
-	binary.Write(buffer, binary.BigEndian, packet.MsgId)
+	err = binary.Write(buffer, binary.BigEndian, int32(msgLen))
+	if err != nil {
+		return nil, err
+	}
+	err = binary.Write(buffer, binary.BigEndian, packet.MsgId)
+	if err != nil {
+		return nil, err
+	}
 	if bodyLen > 0 {
 		buffer.Write(sendBody)
 	}
