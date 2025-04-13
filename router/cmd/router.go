@@ -43,13 +43,16 @@ func main() {
 	//register myself
 	err := discover.Init(viper.GetViper(), global.ROUTER)
 	if err != nil {
+		loopWG.Done()
 		panic(err)
+		return
 	}
 
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		loopWG.Done()
 		panic(err)
+		return
 	}
 	loopWG.Wait()
 }

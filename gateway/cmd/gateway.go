@@ -35,7 +35,7 @@ func main() {
 		if x := recover(); x != nil {
 			s := string(debug.Stack())
 			fmt.Printf("err=%v, stack=%s", x, s)
-			loopWG.Add(-1)
+			loopWG.Done()
 		}
 	}()
 
@@ -65,10 +65,10 @@ func main() {
 		gnet.WithTicker(true),
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 	if err != nil {
-		return
+		panic(err)
 	}
 
-	////register to etcd
+	//register to etcd
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
 		panic(err)
