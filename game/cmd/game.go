@@ -84,12 +84,10 @@ func main() {
 	// msg Register
 	err = discover.Init(viper.GetViper(), global.GAME)
 	if err != nil {
-		loopWG.Done()
 		panic(err)
 	}
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
-		loopWG.Done()
 		panic(err)
 	}
 

@@ -32,7 +32,7 @@ func main() {
 		if x := recover(); x != nil {
 			s := string(debug.Stack())
 			fmt.Printf("err=%v, stack=%s", x, s)
-			loopWG.Add(-1)
+			loopWG.Done()
 		}
 	}()
 
@@ -43,13 +43,11 @@ func main() {
 	//register myself
 	err := discover.Init(viper.GetViper(), global.ROUTER)
 	if err != nil {
-		loopWG.Done()
 		panic(err)
 	}
 
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {
-		loopWG.Done()
 		panic(err)
 	}
 	loopWG.Wait()
