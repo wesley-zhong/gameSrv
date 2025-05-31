@@ -9,14 +9,14 @@ data-dir: /data/etcd
 # List of comma separated URLs to listen on for peer traffic.
 listen-peer-urls: http://0.0.0.0:2380
 
-# List of comma separated URLs to listen on for client traffic.
+# List of comma separated URLs to listen on for aresTcpClient traffic.
 listen-client-urls: http://0.0.0.0:2379
 
 # List of this member's peer URLs to advertise to the rest of the cluster.
 # The URLs needed to be a comma-separated list.
 #initial-advertise-peer-urls: http://10.23.0.21:2380
 
-# List of this member's client URLs to advertise to the public.
+# List of this member's aresTcpClient URLs to advertise to the public.
 # The URLs needed to be a comma-separated list.
 advertise-client-urls: http://0.0.0.0:2379
 

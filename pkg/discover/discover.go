@@ -3,7 +3,7 @@ package discover
 import (
 	"context"
 	"encoding/json"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"go.etcd.io/etcd/api/v3/mvccpb"
@@ -16,20 +16,20 @@ var DiscoverService *ServiceDiscovery
 
 // ServiceDiscovery 服务发现
 type ServiceDiscovery struct {
-	cli        *clientv3.Client //etcd client
+	cli        *clientv3.Client //etcd aresTcpClient
 	serverList map[string]*Node //服务列表
 	lock       sync.Mutex
 	onChanged  OnWatchServiceChanged
 }
 type Node struct {
-	ServiceName    string                         `json:"serviceName"`
-	ServiceId      string                         `json:"serviceId"`
-	RegisterTime   int64                          `json:"registerTime"`
-	Addr           string                         `json:"addr"`
-	MetaData       map[string]string              `json:"metaData"`
-	Type           global.GameServerType          `json:"type"`
-	Port           int32                          `json:"port"`
-	ChannelContext *client.ConnInnerClientContext `json:"-"`
+	ServiceName    string                                `json:"serviceName"`
+	ServiceId      string                                `json:"serviceId"`
+	RegisterTime   int64                                 `json:"registerTime"`
+	Addr           string                                `json:"addr"`
+	MetaData       map[string]string                     `json:"metaData"`
+	Type           global.GameServerType                 `json:"type"`
+	Port           int32                                 `json:"port"`
+	ChannelContext *aresTcpClient.ConnInnerClientContext `json:"-"`
 }
 
 func (node *Node) getKey() string {

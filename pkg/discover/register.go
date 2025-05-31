@@ -12,7 +12,7 @@ var EtcdClient *clientv3.Client
 
 // ServiceRegister create and register quest
 type ServiceRegister struct {
-	cli     *clientv3.Client //etcd client
+	cli     *clientv3.Client //etcd aresTcpClient
 	leaseID clientv3.LeaseID //lease ID
 	// lease keep-alive chan
 	keepAliveChan <-chan *clientv3.LeaseKeepAliveResponse
@@ -84,7 +84,7 @@ func (s *ServiceRegister) ListenLeaseRespChan() {
 		select {
 		case _, ok := <-s.keepAliveChan:
 			if !ok {
-				log.Warnf("XXXXdiscover client lose connect")
+				log.Warnf("XXXXdiscover aresTcpClient lose connect")
 				return
 			}
 		}

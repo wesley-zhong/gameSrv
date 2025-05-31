@@ -53,7 +53,7 @@ func main() {
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
-	//init tcp client
+	//init tcp aresTcpClient
 	err := discover.Init(viper.GetViper(), global.GATE_WAY)
 	if err != nil {
 		panic(err)

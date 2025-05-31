@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
@@ -16,7 +16,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.PlayerId,
 	}
-	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_RES, loginRequest.PlayerId, res)
+	aresTcpClient.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_RES, loginRequest.PlayerId, res)
 }
 
 func innerPlayerDisconnect(roleId int64, request proto.Message) {

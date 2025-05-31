@@ -2,7 +2,7 @@ package controller
 
 import (
 	"gameSrv/gateway/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -17,8 +17,8 @@ func performanceTest(ctx tcp.Channel, req proto.Message) {
 		SomeIdAdd: testReq.SomeId + 1,
 	}
 	log.Infof("==========  performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
-	ctx.Context().(*client.ConnContext).SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	//client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
+	ctx.Context().(*aresTcpClient.ConnContext).SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
+	//aresTcpClient.GetInnerClient(aresTcpClient.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
 }
 
 func performanceTestResFromWorld(roleId int64, res proto.Message) {
@@ -28,5 +28,5 @@ func performanceTestResFromWorld(roleId int64, res proto.Message) {
 		return
 	}
 	perFormancePlayer.Context.SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	//client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
+	//aresTcpClient.GetInnerClient(aresTcpClient.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
 }

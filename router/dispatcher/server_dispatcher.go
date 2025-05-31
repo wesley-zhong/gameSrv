@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"gameSrv/gateway/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -16,7 +16,7 @@ type ServerEventHandler struct {
 }
 
 func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	clientContext := client.NewInnerClientContext(c)
+	clientContext := aresTcpClient.NewInnerClientContext(c)
 	c.SetContext(clientContext)
 	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
@@ -32,7 +32,7 @@ func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // The parameter err is the last known connection error.
 func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
 	switch c.Context().(type) {
-	case *client.ConnInnerClientContext:
+	case *aresTcpClient.ConnInnerClientContext:
 		log.Infof(" OnClosed-----addr =%s not login", c.RemoteAddr())
 		return 0
 	case *player.Player:

@@ -1,7 +1,7 @@
 package watcher
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
 	"go.etcd.io/etcd/api/v3/mvccpb"
@@ -10,7 +10,7 @@ import (
 func OnDiscoveryServiceChange(node *discover.Node, event mvccpb.Event_EventType) {
 	switch event {
 	case mvccpb.PUT:
-		clientConnect := client.InnerClientConnect(node.Type, node.Addr, global.SelfServerType)
+		clientConnect := aresTcpClient.InnerClientConnect(node.Type, node.Addr, global.SelfServerType)
 		node.ChannelContext = clientConnect
 		break
 	case mvccpb.DELETE:

@@ -2,7 +2,7 @@ package controller
 
 import (
 	"gameSrv/game/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -21,13 +21,13 @@ func innerPlayerLogin(ctx tcp.Channel, request proto.Message) {
 		return
 	}
 
-	gamePlayer := player.NewGamePlayer(loginRequest.PlayerId, ctx.Context().(*client.ConnInnerClientContext))
+	gamePlayer := player.NewGamePlayer(loginRequest.PlayerId, ctx.Context().(*aresTcpClient.ConnInnerClientContext))
 
 	innerLoginReq := &protoGen.InnerLoginRequest{
 		Sid:      loginRequest.Sid,
 		PlayerId: loginRequest.PlayerId,
 	}
-	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.PlayerId, innerLoginReq)
+	aresTcpClient.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.PlayerId, innerLoginReq)
 	player.PlayerOlineMgr.AddPlayer(gamePlayer)
 }
 
@@ -39,7 +39,7 @@ func innerPlayerLogin(ctx tcp.Channel, request proto.Message) {
 //		log.Infof(" role id = %d not found or have disconnected", roleId)
 //		return
 //	}
-//	client.GetInnerClient(global.GATE_WAY).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_RES, roleId, innerLoginResponse)
+//	aresTcpClient.GetInnerClient(global.GATE_WAY).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_RES, roleId, innerLoginResponse)
 //}
 
 func innerPlayerDisconnect(roleId int64, request proto.Message) {
@@ -54,5 +54,5 @@ func innerPlayerDisconnect(roleId int64, request proto.Message) {
 		return
 	}
 	log.Infof("roleId =%d logout", roleId)
-	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, roleId, playerDisconnectRequest)
+	aresTcpClient.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, roleId, playerDisconnectRequest)
 }

@@ -20,11 +20,11 @@ func main() {
 	}()
 
 	//load configs
-	viper.SetConfigName("config")               // 配置文件名，不需要后缀名
-	viper.SetConfigType("yml")                  // 配置文件格式
-	viper.AddConfigPath("/etc/client/configs/") // 查找配置文件的路径
+	viper.SetConfigName("config")                      // 配置文件名，不需要后缀名
+	viper.SetConfigType("yml")                         // 配置文件格式
+	viper.AddConfigPath("/etc/aresTcpClient/configs/") // 查找配置文件的路径
 	viper.AddConfigPath("./configs/")
-	viper.AddConfigPath("./client/configs/") // 查找配置文件的路径
+	viper.AddConfigPath("./aresTcpClient/configs/") // 查找配置文件的路径
 	err := viper.ReadInConfig()
 	if err != nil { // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
@@ -38,7 +38,7 @@ func main() {
 		gnet.WithTCPNoDelay(gnet.TCPNoDelay))
 
 	controller.Init()
-	startClientCount := viper.GetInt("client.count")
+	startClientCount := viper.GetInt("aresTcpClient.count")
 	go controller.StartConnection(startClientCount)
 	wait.Wait()
 }

@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
@@ -11,12 +11,12 @@ import (
 )
 
 func handShakeReq(ctx tcp.Channel, request proto.Message) {
-	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
+	validInnerClient := ctx.Context().(*aresTcpClient.ConnInnerClientContext)
 	handShake := request.(*protoGen.InnerServerHandShakeReq)
 	validInnerClient.ServerId = handShake.FromServerId
 	fromServerType := handShake.FromServerType
-	client.AddInnerClientConnect(global.GameServerType(fromServerType), validInnerClient)
-	log.Infof("client id =%d from serverId=%d  serverId= %s addr =%s handshake finished",
+	aresTcpClient.AddInnerClientConnect(global.GameServerType(fromServerType), validInnerClient)
+	log.Infof("aresTcpClient id =%d from serverId=%d  serverId= %s addr =%s handshake finished",
 		validInnerClient.Sid, validInnerClient.ServerId, handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 
 	res := &protoGen.InnerServerHandShakeRes{

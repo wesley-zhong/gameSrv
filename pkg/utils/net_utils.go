@@ -21,7 +21,7 @@ func GetLocalIp() (string, error) {
 
 		}
 	}
-	return "", errors.New("Can not find the client ip address!")
+	return "", errors.New("Can not find the aresTcpClient ip address!")
 }
 
 func CreateServiceUnitName(serviceName string) string {

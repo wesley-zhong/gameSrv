@@ -1,4 +1,4 @@
-package client
+package aresTcpClient
 
 import (
 	"gameSrv/pkg/log"
@@ -8,7 +8,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// ConnContext ========================== user client -==========================================================
+// ConnContext ========================== user aresTcpClient -==========================================================
 type ConnContext struct {
 	Ctx tcp.Channel
 	Sid int64

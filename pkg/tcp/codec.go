@@ -33,7 +33,7 @@ type ICodec interface {
 	Decode(conn gnet.Conn) ([]byte, error)
 	//InnerEncode between server's msg encode
 	InnerEncode(packet *MsgPacket) ([]byte, error)
-	//Encode  user client to server
+	//Encode  user aresTcpClient to server
 	Encode(packet *MsgPacket) ([]byte, error)
 	UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket
 }

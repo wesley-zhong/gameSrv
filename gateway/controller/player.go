@@ -2,7 +2,7 @@ package controller
 
 import (
 	"gameSrv/gateway/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -12,7 +12,7 @@ import (
 )
 
 func login(ctx tcp.Channel, request proto.Message) {
-	context := ctx.Context().(*client.ConnContext)
+	context := ctx.Context().(*aresTcpClient.ConnContext)
 	loginRequest := request.(*protoGen.LoginRequest)
 	roleId := loginRequest.RoleId
 	existPlayer := player.PlayerMgr.GetByRoleId(roleId)
@@ -30,7 +30,7 @@ func login(ctx tcp.Channel, request proto.Message) {
 		PlayerId: existPlayer.Pid,
 	}
 	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), innerRequest)
-	client.SendInnerMsg(global.GAME, existPlayer.Pid, protoGen.InnerProtoCode_INNER_LOGIN_REQ, innerRequest)
+	aresTcpClient.SendInnerMsg(global.GAME, existPlayer.Pid, protoGen.InnerProtoCode_INNER_LOGIN_REQ, innerRequest)
 }
 
 func heartBeat(ctx tcp.Channel, request proto.Message) {
@@ -60,7 +60,7 @@ func ClientDisConnect(ctx tcp.Channel) {
 		Sid:      disConnPlayer.Context.Sid,
 		PlayerId: disConnPlayer.Pid,
 	}
-	client.SendInnerMsg(global.GAME, disConnPlayer.Pid, protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disconnectRequest)
+	aresTcpClient.SendInnerMsg(global.GAME, disConnPlayer.Pid, protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disconnectRequest)
 }
 
 func innerServerKickout(roleId int64, request proto.Message) {

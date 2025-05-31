@@ -2,7 +2,7 @@ package controller
 
 import (
 	"gameSrv/gateway/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -13,13 +13,13 @@ import (
 
 func handShakeRes(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeRes)
-	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
+	validInnerClient := ctx.Context().(*aresTcpClient.ConnInnerClientContext)
 	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
 		handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 }
 
 func loginResponseFromGameServer(roleId int64, request proto.Message) {
-	//	context := ctx.Context().(*client.ConnInnerClientContext)
+	//	context := ctx.Context().(*aresTcpClient.ConnInnerClientContext)
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
 	player := player.PlayerMgr.GetByRoleId(roleId)
 	if player == nil {

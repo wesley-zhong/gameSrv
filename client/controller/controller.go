@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var playerConn = make(map[int64]*client.ConnContext)
+var playerConn = make(map[int64]*aresTcpClient.ConnContext)
 
 func Init() {
 	tcp.RegisterMethod(int16(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
@@ -20,7 +20,7 @@ func Init() {
 }
 
 func hearBeatResponse(ctx tcp.Channel, request proto.Message) {
-	context := ctx.Context().(*client.ConnContext)
+	context := ctx.Context().(*aresTcpClient.ConnContext)
 	response := request.(*protoGen.HeartBeatResponse)
 	//kickOut := request.(*protoGen.KickOutResponse)
 	log.Infof("pid =%d heat beat response = %d  ", context.Sid, response.ServerTime)
@@ -46,7 +46,7 @@ func loginResponse(ctx tcp.Channel, msg proto.Message) {
 
 func onDirectFromGame(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
-	context := ctx.Context().(*client.ConnContext)
+	context := ctx.Context().(*aresTcpClient.ConnContext)
 	log.Infof("-----on   -onDirectFromGame body=%s  ", res)
 	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
 }
@@ -60,10 +60,10 @@ func StartConnection(count int) {
 	for i := 0; i < count; i++ {
 		//24.222.26.216:9101
 		serverAddr := viper.GetString("serverAddr")
-		log.Infof("client  connnet addr = %s", serverAddr)
+		log.Infof("aresTcpClient  connnet addr = %s", serverAddr)
 
-		channel := client.ClientConnect(serverAddr)
-		//client := client.ClientConnect("127.0.0.1:9101")
+		channel := aresTcpClient.ClientConnect(serverAddr)
+		//aresTcpClient := aresTcpClient.ClientConnect("127.0.0.1:9101")
 		//add  msg  to game server to add me
 
 		request := &protoGen.LoginRequest{
@@ -73,7 +73,7 @@ func StartConnection(count int) {
 			GameTicket: 0,
 			ServerId:   0,
 		}
-		playerConn[request.RoleId] = &client.ConnContext{Ctx: channel, Sid: 111}
+		playerConn[request.RoleId] = &aresTcpClient.ConnContext{Ctx: channel, Sid: 111}
 		playerConn[request.RoleId].SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
 	}
 }

@@ -1,7 +1,7 @@
 package player
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"sync"
 	"sync/atomic"
 )
@@ -9,7 +9,7 @@ import (
 //------player
 
 type Player struct {
-	Context *client.ConnContext
+	Context *aresTcpClient.ConnContext
 	Pid     int64
 	valid   bool
 }
@@ -17,11 +17,11 @@ type Player struct {
 func (player *Player) SetValid() {
 	player.valid = true
 }
-func (player *Player) SetContext(context *client.ConnContext) {
+func (player *Player) SetContext(context *aresTcpClient.ConnContext) {
 	player.Context = context
 }
 
-func NewPlayer(pid int64, context *client.ConnContext) *Player {
+func NewPlayer(pid int64, context *aresTcpClient.ConnContext) *Player {
 	return &Player{Context: context, Pid: pid}
 }
 

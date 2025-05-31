@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
@@ -16,11 +16,11 @@ func performanceTest(roleId int64, req proto.Message) {
 	//	SomeIdAdd: testReq.SomeId + 1,
 	//}
 	//log.Infof("========== router performanceTest %d  roleId=%d", testReq.SomeId, roleId)
-	//client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, 0, res)
+	//aresTcpClient.GetInnerClient(aresTcpClient.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, 0, res)
 }
 
 func onDirectToWorld(roleId int64, req proto.Message) {
 	echoMsg := req.(*protoGen.EchoReq)
-	client.GetInnerClient(global.GAME).SendMsg(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT, roleId, echoMsg)
+	aresTcpClient.GetInnerClient(global.GAME).SendMsg(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT, roleId, echoMsg)
 	log.Infof("-------------  on direct to router")
 }

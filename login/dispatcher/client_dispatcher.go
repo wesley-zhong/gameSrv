@@ -1,7 +1,7 @@
 package dispatcher
 
 import (
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"time"
@@ -12,15 +12,15 @@ type ClientEventHandler struct {
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
 
-	log.Infof("----------inner  client opened  addr=%s, id=%d", c.RemoteAddr(), c.GetId())
+	log.Infof("----------inner  aresTcpClient opened  addr=%s, id=%d", c.RemoteAddr(), c.GetId())
 	return nil, 0
 }
 
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
-	context := c.Context().(*client.ConnInnerClientContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context)
+	context := c.Context().(*aresTcpClient.ConnInnerClientContext)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  aresTcpClient closed addr =%s id =%d", c.RemoteAddr(), context)
 	return 1
 
 }

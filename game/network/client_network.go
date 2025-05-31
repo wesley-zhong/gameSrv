@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -19,9 +19,9 @@ type ClientEventHandler struct {
 }
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	//context := client.NewClientContext(c)
-	log.Infof("----------  client opened  addr=%s", c.RemoteAddr())
-	clientContext := client.NewInnerClientContext(c)
+	//context := aresTcpClient.NewClientContext(c)
+	log.Infof("----------  aresTcpClient opened  addr=%s", c.RemoteAddr())
+	clientContext := aresTcpClient.NewInnerClientContext(c)
 	c.SetContext(clientContext)
 	return nil, 0
 }
@@ -29,8 +29,8 @@ func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
-	context := c.Context().(*client.ConnInnerClientContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context.Sid)
+	context := c.Context().(*aresTcpClient.ConnInnerClientContext)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  aresTcpClient closed addr =%s id =%d", c.RemoteAddr(), context.Sid)
 	return 1
 
 }
@@ -55,14 +55,14 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
+	//log.Infof("  aresTcpClient React receive addr =%s", c.RemoteAddr())
 	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)
 	exist := tcp.HasMethod(msgId)
 	if !exist {
 		//direct to send gateway
-		client.GetInnerClient(global.GATE_WAY).SendBytesMsg(packet)
+		aresTcpClient.GetInnerClient(global.GATE_WAY).SendBytesMsg(packet)
 		return 0
 	}
 
@@ -89,9 +89,9 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(global.ROUTER)
+	innerClient := aresTcpClient.GetInnerClient(global.ROUTER)
 	if innerClient == nil {
-		//log.Infof("no found connect type =%d", client.ROUTER)
+		//log.Infof("no found connect type =%d", aresTcpClient.ROUTER)
 		return 5000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}

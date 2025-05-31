@@ -3,7 +3,7 @@ package networkHandler
 import (
 	"bytes"
 	"encoding/binary"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"time"
@@ -13,17 +13,17 @@ type ClientNetwork struct {
 }
 
 func (clientNetwork *ClientNetwork) OnOpened(ctx tcp.Channel) (out []byte, action int) {
-	//	context := client.NewClientContext(c)
-	//context := ctx.Context().(*client.ConnContext)
-	log.Infof("----------  client opened  addr=%s", ctx.RemoteAddr())
+	//	context := aresTcpClient.NewClientContext(c)
+	//context := ctx.Context().(*aresTcpClient.ConnContext)
+	log.Infof("----------  aresTcpClient opened  addr=%s", ctx.RemoteAddr())
 	return nil, 0
 }
 
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientNetwork) OnClosed(c tcp.Channel, err error) (action int) {
-	context := c.Context().(*client.ConnContext)
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s id =%d", c.RemoteAddr(), context)
+	context := c.Context().(*aresTcpClient.ConnContext)
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  aresTcpClient closed addr =%s id =%d", c.RemoteAddr(), context)
 	return 1
 
 }
@@ -49,7 +49,7 @@ func (clientNetwork *ClientNetwork) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (clientNetwork *ClientNetwork) React(packet []byte, c tcp.Channel) (action int) {
-	log.Infof("  client React receive addr =%s", c.RemoteAddr())
+	log.Infof("  aresTcpClient React receive addr =%s", c.RemoteAddr())
 	var msgId int16
 	bytebuffer := bytes.NewBuffer(packet[4:])
 	binary.Read(bytebuffer, binary.BigEndian, &msgId)

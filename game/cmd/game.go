@@ -63,7 +63,7 @@ func main() {
 	//start server
 	serverNetworkHandler := &network.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), serverNetworkHandler, &tcp.DefaultCodec{})
-	//init tcp client
+	//init tcp aresTcpClient
 	clientHandler := &network.ClientEventHandler{}
 	err = tcp.ClientStart(clientHandler,
 		gnet.WithMulticore(true),

@@ -1,4 +1,4 @@
-package client
+package aresTcpClient
 
 import (
 	"errors"
@@ -35,7 +35,7 @@ func Connect(addr string) (tcp.Channel, error) {
 
 func InnerClientConnect(serverType global.GameServerType, addr string, myServerType global.GameServerType) *ConnInnerClientContext {
 	if !tcp.ClientInited() {
-		log.Error(errors.New(" XXXXXXXX  net work client not init ，pleaser init first！"))
+		log.Error(errors.New(" XXXXXXXX  net work aresTcpClient not init ，pleaser init first！"))
 		return nil
 	}
 
@@ -93,7 +93,7 @@ func SendInnerMsg(clientType global.GameServerType, roleId int64, innerCode prot
 type ConnInnerClientContext struct {
 	Ctx       tcp.Channel
 	Sid       int64
-	ServerId  int64 //this client from which server
+	ServerId  int64 //this aresTcpClient from which server
 	ServiceId string
 }
 

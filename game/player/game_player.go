@@ -2,7 +2,7 @@ package player
 
 import (
 	"gameSrv/game/modules"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/protoGen"
 	"google.golang.org/protobuf/proto"
 )
@@ -11,17 +11,17 @@ type GamePlayer struct {
 	modules.ModuleContainer
 	Pid            int64 //player id
 	Sid            int64 // session id
-	innerClientCtx *client.ConnInnerClientContext
+	innerClientCtx *aresTcpClient.ConnInnerClientContext
 }
 
-func NewGamePlayer(playerId int64, innerClientCtx *client.ConnInnerClientContext) *GamePlayer {
+func NewGamePlayer(playerId int64, innerClientCtx *aresTcpClient.ConnInnerClientContext) *GamePlayer {
 	player := &GamePlayer{}
 	player.GamePlayer = player
 	player.Init(playerId, innerClientCtx)
 	return player
 }
 
-func (player *GamePlayer) Init(playerId int64, innerClientCtx *client.ConnInnerClientContext) {
+func (player *GamePlayer) Init(playerId int64, innerClientCtx *aresTcpClient.ConnInnerClientContext) {
 	player.innerClientCtx = innerClientCtx
 	player.Modules = make([]modules.AresModule, modules.MAX_ITEM_MODULES)
 	player.GamePlayer = player

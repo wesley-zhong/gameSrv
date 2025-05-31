@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"gameSrv/gateway/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -19,9 +19,9 @@ type ClientEventHandler struct {
 }
 
 func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	//	context := client.NewClientContext(c)
-	log.Infof("----------  client opened  addr=%s", c.RemoteAddr())
-	clientContext := client.NewInnerClientContext(c)
+	//	context := aresTcpClient.NewClientContext(c)
+	log.Infof("----------  aresTcpClient opened  addr=%s", c.RemoteAddr())
+	clientContext := aresTcpClient.NewInnerClientContext(c)
 	c.SetContext(clientContext)
 	return nil, 0
 }
@@ -29,7 +29,7 @@ func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s ", c.RemoteAddr())
+	log.Infof("XXXXXXXXXXXXXXXXXXXX  aresTcpClient closed addr =%s ", c.RemoteAddr())
 	if c.Context() == nil {
 		return 0
 	}
@@ -74,7 +74,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 
 	exist := tcp.HasMethod(msgId)
 	if !exist {
-		//direct to send client
+		//direct to send aresTcpClient
 		existPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
 		if existPlayer == nil {
 			log.Warnf("XXXXXXXX pid = %d not found", innerMsg.Id)
@@ -90,7 +90,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgId)
 		binary.Write(toPlayerBodyBuf, binary.BigEndian, bytebuffer.Bytes())
 		existPlayer.Context.Send(toPlayerBodyBuf.Bytes())
-		//log.Infof("roleId %d msgId =%d not found method direct to send client ", innerMsg.Id, msgId)
+		//log.Infof("roleId %d msgId =%d not found method direct to send aresTcpClient ", innerMsg.Id, msgId)
 		return 0
 	}
 
@@ -106,9 +106,9 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(global.GAME)
+	innerClient := aresTcpClient.GetInnerClient(global.GAME)
 	if innerClient == nil {
-		//	log.Infof("no found connect type =%d", client.GAME)
+		//	log.Infof("no found connect type =%d", aresTcpClient.GAME)
 		return 5000 * time.Millisecond, 0
 	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}

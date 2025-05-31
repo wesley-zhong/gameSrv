@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
-	"gameSrv/pkg/client"
+	"gameSrv/pkg/aresTcpClient"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -20,7 +20,7 @@ type ServerEventHandler struct {
 }
 
 func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	clientContext := client.NewClientContext(c)
+	clientContext := aresTcpClient.NewClientContext(c)
 	c.SetContext(clientContext)
 	//log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
 	//test for worker pool
@@ -37,7 +37,7 @@ func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // The parameter err is the last known connection error.
 func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
 	switch c.Context().(type) {
-	case *client.ConnContext:
+	case *aresTcpClient.ConnContext:
 		log.Infof("addr =%s not login", c.RemoteAddr())
 		return 1
 	case *player.Player:
@@ -100,7 +100,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		binary.Write(directSendBuff, binary.BigEndian, int16(len(headerBytes)))
 		binary.Write(directSendBuff, binary.BigEndian, headerBytes)
 		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
-		client.GetInnerClient(global.GAME).SendBytesMsg(directSendBuff.Bytes())
+		aresTcpClient.GetInnerClient(global.GAME).SendBytesMsg(directSendBuff.Bytes())
 
 		//log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
 		return 0
