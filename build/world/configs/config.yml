@@ -1,5 +1,0 @@
-port: 9103
-service:
-  name: world.V1
-discover:
-  url: [localhost:2379]

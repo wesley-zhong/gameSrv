@@ -13,10 +13,10 @@ restart: stop run
 docker:  clean build docker_build
 build:
 	set GOARCH=amd64
-	go env -w GOARCH=amd64
+	go env -w GOARCH=amd6e
 	set GOOS=linux
 	go env -w GOOS=linux
-	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../world/cmd/world.go
+	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../router/cmd/routrr.go
 	cp  -r ../world/configs   ./$(BIN_WORLD)/
 	cp  ../world/Dockerfile  ./$(BIN_WORLD)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
