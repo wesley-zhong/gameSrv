@@ -27,6 +27,7 @@ func innerPlayerLogin(ctx tcp.Channel, request proto.Message) {
 		Sid:      loginRequest.Sid,
 		PlayerId: loginRequest.PlayerId,
 	}
+	gamePlayer.Sid = loginRequest.Sid
 	aresTcpClient.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.PlayerId, innerLoginReq)
 	player.PlayerOlineMgr.AddPlayer(gamePlayer)
 }
