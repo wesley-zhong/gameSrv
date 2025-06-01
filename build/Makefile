@@ -17,8 +17,8 @@ build:
 	set GOOS=linux
 	go env -w GOOS=linux
 	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../router/cmd/router.go
-	cp  -r ../world/configs   ./$(BIN_WORLD)/
-	cp  ../world/Dockerfile  ./$(BIN_WORLD)/
+	cp  -r ../router/configs   ./$(BIN_WORLD)/
+	cp  ../router/Dockerfile  ./$(BIN_WORLD)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
 	cp -r ../game/configs ./$(BIN_GAME)
 	cp ../game/Dockerfile  ./$(BIN_GAME)/
@@ -38,7 +38,7 @@ clean:
 	rm -rf $(BIN_CLIENT)
 	rm -rf ./logs/*
 run:
-	nohup ./$(BIN_WORLD)/$(BIN_WORLD) >>./logs/world.log 2>&1 &
+	nohup ./$(BIN_WORLD)/$(BIN_WORLD) >>./logs/router.log 2>&1 &
 	sleep 1
 	nohup ./$(BIN_GAME)/$(BIN_GAME) >>./logs/game.log 2>&1 &
 	sleep 1
@@ -58,16 +58,16 @@ stop:
 ps:
 	ps -aux | grep gateway
 	ps -aux | grep game
-	ps -aux | grep world
+	ps -aux | grep router
 docker_build:
 	cd gateway; docker build --tag docker-gateway .
 	cd game; docker build --tag docker-game .
-	cd world; docker build --tag docker-world .
+	cd router; docker build --tag docker-router .
 	cd login; docker build --tag docker-login .
 docker_run:
 	docker run -d -p 9101:9101 --name gateway  docker-gateway
 	docker run -d -p 9102:9102 --name game  docker-game
-	docker run -d -p 9103:9103 --name world  docker-world
+	docker run -d -p 9103:9103 --name world  docker-router
 
 
 
