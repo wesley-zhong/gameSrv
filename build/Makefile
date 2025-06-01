@@ -3,7 +3,7 @@ GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
-BIN_WORLD=world
+BIN_WORLD=router
 BIN_GAME=game
 BIN_GATE_WAY=gateway
 BIN_LOGIN=login
@@ -16,7 +16,7 @@ build:
 	go env -w GOARCH=amd64
 	set GOOS=linux
 	go env -w GOOS=linux
-	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../router/cmd/routrr.go
+	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../router/cmd/router.go
 	cp  -r ../world/configs   ./$(BIN_WORLD)/
 	cp  ../world/Dockerfile  ./$(BIN_WORLD)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
