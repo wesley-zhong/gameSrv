@@ -52,8 +52,14 @@ func post(url string, contentType string, body []byte, headers map[string]string
 	postResp, err := httpClient.Do(req) // Use client.Do() for custom requests
 	if err != nil {
 		log.Fatalf("Error making POST request: %v", err)
+		return nil, err
 	}
-	defer postResp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+
+		}
+	}(postResp.Body)
 
 	if postResp.StatusCode != http.StatusCreated {
 		log.Fatalf("Unexpected POST status code: %d", postResp.StatusCode)
