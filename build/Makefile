@@ -3,7 +3,7 @@ GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
-BIN_WORLD=router
+BIN_ROUTER=router
 BIN_GAME=game
 BIN_GATE_WAY=gateway
 BIN_LOGIN=login
@@ -16,9 +16,9 @@ build:
 	go env -w GOARCH=amd64
 	set GOOS=linux
 	go env -w GOOS=linux
-	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../router/cmd/router.go
-	cp  -r ../router/configs   ./$(BIN_WORLD)/
-	cp  ../router/Dockerfile  ./$(BIN_WORLD)/
+	$(GOBUILD) -o $(BIN_ROUTER)/$(BIN_ROUTER)  ../router/cmd/router.go
+	cp  -r ../router/configs   ./$(BIN_ROUTER)/
+	cp  ../router/Dockerfile  ./$(BIN_ROUTER)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
 	cp -r ../game/configs ./$(BIN_GAME)
 	cp ../game/Dockerfile  ./$(BIN_GAME)/
@@ -32,13 +32,13 @@ build:
 	$(GOBUILD) -o $(BIN_CLIENT)/$(BIN_CLIENT) ../client/cmd/client.go
 	cp -r ../client/configs ./$(BIN_CLIENT)
 clean:
-	rm -rf $(BIN_WORLD)
+	rm -rf $(BIN_ROUTER)
 	rm -rf $(BIN_GAME)
 	rm -rf $(BIN_GATE_WAY)
 	rm -rf $(BIN_CLIENT)
 	rm -rf ./logs/*
 run:
-	nohup ./$(BIN_WORLD)/$(BIN_WORLD) >>./logs/router.log 2>&1 &
+	nohup ./$(BIN_ROUTER)/$(BIN_ROUTER) >>./logs/router.log 2>&1 &
 	sleep 1
 	nohup ./$(BIN_GAME)/$(BIN_GAME) >>./logs/game.log 2>&1 &
 	sleep 1
@@ -47,14 +47,14 @@ run:
 	@echo "======================== server started "
 	ps -aux | grep gateway
 	ps -aux | grep game
-	ps -aux | grep world
+	ps -aux | grep router
 stop:
 	ps -ef|grep gateway|grep -v grep|awk '{print $2}' | xargs kill -9
 	ps -ef|grep game|grep -v grep|awk '{print $2}' | xargs kill -9
-	ps -ef|grep world|grep -v grep|awk '{print $2}' | xargs kill -9
+	ps -ef|grep router|grep -v grep|awk '{print $2}' | xargs kill -9
 	ps -aux | grep game
 	ps -aux | grep gateway
-	ps -aux | grep world
+	ps -aux | grep router
 ps:
 	ps -aux | grep gateway
 	ps -aux | grep game
@@ -67,7 +67,7 @@ docker_build:
 docker_run:
 	docker run -d -p 9101:9101 --name gateway  docker-gateway
 	docker run -d -p 9102:9102 --name game  docker-game
-	docker run -d -p 9103:9103 --name world  docker-router
+	docker run -d -p 9103:9103 --name router  docker-router
 
 
 
