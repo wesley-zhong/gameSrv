@@ -33,6 +33,7 @@ func init() {
 	if err != nil {             // 处理错误
 		panic(err)
 	}
+	global.SelfServerType = global.GAME
 }
 
 func main() {

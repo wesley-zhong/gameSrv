@@ -28,6 +28,7 @@ func init() {
 	if err != nil {                         // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
+	global.SelfServerType = global.LOGIN
 }
 
 func main() {

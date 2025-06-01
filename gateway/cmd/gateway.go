@@ -26,6 +26,7 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+	global.SelfServerType = global.GATE_WAY
 }
 
 func main() {

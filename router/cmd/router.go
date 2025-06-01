@@ -23,6 +23,7 @@ func init() {
 	if err != nil {
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
+	global.SelfServerType = global.ROUTER
 }
 
 func main() {
