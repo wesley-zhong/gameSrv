@@ -13,7 +13,7 @@ restart: stop run
 docker:  clean build docker_build
 build:
 	set GOARCH=amd64
-	go env -w GOARCH=amd6e
+	go env -w GOARCH=amd64
 	set GOOS=linux
 	go env -w GOOS=linux
 	$(GOBUILD) -o $(BIN_WORLD)/$(BIN_WORLD)  ../router/cmd/routrr.go
