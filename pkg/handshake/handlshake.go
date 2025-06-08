@@ -1,4 +1,4 @@
-package controller
+package handshake
 
 import (
 	"gameSrv/pkg/aresTcpClient"
@@ -10,7 +10,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func handShakeReq(ctx tcp.Channel, request proto.Message) {
+func HandShakeReq(ctx tcp.Channel, request proto.Message) {
 	validInnerClient := ctx.Context().(*aresTcpClient.ConnInnerClientContext)
 	handShake := request.(*protoGen.InnerServerHandShakeReq)
 	validInnerClient.ServerId = handShake.FromServerId
@@ -27,13 +27,13 @@ func handShakeReq(ctx tcp.Channel, request proto.Message) {
 	validInnerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_RES, 0, res)
 }
 
-func handShakeRes(ctx tcp.Channel, request proto.Message) {
+func HandShakeRes(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeRes)
 	validInnerClient := ctx.Context().(*aresTcpClient.ConnInnerClientContext)
 	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
 		handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 }
 
-func heartBeatRes(ctx tcp.Channel, request proto.Message) {
+func HeartBeatRes(ctx tcp.Channel, request proto.Message) {
 	log.Infof(" inner  heartBeatRes context= %s ", ctx.RemoteAddr())
 }
