@@ -3,7 +3,7 @@ package player
 import (
 	"gameSrv/game/dal"
 	"gameSrv/game/do"
-	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 func FindPlayerAccount(account string) *do.AccountDO {

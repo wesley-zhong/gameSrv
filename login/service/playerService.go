@@ -3,7 +3,7 @@ package service
 import (
 	"gameSrv/login/dal"
 	"gameSrv/login/dos"
-	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 var PlayerService = new(PlayerServiceImpl)

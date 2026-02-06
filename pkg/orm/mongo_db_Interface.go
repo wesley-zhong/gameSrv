@@ -4,9 +4,9 @@ import (
 	"context"
 	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/v2/bson"
+	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
 	"time"
 )
 
@@ -18,7 +18,7 @@ var Upsert = true
 
 type SaveFun func()
 
-var replaceOneOptions = &options.ReplaceOptions{Upsert: &Upsert}
+var replaceOneOptions = options.Replace().SetUpsert(true) //{Upsert: &Upsert}
 
 var workerPool = gopool.StartNewWorkerPool(16, 256)
 
@@ -68,6 +68,7 @@ func (dao *MongodbDAOInterface[T]) Save(id int64, obj *T) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
+
 	ret, err := dao.Collection.ReplaceOne(ctx, filter, obj, replaceOneOptions)
 	if ret.ModifiedCount > 0 {
 		return nil
