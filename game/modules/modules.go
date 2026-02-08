@@ -33,5 +33,5 @@ func (moduleContainer *ModuleContainer) initModules() {
 	itemModue := &ItemModule{}
 	FromDO(itemDO, itemModue)
 	newItemDo := ToDO(itemModue)
-	log.Infof("=-----", newItemDo.Pid)
+	log.Infof("=-----%d", newItemDo.Pid)
 }
