@@ -5,6 +5,9 @@ mongo:
   addr: localhost
   userName: admin
   password: admin
+redis:
+  addr: 172.18.2.101:6379
+  password:
 discover:
   url: [localhost:2379]
   watchServ: [router]

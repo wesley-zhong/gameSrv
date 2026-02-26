@@ -6,6 +6,7 @@ import (
 )
 
 // ------------------mongodb----------------
+
 var AccountDAO *orm.MongodbDAO[do.AccountDO]
 var RoleDAO *orm.MongodbDAO[do.RoleDO]
 var ItemDAO *orm.MongodbDAO[do.ItemDO]
