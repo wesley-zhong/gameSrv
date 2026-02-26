@@ -24,7 +24,10 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	//if body == nil {
 	//	method.methodFuc(any, nil)
 	//}
-	proto.Unmarshal(body, param)
+	if err := proto.Unmarshal(body, param); err != nil {
+		log.Infof("Protobuf unmarshal error: %v", err)
+		return // Don't submit to pool if data is corrupted
+	}
 	msgGoPool.SubmitTask(func() {
 		defer func() {
 			if r := recover(); r != nil {

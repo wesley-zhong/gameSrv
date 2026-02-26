@@ -94,7 +94,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
 	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-	proto.Unmarshal(innerBody, innerMsg)
+	err := proto.Unmarshal(innerBody, innerMsg)
+	if err != nil {
+		log.Errorf("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
+		return 0
+	}
 
 	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
 	if processed {
