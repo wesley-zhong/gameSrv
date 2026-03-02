@@ -9,8 +9,9 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
-	"google.golang.org/protobuf/proto"
 	"time"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type ServerEventHandler struct {
@@ -90,11 +91,11 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
-	//log.Infof("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
+	log.Infof("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
 		// direct to game server
-		//log.Infof("-------- msgId =%d direct to world server", msgId)
+		log.Infof("-------- msgId =%d direct to world server", msgId)
 		client.GetInnerClient(global.ROUTER).SendBytesMsg(packet)
 		return 0
 	}

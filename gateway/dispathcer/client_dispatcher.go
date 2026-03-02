@@ -101,6 +101,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 		existPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
 		if existPlayer == nil {
 			log.Warnf("XXXXXXXX pid = %d not found", innerMsg.Id)
+			return 0
 		}
 		skipLen := 2 + int32(innerHeaderLen)
 		if msgLen := totalMsgLen - skipLen; msgLen < 0 {

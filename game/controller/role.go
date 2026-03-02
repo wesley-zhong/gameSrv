@@ -6,6 +6,7 @@ import (
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
+
 	"google.golang.org/protobuf/proto"
 )
 
@@ -37,7 +38,7 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 
 func loginResponseFromWorldServer(roleId int64, request proto.Message) {
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
-	log.Infof("------loginResponseFromWorldServer  response = %d   =%s", roleId, innerLoginResponse)
+	log.Infof("------loginResponseFromWorldServer 11111  response = %d   =%s", roleId, innerLoginResponse)
 	player := player.RoleOlineMgr.GetByRoleId(roleId)
 	if player == nil {
 		log.Infof(" role id = %d not found or have disconnected", roleId)

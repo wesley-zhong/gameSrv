@@ -5,6 +5,7 @@ import (
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
+
 	"github.com/spf13/viper"
 	"go.etcd.io/etcd/api/v3/mvccpb"
 )
@@ -31,6 +32,7 @@ func Init(v *viper.Viper, selfType global.GameServerType) error {
 		ChannelContext: nil,
 	}
 	global.SelfServiceId = MySelfNode.ServiceId
+	global.SelfServerType = selfType
 	return nil
 }
 

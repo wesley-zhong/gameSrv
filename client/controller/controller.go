@@ -5,6 +5,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
+
 	"github.com/spf13/viper"
 	"google.golang.org/protobuf/proto"
 )
@@ -48,7 +49,10 @@ func onDirectFromGame(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.EchoReq)
 	context := ctx.Context().(*client.ConnContext)
 	log.Infof("-----on   -onDirectFromGame body=%s  ", res)
-	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
+	for i := 0; i < 256; i++ {
+		context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
+	}
+
 }
 
 func onDirectFromWorld(ctx tcp.Channel, msg proto.Message) {
@@ -58,22 +62,19 @@ func onDirectFromWorld(ctx tcp.Channel, msg proto.Message) {
 
 func StartConnection(count int) {
 	for i := 0; i < count; i++ {
-		//24.222.26.216:9101
 		serverAddr := viper.GetString("serverAddr")
 		log.Infof("client  connnet addr = %s", serverAddr)
 
 		channel := client.ClientConnect(serverAddr)
-		//client := client.ClientConnect("127.0.0.1:9101")
-		//add  msg  to game server to add me
 
 		request := &protoGen.LoginRequest{
 			AccountId:  int64(i + 10011),
-			RoleId:     int64(i + 1000001),
+			RoleId:     int64(i + 2000001),
 			LoginToken: "abc",
 			GameTicket: 0,
 			ServerId:   0,
 		}
-		playerConn[request.RoleId] = &client.ConnContext{Ctx: channel, Sid: 111}
+		playerConn[request.RoleId] = &client.ConnContext{Ctx: channel, Sid: int64(i + 3000001)}
 		playerConn[request.RoleId].SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
 	}
 }
