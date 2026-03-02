@@ -1,5 +1,11 @@
 package constants
 
+import "gameSrv/pkg/global"
+
+func init() {
+	global.SelfServerType = global.GAME
+}
+
 const (
 	INNER_MSG_SEND_AUTO           = 0
 	INNER_MSG_SEND_FORWARD        = 1

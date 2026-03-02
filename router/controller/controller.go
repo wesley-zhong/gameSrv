@@ -6,7 +6,7 @@ import (
 	"gameSrv/protoGen"
 )
 
-func Init() {
+func init() {
 	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_REQ), &protoGen.InnerServerHandShakeReq{}, handShakeReq)
 
 	tcp.RegisterCallPlayerMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_REQ), &protoGen.InnerLoginRequest{}, innerPlayerLogin)

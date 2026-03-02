@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	_ "gameSrv/game/constants"
 	"gameSrv/game/controller"
 	"gameSrv/game/dal"
 	"gameSrv/game/dispatcher"
@@ -10,10 +11,11 @@ import (
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
 	"gameSrv/pkg/web"
-	"github.com/panjf2000/gnet/v2"
-	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
+
+	"github.com/panjf2000/gnet/v2"
+	"github.com/spf13/viper"
 
 	"net/http"
 	_ "net/http/pprof"
@@ -51,7 +53,6 @@ func main() {
 	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
 	// msg Register
-	controller.Init()
 	discover.Init(viper.GetViper(), global.GAME)
 
 	//start server

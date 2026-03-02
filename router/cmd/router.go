@@ -5,12 +5,12 @@ import (
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/tcp"
-	"gameSrv/router/controller"
 	"gameSrv/router/dispatcher"
 	"gameSrv/router/watcher"
-	"github.com/spf13/viper"
 	"runtime/debug"
 	"sync"
+
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -34,8 +34,7 @@ func main() {
 		loopWG.Add(-1) // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
-
-	controller.Init()
+	
 	discover.Init(viper.GetViper(), global.ROUTER)
 
 	handler := &dispatcher.ServerEventHandler{}

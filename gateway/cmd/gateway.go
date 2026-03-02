@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gameSrv/gateway/controller"
+	_ "gameSrv/gateway/constants"
 	"gameSrv/gateway/dispathcer"
 	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/discover"
@@ -44,8 +44,6 @@ func main() {
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
-	// msg Register
-	controller.Init()
 	//package receive handler
 	handler := &dispathcer.ServerEventHandler{}
 	discover.Init(viper.GetViper(), global.GATE_WAY)

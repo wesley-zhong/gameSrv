@@ -3,7 +3,7 @@ package constants
 import "gameSrv/pkg/global"
 
 func init() {
-	global.SelfServerType = global.GATE_WAY
+	global.SelfServerType = global.ROUTER
 }
 
 const (
