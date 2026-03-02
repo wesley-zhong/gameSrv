@@ -6,10 +6,11 @@ import (
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
-	"go.etcd.io/etcd/api/v3/mvccpb"
-	clientv3 "go.etcd.io/etcd/client/v3"
 	"sync"
 	"time"
+
+	"go.etcd.io/etcd/api/v3/mvccpb"
+	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
 var DiscoverService *ServiceDiscovery
@@ -110,7 +111,7 @@ func (s *ServiceDiscovery) SetServiceList(key, val string) {
 		return
 	}
 	s.serverList[key] = node
-	log.Infof("### discover quest :ServiceId  %s:  ServiceName: %s", key, val)
+	log.Infof("### discover  :ServiceId  %s:  ServiceName: %s", key, val)
 	s.onChanged(node, mvccpb.PUT)
 	//go connectNode(node)
 }

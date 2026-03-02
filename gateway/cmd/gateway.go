@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	_ "gameSrv/gateway/constants"
+	_ "gameSrv/gateway/controller"
 	"gameSrv/gateway/dispathcer"
 	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/discover"
