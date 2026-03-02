@@ -68,19 +68,44 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
+	if len(packet) < 4 {
+		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
+		return 0
+	}
+	length := binary.BigEndian.Uint32(packet[:4])
+	if length > uint32(len(packet)) {
+		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
+		return 0
+	}
 	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
+		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
 
 	var innerHeaderLen int16
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen); err != nil {
+		log.Errorf("read innerHeaderLen failed: msgId=%d addr=%s len=%d err=%v", msgId, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if innerHeaderLen < 0 || int(innerHeaderLen) > bytebuffer.Len() {
+		log.Errorf("invalid innerHeaderLen: msgId=%d innerHeaderLen=%d remaining=%d addr=%s", msgId, innerHeaderLen, bytebuffer.Len(), ctx.RemoteAddr())
+		return 0
+	}
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-	proto.Unmarshal(innerBody, innerMsg)
+	if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
+		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if err := proto.Unmarshal(innerBody, innerMsg); err != nil {
+		log.Errorf("unmarshal innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
 
 	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
 	if processed {

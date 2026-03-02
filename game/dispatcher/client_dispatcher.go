@@ -56,9 +56,21 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // to that new goroutine.
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
 	//log.Infof("  client React receive addr =%s", c.RemoteAddr())
+	if len(packet) < 4 {
+		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
+		return 0
+	}
+	length := binary.BigEndian.Uint32(packet[:4])
+	if length > uint32(len(packet)) {
+		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
+		return 0
+	}
 	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
+		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
 	exist := tcp.HasMethod(msgId)
 	if !exist {
 		//direct to send gateway
@@ -67,11 +79,24 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 	}
 
 	var innerHeaderLen int16
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen); err != nil {
+		log.Errorf("read innerHeaderLen failed: msgId=%d addr=%s len=%d err=%v", msgId, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if innerHeaderLen < 0 || int(innerHeaderLen) > bytebuffer.Len() {
+		log.Errorf("invalid innerHeaderLen: msgId=%d innerHeaderLen=%d remaining=%d addr=%s", msgId, innerHeaderLen, bytebuffer.Len(), ctx.RemoteAddr())
+		return 0
+	}
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-	proto.Unmarshal(innerBody, innerMsg)
+	if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
+		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if err := proto.Unmarshal(innerBody, innerMsg); err != nil {
+		log.Errorf("unmarshal innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
 
 	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
 	if processed {

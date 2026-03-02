@@ -61,16 +61,39 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
 	bytebuffer := bytes.NewBuffer(packet)
 	var totalMsgLen int32
-	binary.Read(bytebuffer, binary.BigEndian, &totalMsgLen)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &totalMsgLen); err != nil {
+		log.Errorf("read totalMsgLen failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if totalMsgLen < 0 || int(totalMsgLen) > len(packet) {
+		log.Errorf("invalid totalMsgLen: totalMsgLen=%d packet_len=%d addr=%s", totalMsgLen, len(packet), ctx.RemoteAddr())
+		return 0
+	}
 	var msgId int16
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
+		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
 
 	var innerHeaderLen int16
-	binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen); err != nil {
+		log.Errorf("read innerHeaderLen failed: msgId=%d addr=%s len=%d err=%v", msgId, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if innerHeaderLen < 0 || int(innerHeaderLen) > bytebuffer.Len() {
+		log.Errorf("invalid innerHeaderLen: msgId=%d innerHeaderLen=%d remaining=%d addr=%s", msgId, innerHeaderLen, bytebuffer.Len(), ctx.RemoteAddr())
+		return 0
+	}
 	innerMsg := &protoGen.InnerHead{}
 	innerBody := make([]byte, innerHeaderLen)
-	binary.Read(bytebuffer, binary.BigEndian, innerBody)
-	proto.Unmarshal(innerBody, innerMsg)
+	if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
+		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if err := proto.Unmarshal(innerBody, innerMsg); err != nil {
+		log.Errorf("unmarshal innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
 
 	exist := tcp.HasMethod(msgId)
 	if !exist {
@@ -80,6 +103,10 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 			log.Warnf("XXXXXXXX pid = %d not found", innerMsg.Id)
 		}
 		skipLen := 2 + int32(innerHeaderLen)
+		if msgLen := totalMsgLen - skipLen; msgLen < 0 {
+			log.Errorf("invalid msgLen: msgId=%d totalMsgLen=%d skipLen=%d addr=%s", msgId, totalMsgLen, skipLen, ctx.RemoteAddr())
+			return 0
+		}
 
 		msgLen := totalMsgLen - skipLen
 		toPlayerBody := make([]byte, msgLen+4)

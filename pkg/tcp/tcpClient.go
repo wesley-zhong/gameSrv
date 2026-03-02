@@ -41,8 +41,8 @@ func (handler *gnetHandler) OnOpen(c gnet.Conn) (out []byte, action gnet.Action)
 // OnClose fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (handler *gnetHandler) OnClose(c gnet.Conn, err error) (action gnet.Action) {
-	context := &ChannelGnet{c, nil}
-	handler.gameHandler.OnClosed(context, err)
+	//	context := &ChannelGnet{c, nil}
+	handler.gameHandler.OnClosed(c.Context().(Channel), err)
 	return gnet.Close
 }
 

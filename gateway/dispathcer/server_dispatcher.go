@@ -71,10 +71,24 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
 	bytebuffer := bytes.NewBuffer(packet)
 	var length uint32
-	binary.Read(bytebuffer, binary.BigEndian, &length)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &length); err != nil {
+		log.Errorf("read length failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if length > uint32(len(packet)) {
+		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
+		return 0
+	}
 
 	var msgId int16
-	binary.Read(bytebuffer, binary.BigEndian, &msgId)
+	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
+		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if len(packet) < 6 {
+		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
+		return 0
+	}
 	//	log.Infof("------receive msgId = %d length =%d", msgId, length)
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
@@ -90,6 +104,10 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		player := ctx.Context().(*player.Player)
 		headMsg := &protoGen.InnerHead{Id: player.Pid}
 		headerBytes, _ := proto.Marshal(headMsg)
+		if length < 2 {
+			log.Errorf("invalid length for direct send: msgId=%d length=%d addr=%s", msgId, length, ctx.RemoteAddr())
+			return 0
+		}
 		totalLen := 4 + 2 + 2 + len(headerBytes) + int(length) - 2
 
 		directSendByte := make([]byte, totalLen)

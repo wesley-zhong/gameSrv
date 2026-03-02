@@ -1,6 +1,8 @@
 package modules
 
-import "gameSrv/game/do"
+import (
+	"gameSrv/game/do"
+)
 
 type ItemModule struct {
 	ItemDO *do.ItemDO

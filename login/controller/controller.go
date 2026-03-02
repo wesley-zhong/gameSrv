@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"gameSrv/game/player"
+	"gameSrv/game/internal/player"
 	"gameSrv/pkg/web"
 )
 
