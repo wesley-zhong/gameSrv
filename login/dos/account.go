@@ -1,9 +1,4 @@
-package module
-
-type RoleDO struct {
-	Id   int64
-	Name string
-}
+package dos
 
 type AccountDO struct {
 	Id      int64 `bson:"_id"`

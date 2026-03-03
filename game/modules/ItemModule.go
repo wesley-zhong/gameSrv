@@ -1,18 +1,20 @@
 package modules
 
-import (
-	"gameSrv/game/do"
-)
+type ItemDO struct {
+	Id      int64
+	Account string
+	Pid     int64
+}
 
 type ItemModule struct {
-	ItemDO *do.ItemDO
+	GameModule[ItemDO]
 }
 
-func (itemModule *ItemModule) FromDO(itemDo *do.ItemDO) error {
-	itemModule.ItemDO = itemDo
+func (itemModule *ItemModule) ModuleId() ModuleTypeId {
+	return ITEM_MODULE
+}
+
+func (itemModule *ItemModule) FromDO(itemDo *ItemDO) error {
+	itemModule.DataDO = itemDo
 	return nil
-}
-
-func (itemModule *ItemModule) ToDO() *do.ItemDO {
-	return itemModule.ItemDO
 }

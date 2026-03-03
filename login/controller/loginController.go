@@ -2,7 +2,6 @@ package controller
 
 import (
 	"gameSrv/login/dal"
-	"gameSrv/login/dos"
 	"gameSrv/login/service"
 	"gameSrv/pkg/utils"
 )
@@ -35,7 +34,7 @@ func (login *Login) Login(loginDto *LoginReq) *LoginRes {
 
 func (login *Login) CreateAccount(loginDto *LoginReq) *LoginRes {
 	id := utils.NextId()
-	accountDO := &module.AccountDO{
+	accountDO := &service.module{
 		Id:      id,
 		Account: loginDto.AccountId,
 		Pid:     id,

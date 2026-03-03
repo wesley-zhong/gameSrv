@@ -1,37 +1,35 @@
 package dal
 
 import (
-	"gameSrv/game/do"
+	"gameSrv/game/modules"
 	"gameSrv/pkg/orm"
 )
 
 // ------------------mongodb----------------
 
-var AccountDAO *orm.MongodbDAO[do.AccountDO]
-var RoleDAO *orm.MongodbDAO[do.RoleDO]
-var ItemDAO *orm.MongodbDAO[do.ItemDO]
+var RoleDAO *orm.MongodbDAO[modules.RoleDO]
+var ItemDAO *orm.MongodbDAO[modules.ItemDO]
 
 func InitMongoDB(addr string, userName string, pwd string) error {
 	err := orm.InitMongoDB(addr, userName, pwd)
 	if err != nil {
 		return err
 	}
-	AccountDAO = &orm.MongodbDAO[do.AccountDO]{Collection: orm.GetDBConnTable("game", "account")}
-	RoleDAO = &orm.MongodbDAO[do.RoleDO]{Collection: orm.GetDBConnTable("game", "role")}
-	ItemDAO = &orm.MongodbDAO[do.ItemDO]{Collection: orm.GetDBConnTable("game", "item")}
+	RoleDAO = &orm.MongodbDAO[modules.RoleDO]{Collection: orm.GetDBConnTable("game", "role")}
+	ItemDAO = &orm.MongodbDAO[modules.ItemDO]{Collection: orm.GetDBConnTable("game", "item")}
 
 	return nil
 }
 
 //------------------------ redis-------------
 
-var AccountRedisDAO *orm.RedisDAO[do.AccountDO]
+var RoleRedisDAO *orm.RedisDAO[modules.RoleDO]
 
 func InitRedisDB(addr string, password string) error {
 	err := orm.InitRedis(addr, password)
 	if err != nil {
 		return err
 	}
-	AccountRedisDAO = &orm.RedisDAO[do.AccountDO]{Rdb: orm.Rdb}
+	RoleRedisDAO = &orm.RedisDAO[modules.RoleDO]{Rdb: orm.Rdb}
 	return nil
 }

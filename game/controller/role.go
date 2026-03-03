@@ -31,15 +31,15 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 		RoleId: loginRequest.RoleId,
 	}
 	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.RoleId, innerLoginReq)
-	gameRole := player.NewRole(loginRequest.RoleId, nil)
+	gameRole := player.NewGamePlayer(loginRequest.RoleId, loginRequest.Sid)
 	gameRole.Sid = loginRequest.Sid
-	player.RoleOlineMgr.AddRole(gameRole)
+	player.RoleOlineMgr.AddPlayer(gameRole)
 }
 
 func loginResponseFromWorldServer(roleId int64, request proto.Message) {
 	innerLoginResponse := request.(*protoGen.InnerLoginResponse)
 	log.Infof("------loginResponseFromWorldServer 11111  response = %d   =%s", roleId, innerLoginResponse)
-	player := player.RoleOlineMgr.GetByRoleId(roleId)
+	player := player.RoleOlineMgr.GetPlayerById(roleId)
 	if player == nil {
 		log.Infof(" role id = %d not found or have disconnected", roleId)
 		return
@@ -48,13 +48,13 @@ func loginResponseFromWorldServer(roleId int64, request proto.Message) {
 }
 
 func innerPlayerDisconnect(roleId int64, request proto.Message) {
-	gameRole := player.RoleOlineMgr.GetByRoleId(roleId)
-	if gameRole == nil {
+	gamePlayer := player.RoleOlineMgr.GetPlayerById(roleId)
+	if gamePlayer == nil {
 		log.Infof("roleId =%d not found", roleId)
 		return
 	}
 	playerDisconnectRequest := request.(*protoGen.InnerPlayerDisconnectRequest)
-	if playerDisconnectRequest.Sid != gameRole.Sid {
+	if playerDisconnectRequest.Sid != gamePlayer.Sid {
 		log.Infof("roleId =%d have reconnected ", roleId)
 		return
 	}
