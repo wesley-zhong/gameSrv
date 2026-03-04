@@ -7,7 +7,7 @@ import (
 	"gameSrv/pkg/tcp"
 	_ "gameSrv/router/constants"
 	_ "gameSrv/router/controller"
-	"gameSrv/router/dispatcher"
+	"gameSrv/router/network"
 	"gameSrv/router/watcher"
 	"runtime/debug"
 	"sync"
@@ -39,7 +39,7 @@ func main() {
 
 	discover.Init(viper.GetViper(), global.ROUTER)
 
-	handler := &dispatcher.ServerEventHandler{}
+	handler := &network.ServerEventHandler{}
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)
 	if err != nil {

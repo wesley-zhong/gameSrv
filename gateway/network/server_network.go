@@ -1,4 +1,4 @@
-package dispathcer
+package network
 
 import (
 	"bytes"

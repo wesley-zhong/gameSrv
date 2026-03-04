@@ -1,15 +1,17 @@
-package dispatcher
+package network
 
 import (
 	"bytes"
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
+	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
-	"google.golang.org/protobuf/proto"
 	"time"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type ServerEventHandler struct {
@@ -32,31 +34,32 @@ func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // The parameter err is the last known connection error.
 func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
 	switch c.Context().(type) {
-	case *client.ConnInnerClientContext:
-		log.Infof(" OnClosed-----addr =%s not login", c.RemoteAddr())
-		return 0
+	case *client.ConnContext:
+		log.Infof("addr =%s not login", c.RemoteAddr())
+		return 1
 	case *player.Player:
 		player := c.Context().(*player.Player)
 		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
-		return 0
+		return 1
+	case *client.ConnInnerClientContext:
+		log.Infof("addr =%s innerClient disconnected", c.RemoteAddr())
+		return 1
 	default:
-		return 0
-
+		return 1
 	}
-
 }
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
 func (serverNetWork *ServerEventHandler) PreWrite(c tcp.Channel) {
-	//	log.Infof("conn =%s PreWrite", c.RemoteAddr())
+	//log.Infof("conn =%s PreWrite", c.RemoteAddr())
 
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
 // you put the []byte returned from React() back to your memory pool.
 func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
-	//	log.Infof("conn =%s AfterWrite", c.RemoteAddr())
+	//log.Infof("conn =%s AfterWrite", c.RemoteAddr())
 }
 
 // React fires when a socket receives data from the peer.
@@ -68,22 +71,32 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	if len(packet) < 4 {
-		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
+	bytebuffer := bytes.NewBuffer(packet)
+	var length uint32
+	if err := binary.Read(bytebuffer, binary.BigEndian, &length); err != nil {
+		log.Errorf("read length failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
 		return 0
 	}
-	length := binary.BigEndian.Uint32(packet[:4])
 	if length > uint32(len(packet)) {
 		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
 		return 0
 	}
-	bytebuffer := bytes.NewBuffer(packet[4:])
+
 	var msgId int16
 	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
 		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
 		return 0
 	}
+
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
+		return 0
+	}
+	log.Infof("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
+	hasMethod := tcp.HasMethod(msgId)
+	if !hasMethod {
+		// direct to game server
+		log.Infof("-------- msgId =%d direct to world server", msgId)
+		client.GetInnerClient(global.ROUTER).SendBytesMsg(packet)
 		return 0
 	}
 
@@ -102,8 +115,9 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
 		return 0
 	}
-	if err := proto.Unmarshal(innerBody, innerMsg); err != nil {
-		log.Errorf("unmarshal innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+	err := proto.Unmarshal(innerBody, innerMsg)
+	if err != nil {
+		log.Errorf("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
 		return 0
 	}
 
@@ -111,7 +125,6 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if processed {
 		return 0
 	}
-
 	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
 	return 0
 }

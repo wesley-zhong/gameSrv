@@ -4,7 +4,7 @@ import (
 	"fmt"
 	_ "gameSrv/gateway/constants"
 	_ "gameSrv/gateway/controller"
-	"gameSrv/gateway/dispathcer"
+	"gameSrv/gateway/network"
 	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
@@ -46,13 +46,13 @@ func main() {
 	}
 
 	//package receive handler
-	handler := &dispathcer.ServerEventHandler{}
+	handler := &network.ServerEventHandler{}
 	discover.Init(viper.GetViper(), global.GATE_WAY)
 	//start server
 	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 
 	//init tcp client
-	clientHandler := &dispathcer.ClientEventHandler{}
+	clientHandler := &network.ClientEventHandler{}
 	tcp.ClientStart(clientHandler,
 		gnet.WithMulticore(true),
 		gnet.WithReusePort(true),

@@ -1,53 +1,62 @@
-package dispathcer
+package network
 
 import (
 	"bytes"
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
-	"time"
-
 	"google.golang.org/protobuf/proto"
+	"time"
 )
 
-type ClientEventHandler struct {
-	codec tcp.ICodec
+type ServerEventHandler struct {
 }
 
-func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
-	//	context := client.NewClientContext(c)
-	log.Infof("----------  client opened  addr=%s", c.RemoteAddr())
+func (serverNetWork *ServerEventHandler) OnOpened(c tcp.Channel) (out []byte, action int) {
 	clientContext := client.NewInnerClientContext(c)
 	c.SetContext(clientContext)
+	log.Infof("new connect addr =%s  id=%d", clientContext.Ctx.RemoteAddr(), clientContext.Sid)
+	//test for worker pool
+	//workerPool := gopool.StartNewWorkerPool(2, 4)
+	//workerPool.SubmitTask(func() {
+	//	log.Infof("XXXXXXXXXXX  execute task come from remoteAddr=%s", clientContext.Ctx.RemoteAddr())
+	//})
+	log.Infof("pppppppppppppppp sid=%d", clientContext.Sid)
 	return nil, 0
 }
 
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
-func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s ", c.RemoteAddr())
-	if c.Context() == nil {
+func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
+	switch c.Context().(type) {
+	case *client.ConnInnerClientContext:
+		log.Infof(" OnClosed-----addr =%s not login", c.RemoteAddr())
 		return 0
-	}
+	case *player.Player:
+		player := c.Context().(*player.Player)
+		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
+		return 0
+	default:
+		return 0
 
-	return 1
+	}
 
 }
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
 // you put some code of logging/counting/reporting or any fore operations before writing data to the peer.
-func (clientNetwork *ClientEventHandler) PreWrite(c tcp.Channel) {
-	//log.Infof("pppppppppppppppppp")
+func (serverNetWork *ServerEventHandler) PreWrite(c tcp.Channel) {
+	//	log.Infof("conn =%s PreWrite", c.RemoteAddr())
+
 }
 
 // AfterWrite fires right after a packet is written to the peer socket, this event function is usually where
 // you put the []byte returned from React() back to your memory pool.
-func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
-
+func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
+	//	log.Infof("conn =%s AfterWrite", c.RemoteAddr())
 }
 
 // React fires when a socket receives data from the peer.
@@ -58,20 +67,23 @@ func (clientNetwork *ClientEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // as this []byte will be reused within event-loop after React() returns.
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
-func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	bytebuffer := bytes.NewBuffer(packet)
-	var totalMsgLen int32
-	if err := binary.Read(bytebuffer, binary.BigEndian, &totalMsgLen); err != nil {
-		log.Errorf("read totalMsgLen failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
+	if len(packet) < 4 {
+		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
 		return 0
 	}
-	if totalMsgLen < 0 || int(totalMsgLen) > len(packet) {
-		log.Errorf("invalid totalMsgLen: totalMsgLen=%d packet_len=%d addr=%s", totalMsgLen, len(packet), ctx.RemoteAddr())
+	length := binary.BigEndian.Uint32(packet[:4])
+	if length > uint32(len(packet)) {
+		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
 		return 0
 	}
+	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
 	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
 		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+		return 0
+	}
+	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
 
@@ -95,33 +107,6 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 		return 0
 	}
 
-	exist := tcp.HasMethod(msgId)
-	if !exist {
-		//direct to send client
-		existPlayer := player.PlayerMgr.GetByRoleId(innerMsg.Id)
-		if existPlayer == nil {
-			log.Warnf("XXXXXXXX pid = %d not found", innerMsg.Id)
-			return 0
-		}
-		skipLen := 2 + int32(innerHeaderLen)
-		if msgLen := totalMsgLen - skipLen; msgLen < 0 {
-			log.Errorf("invalid msgLen: msgId=%d totalMsgLen=%d skipLen=%d addr=%s", msgId, totalMsgLen, skipLen, ctx.RemoteAddr())
-			return 0
-		}
-
-		msgLen := totalMsgLen - skipLen
-		toPlayerBody := make([]byte, msgLen+4)
-		toPlayerBodyBuf := bytes.NewBuffer(toPlayerBody)
-		toPlayerBodyBuf.Reset()
-
-		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgLen)
-		binary.Write(toPlayerBodyBuf, binary.BigEndian, msgId)
-		binary.Write(toPlayerBodyBuf, binary.BigEndian, bytebuffer.Bytes())
-		existPlayer.Context.Send(toPlayerBodyBuf.Bytes())
-		//log.Infof("roleId %d msgId =%d not found method direct to send client ", innerMsg.Id, msgId)
-		return 0
-	}
-
 	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
 	if processed {
 		return 0
@@ -133,13 +118,6 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
-func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(global.GAME)
-	if innerClient == nil {
-		//	log.Infof("no found connect type =%d", client.GAME)
-		return 5000 * time.Millisecond, 0
-	}
-	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
-	return 5000 * time.Millisecond, 0
+func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int) {
+	return 1000 * time.Millisecond, 0
 }
