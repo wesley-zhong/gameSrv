@@ -13,27 +13,12 @@ import (
 func innerPlayerLogin(roleId int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
 	log.Infof("innerPlayerLogin login pid = %d roleId = %d", loginRequest.RoleId, roleId)
-
-	//existRole := RoleOlineMgr.GetByRoleId(loginRequest.GetRoleId())
-	//if existRole != nil {
-	//	log.Infof("roleId =%d have login no need process", existRole.RoleId)
-	//	return
-	//}
-	// load role data form db
-	//roleDO := quest.FindRoleData(loginRequest.RoleId)
-	//if roleDO == nil {
-	//	log.Errorf("not found roleId=%d ", roleId)
-	//	return
-	//}
-
 	innerLoginReq := &protoGen.InnerLoginRequest{
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.RoleId,
 	}
 	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, loginRequest.RoleId, innerLoginReq)
-	gameRole := player.NewGamePlayer(loginRequest.RoleId, loginRequest.Sid)
-	gameRole.Sid = loginRequest.Sid
-	player.RoleOlineMgr.AddPlayer(gameRole)
+	player.OnPlayerLogin(loginRequest.RoleId, loginRequest.Sid)
 }
 
 func loginResponseFromWorldServer(roleId int64, request proto.Message) {

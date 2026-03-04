@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/orm"
 )
 
@@ -13,46 +14,71 @@ const (
 
 type IModule interface {
 	ModuleId() ModuleTypeId
-	initFromDB() bool
-	ToDO() any
+	InitFromDB() error
 	Destroy()
+	IsDirty() bool
+	SaveToDB() error
+	OnDataLoaded() error
+	OnLogin()
+	OnDisconnect()
 }
 
 type IGameModule[DOType any] interface {
 	IModule
 	SetDAO(dao *orm.MongodbDAO[DOType])
-	FromDO(do *DOType) error
+	SetPid(pid int64)
 }
 
 // GameModule =================================  GameModule implement===========================
 type GameModule[DOType any] struct {
-	Pid    int64
-	Dao    *orm.MongodbDAO[DOType]
-	DataDO *DOType
+	Pid     int64
+	Dao     *orm.MongodbDAO[DOType]
+	DataDO  *DOType
+	isDirty bool
 }
 
-func (gm *GameModule[DOType]) initFromDB() bool {
-	moduleDO := gm.Dao.FindOneById(gm.Pid)
-	gm.FromDO(moduleDO)
-	return true
-}
-func (gm *GameModule[DOType]) SetDAO(dao *orm.MongodbDAO[DOType]) {
-	gm.Dao = dao
-}
-func (gm *GameModule[DOType]) ModuleId() ModuleTypeId {
-	return 0
-}
-
-func (gm *GameModule[DOType]) FromDO(dataDO *DOType) error {
-	gm.DataDO = dataDO
+func (gm *GameModule[DOType]) InitFromDB() error {
+	moduleDO, err := gm.Dao.FindOneById(gm.Pid)
+	if err != nil {
+		return err
+	}
+	gm.DataDO = moduleDO
 	return nil
 }
 
-func (gm *GameModule[DOType]) ToDO() any {
+func (gm *GameModule[DOType]) SetPid(pid int64) {
+	gm.Pid = pid
+}
+
+func (gm *GameModule[DOType]) SetDAO(dao *orm.MongodbDAO[DOType]) {
+	gm.Dao = dao
+}
+
+func (gm *GameModule[DOType]) ToDO() *DOType {
 	return gm.DataDO
 }
 
+func (gm *GameModule[DOType]) MarkDirty() {
+	gm.isDirty = true
+}
+
+func (gm *GameModule[DOType]) IsDirty() bool {
+	return gm.isDirty
+}
+
 func (gm *GameModule[DOType]) Destroy() {
+}
+
+func (gm *GameModule[DOType]) SaveToDB() error {
+	gm.isDirty = false
+	return gm.Dao.Save(gm.Pid, gm.ToDO())
+}
+
+func (gm *GameModule[DOType]) OnLogin() {
+	log.Infof("game module %d login", gm.Pid)
+}
+func (gm *GameModule[DOType]) OnDisconnect() {
+	log.Infof("game module %d disconnect", gm.Pid)
 }
 
 // ModuleContainer ==========================
@@ -62,15 +88,18 @@ type ModuleContainer struct {
 }
 
 func NewModuleContainer(pid int64) *ModuleContainer {
-	moduleContainer := &ModuleContainer{}
-	moduleContainer.Pid = pid
+	moduleContainer := &ModuleContainer{
+		Pid:      pid,
+		IModules: make(map[ModuleTypeId]IModule, 1024),
+	}
 	return moduleContainer
 }
 
-func RegisterNewModule[DOType any](aresModule IGameModule[DOType], container *ModuleContainer, dao *orm.MongodbDAO[DOType], id int64) {
+func RegisterNewModule[DOType any](aresModule IGameModule[DOType], container *ModuleContainer, dao *orm.MongodbDAO[DOType]) {
 	// 必须先转为 any，再断言为接口
 	if am, ok := any(aresModule).(IGameModule[DOType]); ok {
 		am.SetDAO(dao)
+		am.SetPid(container.Pid)
 		container.IModules[am.ModuleId()] = am
 	} else {
 		panic("ModuleType does not implement IGameModule interface")
@@ -79,7 +108,8 @@ func RegisterNewModule[DOType any](aresModule IGameModule[DOType], container *Mo
 
 func (mc *ModuleContainer) InitModules() error {
 	for _, itemModule := range mc.IModules {
-		itemModule.initFromDB()
+		itemModule.InitFromDB()
+		itemModule.OnDataLoaded()
 	}
 	return nil
 }
@@ -87,5 +117,13 @@ func (mc *ModuleContainer) InitModules() error {
 func (mc *ModuleContainer) Destroy() {
 	for _, itemModule := range mc.IModules {
 		itemModule.Destroy()
+	}
+}
+
+func (mc *ModuleContainer) AsyncSave() {
+	for _, module := range mc.IModules {
+		if module.IsDirty() {
+			module.SaveToDB()
+		}
 	}
 }

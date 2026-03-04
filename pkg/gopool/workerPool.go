@@ -28,8 +28,8 @@ func (pool *WorkerPool) SubmitTask(task func()) error {
 	return nil
 }
 
-func (pool *WorkerPool) HashWorker(hashCode int) *Worker {
+func (pool *WorkerPool) HashWorker(hashCode int64) *Worker {
 	size := len(pool.workers)
-	return pool.workers[hashCode%size]
+	return pool.workers[int(hashCode&0x7FFFFFFF)%size]
 
 }

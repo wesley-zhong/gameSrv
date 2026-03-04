@@ -6,13 +6,13 @@ import (
 )
 
 type Actor struct {
-	id           uint32
+	id           int64
 	routerWorker *gopool.Worker
 }
 
 var routerPool = gopool.StartNewWorkerPool(runtime.NumCPU(), 1024)
 
-func NewActor(id int) *Actor {
+func NewActor(id int64) *Actor {
 	return &Actor{
 		id:           1,
 		routerWorker: routerPool.HashWorker(id),

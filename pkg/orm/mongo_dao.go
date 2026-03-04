@@ -2,12 +2,14 @@ package orm
 
 import (
 	"context"
+	"errors"
 	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
+	"time"
+
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
-	"time"
 )
 
 type MongodbDAO[T any] struct {
@@ -22,41 +24,51 @@ var replaceOneOptions = options.Replace().SetUpsert(true) //{Upsert: &Upsert}
 
 var workerPool = gopool.StartNewWorkerPool(16, 256)
 
-func (dao *MongodbDAO[T]) FindOneById(id int64) *T {
+func (dao *MongodbDAO[T]) FindOneById(id int64) (*T, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	filter := bson.D{{"_id", id}}
 	singleResult := dao.Collection.FindOne(ctx, filter)
-	if singleResult.Err() != nil {
-		log.Error(singleResult.Err())
-		return nil
+	retError := singleResult.Err()
+	if errors.Is(retError, mongo.ErrNoDocuments) {
+		return nil, nil
 	}
+	if retError != nil {
+		log.Error(retError)
+		return nil, retError
+	}
+
 	obj := new(T)
 	err := singleResult.Decode(obj)
 	if err != nil {
 		log.Error(err)
-		return nil
+		return nil, retError
 	}
-	return obj
+	return obj, nil
 }
 
-func (dao *MongodbDAO[T]) FindOne(filter interface{}) *T {
+func (dao *MongodbDAO[T]) FindOne(filter interface{}) (*T, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	singleResult := dao.Collection.FindOne(ctx, filter)
-	if singleResult.Err() != nil {
-		//log.Error(singleResult.Err())
-		return nil
+	retError := singleResult.Err()
+	if retError != nil {
+		log.Error(retError)
+		return nil, retError
+	}
+	if errors.Is(retError, mongo.ErrNoDocuments) {
+		return nil, nil
 	}
 	newObject := new(T) //this must be a new object instance
 	err := singleResult.Decode(newObject)
 	if err != nil {
 		log.Error(err)
-		return nil
+		return nil, err
 	}
-	return newObject
+	return newObject, nil
 }
 
+// TODO  check some return error
 func (dao *MongodbDAO[T]) Insert(obj *T) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
