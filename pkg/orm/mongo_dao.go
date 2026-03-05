@@ -89,7 +89,7 @@ func (dao *MongodbDAO[T]) Save(id int64, obj *T) error {
 }
 
 func (dao *MongodbDAO[T]) AsynSave(id int64, obj *T) error {
-	return workerPool.SubmitTask(func() {
+	return workerPool.SubmitTask(id, func() {
 		dao.Save(id, obj)
 	})
 }

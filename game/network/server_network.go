@@ -3,6 +3,7 @@ package network
 import (
 	"bytes"
 	"encoding/binary"
+	"gameSrv/game/executor"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/global"
@@ -97,22 +98,21 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	}
 
 	innerMsg := &protoGen.InnerHead{}
-	innerBody := packet[8:] //make([]byte, innerHeaderLen)
-	//if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
-	//	log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
-	//	return 0
-	//}
+	innerBody := packet[8:]
 	err := proto.Unmarshal(innerBody, innerMsg)
 	if err != nil {
 		log.Errorf("------receive msgId = %d   addr =%s  len =%d", msgId, ctx.RemoteAddr(), len(packet))
 		return 0
 	}
 
-	processed := tcp.CallMethodWithChannelContext(msgId, ctx, packet[8+innerHeaderLen:])
-	if processed {
-		return 0
-	}
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, packet[8+innerHeaderLen:])
+	hashCode := callPlayerMsgHashCode(msgId, innerMsg.Id)
+	executor.AsyncNetMsgExecutor.SubmitTask(hashCode, func() {
+		processed := tcp.CallMethodWithChannelContext(msgId, ctx, packet[8+innerHeaderLen:])
+		if processed {
+			return
+		}
+		tcp.CallMethodWithRoleId(msgId, innerMsg.Id, packet[8+innerHeaderLen:])
+	})
 	return 0
 }
 
@@ -120,4 +120,8 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 // following the duration specified by the delay return value.
 func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int) {
 	return 1000 * time.Millisecond, 0
+}
+
+func callPlayerMsgHashCode(msgId int16, playerId int64) int64 {
+	return playerId
 }

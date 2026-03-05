@@ -21,15 +21,13 @@ func StartNewWorkerPool(workerCount int, workQueSize int) *WorkerPool {
 	return pool
 }
 
-func (pool *WorkerPool) SubmitTask(task func()) error {
-	//hashCode := pool.goHashFuc()
-	//index := hashCode % uint(pool.workerCount)
-	pool.workers[0].AsyExecute(task)
+func (pool *WorkerPool) SubmitTask(hashCode int64, task func()) error {
+	index := int(hashCode&0x7FFFFFFF) % pool.workerCount
+	pool.workers[index].AsyExecute(task)
 	return nil
 }
 
 func (pool *WorkerPool) HashWorker(hashCode int64) *Worker {
 	size := len(pool.workers)
 	return pool.workers[int(hashCode&0x7FFFFFFF)%size]
-
 }

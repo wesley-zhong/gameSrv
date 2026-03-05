@@ -5,6 +5,7 @@ import (
 	_ "gameSrv/game/constants"
 	"gameSrv/game/controller"
 	"gameSrv/game/dal"
+	"gameSrv/game/executor"
 	"gameSrv/game/network"
 	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
@@ -44,10 +45,13 @@ func main() {
 	viper.AddConfigPath("/etc/game/configs/") // 查找配置文件的路径
 
 	err := viper.ReadInConfig() // 查找并读取配置文件
-	if err != nil {             // 处理错误
+
+	if err != nil { // 处理错误
 		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
 	}
 
+	//init async executor
+	executor.InitExecutorWithConf()
 	//mongodb init
 	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))

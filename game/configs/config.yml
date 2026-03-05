@@ -11,3 +11,11 @@ redis:
 discover:
   url: [localhost:2379]
   watchServ: [router]
+
+executor:
+  net:
+    workCount: 10
+    queSize: 256
+  db:
+    workCount: 2
+    queSize: 1024
