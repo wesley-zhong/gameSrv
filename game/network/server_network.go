@@ -71,17 +71,7 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	bytebuffer := bytes.NewBuffer(packet)
-	var length uint32
-	if err := binary.Read(bytebuffer, binary.BigEndian, &length); err != nil {
-		log.Errorf("read length failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
-		return 0
-	}
-	if length > uint32(len(packet)) {
-		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
-		return 0
-	}
-
+	bytebuffer := bytes.NewBuffer(packet[4:])
 	var msgId int16
 	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
 		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
@@ -91,7 +81,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
-	log.Infof("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
+	log.Infof("------receive msgId = %d   addr =%s  len =%d", msgId, ctx.RemoteAddr(), len(packet))
 	hasMethod := tcp.HasMethod(msgId)
 	if !hasMethod {
 		// direct to game server
@@ -105,27 +95,24 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		log.Errorf("read innerHeaderLen failed: msgId=%d addr=%s len=%d err=%v", msgId, ctx.RemoteAddr(), len(packet), err)
 		return 0
 	}
-	if innerHeaderLen < 0 || int(innerHeaderLen) > bytebuffer.Len() {
-		log.Errorf("invalid innerHeaderLen: msgId=%d innerHeaderLen=%d remaining=%d addr=%s", msgId, innerHeaderLen, bytebuffer.Len(), ctx.RemoteAddr())
-		return 0
-	}
+
 	innerMsg := &protoGen.InnerHead{}
-	innerBody := make([]byte, innerHeaderLen)
-	if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
-		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
-		return 0
-	}
+	innerBody := packet[8:] //make([]byte, innerHeaderLen)
+	//if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
+	//	log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+	//	return 0
+	//}
 	err := proto.Unmarshal(innerBody, innerMsg)
 	if err != nil {
-		log.Errorf("------receive msgId = %d length =%d addr =%s  len =%d", msgId, length, ctx.RemoteAddr(), len(packet))
+		log.Errorf("------receive msgId = %d   addr =%s  len =%d", msgId, ctx.RemoteAddr(), len(packet))
 		return 0
 	}
 
-	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
+	processed := tcp.CallMethodWithChannelContext(msgId, ctx, packet[8+innerHeaderLen:])
 	if processed {
 		return 0
 	}
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, packet[8+innerHeaderLen:])
 	return 0
 }
 

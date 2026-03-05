@@ -35,7 +35,6 @@ func (worker *Worker) Start() {
 			}
 		default:
 			time.Sleep(1 * time.Millisecond)
-			//log.Infof("-------- default")
 		}
 	}
 }

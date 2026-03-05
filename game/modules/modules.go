@@ -109,6 +109,9 @@ func RegisterNewModule[DOType any](aresModule IGameModule[DOType], container *Mo
 func (mc *ModuleContainer) InitModules() error {
 	for _, itemModule := range mc.IModules {
 		itemModule.InitFromDB()
+	}
+	// only for just now it maybe called on another thread
+	for _, itemModule := range mc.IModules {
 		itemModule.OnDataLoaded()
 	}
 	return nil

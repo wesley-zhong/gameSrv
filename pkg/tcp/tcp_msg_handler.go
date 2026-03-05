@@ -1,18 +1,18 @@
 package tcp
 
 import (
-	"gameSrv/pkg/gopool"
 	"gameSrv/pkg/log"
-	"google.golang.org/protobuf/proto"
 	"runtime/debug"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
 var msgIdContextMap = make(map[int16]*protoMethod[Channel])
-var msgIdRoleIdMap = make(map[int16]*protoMethod[int64])
+var msgPlayerIdMap = make(map[int16]*protoMethod[int64])
 
-var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
+//var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
 
 type protoMethod[T1 any] struct {
 	methodFuc MsgIdFuc[T1, proto.Message]
@@ -28,15 +28,16 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 		log.Infof("Protobuf unmarshal error: %v", err)
 		return // Don't submit to pool if data is corrupted
 	}
-	msgGoPool.SubmitTask(func() {
-		defer func() {
-			if r := recover(); r != nil {
-				s := string(debug.Stack())
-				log.Infof("err=%v, stack=%s", r, s)
-			}
-		}()
-		method.methodFuc(any, param)
-	})
+	method.methodFuc(any, param)
+	//msgGoPool.SubmitTask(func() {
+	//	defer func() {
+	//		if r := recover(); r != nil {
+	//			s := string(debug.Stack())
+	//			log.Infof("err=%v, stack=%s", r, s)
+	//		}
+	//	}()
+	//	method.methodFuc(any, param)
+	//})
 }
 
 func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, proto.Message]) {
@@ -52,7 +53,7 @@ func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int
 		methodFuc: fuc,
 		param:     param,
 	}
-	msgIdRoleIdMap[int16(msgId)] = method
+	msgPlayerIdMap[int16(msgId)] = method
 }
 
 func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
@@ -62,7 +63,7 @@ func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
 			log.Infof("err=%v, stack=%s", r, s)
 		}
 	}()
-	method := msgIdRoleIdMap[msgId]
+	method := msgPlayerIdMap[msgId]
 	if method == nil {
 		log.Infof(" CallMethodWithRoleId msgId = %d not found method", msgId)
 		return false
@@ -87,7 +88,7 @@ func CallMethodWithChannelContext(msgId int16, context Channel, body []byte) boo
 }
 
 func GetCallMethodById(msgId int16) *protoMethod[int64] {
-	return msgIdRoleIdMap[msgId]
+	return msgPlayerIdMap[msgId]
 }
 
 func CallMethod(roleId int64, body []byte, method *protoMethod[int64]) {
@@ -95,5 +96,5 @@ func CallMethod(roleId int64, body []byte, method *protoMethod[int64]) {
 }
 
 func HasMethod(msgId int16) bool {
-	return msgIdRoleIdMap[msgId] != nil || msgIdContextMap[msgId] != nil
+	return msgPlayerIdMap[msgId] != nil || msgIdContextMap[msgId] != nil
 }

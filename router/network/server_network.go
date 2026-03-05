@@ -8,8 +8,9 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
-	"google.golang.org/protobuf/proto"
 	"time"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type ServerEventHandler struct {
@@ -97,6 +98,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		return 0
 	}
 	innerMsg := &protoGen.InnerHead{}
+	//this should be innerBody :=packet[8+innerHeaderLen:]
 	innerBody := make([]byte, innerHeaderLen)
 	if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
 		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
