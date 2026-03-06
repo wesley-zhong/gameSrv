@@ -1,168 +1,126 @@
 package log
 
 import (
-	"errors"
-	"gopkg.in/natefinch/lumberjack.v2"
+	"fmt"
 	"os"
-	"strconv"
+	"time"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	_ "gopkg.in/natefinch/lumberjack.v2"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 var (
-	flushLogs           func() error
-	defaultLogger       Logger
-	defaultLoggingLevel Level
+	defaultLogger *zap.Logger
+	sugar         *zap.SugaredLogger
+	atomicLevel   zap.AtomicLevel
 )
 
-// Level is the alias of zapcore.Level.
-type Level = zapcore.Level
+// Init 初始化日志系统
+func Init(filePath string, logLevel zapcore.Level, isDebug bool) {
+	atomicLevel = zap.NewAtomicLevelAt(logLevel)
 
-const (
-	// DebugLevel logs are typically voluminous, and are usually disabled in
-	// production.
-	DebugLevel Level = iota - 1
-	// InfoLevel is the default logging priority.
-	InfoLevel
-	// WarnLevel logs are more important than Info, but don't need individual
-	// human review.
-	WarnLevel
-	// ErrorLevel logs are high-priority. If an application is running smoothly,
-	// it shouldn't generate any error-level logs.
-	ErrorLevel
-	// DPanicLevel logs are particularly important errors. In development the
-	// logger panics after writing the message.
-	DPanicLevel
-	// PanicLevel logs a message, then panics.
-	PanicLevel
-	// FatalLevel logs a message, then calls os.Exit(1).
-	FatalLevel
-)
+	// --- 1. 控制台编码配置 ---
+	consoleConfig := zap.NewDevelopmentEncoderConfig()
+	// 重点：将 TID/GID 格式化进 Level 标签，实现 INFO |tid=11,gid=1|
+	consoleConfig.EncodeLevel = func(l zapcore.Level, enc zapcore.PrimitiveArrayEncoder) {
+		enc.AppendString(fmt.Sprintf("%s |tid=%d,gid=%d|", l.CapitalString(), getTID(), getGID()))
+	}
+	consoleConfig.EncodeTime = zapcore.TimeEncoderOfLayout("2006-01-02 15:04:05.000")
+	consoleEncoder := zapcore.NewConsoleEncoder(consoleConfig)
 
-func init() {
-	lvl := os.Getenv("GNET_LOGGING_LEVEL")
-	if len(lvl) > 0 {
-		loggingLevel, err := strconv.ParseInt(lvl, 10, 8)
-		if err != nil {
-			panic("invalid GNET_LOGGING_LEVEL, " + err.Error())
+	// --- 2. 文件编码配置 (JSON) ---
+	fileConfig := zap.NewProductionEncoderConfig()
+	fileConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	fileEncoder := zapcore.NewJSONEncoder(fileConfig)
+
+	// --- 3. 核心输出介质 ---
+	var cores []zapcore.Core
+
+	// 控制台输出
+	cores = append(cores, zapcore.NewCore(consoleEncoder, zapcore.AddSync(os.Stdout), atomicLevel))
+
+	// 文件输出
+	if filePath != "" {
+		lumberjackLogger := &lumberjack.Logger{
+			Filename:   filePath,
+			MaxSize:    256,
+			MaxBackups: 10,
+			MaxAge:     30,
+			Compress:   true,
 		}
-		defaultLoggingLevel = Level(loggingLevel)
-	}
 
-	// Initializes the inside default logger of gnet.
-	fileName := os.Getenv("GNET_LOGGING_FILE")
-	if len(fileName) > 0 {
-		var err error
-		defaultLogger, flushLogs, err = CreateLoggerAsLocalFile(fileName, defaultLoggingLevel)
-		if err != nil {
-			panic("invalid GNET_LOGGING_FILE, " + err.Error())
+		// 异步刷盘，防止磁盘 I/O 阻塞游戏逻辑
+		asyncWriter := &zapcore.BufferedWriteSyncer{
+			WS:            zapcore.AddSync(lumberjackLogger),
+			Size:          512 * 1024,
+			FlushInterval: time.Second,
 		}
-	} else {
-		cfg := zap.NewDevelopmentConfig()
-		cfg.Level = zap.NewAtomicLevelAt(defaultLoggingLevel)
-		cfg.EncoderConfig.EncodeTime = zapcore.RFC3339NanoTimeEncoder
-		zapLogger, _ := cfg.Build()
-		zapLogger = zapLogger.WithOptions(zap.AddCallerSkip(1))
-		defaultLogger = zapLogger.Sugar()
-	}
-}
 
-func getEncoder() zapcore.Encoder {
-	encoderConfig := zap.NewProductionEncoderConfig()
-	encoderConfig.EncodeTime = zapcore.RFC3339NanoTimeEncoder
-	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder
-	return zapcore.NewConsoleEncoder(encoderConfig)
-}
-
-// GetDefaultLogger returns the default logger.
-func GetDefaultLogger() Logger {
-	return defaultLogger
-}
-
-// LogLevel tells what the default logging level is.
-func LogLevel() string {
-	return defaultLoggingLevel.String()
-}
-
-// CreateLoggerAsLocalFile setups the logger by local file path.
-func CreateLoggerAsLocalFile(localFilePath string, logLevel Level) (logger Logger, flush func() error, err error) {
-	if len(localFilePath) == 0 {
-		return nil, nil, errors.New("invalid local logger path")
+		fileCore := zapcore.NewCore(fileEncoder, asyncWriter, atomicLevel)
+		if !isDebug {
+			fileCore = zapcore.NewSamplerWithOptions(fileCore, time.Second, 100, 10)
+		}
+		cores = append(cores, fileCore)
 	}
 
-	// lumberjack.Logger is already safe for concurrent use, so we don't need to lock it.
-	lumberJackLogger := &lumberjack.Logger{
-		Filename:   localFilePath,
-		MaxSize:    100, // megabytes
-		MaxBackups: 2,
-		MaxAge:     15, // days
+	defaultLogger = zap.New(zapcore.NewTee(cores...),
+		zap.AddCaller(),
+		zap.AddCallerSkip(1),
+	)
+
+	sugar = defaultLogger.Sugar()
+}
+
+// ---------------------- 高性能 API (已移除冗余 GID) ----------------------
+
+func Info(msg string, fields ...zap.Field) {
+	defaultLogger.Info(msg, fields...)
+}
+
+func Warn(msg string, fields ...zap.Field) {
+	defaultLogger.Warn(msg, fields...)
+}
+
+func Error(err error, fields ...zap.Field) {
+	if err == nil {
+		return
 	}
-
-	encoder := getEncoder()
-	ws := zapcore.AddSync(lumberJackLogger)
-	zapcore.Lock(ws)
-
-	levelEnabler := zap.LevelEnablerFunc(func(level Level) bool {
-		return level >= logLevel
-	})
-	core := zapcore.NewCore(encoder, ws, levelEnabler)
-	zapLogger := zap.New(core, zap.AddCaller())
-	logger = zapLogger.Sugar()
-	flush = zapLogger.Sync
-	return
+	// 自动带上 error 详情，不重复带 gid
+	defaultLogger.Error(err.Error(), append(fields, zap.Error(err))...)
 }
 
-// Cleanup does something windup for logger, like closing, flushing, etc.
-func Cleanup() {
-	if flushLogs != nil {
-		_ = flushLogs()
+// ---------------------- Sugar 模式 ----------------------
+
+func Infof(template string, args ...interface{}) {
+	sugar.Infof(template, args...)
+}
+
+func Errorf(template string, args ...interface{}) {
+	sugar.Errorf(template, args...)
+}
+
+func Warnf(template string, args ...interface{}) {
+	sugar.Warnf(template, args...)
+}
+
+func Fatalf(template string, args ...interface{}) {
+	sugar.Fatalf(template, args...)
+}
+
+// ---------------------- 业务专属 ----------------------
+
+func Player(playerID uint64, msg string, fields ...zap.Field) {
+	// 仅带上业务相关的 pid
+	defaultLogger.Info(msg, append(fields, zap.Uint64("pid", playerID))...)
+}
+
+func SetLevel(lvl zapcore.Level) {
+	atomicLevel.SetLevel(lvl)
+}
+
+func Sync() {
+	if defaultLogger != nil {
+		_ = defaultLogger.Sync()
 	}
-}
-
-// Error prints err if it's not nil.
-func Error(err error) {
-	if err != nil {
-		defaultLogger.Errorf("error occurs during runtime, %v", err)
-	}
-}
-
-// Debugf logs messages at DEBUG level.
-func Debugf(format string, args ...interface{}) {
-	defaultLogger.Debugf(format, args...)
-}
-
-// Infof logs messages at INFO level.
-func Infof(format string, args ...interface{}) {
-	defaultLogger.Infof(format, args...)
-}
-
-// Warnf logs messages at WARN level.
-func Warnf(format string, args ...interface{}) {
-	defaultLogger.Warnf(format, args...)
-}
-
-// Errorf logs messages at ERROR level.
-func Errorf(format string, args ...interface{}) {
-	defaultLogger.Errorf(format, args...)
-}
-
-// Fatalf logs messages at FATAL level.
-func Fatalf(format string, args ...interface{}) {
-	defaultLogger.Fatalf(format, args...)
-}
-
-// Logger is used for logging formatted messages.
-type Logger interface {
-	// Debugf logs messages at DEBUG level.
-	Debugf(format string, args ...interface{})
-	// Infof logs messages at INFO level.
-	Infof(format string, args ...interface{})
-	// Warnf logs messages at WARN level.
-	Warnf(format string, args ...interface{})
-	// Errorf logs messages at ERROR level.
-	Errorf(format string, args ...interface{})
-	// Fatalf logs messages at FATAL level.
-	Fatalf(format string, args ...interface{})
 }

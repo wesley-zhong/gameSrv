@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	_ "gameSrv/router/constants"
 	_ "gameSrv/router/controller"
@@ -13,6 +14,7 @@ import (
 	"sync"
 
 	"github.com/spf13/viper"
+	"go.uber.org/zap/zapcore"
 )
 
 func main() {
@@ -36,6 +38,8 @@ func main() {
 		loopWG.Add(-1) // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
+
+	log.Init("./log/router.log", zapcore.InfoLevel, true)
 
 	discover.Init(viper.GetViper(), global.ROUTER)
 

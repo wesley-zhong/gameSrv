@@ -10,6 +10,7 @@ import (
 	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/pkg/web"
 	"runtime/debug"
@@ -17,6 +18,7 @@ import (
 
 	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
+	"go.uber.org/zap/zapcore"
 
 	"net/http"
 	_ "net/http/pprof"
@@ -32,6 +34,8 @@ func main() {
 			loopWG.Add(-1)
 		}
 	}()
+
+	defer log.Sync()
 	//for performance
 	go func() {
 		http.ListenAndServe(":6060", nil)
@@ -49,6 +53,7 @@ func main() {
 	if err != nil { // 处理错误
 		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
 	}
+	log.Init("./log/game.log", zapcore.InfoLevel, true)
 
 	//init async executor
 	executor.InitExecutorWithConf()

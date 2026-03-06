@@ -8,6 +8,7 @@ import (
 	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"net/http"
 	_ "net/http/pprof"
@@ -16,6 +17,7 @@ import (
 
 	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
+	"go.uber.org/zap/zapcore"
 )
 
 func main() {
@@ -44,6 +46,8 @@ func main() {
 		loopWG.Add(-1) // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
+
+	log.Init("./log/gate.log", zapcore.InfoLevel, true)
 
 	//package receive handler
 	handler := &network.ServerEventHandler{}

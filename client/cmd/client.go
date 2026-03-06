@@ -4,9 +4,13 @@ import (
 	"fmt"
 	"gameSrv/client/controller"
 	"gameSrv/client/networkHandler"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
+
 	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
+	"go.uber.org/zap/zapcore"
+
 	"sync"
 )
 
@@ -29,7 +33,7 @@ func main() {
 	if err != nil { // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
-
+	log.Init("./log/client.log", zapcore.InfoLevel, true)
 	clientNetwork := networkHandler.ClientNetwork{}
 	tcp.ClientStart(&clientNetwork,
 		gnet.WithMulticore(true),

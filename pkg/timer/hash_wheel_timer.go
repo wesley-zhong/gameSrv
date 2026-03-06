@@ -5,36 +5,42 @@ import (
 	"time"
 )
 
-// TaskNode 优化后的任务节点，避免使用 container/list 的指针开销
-type TaskNode struct {
+// Task 定义任务节点
+type Task struct {
 	key    int64
 	rounds int
 	job    func()
-	next   *TaskNode
+	next   *Task // 手动链表，避免 container/list 的额外的内存分配
 }
 
+// bucket 槽位，使用独立的互斥锁减少竞争
 type bucket struct {
-	sync.RWMutex
-	head *TaskNode
+	mu   sync.Mutex
+	head *Task
 }
 
+// ShardedWheelTimer 高性能时间轮
 type ShardedWheelTimer struct {
 	interval    time.Duration
-	slots       []*bucket
 	slotNum     int
+	slots       []*bucket
 	currentSlot int
 
-	// 使用任务池减少 GC
-	nodePool sync.Pool
+	taskPool    sync.Pool
+	stopChannel chan struct{}
 }
 
+// NewShardedWheelTimer 初始化
 func NewShardedWheelTimer(interval time.Duration, slotNum int) *ShardedWheelTimer {
 	sw := &ShardedWheelTimer{
-		interval: interval,
-		slotNum:  slotNum,
-		slots:    make([]*bucket, slotNum),
-		nodePool: sync.Pool{
-			New: func() interface{} { return &TaskNode{} },
+		interval:    interval,
+		slotNum:     slotNum,
+		slots:       make([]*bucket, slotNum),
+		stopChannel: make(chan struct{}),
+		taskPool: sync.Pool{
+			New: func() interface{} {
+				return &Task{}
+			},
 		},
 	}
 	for i := 0; i < slotNum; i++ {
@@ -43,7 +49,23 @@ func NewShardedWheelTimer(interval time.Duration, slotNum int) *ShardedWheelTime
 	return sw
 }
 
-// AddTask 极致优化：直接定位 Slot 插入，无需全局 Map
+// Start 启动时间轮转动
+func (sw *ShardedWheelTimer) Start() {
+	ticker := time.NewTicker(sw.interval)
+	go func() {
+		for {
+			select {
+			case <-ticker.C:
+				sw.tick()
+			case <-sw.stopChannel:
+				ticker.Stop()
+				return
+			}
+		}
+	}()
+}
+
+// AddTask 添加任务
 func (sw *ShardedWheelTimer) AddTask(key int64, delay time.Duration, job func()) {
 	steps := int(delay / sw.interval)
 	rounds := steps / sw.slotNum
@@ -51,29 +73,35 @@ func (sw *ShardedWheelTimer) AddTask(key int64, delay time.Duration, job func())
 
 	b := sw.slots[slotIdx]
 
-	// 从池中获取节点
-	node := sw.nodePool.Get().(*TaskNode)
-	node.key = key
-	node.rounds = rounds
-	node.job = job
+	// 从池中获取任务对象
+	t := sw.taskPool.Get().(*Task)
+	t.key = key
+	t.rounds = rounds
+	t.job = job
 
-	b.Lock()
-	node.next = b.head
-	b.head = node
-	b.Unlock()
+	b.mu.Lock()
+	// 插入链表头部 (O(1))
+	t.next = b.head
+	b.head = t
+	b.mu.Unlock()
 }
 
-// tick 扫描当前 Slot
+// tick 核心执行逻辑
 func (sw *ShardedWheelTimer) tick() {
 	b := sw.slots[sw.currentSlot]
 
-	b.Lock()
-	prev := (*TaskNode)(nil)
+	b.mu.Lock()
+	defer b.mu.Unlock()
+
+	var prev *Task
 	curr := b.head
 
 	for curr != nil {
 		if curr.rounds <= 0 {
-			// 1. 移除节点
+			// 1. 执行任务 (使用 goroutine 异步执行，避免阻塞时间轮)
+			go curr.job()
+
+			// 2. 从链表中移除
 			next := curr.next
 			if prev == nil {
 				b.head = next
@@ -81,20 +109,26 @@ func (sw *ShardedWheelTimer) tick() {
 				prev.next = next
 			}
 
-			// 2. 执行任务 (建议移交给协程池)
-			go curr.job()
-
-			// 3. 回收节点
-			tmp := curr
+			// 3. 重置并回收对象到池中
+			target := curr
 			curr = next
-			sw.nodePool.Put(tmp)
+
+			target.key = 0
+			target.job = nil
+			target.next = nil
+			sw.taskPool.Put(target)
 		} else {
 			curr.rounds--
 			prev = curr
 			curr = curr.next
 		}
 	}
-	b.Unlock()
 
+	// 移动指针
 	sw.currentSlot = (sw.currentSlot + 1) % sw.slotNum
+}
+
+// Stop 关闭时间轮
+func (sw *ShardedWheelTimer) Stop() {
+	close(sw.stopChannel)
 }
