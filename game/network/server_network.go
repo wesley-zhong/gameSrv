@@ -98,13 +98,14 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 	}
 
 	innerMsg := &protoGen.InnerHead{}
-	innerBody := packet[8:]
-	err := proto.Unmarshal(innerBody, innerMsg)
+	innerHeaderBytes := packet[8 : 8+innerHeaderLen]
+	err := proto.Unmarshal(innerHeaderBytes, innerMsg)
 	if err != nil {
 		log.Errorf("------receive msgId = %d   addr =%s  len =%d", msgId, ctx.RemoteAddr(), len(packet))
 		return 0
 	}
 
+	log.Infof("kkkkkkkkkkkkkkkkk roleId =%d", innerMsg.GetId())
 	hashCode := callPlayerMsgHashCode(msgId, innerMsg.Id)
 	executor.AsyncNetMsgExecutor.SubmitTask(hashCode, func() {
 		processed := tcp.CallMethodWithChannelContext(msgId, ctx, packet[8+innerHeaderLen:])

@@ -6,18 +6,15 @@ import (
 	"time"
 
 	"github.com/panjf2000/gnet/v2"
-	"github.com/panjf2000/gnet/v2/pkg/pool/goroutine"
 )
 
 type tcpServer struct {
 	gnet.BuiltinEventEngine
-	eng          gnet.Engine
-	network      string
-	addr         string
-	multicore    bool
-	connected    int32
-	disconnected int32
-	codec        ICodec
+	eng       gnet.Engine
+	network   string
+	addr      string
+	multicore bool
+	codec     ICodec
 }
 
 // OnBoot fires when the engine is ready for accepting connections.
@@ -63,14 +60,19 @@ func (ts tcpServer) OnClose(c gnet.Conn, err error) (action gnet.Action) {
 // If you have to use this []byte in a new goroutine, you should either make a copy of it or call Conn.Read([]byte)
 // to read data into your own []byte, then pass the new []byte to the new goroutine.
 func (ts tcpServer) OnTraffic(c gnet.Conn) (action gnet.Action) {
-	for {
+	for c.InboundBuffered() > 0 {
 		bytes, err := ts.codec.Decode(c)
 		if err != nil {
-			return 0
+			if err == ErrIncompletePacket {
+				return 0
+			}
+			log.Errorf("Decode error: %v", err)
+			return gnet.Close
 		}
 		channel := c.Context().(Channel)
 		gEventHandler.React(bytes, channel)
 	}
+	return 0
 }
 
 func (ts tcpServer) OnTick() (delay time.Duration, action gnet.Action) {
@@ -81,9 +83,6 @@ func (ts tcpServer) OnTick() (delay time.Duration, action gnet.Action) {
 var gEventHandler EventHandler
 
 func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec ICodec) {
-	p := goroutine.Default()
-	defer p.Release()
-
 	gEventHandler = eventHandler
 
 	ss := &tcpServer{

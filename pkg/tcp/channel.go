@@ -1,7 +1,6 @@
 package tcp
 
 import (
-	"errors"
 	"github.com/panjf2000/gnet/v2"
 	"net"
 	"time"
@@ -17,11 +16,12 @@ type Channel interface {
 	BufferLength() (size int)
 	SendTo(buf []byte) (int, error)
 	AsyncWrite(buf []byte) error
+	AsyncWritev(bs [][]byte) error
 	Wake() error
 	Close() error
 	SetDeadline(t time.Time) (err error)
-	// SetReadDeadline implements net.Conn.
 	SetReadDeadline(t time.Time) (err error)
+	SetWriteDeadline(t time.Time) (err error)
 	GetId() int
 }
 
@@ -63,8 +63,19 @@ func (context *ChannelGnet) RemoteAddr() (addr net.Addr) {
 // If you have to use buf in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (context *ChannelGnet) ReadN(n int) (size int, buf []byte) {
-	//return context.conn.Read()
-	return 0, nil
+	if n <= 0 {
+		return 0, nil
+	}
+	available := context.conn.InboundBuffered()
+	if available == 0 {
+		return 0, nil
+	}
+	readLen := n
+	if readLen > available {
+		readLen = available
+	}
+	buf, _ = context.conn.Next(readLen)
+	return len(buf), buf
 }
 
 // ShiftN shifts "read" pointer in the gateway buffers with the given length.
@@ -81,9 +92,6 @@ func (context *ChannelGnet) BufferLength() (size int) {
 
 // SendTo writes data for UDP sockets, it allows you to send data back to UDP socket in individual goroutines.
 func (context *ChannelGnet) SendTo(buf []byte) (int, error) {
-	if len(buf) == 4 {
-		return 0, errors.New("Fucccccccccccccccccck")
-	}
 	return context.conn.Write(buf)
 }
 

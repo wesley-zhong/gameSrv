@@ -9,6 +9,7 @@ import (
 	"gameSrv/protoGen"
 	"github.com/panjf2000/gnet/v2"
 	"google.golang.org/protobuf/proto"
+	"sync"
 )
 
 // DefaultCodec Protocol format:
@@ -27,6 +28,19 @@ import (
 const (
 	bodySize      = 4
 	MaxPackageLen = 16 * 1024
+)
+
+var (
+	bufferPool = sync.Pool{
+		New: func() interface{} {
+			return &bytes.Buffer{}
+		},
+	}
+	byteSlicePool = sync.Pool{
+		New: func() interface{} {
+			return make([]byte, 256)
+		},
+	}
 )
 
 type ICodec interface {
@@ -50,19 +64,25 @@ type MsgPacket struct {
 }
 
 func (codec *DefaultCodec) Decode(c gnet.Conn) ([]byte, error) {
-	bodyOffset := bodySize
-	buf, err := c.Peek(bodyOffset)
+	// Protocol format: [4 bytes: msg len][2 bytes: msgId][2 bytes: header len][header bytes][body bytes]
+	totalSizeOffset := 4
+	buf, err := c.Peek(totalSizeOffset)
 	if err != nil {
 		return nil, ErrIncompletePacket
 	}
 
-	bodyLen := binary.BigEndian.Uint32(buf[:bodyOffset])
-	msgLen := bodyOffset + int(bodyLen)
-	if c.InboundBuffered() < msgLen {
+	msgLen := binary.BigEndian.Uint32(buf[:totalSizeOffset])
+	if msgLen > MaxPackageLen {
+		return nil, fmt.Errorf("packet too large: %d, max allowed: %d", msgLen, MaxPackageLen)
+	}
+
+	totalPacketSize := totalSizeOffset + int(msgLen)
+	if c.InboundBuffered() < totalPacketSize {
 		return nil, ErrIncompletePacket
 	}
-	buf, _ = c.Peek(msgLen)
-	_, _ = c.Discard(msgLen)
+
+	buf, _ = c.Peek(totalPacketSize)
+	_, _ = c.Discard(totalPacketSize)
 
 	return buf, nil
 }
@@ -93,7 +113,8 @@ func (code *DefaultCodec) InnerEncode(packet *MsgPacket) (sendBody []byte, err e
 	msgLen += headerLen
 	msgLen += bodyLen
 
-	buffer := &bytes.Buffer{}
+	buffer := bufferPool.Get().(*bytes.Buffer)
+	defer bufferPool.Put(buffer)
 	buffer.Reset()
 
 	binary.Write(buffer, binary.BigEndian, int32(msgLen))
@@ -106,12 +127,15 @@ func (code *DefaultCodec) InnerEncode(packet *MsgPacket) (sendBody []byte, err e
 	if bodyLen > 0 {
 		buffer.Write(sendBody)
 	}
-	return buffer.Bytes(), nil
+	// Return a copy of the buffer data
+	result := make([]byte, buffer.Len())
+	copy(result, buffer.Bytes())
+	return result, nil
 }
 
 func (codec *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error) {
 	if packet.Header != nil {
-		log.Error(errors.New("Encode method  packet.Header should be nil "))
+		log.Error(errors.New("Encode method packet.Header should be nil "))
 		return
 	}
 	bodyLen := 0
@@ -127,7 +151,8 @@ func (codec *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error
 	msgLen := 2 //msgId
 	msgLen += bodyLen
 
-	buffer := &bytes.Buffer{}
+	buffer := bufferPool.Get().(*bytes.Buffer)
+	defer bufferPool.Put(buffer)
 	buffer.Reset()
 
 	binary.Write(buffer, binary.BigEndian, int32(msgLen))
@@ -135,7 +160,10 @@ func (codec *DefaultCodec) Encode(packet *MsgPacket) (sendBody []byte, err error
 	if bodyLen > 0 {
 		buffer.Write(sendBody)
 	}
-	return buffer.Bytes(), nil
+	// Return a copy of the buffer data
+	result := make([]byte, buffer.Len())
+	copy(result, buffer.Bytes())
+	return result, nil
 }
 
 func (codec *DefaultCodec) UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket {
@@ -143,27 +171,31 @@ func (codec *DefaultCodec) UnPacket(msgId int16, body *bytes.Buffer, method *pro
 	binary.Read(body, binary.BigEndian, shortHeadLen)
 	header := &protoGen.InnerHead{}
 
-	headerBody := make([]byte, shortHeadLen)
-	readLen, err := body.Read(headerBody)
-	if err != nil {
-		return nil
-	}
+	var headerBody []byte
+	if shortHeadLen > 0 {
+		headerBody = make([]byte, shortHeadLen)
+		readLen, err := body.Read(headerBody)
+		if err != nil {
+			log.Errorf("Failed to read header body: %v", err)
+			return nil
+		}
 
-	if readLen != int(shortHeadLen) {
-		log.Error(errors.New(fmt.Sprintf(" read =%d but headLen =%d", readLen, shortHeadLen)))
-		return nil
-	}
-	err = proto.Unmarshal(headerBody, header)
-	if err != nil {
-		log.Error(err)
-		return nil
+		if readLen != int(shortHeadLen) {
+			log.Errorf("Read %d bytes but headLen = %d", readLen, shortHeadLen)
+			return nil
+		}
+		err = proto.Unmarshal(headerBody, header)
+		if err != nil {
+			log.Errorf("Failed to unmarshal header: %v", err)
+			return nil
+		}
 	}
 
 	bodyBytes := body.Bytes()
 	msg := method.param.ProtoReflect().New().Interface()
-	err = proto.Unmarshal(bodyBytes, msg)
+	err := proto.Unmarshal(bodyBytes, msg)
 	if err != nil {
-		log.Error(err)
+		log.Errorf("Failed to unmarshal body: %v", err)
 		return nil
 	}
 	return &MsgPacket{MsgId: msgId, Header: header, Body: msg}

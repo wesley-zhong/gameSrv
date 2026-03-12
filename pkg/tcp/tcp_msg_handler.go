@@ -3,14 +3,18 @@ package tcp
 import (
 	"gameSrv/pkg/log"
 	"runtime/debug"
+	"sync"
 
 	"google.golang.org/protobuf/proto"
 )
 
 type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 
-var msgIdContextMap = make(map[int16]*protoMethod[Channel])
-var msgPlayerIdMap = make(map[int16]*protoMethod[int64])
+var (
+	msgIdContextMap = make(map[int16]*protoMethod[Channel])
+	msgPlayerIdMap  = make(map[int16]*protoMethod[int64])
+	msgMapMutex     sync.RWMutex
+)
 
 //var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
 
@@ -45,7 +49,9 @@ func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, prot
 		methodFuc: fuc,
 		param:     param,
 	}
+	msgMapMutex.Lock()
 	msgIdContextMap[msgId] = method
+	msgMapMutex.Unlock()
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
@@ -53,19 +59,24 @@ func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int
 		methodFuc: fuc,
 		param:     param,
 	}
+	msgMapMutex.Lock()
 	msgPlayerIdMap[int16(msgId)] = method
+	msgMapMutex.Unlock()
 }
 
 func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
-			log.Infof("err=%v, stack=%s", r, s)
+			log.Errorf("panic in CallMethodWithRoleId: err=%v, stack=%s", r, s)
 		}
 	}()
+	msgMapMutex.RLock()
 	method := msgPlayerIdMap[msgId]
+	msgMapMutex.RUnlock()
+
 	if method == nil {
-		log.Infof(" CallMethodWithRoleId msgId = %d not found method", msgId)
+		log.Infof("CallMethodWithRoleId msgId = %d not found method", msgId)
 		return false
 	}
 	method.execute(roleId, body)
@@ -76,10 +87,13 @@ func CallMethodWithChannelContext(msgId int16, context Channel, body []byte) boo
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
-			log.Infof("err=%v, stack=%s", r, s)
+			log.Errorf("panic in CallMethodWithChannelContext: err=%v, stack=%s", r, s)
 		}
 	}()
+	msgMapMutex.RLock()
 	method := msgIdContextMap[msgId]
+	msgMapMutex.RUnlock()
+
 	if method == nil {
 		return false
 	}
@@ -88,6 +102,8 @@ func CallMethodWithChannelContext(msgId int16, context Channel, body []byte) boo
 }
 
 func GetCallMethodById(msgId int16) *protoMethod[int64] {
+	msgMapMutex.RLock()
+	defer msgMapMutex.RUnlock()
 	return msgPlayerIdMap[msgId]
 }
 
@@ -96,5 +112,7 @@ func CallMethod(roleId int64, body []byte, method *protoMethod[int64]) {
 }
 
 func HasMethod(msgId int16) bool {
+	msgMapMutex.RLock()
+	defer msgMapMutex.RUnlock()
 	return msgPlayerIdMap[msgId] != nil || msgIdContextMap[msgId] != nil
 }
