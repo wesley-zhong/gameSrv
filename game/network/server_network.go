@@ -72,49 +72,69 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	bytebuffer := bytes.NewBuffer(packet[4:])
+	// Packet format: [4 bytes len] [2 bytes msgId] [2 bytes headerLen] [header] [payload]
+	const msgIdOffset = 4
+	const headerLenOffset = 6
+	const headerOffset = 8
+
+	buf := bytes.NewBuffer(packet[msgIdOffset:])
+
 	var msgId int16
-	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
+	if err := binary.Read(buf, binary.BigEndian, &msgId); err != nil {
 		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
 		return 0
 	}
 
+	// Ignore heartbeat messages
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
-	log.Infof("------receive msgId = %d   addr =%s  len =%d", msgId, ctx.RemoteAddr(), len(packet))
-	hasMethod := tcp.HasMethod(msgId)
-	if !hasMethod {
-		// direct to game server
-		log.Infof("-------- msgId =%d direct to world server", msgId)
+
+	log.Infof("receive msgId=%d addr=%s len=%d", msgId, ctx.RemoteAddr(), len(packet))
+
+	// Direct unhandled messages to world server
+	if !tcp.HasMethod(msgId) {
+		log.Infof("msgId=%d direct to world server", msgId)
 		client.GetInnerClient(global.ROUTER).SendBytesMsg(packet)
 		return 0
 	}
 
-	var innerHeaderLen int16
-	if err := binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen); err != nil {
-		log.Errorf("read innerHeaderLen failed: msgId=%d addr=%s len=%d err=%v", msgId, ctx.RemoteAddr(), len(packet), err)
+	var headerLen int16
+	if err := binary.Read(buf, binary.BigEndian, &headerLen); err != nil {
+		log.Errorf("read headerLen failed: msgId=%d addr=%s err=%v", msgId, ctx.RemoteAddr(), err)
+		return 0
+	}
+
+	headerEnd := headerOffset + int(headerLen)
+	if headerEnd > len(packet) {
+		log.Errorf("invalid packet: msgId=%d headerEnd=%d exceeds packetLen=%d", msgId, headerEnd, len(packet))
 		return 0
 	}
 
 	innerMsg := &protoGen.InnerHead{}
-	innerHeaderBytes := packet[8 : 8+innerHeaderLen]
-	err := proto.Unmarshal(innerHeaderBytes, innerMsg)
-	if err != nil {
-		log.Errorf("------receive msgId = %d   addr =%s  len =%d", msgId, ctx.RemoteAddr(), len(packet))
+	headerBytes := packet[headerOffset:headerEnd]
+	if err := proto.Unmarshal(headerBytes, innerMsg); err != nil {
+		log.Errorf("unmarshal header failed: msgId=%d addr=%s err=%v", msgId, ctx.RemoteAddr(), err)
 		return 0
 	}
 
-	log.Infof("kkkkkkkkkkkkkkkkk roleId =%d", innerMsg.GetId())
-	hashCode := callPlayerMsgHashCode(msgId, innerMsg.Id)
+	playerId := innerMsg.GetId()
+	log.Infof("process msgId=%d playerId=%d", msgId, playerId)
+
+	hashCode := callPlayerMsgHashCode(msgId, playerId)
+	payload := packet[headerEnd:]
 	executor.AsyncNetMsgExecutor.SubmitTask(hashCode, func() {
-		processed := tcp.CallMethodWithChannelContext(msgId, ctx, packet[8+innerHeaderLen:])
-		if processed {
-			return
-		}
-		tcp.CallMethodWithRoleId(msgId, innerMsg.Id, packet[8+innerHeaderLen:])
+		dispatchMessage(msgId, playerId, ctx, payload)
 	})
 	return 0
+}
+
+// dispatchMessage routes the message to the appropriate handler
+func dispatchMessage(msgId int16, playerId int64, ctx tcp.Channel, payload []byte) {
+	if tcp.CallMethodWithChannelContext(msgId, ctx, payload) {
+		return
+	}
+	tcp.CallMethodWithRoleId(msgId, playerId, payload)
 }
 
 // Tick fires immediately after the server starts and will fire again
