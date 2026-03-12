@@ -74,7 +74,6 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
 	// Packet format: [4 bytes len] [2 bytes msgId] [2 bytes headerLen] [header] [payload]
 	const msgIdOffset = 4
-	const headerLenOffset = 6
 	const headerOffset = 8
 
 	buf := bytes.NewBuffer(packet[msgIdOffset:])

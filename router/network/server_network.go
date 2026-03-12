@@ -1,7 +1,6 @@
 package network
 
 import (
-	"bytes"
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
@@ -37,8 +36,8 @@ func (serverNetWork *ServerEventHandler) OnClosed(c tcp.Channel, err error) (act
 		log.Infof(" OnClosed-----addr =%s not login", c.RemoteAddr())
 		return 0
 	case *player.Player:
-		player := c.Context().(*player.Player)
-		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), player.Context.Sid, player.Pid)
+		p := c.Context().(*player.Player)
+		log.Infof("conn =%s  sid=%d pid=%d  closed", c.RemoteAddr(), p.Context.Sid, p.Pid)
 		return 0
 	default:
 		return 0
@@ -69,53 +68,68 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	if len(packet) < 4 {
+	// Packet format: [4 bytes len] [2 bytes msgId] [2 bytes headerLen] [header] [payload]
+	const (
+		packetLenHeaderSize = 4
+		msgIdOffset         = packetLenHeaderSize
+		headerLenOffset     = msgIdOffset + 2
+		headerOffset        = headerLenOffset + 2
+	)
+
+	// Validate packet length
+	if len(packet) < headerOffset {
 		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
 		return 0
 	}
-	length := binary.BigEndian.Uint32(packet[:4])
+
+	length := binary.BigEndian.Uint32(packet[:packetLenHeaderSize])
 	if length > uint32(len(packet)) {
-		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
+		log.Errorf("invalid packet length: headerLen=%d packetLen=%d addr=%s", length, len(packet), ctx.RemoteAddr())
 		return 0
 	}
-	bytebuffer := bytes.NewBuffer(packet[4:])
-	var msgId int16
-	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
-		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
-		return 0
-	}
+
+	// Read msgId
+	msgId := int16(binary.BigEndian.Uint16(packet[msgIdOffset:headerLenOffset]))
+
+	// Ignore heartbeat messages
 	if msgId == int16(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ) {
 		return 0
 	}
 
-	var innerHeaderLen int16
-	if err := binary.Read(bytebuffer, binary.BigEndian, &innerHeaderLen); err != nil {
-		log.Errorf("read innerHeaderLen failed: msgId=%d addr=%s len=%d err=%v", msgId, ctx.RemoteAddr(), len(packet), err)
+	// Read header length
+	headerLen := int16(binary.BigEndian.Uint16(packet[headerLenOffset:headerOffset]))
+
+	headerEnd := headerOffset + int(headerLen)
+	if headerEnd > len(packet) {
+		log.Errorf("invalid headerLen: msgId=%d headerLen=%d packetLen=%d addr=%s",
+			msgId, headerLen, len(packet), ctx.RemoteAddr())
 		return 0
 	}
-	if innerHeaderLen < 0 || int(innerHeaderLen) > bytebuffer.Len() {
-		log.Errorf("invalid innerHeaderLen: msgId=%d innerHeaderLen=%d remaining=%d addr=%s", msgId, innerHeaderLen, bytebuffer.Len(), ctx.RemoteAddr())
-		return 0
-	}
+
+	// Unmarshal inner header directly from packet (zero-copy)
 	innerMsg := &protoGen.InnerHead{}
-	//this should be innerBody :=packet[8+innerHeaderLen:]
-	innerBody := make([]byte, innerHeaderLen)
-	if err := binary.Read(bytebuffer, binary.BigEndian, innerBody); err != nil {
-		log.Errorf("read innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
-		return 0
-	}
-	if err := proto.Unmarshal(innerBody, innerMsg); err != nil {
-		log.Errorf("unmarshal innerBody failed: msgId=%d innerHeaderLen=%d addr=%s len=%d err=%v", msgId, innerHeaderLen, ctx.RemoteAddr(), len(packet), err)
+	headerBytes := packet[headerOffset:headerEnd]
+	if err := proto.Unmarshal(headerBytes, innerMsg); err != nil {
+		log.Errorf("unmarshal header failed: msgId=%d addr=%s err=%v", msgId, ctx.RemoteAddr(), err)
 		return 0
 	}
 
-	processed := tcp.CallMethodWithChannelContext(msgId, ctx, bytebuffer.Bytes())
-	if processed {
-		return 0
-	}
+	// Payload is the remaining bytes after header (zero-copy)
+	payload := packet[headerEnd:]
 
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, bytebuffer.Bytes())
+	// Dispatch message to handlers
+	if !dispatchServerMessage(msgId, innerMsg.Id, ctx, payload) {
+		log.Warnf("message not handled: msgId=%d playerId=%d addr=%s", msgId, innerMsg.Id, ctx.RemoteAddr())
+	}
 	return 0
+}
+
+// dispatchServerMessage routes the message to the appropriate handler
+func dispatchServerMessage(msgId int16, playerId int64, ctx tcp.Channel, payload []byte) bool {
+	if tcp.CallMethodWithChannelContext(msgId, ctx, payload) {
+		return true
+	}
+	return tcp.CallMethodWithRoleId(msgId, playerId, payload)
 }
 
 // Tick fires immediately after the server starts and will fire again
