@@ -3,19 +3,19 @@ package controller
 import (
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
-	"google.golang.org/protobuf/proto"
 	"time"
+
+	"google.golang.org/protobuf/proto"
 )
 
 func login(ctx tcp.Channel, request proto.Message) {
 	context := ctx.Context().(*client.ConnContext)
 	loginRequest := request.(*protoGen.LoginRequest)
-	roleId := loginRequest.RoleId
-	existPlayer := player.PlayerMgr.GetByRoleId(roleId)
+	pid := loginRequest.RoleId
+	existPlayer := player.PlayerMgr.GetByRoleId(pid)
 	if existPlayer != nil {
 		//close exist player
 		existPlayer.Context.Ctx.Close()
@@ -30,7 +30,7 @@ func login(ctx tcp.Channel, request proto.Message) {
 		RoleId: existPlayer.Pid,
 	}
 	log.Infof("====== loginAddr=%s now loginCount =%d  content= %s", ctx.RemoteAddr(), player.PlayerMgr.GetSize(), innerRequest)
-	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_REQ, existPlayer.Pid, innerRequest)
+	client.SendInnerToGameServer(existPlayer.Pid, protoGen.InnerProtoCode_INNER_LOGIN_REQ, innerRequest)
 }
 
 func heartBeat(ctx tcp.Channel, request proto.Message) {
@@ -60,10 +60,10 @@ func ClientDisConnect(ctx tcp.Channel) {
 		Sid:    disConnPlayer.Context.Sid,
 		RoleId: disConnPlayer.Pid,
 	}
-	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disConnPlayer.Pid, disconnectRequest)
+	client.SendInnerToGameServer(disConnPlayer.Pid, protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, disconnectRequest)
 }
 
-func innerServerKickout(roleId int64, request proto.Message) {
+func innerServerKickout(pid int64, request proto.Message) {
 	kickOut := request.(*protoGen.KickOutRequest)
 	log.Infof("kickout role= %d  sid =%d reason=%d", kickOut.GetRoleId(), kickOut.Sid, kickOut.GetReason())
 }

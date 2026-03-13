@@ -77,13 +77,8 @@ func DelInnerClientConnect(key global.GameServerType, serviceId string) {
 	}
 }
 
-func GetInnerClient(clientType global.GameServerType) *ConnInnerClientContext {
+func getInnerClient(clientType global.GameServerType) *ConnInnerClientContext {
 	return InnerClientMap[clientType]
-}
-
-func SendInnerMsg(clientType global.GameServerType, roleId int64, innerCode protoGen.InnerProtoCode, body proto.Message) {
-	client := GetInnerClient(clientType)
-	client.SendInnerMsg(innerCode, roleId, body)
 }
 
 type ConnInnerClientContext struct {
@@ -105,6 +100,7 @@ func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
 		log.Error(err)
 		return
 	}
+
 	sendLen, err := client.Ctx.SendTo(encode)
 	if err != nil {
 		log.Error(err)
@@ -115,26 +111,36 @@ func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
 	}
 }
 
-func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, roleId int64, body proto.Message) {
-	header := &protoGen.InnerHead{Id: roleId}
+//func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, pid int64, body proto.Message) {
+//	header := &protoGen.InnerHead{Id: pid}
+//	packet := &tcp.MsgPacket{
+//		MsgId:  int16(innerCode),
+//		Header: header,
+//		Body:   body,
+//	}
+//	client.Send(packet)
+//}
+
+func (client *ConnInnerClientContext) SendMsg(protoCode int16, pid int64, body proto.Message) {
+	header := &protoGen.InnerHead{Id: pid}
+	packet := &tcp.MsgPacket{
+		MsgId:  protoCode,
+		Header: header,
+		Body:   body,
+	}
+	client.Send(packet)
+}
+
+func (client *ConnInnerClientContext) sendBytesMsg(body []byte) {
+	client.Ctx.SendTo(body)
+}
+
+func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, pid int64, body proto.Message) {
+	header := &protoGen.InnerHead{Id: pid}
 	packet := &tcp.MsgPacket{
 		MsgId:  int16(innerCode),
 		Header: header,
 		Body:   body,
 	}
 	client.Send(packet)
-}
-
-func (client *ConnInnerClientContext) SendMsg(protoCode protoGen.ProtoCode, roleId int64, body proto.Message) {
-	header := &protoGen.InnerHead{Id: roleId}
-	packet := &tcp.MsgPacket{
-		MsgId:  int16(protoCode),
-		Header: header,
-		Body:   body,
-	}
-	client.Send(packet)
-}
-
-func (client *ConnInnerClientContext) SendBytesMsg(body []byte) {
-	client.Ctx.SendTo(body)
 }

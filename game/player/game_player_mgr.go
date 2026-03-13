@@ -1,45 +1,47 @@
 package player
 
 import (
-	"sync"
+	"gameSrv/pkg/sync"
 )
 
 var RoleOlineMgr = NewRoleMgr()
 
 type MgrWrap struct {
-	players map[int64]*GamePlayer
-	rwLock  sync.RWMutex
+	// 使用分段锁的并发安全map
+	players *sync.SyncRWMap[int64, *GamePlayer]
 }
 
 func NewRoleMgr() *MgrWrap {
 	return &MgrWrap{
-		players: make(map[int64]*GamePlayer),
-		rwLock:  sync.RWMutex{},
+		players: sync.NewSyncRWMap[int64, *GamePlayer](),
 	}
 }
 
 func (roleMgr *MgrWrap) AddPlayer(player *GamePlayer) {
-	roleMgr.rwLock.Lock()
-	defer roleMgr.rwLock.Unlock()
-	roleMgr.players[player.Id] = player
+	roleMgr.players.Store(player.Id, player)
 }
 
 func (roleMgr *MgrWrap) GetPlayerById(pid int64) *GamePlayer {
-	roleMgr.rwLock.RLock()
-	defer roleMgr.rwLock.RUnlock()
-	return roleMgr.players[pid]
+	player, ok := roleMgr.players.Load(pid)
+	if !ok {
+		return nil
+	}
+	return player
 }
 
 func (roleMgr *MgrWrap) Size() int {
-	roleMgr.rwLock.RLock()
-	defer roleMgr.rwLock.RUnlock()
-	return len(roleMgr.players)
+	return roleMgr.players.Size()
 }
 
 func (roleMgr *MgrWrap) Remove(pid int64) *GamePlayer {
-	roleMgr.rwLock.Lock()
-	defer roleMgr.rwLock.Unlock()
-	player := roleMgr.players[pid]
-	delete(roleMgr.players, pid)
+	player, ok := roleMgr.players.LoadAndDelete(pid)
+	if !ok {
+		return nil
+	}
 	return player
+}
+
+// Range 遍历所有玩家，fn返回false时停止遍历
+func (roleMgr *MgrWrap) Range(fn func(pid int64, player *GamePlayer) bool) {
+	roleMgr.players.Range(fn)
 }

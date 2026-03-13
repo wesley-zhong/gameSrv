@@ -34,7 +34,7 @@ func performanceRes(ctx tcp.Channel, res proto.Message) {
 
 func loginResponse(ctx tcp.Channel, msg proto.Message) {
 	res := msg.(*protoGen.LoginResponse)
-	log.Infof("------login response roleId=%d  remote addr =%s", res.RoleId, ctx.RemoteAddr())
+	log.Infof("------login response pid=%d  remote addr =%s", res.RoleId, ctx.RemoteAddr())
 
 	context := playerConn[res.RoleId]
 	req := &protoGen.EchoReq{

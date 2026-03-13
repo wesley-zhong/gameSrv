@@ -18,15 +18,15 @@ func performanceTest(ctx tcp.Channel, req proto.Message) {
 	}
 	log.Infof("==========  performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
 	ctx.Context().(*client.ConnContext).SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	//client.GetInnerClient(client.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
+	//client.getInnerClient(client.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
 }
 
-func performanceTestResFromWorld(roleId int64, res proto.Message) {
+func performanceTestResFromWorld(pid int64, res proto.Message) {
 	//	testRes := res.(*protoGen.PerformanceTestRes)
-	perFormancePlayer := player.PlayerMgr.GetByRoleId(roleId)
+	perFormancePlayer := player.PlayerMgr.GetByRoleId(pid)
 	if perFormancePlayer == nil {
 		return
 	}
 	perFormancePlayer.Context.SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	//client.GetInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
+	//client.getInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
 }

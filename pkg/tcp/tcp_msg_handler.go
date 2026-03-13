@@ -3,7 +3,6 @@ package tcp
 import (
 	"gameSrv/pkg/log"
 	"runtime/debug"
-	"sync"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -13,7 +12,6 @@ type MsgIdFuc[T1 any, T2 any] func(T1, T2)
 var (
 	msgIdContextMap = make(map[int16]*protoMethod[Channel])
 	msgPlayerIdMap  = make(map[int16]*protoMethod[int64])
-	msgMapMutex     sync.RWMutex
 )
 
 //var msgGoPool = gopool.StartNewWorkerPool(1, 1024)
@@ -44,14 +42,28 @@ func (method *protoMethod[T1]) execute(any T1, body []byte) {
 	//})
 }
 
+func (method *protoMethod[T1]) Execute(any T1, param proto.Message) {
+	method.methodFuc(any, param)
+}
+
+func (method *protoMethod[T1]) Parse(body []byte) (proto.Message, error) {
+	param := method.param.ProtoReflect().New().Interface()
+	if body == nil {
+		return nil, nil
+	}
+	if err := proto.Unmarshal(body, param); err != nil {
+		log.Infof("Protobuf unmarshal error: %v", err)
+		return nil, err // Don't submit to pool if data is corrupted
+	}
+	return param, nil
+}
+
 func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, proto.Message]) {
 	method := &protoMethod[Channel]{
 		methodFuc: fuc,
 		param:     param,
 	}
-	msgMapMutex.Lock()
 	msgIdContextMap[msgId] = method
-	msgMapMutex.Unlock()
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
@@ -59,27 +71,23 @@ func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int
 		methodFuc: fuc,
 		param:     param,
 	}
-	msgMapMutex.Lock()
 	msgPlayerIdMap[int16(msgId)] = method
-	msgMapMutex.Unlock()
 }
 
-func CallMethodWithRoleId(msgId int16, roleId int64, body []byte) bool {
+func CallMethodWithPlayerId(msgId int16, pid int64, body []byte) bool {
 	defer func() {
 		if r := recover(); r != nil {
 			s := string(debug.Stack())
-			log.Errorf("panic in CallMethodWithRoleId: err=%v, stack=%s", r, s)
+			log.Errorf("panic in CallMethodWithPlayerId: err=%v, stack=%s", r, s)
 		}
 	}()
-	msgMapMutex.RLock()
 	method := msgPlayerIdMap[msgId]
-	msgMapMutex.RUnlock()
 
 	if method == nil {
-		log.Infof("CallMethodWithRoleId msgId = %d not found method", msgId)
+		log.Infof("CallMethodWithPlayerId msgId = %d not found method", msgId)
 		return false
 	}
-	method.execute(roleId, body)
+	method.execute(pid, body)
 	return true
 }
 
@@ -90,9 +98,7 @@ func CallMethodWithChannelContext(msgId int16, context Channel, body []byte) boo
 			log.Errorf("panic in CallMethodWithChannelContext: err=%v, stack=%s", r, s)
 		}
 	}()
-	msgMapMutex.RLock()
 	method := msgIdContextMap[msgId]
-	msgMapMutex.RUnlock()
 
 	if method == nil {
 		return false
@@ -101,18 +107,14 @@ func CallMethodWithChannelContext(msgId int16, context Channel, body []byte) boo
 	return true
 }
 
-func GetCallMethodById(msgId int16) *protoMethod[int64] {
-	msgMapMutex.RLock()
-	defer msgMapMutex.RUnlock()
+func GetCallMethodWithId(msgId int16) *protoMethod[int64] {
 	return msgPlayerIdMap[msgId]
 }
 
-func CallMethod(roleId int64, body []byte, method *protoMethod[int64]) {
-	method.execute(roleId, body)
+func GetMethodWithChannel(msgId int16) *protoMethod[Channel] {
+	return msgIdContextMap[msgId]
 }
 
 func HasMethod(msgId int16) bool {
-	msgMapMutex.RLock()
-	defer msgMapMutex.RUnlock()
 	return msgPlayerIdMap[msgId] != nil || msgIdContextMap[msgId] != nil
 }

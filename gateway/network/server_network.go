@@ -8,7 +8,6 @@ import (
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -118,7 +117,7 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		binary.Write(directSendBuff, binary.BigEndian, int16(len(headerBytes)))
 		binary.Write(directSendBuff, binary.BigEndian, headerBytes)
 		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
-		client.GetInnerClient(global.GAME).SendBytesMsg(directSendBuff.Bytes())
+		client.SendPckToGameServer(directSendBuff.Bytes())
 
 		//log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
 		return 0

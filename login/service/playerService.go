@@ -13,11 +13,11 @@ type PlayerServiceImpl struct {
 }
 
 func (playerService *PlayerServiceImpl) FindPlayerAccount(account string) *dos.AccountDO {
-	result := dal.AccountDAO.FindOne(bson.D{{"account", account}})
-	if result == nil {
+	result, err := dal.AccountDAO.FindOne(bson.D{{"account", account}})
+	if err != nil || result == nil {
 		return nil
 	}
-	return result.(*dos.AccountDO)
+	return result
 }
 
 func (playerService *PlayerServiceImpl) CreatePlayerAccount(account string) *dos.AccountDO {

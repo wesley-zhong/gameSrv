@@ -4,7 +4,6 @@ import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -136,19 +135,14 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 	if tcp.CallMethodWithChannelContext(msgId, ctx, payload) {
 		return 0
 	}
-	tcp.CallMethodWithRoleId(msgId, innerMsg.Id, payload)
+	tcp.CallMethodWithPlayerId(msgId, innerMsg.Id, payload)
 	return 0
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(global.GAME)
-	if innerClient == nil {
-		//	log.Infof("no found connect type =%d", client.GAME)
-		return 5000 * time.Millisecond, 0
-	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
+	client.SendInnerToGameServer(0, protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, heartBeat)
 	return 5000 * time.Millisecond, 0
 }

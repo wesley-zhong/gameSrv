@@ -129,7 +129,7 @@ func dispatchServerMessage(msgId int16, playerId int64, ctx tcp.Channel, payload
 	if tcp.CallMethodWithChannelContext(msgId, ctx, payload) {
 		return true
 	}
-	return tcp.CallMethodWithRoleId(msgId, playerId, payload)
+	return tcp.CallMethodWithPlayerId(msgId, playerId, payload)
 }
 
 // Tick fires immediately after the server starts and will fire again

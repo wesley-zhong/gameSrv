@@ -15,9 +15,12 @@ type RoleDetailRes struct {
 }
 
 func (roleController *Role) GetRoleDetail(req *RoleDetailReq) *RoleDetailRes {
-	roleDO := dal.RoleDAO.FindOneById(req.RoleId)
+	roleDO, err := dal.RoleDAO.FindOneById(req.RoleId)
+	if err != nil {
+		return nil
+	}
 	return &RoleDetailRes{
 		RoleId: roleDO.Id,
-		Name:   roleDO.Name,
+		Name:   roleDO.Account,
 	}
 }

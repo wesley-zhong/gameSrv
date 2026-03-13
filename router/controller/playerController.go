@@ -2,13 +2,13 @@ package controller
 
 import (
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
+
 	"google.golang.org/protobuf/proto"
 )
 
-func innerPlayerLogin(roleId int64, request proto.Message) {
+func innerPlayerLogin(pid int64, request proto.Message) {
 	loginRequest := request.(*protoGen.InnerLoginRequest)
 	log.Infof("router inner login sessionId = %d = %d from  finished", loginRequest.Sid, loginRequest.RoleId)
 
@@ -16,10 +16,10 @@ func innerPlayerLogin(roleId int64, request proto.Message) {
 		Sid:    loginRequest.Sid,
 		RoleId: loginRequest.RoleId,
 	}
-	client.GetInnerClient(global.GAME).SendInnerMsg(protoGen.InnerProtoCode_INNER_LOGIN_RES, loginRequest.RoleId, res)
+	client.SendInnerToGameServer(loginRequest.RoleId, protoGen.InnerProtoCode_INNER_LOGIN_RES, res)
 }
 
-func innerPlayerDisconnect(roleId int64, request proto.Message) {
+func innerPlayerDisconnect(pid int64, request proto.Message) {
 
-	log.Infof("---roleId = %d disconnected", roleId)
+	log.Infof("---pid = %d disconnected", pid)
 }
