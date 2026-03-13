@@ -107,19 +107,19 @@ func RegisterNewModule[DOType any](aresModule IGameModule[DOType], container *Mo
 }
 
 func (mc *ModuleContainer) InitModules() error {
-	for _, itemModule := range mc.IModules {
-		itemModule.InitFromDB()
+	for _, module := range mc.IModules {
+		module.InitFromDB()
 	}
 	// only for just now it maybe called on another thread
-	for _, itemModule := range mc.IModules {
-		itemModule.OnDataLoaded()
+	for _, module := range mc.IModules {
+		module.OnDataLoaded()
 	}
 	return nil
 }
 
 func (mc *ModuleContainer) Destroy() {
-	for _, itemModule := range mc.IModules {
-		itemModule.Destroy()
+	for _, module := range mc.IModules {
+		module.Destroy()
 	}
 }
 

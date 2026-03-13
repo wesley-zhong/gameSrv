@@ -6,7 +6,6 @@ import (
 	"gameSrv/game/executor"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -89,12 +88,12 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 		return 0
 	}
 
-	log.Infof("receive msgId=%d addr=%s len=%d", msgId, ctx.RemoteAddr(), len(packet))
+	//log.Infof("receive msgId=%d addr=%s len=%d", msgId, ctx.RemoteAddr(), len(packet))
 
 	// Direct unhandled messages to world server
 	if !tcp.HasMethod(msgId) {
 		log.Infof("msgId=%d direct to world server", msgId)
-		client.GetInnerClient(global.ROUTER).SendBytesMsg(packet)
+		client.SendPckToRouterServer(packet)
 		return 0
 	}
 
@@ -122,18 +121,35 @@ func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (
 
 	hashCode := callPlayerMsgHashCode(msgId, playerId)
 	payload := packet[headerEnd:]
-	executor.AsyncNetMsgExecutor.SubmitTask(hashCode, func() {
-		dispatchMessage(msgId, playerId, ctx, payload)
-	})
+	dispatchMessage(msgId, playerId, ctx, payload, hashCode)
 	return 0
 }
 
 // dispatchMessage routes the message to the appropriate handler
-func dispatchMessage(msgId int16, playerId int64, ctx tcp.Channel, payload []byte) {
-	if tcp.CallMethodWithChannelContext(msgId, ctx, payload) {
+func dispatchMessage(msgId int16, playerId int64, ctx tcp.Channel, payload []byte, hashCode int64) {
+	pidMethod := tcp.GetCallMethodWithId(msgId)
+	if pidMethod != nil {
+		body, err := pidMethod.Parse(payload)
+		if err != nil {
+			log.Errorf("unmarshal header failed: msgId=%d addr=%s err=%v", msgId, ctx.RemoteAddr(), err)
+			return
+		}
+		executor.AsyncNetMsgExecutor.SubmitTask(hashCode, func() {
+			pidMethod.Execute(playerId, body)
+		})
 		return
 	}
-	tcp.CallMethodWithRoleId(msgId, playerId, payload)
+	channelMethod := tcp.GetMethodWithChannel(msgId)
+	if channelMethod != nil {
+		body, err := channelMethod.Parse(payload)
+		if err != nil {
+			log.Errorf("unmarshal header failed: msgId=%d addr=%s err=%v", msgId, ctx.RemoteAddr(), err)
+			return
+		}
+		executor.AsyncNetMsgExecutor.SubmitTask(hashCode, func() {
+			channelMethod.Execute(ctx, body)
+		})
+	}
 }
 
 // Tick fires immediately after the server starts and will fire again

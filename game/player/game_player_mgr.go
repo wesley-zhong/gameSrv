@@ -29,3 +29,17 @@ func (roleMgr *MgrWrap) GetPlayerById(pid int64) *GamePlayer {
 	defer roleMgr.rwLock.RUnlock()
 	return roleMgr.players[pid]
 }
+
+func (roleMgr *MgrWrap) Size() int {
+	roleMgr.rwLock.RLock()
+	defer roleMgr.rwLock.RUnlock()
+	return len(roleMgr.players)
+}
+
+func (roleMgr *MgrWrap) Remove(pid int64) *GamePlayer {
+	roleMgr.rwLock.Lock()
+	defer roleMgr.rwLock.Unlock()
+	player := roleMgr.players[pid]
+	delete(roleMgr.players, pid)
+	return player
+}

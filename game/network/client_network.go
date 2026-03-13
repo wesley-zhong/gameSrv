@@ -3,7 +3,6 @@ package network
 import (
 	"encoding/binary"
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
@@ -77,7 +76,7 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 
 	// Direct unhandled messages to gateway
 	if !tcp.HasMethod(msgId) {
-		client.GetInnerClient(global.GATE_WAY).SendBytesMsg(packet)
+		client.SendPckToGateway(packet)
 		return 0
 	}
 
@@ -114,19 +113,13 @@ func dispatchClientMessage(msgId int16, playerId int64, ctx tcp.Channel, payload
 	if tcp.CallMethodWithChannelContext(msgId, ctx, payload) {
 		return true
 	}
-	return tcp.CallMethodWithRoleId(msgId, playerId, payload)
+	return tcp.CallMethodWithPlayerId(msgId, playerId, payload)
 }
 
 // Tick fires immediately after the server starts and will fire again
 // following the duration specified by the delay return value.
 func (clientNetwork *ClientEventHandler) Tick() (delay time.Duration, action int) {
-	innerClient := client.GetInnerClient(global.ROUTER)
-	if innerClient == nil {
-		//log.Infof("no found connect type =%d", client.ROUTER)
-		return 5000 * time.Millisecond, 0
-	}
 	heartBeat := &protoGen.InnerHeartBeatRequest{}
-	innerClient.SendInnerMsg(protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, 0, heartBeat)
-	//.Infof("send inner hear beat = %s", innerClient.Ctx.RemoteAddr())
+	client.SendMsgToRouterServer(0, protoGen.InnerProtoCode_INNER_HEART_BEAT_REQ, heartBeat)
 	return 5000 * time.Millisecond, 0
 }

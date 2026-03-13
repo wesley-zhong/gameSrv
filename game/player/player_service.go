@@ -2,7 +2,6 @@ package player
 
 import (
 	"gameSrv/pkg/client"
-	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/protoGen"
 )
@@ -22,6 +21,7 @@ func OnPlayerLogin(pid int64, sid int64) *GamePlayer {
 	}
 	RoleOlineMgr.AddPlayer(existPlayer)
 	OnPlayerLoginLogic(existPlayer)
+	log.Infof("pid = %d, sid = %d login success", pid, sid)
 	return existPlayer
 }
 
@@ -32,14 +32,14 @@ func OnPlayerLoginLogic(player *GamePlayer) {
 }
 
 func OnPlayerDisconnected(pid int64, sid int64) {
-	existPlayer := RoleOlineMgr.GetPlayerById(pid)
+	existPlayer := RoleOlineMgr.Remove(pid)
 	if existPlayer == nil {
 		log.Infof(" pid = %d, sid = %d not found", pid, sid)
 		return
 	}
 
 	if existPlayer.Sid != sid {
-		log.Infof(" pid = %d, now sid = %d disconnected sid =%d", pid, existPlayer.Sid, sid)
+		log.Infof(" pid = %d, now sid = %d disconnected sid =%d  do not process", pid, existPlayer.Sid, sid)
 		return
 	}
 	existPlayer.OnDisconnect()
@@ -47,5 +47,6 @@ func OnPlayerDisconnected(pid int64, sid int64) {
 		Sid:    sid,
 		RoleId: pid,
 	}
-	client.GetInnerClient(global.ROUTER).SendInnerMsg(protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, pid, playerDisconnectRequest)
+	log.Infof("pid = %d, sid = %d disconnected now count =%d", pid, sid, RoleOlineMgr.Size())
+	client.SendMsgToRouterServer(pid, protoGen.InnerProtoCode_INNER_PLAYER_DISCONNECT_REQ, playerDisconnectRequest)
 }
