@@ -1,10 +1,7 @@
 package network
 
 import (
-	"bytes"
 	"encoding/binary"
-	"errors"
-	"fmt"
 	"gameSrv/gateway/controller"
 	"gameSrv/gateway/player"
 	"gameSrv/pkg/client"
@@ -68,68 +65,55 @@ func (serverNetWork *ServerEventHandler) AfterWrite(c tcp.Channel, b []byte) {
 // If you have to use packet in a new goroutine, then you need to make a copy of buf and pass this copy
 // to that new goroutine.
 func (serverNetWork *ServerEventHandler) React(packet []byte, ctx tcp.Channel) (action int) {
-	bytebuffer := bytes.NewBuffer(packet)
-	var length uint32
-	if err := binary.Read(bytebuffer, binary.BigEndian, &length); err != nil {
-		log.Errorf("read length failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
+	const headerSize = 6
+
+	if len(packet) < headerSize {
+		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
 		return 0
 	}
-	if length > uint32(len(packet)) {
+
+	length := int32(binary.BigEndian.Uint32(packet[:4]))
+	msgId := int16(binary.BigEndian.Uint16(packet[4:6]))
+
+	if int(length) > len(packet) {
 		log.Errorf("invalid length: length=%d packet_len=%d addr=%s", length, len(packet), ctx.RemoteAddr())
 		return 0
 	}
 
-	var msgId int16
-	if err := binary.Read(bytebuffer, binary.BigEndian, &msgId); err != nil {
-		log.Errorf("read msgId failed: addr=%s len=%d err=%v", ctx.RemoteAddr(), len(packet), err)
-		return 0
-	}
-	if len(packet) < 6 {
-		log.Errorf("packet too short: len=%d addr=%s", len(packet), ctx.RemoteAddr())
-		return 0
-	}
-	//	log.Infof("------receive msgId = %d length =%d", msgId, length)
-	hasMethod := tcp.HasMethod(msgId)
-	if !hasMethod {
-		// direct to game server
-		if ctx.Context() == nil {
-			log.Error(errors.New(fmt.Sprintf("msgId = %d error", msgId)))
-			return 0
+	if tcp.HasMethod(msgId) {
+		body := packet[headerSize:]
+		tcp.CallMethodWithChannelContext(msgId, ctx, body)
+		if len(body) > 0 {
+			log.Infof("receive msgId=%d length=%d", msgId, len(body))
 		}
-		if _, ok := ctx.Context().(*player.Player); !ok {
-			return 0
-		}
-
-		player := ctx.Context().(*player.Player)
-		headMsg := &protoGen.InnerHead{Id: player.Pid}
-		headerBytes, _ := proto.Marshal(headMsg)
-		if length < 2 {
-			log.Errorf("invalid length for direct send: msgId=%d length=%d addr=%s", msgId, length, ctx.RemoteAddr())
-			return 0
-		}
-		totalLen := 4 + 2 + 2 + len(headerBytes) + int(length) - 2
-
-		directSendByte := make([]byte, totalLen)
-		directSendBuff := bytes.NewBuffer(directSendByte)
-		directSendBuff.Reset()
-		binary.Write(directSendBuff, binary.BigEndian, int32(totalLen-4))
-		binary.Write(directSendBuff, binary.BigEndian, msgId)
-		binary.Write(directSendBuff, binary.BigEndian, int16(len(headerBytes)))
-		binary.Write(directSendBuff, binary.BigEndian, headerBytes)
-		binary.Write(directSendBuff, binary.BigEndian, packet[6:])
-		client.SendPckToGameServer(directSendBuff.Bytes())
-
-		//log.Infof("-------- msgId =%d direct to game server  total len =%d bytes =%d", msgId, int32(totalLen-4), len(directSendBuff.Bytes()))
 		return 0
 	}
 
-	bodyLen := bytebuffer.Len()
-	if bodyLen == 0 {
-		tcp.CallMethodWithChannelContext(msgId, ctx, nil)
+	return serverNetWork.forwardToGameServer(msgId, length, packet, ctx)
+}
+
+// forwardToGameServer 将消息转发到游戏服务器
+func (serverNetWork *ServerEventHandler) forwardToGameServer(msgId int16, length int32, packet []byte, ctx tcp.Channel) int {
+	ctxPlayer, ok := ctx.Context().(*player.Player)
+	if !ok || ctx.Context() == nil {
+		log.Errorf("invalid context for msgId=%d", msgId)
 		return 0
 	}
-	log.Infof("------#########receive msgId = %d length =%d", msgId, bodyLen)
-	tcp.CallMethodWithChannelContext(msgId, ctx, packet[6:])
+
+	headMsg := &protoGen.InnerHead{Id: ctxPlayer.Pid}
+	headerBytes, _ := proto.Marshal(headMsg)
+	body := packet[6:]
+
+	// 构造转发数据包: len(4) + msgId(2) + headerLen(2) + header + body
+	totalLen := 4 + 2 + 2 + len(headerBytes) + int(length) - 2
+	buf := make([]byte, totalLen)
+	binary.BigEndian.PutUint32(buf[0:4], uint32(totalLen-4))
+	binary.BigEndian.PutUint16(buf[4:6], uint16(msgId))
+	binary.BigEndian.PutUint16(buf[6:8], uint16(len(headerBytes)))
+	copy(buf[8:8+len(headerBytes)], headerBytes)
+	copy(buf[8+len(headerBytes):], body)
+
+	client.SendPckToGameServer(buf)
 	return 0
 }
 
