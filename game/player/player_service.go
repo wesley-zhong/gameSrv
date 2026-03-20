@@ -21,7 +21,7 @@ func OnPlayerLogin(pid int64, sid int64) *GamePlayer {
 	}
 	RoleOlineMgr.AddPlayer(existPlayer)
 	OnPlayerLoginLogic(existPlayer)
-	log.Infof("pid = %d, sid = %d login success", pid, sid)
+	log.Infof("pid = %d, sid = %d login success  now count =%d", pid, sid, RoleOlineMgr.Size())
 	return existPlayer
 }
 
