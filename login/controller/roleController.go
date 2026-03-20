@@ -1,7 +1,5 @@
 package controller
 
-import "gameSrv/login/dal"
-
 type Role struct {
 }
 
@@ -15,12 +13,13 @@ type RoleDetailRes struct {
 }
 
 func (roleController *Role) GetRoleDetail(req *RoleDetailReq) *RoleDetailRes {
-	roleDO, err := dal.RoleDAO.FindOneById(req.RoleId)
-	if err != nil {
-		return nil
-	}
-	return &RoleDetailRes{
-		RoleId: roleDO.Id,
-		Name:   roleDO.Account,
-	}
+	//roleDO, err := dal.RoleDAO.FindOneById(req.RoleId)
+	//if err != nil {
+	//	return nil
+	//}
+	//return &RoleDetailRes{
+	//	RoleId: roleDO.Id,
+	//	Name:   roleDO.Account,
+	//}
+	return nil
 }

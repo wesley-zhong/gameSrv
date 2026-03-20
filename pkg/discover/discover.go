@@ -15,27 +15,28 @@ import (
 
 var DiscoverService *ServiceDiscovery
 
-// ServiceDiscovery 服务发现
 type ServiceDiscovery struct {
-	cli        *clientv3.Client //etcd client
-	serverList map[string]*Node //服务列表
-	lock       sync.Mutex
+	cli        *clientv3.Client
+	serverList map[string]*Node
+	lock       sync.RWMutex
 	onChanged  OnWatchServiceChanged
 }
+
 type Node struct {
-	ServiceName    string                `json:"serviceName"`
-	ServiceId      string                `json:"serviceId"`
-	RegisterTime   int64                 `json:"registerTime"`
-	Addr           string                `json:"addr"`
-	MetaData       map[string]string     `json:"metaData"`
-	Type           global.GameServerType `json:"type"`
-	Port           int32                 `json:"port"`
+	ServiceName    string
+	ServiceId      string
+	RegisterTime   int64
+	Addr           string
+	MetaData       map[string]string
+	Type           global.GameServerType
+	Port           int32
 	ChannelContext *client.ConnInnerClientContext
 }
 
 func (node *Node) getKey() string {
 	return node.ServiceId
 }
+
 func (node *Node) getValue() string {
 	marshal, err := json.Marshal(node)
 	if err != nil {
@@ -44,7 +45,6 @@ func (node *Node) getValue() string {
 	return string(marshal)
 }
 
-// NewServiceDiscovery  新建发现服务
 func NewServiceDiscovery(endpoints []string) *ServiceDiscovery {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   endpoints,
@@ -60,95 +60,89 @@ func NewServiceDiscovery(endpoints []string) *ServiceDiscovery {
 	}
 }
 
-// WatchService 初始化服务列表和监视
 func (s *ServiceDiscovery) WatchService(prefixes []string) error {
-	//根据前缀获取现有的key
 	for _, prefix := range prefixes {
 		resp, err := s.cli.Get(context.Background(), prefix, clientv3.WithPrefix())
 		if err != nil {
 			return err
 		}
-		log.Infof(" ###  WatchService get  prefix:%s now...", prefix)
+		log.Infof("watch service prefix: %s", prefix)
 
 		for _, ev := range resp.Kvs {
 			s.SetServiceList(string(ev.Key), string(ev.Value))
 		}
 
-		//监视前缀，修改变更的server
 		go s.watcher(prefix)
 	}
 	return nil
 }
 
-// watcher 监听前缀
 func (s *ServiceDiscovery) watcher(prefix string) {
-	log.Infof("watching prefix:%s now...", prefix)
+	log.Infof("watching prefix: %s", prefix)
 	rch := s.cli.Watch(context.Background(), prefix, clientv3.WithPrefix())
 	for wresp := range rch {
 		for _, ev := range wresp.Events {
 			switch ev.Type {
-			case mvccpb.PUT: //修改或者新增
+			case mvccpb.PUT:
 				s.SetServiceList(string(ev.Kv.Key), string(ev.Kv.Value))
-			case mvccpb.DELETE: //删除
+			case mvccpb.DELETE:
 				s.DelServiceList(string(ev.Kv.Key))
 			}
 		}
 	}
 }
 
-// SetServiceList 新增服务地址
 func (s *ServiceDiscovery) SetServiceList(key, val string) {
 	s.lock.Lock()
 	defer s.lock.Unlock()
+
 	node := &Node{}
-	err := json.Unmarshal([]byte(val), node)
-	if err != nil {
+	if err := json.Unmarshal([]byte(val), node); err != nil {
 		log.Error(err)
 		return
 	}
+
 	existNode := s.serverList[key]
 	if existNode != nil && existNode.ChannelContext != nil {
 		return
 	}
+
 	s.serverList[key] = node
-	log.Infof("### discover  :ServiceId  %s:  ServiceName: %s", key, val)
+	log.Infof("discover service: id=%s name=%s", key, node.ServiceName)
 	s.onChanged(node, mvccpb.PUT)
-	//go connectNode(node)
 }
 
-// DelServiceList 删除服务地址
 func (s *ServiceDiscovery) DelServiceList(key string) {
 	s.lock.Lock()
 	defer s.lock.Unlock()
+
 	node := s.serverList[key]
-	//关闭
 	if node != nil && node.ChannelContext != nil && node.ChannelContext.Ctx != nil {
 		node.ChannelContext.Ctx.Close()
 	}
+
 	delete(s.serverList, key)
 	s.onChanged(node, mvccpb.DELETE)
-	log.Infof("-------del ServiceId: %s", key)
+	log.Infof("delete service: id=%s", key)
 }
 
-// GetServices 获取服务地址
 func (s *ServiceDiscovery) GetServices() []*Node {
-	s.lock.Lock()
-	defer s.lock.Unlock()
-	addrs := make([]*Node, 0)
+	s.lock.RLock()
+	defer s.lock.RUnlock()
 
+	result := make([]*Node, 0, len(s.serverList))
 	for _, v := range s.serverList {
-		addrs = append(addrs, v)
+		result = append(result, v)
 	}
-	return addrs
+	return result
 }
 
-// Close 关闭服务
 func (s *ServiceDiscovery) Close() error {
 	return s.cli.Close()
 }
 
-func (s *ServiceDiscovery) GetKvClient() {
-
+func (s *ServiceDiscovery) GetKvClient() *clientv3.Client {
+	return s.cli
 }
 
 func InitDiscovery(endpoints []string, servicePrefixes []string, onChanged OnWatchServiceChanged) error {

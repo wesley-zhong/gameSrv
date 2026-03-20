@@ -3,6 +3,7 @@ package service
 import (
 	"gameSrv/login/dal"
 	"gameSrv/login/dos"
+	"gameSrv/pkg/utils"
 
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
@@ -21,12 +22,14 @@ func (playerService *PlayerServiceImpl) FindPlayerAccount(account string) *dos.A
 }
 
 func (playerService *PlayerServiceImpl) CreatePlayerAccount(account string) *dos.AccountDO {
+	pid := utils.NextId()
 	playerAccount := &dos.AccountDO{
-		Id:      11,
+		Id:      pid,
 		Account: account,
+		Pid:     pid,
 	}
 	dal.AccountDAO.Insert(playerAccount)
-	return nil
+	return playerAccount
 }
 
 func (playerService *PlayerServiceImpl) AccountLogin(account string) *dos.AccountDO {

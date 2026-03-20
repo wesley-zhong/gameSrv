@@ -10,6 +10,7 @@ import (
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
+	"gameSrv/pkg/utils"
 	"net/http"
 	_ "net/http/pprof"
 	"runtime/debug"
@@ -23,6 +24,7 @@ import (
 func main() {
 	var loopWG sync.WaitGroup
 	loopWG.Add(1)
+	utils.IdGenInit(11, 23)
 	defer func() {
 		if x := recover(); x != nil {
 			s := string(debug.Stack())
@@ -32,7 +34,9 @@ func main() {
 	}()
 
 	//for performance
+	loopWG.Add(1)
 	go func() {
+		defer loopWG.Done()
 		http.ListenAndServe("localhost:6062", nil)
 	}()
 
@@ -47,13 +51,18 @@ func main() {
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
-	log.Init("./log/gate.log", zapcore.InfoLevel, true)
+	log.Init("./log/gateway.log", zapcore.InfoLevel, true)
 
 	//package receive handler
 	handler := &network.ServerEventHandler{}
 	discover.Init(viper.GetViper(), global.GATE_WAY)
+
 	//start server
-	go tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
+	loopWG.Add(1)
+	go func() {
+		defer loopWG.Done()
+		tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
+	}()
 
 	//init tcp client
 	clientHandler := &network.ClientEventHandler{}

@@ -109,6 +109,7 @@ func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
 	if sendLen != len(encode) {
 		log.Error(errors.New(fmt.Sprintf(" send = %d  total en = %d", sendLen, len(encode))))
 	}
+
 }
 
 //func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, pid int64, body proto.Message) {

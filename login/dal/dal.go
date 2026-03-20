@@ -7,14 +7,13 @@ import (
 
 // ------------------mongodb----------------
 var AccountDAO *orm.MongodbDAO[dos.AccountDO]
-var RoleDAO *orm.MongodbDAO[dos.AccountDO]
 
 func InitMongoDB(addr string, userName string, pwd string) error {
 	err := orm.InitMongoDB(addr, userName, pwd)
 	if err != nil {
 		return err
 	}
-	AccountDAO = &orm.MongodbDAO[dos.AccountDO]{Collection: orm.GetDBConnTable("game", "account")}
+	AccountDAO = &orm.MongodbDAO[dos.AccountDO]{Collection: orm.GetDBConnTable("account", "account")}
 
 	return nil
 }

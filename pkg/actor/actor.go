@@ -14,7 +14,7 @@ var routerPool = gopool.StartNewWorkerPool(runtime.NumCPU(), 1024)
 
 func NewActor(id int64) *Actor {
 	return &Actor{
-		id:           1,
+		id:           id,
 		routerWorker: routerPool.HashWorker(id),
 	}
 }

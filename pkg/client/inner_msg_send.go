@@ -8,7 +8,6 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// sendMsg sends a protobuf message to the specified server type
 func sendMsg(serverType global.GameServerType, pid int64, msgCode int16, body proto.Message) {
 	c := getInnerClient(serverType)
 	if c == nil {
@@ -18,14 +17,13 @@ func sendMsg(serverType global.GameServerType, pid int64, msgCode int16, body pr
 	c.SendMsg(msgCode, pid, body)
 }
 
-// sendBytes sends a byte slice message to the specified server type
-func sendBytes(serverType global.GameServerType, body []byte) {
+func sendBytes(serverType global.GameServerType, data []byte) {
 	c := getInnerClient(serverType)
 	if c == nil {
 		log.Warnf("client not connected, type=%d", serverType)
 		return
 	}
-	c.sendBytesMsg(body)
+	c.sendBytesMsg(data)
 }
 
 // Gateway functions
@@ -37,8 +35,8 @@ func SendToGateway(pid int64, msgId protoGen.ProtoCode, body proto.Message) {
 	sendMsg(global.GATE_WAY, pid, int16(msgId), body)
 }
 
-func SendPckToGateway(body []byte) {
-	sendBytes(global.GATE_WAY, body)
+func SendPckToGateway(data []byte) {
+	sendBytes(global.GATE_WAY, data)
 }
 
 // GameServer functions
@@ -50,8 +48,8 @@ func SendToGameServer(pid int64, msgId protoGen.ProtoCode, body proto.Message) {
 	sendMsg(global.GAME, pid, int16(msgId), body)
 }
 
-func SendPckToGameServer(body []byte) {
-	sendBytes(global.GAME, body)
+func SendPckToGameServer(data []byte) {
+	sendBytes(global.GAME, data)
 }
 
 // Router functions
@@ -59,6 +57,6 @@ func SendMsgToRouterServer(pid int64, innerCode protoGen.InnerProtoCode, body pr
 	sendMsg(global.ROUTER, pid, int16(innerCode), body)
 }
 
-func SendPckToRouterServer(body []byte) {
-	sendBytes(global.ROUTER, body)
+func SendPckToRouterServer(data []byte) {
+	sendBytes(global.ROUTER, data)
 }

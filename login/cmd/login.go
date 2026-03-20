@@ -6,6 +6,8 @@ import (
 	"gameSrv/login/dal"
 	"gameSrv/login/watcher"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/global"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
 	"gameSrv/pkg/web"
 	"net/http"
@@ -13,9 +15,12 @@ import (
 	"runtime/debug"
 
 	"github.com/spf13/viper"
+	"go.uber.org/zap/zapcore"
 )
 
 func main() {
+	log.Init("./log/login.log", zapcore.InfoLevel, true)
+	
 	defer func() {
 		if x := recover(); x != nil {
 			s := string(debug.Stack())
@@ -41,6 +46,9 @@ func main() {
 	//mongodb init
 	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	//	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
+
+	//init discover
+	discover.Init(viper.GetViper(), global.LOGIN)
 
 	//start server
 	server := web.NewHttpServer()

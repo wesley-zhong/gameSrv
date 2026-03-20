@@ -2,12 +2,10 @@ package gopool
 
 type WorkerPool struct {
 	workerCount   int
-	goHashFuc     func() uint
 	workerQueSize int
 	workers       []*Worker
 }
 
-// worker count
 func StartNewWorkerPool(workerCount int, workQueSize int) *WorkerPool {
 	pool := &WorkerPool{
 		workerCount:   workerCount,

@@ -3,8 +3,9 @@ package orm
 import (
 	"context"
 	"encoding/json"
-	"github.com/redis/go-redis/v9"
 	"time"
+
+	"github.com/redis/go-redis/v9"
 )
 
 type RedisDAO[T any] struct {
@@ -17,8 +18,11 @@ func (dao *RedisDAO[T]) GetByKey(key string) *T {
 	if err != nil {
 		return nil
 	}
+
 	obj := new(T)
-	json.Unmarshal(result, obj)
+	if err := json.Unmarshal(result, obj); err != nil {
+		return nil
+	}
 	return obj
 }
 
@@ -32,11 +36,11 @@ func (dao *RedisDAO[T]) SetByKey(key string, obj *T) error {
 }
 
 func (dao *RedisDAO[T]) SetWithTTL(key string, obj *T, ttl time.Duration) error {
+	ctx := context.Background()
 	data, err := json.Marshal(obj)
 	if err != nil {
 		return err
 	}
-	ctx := context.Background()
 	return dao.Rdb.Set(ctx, key, data, ttl).Err()
 }
 
@@ -45,6 +49,7 @@ func (dao *RedisDAO[T]) Incr(key string) (int64, error) {
 	return dao.Rdb.Incr(ctx, key).Result()
 }
 
-/**
-to dos other options
-*/
+func (dao *RedisDAO[T]) Del(key string) error {
+	ctx := context.Background()
+	return dao.Rdb.Del(ctx, key).Err()
+}

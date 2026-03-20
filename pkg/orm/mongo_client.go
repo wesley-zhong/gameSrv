@@ -11,8 +11,7 @@ import (
 
 var mongoClient *mongo.Client
 
-func InitMongoDB(addr string, userName string, pwd string) error {
-	// v2 推荐直接在 options 中设置超时，不需要在 Connect 时传入 context
+func InitMongoDB(addr, userName, pwd string) error {
 	mongoUrl := fmt.Sprintf("mongodb://%s", addr)
 
 	opts := options.Client().
@@ -21,15 +20,13 @@ func InitMongoDB(addr string, userName string, pwd string) error {
 			Username: userName,
 			Password: pwd,
 		}).
-		SetTimeout(10 * time.Second) // v2 新增：直接控制连接和操作的全局超时
+		SetTimeout(10 * time.Second)
 
-	// v2 的 Connect 不再需要 context 参数
 	client, err := mongo.Connect(opts)
 	if err != nil {
 		return fmt.Errorf("connect mongodb failed: %w", err)
 	}
 
-	// Ping 仍然需要一个 context 来控制这次探测的生命周期
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
@@ -41,6 +38,16 @@ func InitMongoDB(addr string, userName string, pwd string) error {
 	return nil
 }
 
-func GetDBConnTable(dbName string, tableName string) *mongo.Collection {
+func GetDBConnTable(dbName, tableName string) *mongo.Collection {
+	if mongoClient == nil {
+		return nil
+	}
 	return mongoClient.Database(dbName).Collection(tableName)
+}
+
+func CloseMongoDB() error {
+	if mongoClient == nil {
+		return nil
+	}
+	return mongoClient.Disconnect(context.Background())
 }

@@ -4,6 +4,7 @@ import (
 	"gameSrv/login/dal"
 	"gameSrv/login/dos"
 	"gameSrv/login/service"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/utils"
 )
 
@@ -23,13 +24,14 @@ type LoginRes struct {
 func (login *Login) Login(loginDto *LoginReq) *LoginRes {
 	account := service.PlayerService.FindPlayerAccount(loginDto.AccountId)
 	if account == nil {
-		//log.Warnf(" countId = %s not found", loginDto.AccountId)
+		log.Warnf(" countId = %s not found will create new ", loginDto.AccountId)
+		accoutDO := service.PlayerService.CreatePlayerAccount(loginDto.AccountId)
 		return &LoginRes{
-			ErrCode: 1,
+			Pid: accoutDO.Pid,
 		}
 	}
 	return &LoginRes{
-		Pid: 11111,
+		Pid: account.Pid,
 	}
 }
 

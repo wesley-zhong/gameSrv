@@ -6,83 +6,35 @@ import (
 	"github.com/panjf2000/gnet/v2"
 )
 
-type Client struct {
-}
+type Client struct{}
 
 type gnetHandler struct {
-	server      gnet.BuiltinEventEngine
+	gnet.BuiltinEventEngine
 	gameHandler EventHandler
 	codec       ICodec
-}
-
-func (handler *gnetHandler) OnBoot(eng gnet.Engine) (action gnet.Action) {
-
-	return gnet.None
-}
-
-// OnShutdown fires when the server is being shut down, it is called right after
-// all event-loops and connections are closed.
-func (handler *gnetHandler) OnShutdown(server gnet.Engine) {
-	//handler.gameHandler
-}
-
-// OnOpen fires when a new connection has been opened.
-//
-// The Conn c has information about the connection such as its local and remote addresses.
-// The parameter out is the return value which is going to be sent back to the peer.
-// Sending large amounts of data back to the peer in OnOpen is usually not recommended.
-func (handler *gnetHandler) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
-	context := &ChannelGnet{c, nil}
-	c.SetContext(context)
-	opened, a := handler.gameHandler.OnOpened(context)
-	return opened, gnet.Action(a)
-}
-
-// OnClose fires when a connection has been closed.
-// The parameter err is the last known connection error.
-func (handler *gnetHandler) OnClose(c gnet.Conn, err error) (action gnet.Action) {
-	//	context := &ChannelGnet{c, nil}
-	handler.gameHandler.OnClosed(c.Context().(Channel), err)
-	return gnet.Close
-}
-
-// OnTraffic fires when a socket receives data from the peer.
-//
-// Note that the []byte returned from Conn.Peek(int)/Conn.Next(int) is not allowed to be passed to a new goroutine,
-// as this []byte will be reused within event-loop after OnTraffic() returns.
-// If you have to use this []byte in a new goroutine, you should either make a copy of it or call Conn.Read([]byte)
-// to read data into your own []byte, then pass the new []byte to the new goroutine.
-func (handler *gnetHandler) OnTraffic(c gnet.Conn) (action gnet.Action) {
-	bytes, err := handler.codec.Decode(c)
-	if err != nil {
-		return 0
-	}
-
-	channel := c.Context().(Channel)
-	a := handler.gameHandler.React(bytes, channel)
-	return gnet.Action(a)
-}
-
-// OnTick fires immediately after the server starts and will fire again
-// following the duration specified by the delay return value.
-func (handler *gnetHandler) OnTick() (delay time.Duration, action gnet.Action) {
-	tick, a := handler.gameHandler.Tick()
-	return tick, gnet.Action(a)
 }
 
 var gClient *gnet.Client
 
 func ClientStart(handler EventHandler, opts ...gnet.Option) error {
-	gnetHandler := &gnetHandler{gameHandler: handler, codec: &DefaultCodec{}}
+	gnetHandler := &gnetHandler{
+		gameHandler: handler,
+		codec:       &DefaultCodec{},
+	}
+
 	client, err := gnet.NewClient(gnetHandler, opts...)
-	client.Start()
+	if err != nil {
+		return err
+	}
+
 	gClient = client
-	return err
+	return client.Start()
 }
 
 func ClientStop() {
-	gClient.Stop()
-
+	if gClient != nil {
+		gClient.Stop()
+	}
 }
 
 func ClientInited() bool {
@@ -90,9 +42,55 @@ func ClientInited() bool {
 }
 
 func Dial(network, address string) (Channel, error) {
+	if gClient == nil {
+		return &ChannelGnet{}, nil
+	}
+
 	conn, err := gClient.Dial(network, address)
 	if err != nil {
 		return &ChannelGnet{}, err
 	}
-	return &ChannelGnet{conn, nil}, nil
+	return &ChannelGnet{conn: conn, ctx: nil}, nil
+}
+
+func (h *gnetHandler) OnBoot(eng gnet.Engine) (action gnet.Action) {
+	return gnet.None
+}
+
+func (h *gnetHandler) OnShutdown(srv gnet.Engine) {}
+
+func (h *gnetHandler) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
+	ctx := &ChannelGnet{conn: c, ctx: nil}
+	c.SetContext(ctx)
+	opened, a := h.gameHandler.OnOpened(ctx)
+	return opened, gnet.Action(a)
+}
+
+func (h *gnetHandler) OnClose(c gnet.Conn, err error) (action gnet.Action) {
+	ctx, ok := c.Context().(Channel)
+	if !ok {
+		return gnet.Close
+	}
+	h.gameHandler.OnClosed(ctx, err)
+	return gnet.Close
+}
+
+func (h *gnetHandler) OnTraffic(c gnet.Conn) (action gnet.Action) {
+	bytes, err := h.codec.Decode(c)
+	if err != nil {
+		return gnet.None
+	}
+
+	ctx, ok := c.Context().(Channel)
+	if !ok {
+		return gnet.Close
+	}
+
+	a := h.gameHandler.React(bytes, ctx)
+	return gnet.Action(a)
+}
+
+func (h *gnetHandler) OnTick() (delay time.Duration, action gnet.Action) {
+	tick, a := h.gameHandler.Tick()
+	return tick, gnet.Action(a)
 }
