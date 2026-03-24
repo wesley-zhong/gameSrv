@@ -4,6 +4,7 @@ import (
 	"gameSrv/game/dal"
 	"gameSrv/game/modules"
 	"gameSrv/pkg/actor"
+	"gameSrv/pkg/event"
 )
 
 type GamePlayer struct {
@@ -46,4 +47,8 @@ func (gp *GamePlayer) OnDisconnect() {
 	for _, module := range gp.Modules.IModules {
 		module.OnDisconnect()
 	}
+}
+
+func (gp *GamePlayer) DispatchEvent(ev event.Event) {
+	event.Dispatcher.Dispatch(ev)
 }

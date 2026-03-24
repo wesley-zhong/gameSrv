@@ -7,8 +7,10 @@ import (
 	"gameSrv/game/dal"
 	"gameSrv/game/executor"
 	"gameSrv/game/network"
+	"gameSrv/game/player"
 	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
+	"gameSrv/pkg/event"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -63,6 +65,10 @@ func main() {
 
 	// msg Register
 	discover.Init(viper.GetViper(), global.GAME)
+
+	//event dispather
+	event.InitEventDispatcher(1024)
+	player.InitEvents()
 
 	//start server
 	serverNetworkHandler := &network.ServerEventHandler{}
