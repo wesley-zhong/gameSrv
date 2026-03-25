@@ -1,0 +1,1 @@
+dotnet "./Tools/Luban/Luban.dll" -t server -c java-json -d json --conf "./luban.conf" -x outputCodeDir="../../FYServer/common/src/main/java/cfg" -x outputDataDir="../../FYServer/gamedata/excel-json"
