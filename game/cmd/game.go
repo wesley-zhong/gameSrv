@@ -6,6 +6,7 @@ import (
 	"gameSrv/game/controller"
 	"gameSrv/game/dal"
 	"gameSrv/game/executor"
+	"gameSrv/game/gamedata"
 	"gameSrv/game/network"
 	"gameSrv/game/player"
 	"gameSrv/game/watcher"
@@ -56,6 +57,9 @@ func main() {
 		panic(fmt.Sprintf("Fatal error configs file: %w \n", err))
 	}
 	log.Init("./log/game.log", zapcore.InfoLevel, true)
+
+	//game data init
+	gamedata.LoadGameData()
 
 	//init async executor
 	executor.InitExecutorWithConf()
