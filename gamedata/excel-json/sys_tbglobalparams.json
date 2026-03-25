@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "INT_ARRAY": [
+      1,
+      2,
+      3
+    ],
+    "Vector3": {
+      "x": 1,
+      "y": 2,
+      "z": 3
+    },
+    "INT": 1,
+    "STRING": "示例字段，勿用"
+  },
+  {
+    "id": 2,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 17,
+    "STRING": ""
+  },
+  {
+    "id": 3,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 10000,
+    "STRING": ""
+  },
+  {
+    "id": 4,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 10000,
+    "STRING": ""
+  },
+  {
+    "id": 5,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 10000,
+    "STRING": ""
+  },
+  {
+    "id": 6,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 5,
+    "STRING": ""
+  },
+  {
+    "id": 7,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 500,
+    "STRING": ""
+  },
+  {
+    "id": 8,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 15,
+    "STRING": ""
+  },
+  {
+    "id": 9,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 40,
+    "STRING": ""
+  },
+  {
+    "id": 10,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 0,
+    "STRING": "/Script/Engine.Blueprint'/Game/FY/Actor/Drop/BP_DropEffectActorBase.BP_DropEffectActorBase_C'"
+  },
+  {
+    "id": 11,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 6000,
+    "STRING": ""
+  },
+  {
+    "id": 12,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 0,
+    "STRING": "/Script/Engine.Blueprint'/Game/FY/Gameplay/Component/BP_SpritEnergyComponent.BP_SpritEnergyComponent_C'"
+  },
+  {
+    "id": 13,
+    "INT_ARRAY": [],
+    "Vector3": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "INT": 10000,
+    "STRING": ""
+  }
+]

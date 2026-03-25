@@ -1,0 +1,2466 @@
+[
+  {
+    "id": 90000,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 1,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90004,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90005,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90007,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90008,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90009,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90011,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90012,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 90013,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 1,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90014,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90015,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90016,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 1,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90017,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 1,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90018,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 6,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90019,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90020,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90021,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90022,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90023,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90024,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90025,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90026,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90027,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90028,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 2,
+    "PlayerMode": 1,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_JingHai_Explore"
+  },
+  {
+    "id": 90029,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 2,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90030,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90031,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 2,
+    "PlayerMode": 1,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 90032,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 90033,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 10000,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Silence"
+  },
+  {
+    "id": 10001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_XZ_Explore_10001"
+  },
+  {
+    "id": 10002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 1,
+    "SpawnPointTag": "1",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_JingHai_Explore"
+  },
+  {
+    "id": 10003,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_MiLin_01"
+  },
+  {
+    "id": 10004,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_JingHai_Explore"
+  },
+  {
+    "id": 10005,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 10100,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 9,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_XZ_Explore_10001"
+  },
+  {
+    "id": 10101,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 10102,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 10103,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 10104,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P4"
+  },
+  {
+    "id": 10105,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Silence"
+  },
+  {
+    "id": 10106,
+    "unlockId": 0,
+    "notTeleport": true,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P5_AiLa"
+  },
+  {
+    "id": 10107,
+    "unlockId": 1002,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 2,
+    "PlayerMode": 1,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_JingHai_Explore"
+  },
+  {
+    "id": 10108,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 2,
+    "PlayerMode": 1,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_JingHai_Explore"
+  },
+  {
+    "id": 10109,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 2,
+    "PlayerMode": 1,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 10110,
+    "unlockId": 0,
+    "notTeleport": true,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P5_AiLa"
+  },
+  {
+    "id": 10201,
+    "unlockId": 1003,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 10202,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 10203,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 10204,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 10205,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 10206,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 2,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_DanBo_Explore_Day"
+  },
+  {
+    "id": 50000,
+    "unlockId": 1004,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 8,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_UI_ZuoHuo"
+  },
+  {
+    "id": 50001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50003,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50011,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50014,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50017,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50020,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50021,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50022,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50023,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50024,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50025,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50026,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 50027,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50028,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50029,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50030,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 50031,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 50032,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 50034,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50035,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50036,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50037,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50038,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 50039,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50040,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50041,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50043,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50044,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50045,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50046,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50047,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50048,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore"
+  },
+  {
+    "id": 50050,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50051,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 50052,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50053,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 50054,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 3,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 60001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60003,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60004,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60005,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60006,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60007,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60008,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60009,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60010,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60011,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60012,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60013,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 60014,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60015,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60016,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60017,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60018,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60019,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60020,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 4,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "Res_0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 60021,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60022,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 11,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60023,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 11,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60024,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 11,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60025,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 11,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60026,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60027,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60028,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 60029,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": true,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 61001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 10,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 61002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 10,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": ""
+  },
+  {
+    "id": 70001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 70002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 70003,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 70004,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 70005,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 70006,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 70007,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 5,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Advanced_Explore"
+  },
+  {
+    "id": 20001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 6,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 20002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 6,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 20003,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 6,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Indoor"
+  },
+  {
+    "id": 20004,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 6,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_HXH_Explore"
+  },
+  {
+    "id": 80001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_ShanDong"
+  },
+  {
+    "id": 40101,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_MiLin_01"
+  },
+  {
+    "id": 40102,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 2,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Scene_Resource_Base_Explore"
+  },
+  {
+    "id": 30001,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30002,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30003,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30004,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30005,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30006,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30007,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30008,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30009,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30010,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30011,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30012,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30013,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30014,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30015,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  },
+  {
+    "id": 30016,
+    "unlockId": 0,
+    "notTeleport": false,
+    "notAutoRest": false,
+    "type": 7,
+    "VisionLevel": 0,
+    "PlayerMode": 0,
+    "SpawnPointTag": "0",
+    "LevelSafeAreaLocation": {
+      "x": 400000,
+      "y": 0,
+      "z": 1500000
+    },
+    "Background_Music": "Play_Music_Scene_YSC_Explore_P3_Outdoor"
+  }
+]

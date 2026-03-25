@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "LvlId": 1000,
+    "SceneId": 10101
+  },
+  {
+    "Id": 2,
+    "LvlId": 1000,
+    "SceneId": 10102
+  },
+  {
+    "Id": 3,
+    "LvlId": 1000,
+    "SceneId": 10103
+  },
+  {
+    "Id": 4,
+    "LvlId": 1000,
+    "SceneId": 10104
+  },
+  {
+    "Id": 5,
+    "LvlId": 1000,
+    "SceneId": 10105
+  },
+  {
+    "Id": 6,
+    "LvlId": 1001,
+    "SceneId": 10201
+  },
+  {
+    "Id": 7,
+    "LvlId": 1002,
+    "SceneId": 80001
+  },
+  {
+    "Id": 8,
+    "LvlId": 1003,
+    "SceneId": 40101
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1001,
+    "Hidden": false,
+    "BeginQuestId": 36301,
+    "EndQuestId": 31101
+  },
+  {
+    "Id": 100000,
+    "Hidden": false,
+    "BeginQuestId": 1010000001,
+    "EndQuestId": 1010000001
+  },
+  {
+    "Id": 100001,
+    "Hidden": false,
+    "BeginQuestId": 1010101002,
+    "EndQuestId": 1010107002
+  },
+  {
+    "Id": 100002,
+    "Hidden": false,
+    "BeginQuestId": 1010201001,
+    "EndQuestId": 1010201001
+  },
+  {
+    "Id": 600001,
+    "Hidden": false,
+    "BeginQuestId": 0,
+    "EndQuestId": 0
+  },
+  {
+    "Id": 700001,
+    "Hidden": false,
+    "BeginQuestId": 1110201005,
+    "EndQuestId": 1110201005
+  },
+  {
+    "Id": 800001,
+    "Hidden": false,
+    "BeginQuestId": 1210201001,
+    "EndQuestId": 1210201004
+  },
+  {
+    "Id": 900001,
+    "Hidden": false,
+    "BeginQuestId": 2000000002,
+    "EndQuestId": 2000000002
+  }
+]

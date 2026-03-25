@@ -1,0 +1,450 @@
+[
+  {
+    "Id": 10000101,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000102,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000103,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000104,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000105,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000106,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000107,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000108,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000121,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000122,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000123,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000131,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10000132,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 10001101,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 10001103,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 10001104,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 10001105,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 10001102,
+    "DropGroupId": 10019
+  },
+  {
+    "Id": 10001106,
+    "DropGroupId": 10019
+  },
+  {
+    "Id": 10001107,
+    "DropGroupId": 10019
+  },
+  {
+    "Id": 10001108,
+    "DropGroupId": 10019
+  },
+  {
+    "Id": 10001109,
+    "DropGroupId": 10019
+  },
+  {
+    "Id": 10001110,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 10001111,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 10002101,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10002102,
+    "DropGroupId": 10015
+  },
+  {
+    "Id": 10002103,
+    "DropGroupId": 10016
+  },
+  {
+    "Id": 10002104,
+    "DropGroupId": 10017
+  },
+  {
+    "Id": 10002105,
+    "DropGroupId": 10013
+  },
+  {
+    "Id": 10003101,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003102,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003103,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003104,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003105,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003106,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003107,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003108,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003109,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003110,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003111,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 10003112,
+    "DropGroupId": 10014
+  },
+  {
+    "Id": 11001001,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001002,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001006,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001007,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001008,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001009,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001010,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001011,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11001012,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11000012,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11000013,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 11000015,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000002,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000003,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000004,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000005,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000006,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000007,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000008,
+    "DropGroupId": 32001001
+  },
+  {
+    "Id": 12000009,
+    "DropGroupId": 32001002
+  },
+  {
+    "Id": 12000010,
+    "DropGroupId": 32001003
+  },
+  {
+    "Id": 12000011,
+    "DropGroupId": 230044001
+  },
+  {
+    "Id": 12000012,
+    "DropGroupId": 32001005
+  },
+  {
+    "Id": 12000013,
+    "DropGroupId": 32001006
+  },
+  {
+    "Id": 12000014,
+    "DropGroupId": 32001001
+  },
+  {
+    "Id": 12000015,
+    "DropGroupId": 32001002
+  },
+  {
+    "Id": 12000016,
+    "DropGroupId": 32001003
+  },
+  {
+    "Id": 12000017,
+    "DropGroupId": 32001006
+  },
+  {
+    "Id": 12000018,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000019,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 12000020,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000002,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000003,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000004,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000007,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000008,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000009,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000010,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000011,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000012,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000013,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000014,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000015,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000016,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000017,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000018,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000019,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000020,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000021,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000022,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000023,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000026,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000028,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000029,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000035,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000037,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000039,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000040,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 13000043,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90001001,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90002001,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90002011,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90002021,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000051,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000054,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000055,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000056,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000057,
+    "DropGroupId": 10018
+  },
+  {
+    "Id": 90000058,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000059,
+    "DropGroupId": 0
+  },
+  {
+    "Id": 90000060,
+    "DropGroupId": 0
+  }
+]

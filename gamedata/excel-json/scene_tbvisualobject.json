@@ -1,0 +1,98 @@
+[
+  {
+    "Type": 13,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 14,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 15,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 16,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 20,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": true
+  },
+  {
+    "Type": 18,
+    "CanTeleport": false,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 21,
+    "CanTeleport": true,
+    "CanRecover": true,
+    "CanReborn": true
+  },
+  {
+    "Type": 19,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 12,
+    "CanTeleport": true,
+    "CanRecover": true,
+    "CanReborn": true
+  },
+  {
+    "Type": 11,
+    "CanTeleport": false,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 7,
+    "CanTeleport": false,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 3,
+    "CanTeleport": false,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 2,
+    "CanTeleport": false,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 6,
+    "CanTeleport": false,
+    "CanRecover": false,
+    "CanReborn": false
+  },
+  {
+    "Type": 4,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": true
+  },
+  {
+    "Type": 17,
+    "CanTeleport": true,
+    "CanRecover": false,
+    "CanReborn": false
+  }
+]
