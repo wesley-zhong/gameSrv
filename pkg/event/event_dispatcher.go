@@ -2,6 +2,7 @@ package event
 
 type GameEventID int32
 type Event interface {
+	Init(playerId int64, eventId GameEventID)
 	EventId() GameEventID
 }
 
@@ -13,10 +14,10 @@ type DispatcherWrapper struct {
 var Dispatcher *DispatcherWrapper
 
 func InitEventDispatcher(count int32) {
-	Dispatcher = newEventDispatcher(count)
+	Dispatcher = NewEventDispatcher(count)
 }
 
-func newEventDispatcher(count int32) *DispatcherWrapper {
+func NewEventDispatcher(count int32) *DispatcherWrapper {
 	return &DispatcherWrapper{
 		eventHandlers: make(map[GameEventID][]Handler, count),
 	}

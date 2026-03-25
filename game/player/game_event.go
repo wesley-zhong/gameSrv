@@ -1,44 +1,28 @@
 package player
 
 import (
+	"gameSrv/game/gameevent"
+	"gameSrv/game/unlock"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/log"
 )
 
-const (
-	LoginEvent      event.GameEventID = 1
-	LogoutEvent     event.GameEventID = 2
-	DisconnectEvent event.GameEventID = 3
-)
-
 func InitEvents() {
-	event.Dispatcher.Register(LoginEvent, LoginEventHandler)
-	event.Dispatcher.Register(DisconnectEvent, DisconnectEventHandler)
-}
+	event.InitEventDispatcher(1024)
+	event.Dispatcher.Register(gameevent.LoginEventID, LoginEventHandler)
+	event.Dispatcher.Register(gameevent.DisconnectEventID, DisconnectEventHandler)
 
-type GameEvent struct {
-	player  *GamePlayer
-	eventId event.GameEventID
-}
-
-func NewGameEvent(player *GamePlayer, eventId event.GameEventID) *GameEvent {
-	return &GameEvent{
-		player:  player,
-		eventId: eventId,
-	}
-}
-
-func (ge *GameEvent) EventId() event.GameEventID {
-	return ge.eventId
+	//
+	unlock.InitEvents()
 }
 
 // event handlers
 func LoginEventHandler(event event.Event) {
-	gameEvent := event.(*GameEvent)
-	log.Infof("on login handler pid =%d eventid %d", gameEvent.player.Id, event.EventId())
+	gameEvent := event.(*gameevent.GameEvent)
+	log.Infof("on login handler pid =%d eventid %d", gameEvent.PlayerId, event.EventId())
 }
 
 func DisconnectEventHandler(event event.Event) {
-	gameEvent := event.(*GameEvent)
-	log.Infof("on disconnected handler pid =%d eventid %d", gameEvent.player.Id, event.EventId())
+	gameEvent := event.(*gameevent.GameEvent)
+	log.Infof("on disconnected handler pid =%d eventid %d", gameEvent.PlayerId, event.EventId())
 }

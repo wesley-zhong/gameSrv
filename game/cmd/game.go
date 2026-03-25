@@ -11,7 +11,6 @@ import (
 	"gameSrv/game/player"
 	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
-	"gameSrv/pkg/event"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -71,7 +70,6 @@ func main() {
 	discover.Init(viper.GetViper(), global.GAME)
 
 	//event dispather
-	event.InitEventDispatcher(1024)
 	player.InitEvents()
 
 	//start server
