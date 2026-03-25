@@ -19,6 +19,7 @@ type Tables struct {
     TbVisualObject *SceneTbVisualObject
     TbInitCnf *SysTbInitCnf
     TbInstruction *SysTbInstruction
+    TbCommonUnlock *SysTbCommonUnlock
     TbGlobalParams *SysTbGlobalParams
     TbChapter *QuestTbChapter
     TbQuest *QuestTbQuest
@@ -73,6 +74,12 @@ func NewTables(loader JsonLoader) (*Tables, error) {
         return nil, err
     }
     if tables.TbInstruction, err = NewSysTbInstruction(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("sys_tbcommonunlock") ; err != nil {
+        return nil, err
+    }
+    if tables.TbCommonUnlock, err = NewSysTbCommonUnlock(buf) ; err != nil {
         return nil, err
     }
     if buf, err = loader("sys_tbglobalparams") ; err != nil {
