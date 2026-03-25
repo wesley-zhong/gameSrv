@@ -10,7 +10,7 @@ import (
 var Tables *cfg.Tables
 
 func loader(file string) ([]map[string]interface{}, error) {
-	if bytes, err := os.ReadFile("./game-json-data/excel-json/" + file + ".json"); err != nil {
+	if bytes, err := os.ReadFile("./game-data-gen/excel-json/" + file + ".json"); err != nil {
 		return nil, err
 	} else {
 		jsonData := make([]map[string]interface{}, 0)

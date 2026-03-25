@@ -1,5 +1,5 @@
 set CODE_DIR=..\..\cnfGen
-set DATA_DIR=..\..\game-json-data
+set DATA_DIR=..\..\game-data-gen
 set LUBAN_DLL=.\Tools\Luban\Luban.dll
 set CONF_ROOT=.
 dotnet %LUBAN_DLL% ^
