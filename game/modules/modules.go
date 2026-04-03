@@ -8,8 +8,9 @@ import (
 type ModuleTypeId int32
 
 const (
-	ROLE_MODULE ModuleTypeId = 1
-	ITEM_MODULE ModuleTypeId = 2
+	ROLE_MODULE  ModuleTypeId = 1
+	ITEM_MODULE  ModuleTypeId = 2
+	QUEUE_MODULE ModuleTypeId = 3
 )
 
 type IModule interface {

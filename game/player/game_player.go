@@ -24,6 +24,7 @@ func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 	modules.RegisterNewModule(&modules.RoleModule{}, player.Modules, dal.RoleDAO)
 
 	modules.RegisterNewModule(&modules.ItemModule{}, player.Modules, dal.ItemDAO)
+	modules.RegisterNewModule(&modules.QuestModule{}, player.Modules, dal.QuestDAO)
 	return player
 }
 
@@ -51,4 +52,17 @@ func (gp *GamePlayer) OnDisconnect() {
 
 func (gp *GamePlayer) DispatchEvent(ev event.Event) {
 	event.Dispatcher.Dispatch(ev)
+}
+
+func GetModule[T any](gp *GamePlayer, moduleId modules.ModuleTypeId) *T {
+	module, ok := gp.Modules.IModules[moduleId]
+	if !ok {
+		return nil
+	}
+
+	if target, ok := any(module).(*T); ok {
+		return target
+	}
+
+	return nil
 }

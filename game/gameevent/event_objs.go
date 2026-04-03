@@ -11,6 +11,10 @@ const (
 	QuestStepUnlockEventID event.GameEventID = 4
 	MainQuestUnlockEventID event.GameEventID = 5
 	GetAvatarEventID       event.GameEventID = 6
+	RoleLvlUpdateEventId   event.GameEventID = 7
+	ObtainItemEventID      event.GameEventID = 8
+	KillMonsterEventID     event.GameEventID = 9
+	QuestStepFinishEventID event.GameEventID = 10
 )
 
 type GameEvent struct {
@@ -50,4 +54,21 @@ type QuestStepFinishEvent struct {
 type GetAvatarEvent struct {
 	GameEvent
 	AvatarCnfId int64
+}
+
+type RoleLvlUpEvent struct {
+	GameEvent
+	CurLvl int32
+}
+
+type KillMonsterEvent struct {
+	GameEvent
+	MonsterId int64
+}
+
+type ObtainItemEvent struct {
+	GameEvent
+	ItemId int64
+	CnfId  int32
+	Num    int32
 }
