@@ -4,12 +4,13 @@ import (
 	"gameSrv/cnfGen/cfg"
 	"gameSrv/game/gamedata"
 	"gameSrv/game/gameevent"
+	"gameSrv/game/modules"
 	"gameSrv/game/player"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/log"
 )
 
-var questProcess = make(map[int]func(*player.GamePlayer, *Quest, event.Event) ProRet)
+var questProcess = make(map[int]func(*player.GamePlayer, *modules.Quest, event.Event) ProRet)
 
 type ProRet int32
 
@@ -20,16 +21,16 @@ const (
 	FAILED   ProRet = 3
 )
 
-func FinishContentInit() {
+func finishContentInit() {
 	questProcess[cfg.QuestContentType_ROLE_LEVEL_UP] = RoleLvlUpProcess
 	questProcess[cfg.QuestContentType_QUEST_FINISHED] = MainQuestFinishProcess
 	questProcess[cfg.QuestContentType_KILL_MONSTER] = KillMonsterProcess
 	questProcess[cfg.QuestContentType_OBTAIN_ITEM] = ObtainItemProcess
 }
 
-func ProcessQuestContentByEvent(player *player.GamePlayer, quest *Quest, ev event.Event) ProRet {
+func ProcessQuestContentByEvent(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	processRet := NONE
-	questStepCnf := gamedata.Tables.TbQuestStep.Get(quest.Qid)
+	questStepCnf := gamedata.Tables.TbQuestStep.Get(quest.Id)
 	if questStepCnf != nil {
 		return processRet
 	}
@@ -40,9 +41,9 @@ func ProcessQuestContentByEvent(player *player.GamePlayer, quest *Quest, ev even
 			log.Errorf(" finish type ={} not found process function", content.Type)
 		}
 		processRet = processFuc(player, quest, ev)
+		quest.Finished = checkQuestFinished(quest, questStepCnf)
 
-		finished := checkQuestFinished(quest, questStepCnf)
-		if finished {
+		if quest.Finished {
 			processRet = FINISH
 			return processRet
 		}
@@ -50,41 +51,40 @@ func ProcessQuestContentByEvent(player *player.GamePlayer, quest *Quest, ev even
 	return processRet
 }
 
-func RoleLvlUpProcess(player *player.GamePlayer, quest *Quest, ev event.Event) ProRet {
+func RoleLvlUpProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	roleLvlUp := ev.(*gameevent.RoleLvlUpEvent)
 	log.Infof("on role lvl up  cur lvl ={}", roleLvlUp.CurLvl)
 	return CONTINUE
 }
 
 // 完成主线任务 触发
-func MainQuestFinishProcess(player *player.GamePlayer, quest *Quest, ev event.Event) ProRet {
+func MainQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	questFinsih := ev.(*gameevent.MainQuestFinishEvent)
 	log.Infof("on role lvl up  cur lvl ={}", questFinsih.MainQuestId)
 	return CONTINUE
 }
 
 // 完成分支任务 触发
-func StepQuestFinishProcess(player *player.GamePlayer, quest *Quest, ev event.Event) ProRet {
+func StepQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	questFinish := ev.(*gameevent.QuestStepFinishEvent)
 	log.Infof("on role lvl up  cur lvl ={}", questFinish.StepQuestId)
 	return CONTINUE
 }
 
 // 杀死 触发
-func KillMonsterProcess(player *player.GamePlayer, quest *Quest, ev event.Event) ProRet {
+func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 
 	return CONTINUE
 }
 
 // 获取道具 触发
-func ObtainItemProcess(player *player.GamePlayer, quest *Quest, ev event.Event) ProRet {
+func ObtainItemProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 
 	return CONTINUE
 }
 
-//finish check
-
-func checkQuestFinished(quest *Quest, questStepCnf *cfg.QuestQuestStepCnf) bool {
+// finish check
+func checkQuestFinished(quest *modules.Quest, questStepCnf *cfg.QuestQuestStepCnf) bool {
 	ret := true
 	for _, cnd := range questStepCnf.FinishCond {
 		ret = ret && checkFinishCnd(quest, cnd)
@@ -103,9 +103,9 @@ func checkQuestFinished(quest *Quest, questStepCnf *cfg.QuestQuestStepCnf) bool 
 	return true
 }
 
-func checkFinishCnd(quest *Quest, cnd *cfg.QuestContent) bool {
-	for _, questData := range quest.QuestData {
-		if int32(questData.EvId) != cnd.Type {
+func checkFinishCnd(quest *modules.Quest, cnd *cfg.QuestContent) bool {
+	for _, questData := range quest.CurData {
+		if questData.EvId != cnd.Type {
 			continue
 		}
 		for index, val := range questData.CurData {

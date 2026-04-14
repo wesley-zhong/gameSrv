@@ -9,6 +9,7 @@ import (
 	"gameSrv/game/gamedata"
 	"gameSrv/game/network"
 	"gameSrv/game/player"
+	"gameSrv/game/quest"
 	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
@@ -57,20 +58,19 @@ func main() {
 	}
 	log.Init("./log/game.log", zapcore.InfoLevel, true)
 
-	//game data init
-	gamedata.LoadGameData()
-
 	//init async executor
 	executor.InitExecutorWithConf()
 	//mongodb init
 	dal.InitMongoDB(viper.GetString("mongo.Addr"), viper.GetString("mongo.userName"), viper.GetString("mongo.password"))
 	dal.InitRedisDB(viper.GetString("redis.addr"), viper.GetString("redis.password"))
 
-	// msg Register
-	discover.Init(viper.GetViper(), global.GAME)
+	//game data init
+	gamedata.LoadGameData()
 
 	//event dispather
 	player.InitEvents()
+	// init modules
+	quest.Init()
 
 	//start server
 	serverNetworkHandler := &network.ServerEventHandler{}
@@ -89,6 +89,9 @@ func main() {
 	loginController := &controller.Login{}
 	httpServer.HttpMethod.RegisterController(loginController)
 	go httpServer.WebAppStart(7788)
+
+	// msg Register
+	discover.Init(viper.GetViper(), global.GAME)
 
 	////register to etcd
 	err = discover.InitDiscoverAndRegister(viper.GetViper(), watcher.OnDiscoveryServiceChange)

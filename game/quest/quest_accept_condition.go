@@ -10,7 +10,7 @@ import (
 
 var acceptCnfProcess = make(map[int]func(player *player.GamePlayer, cnf *cfg.QuestQuestCnf, ev event.Event) bool)
 
-func AcceptConditionInit() {
+func acceptConditionInit() {
 	acceptCnfProcess[cfg.QuestAcceptConditionType_ROLE_LEVEL_UP] = RoleLvlUpAcceptCnd
 	acceptCnfProcess[cfg.QuestAcceptConditionType_QUEST_FINISHED] = MainQuestFinishAcceptCnd
 	acceptCnfProcess[cfg.QuestAcceptConditionType_KILL_MONSTER] = KillMonsterAcceptCnd

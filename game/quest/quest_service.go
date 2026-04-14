@@ -17,58 +17,50 @@ const (
 	WIN_PVP_COUNT = 3
 )
 
-type EventId int32
-
-type QData struct {
-	EvId    EventId
-	CurData []int64
-}
-type Quest struct {
-	Qid       int64   // quest cnf id
-	QuestData []QData // quest cur data
-}
-
-func init() {
+func Init() {
+	refactorQuestCnfData()
+	acceptConditionInit()
+	finishContentInit()
 	event.Dispatcher.Register(gameevent.RoleLvlUpdateEventId, onRoleLevelUpdateEvent)
 	event.Dispatcher.Register(gameevent.KillMonsterEventID, onKillMonsterEvent)
 	event.Dispatcher.Register(gameevent.ObtainItemEventID, onObtainItemEvent)
 	event.Dispatcher.Register(gameevent.QuestStepFinishEventID, onQuestFinished)
 }
 
-func processQuestByEvent(evId int, ev event.Event) {
+func processQuestByEvent(evId int32, ev event.Event) {
 	gameEvent := ev.(*gameevent.GameEvent)
 	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
-	//process accept
-	readyToAcceptQuestList := getAcceptedQuestByEventId(evId)
+	//process accept new quest
+	readyToAcceptQuestList := getAcceptedQuestByEventId(gamePlayer, evId)
 	for _, questCnf := range readyToAcceptQuestList {
-		baccepted := ProcessQuestAcceptByEvent(gamePlayer, questCnf, ev)
-		if baccepted {
+		accepted := ProcessQuestAcceptByEvent(gamePlayer, questCnf, ev)
+		if accepted {
 			questModule := player.GetModule[modules.QuestModule](gamePlayer, modules.QUEUE_MODULE)
 			questModule.AddQuest(questCnf)
 		}
 	}
-
-	ownQuestList := getOwnQuestByEventId(evId)
+	// process own quest  content
+	ownQuestList := getOwnQuestStepByEventId(gamePlayer, evId)
 	for _, quest := range ownQuestList {
-		bfnished := ProcessQuestContentByEvent(gamePlayer, quest, ev)
-		if bfnished == FINISH {
+		finished := ProcessQuestContentByEvent(gamePlayer, quest, ev)
+		if finished == FINISH {
 			event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.MainQuestFinishEvent](gamePlayer.Id, gameevent.MainQuestUnlockEventID))
 		}
 	}
-	// process own quest
 }
 
-func getAcceptedQuestByEventId(evId int) []*cfg.QuestQuestCnf {
-
-	return nil
+func getAcceptedQuestByEventId(gp *player.GamePlayer, evId int32) []*cfg.QuestQuestCnf {
+	return findQuestWithAcceptEvent(gp, evId)
 }
-func getOwnQuestByEventId(id int) []*Quest {
-	return nil
+func getOwnQuestStepByEventId(gp *player.GamePlayer, evId int32) []*modules.Quest {
+	questModule := player.GetModule[modules.QuestModule](gp, modules.QUEUE_MODULE)
+	return questModule.FindQuestByEventId(evId)
 }
 
 func onRoleLevelUpdateEvent(event event.Event) {
 	roleLvlUp := event.(*gameevent.RoleLvlUpEvent)
 	log.Infof("on role level update event id={}", roleLvlUp.CurLvl)
+	processQuestByEvent(cfg.QuestContentType_ROLE_LEVEL_UP, event)
 }
 
 func onKillMonsterEvent(ev event.Event) {
