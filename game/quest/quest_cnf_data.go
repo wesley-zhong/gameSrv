@@ -10,6 +10,7 @@ import (
 var acceptCondQuestMap = make(map[int32][]*cfg.QuestQuestCnf)
 var unlockCndMap = make(map[int32][]*cfg.QuestQuestCnf)
 var questMap = make(map[int64]*cfg.QuestQuestCnf)
+var questStepMap = make(map[int64]*cfg.QuestQuestStepCnf)
 var questContentEventQuest = make(map[int32][]*cfg.QuestQuestStepCnf)
 
 func refactorQuestCnfData() {
@@ -46,7 +47,26 @@ func refactorQuestStepCnf() {
 		}
 		//set parent and child quest
 		questMap[val.Id].ChildQuestMap[val.Id] = val
+		questMap[val.Id].ChildQuestList = append(questMap[val.Id].ChildQuestList, val)
+		questStepMap[val.Id] = val
 	}
+}
+
+func findNextQuestStep(questStep *modules.Quest) *cfg.QuestQuestStepCnf {
+	cnf := questMap[questStep.Id]
+	if cnf == nil {
+		return nil
+	}
+	list := cnf.ChildQuestList
+	for i, val := range list {
+		if val.QuestId == questStep.Id {
+			if i+1 == len(list) {
+				return nil
+			}
+			return list[i+1]
+		}
+	}
+	return nil
 }
 
 func findQuestStepWithEvent(evId int32) []*cfg.QuestQuestStepCnf {
@@ -64,4 +84,8 @@ func findQuestWithAcceptEvent(gp *player.GamePlayer, evId int32) []*cfg.QuestQue
 		}
 	}
 	return readyToAcceptList
+}
+
+func findQuestStepCnf(questStepId int64) *cfg.QuestQuestStepCnf {
+	return questStepMap[questStepId]
 }

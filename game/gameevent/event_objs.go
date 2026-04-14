@@ -8,13 +8,12 @@ const (
 	LoginEventID           event.GameEventID = 1
 	LogoutEventID          event.GameEventID = 2
 	DisconnectEventID      event.GameEventID = 3
-	QuestStepUnlockEventID event.GameEventID = 4
-	MainQuestUnlockEventID event.GameEventID = 5
+	QuestStepFinishEventID event.GameEventID = 4
+	MainQuestFinishEventID event.GameEventID = 5
 	GetAvatarEventID       event.GameEventID = 6
 	RoleLvlUpdateEventId   event.GameEventID = 7
 	ObtainItemEventID      event.GameEventID = 8
 	KillMonsterEventID     event.GameEventID = 9
-	QuestStepFinishEventID event.GameEventID = 10
 )
 
 type GameEvent struct {

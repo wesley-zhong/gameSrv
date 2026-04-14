@@ -15,8 +15,8 @@ var unlockCheckFuncs map[int32]UnlockFunc
 var unlockCheckData map[int32][]*cfg.UnLockCondBean
 
 func InitEvents() {
-	event.Dispatcher.Register(gameevent.QuestStepUnlockEventID, questStepUnlockEvent)
-	event.Dispatcher.Register(gameevent.MainQuestUnlockEventID, mainQuestUnlockEvent)
+	event.Dispatcher.Register(gameevent.QuestStepFinishEventID, questStepUnlockEvent)
+	event.Dispatcher.Register(gameevent.MainQuestFinishEventID, mainQuestUnlockEvent)
 	//unlock check functions
 	unlockCheckFuncs = make(map[int32]UnlockFunc)
 	unlockCheckFuncs[cfg.UnLockCnd_MAIN_TASK] = mainQuestUnlockEventCheck

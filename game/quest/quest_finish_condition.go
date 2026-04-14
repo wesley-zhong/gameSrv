@@ -71,14 +71,14 @@ func StepQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, ev 
 	return CONTINUE
 }
 
-// 杀死 触发
+// 杀死 触发(monster configId [lvl] count
 func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	KillMonster := ev.(*gameevent.KillMonsterEvent)
 	log.Infof("----- kill monster ={}", KillMonster.MonsterId)
 	return CONTINUE
 }
 
-// 获取道具 触发
+// 获取道具(config id, count) 触发
 func ObtainItemProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	ObtainItem := ev.(*gameevent.ObtainItemEvent)
 	data := quest.CurData

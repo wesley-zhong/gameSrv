@@ -35,8 +35,7 @@ func processQuestByEvent(evId int32, ev event.Event) {
 	for _, questCnf := range readyToAcceptQuestList {
 		accepted := ProcessQuestAcceptByEvent(gamePlayer, questCnf, ev)
 		if accepted {
-			questModule := player.GetModule[modules.QuestModule](gamePlayer, modules.QUEUE_MODULE)
-			questModule.AddQuest(questCnf)
+			acceptNewQuest(gamePlayer, questCnf)
 		}
 	}
 	// process own quest  content
@@ -44,8 +43,39 @@ func processQuestByEvent(evId int32, ev event.Event) {
 	for _, quest := range ownQuestList {
 		finished := ProcessQuestContentByEvent(gamePlayer, quest, ev)
 		if finished == FINISH {
-			event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.MainQuestFinishEvent](gamePlayer.Id, gameevent.MainQuestUnlockEventID))
+			finishQuest(gamePlayer, quest)
 		}
+	}
+}
+
+func acceptNewQuest(gamePlayer *player.GamePlayer, questCnf *cfg.QuestQuestCnf) {
+	questModule := player.GetModule[modules.QuestModule](gamePlayer, modules.QUEUE_MODULE)
+	questModule.AddQuest(questCnf)
+	//get the main quest first quest step
+	questStep := questCnf.ChildQuestList[0]
+	acceptNewQuestStep(gamePlayer, questStep)
+}
+func acceptNewQuestStep(gamePlayer *player.GamePlayer, questStep *cfg.QuestQuestStepCnf) {
+	questModule := player.GetModule[modules.QuestModule](gamePlayer, modules.QUEUE_MODULE)
+	questModule.AddQuestStep(questStep)
+	exeQuestBeginEvent(gamePlayer, questStep)
+}
+
+func finishQuest(gamePlayer *player.GamePlayer, quest *modules.Quest) {
+	questStepCnf := findQuestStepCnf(quest.Id)
+	if questStepCnf != nil {
+		log.Errorf("quest step cnf is %v", questStepCnf)
+		return
+	}
+	if questStepCnf.FinishParent {
+		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.MainQuestFinishEvent](gamePlayer.Id, gameevent.MainQuestFinishEventID))
+	} else {
+		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.QuestStepFinishEvent](gamePlayer.Id, gameevent.QuestStepFinishEventID))
+	}
+	exeQuestFinishedEvent(gamePlayer, questStepCnf)
+	nextQuestStep := findNextQuestStep(quest)
+	if nextQuestStep != nil {
+		acceptNewQuestStep(gamePlayer, nextQuestStep)
 	}
 }
 
