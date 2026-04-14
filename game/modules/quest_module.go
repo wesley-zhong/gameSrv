@@ -2,6 +2,8 @@ package modules
 
 import (
 	"gameSrv/cnfGen/cfg"
+	"gameSrv/game/gameevent"
+	"gameSrv/pkg/event"
 	"gameSrv/pkg/log"
 )
 
@@ -38,6 +40,7 @@ func (questModule *QuestModule) OnLogin() {
 		questModule.DataDO = &QuestDO{
 			Id: questModule.Pid,
 		}
+		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.Pid, gameevent.DisconnectEventID))
 		questModule.MarkDirty()
 	}
 	return

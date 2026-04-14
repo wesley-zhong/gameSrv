@@ -14,6 +14,7 @@ const (
 	RoleLvlUpdateEventId   event.GameEventID = 7
 	ObtainItemEventID      event.GameEventID = 8
 	KillMonsterEventID     event.GameEventID = 9
+	QuestInitEventID       event.GameEventID = 10
 )
 
 type GameEvent struct {
@@ -30,9 +31,9 @@ func (ge *GameEvent) Init(pid int64, eid event.GameEventID) {
 func NewEvent[T any, PT interface {
 	*T
 	event.Event
-}](pid int64, eid event.GameEventID) PT {
-	ev := PT(new(T))  // 分配内存并转为接口类型
-	ev.Init(pid, eid) // 初始化基础字段
+}](pid int64, evId event.GameEventID) PT {
+	ev := PT(new(T))   // 分配内存并转为接口类型
+	ev.Init(pid, evId) // 初始化基础字段
 	return ev
 }
 

@@ -25,15 +25,21 @@ func Init() {
 	event.Dispatcher.Register(gameevent.KillMonsterEventID, onKillMonsterEvent)
 	event.Dispatcher.Register(gameevent.ObtainItemEventID, onObtainItemEvent)
 	event.Dispatcher.Register(gameevent.QuestStepFinishEventID, onQuestFinished)
+	event.Dispatcher.Register(gameevent.QuestInitEventID, onPlayerQuestInit)
 }
 
-func processQuestByEvent(evId int32, ev event.Event) {
-	gameEvent := ev.(*gameevent.GameEvent)
-	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
+func initPlayerQuest(gamePlayer *player.GamePlayer) {
+	readyToAcceptQuestList := getAcceptedQuestByEventId(gamePlayer, 0)
+	for _, questCnf := range readyToAcceptQuestList {
+		acceptNewQuest(gamePlayer, questCnf)
+	}
+}
+
+func processQuestByEvent(gamePlayer *player.GamePlayer, evId int32, ev event.Event) {
 	//process accept new quest
 	readyToAcceptQuestList := getAcceptedQuestByEventId(gamePlayer, evId)
 	for _, questCnf := range readyToAcceptQuestList {
-		accepted := ProcessQuestAcceptByEvent(gamePlayer, questCnf, ev)
+		accepted := processQuestAcceptByEvent(gamePlayer, questCnf, ev)
 		if accepted {
 			acceptNewQuest(gamePlayer, questCnf)
 		}
@@ -88,19 +94,33 @@ func getOwnQuestStepByEventId(gp *player.GamePlayer, evId int32) []*modules.Ques
 }
 
 func onRoleLevelUpdateEvent(event event.Event) {
+	gameEvent := event.(*gameevent.GameEvent)
+	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
 	roleLvlUp := event.(*gameevent.RoleLvlUpEvent)
 	log.Infof("on role level update event id={}", roleLvlUp.CurLvl)
-	processQuestByEvent(cfg.QuestContentType_ROLE_LEVEL_UP, event)
+	processQuestByEvent(gamePlayer, cfg.QuestContentType_ROLE_LEVEL_UP, event)
 }
 
 func onKillMonsterEvent(ev event.Event) {
-	processQuestByEvent(cfg.QuestAcceptConditionType_KILL_MONSTER, ev)
+	gameEvent := ev.(*gameevent.GameEvent)
+	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
+	processQuestByEvent(gamePlayer, cfg.QuestAcceptConditionType_KILL_MONSTER, ev)
 }
 
 func onObtainItemEvent(ev event.Event) {
-	processQuestByEvent(cfg.QuestAcceptConditionType_OBTAIN_ITEM, ev)
+	gameEvent := ev.(*gameevent.GameEvent)
+	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
+	processQuestByEvent(gamePlayer, cfg.QuestAcceptConditionType_OBTAIN_ITEM, ev)
 }
 
 func onQuestFinished(ev event.Event) {
-	processQuestByEvent(cfg.QuestAcceptConditionType_QUEST_FINISHED, ev)
+	gameEvent := ev.(*gameevent.GameEvent)
+	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
+	processQuestByEvent(gamePlayer, cfg.QuestAcceptConditionType_QUEST_FINISHED, ev)
+}
+
+func onPlayerQuestInit(ev event.Event) {
+	gameEvent := ev.(*gameevent.GameEvent)
+	gamePlayer := player.RoleOlineMgr.GetPlayerById(gameEvent.PlayerId)
+	initPlayerQuest(gamePlayer)
 }

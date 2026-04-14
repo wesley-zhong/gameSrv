@@ -17,7 +17,7 @@ func acceptConditionInit() {
 	acceptCnfProcess[cfg.QuestAcceptConditionType_OBTAIN_ITEM] = ObtainItemAcceptCnd
 }
 
-func ProcessQuestAcceptByEvent(player *player.GamePlayer, cnf *cfg.QuestQuestCnf, ev event.Event) bool {
+func processQuestAcceptByEvent(player *player.GamePlayer, cnf *cfg.QuestQuestCnf, ev event.Event) bool {
 	ret := true
 	for _, cond := range cnf.AcceptCond {
 		processFuc := acceptCnfProcess[int(cond.Type)]
@@ -34,7 +34,7 @@ func ProcessQuestAcceptByEvent(player *player.GamePlayer, cnf *cfg.QuestQuestCnf
 			}
 		}
 	}
-	return false
+	return true
 }
 
 func RoleLvlUpAcceptCnd(player *player.GamePlayer, cnf *cfg.QuestQuestCnf, ev event.Event) bool {
