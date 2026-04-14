@@ -55,6 +55,9 @@ func processQuestByEvent(gamePlayer *player.GamePlayer, evId int32, ev event.Eve
 }
 
 func acceptNewQuest(gamePlayer *player.GamePlayer, questCnf *cfg.QuestQuestCnf) {
+	if questCnf == nil {
+		return
+	}
 	questModule := player.GetModule[modules.QuestModule](gamePlayer, modules.QUEUE_MODULE)
 	questModule.AddQuest(questCnf)
 	//get the main quest first quest step

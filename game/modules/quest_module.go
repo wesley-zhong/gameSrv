@@ -40,7 +40,7 @@ func (questModule *QuestModule) OnLogin() {
 		questModule.DataDO = &QuestDO{
 			Id: questModule.Pid,
 		}
-		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.Pid, gameevent.DisconnectEventID))
+		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.Pid, gameevent.QuestInitEventID))
 		questModule.MarkDirty()
 	}
 	return
