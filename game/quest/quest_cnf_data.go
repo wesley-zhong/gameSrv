@@ -20,8 +20,15 @@ func refactorQuestCnfData() {
 func refactorQuestCnf() {
 	for _, val := range gamedata.Tables.TbQuest.GetDataList() {
 		conds := val.AcceptCond
+		if len(conds) == 0 {
+			acceptCondQuestMap[0] = append(acceptCondQuestMap[0], val)
+		}
 		for _, cond := range conds {
 			acceptCondQuestMap[cond.Type] = append(acceptCondQuestMap[cond.Type], val)
+		}
+
+		if len(val.UnlockCond) == 0 {
+			unlockCndMap[0] = append(unlockCndMap[0], val)
 		}
 
 		for _, unlock := range val.UnlockCond {
@@ -49,7 +56,7 @@ func findQuestStepWithEvent(evId int32) []*cfg.QuestQuestStepCnf {
 func findQuestWithAcceptEvent(gp *player.GamePlayer, evId int32) []*cfg.QuestQuestCnf {
 	readyToAcceptQuestCnfList := acceptCondQuestMap[evId]
 	questModule := player.GetModule[modules.QuestModule](gp, modules.QUEUE_MODULE)
-	readyToAcceptList := make([]*cfg.QuestQuestCnf, len(readyToAcceptQuestCnfList))
+	readyToAcceptList := make([]*cfg.QuestQuestCnf, 4)
 	for _, readyToAccept := range readyToAcceptQuestCnfList {
 		quest := questModule.FindQuest(readyToAccept.Id)
 		if quest == nil {

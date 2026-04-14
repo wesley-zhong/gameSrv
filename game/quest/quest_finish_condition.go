@@ -38,7 +38,7 @@ func ProcessQuestContentByEvent(player *player.GamePlayer, quest *modules.Quest,
 	for _, content := range questStepCnf.FinishCond {
 		processFuc := questProcess[int(content.Type)]
 		if processFuc == nil {
-			log.Errorf(" finish type ={} not found process function", content.Type)
+			log.Errorf("finish type ={} not found process function", content.Type)
 		}
 		processRet = processFuc(player, quest, ev)
 		quest.Finished = checkQuestFinished(quest, questStepCnf)
@@ -73,12 +73,25 @@ func StepQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, ev 
 
 // 杀死 触发
 func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
-
+	KillMonster := ev.(*gameevent.KillMonsterEvent)
+	log.Infof("----- kill monster ={}", KillMonster.MonsterId)
 	return CONTINUE
 }
 
 // 获取道具 触发
 func ObtainItemProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
+	ObtainItem := ev.(*gameevent.ObtainItemEvent)
+	data := quest.CurData
+	for _, questData := range data {
+		if questData.EvId != int32(ev.EventId()) {
+			continue
+		}
+		// do special check
+		targetItemId := questData.CurData[0]
+		if targetItemId == 0 || targetItemId == int64(ObtainItem.CnfId) {
+			questData.CurData[1]++
+		}
+	}
 
 	return CONTINUE
 }
