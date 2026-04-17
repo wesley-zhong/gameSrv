@@ -1,0 +1,304 @@
+syntax = "proto3";
+option java_package = "com.game.protoGen";
+option go_package = "/protoGen";
+
+import "ProtoCommon.proto";
+
+message SceneTeamAvatar
+{
+  int64 player_uid = 1;  // 玩家uid
+  int64 avatar_guid = 2; // 角色Guid
+  int32 scene_id = 3;    // 角色所处场景ID
+  int32 entity_id = 4;   // 角色在所处场景上的EntityId
+}
+
+message AvatarInfo{
+  int64 uid = 1;        //owner player id
+  int32 avatar_id = 2;   // AvatarID config id
+  int64 guid = 3;        // 唯一ID
+  repeated int32  attrs = 4;//avatar 属性
+  int32  level = 5;
+  int32  exp = 6;
+  int32  exceed_id = 7;// 突破id
+  repeated AvatarSkillInfo skill_info = 8;//技能信息
+  repeated AvatarTalentInfo talent_info = 12; //天赋列表
+  int32 talent_point = 13; //剩余天赋点
+  repeated int32 constellation_unlock_list = 14; //已解锁命座的列表
+  repeated int32 buffs = 15;//buff信息
+  int64 weapon_guid = 16; //装备的武器
+  int32 life_state = 17;  //目前对应的是protoCommon.LifeState
+  repeated int64 equip_list = 18; //装备的装备数组 [0,0,0,0,0]五个位置
+  repeated PropsKV final_attrs = 19;//avatar 最终属性
+}
+
+message AvatarMiniGameProgressInfo{
+  int32 mini_game_id = 1;   // 小游戏id
+  int32 rating = 2; //评价
+}
+
+message AvatarFavorabilityInfo{
+  //int64 guid = 1;        //唯一ID
+  int64 avatar_id = 2;   // AvatarID config id
+  int32 fb_lv = 3; //好感度等级
+  int32 fb_exp = 4; //好感度经验
+  int32 fb_max_exp = 5; //好感度最大经验
+  int32 fb_max_award_idx = 6;
+  int32 fb_max_award_size = 7;
+  int32 fb_relation = 8;
+  repeated int32 got_fb_lv_award_list = 9; //已领取好感度奖励列表
+  repeated int32 fb_finish_content = 10; //好感完成传记列表
+  repeated int32 fb_gave_gift = 11; //好感赠送的礼物列表
+  repeated int32 fb_unlock_secret_story = 12; //好感解锁秘闻列表
+  repeated AvatarMiniGameProgressInfo mini_game_progress = 13; //小游戏进度
+  bool is_mini_game_finish_target = 14; //是否小游戏完成目标
+  int32 mini_game_invite_count = 15; //小游戏邀请次数
+}
+
+message  AvatarStateInfo
+{
+  int64 guid = 1;        // 唯一ID
+  int32 life_state = 2;  //目前对应的是protoCommon.LifeState
+  repeated PropsKV props = 3;
+}
+
+message AvatarStateNtf{
+	int32 type = 1;
+	repeated AvatarStateInfo avatars = 2;
+}
+
+message  AvatarAddNtf
+{
+  repeated  AvatarInfo  avatar_infos = 1;
+  repeated  AvatarFavorabilityInfo  favorability_infos = 2;
+}
+
+message  AvatarLevelUpReq{
+  int64 guid = 1;        // 唯一ID
+  repeated  ItemParam  cost_infos = 2; //消耗列表
+}
+
+message  AvatarLevelUpRes{
+  AvatarInfo  avatar_info = 1;//avatar更新后的数据
+  repeated ItemParam back_items = 2;//退还的道具列表，如果有
+}
+
+message  AvatarExceedReq{
+  int64 avatar_guid = 1; // 角色Guid;
+  bool is_fast_exch = 2; //是否快速兑换
+  bool is_use_gift = 3; //是否用礼包
+}
+
+message  AvatarExceedRes{
+  AvatarInfo  avatar_info = 1;
+}
+
+message  AvatarTransNtf{
+  repeated ItemParam back_items = 1;//相同的Avatar转换成的道具列表
+}
+
+message  AvatarListNtf{
+  repeated  AvatarInfo  avatar_infos = 1;
+}
+
+//新增或者变更的技能信息
+message  AvatarSkillUpdateNtf{
+  int32 avatar_id = 1;   // AvatarID config id
+  int64 guid = 2;        // 唯一ID
+  AvatarSkillInfo skill_info = 3;//变更的技能信息
+}
+
+//添加好感度经验
+message  AvatarAddFavorabilityExpReq{
+  int64 avatar_id = 1;        // AvatarID config id
+  repeated  ItemParam  cost_infos = 2; //消耗列表
+}
+
+message  AvatarAddFavorabilityExpRes{
+  repeated int32 cost_item_ids = 1;//请求添加经验的道具id（客户端ui需求）
+  AvatarFavorabilityInfo favorability_info = 2; //好感信息
+}
+
+//领取好感度奖励
+message  AvatarGotFavorabilityAwardReq{
+  int64 avatar_id = 1;  /// AvatarID config id
+  int32 fb_lv = 2; //要领取的等级
+}
+
+message  AvatarGotFavorabilityAwardRes{
+  int64 avatar_id = 1; // AvatarID config id
+  repeated int32 got_award_list= 2; //已领取列表
+  repeated AwardItem rewards = 3; //获得奖励列表
+}
+
+//领取好感度Max奖励
+message AvatarGotFavorabilityMaxAwardPush{
+  int64 avatar_id = 1;  // AvatarID config id
+}
+
+message AvatarGotFavorabilityMaxAwardNtf{
+  int64 avatar_id = 1; // AvatarID config id
+  repeated AwardItem rewards = 2; //获得奖励列表
+}
+
+//好感完成传记
+message AvatarFinishFavorabilityContentPush{
+  int64 avatar_id = 1; // AvatarID config id
+  int32 content_id = 2; //content
+}
+
+message AvatarUnlockFavorabilitySecretStoryNtf{
+  int64 avatar_id = 1; // AvatarID config id
+  repeated int32 secret_story_list= 2; //秘闻解锁列表
+}
+
+message AvatarFavorabilityListNtf{
+  repeated AvatarFavorabilityInfo favorability_list = 1; //好感信息
+}
+
+message AvatarFavorabilityUpdateNtf{
+  AvatarFavorabilityInfo favorability_info = 1; //好感信息
+}
+
+message AvatarDateCompletedListNtf{
+  repeated int64 date_completed_list = 1;
+  bool is_init = 2;
+}
+
+//天赋升级请求
+message AvatarTalentLevelUpReq{
+  int64 avatar_id = 1; // AvatarID config id
+  int32 talent_id = 2; // 天赋ID
+  int32 tolv = 3; //要升到的等级
+  bool is_fast_exch = 4; //是否快速兑换
+  bool is_use_gift = 5; //是否用礼包
+}
+
+//天赋升级返回
+message AvatarTalentLevelUpRes{
+  int64 avatar_id = 1; // AvatarID config id
+  int32 talent_id = 2; // 天赋ID
+  int32 to_lv = 3; //要升到的等级
+  AvatarInfo avatar_info = 4; //avatar更新后的数据
+}
+
+//天赋重置请求
+message AvatarTalentResetReq{
+  int64 avatar_id = 1; // AvatarID config id
+}
+
+//天赋重置返回
+message AvatarTalentResetRes{
+  int64 avatar_id = 1; // AvatarID config id
+  AvatarInfo avatar_info = 2; //avatar更新后的数据
+}
+
+//解锁命座请求
+message AvatarConstellationUnlockReq{
+  int64 avatar_id = 1; // AvatarID config id
+}
+
+//解锁命座返回
+message AvatarConstellationUnlockRes{
+  int64 avatar_id = 1; // AvatarID config id
+  repeated int32 unlock_list = 2; //已解锁命座的列表
+  AvatarInfo avatar_info = 3; //avatar更新后的数据
+}
+
+// ==================== 私密互动相关 ====================
+
+// 私密互动信息通知
+message AvatarIntimacyNtf{
+  int32 avatar_id = 1;          // 角色配置ID
+  int32 stage = 2;              // 当前阶段
+  int32 point = 3;              // 互动积分
+  int32 good_count = 4;         // 获得好的次数
+}
+
+// 私密互动开始请求
+message AvatarIntimacyBeginPush{
+  int32 avatar_id = 1;          // 角色配置ID
+  int32 begin_param = 2;        // 互动开始参数
+}
+
+// 私密互动开始返回
+message AvatarIntimacyBeginRes{
+  int32 avatar_id = 1;          // 角色配置ID
+}
+
+// 私密互动qte结果
+message AvatarIntimacyStageInfoPush{
+  int32 avatar_id = 1;          // 角色配置ID
+  int32 stage = 2;              // 结束的阶段
+  int32 point = 3;              // 当前stage积分
+  int32 good_count = 4;         // 当前stage获得好的次数
+}
+
+// 私密互动取消请求
+message AvatarIntimacyCancelPush{
+  int32 avatar_id = 1;          // 角色配置ID
+}
+
+// 私密互动结束通知
+message AvatarIntimacyEndNtf{
+  int32 avatar_id = 1;          // 角色配置ID
+  int32 star = 2;             // 互动星级评价
+  int32 point = 3;             // 互动总积分
+  int32 stage = 4;             // 互动结束时的阶段
+  int32 good_count = 5;        // 互动总获得好的次数
+  int32 favor = 6;             // 增加的好感度
+  repeated AwardItem rewards = 7; // 获得奖励列表
+}
+
+message Mission{
+  int64 id = 1;
+  int32 value = 2;
+  int32 state = 3;
+  int64 timestamp = 4;
+}
+
+message MissionListNtf{
+  repeated Mission list= 1;
+}
+
+message MissionGetGiftPush{
+  repeated int64 id_list = 1;
+}
+
+message DailyTaskNtf{
+	int32 points = 1;
+	repeated int32 receive_list = 2;
+}
+
+message DailyTaskGetGiftPush{
+  repeated int32 id = 1;
+}
+
+message DailyTaskGetGiftNtf{
+  repeated int32 id = 1;
+}
+
+message GuideTaskNtf{
+	repeated int32 receive_list = 2;
+}
+
+message GuideTaskGetGiftPush{
+  repeated int32 id = 1;
+}
+
+message GuideTaskGetGiftNtf{
+  repeated int32 id = 1;
+}
+
+message AvatarMiniGameSettlePush{
+  int64 avatar_id = 1;   // AvatarID config id
+  int32 mini_game_id = 2; //小游戏ID
+  int32 grade = 3; //小游戏评价
+}
+
+message AvatarMiniGameSettleNtf{
+  int64 avatar_id = 1;   // AvatarID config id
+  int32 mini_game_id = 2; //小游戏ID
+  int32 grade = 3;
+  int32 add_favorability_exp = 4; //小游戏增加的好感度
+}
+

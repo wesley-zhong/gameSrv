@@ -1,0 +1,530 @@
+syntax = "proto3";
+option java_package = "com.game.protoGen";
+option go_package = "/protoGen";
+
+import "ProtoCommon.proto";
+import "ProtoSceneObjs.proto";
+
+//======================================  进出场景消息  begin ============================
+message PlayerEnterSceneNtf{// 服务器通知客户端 进入场景
+  int32 scene_id = 1;                // 场景ID
+  //  Vector3Int pos = 2;                // 位置
+  //  int64 scene_begin_time = 3;        // 废弃
+  //  EnterType type = 4;                 // 进入类型
+  int64 target_uid = 5;               // 场景所属的玩家ID
+  int32 world_level = 6;               // 大世界等级, 如果是dungeon该字段无效
+  int32 enter_scene_token = 7;         // 进场token，用于区分不同的进场流程
+  bool is_first_login_enter_scene = 8; // 是否是第一次登录进场
+  EnterReason enter_reason = 9;        // 上层的业务原因 EnterReason
+  int32 loading_type = 10;//进入场景的loading类型对应SceneLoadingType枚举
+}
+
+message PreEnterScenePush{// C->S
+  int32 enter_scene_token = 1; // 进场token
+
+}
+
+message LevelInstanceTag{
+  int64 version = 1; //资源版本号
+  string tag = 2;     //Tag
+}
+
+//玩法召唤物数据
+message GamePlaySummunedInfo{
+  int32 type = 1; //玩法类型,对应scene_enum.xlsx的GamePlaySummonedType
+  int32 energy = 2;     //能量值
+}
+
+message PreEnterSceneNtf{//S->C
+  int32  scene_id = 1; // scene id
+  int32 enter_scene_token = 2; // 进场token
+  int64 scene_begin_time = 3;      // 场景开始的时间(1970.1.1到现在的毫秒数)
+  repeated SceneEntityInfo my_avatars = 4; // 玩家的战英雄（编队)
+  repeated int64 finished_quest_list = 5; //已完成的任务列表item
+
+  repeated SceneEntityInfo auxiliary = 7; //附属物，如炮台
+  int32 lock_func_state = 8; //本场景，禁用操作的模式
+  repeated LevelInstanceTag level_instance_tags = 9; //新的actor数据层列表
+  int64 stuck_reset_cd_ms = 10;//卡死重置剩余CD
+  int32 formation_type = 11;//服务器决定的当前场景使用的formationType
+}
+
+message EnterSceneReadyPush{// C->S 客户端通知服务器 新 场景初始化完成, 等待 EnterSceneFinishNtf 可以开始游戏
+  int32 enter_scene_token = 1; // 进场token
+}
+
+message EnterSceneFinishNtf{// S->C 服务器通知客户端 可以开始游戏了
+  int32 scene_id = 1;
+  repeated int32  random_table = 2;  // 随机表
+  int32 discon_scene_type = 3; //断线前的地图类型
+  int32 last_enter_main_scene_id = 4;//最后一次进入的主场景id(箱庭和净海)
+  int32 discon_scene_progress = 5;//断线前的副本进度,如副本节点id
+  int32 discon_scene_difficulty = 6; //断线前的副本难度
+  int64 discon_scene_binding_data_id = 7; //断线前的玩法或入口绑定的数据的唯一id,如actorId,玩法数据id
+  int32 discon_scene_id = 8; //断线前的副本场景id
+  repeated GamePlaySummunedInfo summoned_infos = 9;//游戏玩法的数据列表
+}
+
+message LevelInstanceTagNtf{// S->C 关卡内Actor数据层同步
+  bool is_load = 1; // true加载，否则卸载
+  int64 link_quest_id = 3;//关联的节点ID
+  repeated LevelInstanceTag level_instance_tags = 4; //新的actor数据层列表
+}
+
+//======================================  进出场景消息  end============================
+// 地图上的实体出现通知
+message SceneEntityAppearNtf
+{
+  repeated SceneEntityInfo entity_list = 1;  // 实体列表
+  VisionType appear_type = 2;                // 出现类型
+  int64 param = 3;                          // 出现参数
+}
+
+// 地图上的实体消失通知
+message SceneEntityDisappearNtf
+{
+  repeated int64 entity_list = 1;   // 实体ID列表
+  VisionType disappear_type = 2;    // 消失类型
+}
+
+// 地图上的实体变动通知
+message SceneEntityChangeNtf
+{
+  repeated SceneEntityInfo entity_list = 1;  // 变更的实体列表
+}
+
+// 地图上的实体host变动通知
+message SceneEntityHostChangeNtf
+{
+  repeated SceneEntityHostInfo entity_list = 1;  // 变更的实体列表
+}
+
+// 传送到目的点
+message SceneTransToPointReq
+{
+  int32 scene_id = 1;    // 地图ID
+  int32 point_id = 2;    // 目的传送点ID
+}
+
+message SceneTransToPointRes
+{
+  int32 scene_id = 2;    // 地图ID
+  int32 point_id = 3;    // 目的传送点ID
+}
+
+//关卡内Reset流Step-1，前端开始缓存所需协议
+message SceneResetBeginNtf
+{
+  int32 reset_reason = 1;   //重置的原因
+}
+
+//关卡内Reset流Step-2，前端结束缓存所需协议
+message SceneResetSendFinishNtf
+{
+  int32 reset_reason = 1;   //重置的原因
+}
+
+//关卡内Reset流Step-3，前端处理完成Reset流
+message SceneResetEndPush
+{
+  int32 reset_reason = 1;   //重置的原因
+}
+
+//关卡内Reset流Step-4,广播前端Reset流处理完成
+message SceneResetEndNtf
+{
+  int64 entity_id = 1;      //EntityID
+  int32 reset_reason = 2;   //重置的原因
+}
+
+// 地图上的实体跳点通知
+message EntityJumpNtf
+{
+  int32 entity_id = 1;
+  EntityJumpType jump_type = 2;     // 跳点类型
+  Vector3Int pos = 3;         // 目的位置
+  Vector3Int rot = 4;         // 目的朝向
+}
+
+// 强制同步实体的状态，任务使用
+message EntityForceSyncReq
+{
+  int32 entity_id = 1;       // 实体ID
+  MotionInfo motion_info = 2;   // 运动信息
+}
+
+message EntityForceSyncRes
+{
+  int32 entity_id = 2;       // 实体ID
+  MotionInfo fail_motion = 3;   // 失败时的运动信息
+}
+
+// 玩法召唤物的数据变化(S->C)
+message GamePlaySummonedChangeNtf
+{
+  GamePlaySummunedInfo info = 1;
+}
+
+
+// 客户端交互请求
+message ClientInteractPush
+{
+  int64 initiator_entity_id = 1;  //交互发起者的对象的实例Id
+  int64 target_entity_id = 2;     //交互目标对象的实例Id
+  int32 option = 3;               //交互选项 对应OptionType的枚举类型
+  repeated int64 option_params = 5;//交互参数 例如电梯要到几楼
+}
+
+// 客户端交互返回
+message ClientInteractNtf
+{
+  int64 initiator_entity_id = 1;  //交互发起者的对象的实例Id
+  int64 target_entity_id = 2;     //交互目标对象的实例Id
+  int32 option = 3;               //交互选项
+  repeated int64 option_params = 5;         //交互参数
+}
+
+// 场景中玩家的信息
+message ScenePlayerInfo
+{
+  int64 uid = 1;         // UID
+  // int32 peer_id = 2;     // PeerID
+  string name = 2;       // 名字
+  int32 scene_id = 3;    // 场景id
+}
+
+// 玩家切换Scene时的广播信息(S->C)
+message ScenePlayerInfoNtf
+{
+  repeated ScenePlayerInfo player_info_list = 1;
+}
+
+// 大世界中玩家的位置通知(S->C)
+message WorldPlayerLocationNtf
+{
+  repeated PlayerLocationInfo player_loc_list = 1;     // 所有玩家的位置信息
+}
+
+// 通过PersonalSceneJumpPoint在大世界、房间场景中切换场景
+message PersonalSceneJumpReq
+{
+  int32 point_id = 1;
+}
+
+message PersonalSceneJumpRes
+{
+  int32 dest_scene_id = 2;
+  Vector3Int dest_pos = 3;
+}
+
+// 角色进入场景时的数据
+message AvatarEnterSceneInfo
+{
+  int64 avatar_guid = 1;         // 角色的唯一ID
+  int32 avatar_entity_id = 2;    // 角色的实体ID(本场景唯一)
+}
+
+// 玩家进入场景的信息通知
+message PlayerEnterSceneInfoNtf
+{
+  int32 cur_avatar_entity_id = 1;    // 当前角色的实体ID
+  repeated AvatarEnterSceneInfo avatar_enter_info = 2;    // 角色进入场景的信息(场景跳点时不发)
+  int32 enter_scene_token = 3; // 进场token
+}
+
+message JoinPlayerSceneReq
+{
+  int64 target_uid = 1;
+}
+
+message JoinPlayerSceneRes
+{
+}
+
+message SceneKickPlayerReq
+{
+  int64 target_uid = 1;
+}
+
+message SceneKickPlayerRes
+{
+  int64 target_uid = 2;
+}
+
+message SceneKickPlayerNtf
+{
+  int64 kicker_uid = 1;      // 踢人者
+  int64 target_uid = 2;      // 被踢者
+}
+
+//回到玩家之前所在的场景(大世界或箱庭),用于副本或他人场景中返回到自己之前所在的场景
+message BackMyWorldPush
+{
+}
+
+// 场景时间同步
+message SceneTimeNtf
+{
+  int32 scene_id = 1;
+  bool is_paused = 2;
+  int64 scene_time = 3; // 玩家个人时间
+}
+
+// 进入别人的世界失败提示
+message JoinPlayerFailNtf
+{
+  int32 errcode = 1;
+}
+
+
+// Entity移动信息
+message EntityMoveInfo
+{
+  int64 entity_id = 1;       // 实体ID
+  MotionInfo motion_info = 2; // 运动信息
+}
+
+
+// 地图上的合包后的实体移动请求
+message SceneEntitiesMovePush
+{
+  repeated EntityMoveInfo entity_move_info_list = 1;
+}
+
+// 地图上的合包后的实体移动通知(S->C)
+message SceneEntitiesMoveNtf
+{
+  repeated EntityMoveInfo entity_move_info_list = 1;
+}
+
+message WorldDataNtf
+{
+}
+
+// 玩家进入退出大世界时的广播通知S->C
+message WorldPlayerInfoNtf
+{
+  repeated OnlinePlayerInfo player_info_list = 1; // 玩家在线数据
+  repeated int64 player_uid_list = 2;            // 玩家uid列表, 用于确定1p, 2p等, 为0表示为空
+}
+
+message SceneDataNtf
+{
+}
+
+message PlayerEyePointStateNtf
+{
+  bool is_use_eye_point = 1;          // 是否使用eye_point
+  Vector3Int eye_point_pos = 2;           // eye_point位置
+  int32 region_entity_id = 3;   // 关联区域的entity_id
+  int32 region_group_id = 4;    // 关联区域的组ID
+  int32 region_config_id = 5;   // 关联区域的配置ID
+  int32 region_shape = 6;       // 区域形状 data::RegionShape
+  float sphere_radius = 100;  // 球形区域半径
+  Vector3Int cubic_size = 101;    // 立方体区域长宽高
+}
+
+message SceneMessagePush
+{
+  int32 msg_id = 1;
+  int32 entity_id = 2;
+  string content = 3;
+}
+
+message SceneMessageNtf
+{
+  int32 msg_id = 1;
+  int32 entity_id = 2;
+  string content = 3;
+}
+
+message PlayMontage{
+  int64  entity_id = 1;
+  int32  montage_id = 2;
+}
+
+message  PlayMontageNtf{// 播放 montage 下行
+  PlayMontage  play_montage = 1;
+}
+
+//创建子弹飞行物请求
+message SceneCreateProjectilePush {
+  int64 client_projectile_id = 1;//客户端子弹唯一id
+  int64 master_entity_id = 2;//创建者唯一id，有可能是主角avatar 有可能是做host时的monster等战斗对象
+  int32 cfg_id = 3;//子弹的配置id
+  string instanced_struct = 4;//客户端透传参数
+  Vector3Int location = 5;//出生位置
+  Vector3Int rotation = 6;//朝向
+  Vector3Int speed = 7;  //速度
+}
+
+//创建子弹飞行物返回
+message SceneCreateProjectileNtf {
+  int64 master_entity_id = 1;//创建者，有可能是主角avatar 有可能是做host时的monster等战斗对象
+  int32 cfg_id = 2;//子弹的配置id
+  int64 client_projectile_id = 3;//客户端子弹唯一id
+}
+
+//创建召唤物请求
+message SceneCreateSummonPush {
+  int64 client_summon_id = 1;//客户端召唤物唯一id
+  int64 master_entity_id = 2;//创建者唯一id，有可能是主角avatar 有可能是做host时的monster等战斗对象
+  int32 cfg_id = 3;//召唤物的配置id
+  Vector3Int location = 4;//出生位置
+  Vector3Int rotation = 5;//朝向
+}
+
+//创建召唤物返回
+message SceneCreateSummonNtf {
+  int64 client_summon_id = 1;//客户端召唤物唯一id
+  int64 master_entity_id = 2;//创建者，有可能是主角avatar 有可能是做host时的monster等战斗对象
+  int32 cfg_id = 3;//召唤物的配置id
+  int64 entity_id = 4;//实体的唯一id
+}
+
+message EnterScenePush{
+  int32 scene_id = 1;
+  int64 rest_system_guid = 2;//rest_point的id，副本入口传送的时候需要设置
+  int32 progress = 3;//副本进度,如副本节点id
+  int32 difficulty = 4; //副本难度
+  int64 binding_data_id = 5;//玩法或入口绑定的数据的唯一id,如actorId,玩法数据id
+  bytes enter_scene_data = 6; //
+  int32 scene_type = 7;//进入场景类型
+}
+
+message SceneReplaceAvatarPush{
+  int64 entity_id = 1;//要上场的 AvatarActor entity id
+}
+
+message SceneReplaceAvatarNtf{
+  VisionType replace_type = 1;// 更换类型(主动更换,死亡更换)
+  int64 old_avatar_id = 2;//被替换掉的AvatarActor entity id
+  SceneEntityInfo new_avatar = 3;//要上场的Avatar信息
+}
+
+message PlayerReBornPush
+{
+  int64 avatar_entity_id = 1;
+  Vector3Int pos = 2;//位置
+  Vector3Int rot = 3;//朝向
+  ReBornReason reason = 4;//原因   
+}
+
+message PlayerReBornNtf
+{
+  repeated SceneEntityInfo entity_list = 1;  // 变更的实体列表
+  ReBornReason reason = 2;//原因   
+}
+
+//广播开始传送,客户端发起的传送，比如大地图传送功能
+message TeleportPush
+{
+  int64 teleport_id = 1;    //目的地Actor的PreassignedID，根据传送的原因，可能会有不同，
+  TeleportReason reason = 2;//原因
+}
+
+//广播开始传送,服务器通知传送开始，
+message TeleportBeginNtf
+{
+  int64 entity_id = 1;
+  Vector3Int pos = 2;//位置
+  Vector3Int rot = 3;//朝向
+  TeleportReason reason = 4;//原因
+}
+
+//全局交互的Actor预分配ID列表通知
+message GlobalInteractActorNtf
+{
+  repeated int64 actor_preassigned_list = 1;  // 全局交互的Actor预分配ID列表
+}
+
+enum CountDownOp
+{
+  TO_NONE = 0;
+  TO_START = 1; //开始
+  TO_STOP = 2; //结束
+  TO_CHECK = 3; //对时
+}
+
+message SceneCountDownNtf//场景玩法倒计时操作
+{
+  int32 scene_id = 1;
+  int32 time_left = 2;
+  CountDownOp count_down_op = 3; //操作类型
+}
+
+message SceneCountDownPush //场景玩法倒计时操作
+{
+  int32 scene_id = 1;
+  CountDownOp count_down_op = 2; //操作类型
+}
+
+message SceneTimeOutPush  //场景玩法倒计时时间到点
+{
+  int32 scene_id = 1;
+}
+
+message SceneTimeOutNtf
+{
+  int32 scene_id = 1;
+  int32 time_left = 2; //如果服务器时候还没到点，把服务器的时间同步给客户端
+}
+
+//保存场景迷雾数据
+message SceneFogDataSavePush
+{
+  int32 scene_id = 1;//场景id
+  bytes record_bytes = 2;//记录数据
+}
+
+//获取场景迷雾数据请求
+message SceneFogDataGetPush
+{
+  int32 scene_id = 1;//场景id
+}
+
+//获取场景迷雾数据返回
+message SceneFogDataGetNtf
+{
+  int32 scene_id = 1;//场景id
+  bytes record_bytes = 2;//记录数据
+}
+
+message SceneSummaryNtf  //副本结算
+{
+  int32 type = 1;
+  int32 level_id = 2; // 深渊本:深渊id 资源本:关卡id 陆礁:关卡id
+  int32 layer_id = 3; //深渊本:层id 资源本:难度 陆礁:世界等级
+  bool is_win = 4; //是否胜利
+  repeated AwardItem rewards = 5; //获得奖励列表
+  repeated int32 star_list = 6;  //深渊本:已获得的星星列表 陆礁:达成的分数
+  bool stamina_is_not_enough = 7; //体力是否不足
+  repeated int32 new_star_list = 8; //深渊本:新获得的星星列表 陆礁:新达成的分数
+  int32 time_left = 9; //深渊本:胜利后的剩余时间
+  bytes summary_data = 10; //
+}
+
+message SceneStuckResetReq{//卡死重置请求
+}
+
+//暂离信息
+message TemporaryLeaveInfo {
+  int32 scene_type = 1;
+  int32 scene_progress = 2;
+  int32 scene_difficulty = 3;
+  int64 scene_binding_data_id = 4;
+  int32 scene_cfg_id = 5;
+  int64 invalid_time = 6;//失效时间
+  bytes data = 7; //暂离玩法的数据,根据scene_type解析
+}
+
+//玩法暂离数据全量通知
+message SceneTemporaryLeaveListNtf{
+  repeated TemporaryLeaveInfo info = 1;//暂离信息
+}
+
+//玩法暂离数据变更通知
+message SceneTemporaryLeaveUpdateNtf{
+  TemporaryLeaveInfo info = 1;//暂离信息
+  bool is_delete = 2;//是否删除
+}

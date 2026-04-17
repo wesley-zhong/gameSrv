@@ -1,49 +1,286 @@
 syntax = "proto3";
-option java_package = "com.game.proto";
+
+option java_package = "com.game.protoGen";
+
 option go_package = "/protoGen";
-enum ProtoError {
-  SUCCESS = 0;
-  FAILED = 1;
-  INVALID_LOGIN_TOKEN = 2;
-  INVALID_GAME_TICKET = 3;
-  INVALID_PARAM = 10;
-  NAME_LENGTH_INVALID = 11;
-  NOTICE_LENGTH_INVALID = 12;
-  COST_NOT_ENOUGH = 13;
+
+
+// 世界类型
+enum PbWorldType
+{
+  WORLD_NONE = 0; // 未定义
+  WORLD_PLAYER = 1; // 玩家大世界
 }
 
-enum ProtoCode {
-  INVALID = 0;
-  ERROR_MESSAGE = 1;
-  HEART_BEAT_REQUEST = 2;
-  HEART_BEAT_RESPONSE = 3;
-  LOGIN_REQUEST = 10;
-  LOGIN_RESPONSE = 11;
-  LOGOUT_REQUEST = 12;
-  LOGOUT_RESPONSE = 13;
-  KICK_OUT_REQUEST = 14;
-  KICK_OUT_RESPONSE = 15;
+//enum VisionLevelType {
+//  VISION_LEVEL_NORMAL = 0;         // 正常视距:80m内可见
+////  VISION_LEVEL_LITTLE_REMOTE = 1;  // 较远视距: 160m内可见
+////  VISION_LEVEL_REMOTE = 2;         // 远视距: 1000m内可见
+////  VISION_LEVEL_SUPER = 3;          // 超级视距: 4000m内可见
+//  VISION_LEVEL_NUM = 1;            // 枚举数量
+//}
 
-  LOGIN_INIT_REQUEST = 20;
-  PERFORMANCE_TEST_REQ = 21;
-  PERFORMANCE_TEST_RES = 22;
-
-  DIRECT_TO_GAME = 23;
-  DIRECT_TO_WORLD = 24;
-
-  DIRECT_FROM_WORLD_CLIENT = 25;
-  DIRECT_FROM_GAME_CLIENT = 26;
+// 联机模式设置
+enum MpSettingType
+{
+  MP_SETTING_NO_ENTER = 0;     // 不允许进入
+  MP_SETTING_ENTER_FREELY = 1; // 随意进入
+  MP_SETTING_ENTER_AFTER_APPLY = 2;  // 申请后进入
 }
 
-message ErrorMessage {
-  int32 errCode = 1;    // 错误码
+enum LifeState
+{
+  LIFE_NONE = 0; // 未定义
+  LIFE_ALIVE = 1; // 活着
+  LIFE_DEAD = 2; // 死亡
+  LIFE_REVIVE = 3; // 复活中
+}
+
+//向量 *100, 保留两位小数
+message Vector3Int{
+  int32 x = 1;
+  int32 y = 2;
+  int32 z = 3;
+}
+
+message Vector3Float{
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message PropsKV{
+  int32 prop_key = 1;
+  int32 prop_val = 2;
+}
+
+message EmptyMsg{
+}
+
+message OnlinePlayerInfo{
+  int64 uid = 1;
+  string nickname = 2;
+  int32 player_level = 3;
+  int32 avatar_id = 4;        // 玩家头像
+  MpSettingType mp_setting_type = 5;
+  int32 cur_player_num_in_world = 6;
+  int32 world_level = 7;     // 大世界等级
+}
+
+message MsgHeader{
+  int64 seq_no = 1; //序列号
+  int32 msg_type = 2; //0: normal msg  1: rpc call  2: rpc call back
+  int32 msg_id = 3; //消息id
+  int32 err_code = 4;
+  int64 uid = 5;  //  to roleId
+  int32 router_to = 6; // router to server type Only for the msg to send to router
+  int32 from_server = 7;
+  bool is_broadcast = 8;// 是否广播
+  int64 sid = 9; //session id 服务器内部用
 }
 
 message HeartBeatRequest {
-  int64 clientTime = 1; // 客户端时间
+  int64 client_time = 1; // 客户端时间
 }
 
 message HeartBeatResponse {
-  int64 clientTime = 1; // 客户端时间
-  int64 serverTime = 2; // 服务器时间
+  int64 client_time = 1; // 客户端时间
+  int64 server_time = 2; // 服务器时间
+}
+
+//only for test
+message  RpcReqTest{
+  int32 some_id = 1;
+  string  some_str = 2;
+}
+
+//only for test
+message RpcReqRespons{
+  int32 some_id2 = 1;
+  string  some_str2 = 2;
+}
+
+message  AoiTestReq{
+  int32  pos_x = 1;
+  int32  pos_y = 2;
+  int32  width = 4;
+  int32  height = 5;
+}
+
+message  Entity{
+  int64  id = 1;
+  string  body = 2;
+}
+
+message  AoiTestRes{
+  repeated  Entity entities = 1;
+  repeated int64 del_ids = 2;
+}
+
+message PacketSizeTestNtf {
+  int64 player_uid = 1;
+  bytes test_bytes = 2;
+  int64 utc_time = 3;
+}
+
+message TransItem{
+  int32 type = 1;//对应drop.xlsx中的AwardType
+  int32 id = 2;  //id
+  int32 count = 3;//数量
+  int64 guid = 4;
+}
+
+message AwardItem{
+  int32 type = 1;//对应drop.xlsx中的AwardType
+  int32 id = 2;  //id
+  int32 count = 3;//数量
+  int64 guid = 4;
+  repeated TransItem trans_items = 5;//转换成的道具列表，不能递归嵌套
+}
+
+message DropSystemNtf{
+  int32 source = 1; //来源，哪个系统产出的
+  repeated AwardItem award_list = 2; //奖励列表
+  int64 drop_entity_id = 3; //产生掉落的实体ID，如果有
+}
+
+message Reliquary{
+  int32 level = 1;   // 装备的等级
+  int32 exp = 2;     // 装备经验
+}
+
+// 武器
+message Weapon
+{
+  int32 level = 1;       // 等级
+  int32 exp = 2;         // 经验
+  int64 exceed_id = 3;  //突破id
+  int32 refine_lv = 4;  //精炼等级
+  int32 skill_id = 5; //技能
+  int32 skill_lv = 6; //技能等级
+  int64 avatar_guid = 7; //穿戴者
+}
+
+message PbMaterial
+{
+  int32 count = 1;        // 数量
+}
+
+message EquipSubProps{
+  PropsKV props = 1;
+  int32 lv_up_count = 2; //强化次数
+}
+
+message Equip
+{
+  int32 level = 1;       // 等级
+  int32 exp = 2;         // 经验
+  repeated PropsKV main_prop_list = 3; //主属性
+  repeated EquipSubProps sub_prop_list = 4; //副属性
+  int32 fixed_mark_id = 5;//固定应纹
+  int64 avatar_guid = 6; //穿戴者
+  repeated int64 hole_list = 7; //孔位
+}
+
+message EquipMark
+{
+  int64 equip_guid = 1; //装备guid
+  //int32 suit_id = 2; //套装id
+}
+
+message Mark
+{
+  int32 flash_effect_id = 1; //闪光效果
+  int32 flash_effect_count = 2; //闪光效果作用数量
+}
+
+// 道具
+message FYItem
+{
+  int32 item_id = 1;
+  int64 guid = 2;            // 唯一ID
+  // oneof detail
+  //{
+  PbMaterial material = 5;  // 材料
+  Equip equip = 6;        // 装备
+  int32 count = 7;
+  Weapon weapon = 8;   //武器
+  // }
+  bool is_lock = 9; //是否锁定
+  EquipMark equip_mark = 10; //应纹
+  Mark mark = 11; //祈玉
+}
+
+message ItemParam{
+  int32 item_id = 1;
+  int32 count = 2;
+  int64 guid = 3;
+}
+
+// 包括Weapon和Reliquary,需要额外的参数控制
+message EquipParam{
+  int32 item_id = 1;
+  int32 item_num = 2;
+  int32 item_level = 3;
+}
+
+// EquipParam/EquipParamList 需要解析Db中的奖励列表，字段名最好不要修改
+message EquipParamList{
+  repeated EquipParam item_list = 1;
+}
+
+message Reward{
+  int32 reward_id = 1;
+  repeated ItemParam item_list = 2;
+}
+
+message Coin {
+  int32 type = 1;
+  int64 num = 2;
+}
+
+//玩家的角色相关信息
+message RoleSummaryInfo {
+  int64 uid = 1;//玩家唯一id
+  string nick_name = 2;
+  string icon = 3;
+  int32 level = 4;
+  int64 exp = 5;
+  int32 world_level = 6;
+  int32 fatigue = 7;
+  int32 standby_fatigue = 8;
+  int64 last_recover_time = 9;
+  int64 standby_last_recover_time = 10;
+}
+
+// 技能类型
+enum AvatarSkillType{
+  SKILL_NORMAL = 0;   //普通技能
+  SKILL_COOP = 1;     //连携技
+}
+
+message AvatarAttackData{
+  int32 attack_data_id = 1;
+  repeated PropsKV props = 2;
+  repeated int32  abnormal_effects = 3;
+}
+
+message AvatarSkillInfo {
+  int32 skill_id = 1;
+  int32 skill_level = 2;
+  AvatarSkillType type = 3;
+}
+
+message AvatarBuffInfo {
+  int32 buff_id = 1;
+}
+
+message AvatarTalentInfo {
+  int32 talent_id = 1;
+  int32 talent_level = 2;
+}
+
+message AttackDataReplaceInfo{
+  int32 old_attack_data_id = 1;
+  int32 new_attack_data_id = 3;
 }

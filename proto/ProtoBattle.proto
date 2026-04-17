@@ -1,0 +1,144 @@
+syntax = "proto3";
+option java_package = "com.game.protoGen";
+option go_package = "/protoGen";
+
+import "ProtoCommon.proto";
+
+message  BuffData{
+  int32  buff_cnf_id = 1;
+  int64  buff_uid = 2;
+  int32  state = 3;
+  int64  caster_id = 4;
+  int32  reason = 5;
+  int32  ex_param = 6;
+}
+
+message  EntityBattleInfo{//战斗相关 包括 基本属性，技能, BUFF 相关
+  repeated int32  attrs = 1;//基础属性集
+  repeated int32  cur_attrs = 2;//当前值
+  repeated int32  states = 3;//状态集
+  repeated  AvatarAttackData  avatar_attack_datas = 4;//attack data
+  repeated BuffData buffs = 5;
+  repeated AttackDataReplaceInfo attack_data_replace_info = 6; //atk替换
+}
+
+enum  EntityRestReason{
+  RESET_NONE = 0;
+  AVATAR_SYSTEM_CHANGE = 1; // 养成系统变更
+  RECOVER = 2; // 回血
+  MU_SPRITE_BENEFIT = 3;//木灵收益
+  FOOD = 4;//吃药
+}
+
+message EntityBattleInfoResetNtf{// 养成属性变更，重置所有属性
+  int64  entity_id = 1;
+  EntityBattleInfo entity_battle_info = 2;
+  EntityRestReason reason = 3;
+  int32  config_id = 4;
+}
+
+message ActorPropsChangeNtf{//s->c 服务器广播  玩家抉择当前 属性,状态当前值
+  int64  avatar_id = 1;
+  repeated  PropsKV  base_prop_values = 2; // avatar base props
+  repeated  PropsKV  prop_values = 3; //avatar  changed terminal props
+  repeated  AvatarAttackData skill_props_values = 4 ;//attack data terminal props
+  repeated int32 skill_props_dels = 5; //del attack data
+  int32   states = 6; //terminal state
+  repeated BuffData buffs = 7; //buff changed
+}
+message  BuffAddNtf{
+  int64  time = 1;
+  int64  entity_id = 2;
+  repeated  BuffData buff_data = 3;
+}
+
+
+// 额外参数  key :在鲁班定义枚举
+message  BattleExtParams{
+  int32  key = 1;
+  int32  value = 2;
+}
+message  ActorPropsChange{
+  int32   prop = 1;
+  int32   cur_value = 2;
+}
+
+message BattleLog{
+  int64  uid = 1; // 唯一 ID
+  int64  time = 2;
+  int32  event_type = 3; //产生此LOG 的 原因 //FYBattleLogType->GA/MONTAGE/BUFF/BUFFTRIGGER
+  int32  event_state = 4;// 开始/结束/ELubanBuffTriggerEventEnum
+  int32  event_param = 5;// 各种ID
+  int32  event_reason = 6;
+
+  int64  holder_id = 7;
+  int64  holder_hash = 8;
+  int64  caster_id = 9;
+  int64  caster_hash = 10;
+  int64  target_id = 11;
+  int64  target_hash = 12;
+
+  int32 random_index = 13; //-- fortest
+
+  repeated  ActorPropsChange  caster_props = 14;//攻击者变化的属性  变化值  -- fortest
+  repeated  ActorPropsChange  target_props = 15; //受击着变化的属性  变化值 -- fortest
+  repeated  BattleExtParams  ext_params = 16; //公式里用到的参数，只有客户端能计算的出来的， -- fortest
+  repeated BuffData buffs = 17; //buff changed
+
+  repeated int64 extra_target_ids = 18;
+}
+message BattleLogPush
+{
+  repeated BattleLog battle_logs = 1;
+}
+
+
+message MonLevelBattlePush
+{
+  repeated int64 monster_list = 1;
+}
+
+message BattleStatePush
+{
+  int32 state = 1;
+}
+
+message BattleEventPush
+{
+	int32 type = 1;
+}
+
+message BattleOceanLog
+{
+	int64  uid = 1; // 唯一 ID
+	int32  event_type = 2;
+	int32  event_state = 3;
+	
+	int64  caster_id = 4;//船
+	int64  target_id = 6;//目标
+	int64  ship_gun_id = 7;//炮台
+	int32  ship_shell_cnf_id = 8;//子弹的configid
+}
+
+message BattleOceanLogPush
+{
+  repeated BattleOceanLog battle_logs = 1;
+}
+
+
+message BattleOceanResLog
+{
+	int64  uid = 1; // 唯一 ID
+	int32  code = 2;
+	int32  damage = 3;
+	int64  caster_id = 4;
+	int64  target_id = 5;
+  
+	repeated  ActorPropsChange  caster_props = 6;//攻击者变化的属性
+	repeated  ActorPropsChange  target_props = 7; //受击着变化的属性
+}
+
+message BattleOceanLogNtf
+{
+  repeated BattleOceanResLog battle_logs = 1;
+}

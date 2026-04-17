@@ -1,0 +1,339 @@
+syntax = "proto3";
+option java_package = "com.game.protoGen";
+option go_package = "/protoGen";
+
+import "ProtoCommon.proto";
+import  "ProtoBattle.proto";
+
+// 运动状态
+enum MotionState
+{
+  MOTION_NONE = 0;
+  MOTION_WALK = 1;    // 走
+  MOTION_NAV_WALK = 2;    // 走
+  MOTION_FALLING = 3;   // 掉落
+  MOTION_SWIM_MOVE = 4;  // 游泳移动
+  MOTION_FLY = 5;    // 飞行
+  MOTION_CUSTOM = 6;    // 自定义
+  MOTION_UE_MAX = 7;    // 无效值
+  MOTION_RESET = 8;   // 重置,用来强行矫正玩家的LastValidPoint
+  MOTION_STANDBY = 9; // 待机
+  MOTION_STANDBY_MOVE = 10; // 待机移动
+  MOTION_RUN = 11;     // 跑
+  MOTION_DASH = 12;    // 冲刺
+  MOTION_CLIMB = 13;   // 攀爬
+  MOTION_CLIMB_JUMP = 14;     // 攀爬跳跃
+  MOTION_STANDBY_TO_CLIMB = 15;   // 待机到攀爬
+  MOTION_FIGHT = 16;  // 战斗
+  MOTION_JUMP = 17;   // 跳
+  MOTION_SWIM_IDLE = 18;  // 游泳待机
+  MOTION_SWIM_DASH = 19;  // 游泳猛冲
+  MOTION_SWIM_JUMP = 20;  // 游泳跳跃
+  MOTION_SLIP = 21;   // 下滑
+  MOTION_GO_UPSTAIRS = 22;    // 上下梯子
+  MOTION_FALL_ON_GROUND = 23; // 掉到地上
+  MOTION_JUMP_UP_WALL_FOR_STANDBY = 24;    // 待机上墙
+  MOTION_JUMP_OFF_WALL = 25;      // 跳下墙
+  MOTION_POWERED_FLY = 26;    // 动力飞行
+  MOTION_LADDER_IDLE = 27;    // 梯上待机
+  MOTION_LADDER_MOVE = 28;    // 梯上移动
+  MOTION_LADDER_SLIP = 29;    // 梯上下滑
+  MOTION_STANDBY_TO_LADDER = 30;    // 待机到梯上
+  MOTION_LADDER_TO_STANDBY = 31;    // 梯上到待机
+  MOTION_DANGER_STANDBY = 32; // 危险区域中待机
+  MOTION_DANGER_STANDBY_MOVE = 33;    // 危险区域中待机移动
+  MOTION_DANGER_WALK = 34;    // 危险区域中走
+  MOTION_DANGER_RUN = 35;     // 危险区域中跑
+  MOTION_DANGER_DASH = 36;    // 危险区域中冲刺
+  MOTION_CROUCH_IDLE = 37;    // 蹲下待机
+  MOTION_CROUCH_MOVE = 38;    // 蹲下移动
+  MOTION_CROUCH_ROLL = 39;    // 蹲下翻滚
+  MOTION_NOTIFY = 40;         // 只通知位置时使用
+  MOTION_LAND_SPEED = 41;     // 只通知落地速度时使用
+  MOTION_MOVE_FAIL_ACK = 42;  // 移动失败确认
+  MOTION_WATERFALL = 43;  // 瀑布滑落
+  MOTION_DASH_BEFORE_SHAKE = 44;  // 冲刺前摇
+  MOTION_SIT_IDLE = 45;   // 坐下
+  MOTION_FORCE_SET_POS = 46;   // 被顶起
+  MOTION_QUEST_FORCE_DRAG = 47;   // 任务强制拖拽
+  MOTION_FOLLOW_ROUTE = 48;// 跟随指定路径
+  MOTION_NUM = 49;    // 运动状态数量
+}
+
+enum EnterReason
+{
+  ENTER_REASON_NONE = 0;
+  ENTER_REASON_LOGIN = 1; // 登录时进入场景
+  ENTER_REASON_BACK = 2; // 玩家回到自己的世界
+  ENTER_REASON_GM = 21;        // GM指令
+  ENTER_REASON_LEVEL_QUEST_TRANS = 30;  //关卡任务传送
+  ENTER_REASON_QUEST_ROLLBACK = 31;  // 任务回滚
+  ENTER_REASON_TRANS_POINT = 42;    // 地图传送点
+  ENTER_REASON_CLIENT_TRANSMIT = 43;  // 客户端发起的传送
+  ENTER_REASON_TEAM_KICK = 51;    // 联机被踢出其他人的世界
+  ENTER_REASON_TEAM_JOIN = 52;    // 联机进入其他人的世界
+  ENTER_REASON_TEAM_BACK = 53;    // 联机回到自己的世界
+  ENTER_REASON_ENTER_HOME = 64; // 进入家园
+  ENTER_REASON_EXIT_HOME = 65; // 离开家园
+  ENTER_REASON_CHANGE_HOME_MODULE = 66; // 改变家园模组
+  ENTER_REASON_GALLERY = 67;          // 小游戏传送
+  ENTER_REASON_HOME_SCENE_JUMP = 68; // 家园室外、室内切换
+  ENTER_REASON_HIDE_AND_SEEK = 69;    // 躲猫猫
+  ENTER_REASON_ENTER_MAZE_NODE = 70; // 进入深渊节点
+  ENTER_REASON_EXIT_MAZE_NODE = 71; // 离开深渊节点
+}
+
+enum VisionType
+{
+  VISION_NONE = 0;
+  VISION_MEET = 1;                // 出现(进入视野)
+  VISION_REBORN = 2;              // 重生
+  VISION_REPLACE = 3;             // 主动更换
+  VISION_WAYPOINT_REBORN = 4;     // 副本路点重生
+  VISION_MISS = 5;                // 消失(离开视野)
+  VISION_DIE = 6;                 // 死亡
+  VISION_GATHER_ESCAPE = 7;       // 目前只用于环境小动物采集时逃走
+  VISION_REFRESH = 8;             // group刷新导致物件消失(TODO...暂且不会发给客户端)
+  VISION_TRANSPORT = 9;           // 在同一个场景内传送
+  VISION_REPLACE_DIE = 10;        // 客户端需要区分死亡换人和主动换人
+  VISION_REPLACE_SERVER = 11;     // 服务器主动发起的换人,比如任务节点触发 与队伍更新公用
+  VISION_BORN = 12;               // entityAppear()的默认情况
+  VISION_PICKUP = 13;             // 拾取
+  VISION_REMOVE = 14;             // LD无声息移除entity
+  VISION_DE_ACTIVE = 15;          // 机关DeActive
+}
+
+enum GroupVisionType{
+  GVT_ALWAYS_SHOW = 0;
+  GVT_DEFAULT = 1;
+}
+
+// 跳点类型
+enum EntityJumpType
+{
+  EJT_NONE = 0;
+  EJT_ACTIVE = 1;     // 主动跳点
+  EJT_PASSIVE = 2;    // 被动跳点
+}
+
+// 传送原因
+enum TeleportReason
+{
+  TELEPORT_NONE = 0;
+  TELEPORT_LEVEL_QUEST = 1;  //关卡节点
+  TELEPORT_AVATAR_RE_BORN = 2;  //单角色重生传送
+  TELEPORT_TEAM_RE_BORN = 3;    //小队重生传送
+  TELEPORT_BIGMAP = 4;        //大地图传送功能
+  TELEPORT_ACTOR = 5;         //传送门
+  TELEPORT_STUCK_RESET = 6;   //卡死重置
+}
+
+// 重生原因
+enum ReBornReason
+{
+  REASON_NONE = 0;
+  REASON_AVATAR_ALL_DEAD = 1;    //小队死亡重生
+  REASON_AVATAR_JUMP_CLIFF = 2;   //跳崖重生
+  REASON_REBORN_AREA = 3;      //重生区域
+  REASON_FLOW_KILL = 4;      //游戏流程删除
+  REASON_REST_POINT = 5;      //坐火重生
+  REASON_VISUAL_REBORN = 6;      //visual重生
+  REASON_FOOD_REBORN = 7;      //食物重生
+}
+
+//运动包的状态(预测用)
+enum MotionPacketState
+{
+  PACKET_MOVE = 0;    //移动
+  PACKET_MOVE_END = 1;//移动结束
+}
+
+enum DynamicInteractType
+{
+  PLAY_AVG = 0;    //ACG
+  PLAY_NARRATIVE = 1;//旁白
+}
+
+//================================ 场景 物件基本信息（状态的变更）=============
+// 场景上的实体信息
+message SceneEntityBase{
+  int64 entity_id = 1;        // entity id
+  int64 cnf_id = 2;     // actor config id
+  int64 owner_id = 3;   // owner player id 所属玩家id
+  int64 host_id = 4;   // host player id 该实体的host主机的玩家id
+  int64 preassigned_id = 5; //编辑器预分配的实例ID
+  Vector3Int pos = 6;
+  Vector3Int rot = 7;
+  int32 entity_type = 9; // 实体类型,对应scene_object.xlsx的ActorType
+  int32 object_state = 10;//物件的状态,对应各自物件的枚举类型
+  int64 spawner_system_guid = 11; //生成器的System_GUID
+  int32 logic_state = 12; //位标志的复合值，对应LevelLogicState.IsActivated|CanInteract|IsLocked
+}
+
+message SceneEntityInfo{
+  SceneEntityBase  base_data = 1;
+  bytes  entity_data = 2;
+  EntityBattleInfo  battle_info = 3; //战斗相关 包括 基本属性，技能, BUFF 相关
+  RoleSummaryInfo role_info = 4;//实体所属的玩家简略信息,只有在需要显示玩家数据的实体上携带数据,比如Avatar
+  int64 buff_uid_start = 5;// buff uid  起始位值
+  int32  random_start_index = 6;// random table index
+}
+
+message SceneEntityHostInfo{
+  int64 entity_id = 1; // entity id
+  int64 host_id = 2;   // host player id
+}
+
+// 玩家的位置信息
+message PlayerLocationInfo
+{
+  int64 uid = 1;     // UID
+  Vector3Int pos = 2;     // 位置
+  Vector3Int rot = 3;     // 朝向
+}
+
+// 运动信息
+message MotionInfo
+{
+  Vector3Int pos = 1;   // 位置
+  Vector3Int rot = 2;   // 旋转
+  Vector3Int speed = 3;  // 速度
+  MotionState state = 4;  // 状态
+  int64 scene_time = 5;
+  float max_speed = 6;
+  Vector3Int acceleration = 7;//加速度
+  MotionPacketState packet_state = 8;//运动包的状态（预测用）
+}
+
+message DlgTagProto{
+  int64 dlg_id = 1;
+  int64 link_id = 2;
+  string tag = 3;
+}
+
+message DlgTagsProto{
+  repeated DlgTagProto tags = 1;
+}
+
+//动态交互选项
+message DynamicInteractInfo{
+  DynamicInteractType type = 1; //类型
+  int32 index = 2;
+  repeated string param_list = 3;//参数列表
+  repeated int64 long_param_list = 4;//long参数列表
+}
+
+//======================================   场景 actor ---------------- 结构体-------------------------
+// 场景上的怪物信息
+message SceneMonster
+{
+  int32 group_id = 1;    // 组ID
+  int64 spawner_system_guid = 2; //生成器的System_GUID
+  int32 camp_type = 3; //阵营
+  int64 squad_manager_id = 4;//管理器的System_GUID
+  int64 dialogue_id = 5;//对话树Id
+  DlgTagsProto dialogue_tags = 6;
+  repeated DynamicInteractInfo dynamic_list = 7;
+  int32 difficulty = 8; //难度系数
+  repeated int32 addition_tags = 9; //自定义Tag列表
+}
+
+message SceneForbiddenVolume
+{
+  int32 fobidden_mode = 1;
+}
+
+//召唤物
+message SceneSummons{
+  int64 master_id = 1; //主人的EntityID
+  int32 camp_type = 2; //阵营
+}
+
+// 场景上的NPC信息
+message SceneNpc
+{
+  int32 npc_id = 1;
+  int32 room_id = 2;
+  int32 parent_quest_id = 3; // 关联的父任务id
+  int32 block_id = 4; // 客户端需要
+}
+
+// 场景上的角色信息
+message SceneAvatar
+{
+  int32  level = 1;
+  int32  exp = 2;
+  int32  exceed_id = 3;// 突破Id
+  bool is_player_control = 4;
+  int32 camp_type = 5; //阵营
+  int32 life_state = 6;
+  int32 sub_type = 7;//Avatar的子类型,SceneAvatarSubType
+}
+
+//海巡兽炮台装置
+message SceneShipMod{
+  int32 camp_type = 1; //阵营
+}
+
+//子弹飞行物
+message SceneProjectile{
+  int64 client_projectile_id = 1;//客户端子弹唯一id
+  int64 master_entity_id = 2; //主人的EntityID，如炮弹的master是炮台
+  int32 camp_type = 3; //阵营
+  Vector3Int speed = 4;//速度
+  string instanced_struct = 5;//客户端透传参数
+}
+
+//休息点
+message SceneRestPoint{
+  int64 spawner_system_guid = 1; //生成器的System_GUID
+}
+
+//门
+message SceneDoor{
+  int64 spawner_system_guid = 1; //生成器的System_GUID
+}
+
+//宝箱
+message SceneChest{
+  int64 spawner_system_guid = 1; //生成器的System_GUID
+}
+
+//掉落物
+message ScenePickup{
+  int64 spawner_system_guid = 1; //生成器的System_GUID
+}
+
+//电梯
+message SceneLift{
+  int64 start_run_time = 1;     //电梯开始运行时间(毫秒)
+  int32 from_floor = 2;         //起始楼层
+  int32 to_floor = 3;           //到达楼层
+  int64 floor_run_time = 4;     //电梯本次单层运行时间(毫秒)
+}
+
+//升降平台
+message SceneMovingPlatform{
+  int64 start_run_time = 1;     //启动时间
+}
+
+//场景物件，目前只有状态改变，比如地板塌陷，限定区域
+message SceneGadget{
+}
+
+//传送数据
+message TeleporterData{
+  int32 scene_id = 1;            //场景Id
+  repeated int64 teleport_list = 2; //传送点
+}
+
+//传送门
+message SceneTeleporter{
+  repeated TeleporterData datas = 1;        //传送数据列表
+}
+
+//随机岛礁
+message SceneRandomIsland{
+
+}
+//======================================   场景 actor ---------------- 结构体-------------------------

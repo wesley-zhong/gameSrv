@@ -1,0 +1,73 @@
+syntax = "proto3";
+option java_package = "com.game.protoGen";
+option go_package = "/protoGen";
+
+import "ProtoCommon.proto";
+import "ProtoSceneObjs.proto";
+
+message  ActorBin{
+  int64 spawnerPreId = 1;    //生成器的preassignedId
+  int64 preassignedId = 2;//自身的preassignedId
+  int32 actor_type = 3;    //类型
+  bytes dataBin = 4;
+  Vector3Int pos = 5;
+  Vector3Int rot = 6;
+  int32 logicState = 7; //逻辑状态
+  int32 state = 8;        //对应Actor在scene_object.xlsx中各自的枚举，比如Chest对应ChestState
+  repeated int64  triggeredGuids = 9; //触发者的GUID列表
+  bytes ext_data = 10;//actor 额外数据
+  int64 config_id = 11;//配置ID，有随机逻辑
+  int32 custom_interact_type = 12; //自定义交互类型
+}
+
+//临时用来再次触发关卡节点
+message TempAvatarBin{
+  int64 avatarConfId = 1;
+  int64 ownerPlayerId = 2;
+  bool isJoin = 3;
+  bool isSwitchTo = 4;
+}
+
+message MonsterBin{
+  int32 camp_type = 1;
+  DlgTagsProto dlg_tags = 2;
+  repeated DynamicInteractInfo dynamic_list = 3;
+  int32 difficulty_id = 4;//难度ID，有随机逻辑
+  repeated int32 addition_tag_list = 5;//自定义Tag列表，有随机逻辑
+  int64 dialogue_id = 6; //对话树ID
+}
+
+
+//怪物小队管理器
+message  MonsterSquadManagerBin{
+  int32 curBatch = 1; //当前生成的轮次
+}
+
+//门
+message DoorBin{
+  int32 lockState = 1;   //锁定状态，对应LockState
+}
+
+//怪物生成器
+message MonsterSpawnerBin{
+  int64 genActorPreID = 1; //生成的Actor的preassignedId
+  bool canAutoSpawn = 2; //是否能够
+}
+
+//对象生成器
+message  ObjectSpawnerBin{
+  int64 genActorPreID = 1; //生成的Actor的preassignedId
+}
+
+//通用机关生成器
+message TrapSpawnerBin{
+  int64 genActorPreID = 1; //生成的Actor的preassignedId
+}
+
+message SceneActorData{
+  map<int64, ActorBin>  actors = 1;
+  int64 beginTime = 2;//场景开始时间
+  map<int64, int64> actorDestroyTime = 3;//actor的销毁时间，只有需要记录的才会记录
+}
+
+
