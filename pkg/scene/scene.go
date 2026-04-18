@@ -4,6 +4,7 @@ package scene
 
 import (
 	"errors"
+	"fmt"
 	"gameSrv/pkg/math"
 )
 
@@ -25,16 +26,17 @@ type Scene struct {
 	PlayerViewMgrMap      map[int64]*PlayerViewMgr
 	PlayerPreEnterInfoMap map[int64]*ScenePlayerPreSlotInfo
 
-	// All entities in the scene, key is entityId
+	// All entities in scene, key is entityId
 	EntityMap map[int64]IEntity
 
 	// Scene phasing data, <phasingId, data>
-	PhasingDataMap map[int64]IScenePhasingData
-	Visitor        IVisitor
+	PhasingDataMap   map[int64]IScenePhasingData
+	SceneSightModule ISceneSightModule
 }
 
 // NewScene creates a new Scene
-func NewScene(sceneUID string, sceneCnfId int32, threadHashCode int64) *Scene {
+func NewScene(sceneUID string, sceneCnfId int32, sceneSightModule ISceneSightModule, threadHashCode int64) *Scene {
+	_ = threadHashCode // Reserved for future use
 	return &Scene{
 		SceneUID:              sceneUID,
 		SceneCnfId:            sceneCnfId,
@@ -43,6 +45,7 @@ func NewScene(sceneUID string, sceneCnfId int32, threadHashCode int64) *Scene {
 		PlayerPreEnterInfoMap: make(map[int64]*ScenePlayerPreSlotInfo),
 		EntityMap:             make(map[int64]IEntity),
 		PhasingDataMap:        make(map[int64]IScenePhasingData),
+		SceneSightModule:      sceneSightModule,
 	}
 }
 
@@ -75,8 +78,8 @@ func (s *Scene) GetSceneType() int32 {
 }
 
 // GetSightModule returns the vision module
-func (s *Scene) GetSightModule() IVisitor {
-	return nil // To be implemented by subclasses
+func (s *Scene) GetSightModule() ISceneSightModule {
+	return s.SceneSightModule
 }
 
 // GetPhasingData gets or creates scene phasing data
@@ -159,6 +162,7 @@ func (s *Scene) PlayerEnterSceneDone(player IGamePlayer) {
 
 // PlayerLeaveScene handles player leaving scene
 func (s *Scene) PlayerLeaveScene(player IGamePlayer, leaveSceneType int32) error {
+	_ = leaveSceneType // Reserved for future use
 	if player == nil {
 		return ErrPlayerNotFound
 	}
@@ -169,29 +173,50 @@ func (s *Scene) PlayerLeaveScene(player IGamePlayer, leaveSceneType int32) error
 
 // PlayerInBattleChange handles player battle state change
 func (s *Scene) PlayerInBattleChange(player IGamePlayer) {
+	_ = player // Reserved for future use
 	// TODO: implement battle state change logic
 }
 
 // EntityAppear handles entity appearing in scene
-func (s *Scene) EntityAppear(act IEntity, context interface{}) error {
-	// TODO: implement entity appearance logic
+func (s *Scene) EntityAppear(act IEntity, context *VisionContext) error {
+	_ = context // Reserved for future use
+	if act == nil {
+		return nil
+	}
+	// Add entity to entity map
+	s.EntityMap[act.GetEntityId()] = act
+	// TODO: trigger entity appear event
 	return nil
 }
 
 // EntityDisappear handles entity disappearing from scene
-func (s *Scene) EntityDisappear(act IEntity, context interface{}, deadClearTime int64) error {
-	// TODO: implement entity disappearance logic
+func (s *Scene) EntityDisappear(act IEntity, context *VisionContext, deadClearTime int64) error {
+	_ = context       // Reserved for future use
+	_ = deadClearTime // Reserved for future use
+	if act == nil {
+		return nil
+	}
+	// Remove entity from entity map
+	delete(s.EntityMap, act.GetEntityId())
+	// TODO: trigger entity disappear event
 	return nil
 }
 
 // EntityMoveTo handles entity moving to destination
 func (s *Scene) EntityMoveTo(act IEntity, pos, rot *math.Vector3) error {
-	// TODO: implement entity movement logic
+	_ = rot // Reserved for future use
+	if act == nil || s.SceneSightModule == nil {
+		return nil
+	}
+	s.SceneSightModule.EntityMoveTo(act, pos)
 	return nil
 }
 
 // EntityChangePhasing handles entity changing phasing in scene
 func (s *Scene) EntityChangePhasing(act IEntity, newPhasingId int64) error {
+	if act == nil {
+		return nil
+	}
 	phasingData := s.GetPhasingData(newPhasingId)
 	if phasingData == nil {
 		return nil
@@ -202,68 +227,100 @@ func (s *Scene) EntityChangePhasing(act IEntity, newPhasingId int64) error {
 
 // FindMoveEntityIncludeProxy finds entity (returns proxied AvatarTeamActor)
 func (s *Scene) FindMoveEntityIncludeProxy(player IGamePlayer, entityId int64) IEntity {
-	// TODO: implement entity search logic
-	return nil
+	_ = player // Reserved for future use
+	// TODO: implement entity search logic with proxy support
+	return s.FindEntity(entityId)
 }
 
 // FindRealEntityIncludeProxy finds entity (returns real actor corresponding to EntityId)
 func (s *Scene) FindRealEntityIncludeProxy(player IGamePlayer, entityId int64) IEntity {
-	// TODO: implement entity search logic
-	return nil
+	_ = player // Reserved for future use
+	// TODO: implement entity search logic with proxy support
+	return s.FindEntity(entityId)
 }
 
-// FindEntity finds entity
+// FindEntity finds entity by entityId
 func (s *Scene) FindEntity(entityId int64) IEntity {
 	return s.EntityMap[entityId]
 }
 
 // ProcessEntityMoveInfo processes entity move info
 func (s *Scene) ProcessEntityMoveInfo(player IGamePlayer, moveInfo interface{}) error {
+	_ = player   // Reserved for future use
+	_ = moveInfo // Reserved for future use
 	// TODO: implement entity move info processing
 	return nil
 }
 
 // GetMonsterLevel gets monster level
 func (s *Scene) GetMonsterLevel(monster IEntity) int32 {
+	if monster == nil {
+		return 1
+	}
+	// TODO: implement monster level calculation based on scene config
 	return 1
 }
 
 // GetSceneBuff gets scene buffs
 func (s *Scene) GetSceneBuff() []int32 {
+	// TODO: implement scene buff retrieval
 	return []int32{}
 }
 
 // GetMonsterBuff gets monster buffs
 func (s *Scene) GetMonsterBuff() []int32 {
+	// TODO: implement monster buff retrieval
 	return []int32{}
 }
 
 // GetSceneProps gets scene properties
 func (s *Scene) GetSceneProps() map[int32]int32 {
+	// TODO: implement scene properties retrieval
 	return make(map[int32]int32)
 }
 
 // GetMonsterProps gets monster properties
 func (s *Scene) GetMonsterProps() map[int32]int32 {
+	// TODO: implement monster properties retrieval
 	return make(map[int32]int32)
 }
 
 // IsLoadFormationData checks if formation data should be loaded
 func (s *Scene) IsLoadFormationData() bool {
+	// TODO: implement formation data check
 	return false
 }
 
 // IsSaveToFormationData checks if should save to formation data
 func (s *Scene) IsSaveToFormationData() bool {
+	// TODO: implement formation data save check
 	return false
 }
 
 // AllowOption checks if a scene option is allowed
 func (s *Scene) AllowOption(optionType int32) bool {
-	return false
+	return s.AllowOptions&(1<<uint32(optionType)) != 0
+}
+
+// ForeachAllPlayer iterates over all players
+func (s *Scene) ForeachAllPlayer(consumer func(IGamePlayer)) {
+	for _, viewMgr := range s.PlayerViewMgrMap {
+		consumer(viewMgr.GetPlayer())
+	}
+}
+
+// ForeachPhasingPlayer iterates over players in specified phase
+func (s *Scene) ForeachPhasingPlayer(phasingId int64, consumer func(IGamePlayer)) {
+	for _, viewMgr := range s.PlayerViewMgrMap {
+		player := viewMgr.GetPlayer()
+		avatarTeam := player.GetAvatarTeam()
+		if avatarTeam != nil && avatarTeam.GetPhasingId() == phasingId {
+			consumer(player)
+		}
+	}
 }
 
 // String returns string representation
 func (s *Scene) String() string {
-	return "scene id = " + string(rune(s.SceneCnfId)) + " owner id = " + string(rune(s.OwnerUID))
+	return fmt.Sprintf("scene id = %d owner id = %d", s.SceneCnfId, s.OwnerUID)
 }
