@@ -60,6 +60,10 @@ func acceptNewQuest(gamePlayer *player.GamePlayer, questCnf *cfg.QuestQuestCnf) 
 	}
 	questModule := player.GetModule[modules.QuestModule](gamePlayer, modules.QUEUE_MODULE)
 	questModule.AddQuest(questCnf)
+	if len(questCnf.ChildQuestList) == 0 {
+		log.Warnf("questId =%d not found quest step", questCnf.Id)
+		return
+	}
 	//get the main quest first quest step
 	questStep := questCnf.ChildQuestList[0]
 	acceptNewQuestStep(gamePlayer, questStep)
