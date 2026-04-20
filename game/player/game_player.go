@@ -6,6 +6,7 @@ import (
 	"gameSrv/pkg/actor_module"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/math"
+	"gameSrv/pkg/orm"
 	"gameSrv/pkg/scene"
 )
 
@@ -23,20 +24,17 @@ func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 		Modules:    modules.NewModuleContainer(pid),
 		asyncActor: actor_module.NewActor(pid),
 	}
-	modules.RegisterNewModule(&modules.RoleModule{}, player, dal.RoleDAO, func(module modules.IModule) {
-		player.Modules.IModules[module.ModuleId()] = module
-	})
-
-	modules.RegisterNewModule(&modules.ItemModule{}, player, dal.ItemDAO, func(module modules.IModule) {
-		player.Modules.IModules[module.ModuleId()] = module
-	})
-	modules.RegisterNewModule(&modules.QuestModule{}, player, dal.QuestDAO, func(module modules.IModule) {
-		player.Modules.IModules[module.ModuleId()] = module
-	})
-	modules.RegisterNewModule(&modules.WorldModule{}, player, dal.WorldDAO, func(module modules.IModule) {
-		player.Modules.IModules[module.ModuleId()] = module
-	})
+	registerPlayerModules(&modules.RoleModule{}, player, dal.RoleDAO)
+	registerPlayerModules(&modules.ItemModule{}, player, dal.ItemDAO)
+	registerPlayerModules(&modules.QuestModule{}, player, dal.QuestDAO)
+	registerPlayerModules(&modules.WorldModule{}, player, dal.WorldDAO)
 	return player
+}
+
+func registerPlayerModules[DOType any](aresModule modules.IGameModule[DOType], gamePlayer *GamePlayer, dao *orm.MongodbDAO[DOType]) {
+	modules.RegisterNewModule(aresModule, gamePlayer, dao, func(module modules.IModule) {
+		gamePlayer.Modules.IModules[module.ModuleId()] = module
+	})
 }
 
 func (gp *GamePlayer) LoadDataFromDB() error {

@@ -15,7 +15,7 @@ type RoleDO struct {
 
 type RoleModule struct {
 	GameModule[RoleDO]
-	HeroAvatars map[int32]*actors.HeroAvatarActor
+	HeroAvatars map[int64]*actors.HeroAvatarActor
 }
 
 func (roleModule *RoleModule) ModuleId() ModuleTypeId {
@@ -34,12 +34,13 @@ func (roleModule *RoleModule) OnLogin() {
 			Name: "name",
 		}
 
-		roleModule.HeroAvatars = make(map[int32]*actors.HeroAvatarActor)
+		roleModule.HeroAvatars = make(map[int64]*actors.HeroAvatarActor)
 		roleModule.MarkDirty()
 	}
 	return
 }
 
 func (roleModule *RoleModule) AddAvatar(avatar *actors.HeroAvatarActor) {
+	roleModule.HeroAvatars[avatar.GetConfigId()] = avatar
 
 }
