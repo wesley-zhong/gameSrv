@@ -1,6 +1,8 @@
 package modules
 
-import "gameSrv/pkg/log"
+import (
+	"gameSrv/pkg/log"
+)
 
 type RoleDO struct {
 	Id   int64
@@ -9,6 +11,11 @@ type RoleDO struct {
 
 type RoleModule struct {
 	GameModule[RoleDO]
+}
+
+func (roleModule *RoleModule) GetPid(pid int64) {
+	//TODO implement me
+	panic("implement me")
 }
 
 func (roleModule *RoleModule) ModuleId() ModuleTypeId {
@@ -23,7 +30,7 @@ func (roleModule *RoleModule) OnLogin() {
 	log.Infof("itemModule OnLogin")
 	if roleModule.DataDO == nil {
 		roleModule.DataDO = &RoleDO{
-			Id:   roleModule.Pid,
+			Id:   roleModule.GamePlayer.GetUid(),
 			Name: "name",
 		}
 		roleModule.MarkDirty()

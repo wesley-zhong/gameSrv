@@ -47,7 +47,6 @@ func NewLevelScene(gamePlayer IGamePlayer, sceneCnfId int32) *LevelScene {
 
 	// 创建网格视野模块
 	levelScene.SceneSightModule = NewSceneGridSightModule(levelScene)
-
 	return levelScene
 }
 

@@ -5,6 +5,8 @@ import (
 	"gameSrv/game/modules"
 	"gameSrv/pkg/actor"
 	"gameSrv/pkg/event"
+	"gameSrv/pkg/math"
+	"gameSrv/pkg/scene"
 )
 
 type GamePlayer struct {
@@ -21,10 +23,19 @@ func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 		Modules:    modules.NewModuleContainer(pid),
 		asyncActor: actor.NewActor(pid),
 	}
-	modules.RegisterNewModule(&modules.RoleModule{}, player.Modules, dal.RoleDAO)
+	modules.RegisterNewModule(&modules.RoleModule{}, player, dal.RoleDAO, func(module modules.IModule) {
+		player.Modules.IModules[module.ModuleId()] = module
+	})
 
-	modules.RegisterNewModule(&modules.ItemModule{}, player.Modules, dal.ItemDAO)
-	modules.RegisterNewModule(&modules.QuestModule{}, player.Modules, dal.QuestDAO)
+	modules.RegisterNewModule(&modules.ItemModule{}, player, dal.ItemDAO, func(module modules.IModule) {
+		player.Modules.IModules[module.ModuleId()] = module
+	})
+	modules.RegisterNewModule(&modules.QuestModule{}, player, dal.QuestDAO, func(module modules.IModule) {
+		player.Modules.IModules[module.ModuleId()] = module
+	})
+	modules.RegisterNewModule(&modules.WorldModule{}, player, dal.WorldDAO, func(module modules.IModule) {
+		player.Modules.IModules[module.ModuleId()] = module
+	})
 	return player
 }
 
@@ -65,4 +76,98 @@ func GetModule[T any](gp *GamePlayer, moduleId modules.ModuleTypeId) *T {
 	}
 
 	return nil
+}
+func (gp *GamePlayer) GetUid() int64 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetAvatarTeam() scene.IEntity {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetCurAvatarConfId() int64 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) InPrivatePhasing() bool {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetConfigID() int64 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetLevel() int32 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetLifeState() int32 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetActorID() int64 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetExp() int64 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetExceedID() int64 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetCampType() int32 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetBattleProps() map[int32]int32 {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) SetCachePosRot(pos, rot *math.Vector3) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) OnTeamAvatarDead(actor scene.IEntity) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) OnAvatarStateChange(sync bool) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) MakeAvatarState() interface{} {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) ReCalAttributes() {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) ReCalAllAttackDataEffect() {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (gp *GamePlayer) GetBuffManager() interface{} {
+	//TODO implement me
+	panic("implement me")
 }

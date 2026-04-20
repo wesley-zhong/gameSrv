@@ -13,16 +13,16 @@ var (
 
 // PlayerViewMgr 玩家视野管理器
 type PlayerViewMgr struct {
-	scene    *Scene           // 所属的scene
-	player   IGamePlayer      // 所属的玩家
+	scene   *Scene                // 所属的scene
+	player  IGamePlayer           // 所属的玩家
 	viewMap map[int64]interface{} // 正在查看的entity集合
 }
 
 // NewPlayerViewMgr 创建新的PlayerViewMgr
 func NewPlayerViewMgr(scene *Scene, plyr IGamePlayer) *PlayerViewMgr {
 	return &PlayerViewMgr{
-		scene:    scene,
-		player:   plyr,
+		scene:   scene,
+		player:  plyr,
 		viewMap: make(map[int64]interface{}),
 	}
 }

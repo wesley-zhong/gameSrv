@@ -1,4 +1,4 @@
-package extData
+package ext_data
 
 // ExtDataHolder holds ext data
 type ExtDataHolder struct{}

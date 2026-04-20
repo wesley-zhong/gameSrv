@@ -1,6 +1,8 @@
 package scene
 
-import "gameSrv/pkg/math"
+import (
+	"gameSrv/pkg/math"
+)
 
 // IGamePlayer 玩家接口
 type IGamePlayer interface {

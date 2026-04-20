@@ -38,11 +38,11 @@ func (questModule *QuestModule) OnLogin() {
 	log.Infof("itemModule OnLogin")
 	if questModule.DataDO == nil {
 		questModule.DataDO = &QuestDO{
-			Id:     questModule.Pid,
+			Id:     questModule.Uid(),
 			Quests: make(map[int64]*Quest),
 			CurQId: make([]int64, 0),
 		}
-		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.Pid, gameevent.QuestInitEventID))
+		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.Uid(), gameevent.QuestInitEventID))
 		questModule.MarkDirty()
 	}
 	return

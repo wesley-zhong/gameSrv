@@ -12,6 +12,11 @@ type ItemModule struct {
 	GameModule[ItemDO]
 }
 
+func (itemModule *ItemModule) GetPid(pid int64) {
+	//TODO implement me
+	panic("implement me")
+}
+
 func (itemModule *ItemModule) OnDataLoaded() error {
 	return nil
 }
@@ -24,7 +29,7 @@ func (itemModule *ItemModule) OnLogin() {
 	log.Infof("itemModule OnLogin")
 	if itemModule.DataDO == nil {
 		itemModule.DataDO = &ItemDO{
-			Id:    itemModule.Pid,
+			Id:    itemModule.Uid(),
 			Name:  "itemModule",
 			Count: 100,
 		}

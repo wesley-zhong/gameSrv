@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-package extData
+package ext_data
 
 import "reflect"
 
