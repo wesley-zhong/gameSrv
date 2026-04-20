@@ -7,7 +7,7 @@ type BuffVolumeActor struct {
 	VolumeBase
 }
 
-func (b *BuffVolumeActor) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (b *BuffVolumeActor) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

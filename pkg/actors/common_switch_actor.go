@@ -7,7 +7,7 @@ type CommonSwitchActor struct {
 	SimpleActor
 }
 
-func (c *CommonSwitchActor) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (c *CommonSwitchActor) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

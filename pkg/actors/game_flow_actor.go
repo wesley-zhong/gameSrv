@@ -8,7 +8,7 @@ type GameFlowActor struct {
 	SpawnMode int32
 }
 
-func (g *GameFlowActor) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (g *GameFlowActor) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

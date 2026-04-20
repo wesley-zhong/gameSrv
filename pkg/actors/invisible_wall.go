@@ -7,7 +7,7 @@ type InvisibleWall struct {
 	SimpleActor
 }
 
-func (i *InvisibleWall) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (i *InvisibleWall) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

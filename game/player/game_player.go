@@ -97,22 +97,12 @@ func (gp *GamePlayer) InPrivatePhasing() bool {
 	panic("implement me")
 }
 
-func (gp *GamePlayer) GetConfigID() int64 {
-	//TODO implement me
-	panic("implement me")
-}
-
 func (gp *GamePlayer) GetLevel() int32 {
 	//TODO implement me
 	panic("implement me")
 }
 
 func (gp *GamePlayer) GetLifeState() int32 {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (gp *GamePlayer) GetActorID() int64 {
 	//TODO implement me
 	panic("implement me")
 }
@@ -132,42 +122,12 @@ func (gp *GamePlayer) GetCampType() int32 {
 	panic("implement me")
 }
 
-func (gp *GamePlayer) GetBattleProps() map[int32]int32 {
-	//TODO implement me
-	panic("implement me")
-}
-
 func (gp *GamePlayer) SetCachePosRot(pos, rot *math.Vector3) {
 	//TODO implement me
 	panic("implement me")
 }
 
 func (gp *GamePlayer) OnTeamAvatarDead(actor scene.IEntity) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (gp *GamePlayer) OnAvatarStateChange(sync bool) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (gp *GamePlayer) MakeAvatarState() interface{} {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (gp *GamePlayer) ReCalAttributes() {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (gp *GamePlayer) ReCalAllAttackDataEffect() {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (gp *GamePlayer) GetBuffManager() interface{} {
 	//TODO implement me
 	panic("implement me")
 }

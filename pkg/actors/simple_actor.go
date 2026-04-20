@@ -10,7 +10,7 @@ type SimpleActor struct {
 	Entity
 }
 
-func (s *SimpleActor) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (s *SimpleActor) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

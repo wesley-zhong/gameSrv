@@ -8,9 +8,9 @@ type LevelCreature struct {
 	ExtData interface{}
 }
 
-func (l *LevelCreature) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (l *LevelCreature) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
-	panic("implement me")
+	return l.EnterScene(scn, context)
 }
 
 // NewLevelCreature creates a new LevelCreature

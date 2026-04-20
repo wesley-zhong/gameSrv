@@ -8,7 +8,7 @@ import (
 
 // RegionShapeType 区域形状类型
 const (
-	RegionShapeTypeCircle   = 0 // 圆形
+	RegionShapeTypeCircle  = 0 // 圆形
 	RegionShapeTypeRect    = 1 // 矩形
 	RegionShapeTypePolygon = 2 // 多边形
 )
@@ -31,7 +31,7 @@ type Region struct {
 	TriggerLeave bool
 }
 
-func (r *Region) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (r *Region) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -39,11 +39,11 @@ func (r *Region) EnterScene(scn scene.IScene, context *VisionContext) error {
 // NewRegion 创建新的区域
 func NewRegion() *Region {
 	return &Region{
-		RegionSize:      math.NewVector3(0, 0, 0),
-		PolyPoints:      make([]*math.Vector2, 0),
+		RegionSize:       math.NewVector3(0, 0, 0),
+		PolyPoints:       make([]*math.Vector2, 0),
 		entitiesInRegion: make(map[int64]scene.IEntity),
-		TriggerEnter:    true,
-		TriggerLeave:    true,
+		TriggerEnter:     true,
+		TriggerLeave:     true,
 	}
 }
 
@@ -62,9 +62,9 @@ type IntersectType int
 
 const (
 	IntersectTypeNone    IntersectType = iota // 无交集
-	IntersectTypeInward                      // 进入区域
-	IntersectTypeOutward                     // 离开区域
-	IntersectTypeCross                       // 跨越区域
+	IntersectTypeInward                       // 进入区域
+	IntersectTypeOutward                      // 离开区域
+	IntersectTypeCross                        // 跨越区域
 )
 
 // IsInRegion 检查位置是否在区域内
@@ -150,7 +150,7 @@ func (r *Region) isInPolygon(pos *math.Vector3) bool {
 }
 
 // AddEntity 添加实体到区域
-func (r *Region) AddEntity(entity interface{}, triggerEvt bool) {
+func (r *Region) AddEntity(entity scene.IEntity, triggerEvt bool) {
 	// 支持两种类型：IEntity 和 *actors.Entity（为了向后兼容）
 	var entityId int64
 
@@ -175,12 +175,11 @@ func (r *Region) AddEntity(entity interface{}, triggerEvt bool) {
 		// TODO: 触发实体进入区域事件
 		log.Printf("[Region] entity %d entered region %d", entityId, r.EntityID)
 	}
-}
 	if entity == nil {
 		return
 	}
 
-	entityId := entity.GetEntityId()
+	entityId = entity.GetEntityId()
 	if _, exists := r.entitiesInRegion[entityId]; exists {
 		return // 已经在区域内，不需要重复添加
 	}

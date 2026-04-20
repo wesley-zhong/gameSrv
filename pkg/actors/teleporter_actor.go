@@ -18,7 +18,7 @@ type TeleporterActor struct {
 	LinkedResourceLevelIDs []int64                      // 关联的资源关卡ID列表
 }
 
-func (t *TeleporterActor) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (t *TeleporterActor) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

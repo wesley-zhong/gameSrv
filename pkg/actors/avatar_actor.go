@@ -11,7 +11,7 @@ type AvatarActor struct {
 	IsPlayerControl bool // Whether player is controlling this avatar
 }
 
-func (a *AvatarActor) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (a *AvatarActor) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

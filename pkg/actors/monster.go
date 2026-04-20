@@ -7,7 +7,7 @@ type Monster struct {
 	LevelCreature
 }
 
-func (m *Monster) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (m *Monster) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

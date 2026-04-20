@@ -8,7 +8,7 @@ type Chest struct {
 	DropID int32
 }
 
-func (c *Chest) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (c *Chest) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }

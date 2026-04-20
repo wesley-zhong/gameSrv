@@ -8,7 +8,7 @@ type VolumeBase struct {
 	IsTriggerOneTime bool
 }
 
-func (*VolumeBase) EnterScene(scn scene.IScene, context *VisionContext) error {
+func (*VolumeBase) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	//TODO implement me
 	panic("implement me")
 }
