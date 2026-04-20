@@ -11,6 +11,7 @@ var RoleDAO *orm.MongodbDAO[modules.RoleDO]
 var ItemDAO *orm.MongodbDAO[modules.ItemDO]
 var QuestDAO *orm.MongodbDAO[modules.QuestDO]
 var WorldDAO *orm.MongodbDAO[modules.WorldDO]
+var TeamDAO *orm.MongodbDAO[modules.TeamDO]
 
 func InitMongoDB(addr string, userName string, pwd string) error {
 	err := orm.InitMongoDB(addr, userName, pwd)
@@ -21,6 +22,7 @@ func InitMongoDB(addr string, userName string, pwd string) error {
 	ItemDAO = &orm.MongodbDAO[modules.ItemDO]{Collection: orm.GetDBConnTable("game", "item")}
 	QuestDAO = &orm.MongodbDAO[modules.QuestDO]{Collection: orm.GetDBConnTable("game", "quest")}
 	WorldDAO = &orm.MongodbDAO[modules.WorldDO]{Collection: orm.GetDBConnTable("game", "world")}
+	TeamDAO = &orm.MongodbDAO[modules.TeamDO]{Collection: orm.GetDBConnTable("game", "team")}
 	return nil
 }
 

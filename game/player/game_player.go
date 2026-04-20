@@ -78,8 +78,7 @@ func GetModule[T any](gp *GamePlayer, moduleId modules.ModuleTypeId) *T {
 	return nil
 }
 func (gp *GamePlayer) GetUid() int64 {
-	//TODO implement me
-	panic("implement me")
+	return gp.Id
 }
 
 func (gp *GamePlayer) GetAvatarTeam() scene.IEntity {
