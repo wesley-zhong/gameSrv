@@ -3,7 +3,7 @@ package player
 import (
 	"gameSrv/game/dal"
 	"gameSrv/game/modules"
-	"gameSrv/pkg/actor"
+	"gameSrv/pkg/actor_module"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/math"
 	"gameSrv/pkg/scene"
@@ -13,7 +13,7 @@ type GamePlayer struct {
 	Id         int64
 	Sid        int64
 	Modules    *modules.ModuleContainer
-	asyncActor *actor.Actor
+	asyncActor *actor_module.Actor
 }
 
 func NewGamePlayer(pid int64, sid int64) *GamePlayer {
@@ -21,7 +21,7 @@ func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 		Id:         pid,
 		Sid:        sid,
 		Modules:    modules.NewModuleContainer(pid),
-		asyncActor: actor.NewActor(pid),
+		asyncActor: actor_module.NewActor(pid),
 	}
 	modules.RegisterNewModule(&modules.RoleModule{}, player, dal.RoleDAO, func(module modules.IModule) {
 		player.Modules.IModules[module.ModuleId()] = module

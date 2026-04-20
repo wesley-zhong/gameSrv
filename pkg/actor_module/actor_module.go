@@ -1,4 +1,4 @@
-package actor
+package actor_module
 
 import (
 	"gameSrv/pkg/gopool"
