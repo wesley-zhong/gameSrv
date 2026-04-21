@@ -12,11 +12,6 @@ type ItemModule struct {
 	GameModule[ItemDO]
 }
 
-func (itemModule *ItemModule) GetPid(pid int64) {
-	//TODO implement me
-	panic("implement me")
-}
-
 func (itemModule *ItemModule) OnDataLoaded() error {
 	return nil
 }

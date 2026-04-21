@@ -112,7 +112,6 @@ func RegisterNewModule[DOType any](aresModule IGameModule[DOType], gamePlayer sc
 	if am, ok := any(aresModule).(IGameModule[DOType]); ok {
 		am.SetDAO(dao)
 		am.SetGamePlayer(gamePlayer)
-		//gamePlayer.StoreModules(am)
 		onCreated(am)
 	}
 }
