@@ -11,18 +11,18 @@ import (
 )
 
 type GamePlayer struct {
-	Id         int64
-	Sid        int64
-	Modules    *modules.ModuleContainer
-	asyncActor *actor_module.Actor
+	Id              int64
+	Sid             int64
+	ModuleContainer *modules.ModuleContainer
+	asyncActor      *actor_module.Actor
 }
 
 func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 	player := &GamePlayer{
-		Id:         pid,
-		Sid:        sid,
-		Modules:    modules.NewModuleContainer(pid),
-		asyncActor: actor_module.NewActor(pid),
+		Id:              pid,
+		Sid:             sid,
+		ModuleContainer: modules.NewModuleContainer(pid),
+		asyncActor:      actor_module.NewActor(pid),
 	}
 	registerPlayerModules(&modules.RoleModule{}, player, dal.RoleDAO)
 	registerPlayerModules(&modules.ItemModule{}, player, dal.ItemDAO)
@@ -33,28 +33,28 @@ func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 
 func registerPlayerModules[DOType any](aresModule modules.IGameModule[DOType], gamePlayer *GamePlayer, dao *orm.MongodbDAO[DOType]) {
 	modules.RegisterNewModule(aresModule, gamePlayer, dao, func(module modules.IModule) {
-		gamePlayer.Modules.IModules[module.ModuleId()] = module
+		gamePlayer.ModuleContainer.IModules[module.ModuleId()] = module
 	})
 }
 
 func (gp *GamePlayer) LoadDataFromDB() error {
-	return gp.Modules.InitModules()
+	return gp.ModuleContainer.InitModules()
 }
 
 func (gp *GamePlayer) SaveData() {
 	gp.asyncActor.Call(func() {
-		gp.Modules.AsyncSave()
+		gp.ModuleContainer.AsyncSave()
 	})
 }
 
 func (gp *GamePlayer) OnLogin() {
-	for _, module := range gp.Modules.IModules {
+	for _, module := range gp.ModuleContainer.IModules {
 		module.OnLogin()
 	}
 }
 
 func (gp *GamePlayer) OnDisconnect() {
-	for _, module := range gp.Modules.IModules {
+	for _, module := range gp.ModuleContainer.IModules {
 		module.OnDisconnect()
 	}
 }
@@ -64,8 +64,8 @@ func (gp *GamePlayer) DispatchEvent(ev event.Event) {
 }
 
 func GetModule[T any](gp *GamePlayer, moduleId modules.ModuleTypeId) *T {
-	module, ok := gp.Modules.IModules[moduleId]
-	if !ok {
+	module := gp.ModuleContainer.IModules[moduleId]
+	if module == nil {
 		return nil
 	}
 

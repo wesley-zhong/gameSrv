@@ -13,6 +13,7 @@ const (
 	ITEM_MODULE  ModuleTypeId = 2
 	QUEUE_MODULE ModuleTypeId = 3
 	WORLE_MODULE ModuleTypeId = 4
+	MAX_MODULE   ModuleTypeId = 5
 )
 
 type IModule interface {
@@ -95,13 +96,13 @@ func (gm *GameModule[DOType]) Uid() int64 {
 // ModuleContainer ==========================
 type ModuleContainer struct {
 	Pid      int64
-	IModules map[ModuleTypeId]IModule
+	IModules []IModule
 }
 
 func NewModuleContainer(pid int64) *ModuleContainer {
 	moduleContainer := &ModuleContainer{
 		Pid:      pid,
-		IModules: make(map[ModuleTypeId]IModule, 1024),
+		IModules: make([]IModule, MAX_MODULE),
 	}
 	return moduleContainer
 }
