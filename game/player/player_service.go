@@ -10,7 +10,7 @@ import (
 // this may be run  on io thread
 func OnPlayerLogin(pid int64, sid int64) *GamePlayer {
 	existPlayer := RoleOlineMgr.GetPlayerById(pid)
-	if existPlayer != nil {
+	if existPlayer != nil && existPlayer.Sid == sid {
 		return existPlayer
 	}
 
