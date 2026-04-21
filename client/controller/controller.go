@@ -13,11 +13,11 @@ import (
 var playerConn = make(map[int64]*client.ConnContext)
 
 func Init() {
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_GAME_CLIENT), &protoGen.EchoReq{}, onDirectFromGame)
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_DIRECT_FROM_WORLD_CLIENT), &protoGen.EchoReq{}, onDirectFromWorld)
+	tcp.RegisterMethod(int16(protoGen.MsgId_HEART_BEAT_RESPONSE), &protoGen.HeartBeatResponse{}, hearBeatResponse)
+	tcp.RegisterMethod(int16(protoGen.MsgId_PERFORMANCE_TEST_RES), &protoGen.PerformanceTestRes{}, performanceRes)
+	tcp.RegisterMethod(int16(protoGen.MsgId_LOGIN_RESPONSE), &protoGen.LoginResponse{}, loginResponse)
+	tcp.RegisterMethod(int16(protoGen.MsgId_DIRECT_FROM_GAME_CLIENT), &protoGen.EchoReq{}, onDirectFromGame)
+	tcp.RegisterMethod(int16(protoGen.MsgId_DIRECT_FROM_WORLD_CLIENT), &protoGen.EchoReq{}, onDirectFromWorld)
 }
 
 func hearBeatResponse(ctx tcp.Channel, request proto.Message) {
@@ -41,7 +41,7 @@ func loginResponse(ctx tcp.Channel, msg proto.Message) {
 		RequestBody: "uuaauuauauau",
 		SomeId:      99999999999999999,
 	}
-	context.SendMsg(protoGen.ProtoCode_DIRECT_TO_GAME, req)
+	context.SendMsg(protoGen.MsgId_DIRECT_TO_GAME, req)
 	ctx.SetContext(context)
 }
 
@@ -50,7 +50,7 @@ func onDirectFromGame(ctx tcp.Channel, msg proto.Message) {
 	context := ctx.Context().(*client.ConnContext)
 	log.Infof("-----on   -onDirectFromGame body=%s  ", res)
 	for i := 0; i < 256; i++ {
-		context.SendMsg(protoGen.ProtoCode_DIRECT_TO_WORLD, res)
+		context.SendMsg(protoGen.MsgId_DIRECT_TO_WORLD, res)
 	}
 
 }
@@ -75,6 +75,6 @@ func StartConnection(count int) {
 			ServerId:   0,
 		}
 		playerConn[request.RoleId] = &client.ConnContext{Ctx: channel, Sid: int64(i + 3000001)}
-		playerConn[request.RoleId].SendMsg(protoGen.ProtoCode_LOGIN_REQUEST, request)
+		playerConn[request.RoleId].SendMsg(protoGen.MsgId_LOGIN_REQUEST, request)
 	}
 }

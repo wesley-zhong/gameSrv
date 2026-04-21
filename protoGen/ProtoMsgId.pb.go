@@ -24,483 +24,483 @@ const (
 // REQ<->RES 客户端到服务器请求应答
 // NTF 服务端到客户端的通知
 // PUSH 客户端到服务器的通知
-type ProtoCode int32
+type MsgId int32
 
 const (
-	ProtoCode_INVALID                  ProtoCode = 0
-	ProtoCode_SERVER_COMMON_ERR_NTF    ProtoCode = 1 //res=ServerCommonErrNtf,desc="服务器向客户端发送的通用异常信息通知"
-	ProtoCode_SERVER_TIPS_ERR_NTF      ProtoCode = 2 //res=ServerTipsErrNtf,desc="开发调试用的提示性错误信息"
-	ProtoCode_HEART_BEAT_PUSH          ProtoCode = 3 // req=HeartBeatPush,desc="客户端心跳 请求"
-	ProtoCode_HEART_BEAT_NTF           ProtoCode = 4 // res=HeartBeatNtf, ,desc="客户端心跳 返回"
-	ProtoCode_DEBUG_CMD_REQ            ProtoCode = 5 // req=DebugCmdReq
-	ProtoCode_DEBUG_CMD_RES            ProtoCode = 6 // res=DebugCmdRes、
-	ProtoCode_HEART_BEAT_REQUEST       ProtoCode = 7
-	ProtoCode_HEART_BEAT_RESPONSE      ProtoCode = 8
-	ProtoCode_LOGIN_REQUEST            ProtoCode = 10
-	ProtoCode_LOGIN_RESPONSE           ProtoCode = 11
-	ProtoCode_LOGOUT_REQUEST           ProtoCode = 12
-	ProtoCode_LOGOUT_RESPONSE          ProtoCode = 13
-	ProtoCode_KICK_OUT_REQUEST         ProtoCode = 14
-	ProtoCode_KICK_OUT_RESPONSE        ProtoCode = 15
-	ProtoCode_GAME_LOGIN_PUSH          ProtoCode = 16 // req=GameLoginPush,desc="进入游戏服务器，获取玩家游戏数据"
-	ProtoCode_GAME_LOGIN_NTF           ProtoCode = 17 // res=GameLoginNtf,desc="获取玩家游戏数据"
-	ProtoCode_GAME_EDITOR_LOGIN_PUSH   ProtoCode = 18 // req=GameEditorLoginPush,desc="进入游戏服务器指定scene id，获取玩家游戏数据"
-	ProtoCode_KICK_OUT_NTF             ProtoCode = 19 // res=KickOutNtf,desc="踢出玩家通知"
-	ProtoCode_GAME_ENCRYPT_KEY_NTF     ProtoCode = 20 //res =GameEncryptKeyNtf, desc="协议加密"
-	ProtoCode_DIRECT_TO_GAME           ProtoCode = 23
-	ProtoCode_DIRECT_TO_WORLD          ProtoCode = 24
-	ProtoCode_DIRECT_FROM_WORLD_CLIENT ProtoCode = 25
-	ProtoCode_DIRECT_FROM_GAME_CLIENT  ProtoCode = 26
+	MsgId_INVALID                  MsgId = 0
+	MsgId_SERVER_COMMON_ERR_NTF    MsgId = 1 //res=ServerCommonErrNtf,desc="服务器向客户端发送的通用异常信息通知"
+	MsgId_SERVER_TIPS_ERR_NTF      MsgId = 2 //res=ServerTipsErrNtf,desc="开发调试用的提示性错误信息"
+	MsgId_HEART_BEAT_PUSH          MsgId = 3 // req=HeartBeatPush,desc="客户端心跳 请求"
+	MsgId_HEART_BEAT_NTF           MsgId = 4 // res=HeartBeatNtf, ,desc="客户端心跳 返回"
+	MsgId_DEBUG_CMD_REQ            MsgId = 5 // req=DebugCmdReq
+	MsgId_DEBUG_CMD_RES            MsgId = 6 // res=DebugCmdRes、
+	MsgId_HEART_BEAT_REQUEST       MsgId = 7
+	MsgId_HEART_BEAT_RESPONSE      MsgId = 8
+	MsgId_LOGIN_REQUEST            MsgId = 10
+	MsgId_LOGIN_RESPONSE           MsgId = 11
+	MsgId_LOGOUT_REQUEST           MsgId = 12
+	MsgId_LOGOUT_RESPONSE          MsgId = 13
+	MsgId_KICK_OUT_REQUEST         MsgId = 14
+	MsgId_KICK_OUT_RESPONSE        MsgId = 15
+	MsgId_GAME_LOGIN_PUSH          MsgId = 16 // req=GameLoginPush,desc="进入游戏服务器，获取玩家游戏数据"
+	MsgId_GAME_LOGIN_NTF           MsgId = 17 // res=GameLoginNtf,desc="获取玩家游戏数据"
+	MsgId_GAME_EDITOR_LOGIN_PUSH   MsgId = 18 // req=GameEditorLoginPush,desc="进入游戏服务器指定scene id，获取玩家游戏数据"
+	MsgId_KICK_OUT_NTF             MsgId = 19 // res=KickOutNtf,desc="踢出玩家通知"
+	MsgId_GAME_ENCRYPT_KEY_NTF     MsgId = 20 //res =GameEncryptKeyNtf, desc="协议加密"
+	MsgId_DIRECT_TO_GAME           MsgId = 23
+	MsgId_DIRECT_TO_WORLD          MsgId = 24
+	MsgId_DIRECT_FROM_WORLD_CLIENT MsgId = 25
+	MsgId_DIRECT_FROM_GAME_CLIENT  MsgId = 26
 	// role 80 -99 role补充 600-699
-	ProtoCode_ROLE_DETAIL_INFO_NTF      ProtoCode = 80 //res=RoleDetailInfoNtf,desc="登录时通知玩家详细信息"
-	ProtoCode_ROLE_SUMMARY_UPDATE_NTF   ProtoCode = 81 //res=RoleSummaryUpdateNtf,desc="玩家角色信息变更通知"
-	ProtoCode_ROLE_CHANGE_NICKNAME_PUSH ProtoCode = 82 //req=RoleChangeNicknamePush,desc="玩家更改昵称请求"
-	ProtoCode_ROLE_CHANGE_NICKNAME_NTF  ProtoCode = 83 //res=RoleChangeNicknameNtf,desc="玩家更改昵称返回"
-	ProtoCode_ROLE_CHANGE_ICON_REQ      ProtoCode = 84 //req=RoleChangeIconReq,desc="玩家更改头像请求"
-	ProtoCode_ROLE_CHANGE_ICON_RES      ProtoCode = 85 //res=RoleChangeIconRes,desc="玩家更改头像返回"
-	ProtoCode_ROLE_UNLOCK_ICON_NTF      ProtoCode = 86 //res=RoleUnlockIconNtf,desc="玩家解锁头像通知"
-	ProtoCode_ROLE_ICON_LIST_NTF        ProtoCode = 87 //res=RoleIconListNtf,desc="玩家已解锁的头像列表通知"
-	ProtoCode_ROLE_UNLOCK_LIST_NTF      ProtoCode = 88 //res=RoleUnlockListNtf,desc="玩家已解锁的功能列表通知"
-	ProtoCode_ROLE_UNLOCK_INFO_NTF      ProtoCode = 89 //res=RoleUnlockInfoNtf,desc="玩家解锁新的功能信息通知"
+	MsgId_ROLE_DETAIL_INFO_NTF      MsgId = 80 //res=RoleDetailInfoNtf,desc="登录时通知玩家详细信息"
+	MsgId_ROLE_SUMMARY_UPDATE_NTF   MsgId = 81 //res=RoleSummaryUpdateNtf,desc="玩家角色信息变更通知"
+	MsgId_ROLE_CHANGE_NICKNAME_PUSH MsgId = 82 //req=RoleChangeNicknamePush,desc="玩家更改昵称请求"
+	MsgId_ROLE_CHANGE_NICKNAME_NTF  MsgId = 83 //res=RoleChangeNicknameNtf,desc="玩家更改昵称返回"
+	MsgId_ROLE_CHANGE_ICON_REQ      MsgId = 84 //req=RoleChangeIconReq,desc="玩家更改头像请求"
+	MsgId_ROLE_CHANGE_ICON_RES      MsgId = 85 //res=RoleChangeIconRes,desc="玩家更改头像返回"
+	MsgId_ROLE_UNLOCK_ICON_NTF      MsgId = 86 //res=RoleUnlockIconNtf,desc="玩家解锁头像通知"
+	MsgId_ROLE_ICON_LIST_NTF        MsgId = 87 //res=RoleIconListNtf,desc="玩家已解锁的头像列表通知"
+	MsgId_ROLE_UNLOCK_LIST_NTF      MsgId = 88 //res=RoleUnlockListNtf,desc="玩家已解锁的功能列表通知"
+	MsgId_ROLE_UNLOCK_INFO_NTF      MsgId = 89 //res=RoleUnlockInfoNtf,desc="玩家解锁新的功能信息通知"
 	// ROLE_REST_POINT_LIST_NTF = 90;//res=RoleRestPointListNtf,desc="玩家已激活的休息点列表"
-	ProtoCode_ROLE_RECORD_DATA_UPDATE_NTF ProtoCode = 91 //res=RoleRecordDataUpdateNtf,desc="玩家记录数据增量更新通知"
-	ProtoCode_ROLE_RECORD_ADD_PUSH        ProtoCode = 92 //req=RoleRecordAddPush,desc="玩家添加记录 type=1 新手引导"
-	ProtoCode_ROLE_RECORD_LIST_NTF        ProtoCode = 93 //res=RoleRecordListNtf,desc="玩家记录通知" type=1 新手引导"
-	ProtoCode_ROLE_RECORD_OVERRIDE_PUSH   ProtoCode = 94 //req=RoleRecordOverridePush,desc="玩家记录覆盖"
-	ProtoCode_ROLE_RECORD_DATA_PUSH       ProtoCode = 95 //req=RoleRecordDataPush,desc="玩家请求数据"
-	ProtoCode_ROLE_RECORD_DATA_NTF        ProtoCode = 96 //res=RoleRecordDataNtf,desc="玩家请求数据通知"
-	ProtoCode_ROLE_PAUSE_OR_RECOVER_PUSH  ProtoCode = 97 //req=RolePauseOrRecoverPush,desc="玩家请求暂停或恢复游戏"
-	ProtoCode_ROLE_PAUSE_OR_RECOVER_NTF   ProtoCode = 98 //res=RolePauseOrRecoverNtf,desc="玩家请求暂停或恢复游戏结果通知"
-	ProtoCode_ROLE_SKIP_GUIDE_NTF         ProtoCode = 99 //res=RoleSkipGuideNtf,desc="通知客户端跳过引导"
+	MsgId_ROLE_RECORD_DATA_UPDATE_NTF MsgId = 91 //res=RoleRecordDataUpdateNtf,desc="玩家记录数据增量更新通知"
+	MsgId_ROLE_RECORD_ADD_PUSH        MsgId = 92 //req=RoleRecordAddPush,desc="玩家添加记录 type=1 新手引导"
+	MsgId_ROLE_RECORD_LIST_NTF        MsgId = 93 //res=RoleRecordListNtf,desc="玩家记录通知" type=1 新手引导"
+	MsgId_ROLE_RECORD_OVERRIDE_PUSH   MsgId = 94 //req=RoleRecordOverridePush,desc="玩家记录覆盖"
+	MsgId_ROLE_RECORD_DATA_PUSH       MsgId = 95 //req=RoleRecordDataPush,desc="玩家请求数据"
+	MsgId_ROLE_RECORD_DATA_NTF        MsgId = 96 //res=RoleRecordDataNtf,desc="玩家请求数据通知"
+	MsgId_ROLE_PAUSE_OR_RECOVER_PUSH  MsgId = 97 //req=RolePauseOrRecoverPush,desc="玩家请求暂停或恢复游戏"
+	MsgId_ROLE_PAUSE_OR_RECOVER_NTF   MsgId = 98 //res=RolePauseOrRecoverNtf,desc="玩家请求暂停或恢复游戏结果通知"
+	MsgId_ROLE_SKIP_GUIDE_NTF         MsgId = 99 //res=RoleSkipGuideNtf,desc="通知客户端跳过引导"
 	// item 100-199
-	ProtoCode_PLAYER_STORE_NTF             ProtoCode = 100 // res=PlayerStoreNtf
-	ProtoCode_STORE_ITEM_CHANGE_NTF        ProtoCode = 101 // res=StoreItemChangeNtf
-	ProtoCode_STORE_ITEM_DEL_NTF           ProtoCode = 102 // res=StoreItemDelNtf
-	ProtoCode_USE_ITEM_REQ                 ProtoCode = 103 // req=UseItemReq
-	ProtoCode_USE_ITEM_RES                 ProtoCode = 104 // res=UseItemRes
-	ProtoCode_COIN_NTF                     ProtoCode = 105 // res=CoinNtf
-	ProtoCode_WEAPON_ADD_EXP_REQ           ProtoCode = 106 // req=WeaponAddExpReq,desc="武器强化请求"
-	ProtoCode_WEAPON_ADD_EXP_RES           ProtoCode = 107 // res=WeaponAddExpRes,desc="武器强化返回"
-	ProtoCode_WEAPON_EXCEED_REQ            ProtoCode = 108 // req=WeaponExceedReq,desc="武器突破请求"
-	ProtoCode_WEAPON_EXCEED_RES            ProtoCode = 109 // res=WeaponExceedRes,desc="武器突破返回"
-	ProtoCode_WEAPON_REFINE_REQ            ProtoCode = 110 // req=WeaponRefineReq,desc="武器精炼请求"
-	ProtoCode_WEAPON_REFINE_RES            ProtoCode = 111 // res=WeaponRefineRes,desc="武器精炼返回"
-	ProtoCode_WEAPON_WEAR_REQ              ProtoCode = 112 // req=WeaponWearReq,desc="穿武器请求"
-	ProtoCode_WEAPON_WEAR_RES              ProtoCode = 113 // res=WeaponWearRes,desc="穿武器返回"
-	ProtoCode_WEAPON_UNWEAR_REQ            ProtoCode = 114 // req=WeaponUnwearReq,desc="脱武器请求"
-	ProtoCode_WEAPON_UNWEAR_RES            ProtoCode = 115 // res=WeaponUnwearRes,desc="脱武器返回"
-	ProtoCode_ITEM_LOCK_AND_UNLOCK_REQ     ProtoCode = 116 // req=ItemLockAndUnlockReq,desc="道具加锁解锁请求"
-	ProtoCode_ITEM_LOCK_AND_UNLOCK_RES     ProtoCode = 117 // res=ItemLockAndUnlockRes,desc="道具加锁解锁返回"
-	ProtoCode_EQUIP_ADD_EXP_REQ            ProtoCode = 118 // req=EquipAddExpReq,desc="装备强化请求"
-	ProtoCode_EQUIP_ADD_EXP_RES            ProtoCode = 119 // res=EquipAddExpRes,desc="装备强化返回"
-	ProtoCode_EQUIP_WEAR_REQ               ProtoCode = 120 // req=EquipWearReq,desc="穿装备请求"
-	ProtoCode_EQUIP_WEAR_RES               ProtoCode = 121 // res=EquipWearRes,desc="穿装备返回"
-	ProtoCode_EQUIP_UNWEAR_REQ             ProtoCode = 122 // req=EquipUnwearReq,desc="脱装备请求"
-	ProtoCode_EQUIP_UNWEAR_RES             ProtoCode = 123 // res=EquipUnwearRes,desc="脱装备返回"
-	ProtoCode_EQUIP_INLAY_MARK_REQ         ProtoCode = 124 // req=EquipInlayMarkReq,desc="装备镶嵌应纹请求"
-	ProtoCode_EQUIP_INLAY_MARK_RES         ProtoCode = 125 // res=EquipInlayMarkRes,desc="装备镶嵌应纹返回"
-	ProtoCode_EQUIP_OUTLAY_MARK_REQ        ProtoCode = 126 // req=EquipOutlayMarkReq,desc="装备取下应纹请求"
-	ProtoCode_EQUIP_OUTLAY_MARK_RES        ProtoCode = 127 // res=EquipOutlayMarkRes,desc="装备取下应纹返回"
-	ProtoCode_ITEM_RECYCLE_REQ             ProtoCode = 128 // req=ItemRecycleReq,desc="物品回收请求"
-	ProtoCode_ITEM_RECYCLE_RES             ProtoCode = 129 // res=ItemRecycleRes,desc="物品回收返回"
-	ProtoCode_ITEM_FAST_SYNTHESIS_PUSH     ProtoCode = 130 // req=ItemFastSynthesisPush,desc="快捷合成请求"
-	ProtoCode_ITEM_FAST_SYNTHESIS_NTF      ProtoCode = 131 // res=ItemFastSynthesisNtf,desc="快捷合成返回"
-	ProtoCode_PLAYER_STORE_HASH_PUSH       ProtoCode = 132 // req=PlayerStoreHashPush,desc="背包hash缓存上行"
-	ProtoCode_PLAYER_STORE_HASH_NTF        ProtoCode = 133 // res=PlayerStoreHashNtf,desc="背包hash缓存回复"
-	ProtoCode_ITEM_SYNTHESIS_PUSH          ProtoCode = 134 // req=ItemSynthesisPush,desc="道具合成请求"
-	ProtoCode_ITEM_SYNTHESIS_NTF           ProtoCode = 135 // res=ItemSynthesisNtf,desc="道具合成返回"
-	ProtoCode_ITEM_TRANSFER_PUSH           ProtoCode = 136 // req=ItemTransferPush,desc="道具转换请求"
-	ProtoCode_ITEM_TRANSFER_NTF            ProtoCode = 137 // res=ItemTransferNtf,desc="道具转换返回"
-	ProtoCode_ITEM_CRAFT_PUSH              ProtoCode = 138 // req=ItemCraftPush,desc="道具合成请求"
-	ProtoCode_ITEM_CRAFT_NTF               ProtoCode = 139 // res=ItemCraftNtf,desc="道具合成返回"
-	ProtoCode_ITEM_CRAFT_RECIPE_NTF        ProtoCode = 140 // res=ItemCraftRecipeNtf,desc="道具合成配方通知"
-	ProtoCode_ITEM_CRAFT_RECIPE_LEARN_PUSH ProtoCode = 141 // req=ItemCraftRecipeLearnPush,desc="道具合成配方学习请求"
-	ProtoCode_ITEM_CRAFT_RECIPE_LEARN_NTF  ProtoCode = 142 // res=ItemCraftRecipeLearnNtf,desc="道具合成配方学习返回"
-	ProtoCode_ITEM_OPERATION_PUSH          ProtoCode = 143 // req=ItemOperationPush,desc="道具操作请求"
-	ProtoCode_ITEM_BATCH_OPERATION_PUSH    ProtoCode = 144 // req=ItemBatchOperationPush,desc="道具批量操作请求"
-	ProtoCode_ITEM_SUBMIT_REQ              ProtoCode = 145 // req=ItemSubmitReq,desc="道具提交请求"
-	ProtoCode_ITEM_SUBMIT_RES              ProtoCode = 146 // res=ItemSubmitRes,desc="道具提交返回"
+	MsgId_PLAYER_STORE_NTF             MsgId = 100 // res=PlayerStoreNtf
+	MsgId_STORE_ITEM_CHANGE_NTF        MsgId = 101 // res=StoreItemChangeNtf
+	MsgId_STORE_ITEM_DEL_NTF           MsgId = 102 // res=StoreItemDelNtf
+	MsgId_USE_ITEM_REQ                 MsgId = 103 // req=UseItemReq
+	MsgId_USE_ITEM_RES                 MsgId = 104 // res=UseItemRes
+	MsgId_COIN_NTF                     MsgId = 105 // res=CoinNtf
+	MsgId_WEAPON_ADD_EXP_REQ           MsgId = 106 // req=WeaponAddExpReq,desc="武器强化请求"
+	MsgId_WEAPON_ADD_EXP_RES           MsgId = 107 // res=WeaponAddExpRes,desc="武器强化返回"
+	MsgId_WEAPON_EXCEED_REQ            MsgId = 108 // req=WeaponExceedReq,desc="武器突破请求"
+	MsgId_WEAPON_EXCEED_RES            MsgId = 109 // res=WeaponExceedRes,desc="武器突破返回"
+	MsgId_WEAPON_REFINE_REQ            MsgId = 110 // req=WeaponRefineReq,desc="武器精炼请求"
+	MsgId_WEAPON_REFINE_RES            MsgId = 111 // res=WeaponRefineRes,desc="武器精炼返回"
+	MsgId_WEAPON_WEAR_REQ              MsgId = 112 // req=WeaponWearReq,desc="穿武器请求"
+	MsgId_WEAPON_WEAR_RES              MsgId = 113 // res=WeaponWearRes,desc="穿武器返回"
+	MsgId_WEAPON_UNWEAR_REQ            MsgId = 114 // req=WeaponUnwearReq,desc="脱武器请求"
+	MsgId_WEAPON_UNWEAR_RES            MsgId = 115 // res=WeaponUnwearRes,desc="脱武器返回"
+	MsgId_ITEM_LOCK_AND_UNLOCK_REQ     MsgId = 116 // req=ItemLockAndUnlockReq,desc="道具加锁解锁请求"
+	MsgId_ITEM_LOCK_AND_UNLOCK_RES     MsgId = 117 // res=ItemLockAndUnlockRes,desc="道具加锁解锁返回"
+	MsgId_EQUIP_ADD_EXP_REQ            MsgId = 118 // req=EquipAddExpReq,desc="装备强化请求"
+	MsgId_EQUIP_ADD_EXP_RES            MsgId = 119 // res=EquipAddExpRes,desc="装备强化返回"
+	MsgId_EQUIP_WEAR_REQ               MsgId = 120 // req=EquipWearReq,desc="穿装备请求"
+	MsgId_EQUIP_WEAR_RES               MsgId = 121 // res=EquipWearRes,desc="穿装备返回"
+	MsgId_EQUIP_UNWEAR_REQ             MsgId = 122 // req=EquipUnwearReq,desc="脱装备请求"
+	MsgId_EQUIP_UNWEAR_RES             MsgId = 123 // res=EquipUnwearRes,desc="脱装备返回"
+	MsgId_EQUIP_INLAY_MARK_REQ         MsgId = 124 // req=EquipInlayMarkReq,desc="装备镶嵌应纹请求"
+	MsgId_EQUIP_INLAY_MARK_RES         MsgId = 125 // res=EquipInlayMarkRes,desc="装备镶嵌应纹返回"
+	MsgId_EQUIP_OUTLAY_MARK_REQ        MsgId = 126 // req=EquipOutlayMarkReq,desc="装备取下应纹请求"
+	MsgId_EQUIP_OUTLAY_MARK_RES        MsgId = 127 // res=EquipOutlayMarkRes,desc="装备取下应纹返回"
+	MsgId_ITEM_RECYCLE_REQ             MsgId = 128 // req=ItemRecycleReq,desc="物品回收请求"
+	MsgId_ITEM_RECYCLE_RES             MsgId = 129 // res=ItemRecycleRes,desc="物品回收返回"
+	MsgId_ITEM_FAST_SYNTHESIS_PUSH     MsgId = 130 // req=ItemFastSynthesisPush,desc="快捷合成请求"
+	MsgId_ITEM_FAST_SYNTHESIS_NTF      MsgId = 131 // res=ItemFastSynthesisNtf,desc="快捷合成返回"
+	MsgId_PLAYER_STORE_HASH_PUSH       MsgId = 132 // req=PlayerStoreHashPush,desc="背包hash缓存上行"
+	MsgId_PLAYER_STORE_HASH_NTF        MsgId = 133 // res=PlayerStoreHashNtf,desc="背包hash缓存回复"
+	MsgId_ITEM_SYNTHESIS_PUSH          MsgId = 134 // req=ItemSynthesisPush,desc="道具合成请求"
+	MsgId_ITEM_SYNTHESIS_NTF           MsgId = 135 // res=ItemSynthesisNtf,desc="道具合成返回"
+	MsgId_ITEM_TRANSFER_PUSH           MsgId = 136 // req=ItemTransferPush,desc="道具转换请求"
+	MsgId_ITEM_TRANSFER_NTF            MsgId = 137 // res=ItemTransferNtf,desc="道具转换返回"
+	MsgId_ITEM_CRAFT_PUSH              MsgId = 138 // req=ItemCraftPush,desc="道具合成请求"
+	MsgId_ITEM_CRAFT_NTF               MsgId = 139 // res=ItemCraftNtf,desc="道具合成返回"
+	MsgId_ITEM_CRAFT_RECIPE_NTF        MsgId = 140 // res=ItemCraftRecipeNtf,desc="道具合成配方通知"
+	MsgId_ITEM_CRAFT_RECIPE_LEARN_PUSH MsgId = 141 // req=ItemCraftRecipeLearnPush,desc="道具合成配方学习请求"
+	MsgId_ITEM_CRAFT_RECIPE_LEARN_NTF  MsgId = 142 // res=ItemCraftRecipeLearnNtf,desc="道具合成配方学习返回"
+	MsgId_ITEM_OPERATION_PUSH          MsgId = 143 // req=ItemOperationPush,desc="道具操作请求"
+	MsgId_ITEM_BATCH_OPERATION_PUSH    MsgId = 144 // req=ItemBatchOperationPush,desc="道具批量操作请求"
+	MsgId_ITEM_SUBMIT_REQ              MsgId = 145 // req=ItemSubmitReq,desc="道具提交请求"
+	MsgId_ITEM_SUBMIT_RES              MsgId = 146 // res=ItemSubmitRes,desc="道具提交返回"
 	// scene 200-299
-	ProtoCode_PLAYER_ENTER_SCENE_NTF           ProtoCode = 200 // res=PlayerEnterSceneNtf,desc="S->C通知进入场景-step2"
-	ProtoCode_ENTER_SCENE_READY_PUSH           ProtoCode = 201 // req=EnterSceneReadyPush,desc="C->S进场准备完成-step5"
-	ProtoCode_ENTER_SCENE_PUSH                 ProtoCode = 202 // req=EnterScenePush,desc="C->S请求进入场景-step1"
-	ProtoCode_ENTER_SCENE_FINISH_NTF           ProtoCode = 203 // res=EnterSceneFinishNtf,desc="S->C进入场景完成-step6"
-	ProtoCode_PLAYER_PRE_ENTER_SCENE_PUSH      ProtoCode = 204 //req=PreEnterScenePush,desc="C->S请求开始进场-step3"
-	ProtoCode_PLAYER_PRE_ENTER_SCENE_NTF       ProtoCode = 205 //res=PreEnterSceneNtf,desc="S->C通知开始进场-step4"
-	ProtoCode_SCENE_RESET_BEGIN_NTF            ProtoCode = 206 //res=SceneResetBeginNtf
-	ProtoCode_SCENE_RESET_SEND_FINISH_NTF      ProtoCode = 207 //res=SceneResetSendFinishNtf
-	ProtoCode_SCENE_RESET_END_PUSH             ProtoCode = 208 //req=SceneResetEndPush
-	ProtoCode_SCENE_RESET_END_NTF              ProtoCode = 209 //res=SceneResetEndNtf
-	ProtoCode_LEVEL_INSTANCE_TAG_NTF           ProtoCode = 210 //res=LevelInstanceTagNtf,desc="S->C 关卡内Actor数据层同步"
-	ProtoCode_SCENE_ENTITY_APPEAR_NTF          ProtoCode = 211 // res=SceneEntityAppearNtf
-	ProtoCode_SCENE_ENTITY_DISAPPEAR_NTF       ProtoCode = 212 // res=SceneEntityDisappearNtf
-	ProtoCode_SCENE_ENTITY_CHANGE_NTF          ProtoCode = 213 // res=SceneEntityChangeNtf
-	ProtoCode_SCENE_TRANS_TO_POINT_REQ         ProtoCode = 214 // req=SceneTransToPointReq
-	ProtoCode_SCENE_TRANS_TO_POINT_RES         ProtoCode = 215 // res=SceneTransToPointRes
-	ProtoCode_ENTITY_JUMP_NTF                  ProtoCode = 216 // res=EntityJumpNtf
-	ProtoCode_PLAYER_EYE_POINT_STATE_NTF       ProtoCode = 217 // res=PlayerEyePointStateNtf
-	ProtoCode_SCENE_ENTITIES_MOVE_PUSH         ProtoCode = 218 // req=SceneEntitiesMovePush
-	ProtoCode_SCENE_ENTITIES_MOVE_NTF          ProtoCode = 220 // res=SceneEntitiesMoveNtf
-	ProtoCode_ENTITY_FORCE_SYNC_REQ            ProtoCode = 221 // req=EntityForceSyncReq
-	ProtoCode_ENTITY_FORCE_SYNC_RES            ProtoCode = 222 // res=EntityForceSyncRes
-	ProtoCode_SCENE_PLAYER_INFO_NTF            ProtoCode = 225 // res=ScenePlayerInfoNtf
-	ProtoCode_WORLD_PLAYER_LOCATION_NTF        ProtoCode = 226 // res=WorldPlayerLocationNtf
-	ProtoCode_PERSONAL_SCENE_JUMP_REQ          ProtoCode = 227 // req=PersonalSceneJumpReq
-	ProtoCode_PERSONAL_SCENE_JUMP_RES          ProtoCode = 228 // res=PersonalSceneJumpRes
-	ProtoCode_PLAYER_ENTER_SCENE_INFO_NTF      ProtoCode = 229 // res=PlayerEnterSceneInfoNtf
-	ProtoCode_JOIN_PLAYER_SCENE_REQ            ProtoCode = 230 // req=JoinPlayerSceneReq
-	ProtoCode_JOIN_PLAYER_SCENE_RES            ProtoCode = 231 // res=JoinPlayerSceneRes
-	ProtoCode_SCENE_KICK_PLAYER_REQ            ProtoCode = 232 // req=SceneKickPlayerReq
-	ProtoCode_SCENE_KICK_PLAYER_RES            ProtoCode = 233 // res=SceneKickPlayerRes
-	ProtoCode_SCENE_KICK_PLAYER_NTF            ProtoCode = 234 // res=SceneKickPlayerNtf
-	ProtoCode_BACK_MY_WORLD_PUSH               ProtoCode = 235 // req=BackMyWorldPush,desc="回到玩家之前所在的场景"
-	ProtoCode_SCENE_TIME_NTF                   ProtoCode = 237 // res=SceneTimeNtf
-	ProtoCode_JOIN_PLAYER_FAIL_NTF             ProtoCode = 239 // res=JoinPlayerFailNtf
-	ProtoCode_WORLD_DATA_NTF                   ProtoCode = 240 // res=WorldDataNtf
-	ProtoCode_WORLD_PLAYER_INFO_NTF            ProtoCode = 241 // res=WorldPlayerInfoNtf
-	ProtoCode_SCENE_DATA_NTF                   ProtoCode = 242 // res=SceneDataNtf
-	ProtoCode_SCENE_MESSAGE_PUSH               ProtoCode = 243 // req=SceneMessagePush
-	ProtoCode_SCENE_MESSAGE_NTF                ProtoCode = 244 // res=SceneMessageNtf
-	ProtoCode_PLAY_MONTAGE_NTF                 ProtoCode = 246 //res=PlayMontageNtf,desc="广播montage给视野内其他玩家"
-	ProtoCode_MINIMAP_INFO_PUSH                ProtoCode = 247 //req=MinimapInfoPush,desc="地图标点信息请求"
-	ProtoCode_MINIMAP_INFO_NTF                 ProtoCode = 248 //res=MinimapInfoNtf,desc="地图标点信息通知"
-	ProtoCode_MINIMAP_TRACE_SPOT_PUSH          ProtoCode = 249 //req=MinimapTraceSpotPush,desc="追踪地图标点请求"
-	ProtoCode_MINIMAP_INFO_CHANGE_NTF          ProtoCode = 250 //res=MinimapInfoChangeNtf,desc="地图标点变更信息通知"
-	ProtoCode_CLIENT_INTERACT_PUSH             ProtoCode = 257 // req=ClientInteractPush
-	ProtoCode_CLIENT_INTERACT_NTF              ProtoCode = 258 // res=ClientInteractNtf
-	ProtoCode_GLOBAL_INTERACT_ACTOR_NTF        ProtoCode = 259 //res=GlobalInteractActorNtf
-	ProtoCode_SCENE_REPLACE_AVATAR_PUSH        ProtoCode = 261 //req=SceneReplaceAvatarPush,desc=玩家请求更换要操作的avatar
-	ProtoCode_SCENE_REPLACE_AVATAR_NTF         ProtoCode = 262 //res=SceneReplaceAvatarNtf,desc=玩家更换操作的avatar广播通知
-	ProtoCode_TELEPORT_BEGIN_NTF               ProtoCode = 263 // res=TeleportBeginNtf
-	ProtoCode_PLAYER_RE_BORN_PUSH              ProtoCode = 266 // req=PlayerReBornPush
-	ProtoCode_PLAYER_RE_BORN_NTF               ProtoCode = 267 // res=PlayerReBornNtf
-	ProtoCode_SCENE_ENTITY_HOST_CHANGE_NTF     ProtoCode = 268 // res=SceneEntityHostChangeNtf
-	ProtoCode_SCENE_COUNT_DOWN_NTF             ProtoCode = 269 // res=SceneCountDownNtf
-	ProtoCode_TELEPORT_PUSH                    ProtoCode = 271 //req=TeleportPush,desc=传送请求
-	ProtoCode_SCENE_COUNT_DOWN_PUSH            ProtoCode = 272 //req=SceneCountDownPush
-	ProtoCode_SCENE_TIME_OUT_PUSH              ProtoCode = 273 //req=SceneTimeOutPush,desc=场景玩法倒计时时间到点
-	ProtoCode_SCENE_TIME_OUT_NTF               ProtoCode = 274 //res=SceneTimeOutNtf,desc=如果服务器时候还没到点，把服务器的时间同步给客户端
-	ProtoCode_SCENE_STUCK_RESET_PUSH           ProtoCode = 275 //req=SceneStuckResetReq,desc=卡死重置请求
-	ProtoCode_SCENE_TEMPORARY_LEAVE_LIST_NTF   ProtoCode = 276 //res=SceneTemporaryLeaveListNtf,desc=玩法暂离数据全量通知
-	ProtoCode_SCENE_TEMPORARY_LEAVE_UPDATE_NTF ProtoCode = 277 //res=SceneTemporaryLeaveUpdateNtf,desc=玩法暂离数据变更通知
-	ProtoCode_GAME_PLAY_SUMMONED_CHANGE_NTF    ProtoCode = 278 //res=GamePlaySummonedChangeNtf,desc=玩法召唤物数据变化通知
-	ProtoCode_SCENE_CREATE_PROJECTILE_PUSH     ProtoCode = 280 //req=SceneCreateProjectilePush,desc=创建子弹飞行物请求
-	ProtoCode_SCENE_CREATE_PROJECTILE_NTF      ProtoCode = 281 //res=SceneCreateProjectileNtf,desc=创建子弹飞行物返回
-	ProtoCode_SCENE_CREATE_SUMMON_PUSH         ProtoCode = 282 //req=SceneCreateSummonPush,desc=创建召唤物请求
-	ProtoCode_SCENE_CREATE_SUMMON_NTF          ProtoCode = 283 //res=SceneCreateSummonNtf,desc=创建召唤物返回
+	MsgId_PLAYER_ENTER_SCENE_NTF           MsgId = 200 // res=PlayerEnterSceneNtf,desc="S->C通知进入场景-step2"
+	MsgId_ENTER_SCENE_READY_PUSH           MsgId = 201 // req=EnterSceneReadyPush,desc="C->S进场准备完成-step5"
+	MsgId_ENTER_SCENE_PUSH                 MsgId = 202 // req=EnterScenePush,desc="C->S请求进入场景-step1"
+	MsgId_ENTER_SCENE_FINISH_NTF           MsgId = 203 // res=EnterSceneFinishNtf,desc="S->C进入场景完成-step6"
+	MsgId_PLAYER_PRE_ENTER_SCENE_PUSH      MsgId = 204 //req=PreEnterScenePush,desc="C->S请求开始进场-step3"
+	MsgId_PLAYER_PRE_ENTER_SCENE_NTF       MsgId = 205 //res=PreEnterSceneNtf,desc="S->C通知开始进场-step4"
+	MsgId_SCENE_RESET_BEGIN_NTF            MsgId = 206 //res=SceneResetBeginNtf
+	MsgId_SCENE_RESET_SEND_FINISH_NTF      MsgId = 207 //res=SceneResetSendFinishNtf
+	MsgId_SCENE_RESET_END_PUSH             MsgId = 208 //req=SceneResetEndPush
+	MsgId_SCENE_RESET_END_NTF              MsgId = 209 //res=SceneResetEndNtf
+	MsgId_LEVEL_INSTANCE_TAG_NTF           MsgId = 210 //res=LevelInstanceTagNtf,desc="S->C 关卡内Actor数据层同步"
+	MsgId_SCENE_ENTITY_APPEAR_NTF          MsgId = 211 // res=SceneEntityAppearNtf
+	MsgId_SCENE_ENTITY_DISAPPEAR_NTF       MsgId = 212 // res=SceneEntityDisappearNtf
+	MsgId_SCENE_ENTITY_CHANGE_NTF          MsgId = 213 // res=SceneEntityChangeNtf
+	MsgId_SCENE_TRANS_TO_POINT_REQ         MsgId = 214 // req=SceneTransToPointReq
+	MsgId_SCENE_TRANS_TO_POINT_RES         MsgId = 215 // res=SceneTransToPointRes
+	MsgId_ENTITY_JUMP_NTF                  MsgId = 216 // res=EntityJumpNtf
+	MsgId_PLAYER_EYE_POINT_STATE_NTF       MsgId = 217 // res=PlayerEyePointStateNtf
+	MsgId_SCENE_ENTITIES_MOVE_PUSH         MsgId = 218 // req=SceneEntitiesMovePush
+	MsgId_SCENE_ENTITIES_MOVE_NTF          MsgId = 220 // res=SceneEntitiesMoveNtf
+	MsgId_ENTITY_FORCE_SYNC_REQ            MsgId = 221 // req=EntityForceSyncReq
+	MsgId_ENTITY_FORCE_SYNC_RES            MsgId = 222 // res=EntityForceSyncRes
+	MsgId_SCENE_PLAYER_INFO_NTF            MsgId = 225 // res=ScenePlayerInfoNtf
+	MsgId_WORLD_PLAYER_LOCATION_NTF        MsgId = 226 // res=WorldPlayerLocationNtf
+	MsgId_PERSONAL_SCENE_JUMP_REQ          MsgId = 227 // req=PersonalSceneJumpReq
+	MsgId_PERSONAL_SCENE_JUMP_RES          MsgId = 228 // res=PersonalSceneJumpRes
+	MsgId_PLAYER_ENTER_SCENE_INFO_NTF      MsgId = 229 // res=PlayerEnterSceneInfoNtf
+	MsgId_JOIN_PLAYER_SCENE_REQ            MsgId = 230 // req=JoinPlayerSceneReq
+	MsgId_JOIN_PLAYER_SCENE_RES            MsgId = 231 // res=JoinPlayerSceneRes
+	MsgId_SCENE_KICK_PLAYER_REQ            MsgId = 232 // req=SceneKickPlayerReq
+	MsgId_SCENE_KICK_PLAYER_RES            MsgId = 233 // res=SceneKickPlayerRes
+	MsgId_SCENE_KICK_PLAYER_NTF            MsgId = 234 // res=SceneKickPlayerNtf
+	MsgId_BACK_MY_WORLD_PUSH               MsgId = 235 // req=BackMyWorldPush,desc="回到玩家之前所在的场景"
+	MsgId_SCENE_TIME_NTF                   MsgId = 237 // res=SceneTimeNtf
+	MsgId_JOIN_PLAYER_FAIL_NTF             MsgId = 239 // res=JoinPlayerFailNtf
+	MsgId_WORLD_DATA_NTF                   MsgId = 240 // res=WorldDataNtf
+	MsgId_WORLD_PLAYER_INFO_NTF            MsgId = 241 // res=WorldPlayerInfoNtf
+	MsgId_SCENE_DATA_NTF                   MsgId = 242 // res=SceneDataNtf
+	MsgId_SCENE_MESSAGE_PUSH               MsgId = 243 // req=SceneMessagePush
+	MsgId_SCENE_MESSAGE_NTF                MsgId = 244 // res=SceneMessageNtf
+	MsgId_PLAY_MONTAGE_NTF                 MsgId = 246 //res=PlayMontageNtf,desc="广播montage给视野内其他玩家"
+	MsgId_MINIMAP_INFO_PUSH                MsgId = 247 //req=MinimapInfoPush,desc="地图标点信息请求"
+	MsgId_MINIMAP_INFO_NTF                 MsgId = 248 //res=MinimapInfoNtf,desc="地图标点信息通知"
+	MsgId_MINIMAP_TRACE_SPOT_PUSH          MsgId = 249 //req=MinimapTraceSpotPush,desc="追踪地图标点请求"
+	MsgId_MINIMAP_INFO_CHANGE_NTF          MsgId = 250 //res=MinimapInfoChangeNtf,desc="地图标点变更信息通知"
+	MsgId_CLIENT_INTERACT_PUSH             MsgId = 257 // req=ClientInteractPush
+	MsgId_CLIENT_INTERACT_NTF              MsgId = 258 // res=ClientInteractNtf
+	MsgId_GLOBAL_INTERACT_ACTOR_NTF        MsgId = 259 //res=GlobalInteractActorNtf
+	MsgId_SCENE_REPLACE_AVATAR_PUSH        MsgId = 261 //req=SceneReplaceAvatarPush,desc=玩家请求更换要操作的avatar
+	MsgId_SCENE_REPLACE_AVATAR_NTF         MsgId = 262 //res=SceneReplaceAvatarNtf,desc=玩家更换操作的avatar广播通知
+	MsgId_TELEPORT_BEGIN_NTF               MsgId = 263 // res=TeleportBeginNtf
+	MsgId_PLAYER_RE_BORN_PUSH              MsgId = 266 // req=PlayerReBornPush
+	MsgId_PLAYER_RE_BORN_NTF               MsgId = 267 // res=PlayerReBornNtf
+	MsgId_SCENE_ENTITY_HOST_CHANGE_NTF     MsgId = 268 // res=SceneEntityHostChangeNtf
+	MsgId_SCENE_COUNT_DOWN_NTF             MsgId = 269 // res=SceneCountDownNtf
+	MsgId_TELEPORT_PUSH                    MsgId = 271 //req=TeleportPush,desc=传送请求
+	MsgId_SCENE_COUNT_DOWN_PUSH            MsgId = 272 //req=SceneCountDownPush
+	MsgId_SCENE_TIME_OUT_PUSH              MsgId = 273 //req=SceneTimeOutPush,desc=场景玩法倒计时时间到点
+	MsgId_SCENE_TIME_OUT_NTF               MsgId = 274 //res=SceneTimeOutNtf,desc=如果服务器时候还没到点，把服务器的时间同步给客户端
+	MsgId_SCENE_STUCK_RESET_PUSH           MsgId = 275 //req=SceneStuckResetReq,desc=卡死重置请求
+	MsgId_SCENE_TEMPORARY_LEAVE_LIST_NTF   MsgId = 276 //res=SceneTemporaryLeaveListNtf,desc=玩法暂离数据全量通知
+	MsgId_SCENE_TEMPORARY_LEAVE_UPDATE_NTF MsgId = 277 //res=SceneTemporaryLeaveUpdateNtf,desc=玩法暂离数据变更通知
+	MsgId_GAME_PLAY_SUMMONED_CHANGE_NTF    MsgId = 278 //res=GamePlaySummonedChangeNtf,desc=玩法召唤物数据变化通知
+	MsgId_SCENE_CREATE_PROJECTILE_PUSH     MsgId = 280 //req=SceneCreateProjectilePush,desc=创建子弹飞行物请求
+	MsgId_SCENE_CREATE_PROJECTILE_NTF      MsgId = 281 //res=SceneCreateProjectileNtf,desc=创建子弹飞行物返回
+	MsgId_SCENE_CREATE_SUMMON_PUSH         MsgId = 282 //req=SceneCreateSummonPush,desc=创建召唤物请求
+	MsgId_SCENE_CREATE_SUMMON_NTF          MsgId = 283 //res=SceneCreateSummonNtf,desc=创建召唤物返回
 	// quest 300-399，未标1的协议暂时用不到
-	ProtoCode_QUEST_STEP_LIST_NTF             ProtoCode = 300 // res=QuestStepListNtf,desc=全量任务步骤通知 1
-	ProtoCode_QUEST_STEP_LIST_UPDATE_NTF      ProtoCode = 301 // res=QuestStepListUpdateNtf,desc=差量任务通知 1
-	ProtoCode_QUEST_DEL_NTF                   ProtoCode = 302 // res=QuestDelNtf,desc=任务删除通知 1
-	ProtoCode_QUEST_NTF                       ProtoCode = 303 // res=QuestNtf,desc=全量父任务通知 1
-	ProtoCode_QUEST_UPDATE_NTF                ProtoCode = 304 // res=QuestUpdateNtf,desc=差量父任务通知 1
-	ProtoCode_QUEST_STEP_PROGRESS_UPDATE_PUSH ProtoCode = 305 // req=QuestStepProgressUpdatePush
-	ProtoCode_QUEST_UNIT_NTF                  ProtoCode = 306 // res=QuestUnitNtf
-	ProtoCode_CHAPTER_STATE_NTF               ProtoCode = 307 // res=ChapterStateNtf
-	ProtoCode_QUEST_STEP_PROGRESS_UPDATE_NTF  ProtoCode = 308 // res=QuestStepProgressUpdateNtf,desc=任务进度更新通知 1
-	ProtoCode_QUEST_FINISH_EXEC_PUSH          ProtoCode = 309 // req=QuestFinishExecPush
-	ProtoCode_QUEST_BEGIN_EXEC_NTF            ProtoCode = 310 // res=QuestBeginExecNtf
-	ProtoCode_QUEST_TRACING_PUSH              ProtoCode = 311 // req=QuestTracingPush
-	ProtoCode_QUEST_TRACING_NTF               ProtoCode = 312 // res=QuestTracingNtf
+	MsgId_QUEST_STEP_LIST_NTF             MsgId = 300 // res=QuestStepListNtf,desc=全量任务步骤通知 1
+	MsgId_QUEST_STEP_LIST_UPDATE_NTF      MsgId = 301 // res=QuestStepListUpdateNtf,desc=差量任务通知 1
+	MsgId_QUEST_DEL_NTF                   MsgId = 302 // res=QuestDelNtf,desc=任务删除通知 1
+	MsgId_QUEST_NTF                       MsgId = 303 // res=QuestNtf,desc=全量父任务通知 1
+	MsgId_QUEST_UPDATE_NTF                MsgId = 304 // res=QuestUpdateNtf,desc=差量父任务通知 1
+	MsgId_QUEST_STEP_PROGRESS_UPDATE_PUSH MsgId = 305 // req=QuestStepProgressUpdatePush
+	MsgId_QUEST_UNIT_NTF                  MsgId = 306 // res=QuestUnitNtf
+	MsgId_CHAPTER_STATE_NTF               MsgId = 307 // res=ChapterStateNtf
+	MsgId_QUEST_STEP_PROGRESS_UPDATE_NTF  MsgId = 308 // res=QuestStepProgressUpdateNtf,desc=任务进度更新通知 1
+	MsgId_QUEST_FINISH_EXEC_PUSH          MsgId = 309 // req=QuestFinishExecPush
+	MsgId_QUEST_BEGIN_EXEC_NTF            MsgId = 310 // res=QuestBeginExecNtf
+	MsgId_QUEST_TRACING_PUSH              MsgId = 311 // req=QuestTracingPush
+	MsgId_QUEST_TRACING_NTF               MsgId = 312 // res=QuestTracingNtf
 	// QUEST_UPDATE_QUEST_VAR_REQ = 309; // req=QuestUpdateQuestVarReq
 	// QUEST_UPDATE_QUEST_VAR_RES = 310; // res=QuestUpdateQuestVarRes
 	// QUEST_UPDATE_QUEST_VAR_NTF = 311; // res=QuestUpdateQuestVarNtf
 	// QUEST_GLOBAL_VAR_NTF = 312; // res=QuestGlobalVarNtf
 	// CANCEL_FINISHED_PARENT_QUEST_NTF = 313; // res=CancelFinishedParentQuestNtf
-	ProtoCode_QUEST_FINISH_PARENT_QUEST_PUSH ProtoCode = 313 // req=QuestFinishParentQuestPush
-	ProtoCode_QUEST_TARGET_SHOW_NTF          ProtoCode = 314 // res=QuestTargetShowNtf
-	ProtoCode_GAME_FLOW_RESET_PUSH           ProtoCode = 315 // res=GameFlowResetPush
+	MsgId_QUEST_FINISH_PARENT_QUEST_PUSH MsgId = 313 // req=QuestFinishParentQuestPush
+	MsgId_QUEST_TARGET_SHOW_NTF          MsgId = 314 // res=QuestTargetShowNtf
+	MsgId_GAME_FLOW_RESET_PUSH           MsgId = 315 // res=GameFlowResetPush
 	// Ship 400 - 450
-	ProtoCode_SHIP_ADD_NTF             ProtoCode = 400 // res=ShipAddNtf
-	ProtoCode_SHIP_LIST_NTF            ProtoCode = 401 // res=ShipListNtf
-	ProtoCode_SHIP_TALENT_LEVEL_UP_REQ ProtoCode = 402 //req=ShipTalentLevelUpReq, desc="天赋升级请求"
-	ProtoCode_SHIP_TALENT_LEVEL_UP_RES ProtoCode = 403 //res=ShipTalentLevelUpRes, desc="天赋升级返回"
-	ProtoCode_SHIP_TALENT_RESET_REQ    ProtoCode = 404 //req=ShipTalentResetReq, desc="天赋重置请求"
-	ProtoCode_SHIP_TALENT_RESET_RES    ProtoCode = 405 //res=ShipTalentResetRes, desc="天赋重置返回"
-	ProtoCode_SHIP_FEED_PUSH           ProtoCode = 407 // req=ShipFeedPush, desc="海巡兽喂食请求"
-	ProtoCode_SHIP_FEED_NTF            ProtoCode = 408 // res=ShipFeedNtf, desc="海巡兽喂食通知"
-	ProtoCode_DIALOGUE_RECORD_NTF      ProtoCode = 410 // res=DialogueRecordNtf
-	ProtoCode_DIALOGUE_NODE_NTF        ProtoCode = 411 // res=DialogueNodeNtf
-	ProtoCode_SHIP_ASSIGN_AVATAR_PUSH  ProtoCode = 420 // req=ShipAssignAvatarPush, desc="海巡兽派驻avatar请求"
-	ProtoCode_SHIP_ASSIGN_AVATAR_NTF   ProtoCode = 421 // res=ShipAssignAvatarNtf, desc="海巡兽派驻avatar通知"
-	ProtoCode_SHIP_CHANGE_GUN_PUSH     ProtoCode = 422 // req=ShipChangeGunPush, desc="海巡兽更换炮台炮弹请求"
-	ProtoCode_SHIP_CHANGE_GUN_NTF      ProtoCode = 423 // res=ShipChangeGunNtf, desc="海巡兽更换炮台炮弹通知"
+	MsgId_SHIP_ADD_NTF             MsgId = 400 // res=ShipAddNtf
+	MsgId_SHIP_LIST_NTF            MsgId = 401 // res=ShipListNtf
+	MsgId_SHIP_TALENT_LEVEL_UP_REQ MsgId = 402 //req=ShipTalentLevelUpReq, desc="天赋升级请求"
+	MsgId_SHIP_TALENT_LEVEL_UP_RES MsgId = 403 //res=ShipTalentLevelUpRes, desc="天赋升级返回"
+	MsgId_SHIP_TALENT_RESET_REQ    MsgId = 404 //req=ShipTalentResetReq, desc="天赋重置请求"
+	MsgId_SHIP_TALENT_RESET_RES    MsgId = 405 //res=ShipTalentResetRes, desc="天赋重置返回"
+	MsgId_SHIP_FEED_PUSH           MsgId = 407 // req=ShipFeedPush, desc="海巡兽喂食请求"
+	MsgId_SHIP_FEED_NTF            MsgId = 408 // res=ShipFeedNtf, desc="海巡兽喂食通知"
+	MsgId_DIALOGUE_RECORD_NTF      MsgId = 410 // res=DialogueRecordNtf
+	MsgId_DIALOGUE_NODE_NTF        MsgId = 411 // res=DialogueNodeNtf
+	MsgId_SHIP_ASSIGN_AVATAR_PUSH  MsgId = 420 // req=ShipAssignAvatarPush, desc="海巡兽派驻avatar请求"
+	MsgId_SHIP_ASSIGN_AVATAR_NTF   MsgId = 421 // res=ShipAssignAvatarNtf, desc="海巡兽派驻avatar通知"
+	MsgId_SHIP_CHANGE_GUN_PUSH     MsgId = 422 // req=ShipChangeGunPush, desc="海巡兽更换炮台炮弹请求"
+	MsgId_SHIP_CHANGE_GUN_NTF      MsgId = 423 // res=ShipChangeGunNtf, desc="海巡兽更换炮台炮弹通知"
 	// team 500-599
-	ProtoCode_TEAM_CREATE_PUSH     ProtoCode = 500 // req=CreateTeamPush,desc="创建队伍"
-	ProtoCode_TEAM_CREATE_NTF      ProtoCode = 501 // res=TeamInfoNtf,desc="创建队伍后的队伍数据"
-	ProtoCode_TEAM_INFO_NTF        ProtoCode = 502 // res=TeamInfoNtf,desc="队伍数据变更后通知"
-	ProtoCode_TEAM_LIST_PUSH       ProtoCode = 503 // req=GetTeamListPush,desc="获取所有队伍列表 请求"
-	ProtoCode_TEAM_LIST_NTF        ProtoCode = 504 // res=GetTeamListNtf,desc="获取所有队伍列表 数据"
-	ProtoCode_TEAM_DETAIL_PUSH     ProtoCode = 505 // req=GetTeamDetailPush,desc="获取队伍最新数据"
-	ProtoCode_TEAM_DETAIL_NTF      ProtoCode = 506 // res=TeamInfoNtf,desc="队伍数据变更后通知"
-	ProtoCode_TEAM_JOIN_PUSH       ProtoCode = 507 // req=JoinTeamPush,desc="获取队伍最新数据"
-	ProtoCode_TEAM_JOIN_NTF        ProtoCode = 508 // res=TeamInfoNtf,desc="发给当前玩家join 结果"
-	ProtoCode_TEAM_EXIT_PUSH       ProtoCode = 509 // req=ExitTeamPush,desc="退出队伍"
-	ProtoCode_TEAM_EXIT_NTF        ProtoCode = 510 // res=ExistTeamNtf,desc="退出队伍返回结果，给当前玩家"
-	ProtoCode_TEAM_DISMISS_PUSH    ProtoCode = 511 //req=DismissTeamPush,desc="解散队伍"
-	ProtoCode_TEAM_DISMISS_NTF     ProtoCode = 512 //res=DismissTeamNtf,desc="解散队伍通知"
-	ProtoCode_TEAM_START_GAME_NTF  ProtoCode = 513 //res=TeamStartGameNtf,desc="开始游戏"
-	ProtoCode_TEAM_OWN_NTF         ProtoCode = 514 // res=TeamInfoNtf,desc="玩家所在部队,当玩家登录后,服务器会主动通知"
-	ProtoCode_TEAM_START_GAME_PUSH ProtoCode = 515 //req=TeamStartGamePush,desc="房主开始游戏"
-	ProtoCode_TEAM_INVITE_PUSH     ProtoCode = 516 //req=TeamInvitePush,desc="邀请对方加入队伍"
-	ProtoCode_TEAM_INVITE_NTF      ProtoCode = 517 //req=TeamInviteNtf,desc="邀请对方加入队伍通知"
+	MsgId_TEAM_CREATE_PUSH     MsgId = 500 // req=CreateTeamPush,desc="创建队伍"
+	MsgId_TEAM_CREATE_NTF      MsgId = 501 // res=TeamInfoNtf,desc="创建队伍后的队伍数据"
+	MsgId_TEAM_INFO_NTF        MsgId = 502 // res=TeamInfoNtf,desc="队伍数据变更后通知"
+	MsgId_TEAM_LIST_PUSH       MsgId = 503 // req=GetTeamListPush,desc="获取所有队伍列表 请求"
+	MsgId_TEAM_LIST_NTF        MsgId = 504 // res=GetTeamListNtf,desc="获取所有队伍列表 数据"
+	MsgId_TEAM_DETAIL_PUSH     MsgId = 505 // req=GetTeamDetailPush,desc="获取队伍最新数据"
+	MsgId_TEAM_DETAIL_NTF      MsgId = 506 // res=TeamInfoNtf,desc="队伍数据变更后通知"
+	MsgId_TEAM_JOIN_PUSH       MsgId = 507 // req=JoinTeamPush,desc="获取队伍最新数据"
+	MsgId_TEAM_JOIN_NTF        MsgId = 508 // res=TeamInfoNtf,desc="发给当前玩家join 结果"
+	MsgId_TEAM_EXIT_PUSH       MsgId = 509 // req=ExitTeamPush,desc="退出队伍"
+	MsgId_TEAM_EXIT_NTF        MsgId = 510 // res=ExistTeamNtf,desc="退出队伍返回结果，给当前玩家"
+	MsgId_TEAM_DISMISS_PUSH    MsgId = 511 //req=DismissTeamPush,desc="解散队伍"
+	MsgId_TEAM_DISMISS_NTF     MsgId = 512 //res=DismissTeamNtf,desc="解散队伍通知"
+	MsgId_TEAM_START_GAME_NTF  MsgId = 513 //res=TeamStartGameNtf,desc="开始游戏"
+	MsgId_TEAM_OWN_NTF         MsgId = 514 // res=TeamInfoNtf,desc="玩家所在部队,当玩家登录后,服务器会主动通知"
+	MsgId_TEAM_START_GAME_PUSH MsgId = 515 //req=TeamStartGamePush,desc="房主开始游戏"
+	MsgId_TEAM_INVITE_PUSH     MsgId = 516 //req=TeamInvitePush,desc="邀请对方加入队伍"
+	MsgId_TEAM_INVITE_NTF      MsgId = 517 //req=TeamInviteNtf,desc="邀请对方加入队伍通知"
 	// role补充 600-699
-	ProtoCode_ROLE_FATIGUE_TRANSFORM_PUSH     ProtoCode = 600 //req=RoleFatigueTransformPush,desc="玩家疲劳转化请求"
-	ProtoCode_ROLE_FATIGUE_TRANSFORM_NTF      ProtoCode = 601 //res=RoleFatigueTransformNtf,desc="玩家疲劳转化返回"
-	ProtoCode_ROLE_GOT_COLLECT_REWARD_PUSH    ProtoCode = 602 //req=RoleGotCollectRewardPush,desc="领取收集奖励请求"
-	ProtoCode_ROLE_GOT_COLLECT_REWARD_NTF     ProtoCode = 603 //res=RoleGotCollectRewardNtf,desc="领取收集奖励返回"
-	ProtoCode_ROLE_COLLECT_REWARD_RECORD_PUSH ProtoCode = 604 //req=RoleCollectRewardRecordPush,desc="收集奖励记录请求"
-	ProtoCode_ROLE_COLLECT_REWARD_RECORD_NTF  ProtoCode = 605 //res=RoleCollectRewardRecordNtf,desc="收集奖励记录返回"
-	ProtoCode_SURVEY_INFO_LIST_NTF            ProtoCode = 606 //res=SurveyInfoListNtf,desc="问卷信息列表"
-	ProtoCode_RECEIVE_SURVEY_REWARD_PUSH      ProtoCode = 607 //req=ReceiveSurveyRewardPush,desc="问卷奖励领取"
-	ProtoCode_ROLE_RECEIVE_LEVEL_REWARD_PUSH  ProtoCode = 608 //req=RoleReceiveLevelRewardPush,desc="等级奖励领取"
-	ProtoCode_ROLE_RECEIVE_LEVEL_REWARD_NTF   ProtoCode = 609 //res=RoleReceiveLevelRewardNtf,desc="等级奖励领取"
-	ProtoCode_ROLE_GOT_REWARD_LEVEL_LIST_NTF  ProtoCode = 610 //res=RoleGotRewardLevelListNtf,desc="等级奖励已领取列表"
+	MsgId_ROLE_FATIGUE_TRANSFORM_PUSH     MsgId = 600 //req=RoleFatigueTransformPush,desc="玩家疲劳转化请求"
+	MsgId_ROLE_FATIGUE_TRANSFORM_NTF      MsgId = 601 //res=RoleFatigueTransformNtf,desc="玩家疲劳转化返回"
+	MsgId_ROLE_GOT_COLLECT_REWARD_PUSH    MsgId = 602 //req=RoleGotCollectRewardPush,desc="领取收集奖励请求"
+	MsgId_ROLE_GOT_COLLECT_REWARD_NTF     MsgId = 603 //res=RoleGotCollectRewardNtf,desc="领取收集奖励返回"
+	MsgId_ROLE_COLLECT_REWARD_RECORD_PUSH MsgId = 604 //req=RoleCollectRewardRecordPush,desc="收集奖励记录请求"
+	MsgId_ROLE_COLLECT_REWARD_RECORD_NTF  MsgId = 605 //res=RoleCollectRewardRecordNtf,desc="收集奖励记录返回"
+	MsgId_SURVEY_INFO_LIST_NTF            MsgId = 606 //res=SurveyInfoListNtf,desc="问卷信息列表"
+	MsgId_RECEIVE_SURVEY_REWARD_PUSH      MsgId = 607 //req=ReceiveSurveyRewardPush,desc="问卷奖励领取"
+	MsgId_ROLE_RECEIVE_LEVEL_REWARD_PUSH  MsgId = 608 //req=RoleReceiveLevelRewardPush,desc="等级奖励领取"
+	MsgId_ROLE_RECEIVE_LEVEL_REWARD_NTF   MsgId = 609 //res=RoleReceiveLevelRewardNtf,desc="等级奖励领取"
+	MsgId_ROLE_GOT_REWARD_LEVEL_LIST_NTF  MsgId = 610 //res=RoleGotRewardLevelListNtf,desc="等级奖励已领取列表"
 	// SNS 700-750
-	ProtoCode_SNS_DATA_LIST_NTF             ProtoCode = 700 //res=SnsDataListNtf, desc="sns数据登录时全量通知"
-	ProtoCode_SNS_DIALOGUE_UPDATE_NTF       ProtoCode = 701 //res=SnsDialogueUpdateNtf, desc="sns数据增量更新通知"
-	ProtoCode_SNS_DIALOGUE_NODE_FINISH_PUSH ProtoCode = 702 //req=SnsDialogueNodeFinishPush, desc="sns对话树节点完成请求"
-	ProtoCode_SNS_DIALOGUE_NODE_FINISH_NTF  ProtoCode = 703 //res=SnsDialogueNodeFinishNtf, desc="sns对话树节点完成通知"
+	MsgId_SNS_DATA_LIST_NTF             MsgId = 700 //res=SnsDataListNtf, desc="sns数据登录时全量通知"
+	MsgId_SNS_DIALOGUE_UPDATE_NTF       MsgId = 701 //res=SnsDialogueUpdateNtf, desc="sns数据增量更新通知"
+	MsgId_SNS_DIALOGUE_NODE_FINISH_PUSH MsgId = 702 //req=SnsDialogueNodeFinishPush, desc="sns对话树节点完成请求"
+	MsgId_SNS_DIALOGUE_NODE_FINISH_NTF  MsgId = 703 //res=SnsDialogueNodeFinishNtf, desc="sns对话树节点完成通知"
 	// own Avatar 800-850
-	ProtoCode_AVATAR_LIST_NTF                             ProtoCode = 800 //res=AvatarListNtf, desc="玩家所有的avatar 列表，登录时推送"
-	ProtoCode_AVATAR_ADD_NTF                              ProtoCode = 801 //res=AvatarAddNtf, desc="新增avatar通知"
-	ProtoCode_AVATAR_LEVEL_UP_REQ                         ProtoCode = 802 //req=AvatarLevelUpReq, desc="avatar升级请求"
-	ProtoCode_AVATAR_LEVEL_UP_RES                         ProtoCode = 803 //res=AvatarLevelUpRes, desc="avatar升级返回"
-	ProtoCode_AVATAR_EXCEED_REQ                           ProtoCode = 804 //req=AvatarExceedReq, desc="avatar突破请求"
-	ProtoCode_AVATAR_EXCEED_RES                           ProtoCode = 805 //res=AvatarExceedRes, desc="avatar突破返回"
-	ProtoCode_AVATAR_TRANS_NTF                            ProtoCode = 806 //res=AvatarTransNtf, desc="相同avatar自动转换成道具的通知"
-	ProtoCode_AVATAR_SKILL_UPDATE_NTF                     ProtoCode = 807 //res=AvatarSkillUpdateNtf, desc="新增或者变更的技能信息的通知"
-	ProtoCode_AVATAR_ADD_FAVORABILITY_EXP_REQ             ProtoCode = 808 //req=AvatarAddFavorabilityExpReq, desc="添加好感度经验请求"
-	ProtoCode_AVATAR_ADD_FAVORABILITY_EXP_RES             ProtoCode = 809 //res=AvatarAddFavorabilityExpRes, desc="添加好感度经验返回"
-	ProtoCode_AVATAR_GOT_FAVORABILITY_AWARD_REQ           ProtoCode = 810 //req=AvatarGotFavorabilityAwardReq, desc="领取好感度奖励请求"
-	ProtoCode_AVATAR_GOT_FAVORABILITY_AWARD_RES           ProtoCode = 811 //res=AvatarGotFavorabilityAwardRes, desc="领取好感度奖励返回"
-	ProtoCode_AVATAR_TALENT_LEVEL_UP_REQ                  ProtoCode = 812 //req=AvatarTalentLevelUpReq, desc="天赋升级请求"
-	ProtoCode_AVATAR_TALENT_LEVEL_UP_RES                  ProtoCode = 813 //res=AvatarTalentLevelUpRes, desc="天赋升级返回"
-	ProtoCode_AVATAR_TALENT_RESET_REQ                     ProtoCode = 814 //req=AvatarTalentResetReq, desc="天赋重置请求"
-	ProtoCode_AVATAR_TALENT_RESET_RES                     ProtoCode = 815 //res=AvatarTalentResetRes, desc="天赋重置返回"
-	ProtoCode_AVATAR_CONSTELLATION_UNLOCK_REQ             ProtoCode = 816 //req=AvatarConstellationUnlockReq, desc="解锁命座请求"
-	ProtoCode_AVATAR_CONSTELLATION_UNLOCK_RES             ProtoCode = 817 //res=AvatarConstellationUnlockRes, desc="解锁命座返回"
-	ProtoCode_AVATAR_STATE_NTF                            ProtoCode = 818 //res=AvatarStateNtf, desc="avatar状态变化通知"
-	ProtoCode_AVATAR_UNLOCK_FAVORABILITY_CONTENT_PUSH     ProtoCode = 819 //req=AvatarUnlockFavorabilityContentPush, desc="解锁好感度传记请求"
-	ProtoCode_AVATAR_UNLOCK_FAVORABILITY_SECRET_STORY_NTF ProtoCode = 820 //res=AvatarUnlockFavorabilitySecretStoryNtf, desc="解锁好感秘闻返回"
-	ProtoCode_AVATAR_DATE_COMPLETED_LIST_NTF              ProtoCode = 822 // res=AvatarDateCompletedListNtf, desc="已完成约会列表"
-	ProtoCode_AVATAR_FINISH_FAVORABILITY_CONTENT_PUSH     ProtoCode = 823 // req=AvatarFinishFavorabilityContentPush, desc="完成好感度传记请求"
-	ProtoCode_AVATAR_GOT_FAVORABILITY_MAX_AWARD_PUSH      ProtoCode = 824 // req=AvatarGotFavorabilityMaxAwardPush, desc="领取好感度Max奖励"
-	ProtoCode_AVATAR_GOT_FAVORABILITY_MAX_AWARD_NTF       ProtoCode = 825 // res=AvatarGotFavorabilityMaxAwardNtf, desc="领取好感度Max奖励"
-	ProtoCode_AVATAR_FAVORABILITY_LIST_NTF                ProtoCode = 826 // res=AvatarFavorabilityListNtf, desc="好感信息列表"
-	ProtoCode_AVATAR_FAVORABILITY_UPDATE_NTF              ProtoCode = 827 // res=AvatarFavorabilityUpdateNtf, desc="好感信息更新"
-	ProtoCode_AVATAR_INTERACT_NTF                         ProtoCode = 828 // res=AvatarIntimacyNtf, desc="私密互动信息通知"
-	ProtoCode_AVATAR_INTIMACY_BEGIN_PUSH                  ProtoCode = 829 //req=AvatarIntimacyBeginPush, desc="私密互动开始请求"
-	ProtoCode_AVATAR_INTIMACY_BEGIN_RES                   ProtoCode = 830 //res=AvatarIntimacyBeginRes, desc="私密互动开始返回"
-	ProtoCode_AVATAR_INTIMACY_STAGE_INFO_PUSH             ProtoCode = 831 //req=AvatarIntimacyStageInfoPush, desc="私密互动进行中信息推送"
-	ProtoCode_AVATAR_INTIMACY_CANCEL_PUSH                 ProtoCode = 832 //req=AvatarIntimacyCancelPush, desc="私密互动取消请求"
-	ProtoCode_AVATAR_INTIMACY_END_NTF                     ProtoCode = 833 //res=AvatarIntimacyEndNtf, desc="私密互动结束通知"
-	ProtoCode_AVATAR_MINI_GAME_SETTLE_PUSH                ProtoCode = 834 //req=AvatarMiniGameSettlePush, desc="小游戏结算请求"
-	ProtoCode_AVATAR_MINI_GAME_SETTLE_NTF                 ProtoCode = 835 //res=AvatarMiniGameSettleNtf, desc="小游戏结算通知"
+	MsgId_AVATAR_LIST_NTF                             MsgId = 800 //res=AvatarListNtf, desc="玩家所有的avatar 列表，登录时推送"
+	MsgId_AVATAR_ADD_NTF                              MsgId = 801 //res=AvatarAddNtf, desc="新增avatar通知"
+	MsgId_AVATAR_LEVEL_UP_REQ                         MsgId = 802 //req=AvatarLevelUpReq, desc="avatar升级请求"
+	MsgId_AVATAR_LEVEL_UP_RES                         MsgId = 803 //res=AvatarLevelUpRes, desc="avatar升级返回"
+	MsgId_AVATAR_EXCEED_REQ                           MsgId = 804 //req=AvatarExceedReq, desc="avatar突破请求"
+	MsgId_AVATAR_EXCEED_RES                           MsgId = 805 //res=AvatarExceedRes, desc="avatar突破返回"
+	MsgId_AVATAR_TRANS_NTF                            MsgId = 806 //res=AvatarTransNtf, desc="相同avatar自动转换成道具的通知"
+	MsgId_AVATAR_SKILL_UPDATE_NTF                     MsgId = 807 //res=AvatarSkillUpdateNtf, desc="新增或者变更的技能信息的通知"
+	MsgId_AVATAR_ADD_FAVORABILITY_EXP_REQ             MsgId = 808 //req=AvatarAddFavorabilityExpReq, desc="添加好感度经验请求"
+	MsgId_AVATAR_ADD_FAVORABILITY_EXP_RES             MsgId = 809 //res=AvatarAddFavorabilityExpRes, desc="添加好感度经验返回"
+	MsgId_AVATAR_GOT_FAVORABILITY_AWARD_REQ           MsgId = 810 //req=AvatarGotFavorabilityAwardReq, desc="领取好感度奖励请求"
+	MsgId_AVATAR_GOT_FAVORABILITY_AWARD_RES           MsgId = 811 //res=AvatarGotFavorabilityAwardRes, desc="领取好感度奖励返回"
+	MsgId_AVATAR_TALENT_LEVEL_UP_REQ                  MsgId = 812 //req=AvatarTalentLevelUpReq, desc="天赋升级请求"
+	MsgId_AVATAR_TALENT_LEVEL_UP_RES                  MsgId = 813 //res=AvatarTalentLevelUpRes, desc="天赋升级返回"
+	MsgId_AVATAR_TALENT_RESET_REQ                     MsgId = 814 //req=AvatarTalentResetReq, desc="天赋重置请求"
+	MsgId_AVATAR_TALENT_RESET_RES                     MsgId = 815 //res=AvatarTalentResetRes, desc="天赋重置返回"
+	MsgId_AVATAR_CONSTELLATION_UNLOCK_REQ             MsgId = 816 //req=AvatarConstellationUnlockReq, desc="解锁命座请求"
+	MsgId_AVATAR_CONSTELLATION_UNLOCK_RES             MsgId = 817 //res=AvatarConstellationUnlockRes, desc="解锁命座返回"
+	MsgId_AVATAR_STATE_NTF                            MsgId = 818 //res=AvatarStateNtf, desc="avatar状态变化通知"
+	MsgId_AVATAR_UNLOCK_FAVORABILITY_CONTENT_PUSH     MsgId = 819 //req=AvatarUnlockFavorabilityContentPush, desc="解锁好感度传记请求"
+	MsgId_AVATAR_UNLOCK_FAVORABILITY_SECRET_STORY_NTF MsgId = 820 //res=AvatarUnlockFavorabilitySecretStoryNtf, desc="解锁好感秘闻返回"
+	MsgId_AVATAR_DATE_COMPLETED_LIST_NTF              MsgId = 822 // res=AvatarDateCompletedListNtf, desc="已完成约会列表"
+	MsgId_AVATAR_FINISH_FAVORABILITY_CONTENT_PUSH     MsgId = 823 // req=AvatarFinishFavorabilityContentPush, desc="完成好感度传记请求"
+	MsgId_AVATAR_GOT_FAVORABILITY_MAX_AWARD_PUSH      MsgId = 824 // req=AvatarGotFavorabilityMaxAwardPush, desc="领取好感度Max奖励"
+	MsgId_AVATAR_GOT_FAVORABILITY_MAX_AWARD_NTF       MsgId = 825 // res=AvatarGotFavorabilityMaxAwardNtf, desc="领取好感度Max奖励"
+	MsgId_AVATAR_FAVORABILITY_LIST_NTF                MsgId = 826 // res=AvatarFavorabilityListNtf, desc="好感信息列表"
+	MsgId_AVATAR_FAVORABILITY_UPDATE_NTF              MsgId = 827 // res=AvatarFavorabilityUpdateNtf, desc="好感信息更新"
+	MsgId_AVATAR_INTERACT_NTF                         MsgId = 828 // res=AvatarIntimacyNtf, desc="私密互动信息通知"
+	MsgId_AVATAR_INTIMACY_BEGIN_PUSH                  MsgId = 829 //req=AvatarIntimacyBeginPush, desc="私密互动开始请求"
+	MsgId_AVATAR_INTIMACY_BEGIN_RES                   MsgId = 830 //res=AvatarIntimacyBeginRes, desc="私密互动开始返回"
+	MsgId_AVATAR_INTIMACY_STAGE_INFO_PUSH             MsgId = 831 //req=AvatarIntimacyStageInfoPush, desc="私密互动进行中信息推送"
+	MsgId_AVATAR_INTIMACY_CANCEL_PUSH                 MsgId = 832 //req=AvatarIntimacyCancelPush, desc="私密互动取消请求"
+	MsgId_AVATAR_INTIMACY_END_NTF                     MsgId = 833 //res=AvatarIntimacyEndNtf, desc="私密互动结束通知"
+	MsgId_AVATAR_MINI_GAME_SETTLE_PUSH                MsgId = 834 //req=AvatarMiniGameSettlePush, desc="小游戏结算请求"
+	MsgId_AVATAR_MINI_GAME_SETTLE_NTF                 MsgId = 835 //res=AvatarMiniGameSettleNtf, desc="小游戏结算通知"
 	// formation 851 - 899
-	ProtoCode_FORMATION_SAVE_PUSH   ProtoCode = 851 //req=FormationSavePush, desc="保存编队请求"
-	ProtoCode_FORMATION_SAVE_NTF    ProtoCode = 852 //res=FormationSaveNtf, desc="保存编队返回"
-	ProtoCode_FORMATION_ACTIVE_PUSH ProtoCode = 853 //req=FormationActivePush, desc="激活编队请求"
-	ProtoCode_FORMATION_ACTIVE_NTF  ProtoCode = 854 //res=FormationActiveNtf, desc="激活编队推送"
-	ProtoCode_FORMATION_NTF         ProtoCode = 855 //res=FormationNtf, desc="玩家所有的编队列表，登录时推送"
-	ProtoCode_FORMATION_CHANGE_NTF  ProtoCode = 856 //res=FormationChangeNtf, desc="编队变化时的推送"
+	MsgId_FORMATION_SAVE_PUSH   MsgId = 851 //req=FormationSavePush, desc="保存编队请求"
+	MsgId_FORMATION_SAVE_NTF    MsgId = 852 //res=FormationSaveNtf, desc="保存编队返回"
+	MsgId_FORMATION_ACTIVE_PUSH MsgId = 853 //req=FormationActivePush, desc="激活编队请求"
+	MsgId_FORMATION_ACTIVE_NTF  MsgId = 854 //res=FormationActiveNtf, desc="激活编队推送"
+	MsgId_FORMATION_NTF         MsgId = 855 //res=FormationNtf, desc="玩家所有的编队列表，登录时推送"
+	MsgId_FORMATION_CHANGE_NTF  MsgId = 856 //res=FormationChangeNtf, desc="编队变化时的推送"
 	// DropSystem 900 - 949
-	ProtoCode_DROP_SYSTEM_NTF ProtoCode = 900 //res=DropSystemNtf, desc="掉落系统的通用通知"
+	MsgId_DROP_SYSTEM_NTF MsgId = 900 //res=DropSystemNtf, desc="掉落系统的通用通知"
 	// Shop 950 - 999
-	ProtoCode_BUY_SHOP_ITEM_PUSH        ProtoCode = 950 //req=BuyShopItemPush, desc="购买商品请求"
-	ProtoCode_BUY_SHOP_ITEM_NTF         ProtoCode = 951 //res=BuyShopItemNtf, desc="购买商品返回"
-	ProtoCode_REFRESH_SHOP_ITEM_PUSH    ProtoCode = 952 //req=RefreshShopPush, desc="刷新商品列表请求"
-	ProtoCode_REFRESH_SHOP_ITEM_NTF     ProtoCode = 953 //res=RefreshShopNtf, desc="刷新商品列表推送"
-	ProtoCode_SHOP_RECORD_NTF           ProtoCode = 954 //res=ShopRecordNtf, desc="商品购买记录推送"
-	ProtoCode_SHOP_CREATE_PAY_ORDER_NTF ProtoCode = 955 //res=ShopCreatePayOrderNtf, desc="商品购买创建订单推送"
+	MsgId_BUY_SHOP_ITEM_PUSH        MsgId = 950 //req=BuyShopItemPush, desc="购买商品请求"
+	MsgId_BUY_SHOP_ITEM_NTF         MsgId = 951 //res=BuyShopItemNtf, desc="购买商品返回"
+	MsgId_REFRESH_SHOP_ITEM_PUSH    MsgId = 952 //req=RefreshShopPush, desc="刷新商品列表请求"
+	MsgId_REFRESH_SHOP_ITEM_NTF     MsgId = 953 //res=RefreshShopNtf, desc="刷新商品列表推送"
+	MsgId_SHOP_RECORD_NTF           MsgId = 954 //res=ShopRecordNtf, desc="商品购买记录推送"
+	MsgId_SHOP_CREATE_PAY_ORDER_NTF MsgId = 955 //res=ShopCreatePayOrderNtf, desc="商品购买创建订单推送"
 	// MailSystem 1000 - 1499
-	ProtoCode_MAIL_LIST_REQ        ProtoCode = 1000 //req=MailListReq, desc="玩家的邮件请求"
-	ProtoCode_MAIL_LIST_RES        ProtoCode = 1001 //res=MailListRes, desc="玩家的邮件返回"
-	ProtoCode_MAIL_NEW_NTF         ProtoCode = 1002 //res=NewMailNtf, desc="新邮件通知"
-	ProtoCode_MAIL_READ_REQ        ProtoCode = 1003 //req=ReadMailReq, desc="玩家的读取邮件请求"
-	ProtoCode_MAIL_READ_RES        ProtoCode = 1004 //res=ReadMailRes, desc="玩家的读取邮件返回"
-	ProtoCode_MAIL_DEL_PUSH        ProtoCode = 1005 //req=DelMailPush, desc="删除邮件请求"
-	ProtoCode_MAIL_DEL_NTF         ProtoCode = 1006 //res=DelMailNtf, desc="删除邮件返回"
-	ProtoCode_MAIL_GOT_AWARD_REQ   ProtoCode = 1007 //req=GotMailAwardReq, desc="领取邮件附件请求"
-	ProtoCode_MAIL_GOT_AWARD_RES   ProtoCode = 1008 //res=GotMailAwardRes, desc="领取邮件附件返回"
-	ProtoCode_MAIL_SET_COLLECT_REQ ProtoCode = 1009 //req=MailSetCollectReq, desc="邮件设置收藏请求"
-	ProtoCode_MAIL_SET_COLLECT_RES ProtoCode = 1010 //res=MailSetCollectRes, desc="邮件设置收藏返回"
+	MsgId_MAIL_LIST_REQ        MsgId = 1000 //req=MailListReq, desc="玩家的邮件请求"
+	MsgId_MAIL_LIST_RES        MsgId = 1001 //res=MailListRes, desc="玩家的邮件返回"
+	MsgId_MAIL_NEW_NTF         MsgId = 1002 //res=NewMailNtf, desc="新邮件通知"
+	MsgId_MAIL_READ_REQ        MsgId = 1003 //req=ReadMailReq, desc="玩家的读取邮件请求"
+	MsgId_MAIL_READ_RES        MsgId = 1004 //res=ReadMailRes, desc="玩家的读取邮件返回"
+	MsgId_MAIL_DEL_PUSH        MsgId = 1005 //req=DelMailPush, desc="删除邮件请求"
+	MsgId_MAIL_DEL_NTF         MsgId = 1006 //res=DelMailNtf, desc="删除邮件返回"
+	MsgId_MAIL_GOT_AWARD_REQ   MsgId = 1007 //req=GotMailAwardReq, desc="领取邮件附件请求"
+	MsgId_MAIL_GOT_AWARD_RES   MsgId = 1008 //res=GotMailAwardRes, desc="领取邮件附件返回"
+	MsgId_MAIL_SET_COLLECT_REQ MsgId = 1009 //req=MailSetCollectReq, desc="邮件设置收藏请求"
+	MsgId_MAIL_SET_COLLECT_RES MsgId = 1010 //res=MailSetCollectRes, desc="邮件设置收藏返回"
 	// MallSystem 1500 - 1600
-	ProtoCode_MALL_BUY_GOODS_REQ    ProtoCode = 1500 //req=MallBuyGoodsReq, desc="游戏内货币购买请求"
-	ProtoCode_MALL_BUY_GOODS_RES    ProtoCode = 1501 //res=MallBuyGoodsRes, desc="游戏内货币购买返回"
-	ProtoCode_MALL_CREATE_ORDER_REQ ProtoCode = 1502 //req=MallCreateOrderReq, desc="需要拉起sdk的支付的，创建Ssdk订单请求"
-	ProtoCode_MALL_CREATE_ORDER_RES ProtoCode = 1503 //res=MallCreateOrderRes, desc="需要拉起sdk的支付的，创建Ssdk订单返回"
+	MsgId_MALL_BUY_GOODS_REQ    MsgId = 1500 //req=MallBuyGoodsReq, desc="游戏内货币购买请求"
+	MsgId_MALL_BUY_GOODS_RES    MsgId = 1501 //res=MallBuyGoodsRes, desc="游戏内货币购买返回"
+	MsgId_MALL_CREATE_ORDER_REQ MsgId = 1502 //req=MallCreateOrderReq, desc="需要拉起sdk的支付的，创建Ssdk订单请求"
+	MsgId_MALL_CREATE_ORDER_RES MsgId = 1503 //res=MallCreateOrderRes, desc="需要拉起sdk的支付的，创建Ssdk订单返回"
 	// 发货
-	ProtoCode_MALL_DELIVER_GOODS_TO_GAME ProtoCode = 1504
-	ProtoCode_MALL_DELIVER_GOODS_NTF     ProtoCode = 1505 //res=MallDeliverGoodsNtf, desc="发货"
+	MsgId_MALL_DELIVER_GOODS_TO_GAME MsgId = 1504
+	MsgId_MALL_DELIVER_GOODS_NTF     MsgId = 1505 //res=MallDeliverGoodsNtf, desc="发货"
 	// Activity活动 1600 - 1800
-	ProtoCode_PLAYER_ACTIVITY_LIST_NTF           ProtoCode = 1600 //res=PlayerActivityListNtf, desc="活动信息列表通知"
-	ProtoCode_PLAYER_ACTIVITY_UPDATE_NTF         ProtoCode = 1601 //res=PlayerActivityUpdateNtf, desc="活动信息变更通知"
-	ProtoCode_PLAYER_ACTIVITY_RECEIVE_AWARD_PUSH ProtoCode = 1602 //req=PlayerActivityReceiveAwardPush, desc="领取活动奖励请求"
-	ProtoCode_PLAYER_ACTIVITY_RECEIVE_AWARD_NTF  ProtoCode = 1603 //res=PlayerActivityReceiveAwardNtf, desc="领取活动奖励返回"
+	MsgId_PLAYER_ACTIVITY_LIST_NTF           MsgId = 1600 //res=PlayerActivityListNtf, desc="活动信息列表通知"
+	MsgId_PLAYER_ACTIVITY_UPDATE_NTF         MsgId = 1601 //res=PlayerActivityUpdateNtf, desc="活动信息变更通知"
+	MsgId_PLAYER_ACTIVITY_RECEIVE_AWARD_PUSH MsgId = 1602 //req=PlayerActivityReceiveAwardPush, desc="领取活动奖励请求"
+	MsgId_PLAYER_ACTIVITY_RECEIVE_AWARD_NTF  MsgId = 1603 //res=PlayerActivityReceiveAwardNtf, desc="领取活动奖励返回"
 	// 随机actor推送玩法
-	ProtoCode_RANDOM_ACTOR_PUSH_LIST_NTF   ProtoCode = 1800 //res=RandomActorPushListNtf, desc="RandomActorPush信息列表通知"
-	ProtoCode_RANDOM_PUSH_ACTOR_UPDATE_NTF ProtoCode = 1801 //res=RandomPushActorUpdateNtf, desc="RandomActorPush信息变更通知"
-	ProtoCode_RANDOM_PUSH_ACTOR_REMOVE_NTF ProtoCode = 1802 //res=RandomPushActorRemoveNtf, desc="RandomActorPush移除通知"
-	ProtoCode_RANDOM_IS_LAND_POINT_NTF     ProtoCode = 1803 //res=RandomIsLandPointNtf, desc="RandomIsLand积分通知"
-	ProtoCode_MISSION_LIST_NTF             ProtoCode = 1900 //res=MissionListNtf, desc="成就列表"
-	ProtoCode_MISSION_LIST_UPDATE_NTF      ProtoCode = 1901 //res=MissionListNtf, desc="成就列表"
-	ProtoCode_MISSION_GET_GIFT_PUSH        ProtoCode = 1902 //req=MissionGetGiftPush, desc="领奖"
-	ProtoCode_DAILYTASK_NTF                ProtoCode = 1903 //res=DailyTaskNtf, desc="每日任务"
-	ProtoCode_DAILYTASK_GET_GIFT_PUSH      ProtoCode = 1904 //req=DailyTaskGetGiftPush, desc="领取每日任务"
-	ProtoCode_DAILYTASK_GET_GIFT_NTF       ProtoCode = 1905 //res=DailyTaskGetGiftNtf, desc="领取每日任务返回"
-	ProtoCode_GUIDETASK_NTF                ProtoCode = 1906 //res=GuideTaskNtf, desc="新手引导"
-	ProtoCode_GUIDETASK_GET_GIFT_PUSH      ProtoCode = 1907 //req=GuideTaskGetGiftPush, desc="领取新手引导"
-	ProtoCode_GUIDETASK_GET_GIFT_NTF       ProtoCode = 1908 //res=GuideTaskGetGiftNtf, desc="领取新手引导返回"
+	MsgId_RANDOM_ACTOR_PUSH_LIST_NTF   MsgId = 1800 //res=RandomActorPushListNtf, desc="RandomActorPush信息列表通知"
+	MsgId_RANDOM_PUSH_ACTOR_UPDATE_NTF MsgId = 1801 //res=RandomPushActorUpdateNtf, desc="RandomActorPush信息变更通知"
+	MsgId_RANDOM_PUSH_ACTOR_REMOVE_NTF MsgId = 1802 //res=RandomPushActorRemoveNtf, desc="RandomActorPush移除通知"
+	MsgId_RANDOM_IS_LAND_POINT_NTF     MsgId = 1803 //res=RandomIsLandPointNtf, desc="RandomIsLand积分通知"
+	MsgId_MISSION_LIST_NTF             MsgId = 1900 //res=MissionListNtf, desc="成就列表"
+	MsgId_MISSION_LIST_UPDATE_NTF      MsgId = 1901 //res=MissionListNtf, desc="成就列表"
+	MsgId_MISSION_GET_GIFT_PUSH        MsgId = 1902 //req=MissionGetGiftPush, desc="领奖"
+	MsgId_DAILYTASK_NTF                MsgId = 1903 //res=DailyTaskNtf, desc="每日任务"
+	MsgId_DAILYTASK_GET_GIFT_PUSH      MsgId = 1904 //req=DailyTaskGetGiftPush, desc="领取每日任务"
+	MsgId_DAILYTASK_GET_GIFT_NTF       MsgId = 1905 //res=DailyTaskGetGiftNtf, desc="领取每日任务返回"
+	MsgId_GUIDETASK_NTF                MsgId = 1906 //res=GuideTaskNtf, desc="新手引导"
+	MsgId_GUIDETASK_GET_GIFT_PUSH      MsgId = 1907 //req=GuideTaskGetGiftPush, desc="领取新手引导"
+	MsgId_GUIDETASK_GET_GIFT_NTF       MsgId = 1908 //res=GuideTaskGetGiftNtf, desc="领取新手引导返回"
 	// fortest
-	ProtoCode_LOGIN_INIT_REQUEST   ProtoCode = 2000
-	ProtoCode_PERFORMANCE_TEST_REQ ProtoCode = 2001
-	ProtoCode_PERFORMANCE_TEST_RES ProtoCode = 2002
-	ProtoCode_DIRECT_TO_TEAM_REQ   ProtoCode = 2003
-	ProtoCode_DIRECT_TO_TEAM_RES   ProtoCode = 2004
-	ProtoCode_RPC_REQ_TEST         ProtoCode = 2005
-	ProtoCode_MAP_AOI_TEST_REQ     ProtoCode = 2006
-	ProtoCode_MAP_AOP_TEST_RES     ProtoCode = 2007
-	ProtoCode_PACKET_SIZE_TEST_NTF ProtoCode = 2008 //res=PacketSizeTestNtf, desc="网络包size测试"
+	MsgId_LOGIN_INIT_REQUEST   MsgId = 2000
+	MsgId_PERFORMANCE_TEST_REQ MsgId = 2001
+	MsgId_PERFORMANCE_TEST_RES MsgId = 2002
+	MsgId_DIRECT_TO_TEAM_REQ   MsgId = 2003
+	MsgId_DIRECT_TO_TEAM_RES   MsgId = 2004
+	MsgId_RPC_REQ_TEST         MsgId = 2005
+	MsgId_MAP_AOI_TEST_REQ     MsgId = 2006
+	MsgId_MAP_AOP_TEST_RES     MsgId = 2007
+	MsgId_PACKET_SIZE_TEST_NTF MsgId = 2008 //res=PacketSizeTestNtf, desc="网络包size测试"
 	// BATTLE_BUFF_PUSH = 3013;//req=BuffAddPush, desc="C->S  客户端添加BUFF“
-	ProtoCode_BATTLE_BUFF_NTF        ProtoCode = 3014 //res=BuffAddNtf, desc="S->c  服务器通知客户端添加BUFF“
-	ProtoCode_BATTLE_LOG_PUSH        ProtoCode = 3015 //req=BattleLogPush, desc="C->S   伤害“
-	ProtoCode_BATTLE_PROPS_NTF       ProtoCode = 3016 //res=ActorPropsChangeNtf, desc="S->C (other player) 战斗属性变更 包括 props skill, state“
-	ProtoCode_BATTLE_PROPS_RESET_NTF ProtoCode = 3017 //res=EntityBattleInfoResetNtf ,  desc="S->C 养成属性变更，重置所有属性
-	ProtoCode_MON_LEVEL_BATTLE_PUSH  ProtoCode = 3018 //req=MonLevelBattlePush, desc="怪物脱战通知"
-	ProtoCode_BATTLE_STATE_PUSH      ProtoCode = 3019 //req=BattleStatePush, desc="战斗状态"
-	ProtoCode_BATTLE_EVENT_PUSH      ProtoCode = 3020 //req=BattleEventPush, desc="战斗评分事件"
-	ProtoCode_OCEAN_BATTLE_PUSH      ProtoCode = 3021 //req=BattleOceanLogPush, desc="静海战斗"
-	ProtoCode_OCEAN_BATTLE_NTF       ProtoCode = 3022 //res=BattleOceanLogNtf, desc="静海战斗结果"
+	MsgId_BATTLE_BUFF_NTF        MsgId = 3014 //res=BuffAddNtf, desc="S->c  服务器通知客户端添加BUFF“
+	MsgId_BATTLE_LOG_PUSH        MsgId = 3015 //req=BattleLogPush, desc="C->S   伤害“
+	MsgId_BATTLE_PROPS_NTF       MsgId = 3016 //res=ActorPropsChangeNtf, desc="S->C (other player) 战斗属性变更 包括 props skill, state“
+	MsgId_BATTLE_PROPS_RESET_NTF MsgId = 3017 //res=EntityBattleInfoResetNtf ,  desc="S->C 养成属性变更，重置所有属性
+	MsgId_MON_LEVEL_BATTLE_PUSH  MsgId = 3018 //req=MonLevelBattlePush, desc="怪物脱战通知"
+	MsgId_BATTLE_STATE_PUSH      MsgId = 3019 //req=BattleStatePush, desc="战斗状态"
+	MsgId_BATTLE_EVENT_PUSH      MsgId = 3020 //req=BattleEventPush, desc="战斗评分事件"
+	MsgId_OCEAN_BATTLE_PUSH      MsgId = 3021 //req=BattleOceanLogPush, desc="静海战斗"
+	MsgId_OCEAN_BATTLE_NTF       MsgId = 3022 //res=BattleOceanLogNtf, desc="静海战斗结果"
 	// homeSystem 3400-3499
-	ProtoCode_HOME_INFO_NTF                 ProtoCode = 3400 //res=HomeInfoNtf, desc="家园信息推送"
-	ProtoCode_HOME_LEVEL_UP_REQ             ProtoCode = 3401 //req=HomeLevelUpReq, desc="家园升级请求"
-	ProtoCode_HOME_LEVEL_UP_RES             ProtoCode = 3402 //res=HomeLevelUpRes, desc="家园升级返回"
-	ProtoCode_HOME_WISH_NTF                 ProtoCode = 3403 //res=HomeWishNtf, desc="家园挂机推送"
-	ProtoCode_HOME_WISH_BEGIN_REQ           ProtoCode = 3404 //req=HomeWishBeginReq, desc="家园挂机请求"
-	ProtoCode_HOME_WISH_BEGIN_RES           ProtoCode = 3405 //res=HomeWishBeginRes, desc="家园挂机返回"
-	ProtoCode_HOME_WISH_FINISH_REQ          ProtoCode = 3406 //req=HomeWishFinishReq, desc="家园挂机结束请求"
-	ProtoCode_HOME_WISH_FINISH_RES          ProtoCode = 3407 //res=HomeWishFinishRes, desc="家园挂机结束返回"
-	ProtoCode_HOME_ORDER_NTF                ProtoCode = 3408 //res=HomeOrderNtf, desc="家园订单推送"
-	ProtoCode_HOME_ORDER_REFRESH_PUSH       ProtoCode = 3409 //req=HomeOrderRefreshPush, desc="家园订单刷新请求"
-	ProtoCode_HOME_ORDER_FINISH_PUSH        ProtoCode = 3410 //req=HomeOrderFinishPush, desc="家园订单完成请求"
-	ProtoCode_HOME_ORDER_CHANGE_NTF         ProtoCode = 3411 //res=HomeOrderChangeNtf, desc="家园订单变化推送"
-	ProtoCode_HOME_PROSPERITY_NTF           ProtoCode = 3412 //res=HomeProsperityNtf, desc="家园繁荣度推送"
-	ProtoCode_HOME_FOOD_RECIPE_NTF          ProtoCode = 3413 //res=HomeFoodRecipeNtf, desc="家园食物配方推送"
-	ProtoCode_HOME_FOOD_COOK_PUSH           ProtoCode = 3414 //req=HomeFoodCookPush, desc="家园食物烹饪请求"
-	ProtoCode_HOME_FOOD_RECIPE_LEARN_PUSH   ProtoCode = 3415 //req=HomeFoodRecipeLearnPush, desc="家园食物配方学习请求"
-	ProtoCode_HOME_FOOD_RECIPE_LEARN_NTF    ProtoCode = 3416 //res=HomeFoodRecipeLearnNtf, desc="家园食物配方学习推送"
-	ProtoCode_HOME_FOOD_INFO_NTF            ProtoCode = 3417 //res=HomeFoodInfoNtf, desc="家园食物信息推送"
-	ProtoCode_HOME_FOOD_HUNGER_CHANGE_NTF   ProtoCode = 3418 //res=HomeHungerChangeNtf, desc="家园食物饥饿变化推送"
-	ProtoCode_HOME_FOOD_BUFF_CHANGE_NTF     ProtoCode = 3419 //res=HomeFoodBuffChangeNtf, desc="家园食物buff变化推送"
-	ProtoCode_HOME_SERMON_DAY_SHOW_PUSH     ProtoCode = 3420 //req=HomeSermonDayShowPush, desc="家园证道日显示请求"
-	ProtoCode_HOME_GATHER_START_PUSH        ProtoCode = 3421 //req=HomeGatherStartPush, desc="家园生产开始请求"
-	ProtoCode_HOME_GATHER_START_NTF         ProtoCode = 3422 //res=HomeGatherStartNtf, desc="家园生产开始回包"
-	ProtoCode_HOME_BRISTLE_NTF              ProtoCode = 3423 //res=HomeBristleNtf, desc="家园采集信息推送"
-	ProtoCode_HOME_TECH_NTF                 ProtoCode = 3424 //res=HomeTechNtf, desc="家园科技推送"
-	ProtoCode_HOME_TECH_LEARN_PUSH          ProtoCode = 3425 //req=HomeTechLearnPush, desc="家园科技学习请求"
-	ProtoCode_HOME_TECH_CHANGE_NTF          ProtoCode = 3426 //res=HomeTechChangeNtf, desc="家园科技变化推送"
-	ProtoCode_HOME_DISPATCH_START_TASK_PUSH ProtoCode = 3427 //req=HomeDispatchStartTaskPush, desc="家园任务开始请求"
-	ProtoCode_HOME_DISPATCH_START_TASK_NTF  ProtoCode = 3428 //res=HomeDispatchStartTaskNtf, desc="家园任务开始推送"
+	MsgId_HOME_INFO_NTF                 MsgId = 3400 //res=HomeInfoNtf, desc="家园信息推送"
+	MsgId_HOME_LEVEL_UP_REQ             MsgId = 3401 //req=HomeLevelUpReq, desc="家园升级请求"
+	MsgId_HOME_LEVEL_UP_RES             MsgId = 3402 //res=HomeLevelUpRes, desc="家园升级返回"
+	MsgId_HOME_WISH_NTF                 MsgId = 3403 //res=HomeWishNtf, desc="家园挂机推送"
+	MsgId_HOME_WISH_BEGIN_REQ           MsgId = 3404 //req=HomeWishBeginReq, desc="家园挂机请求"
+	MsgId_HOME_WISH_BEGIN_RES           MsgId = 3405 //res=HomeWishBeginRes, desc="家园挂机返回"
+	MsgId_HOME_WISH_FINISH_REQ          MsgId = 3406 //req=HomeWishFinishReq, desc="家园挂机结束请求"
+	MsgId_HOME_WISH_FINISH_RES          MsgId = 3407 //res=HomeWishFinishRes, desc="家园挂机结束返回"
+	MsgId_HOME_ORDER_NTF                MsgId = 3408 //res=HomeOrderNtf, desc="家园订单推送"
+	MsgId_HOME_ORDER_REFRESH_PUSH       MsgId = 3409 //req=HomeOrderRefreshPush, desc="家园订单刷新请求"
+	MsgId_HOME_ORDER_FINISH_PUSH        MsgId = 3410 //req=HomeOrderFinishPush, desc="家园订单完成请求"
+	MsgId_HOME_ORDER_CHANGE_NTF         MsgId = 3411 //res=HomeOrderChangeNtf, desc="家园订单变化推送"
+	MsgId_HOME_PROSPERITY_NTF           MsgId = 3412 //res=HomeProsperityNtf, desc="家园繁荣度推送"
+	MsgId_HOME_FOOD_RECIPE_NTF          MsgId = 3413 //res=HomeFoodRecipeNtf, desc="家园食物配方推送"
+	MsgId_HOME_FOOD_COOK_PUSH           MsgId = 3414 //req=HomeFoodCookPush, desc="家园食物烹饪请求"
+	MsgId_HOME_FOOD_RECIPE_LEARN_PUSH   MsgId = 3415 //req=HomeFoodRecipeLearnPush, desc="家园食物配方学习请求"
+	MsgId_HOME_FOOD_RECIPE_LEARN_NTF    MsgId = 3416 //res=HomeFoodRecipeLearnNtf, desc="家园食物配方学习推送"
+	MsgId_HOME_FOOD_INFO_NTF            MsgId = 3417 //res=HomeFoodInfoNtf, desc="家园食物信息推送"
+	MsgId_HOME_FOOD_HUNGER_CHANGE_NTF   MsgId = 3418 //res=HomeHungerChangeNtf, desc="家园食物饥饿变化推送"
+	MsgId_HOME_FOOD_BUFF_CHANGE_NTF     MsgId = 3419 //res=HomeFoodBuffChangeNtf, desc="家园食物buff变化推送"
+	MsgId_HOME_SERMON_DAY_SHOW_PUSH     MsgId = 3420 //req=HomeSermonDayShowPush, desc="家园证道日显示请求"
+	MsgId_HOME_GATHER_START_PUSH        MsgId = 3421 //req=HomeGatherStartPush, desc="家园生产开始请求"
+	MsgId_HOME_GATHER_START_NTF         MsgId = 3422 //res=HomeGatherStartNtf, desc="家园生产开始回包"
+	MsgId_HOME_BRISTLE_NTF              MsgId = 3423 //res=HomeBristleNtf, desc="家园采集信息推送"
+	MsgId_HOME_TECH_NTF                 MsgId = 3424 //res=HomeTechNtf, desc="家园科技推送"
+	MsgId_HOME_TECH_LEARN_PUSH          MsgId = 3425 //req=HomeTechLearnPush, desc="家园科技学习请求"
+	MsgId_HOME_TECH_CHANGE_NTF          MsgId = 3426 //res=HomeTechChangeNtf, desc="家园科技变化推送"
+	MsgId_HOME_DISPATCH_START_TASK_PUSH MsgId = 3427 //req=HomeDispatchStartTaskPush, desc="家园任务开始请求"
+	MsgId_HOME_DISPATCH_START_TASK_NTF  MsgId = 3428 //res=HomeDispatchStartTaskNtf, desc="家园任务开始推送"
 	// HOME_DISPATCH_SELECT_EVENT_OP_PUSH = 3429;//req=HomeDispatchSelectEventOpPush, desc="家园任务选择事件操作请求"
 	// HOME_DISPATCH_SELECT_EVENT_OP_NTF = 3430;//res=HomeDispatchSelectEventOpNtf, desc="家园任务选择事件操作推送"
-	ProtoCode_HOME_DISPATCH_SETTLE_TASK_PUSH ProtoCode = 3431 //req=HomeDispatchSettleTaskPush, desc="家园任务结算请求"
-	ProtoCode_HOME_DISPATCH_SETTLE_TASK_NTF  ProtoCode = 3432 //res=HomeDispatchSettleTaskNtf, desc="家园任务结算推送"
-	ProtoCode_HOME_DISPATCH_INFO_LIST_NTF    ProtoCode = 3433 //res=HomeDispatchInfoListNtf, desc="家园任务列表推送"
-	ProtoCode_HOME_DISPATCH_END_TASK_PUSH    ProtoCode = 3434 //req=HomeDispatchEndTaskPush, desc="家园任务结束请求"
-	ProtoCode_HOME_DISPATCH_END_TASK_NTF     ProtoCode = 3435 //res=HomeDispatchEndTaskNtf, desc="家园任务结束推送"
-	ProtoCode_HOME_BUILDING_BUILD_PUSH       ProtoCode = 3436 //req=HomeBuildingBuildPush, desc="家园建筑建造请求"
-	ProtoCode_HOME_BUILDING_LEVEL_UP_PUSH    ProtoCode = 3438 //req=HomeBuildingLevelUpPush, desc="家园建筑升级请求"
-	ProtoCode_HOME_GATHER_FETCH_PRODUCT_PUSH ProtoCode = 3440 //req=HomeGatherFetchProductPush, desc="家园产物获取请求"
-	ProtoCode_HOME_GATHER_FETCH_PRODUCT_NTF  ProtoCode = 3441 //res=HomeGatherFetchProductNtf, desc="家园产物获取推送"
-	ProtoCode_HOME_BRISTLE_PRODUCT_NTF       ProtoCode = 3442 //res=HomeBristleProductNtf, desc="家园采集信息推送"
-	ProtoCode_HOME_BRISTLE_CHANGE_NTF        ProtoCode = 3443 //res=HomeBristleChangeNtf, desc="家园采集变化推送"
-	ProtoCode_HOME_BRISTLE_UNLOCK_NTF        ProtoCode = 3444 //res=HomeBristleUnlockNtf, desc="家园采集解锁推送"
+	MsgId_HOME_DISPATCH_SETTLE_TASK_PUSH MsgId = 3431 //req=HomeDispatchSettleTaskPush, desc="家园任务结算请求"
+	MsgId_HOME_DISPATCH_SETTLE_TASK_NTF  MsgId = 3432 //res=HomeDispatchSettleTaskNtf, desc="家园任务结算推送"
+	MsgId_HOME_DISPATCH_INFO_LIST_NTF    MsgId = 3433 //res=HomeDispatchInfoListNtf, desc="家园任务列表推送"
+	MsgId_HOME_DISPATCH_END_TASK_PUSH    MsgId = 3434 //req=HomeDispatchEndTaskPush, desc="家园任务结束请求"
+	MsgId_HOME_DISPATCH_END_TASK_NTF     MsgId = 3435 //res=HomeDispatchEndTaskNtf, desc="家园任务结束推送"
+	MsgId_HOME_BUILDING_BUILD_PUSH       MsgId = 3436 //req=HomeBuildingBuildPush, desc="家园建筑建造请求"
+	MsgId_HOME_BUILDING_LEVEL_UP_PUSH    MsgId = 3438 //req=HomeBuildingLevelUpPush, desc="家园建筑升级请求"
+	MsgId_HOME_GATHER_FETCH_PRODUCT_PUSH MsgId = 3440 //req=HomeGatherFetchProductPush, desc="家园产物获取请求"
+	MsgId_HOME_GATHER_FETCH_PRODUCT_NTF  MsgId = 3441 //res=HomeGatherFetchProductNtf, desc="家园产物获取推送"
+	MsgId_HOME_BRISTLE_PRODUCT_NTF       MsgId = 3442 //res=HomeBristleProductNtf, desc="家园采集信息推送"
+	MsgId_HOME_BRISTLE_CHANGE_NTF        MsgId = 3443 //res=HomeBristleChangeNtf, desc="家园采集变化推送"
+	MsgId_HOME_BRISTLE_UNLOCK_NTF        MsgId = 3444 //res=HomeBristleUnlockNtf, desc="家园采集解锁推送"
 	// GacahaSystem 3500 - 3599
-	ProtoCode_PULL_GACHA_REQ       ProtoCode = 3500 //req=PullGachaReq, desc="抽卡请求"
-	ProtoCode_PULL_GACHA_RES       ProtoCode = 3501 //res=PullGachaRes, desc="抽卡返回"
-	ProtoCode_GACHA_GROUP_LIST_NTF ProtoCode = 3502 //res=GachaGroupListNtf, desc="卡组列表"
+	MsgId_PULL_GACHA_REQ       MsgId = 3500 //req=PullGachaReq, desc="抽卡请求"
+	MsgId_PULL_GACHA_RES       MsgId = 3501 //res=PullGachaRes, desc="抽卡返回"
+	MsgId_GACHA_GROUP_LIST_NTF MsgId = 3502 //res=GachaGroupListNtf, desc="卡组列表"
 	// Maze 3600-3699
-	ProtoCode_MAZE_INFO_LIST_NTF                 ProtoCode = 3600 //res=MazeInfoListNtf, desc="深渊列表"
-	ProtoCode_RECEIVE_MAZE_STAR_AWARD_REQ        ProtoCode = 3601 //req=ReceiveMazeStarAwardReq, desc="领取深渊星级奖励请求"
-	ProtoCode_RECEIVE_MAZE_STAR_AWARD_RES        ProtoCode = 3602 //res=ReceiveMazeStarAwardRes, desc="领取深渊星级奖励返回"
-	ProtoCode_CUR_MAZE_LAYER_INFO_UPDATE_NTF     ProtoCode = 3604 //res=CurMazeLayerInfoUpdateNtf, desc="更新当前深渊信息"
-	ProtoCode_RESTART_CHALLENGE_MAZE_LAYER_REQ   ProtoCode = 3605 //req=RestartChallengeMazeLayerReq, desc="重新开始深渊请求"
-	ProtoCode_RESTART_CHALLENGE_MAZE_LAYER_RES   ProtoCode = 3606 //res=RestartChallengeMazeLayerRes, desc="重新开始深渊返回"
-	ProtoCode_END_CHALLENGE_MAZE_LAYER_REQ       ProtoCode = 3607 //req=EndChallengeMazeLayerReq, desc="结束深渊请求"
-	ProtoCode_END_CHALLENGE_MAZE_LAYER_RES       ProtoCode = 3608 //res=EndChallengeMazeLayerRes, desc="结束深渊返回"
-	ProtoCode_MAZE_LAYER_CHALLENGE_TIME_OUT_PUSH ProtoCode = 3609 //req=MazeLayerChallengeTimeOutPush, desc="挑战时间到点请求"
-	ProtoCode_MAZE_LAYER_CHALLENGE_TIME_OUT_NTF  ProtoCode = 3610 //res=MazeLayerChallengeTimeOutNtf, desc="挑战时间到点返回"
-	ProtoCode_MAZE_NODE_SET_FLAG_PUSH            ProtoCode = 3614 //req=MazeNodeSetFlagPush, desc="设置节点flag请求"
-	ProtoCode_RECEIVE_MAZE_FIRST_PASS_AWARD_REQ  ProtoCode = 3615 //req=ReceiveMazeFirstPassAwardReq, desc="领取首通奖励请求"
-	ProtoCode_RECEIVE_MAZE_FIRST_PASS_AWARD_RES  ProtoCode = 3616 //res=ReceiveMazeFirstPassAwardRes, desc="领取首通奖励返回"
-	ProtoCode_MAZE_SET_IS_UPLOAD_FORMATION_PUSH  ProtoCode = 3617 //req=MazeSetIsUploadFormationPush, desc="设置是否上传队伍请求"
-	ProtoCode_NEXT_MAZE_OPEN_NTF                 ProtoCode = 3618 //res=NextMazeOpenNtf, desc="通知新的深渊开启"
+	MsgId_MAZE_INFO_LIST_NTF                 MsgId = 3600 //res=MazeInfoListNtf, desc="深渊列表"
+	MsgId_RECEIVE_MAZE_STAR_AWARD_REQ        MsgId = 3601 //req=ReceiveMazeStarAwardReq, desc="领取深渊星级奖励请求"
+	MsgId_RECEIVE_MAZE_STAR_AWARD_RES        MsgId = 3602 //res=ReceiveMazeStarAwardRes, desc="领取深渊星级奖励返回"
+	MsgId_CUR_MAZE_LAYER_INFO_UPDATE_NTF     MsgId = 3604 //res=CurMazeLayerInfoUpdateNtf, desc="更新当前深渊信息"
+	MsgId_RESTART_CHALLENGE_MAZE_LAYER_REQ   MsgId = 3605 //req=RestartChallengeMazeLayerReq, desc="重新开始深渊请求"
+	MsgId_RESTART_CHALLENGE_MAZE_LAYER_RES   MsgId = 3606 //res=RestartChallengeMazeLayerRes, desc="重新开始深渊返回"
+	MsgId_END_CHALLENGE_MAZE_LAYER_REQ       MsgId = 3607 //req=EndChallengeMazeLayerReq, desc="结束深渊请求"
+	MsgId_END_CHALLENGE_MAZE_LAYER_RES       MsgId = 3608 //res=EndChallengeMazeLayerRes, desc="结束深渊返回"
+	MsgId_MAZE_LAYER_CHALLENGE_TIME_OUT_PUSH MsgId = 3609 //req=MazeLayerChallengeTimeOutPush, desc="挑战时间到点请求"
+	MsgId_MAZE_LAYER_CHALLENGE_TIME_OUT_NTF  MsgId = 3610 //res=MazeLayerChallengeTimeOutNtf, desc="挑战时间到点返回"
+	MsgId_MAZE_NODE_SET_FLAG_PUSH            MsgId = 3614 //req=MazeNodeSetFlagPush, desc="设置节点flag请求"
+	MsgId_RECEIVE_MAZE_FIRST_PASS_AWARD_REQ  MsgId = 3615 //req=ReceiveMazeFirstPassAwardReq, desc="领取首通奖励请求"
+	MsgId_RECEIVE_MAZE_FIRST_PASS_AWARD_RES  MsgId = 3616 //res=ReceiveMazeFirstPassAwardRes, desc="领取首通奖励返回"
+	MsgId_MAZE_SET_IS_UPLOAD_FORMATION_PUSH  MsgId = 3617 //req=MazeSetIsUploadFormationPush, desc="设置是否上传队伍请求"
+	MsgId_NEXT_MAZE_OPEN_NTF                 MsgId = 3618 //res=NextMazeOpenNtf, desc="通知新的深渊开启"
 	// 木灵
-	ProtoCode_MU_SPRITE_EVENT_GROUP_PUSH   ProtoCode = 3619 //req=MuSpriteEventGroupPush, desc="木灵交互时，客户端请求木灵交互事件组id"
-	ProtoCode_MU_SPRITE_EVENT_GROUP_NTF    ProtoCode = 3620 //res=MuSpriteEventGroupNtf, desc="广播木灵事件组给客户端"
-	ProtoCode_MU_SPRITE_EVENT_SELECT_PUSH  ProtoCode = 3621 //req=MuSpriteEventSelectPush, desc="选择木灵事件"
-	ProtoCode_MU_SPRITE_EVENT_SELECT_NTF   ProtoCode = 3622 //res=MuSpriteEventSelectNtf, desc="选择木灵事件结果返回(投骰子)"
-	ProtoCode_MU_SPRITE_EVENT_ABANDON_PUSH ProtoCode = 3623 // req=MuSpriteEventAbandonPush, desc="放弃重投骰子"
+	MsgId_MU_SPRITE_EVENT_GROUP_PUSH   MsgId = 3619 //req=MuSpriteEventGroupPush, desc="木灵交互时，客户端请求木灵交互事件组id"
+	MsgId_MU_SPRITE_EVENT_GROUP_NTF    MsgId = 3620 //res=MuSpriteEventGroupNtf, desc="广播木灵事件组给客户端"
+	MsgId_MU_SPRITE_EVENT_SELECT_PUSH  MsgId = 3621 //req=MuSpriteEventSelectPush, desc="选择木灵事件"
+	MsgId_MU_SPRITE_EVENT_SELECT_NTF   MsgId = 3622 //res=MuSpriteEventSelectNtf, desc="选择木灵事件结果返回(投骰子)"
+	MsgId_MU_SPRITE_EVENT_ABANDON_PUSH MsgId = 3623 // req=MuSpriteEventAbandonPush, desc="放弃重投骰子"
 	// 祈玉本
-	ProtoCode_MARK_LEVEL_DATA_NTF              ProtoCode = 3625 //res=MarkLevelDataNtf, desc="玩家进入祈玉本，玩法信息通知"
-	ProtoCode_MARK_LEVEL_SELECT_ASTROLABE_PUSH ProtoCode = 3626 //req=MarkLevelSelectAstrolabePush, desc="玩家进入祈玉本选择本源"
-	ProtoCode_MARK_LEVEL_PRE_INLAY_PUSH        ProtoCode = 3627 //req=MarkLevelPreInlayPush, desc="祈玉本内祈玉预镶嵌请求"
-	ProtoCode_MARK_LEVEL_ASTROLABE_UPDATE_NTF  ProtoCode = 3628 //res=MarkLevelAstrolabeUpdateNtf, desc="祈玉本内本源信息变更通知"
-	ProtoCode_MARK_LEVEL_DISORDER_UPDATE_NTF   ProtoCode = 3629 //res=MarkLevelDisorderUpdateNtf, desc="祈玉本内紊乱值信息变更通知"
-	ProtoCode_MARK_LEVEL_SETTLE_PUSH           ProtoCode = 3630 //req=MarkLevelSettlePush, desc="祈玉本结算请求"
-	ProtoCode_MARK_LEVEL_END_PUSH              ProtoCode = 3631 //req=MarkLevelEndPush, desc="玩家主动结算玩法"
-	ProtoCode_MARK_LEVEL_END_NTF               ProtoCode = 3632 //res=MarkLevelEndNtf, desc="通知客户端进行结算"
-	ProtoCode_MARK_LEVEL_SAFE_BOX_PUSH         ProtoCode = 3633 //req=MarkLevelSafeBoxPush, desc="保险箱存入请求"
-	ProtoCode_MARK_LEVEL_SAFE_BOX_NTF          ProtoCode = 3634 //res=MarkLevelSafeBoxNtf, desc="保险箱存入返回通知"
-	ProtoCode_MARK_LEVEL_INLAY_COMPLETE_PUSH   ProtoCode = 3635 //req=MarkLevelInlayCompletePush, desc="祈玉本镶嵌完成请求"
+	MsgId_MARK_LEVEL_DATA_NTF              MsgId = 3625 //res=MarkLevelDataNtf, desc="玩家进入祈玉本，玩法信息通知"
+	MsgId_MARK_LEVEL_SELECT_ASTROLABE_PUSH MsgId = 3626 //req=MarkLevelSelectAstrolabePush, desc="玩家进入祈玉本选择本源"
+	MsgId_MARK_LEVEL_PRE_INLAY_PUSH        MsgId = 3627 //req=MarkLevelPreInlayPush, desc="祈玉本内祈玉预镶嵌请求"
+	MsgId_MARK_LEVEL_ASTROLABE_UPDATE_NTF  MsgId = 3628 //res=MarkLevelAstrolabeUpdateNtf, desc="祈玉本内本源信息变更通知"
+	MsgId_MARK_LEVEL_DISORDER_UPDATE_NTF   MsgId = 3629 //res=MarkLevelDisorderUpdateNtf, desc="祈玉本内紊乱值信息变更通知"
+	MsgId_MARK_LEVEL_SETTLE_PUSH           MsgId = 3630 //req=MarkLevelSettlePush, desc="祈玉本结算请求"
+	MsgId_MARK_LEVEL_END_PUSH              MsgId = 3631 //req=MarkLevelEndPush, desc="玩家主动结算玩法"
+	MsgId_MARK_LEVEL_END_NTF               MsgId = 3632 //res=MarkLevelEndNtf, desc="通知客户端进行结算"
+	MsgId_MARK_LEVEL_SAFE_BOX_PUSH         MsgId = 3633 //req=MarkLevelSafeBoxPush, desc="保险箱存入请求"
+	MsgId_MARK_LEVEL_SAFE_BOX_NTF          MsgId = 3634 //res=MarkLevelSafeBoxNtf, desc="保险箱存入返回通知"
+	MsgId_MARK_LEVEL_INLAY_COMPLETE_PUSH   MsgId = 3635 //req=MarkLevelInlayCompletePush, desc="祈玉本镶嵌完成请求"
 	// Privilege 3700-3749
-	ProtoCode_PRIVILEGE_LIST_NTF  ProtoCode = 3700 //res=PrivilegeNtf, desc="特权列表通知"
-	ProtoCode_PRIVILEGE_AWARD_NTF ProtoCode = 3701 //res=PrivilegeAwardNtf, desc="特权奖励通知"
+	MsgId_PRIVILEGE_LIST_NTF  MsgId = 3700 //res=PrivilegeNtf, desc="特权列表通知"
+	MsgId_PRIVILEGE_AWARD_NTF MsgId = 3701 //res=PrivilegeAwardNtf, desc="特权奖励通知"
 	// ResourceLevel 3750-3800
-	ProtoCode_RESOURCE_LEVEL_ENTRANCE_DISCOVER_NTF ProtoCode = 3751 //res=ResourceLevelEntranceDiscoverNtf, desc="资源副本发现入口"
-	ProtoCode_RESOURCE_LEVEL_INFO_NTF              ProtoCode = 3753 //res=ResourceLevelInfoNtf, desc="资源副本信息"
+	MsgId_RESOURCE_LEVEL_ENTRANCE_DISCOVER_NTF MsgId = 3751 //res=ResourceLevelEntranceDiscoverNtf, desc="资源副本发现入口"
+	MsgId_RESOURCE_LEVEL_INFO_NTF              MsgId = 3753 //res=ResourceLevelInfoNtf, desc="资源副本信息"
 	// Secene dungeon 3801-3900
-	ProtoCode_SCENE_SUMMARY_NTF    ProtoCode = 3801 //res=SceneSummaryNtf, desc="副本结算消息"
-	ProtoCode_TRAIN_LEVEL_INFO_NTF ProtoCode = 3802 //res=TrainLevelInfoNtf, desc="训练副本信息"
+	MsgId_SCENE_SUMMARY_NTF    MsgId = 3801 //res=SceneSummaryNtf, desc="副本结算消息"
+	MsgId_TRAIN_LEVEL_INFO_NTF MsgId = 3802 //res=TrainLevelInfoNtf, desc="训练副本信息"
 	// BossLevel  3901-3950
-	ProtoCode_BOSS_LEVEL_INFO_NTF                 ProtoCode = 3901 //res=BossLevelInfoNtf, desc="boss本信息"
-	ProtoCode_RECEIVE_BOSS_LEVEL_POINT_AWARD_PUSH ProtoCode = 3902 //req=ReceiveBossLevelPointAwardPush, desc="领取boss挑战本积分奖励"
-	ProtoCode_RECEIVE_BOSS_LEVEL_POINT_AWARD_NTF  ProtoCode = 3903 //res=ReceiveBossLevelPointAwardNtf, desc="领取boss挑战本积分奖励"
-	ProtoCode_BOSS_LEVEL_SELECT_DEBUFF_PUSH       ProtoCode = 3904 //req=BossLevelSelectDebuffPush, desc="选择boss挑战本debuff"
-	ProtoCode_BOSS_LEVEL_SELECT_DEBUFF_NTF        ProtoCode = 3905 //res=BossLevelSelectDebuffNtf, desc="选择boss挑战本debuff"
+	MsgId_BOSS_LEVEL_INFO_NTF                 MsgId = 3901 //res=BossLevelInfoNtf, desc="boss本信息"
+	MsgId_RECEIVE_BOSS_LEVEL_POINT_AWARD_PUSH MsgId = 3902 //req=ReceiveBossLevelPointAwardPush, desc="领取boss挑战本积分奖励"
+	MsgId_RECEIVE_BOSS_LEVEL_POINT_AWARD_NTF  MsgId = 3903 //res=ReceiveBossLevelPointAwardNtf, desc="领取boss挑战本积分奖励"
+	MsgId_BOSS_LEVEL_SELECT_DEBUFF_PUSH       MsgId = 3904 //req=BossLevelSelectDebuffPush, desc="选择boss挑战本debuff"
+	MsgId_BOSS_LEVEL_SELECT_DEBUFF_NTF        MsgId = 3905 //res=BossLevelSelectDebuffNtf, desc="选择boss挑战本debuff"
 	// Astrolabe  3951-3960
-	ProtoCode_PLAYER_ASTROLABE_PACK_LIST_NTF ProtoCode = 3951 //res=PlayerAstrolabePackListNtf, desc="获得所有本源列表"
-	ProtoCode_ASTROLABE_PACK_CHANGE_NTF      ProtoCode = 3952 //res=AstrolabePackChangeNtf, desc="本源改变"
-	ProtoCode_ASTROLABE_ACTIVATE_PUSH        ProtoCode = 3953 //req=AstrolabeActivatePush, desc="本源激活请求"
-	ProtoCode_ASTROLABE_ACTIVATE_NTF         ProtoCode = 3954 //res=AstrolabeActivateNtf, desc="本源激活返回"
-	ProtoCode_ASTROLABE_CHANGE_NAME_PUSH     ProtoCode = 3955 //req=AstrolabeChangeNamePush, desc="本源改名请求"
-	ProtoCode_ASTROLABE_CHANGE_NAME_NTF      ProtoCode = 3956 //res=AstrolabeChangeNameNtf, desc="本源改名返回"
-	ProtoCode_ASTROLABE_DEL_PUSH             ProtoCode = 3957 //req=AstrolabeDelPush, desc="本源删除请求"
-	ProtoCode_ASTROLABE_LOCK_PUSH            ProtoCode = 3958 //req=AstrolabeLockPush, desc="本源锁定请求"
-	ProtoCode_ASTROLABE_LOCK_NTF             ProtoCode = 3959 //res=AstrolabeLockNtf, desc="本源锁定返回"
-	ProtoCode_ASTROLABE_INLAY_MARK_PUSH      ProtoCode = 3960 //req=AstrolabeInlayMarkPush, desc="本源镶嵌请求"
+	MsgId_PLAYER_ASTROLABE_PACK_LIST_NTF MsgId = 3951 //res=PlayerAstrolabePackListNtf, desc="获得所有本源列表"
+	MsgId_ASTROLABE_PACK_CHANGE_NTF      MsgId = 3952 //res=AstrolabePackChangeNtf, desc="本源改变"
+	MsgId_ASTROLABE_ACTIVATE_PUSH        MsgId = 3953 //req=AstrolabeActivatePush, desc="本源激活请求"
+	MsgId_ASTROLABE_ACTIVATE_NTF         MsgId = 3954 //res=AstrolabeActivateNtf, desc="本源激活返回"
+	MsgId_ASTROLABE_CHANGE_NAME_PUSH     MsgId = 3955 //req=AstrolabeChangeNamePush, desc="本源改名请求"
+	MsgId_ASTROLABE_CHANGE_NAME_NTF      MsgId = 3956 //res=AstrolabeChangeNameNtf, desc="本源改名返回"
+	MsgId_ASTROLABE_DEL_PUSH             MsgId = 3957 //req=AstrolabeDelPush, desc="本源删除请求"
+	MsgId_ASTROLABE_LOCK_PUSH            MsgId = 3958 //req=AstrolabeLockPush, desc="本源锁定请求"
+	MsgId_ASTROLABE_LOCK_NTF             MsgId = 3959 //res=AstrolabeLockNtf, desc="本源锁定返回"
+	MsgId_ASTROLABE_INLAY_MARK_PUSH      MsgId = 3960 //req=AstrolabeInlayMarkPush, desc="本源镶嵌请求"
 	// harbor玲珑蟾 3981-3999
-	ProtoCode_HARBOR_SUBMIT_ITEM_PUSH ProtoCode = 3981 //req=HarborSubmitItemPush,desc="玲珑蟾提交物品请求"
-	ProtoCode_HARBOR_SUBMIT_ITEM_NTF  ProtoCode = 3982 //res=HarborSubmitItemNtf,desc="玲珑蟾提交物品通知"
-	ProtoCode_HARBOR_INFO_LIST_NTF    ProtoCode = 3983 //res=HarborInfoListNtf,desc="玲珑蟾信息列表"
+	MsgId_HARBOR_SUBMIT_ITEM_PUSH MsgId = 3981 //req=HarborSubmitItemPush,desc="玲珑蟾提交物品请求"
+	MsgId_HARBOR_SUBMIT_ITEM_NTF  MsgId = 3982 //res=HarborSubmitItemNtf,desc="玲珑蟾提交物品通知"
+	MsgId_HARBOR_INFO_LIST_NTF    MsgId = 3983 //res=HarborInfoListNtf,desc="玲珑蟾信息列表"
 	// stat-trac server msg id  4_000  -  4_030
-	ProtoCode_PULL_GACHA_RECORD_LIST_PUSH        ProtoCode = 4000 //req=PullGachaRecordListPush, desc="抽卡记录请求"
-	ProtoCode_PULL_GACHA_RECORD_LIST_NTF         ProtoCode = 4001 //res=PullGachaRecordListNtf, desc="抽卡记录返回"
-	ProtoCode_SCENE_FOG_DATA_SAVE_PUSH           ProtoCode = 4002 //req=SceneFogDataSavePush, desc="场景迷雾数据保存请求"
-	ProtoCode_SCENE_FOG_DATA_GET_PUSH            ProtoCode = 4003 //req=SceneFogDataGetPush, desc="获取场景迷雾数据请求"
-	ProtoCode_SCENE_FOG_DATA_GET_NTF             ProtoCode = 4004 //res=SceneFogDataGetNtf, desc="获取场景迷雾数据返回"
-	ProtoCode_MAZE_CHALLENGE_FORMATION_LIST_PUSH ProtoCode = 4008 //req=MazeChallengeFormationListPush,desc="深渊挑战阵容列表请求"
-	ProtoCode_MAZE_CHALLENGE_FORMATION_LIST_NTF  ProtoCode = 4009 //res=MazeChallengeFormationListNtf,desc="深渊挑战阵容列表通知"
+	MsgId_PULL_GACHA_RECORD_LIST_PUSH        MsgId = 4000 //req=PullGachaRecordListPush, desc="抽卡记录请求"
+	MsgId_PULL_GACHA_RECORD_LIST_NTF         MsgId = 4001 //res=PullGachaRecordListNtf, desc="抽卡记录返回"
+	MsgId_SCENE_FOG_DATA_SAVE_PUSH           MsgId = 4002 //req=SceneFogDataSavePush, desc="场景迷雾数据保存请求"
+	MsgId_SCENE_FOG_DATA_GET_PUSH            MsgId = 4003 //req=SceneFogDataGetPush, desc="获取场景迷雾数据请求"
+	MsgId_SCENE_FOG_DATA_GET_NTF             MsgId = 4004 //res=SceneFogDataGetNtf, desc="获取场景迷雾数据返回"
+	MsgId_MAZE_CHALLENGE_FORMATION_LIST_PUSH MsgId = 4008 //req=MazeChallengeFormationListPush,desc="深渊挑战阵容列表请求"
+	MsgId_MAZE_CHALLENGE_FORMATION_LIST_NTF  MsgId = 4009 //res=MazeChallengeFormationListNtf,desc="深渊挑战阵容列表通知"
 	// anti-cheating  4_030  - 4_096
-	ProtoCode_ANTI_CHEAT_LOGIN_NTF        ProtoCode = 4030 //res=AntiCheatLoginNtf, desc ="服务器发送客户端票据,通过客户端的 ace_sdk_client_log_in 接口将票据传入"
-	ProtoCode_ANTI_CHEAT_CLIENT_DATA_PUSH ProtoCode = 4031 //req=AntiCheatClientDataPush, desc = "客户端上传,游戏服务器透传ACE数据"
-	ProtoCode_ANTI_CHEAT_SERVER_DATA_NTF  ProtoCode = 4032 //res=AntiCheatServerDataNtf, desc ="游戏服务器获取ACE数据，推送给游戏客户端"
+	MsgId_ANTI_CHEAT_LOGIN_NTF        MsgId = 4030 //res=AntiCheatLoginNtf, desc ="服务器发送客户端票据,通过客户端的 ace_sdk_client_log_in 接口将票据传入"
+	MsgId_ANTI_CHEAT_CLIENT_DATA_PUSH MsgId = 4031 //req=AntiCheatClientDataPush, desc = "客户端上传,游戏服务器透传ACE数据"
+	MsgId_ANTI_CHEAT_SERVER_DATA_NTF  MsgId = 4032 //res=AntiCheatServerDataNtf, desc ="游戏服务器获取ACE数据，推送给游戏客户端"
 )
 
-// Enum value maps for ProtoCode.
+// Enum value maps for MsgId.
 var (
-	ProtoCode_name = map[int32]string{
+	MsgId_name = map[int32]string{
 		0:    "INVALID",
 		1:    "SERVER_COMMON_ERR_NTF",
 		2:    "SERVER_TIPS_ERR_NTF",
@@ -931,7 +931,7 @@ var (
 		4031: "ANTI_CHEAT_CLIENT_DATA_PUSH",
 		4032: "ANTI_CHEAT_SERVER_DATA_NTF",
 	}
-	ProtoCode_value = map[string]int32{
+	MsgId_value = map[string]int32{
 		"INVALID":                                     0,
 		"SERVER_COMMON_ERR_NTF":                       1,
 		"SERVER_TIPS_ERR_NTF":                         2,
@@ -1364,30 +1364,30 @@ var (
 	}
 )
 
-func (x ProtoCode) Enum() *ProtoCode {
-	p := new(ProtoCode)
+func (x MsgId) Enum() *MsgId {
+	p := new(MsgId)
 	*p = x
 	return p
 }
 
-func (x ProtoCode) String() string {
+func (x MsgId) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (ProtoCode) Descriptor() protoreflect.EnumDescriptor {
+func (MsgId) Descriptor() protoreflect.EnumDescriptor {
 	return file_ProtoMsgId_proto_enumTypes[0].Descriptor()
 }
 
-func (ProtoCode) Type() protoreflect.EnumType {
+func (MsgId) Type() protoreflect.EnumType {
 	return &file_ProtoMsgId_proto_enumTypes[0]
 }
 
-func (x ProtoCode) Number() protoreflect.EnumNumber {
+func (x MsgId) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use ProtoCode.Descriptor instead.
-func (ProtoCode) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use MsgId.Descriptor instead.
+func (MsgId) EnumDescriptor() ([]byte, []int) {
 	return file_ProtoMsgId_proto_rawDescGZIP(), []int{0}
 }
 
@@ -1395,8 +1395,8 @@ var File_ProtoMsgId_proto protoreflect.FileDescriptor
 
 const file_ProtoMsgId_proto_rawDesc = "" +
 	"\n" +
-	"\x10ProtoMsgId.proto*\xd3^\n" +
-	"\tProtoCode\x12\v\n" +
+	"\x10ProtoMsgId.proto*\xcf^\n" +
+	"\x05MsgId\x12\v\n" +
 	"\aINVALID\x10\x00\x12\x19\n" +
 	"\x15SERVER_COMMON_ERR_NTF\x10\x01\x12\x17\n" +
 	"\x13SERVER_TIPS_ERR_NTF\x10\x02\x12\x13\n" +
@@ -1843,7 +1843,7 @@ func file_ProtoMsgId_proto_rawDescGZIP() []byte {
 
 var file_ProtoMsgId_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_ProtoMsgId_proto_goTypes = []any{
-	(ProtoCode)(0), // 0: ProtoCode
+	(MsgId)(0), // 0: MsgId
 }
 var file_ProtoMsgId_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

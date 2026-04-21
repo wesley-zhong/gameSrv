@@ -32,7 +32,7 @@ func NewClientContext(ctx tcp.Channel) *ConnContext {
 	}
 }
 
-func (c *ConnContext) SendMsg(code protoGen.ProtoCode, body proto.Message) {
+func (c *ConnContext) SendMsg(code protoGen.MsgId, body proto.Message) {
 	packet := &tcp.MsgPacket{
 		MsgId: int16(code),
 		Body:  body,

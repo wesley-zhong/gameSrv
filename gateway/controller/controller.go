@@ -6,14 +6,14 @@ import (
 )
 
 func init() {
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
+	tcp.RegisterMethod(int16(protoGen.MsgId_LOGIN_REQUEST), &protoGen.LoginRequest{}, login)
 
 	tcp.RegisterMethod(int16(protoGen.InnerProtoCode_INNER_SERVER_HAND_SHAKE_RES), &protoGen.InnerServerHandShakeRes{}, handShakeResp)
 
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
+	tcp.RegisterMethod(int16(protoGen.MsgId_HEART_BEAT_REQUEST), &protoGen.HeartBeatRequest{}, heartBeat)
 
-	tcp.RegisterCallPlayerMethod(int32(protoGen.ProtoCode_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
+	tcp.RegisterCallPlayerMethod(int32(protoGen.MsgId_KICK_OUT_RESPONSE), &protoGen.KickOutResponse{}, innerServerKickout)
 
-	tcp.RegisterMethod(int16(protoGen.ProtoCode_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
+	tcp.RegisterMethod(int16(protoGen.MsgId_PERFORMANCE_TEST_REQ), &protoGen.PerformanceTestReq{}, performanceTest)
 	tcp.RegisterCallPlayerMethod(int32(protoGen.InnerProtoCode_INNER_LOGIN_RES), &protoGen.InnerLoginResponse{}, loginResponseFromGameServer)
 }

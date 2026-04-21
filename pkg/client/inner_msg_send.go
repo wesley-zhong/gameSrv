@@ -31,7 +31,7 @@ func SendInnerToGateway(pid int64, msgCode protoGen.InnerProtoCode, body proto.M
 	sendMsg(global.GATE_WAY, pid, int16(msgCode), body)
 }
 
-func SendToGateway(pid int64, msgId protoGen.ProtoCode, body proto.Message) {
+func SendToGateway(pid int64, msgId protoGen.MsgId, body proto.Message) {
 	sendMsg(global.GATE_WAY, pid, int16(msgId), body)
 }
 
@@ -44,7 +44,7 @@ func SendInnerToGameServer(pid int64, msgId protoGen.InnerProtoCode, body proto.
 	sendMsg(global.GAME, pid, int16(msgId), body)
 }
 
-func SendToGameServer(pid int64, msgId protoGen.ProtoCode, body proto.Message) {
+func SendToGameServer(pid int64, msgId protoGen.MsgId, body proto.Message) {
 	sendMsg(global.GAME, pid, int16(msgId), body)
 }
 

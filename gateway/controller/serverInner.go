@@ -39,5 +39,5 @@ func loginResponseFromGameServer(pid int64, request proto.Message) {
 		ServerTime: time.Now().UnixMilli(),
 		RoleId:     pid,
 	}
-	player.Context.SendMsg(protoGen.ProtoCode_LOGIN_RESPONSE, response)
+	player.Context.SendMsg(protoGen.MsgId_LOGIN_RESPONSE, response)
 }

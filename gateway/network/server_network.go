@@ -130,7 +130,7 @@ func (serverNetWork *ServerEventHandler) Tick() (delay time.Duration, action int
 			ClientTime: time.Now().UnixMilli(),
 			ServerTime: time.Now().UnixMilli(),
 		}
-		player.Context.SendMsg(protoGen.ProtoCode_HEART_BEAT_RESPONSE, response)
+		player.Context.SendMsg(protoGen.MsgId_HEART_BEAT_RESPONSE, response)
 	})
 	return 5000 * time.Millisecond, 0
 }

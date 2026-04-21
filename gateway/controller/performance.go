@@ -6,6 +6,7 @@ import (
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
+
 	"google.golang.org/protobuf/proto"
 )
 
@@ -17,8 +18,8 @@ func performanceTest(ctx tcp.Channel, req proto.Message) {
 		SomeIdAdd: testReq.SomeId + 1,
 	}
 	log.Infof("==========  performanceTest %d  remoteAddr=%s", testReq.SomeId, ctx.RemoteAddr())
-	ctx.Context().(*client.ConnContext).SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	//client.getInnerClient(client.GAME).SendInnerMsg(protoGen.ProtoCode_PERFORMANCE_TEST_REQ, 0, req)
+	ctx.Context().(*client.ConnContext).SendMsg(protoGen.MsgId_PERFORMANCE_TEST_RES, res)
+	//client.getInnerClient(client.GAME).SendInnerMsg(protoGen.MsgId_PERFORMANCE_TEST_REQ, 0, req)
 }
 
 func performanceTestResFromWorld(pid int64, res proto.Message) {
@@ -27,6 +28,6 @@ func performanceTestResFromWorld(pid int64, res proto.Message) {
 	if perFormancePlayer == nil {
 		return
 	}
-	perFormancePlayer.Context.SendMsg(protoGen.ProtoCode_PERFORMANCE_TEST_RES, res)
-	//client.getInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.ProtoCode_PERFORMANCE_TEST_RES), testRes)
+	perFormancePlayer.Context.SendMsg(protoGen.MsgId_PERFORMANCE_TEST_RES, res)
+	//client.getInnerClient(client.GATE_WAY).SendInnerMsg(int32(protoGen.MsgId_PERFORMANCE_TEST_RES), testRes)
 }

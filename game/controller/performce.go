@@ -28,5 +28,5 @@ func performanceTestResFromWorld(pid int64, res proto.Message) {
 func directToGame(pid int64, req proto.Message) {
 	echoMsg := req.(*protoGen.EchoReq)
 	log.Infof("--------- directToGame  body =%s", echoMsg)
-	client.SendToGateway(pid, protoGen.ProtoCode_DIRECT_FROM_GAME_CLIENT, echoMsg)
+	client.SendToGateway(pid, protoGen.MsgId_DIRECT_FROM_GAME_CLIENT, echoMsg)
 }

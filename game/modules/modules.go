@@ -9,11 +9,11 @@ import (
 type ModuleTypeId int32
 
 const (
-	ROLE_MODULE  ModuleTypeId = 1
-	ITEM_MODULE  ModuleTypeId = 2
-	QUEUE_MODULE ModuleTypeId = 3
-	WORLE_MODULE ModuleTypeId = 4
-	MAX_MODULE   ModuleTypeId = 5
+	ROLE_MODULE  ModuleTypeId = 0
+	ITEM_MODULE  ModuleTypeId = 1
+	QUEUE_MODULE ModuleTypeId = 2
+	WORLE_MODULE ModuleTypeId = 3
+	MAX_MODULE   ModuleTypeId = 4
 )
 
 type IModule interface {

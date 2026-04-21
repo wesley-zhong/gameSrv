@@ -42,7 +42,7 @@ func heartBeat(ctx tcp.Channel, request proto.Message) {
 		ClientTime: heartBeat.ClientTime,
 		ServerTime: time.Now().UnixMilli(),
 	}
-	player.Context.SendMsg(protoGen.ProtoCode_HEART_BEAT_RESPONSE, response)
+	player.Context.SendMsg(protoGen.MsgId_HEART_BEAT_RESPONSE, response)
 }
 
 func ClientDisConnect(ctx tcp.Channel) {
