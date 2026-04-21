@@ -12,11 +12,25 @@ package cfg;
 type JsonLoader func(string) ([]map[string]interface{}, error)
 
 type Tables struct {
+    TbHeroData *HerodataTbHeroData
+    TbHeroDataInfo *HerodataTbHeroDataInfo
+    TbCampRelation *CampTbCampRelation
+    TbPropsGroup *HerodataTbPropsGroup
     TbScene *SceneTbScene
     TbLevel *SceneTbLevel
     TbArea *SceneTbArea
     TbSceneObject *SceneTbSceneObject
     TbVisualObject *SceneTbVisualObject
+    TbSkillData *SkilldataTbSkillData
+    TbSkill *SkilldataTbSkill
+    TbHeroGA *SkilldataTbHeroGA
+    TbComboMontage *SkilldataTbComboMontage
+    TbGACombox *SkilldataTbGACombox
+    TbMontageAttackData *SkilldataTbMontageAttackData
+    TbMontageCost *SkilldataTbMontageCost
+    TbSkillLevel *SkilldataTbSkillLevel
+    TbSkillLevelValue *SkilldataTbSkillLevelValue
+    TbSkillLevelValueGroup *SkilldataTbSkillLevelValueGroup
     TbInitCnf *SysTbInitCnf
     TbInstruction *SysTbInstruction
     TbCommonUnlock *SysTbCommonUnlock
@@ -34,6 +48,30 @@ func NewTables(loader JsonLoader) (*Tables, error) {
     var buf []map[string]interface{}
 
     tables := &Tables{}
+    if buf, err = loader("herodata_tbherodata") ; err != nil {
+        return nil, err
+    }
+    if tables.TbHeroData, err = NewHerodataTbHeroData(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("herodata_tbherodatainfo") ; err != nil {
+        return nil, err
+    }
+    if tables.TbHeroDataInfo, err = NewHerodataTbHeroDataInfo(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("camp_tbcamprelation") ; err != nil {
+        return nil, err
+    }
+    if tables.TbCampRelation, err = NewCampTbCampRelation(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("herodata_tbpropsgroup") ; err != nil {
+        return nil, err
+    }
+    if tables.TbPropsGroup, err = NewHerodataTbPropsGroup(buf) ; err != nil {
+        return nil, err
+    }
     if buf, err = loader("scene_tbscene") ; err != nil {
         return nil, err
     }
@@ -62,6 +100,66 @@ func NewTables(loader JsonLoader) (*Tables, error) {
         return nil, err
     }
     if tables.TbVisualObject, err = NewSceneTbVisualObject(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbskilldata") ; err != nil {
+        return nil, err
+    }
+    if tables.TbSkillData, err = NewSkilldataTbSkillData(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbskill") ; err != nil {
+        return nil, err
+    }
+    if tables.TbSkill, err = NewSkilldataTbSkill(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbheroga") ; err != nil {
+        return nil, err
+    }
+    if tables.TbHeroGA, err = NewSkilldataTbHeroGA(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbcombomontage") ; err != nil {
+        return nil, err
+    }
+    if tables.TbComboMontage, err = NewSkilldataTbComboMontage(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbgacombox") ; err != nil {
+        return nil, err
+    }
+    if tables.TbGACombox, err = NewSkilldataTbGACombox(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbmontageattackdata") ; err != nil {
+        return nil, err
+    }
+    if tables.TbMontageAttackData, err = NewSkilldataTbMontageAttackData(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbmontagecost") ; err != nil {
+        return nil, err
+    }
+    if tables.TbMontageCost, err = NewSkilldataTbMontageCost(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbskilllevel") ; err != nil {
+        return nil, err
+    }
+    if tables.TbSkillLevel, err = NewSkilldataTbSkillLevel(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbskilllevelvalue") ; err != nil {
+        return nil, err
+    }
+    if tables.TbSkillLevelValue, err = NewSkilldataTbSkillLevelValue(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("skilldata_tbskilllevelvaluegroup") ; err != nil {
+        return nil, err
+    }
+    if tables.TbSkillLevelValueGroup, err = NewSkilldataTbSkillLevelValueGroup(buf) ; err != nil {
         return nil, err
     }
     if buf, err = loader("sys_tbinitcnf") ; err != nil {
