@@ -7,32 +7,37 @@ import (
 	"gameSrv/pkg/event"
 )
 
-type Event struct {
-}
 type UnlockFunc func(event event.Event, cond *cfg.UnLockCondBean)
 
 var unlockCheckFuncs map[int32]UnlockFunc
 var unlockCheckData map[int32][]*cfg.UnLockCondBean
 
+var gameEventId2UnlockCndId = map[event.GameEventID]int32{
+	gameevent.QuestStepFinishEventID: cfg.UnLockCnd_GUIDE_STEP,
+	gameevent.MainQuestFinishEventID: cfg.UnLockCnd_MAIN_TASK,
+	gameevent.GetAvatarEventID:       cfg.UnLockCnd_GET_AVATAR,
+}
+
 func InitEvents() {
-	event.Dispatcher.Register(gameevent.QuestStepFinishEventID, questStepUnlockEvent)
-	event.Dispatcher.Register(gameevent.MainQuestFinishEventID, mainQuestUnlockEvent)
+	for gameEventId := range gameEventId2UnlockCndId {
+		event.Dispatcher.Register(gameEventId, gameEvent2UnlockEvent)
+	}
 	//unlock check functions
 	unlockCheckFuncs = make(map[int32]UnlockFunc)
 	unlockCheckFuncs[cfg.UnLockCnd_MAIN_TASK] = mainQuestUnlockEventCheck
 	unlockCheckFuncs[cfg.UnLockCnd_GUIDE_STEP] = questStepUnlockEventCheck
 	unlockCheckFuncs[cfg.UnLockCnd_GET_AVATAR] = getAvatarUnlockEventCheck
 
-	//unlock data
+	//unlock data config
 	registerCnfDataEventHandler()
 }
 
-func questStepUnlockEvent(event event.Event) {
-	dispatch(cfg.UnLockCnd_GUIDE_STEP, event)
-}
-
-func mainQuestUnlockEvent(event event.Event) {
-	dispatch(cfg.UnLockCnd_MAIN_TASK, event)
+func gameEvent2UnlockEvent(event event.Event) {
+	unlockEvent := gameEventId2UnlockCndId[event.EventId()]
+	if unlockEvent == 0 {
+		return
+	}
+	dispatch(unlockEvent, event)
 }
 
 // unlock check
