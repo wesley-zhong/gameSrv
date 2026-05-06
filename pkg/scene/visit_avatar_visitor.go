@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 package scene
 
 // VisitAvatarVisitor 头像访问者

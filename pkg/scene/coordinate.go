@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 package scene
 
 // Coordinate 二维整数坐标

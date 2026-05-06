@@ -1,25 +1,23 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 package scene
 
 // VisionType 视野类型
 type VisionType int32
 
 const (
-	VisionTypeNone            VisionType = 0
-	VisionTypeMeet            VisionType = 1
-	VisionTypeReborn          VisionType = 2
-	VisionTypeMiss            VisionType = 3
-	VisionTypeDie             VisionType = 4
-	VisionTypeReplace         VisionType = 5
-	VisionTypeReplaceServer   VisionType = 6
-	VisionTypePickup          VisionType = 7
+	VisionTypeNone          VisionType = 0
+	VisionTypeMeet          VisionType = 1
+	VisionTypeReborn        VisionType = 2
+	VisionTypeMiss          VisionType = 3
+	VisionTypeDie           VisionType = 4
+	VisionTypeReplace       VisionType = 5
+	VisionTypeReplaceServer VisionType = 6
+	VisionTypePickup        VisionType = 7
 )
 
 // VisionContext 视野上下文
 type VisionContext struct {
-	Type             VisionType       // 视野类型
-	Param            int64            // 参数
+	Type               VisionType         // 视野类型
+	Param              int64              // 参数
 	ExcludeEnterAoiUid map[int64]struct{} // 此次AOI视野更新将指定uid排除在外
 	ExcludeNotifyUid   map[int64]struct{} // 此次AOI通知将指定uid排除在外
 }
@@ -27,8 +25,8 @@ type VisionContext struct {
 // NewVisionContext 创建新的VisionContext
 func NewVisionContext(typ VisionType) *VisionContext {
 	return &VisionContext{
-		Type:              typ,
-		Param:             0,
+		Type:               typ,
+		Param:              0,
 		ExcludeEnterAoiUid: make(map[int64]struct{}),
 		ExcludeNotifyUid:   make(map[int64]struct{}),
 	}
@@ -37,8 +35,8 @@ func NewVisionContext(typ VisionType) *VisionContext {
 // NewVisionContextWithUids 创建带有排除UID的VisionContext
 func NewVisionContextWithUids(typ VisionType, param, excludeEnterAoiUid, excludeNotifyUid int64) *VisionContext {
 	vc := &VisionContext{
-		Type:   typ,
-		Param:  param,
+		Type:               typ,
+		Param:              param,
 		ExcludeEnterAoiUid: make(map[int64]struct{}),
 		ExcludeNotifyUid:   make(map[int64]struct{}),
 	}
@@ -54,8 +52,8 @@ func NewVisionContextWithUids(typ VisionType, param, excludeEnterAoiUid, exclude
 // NewVisionContextWithSets 创建带有排除UID集合的VisionContext
 func NewVisionContextWithSets(typ VisionType, param int64, excludeEnterAoiUid, excludeNotifyUid map[int64]struct{}) *VisionContext {
 	vc := &VisionContext{
-		Type:   typ,
-		Param:  param,
+		Type:               typ,
+		Param:              param,
 		ExcludeEnterAoiUid: make(map[int64]struct{}),
 		ExcludeNotifyUid:   make(map[int64]struct{}),
 	}
@@ -71,8 +69,8 @@ func NewVisionContextWithSets(typ VisionType, param int64, excludeEnterAoiUid, e
 // NewVisionContextFromContext 从现有VisionContext创建
 func NewVisionContextFromContext(typ VisionType, context *VisionContext) *VisionContext {
 	return &VisionContext{
-		Type:              typ,
-		Param:             context.Param,
+		Type:               typ,
+		Param:              context.Param,
 		ExcludeEnterAoiUid: context.ExcludeEnterAoiUid,
 		ExcludeNotifyUid:   context.ExcludeNotifyUid,
 	}

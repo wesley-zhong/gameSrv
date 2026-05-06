@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 package scene
 
 import (
@@ -10,9 +8,9 @@ import (
 type CheckRegionType int
 
 const (
-	CheckRegionTypeNone CheckRegionType = iota
+	CheckRegionTypeNone  CheckRegionType = iota
 	CheckRegionTypeMove  CheckRegionType = iota
-	CheckRegionTypeBorn CheckRegionType = iota
+	CheckRegionTypeBorn  CheckRegionType = iota
 	CheckRegionTypeLeave CheckRegionType = iota
 )
 
@@ -21,7 +19,7 @@ type ScenePlayerPreSlotInfo struct {
 	UID          int64
 	PreEnterTime int64
 	Nickname     string
-	Transform   *math.Vector3
+	Transform    *math.Vector3
 }
 
 // NewScenePlayerPreSlotInfo creates a new ScenePlayerPreSlotInfo
@@ -31,11 +29,11 @@ func NewScenePlayerPreSlotInfo() *ScenePlayerPreSlotInfo {
 
 // AbstractScene represents an abstract scene base class
 type AbstractScene struct {
-	OwnerUID          int64
-	SceneUID           string
-	SceneCnfId         int32
-	BeginTime          int64
-	AllowOptions        int32
+	OwnerUID     int64
+	SceneUID     string
+	SceneCnfId   int32
+	BeginTime    int64
+	AllowOptions int32
 }
 
 // NewAbstractScene creates a new AbstractScene
@@ -44,7 +42,7 @@ func NewAbstractScene(sceneUID string, sceneCnfId int32) *AbstractScene {
 		SceneUID:     sceneUID,
 		SceneCnfId:   sceneCnfId,
 		BeginTime:    0,
-		AllowOptions:  0,
+		AllowOptions: 0,
 	}
 }
 

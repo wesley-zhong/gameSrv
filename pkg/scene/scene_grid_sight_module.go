@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 package scene
 
 import (
@@ -90,7 +88,9 @@ func (s *SceneGridSightModule) PlaceEntity(act IEntity) []IEntity {
 	// region对象需要特殊处理
 	if act.GetActorType() == cfg.ActorType_EActorType_Region {
 		// 检查是否是Region类型
-		if region, ok := act.(interface{ GetCoveredCoordinates(ISceneSightModule) []*Coordinate }); ok {
+		if region, ok := act.(interface {
+			GetCoveredCoordinates(ISceneSightModule) []*Coordinate
+		}); ok {
 			coordSet := region.GetCoveredCoordinates(s)
 			gridMgr.PlaceRegionEntity(act, coordSet)
 			return nil
@@ -136,7 +136,9 @@ func (s *SceneGridSightModule) RemoveEntity(act IEntity) {
 	// region对象需要特殊处理
 	if act.GetActorType() == cfg.ActorType_EActorType_Region {
 		// 检查是否是Region类型
-		if region, ok := act.(interface{ GetCoveredCoordinates(ISceneSightModule) []*Coordinate }); ok {
+		if region, ok := act.(interface {
+			GetCoveredCoordinates(ISceneSightModule) []*Coordinate
+		}); ok {
 			coordSet := region.GetCoveredCoordinates(s)
 			gridMgr.RemoveRegionEntity(act, coordSet)
 			return
@@ -163,7 +165,7 @@ func (s *SceneGridSightModule) EntityMoveTo(act IEntity, destPos *math.Vector3) 
 	isMoveGrid := gridMgr.EntityMoveTo(act, int(gridX), int(gridY))
 
 	var missVisitor, meetVisitor IVisitor
-	
+
 	if act.GetActorType() == cfg.ActorType_EActorType_Team {
 		// 如果所有分层视野中都没有格子变更,则表示视野无需更新,直接return
 		if !s.IsEntityMoveGrid(act, destPos) {

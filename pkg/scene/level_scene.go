@@ -1,9 +1,8 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 package scene
 
 import (
 	"fmt"
+	"gameSrv/cnfGen/cfg"
 	"gameSrv/pkg/math"
 	"time"
 )
@@ -52,7 +51,7 @@ func NewLevelScene(gamePlayer IGamePlayer, sceneCnfId int32) *LevelScene {
 
 // GetSceneType returns scene type
 func (s *LevelScene) GetSceneType() int32 {
-	return 1 // SceneTypeLevel
+	return cfg.SceneType_LEVEL
 }
 
 // InitScene 初始化场景（需要在创建后调用）
