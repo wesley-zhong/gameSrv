@@ -7,10 +7,10 @@ import (
 	"gameSrv/pkg/event"
 )
 
-type UnlockFunc func(event event.Event, cond *cfg.UnLockCondBean)
+type CheckFunc func(event event.Event, cond *cfg.UnLockCondBean)
 
-var unlockCheckFuncs map[int32]UnlockFunc
-var unlockCheckData map[int32][]*cfg.UnLockCondBean
+var unlockCheckId2Func map[int32]CheckFunc
+var unlockCheckCndId2ConfigData map[int32][]*cfg.UnLockCondBean
 
 var gameEventId2UnlockCndId = map[event.GameEventID]int32{
 	gameevent.QuestStepFinishEventID: cfg.UnLockCnd_GUIDE_STEP,
@@ -23,10 +23,10 @@ func InitEvents() {
 		event.Dispatcher.Register(gameEventId, gameEvent2UnlockEvent)
 	}
 	//unlock check functions
-	unlockCheckFuncs = make(map[int32]UnlockFunc)
-	unlockCheckFuncs[cfg.UnLockCnd_MAIN_TASK] = mainQuestUnlockEventCheck
-	unlockCheckFuncs[cfg.UnLockCnd_GUIDE_STEP] = questStepUnlockEventCheck
-	unlockCheckFuncs[cfg.UnLockCnd_GET_AVATAR] = getAvatarUnlockEventCheck
+	unlockCheckId2Func = make(map[int32]CheckFunc)
+	unlockCheckId2Func[cfg.UnLockCnd_MAIN_TASK] = mainQuestUnlockEventCheck
+	unlockCheckId2Func[cfg.UnLockCnd_GUIDE_STEP] = questStepUnlockEventCheck
+	unlockCheckId2Func[cfg.UnLockCnd_GET_AVATAR] = getAvatarUnlockEventCheck
 
 	//unlock data config
 	processCndCnfigDataEvents()
@@ -64,20 +64,20 @@ func getAvatarUnlockEventCheck(event event.Event, cond *cfg.UnLockCondBean) {
 }
 
 func processCndCnfigDataEvents() {
-	unlockCheckData = make(map[int32][]*cfg.UnLockCondBean)
+	unlockCheckCndId2ConfigData = make(map[int32][]*cfg.UnLockCondBean)
 	for _, v := range gamedata.Tables.TbCommonUnlock.GetDataList() {
 		for _, cn := range v.UnlockCnds {
-			unlockCheckData[cn.CndId] = append(unlockCheckData[cn.CndId], cn)
+			unlockCheckCndId2ConfigData[cn.CndId] = append(unlockCheckCndId2ConfigData[cn.CndId], cn)
 		}
 	}
 }
 
 func dispatch(unlockCndId int32, event event.Event) {
-	checkFunc := unlockCheckFuncs[unlockCndId]
+	checkFunc := unlockCheckId2Func[unlockCndId]
 	if checkFunc == nil {
 		return
 	}
-	cndConfigDatas := unlockCheckData[unlockCndId]
+	cndConfigDatas := unlockCheckCndId2ConfigData[unlockCndId]
 	if cndConfigDatas == nil || len(cndConfigDatas) == 0 {
 		return
 	}
