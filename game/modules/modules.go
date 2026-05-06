@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"gameSrv/game/gametimer"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/orm"
 	"gameSrv/pkg/scene"
@@ -61,6 +62,9 @@ func (gm *GameModule[DOType]) ToDO() *DOType {
 
 func (gm *GameModule[DOType]) MarkDirty() {
 	gm.isDirty = true
+	gametimer.AddTask(1, 180000, func() {
+		gm.GamePlayer.SaveDataOnPlayerRouting()
+	})
 }
 
 func (gm *GameModule[DOType]) IsDirty() bool {
@@ -133,7 +137,7 @@ func (mc *ModuleContainer) Destroy() {
 	}
 }
 
-func (mc *ModuleContainer) AsyncSave() {
+func (mc *ModuleContainer) SaveDirtyDataToDB() {
 	for _, module := range mc.IModules {
 		if module.IsDirty() {
 			module.SaveToDB()

@@ -41,9 +41,9 @@ func (gp *GamePlayer) LoadDataFromDB() error {
 	return gp.ModuleContainer.InitModules()
 }
 
-func (gp *GamePlayer) SaveData() {
+func (gp *GamePlayer) SaveDataOnPlayerRouting() {
 	gp.asyncActor.Call(func() {
-		gp.ModuleContainer.AsyncSave()
+		gp.ModuleContainer.SaveDirtyDataToDB()
 	})
 }
 

@@ -30,7 +30,7 @@ func OnPlayerLogin(pid int64, sid int64) *GamePlayer {
 func OnPlayerLoginLogic(player *GamePlayer) {
 	player.OnLogin()
 	player.DispatchEvent(gameevent.NewEvent[gameevent.GameEvent](player.Id, gameevent.LoginEventID))
-	player.SaveData()
+	player.SaveDataOnPlayerRouting()
 }
 
 func OnPlayerDisconnected(pid int64, sid int64) {
