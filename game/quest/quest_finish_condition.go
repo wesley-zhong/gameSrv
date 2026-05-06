@@ -10,7 +10,7 @@ import (
 	"gameSrv/pkg/log"
 )
 
-var questProcess = make(map[int]func(*player.GamePlayer, *modules.Quest, event.Event) ProRet)
+var questProcess = make(map[int]func(*player.GamePlayer, *modules.Quest, *cfg.QuestContent, event.Event) ProRet)
 
 type ProRet int32
 
@@ -24,6 +24,7 @@ const (
 func finishContentInit() {
 	questProcess[cfg.QuestContentType_ROLE_LEVEL_UP] = RoleLvlUpProcess
 	questProcess[cfg.QuestContentType_QUEST_FINISHED] = MainQuestFinishProcess
+
 	questProcess[cfg.QuestContentType_KILL_MONSTER] = KillMonsterProcess
 	questProcess[cfg.QuestContentType_OBTAIN_ITEM] = ObtainItemProcess
 }
@@ -38,69 +39,103 @@ func ProcessQuestContentByEvent(player *player.GamePlayer, quest *modules.Quest,
 	for _, content := range questStepCnf.FinishCond {
 		processFuc := questProcess[int(content.Type)]
 		if processFuc == nil {
-			log.Errorf("finish type ={} not found process function", content.Type)
+			log.Errorf("finish type =%d not found process function", content.Type)
 		}
-		processRet = processFuc(player, quest, ev)
-		quest.Finished = checkQuestFinished(quest, questStepCnf)
-
-		if quest.Finished {
-			processRet = FINISH
-			return processRet
+		processed := processFuc(player, quest, content, ev)
+		if processRet == NONE {
+			processRet = processed
 		}
 	}
-	return processRet
+	quest.Finished = checkQuestFinished(quest, questStepCnf)
+	if quest.Finished {
+		return FINISH
+	}
+	return CONTINUE
 }
 
-func RoleLvlUpProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
+func findOrCreateQuestCndDataByType(quest *modules.Quest, contentType int32) *modules.ContentData {
+	for _, questData := range quest.ContentData {
+		if questData.ContType == contentType {
+			return questData
+		}
+	}
+
+	newQuestData := &modules.ContentData{
+		ContType: contentType,
+		CurData:  make([]int64, 0),
+	}
+
+	quest.ContentData = append(quest.ContentData, newQuestData)
+	return newQuestData
+}
+
+func RoleLvlUpProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	roleLvlUp := ev.(*gameevent.RoleLvlUpEvent)
-	log.Infof("on role lvl up  cur lvl ={}", roleLvlUp.CurLvl)
+	log.Infof("on role lvl up  cur lvl =%d", roleLvlUp.CurLvl)
+	questDataByType := findOrCreateQuestCndDataByType(quest, questContent.Type)
+	questDataByType.CurData[0] = int64(roleLvlUp.CurLvl)
+	if roleLvlUp.CurLvl >= int32(questContent.Param[0]) {
+		questDataByType.Finished = true
+		return FINISH
+	}
 	return CONTINUE
 }
 
 // 完成主线任务 触发
-func MainQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
-	questFinsih := ev.(*gameevent.MainQuestFinishEvent)
-	log.Infof("on role lvl up  cur lvl ={}", questFinsih.MainQuestId)
-	return CONTINUE
-}
-
-// 完成分支任务 触发
-func StepQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
-	questFinish := ev.(*gameevent.QuestStepFinishEvent)
-	log.Infof("on role lvl up  cur lvl ={}", questFinish.StepQuestId)
-	return CONTINUE
+func MainQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
+	questFinish := ev.(*gameevent.MainQuestFinishEvent)
+	log.Infof("MainQuestFinishProcess  main quest id=%d", questFinish.MainQuestId)
+	questDataByType := findOrCreateQuestCndDataByType(quest, questContent.Type)
+	if questFinish.MainQuestId != questContent.Param[0] {
+		return NONE
+	}
+	questDataByType.CurData[0] = questFinish.MainQuestId
+	questDataByType.Finished = true
+	return FINISH
 }
 
 // 杀死 触发(monster configId [lvl] count
-func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
+func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	KillMonster := ev.(*gameevent.KillMonsterEvent)
-	log.Infof("----- kill monster ={}", KillMonster.MonsterId)
-	return CONTINUE
+	log.Infof("----- kill monster =%d", KillMonster.MonsterId)
+
+	log.Infof("MainQuestFinishProcess  main quest id=%d", KillMonster.MonsterId)
+	questDataByType := findOrCreateQuestCndDataByType(quest, questContent.Type)
+	if KillMonster.MonsterId != questContent.Param[0] {
+		return NONE
+	}
+	questDataByType.CurData[0]++
+	if questDataByType.CurData[0] < questContent.Param[0] {
+		return CONTINUE
+	}
+	questDataByType.Finished = true
+	return FINISH
 }
 
 // 获取道具(config id, count) 触发
-func ObtainItemProcess(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
+func ObtainItemProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	ObtainItem := ev.(*gameevent.ObtainItemEvent)
-	data := quest.CurData
-	for _, questData := range data {
-		if questData.EvId != int32(ev.EventId()) {
-			continue
-		}
-		// do special check
-		targetItemId := questData.CurData[0]
-		if targetItemId == 0 || targetItemId == int64(ObtainItem.CnfId) {
-			questData.CurData[1]++
+
+	dataChange := NONE
+	questDataByType := findOrCreateQuestCndDataByType(quest, questContent.Type)
+	// do special check
+	targetItemId := questContent.Param[0]
+	if targetItemId == 0 || targetItemId == int64(ObtainItem.CnfId) {
+		questDataByType.CurData[0]++
+		dataChange = CONTINUE
+		if questDataByType.CurData[0] >= questContent.Param[1] {
+			questDataByType.Finished = true
+			dataChange = FINISH
 		}
 	}
-
-	return CONTINUE
+	return dataChange
 }
 
 // finish check
 func checkQuestFinished(quest *modules.Quest, questStepCnf *cfg.QuestQuestStepCnf) bool {
 	ret := true
-	for _, cnd := range questStepCnf.FinishCond {
-		ret = ret && checkFinishCnd(quest, cnd)
+	for _, cnd := range quest.ContentData {
+		ret = ret && cnd.Finished
 		// And logic
 		if questStepCnf.FinishCondComb == cfg.LogicType_AND {
 			if !ret {
@@ -114,19 +149,4 @@ func checkQuestFinished(quest *modules.Quest, questStepCnf *cfg.QuestQuestStepCn
 		}
 	}
 	return true
-}
-
-func checkFinishCnd(quest *modules.Quest, cnd *cfg.QuestContent) bool {
-	for _, questData := range quest.CurData {
-		if questData.EvId != cnd.Type {
-			continue
-		}
-		for index, val := range questData.CurData {
-			if val != cnd.Param[index] {
-				return false
-			}
-		}
-		return true
-	}
-	return false
 }

@@ -47,9 +47,19 @@ func processQuestByEvent(gamePlayer *player.GamePlayer, evId int32, ev event.Eve
 	// process own quest  content
 	ownQuestList := getOwnQuestStepByEventId(gamePlayer, evId)
 	for _, quest := range ownQuestList {
-		finished := ProcessQuestContentByEvent(gamePlayer, quest, ev)
-		if finished == FINISH {
+		processRet := ProcessQuestContentByEvent(gamePlayer, quest, ev)
+		// 没处理过
+		if processRet == NONE {
+			continue
+		}
+		// data updated  should broadcast to client
+		if processRet == CONTINUE {
+
+		}
+		// data updated  should broadcast to client
+		if processRet == FINISH {
 			finishQuest(gamePlayer, quest)
+			return
 		}
 	}
 }

@@ -7,14 +7,15 @@ import (
 	"gameSrv/pkg/log"
 )
 
-type QuestData struct {
-	EvId    int32
-	CurData []int64
+type ContentData struct {
+	ContType int32
+	CurData  []int64
+	Finished bool
 }
 type Quest struct {
-	Id       int64
-	CurData  []*QuestData
-	Finished bool
+	Id          int64
+	ContentData []*ContentData // multi condition
+	Finished    bool
 }
 type QuestDO struct {
 	Id     int64            //  player id
@@ -65,11 +66,11 @@ func (questModule *QuestModule) AddQuestStep(questStepCnf *cfg.QuestQuestStepCnf
 	}
 	conds := questStepCnf.FinishCond
 	for _, cond := range conds {
-		questData := &QuestData{
-			EvId:    cond.Type,
-			CurData: []int64{0},
+		questData := &ContentData{
+			ContType: cond.Type,
+			CurData:  []int64{0},
 		}
-		newQuest.CurData = append(newQuest.CurData, questData)
+		newQuest.ContentData = append(newQuest.ContentData, questData)
 	}
 	questModule.DataDO.Quests[questStepCnf.Id] = newQuest
 	questModule.MarkDirty()
@@ -87,8 +88,8 @@ func (questModule *QuestModule) FindQuestByEventId(evId int32) []*Quest {
 		if quest.Finished {
 			continue
 		}
-		for _, curData := range quest.CurData {
-			if curData.EvId == evId {
+		for _, curData := range quest.ContentData {
+			if curData.ContType == evId {
 				questList = append(questList, quest)
 			}
 		}
