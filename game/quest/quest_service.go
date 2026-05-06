@@ -92,8 +92,6 @@ func finishQuest(gamePlayer *player.GamePlayer, quest *modules.Quest) {
 	}
 	if questStepCnf.FinishParent {
 		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.MainQuestFinishEvent](gamePlayer.Id, gameevent.MainQuestFinishEventID))
-	} else {
-		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.QuestStepFinishEvent](gamePlayer.Id, gameevent.QuestStepFinishEventID))
 	}
 	exeQuestFinishedEvent(gamePlayer, questStepCnf)
 	nextQuestStep := findNextQuestStep(quest)
