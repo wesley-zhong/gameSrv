@@ -29,7 +29,7 @@ func InitEvents() {
 	unlockCheckFuncs[cfg.UnLockCnd_GET_AVATAR] = getAvatarUnlockEventCheck
 
 	//unlock data config
-	registerCnfDataEventHandler()
+	processCndCnfigDataEvents()
 }
 
 func gameEvent2UnlockEvent(event event.Event) {
@@ -63,7 +63,7 @@ func getAvatarUnlockEventCheck(event event.Event, cond *cfg.UnLockCondBean) {
 	}
 }
 
-func registerCnfDataEventHandler() {
+func processCndCnfigDataEvents() {
 	unlockCheckData = make(map[int32][]*cfg.UnLockCondBean)
 	for _, v := range gamedata.Tables.TbCommonUnlock.GetDataList() {
 		for _, cn := range v.UnlockCnds {
@@ -77,12 +77,12 @@ func dispatch(unlockCndId int32, event event.Event) {
 	if checkFunc == nil {
 		return
 	}
-	cndDatas := unlockCheckData[unlockCndId]
-	if cndDatas == nil || len(cndDatas) == 0 {
+	cndConfigDatas := unlockCheckData[unlockCndId]
+	if cndConfigDatas == nil || len(cndConfigDatas) == 0 {
 		return
 	}
 
-	for _, cn := range cndDatas {
+	for _, cn := range cndConfigDatas {
 		checkFunc(event, cn)
 	}
 }
