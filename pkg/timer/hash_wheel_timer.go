@@ -128,6 +128,42 @@ func (sw *ShardedWheelTimer) tick() {
 	sw.currentSlot = (sw.currentSlot + 1) % sw.slotNum
 }
 
+// RemoveTask 移除指定 key 的任务
+func (sw *ShardedWheelTimer) RemoveTask(key int64) bool {
+	// 遍历所有槽位查找任务
+	for _, b := range sw.slots {
+		b.mu.Lock()
+		var prev *Task
+		curr := b.head
+
+		for curr != nil {
+			if curr.key == key {
+				// 找到目标任务，从链表中移除
+				next := curr.next
+				if prev == nil {
+					b.head = next
+				} else {
+					prev.next = next
+				}
+
+				// 重置并回收对象到池中
+				curr.key = 0
+				curr.rounds = 0
+				curr.job = nil
+				curr.next = nil
+				sw.taskPool.Put(curr)
+
+				b.mu.Unlock()
+				return true
+			}
+			prev = curr
+			curr = curr.next
+		}
+		b.mu.Unlock()
+	}
+	return false
+}
+
 // Stop 关闭时间轮
 func (sw *ShardedWheelTimer) Stop() {
 	close(sw.stopChannel)
