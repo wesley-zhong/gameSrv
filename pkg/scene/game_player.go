@@ -2,6 +2,9 @@ package scene
 
 import (
 	"gameSrv/pkg/math"
+	"gameSrv/protoGen"
+
+	"google.golang.org/protobuf/proto"
 )
 
 // IGamePlayer 玩家接口
@@ -26,4 +29,6 @@ type IGamePlayer interface {
 
 	// OnTeamAvatarDead 事件处理
 	OnTeamAvatarDead(actor IEntity)
+	
+	SendMsg(msgId protoGen.MsgId, msg proto.Message)
 }

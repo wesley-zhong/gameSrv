@@ -4,10 +4,14 @@ import (
 	"gameSrv/game/dal"
 	"gameSrv/game/modules"
 	"gameSrv/pkg/actor_module"
+	"gameSrv/pkg/client"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/math"
 	"gameSrv/pkg/orm"
 	"gameSrv/pkg/scene"
+	"gameSrv/protoGen"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type GamePlayer struct {
@@ -28,6 +32,7 @@ func NewGamePlayer(pid int64, sid int64) *GamePlayer {
 	registerPlayerModules(&modules.ItemModule{}, player, dal.ItemDAO)
 	registerPlayerModules(&modules.QuestModule{}, player, dal.QuestDAO)
 	registerPlayerModules(&modules.WorldModule{}, player, dal.WorldDAO)
+	registerPlayerModules(&modules.UnlockModule{}, player, dal.UnlockDAO)
 	return player
 }
 
@@ -74,6 +79,10 @@ func GetModule[T any](gp *GamePlayer, moduleId modules.ModuleTypeId) *T {
 	}
 
 	return nil
+}
+
+func (gp *GamePlayer) SendMsg(msgId protoGen.MsgId, msg proto.Message) {
+	client.SendToGateway(gp.Id, msgId, msg)
 }
 func (gp *GamePlayer) GetUid() int64 {
 	return gp.Id

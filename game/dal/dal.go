@@ -11,6 +11,7 @@ var RoleDAO *orm.MongodbDAO[modules.RoleDO]
 var ItemDAO *orm.MongodbDAO[modules.ItemDO]
 var QuestDAO *orm.MongodbDAO[modules.QuestDO]
 var WorldDAO *orm.MongodbDAO[modules.WorldDO]
+var UnlockDAO *orm.MongodbDAO[modules.UnlockDO]
 var TeamDAO *orm.MongodbDAO[modules.TeamDO]
 
 func InitMongoDB(addr string, userName string, pwd string) error {
