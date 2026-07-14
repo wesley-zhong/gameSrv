@@ -31,7 +31,7 @@ func InitEvents() {
 	unlockCheckId2Func[cfg.UnLockCnd_GET_AVATAR] = getAvatarUnlockEventCheck
 
 	//unlock data config
-	processCndCnfigDataEvents()
+	processCndConfigDataEvents()
 }
 
 func gameEvent2UnlockEvent(event event.Event) {
@@ -45,29 +45,20 @@ func gameEvent2UnlockEvent(event event.Event) {
 // unlock check
 func mainQuestUnlockEventCheck(event event.Event, cond *cfg.UnLockCondBean) bool {
 	mainQuestFinish := event.(*gameevent.MainQuestFinishEvent)
-	if mainQuestFinish.MainQuestId == cond.Value {
-		//unlocked logic process
-	}
-	return true
+	return mainQuestFinish.MainQuestId == cond.Value
 }
 
 func questStepUnlockEventCheck(event event.Event, cond *cfg.UnLockCondBean) bool {
 	stepFinish := event.(*gameevent.QuestStepFinishEvent)
-	if stepFinish.StepQuestId == cond.Value {
-		//unlocked logic process
-	}
-	return true
+	return stepFinish.StepQuestId == cond.Value
 }
 
 func getAvatarUnlockEventCheck(event event.Event, cond *cfg.UnLockCondBean) bool {
 	avatarEvent := event.(*gameevent.GetAvatarEvent)
-	if avatarEvent.AvatarCnfId == cond.Value {
-		//unlocked logic process
-	}
-	return true
+	return avatarEvent.AvatarCnfId == cond.Value
 }
 
-func processCndCnfigDataEvents() {
+func processCndConfigDataEvents() {
 	unlockCheckCndId2ConfigData = make(map[int32][]int32)
 	for _, v := range gamedata.Tables.TbCommonUnlock.GetDataList() {
 		for _, cn := range v.UnlockCnds {
@@ -85,23 +76,20 @@ func dispatch(unlockCndId int32, event event.Event) {
 	if cndConfigDatas == nil || len(cndConfigDatas) == 0 {
 		return
 	}
-
+	gmEv := event.(*gameevent.GameEvent)
+	gp := player.RoleOlineMgr.GetPlayerById(gmEv.PlayerId)
+	if gp == nil {
+		return
+	}
+	unlockModule := player.GetModule[modules.UnlockModule](gp, modules.UNLOCK_MODULE)
 	for _, cdataId := range cndConfigDatas {
 		ftnUnlockData := gamedata.Tables.TbCommonUnlock.Get(cdataId)
 		if ftnUnlockData == nil {
 			return
 		}
 		if checkCndValid(checkFunc, ftnUnlockData, event) {
-			// check success
-			gmEv := event.(*gameevent.GameEvent)
-			gp := player.RoleOlineMgr.GetPlayerById(gmEv.PlayerId)
-			if gp == nil {
-				return
-			}
-			module := gp.ModuleContainer.IModules[modules.UNLOCK_MODULE]
-			if module == nil {
-				return
-			}
+			// check success  save data
+			unlockModule.AddFntId(cdataId)
 		}
 	}
 }
