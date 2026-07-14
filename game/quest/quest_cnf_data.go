@@ -5,6 +5,7 @@ import (
 	"gameSrv/game/gamedata"
 	"gameSrv/game/modules"
 	"gameSrv/game/player"
+	"gameSrv/pkg/scene"
 )
 
 var acceptCondQuestMap = make(map[int32][]*cfg.QuestQuestCnf)
@@ -73,7 +74,7 @@ func findQuestStepWithEvent(evId int32) []*cfg.QuestQuestStepCnf {
 	return questContentEventQuest[evId]
 }
 
-func findQuestWithAcceptEvent(gp *player.GamePlayer, evId int32) []*cfg.QuestQuestCnf {
+func findQuestWithAcceptEvent(gp scene.IGamePlayer, evId int32) []*cfg.QuestQuestCnf {
 	readyToAcceptQuestCnfList := acceptCondQuestMap[evId]
 	questModule := player.GetModule[modules.QuestModule](gp, modules.QUEUE_MODULE)
 	readyToAcceptList := make([]*cfg.QuestQuestCnf, 4)

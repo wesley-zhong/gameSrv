@@ -23,6 +23,7 @@ func InitMongoDB(addr string, userName string, pwd string) error {
 	ItemDAO = &orm.MongodbDAO[modules.ItemDO]{Collection: orm.GetDBConnTable("game", "item")}
 	QuestDAO = &orm.MongodbDAO[modules.QuestDO]{Collection: orm.GetDBConnTable("game", "quest")}
 	WorldDAO = &orm.MongodbDAO[modules.WorldDO]{Collection: orm.GetDBConnTable("game", "world")}
+	UnlockDAO = &orm.MongodbDAO[modules.UnlockDO]{Collection: orm.GetDBConnTable("game", "unlock")}
 	TeamDAO = &orm.MongodbDAO[modules.TeamDO]{Collection: orm.GetDBConnTable("game", "team")}
 	return nil
 }

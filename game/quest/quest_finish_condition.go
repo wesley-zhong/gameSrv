@@ -5,12 +5,12 @@ import (
 	"gameSrv/game/gamedata"
 	"gameSrv/game/gameevent"
 	"gameSrv/game/modules"
-	"gameSrv/game/player"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/log"
+	"gameSrv/pkg/scene"
 )
 
-var questProcess = make(map[int]func(*player.GamePlayer, *modules.Quest, *cfg.QuestContent, event.Event) ProRet)
+var questProcess = make(map[int]func(scene.IGamePlayer, *modules.Quest, *cfg.QuestContent, event.Event) ProRet)
 
 type ProRet int32
 
@@ -29,7 +29,7 @@ func finishContentInit() {
 	questProcess[cfg.QuestContentType_OBTAIN_ITEM] = ObtainItemProcess
 }
 
-func ProcessQuestContentByEvent(player *player.GamePlayer, quest *modules.Quest, ev event.Event) ProRet {
+func ProcessQuestContentByEvent(player scene.IGamePlayer, quest *modules.Quest, ev event.Event) ProRet {
 	processRet := NONE
 	questStepCnf := gamedata.Tables.TbQuestStep.Get(quest.Id)
 	if questStepCnf != nil {
@@ -69,7 +69,7 @@ func findOrCreateQuestCndDataByType(quest *modules.Quest, contentType int32) *mo
 	return newQuestData
 }
 
-func RoleLvlUpProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
+func RoleLvlUpProcess(player scene.IGamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	roleLvlUp := ev.(*gameevent.RoleLvlUpEvent)
 	log.Infof("on role lvl up  cur lvl =%d", roleLvlUp.CurLvl)
 	questDataByType := findOrCreateQuestCndDataByType(quest, questContent.Type)
@@ -82,7 +82,7 @@ func RoleLvlUpProcess(player *player.GamePlayer, quest *modules.Quest, questCont
 }
 
 // 完成主线任务 触发
-func MainQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
+func MainQuestFinishProcess(player scene.IGamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	questFinish := ev.(*gameevent.MainQuestFinishEvent)
 	log.Infof("MainQuestFinishProcess  main quest id=%d", questFinish.MainQuestId)
 	questDataByType := findOrCreateQuestCndDataByType(quest, questContent.Type)
@@ -95,7 +95,7 @@ func MainQuestFinishProcess(player *player.GamePlayer, quest *modules.Quest, que
 }
 
 // 杀死 触发(monster configId [lvl] count
-func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
+func KillMonsterProcess(player scene.IGamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	KillMonster := ev.(*gameevent.KillMonsterEvent)
 	log.Infof("----- kill monster =%d", KillMonster.MonsterId)
 
@@ -113,7 +113,7 @@ func KillMonsterProcess(player *player.GamePlayer, quest *modules.Quest, questCo
 }
 
 // 获取道具(config id, count) 触发
-func ObtainItemProcess(player *player.GamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
+func ObtainItemProcess(player scene.IGamePlayer, quest *modules.Quest, questContent *cfg.QuestContent, ev event.Event) ProRet {
 	ObtainItem := ev.(*gameevent.ObtainItemEvent)
 
 	dataChange := NONE

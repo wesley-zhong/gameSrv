@@ -43,7 +43,7 @@ func (questModule *QuestModule) OnLogin() {
 			Quests: make(map[int64]*Quest),
 			CurQId: make([]int64, 0),
 		}
-		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.Uid(), gameevent.QuestInitEventID))
+		event.Dispatcher.Dispatch(gameevent.NewEvent[gameevent.GameEvent](questModule.GamePlayer, gameevent.QuestInitEventID))
 		questModule.MarkDirty()
 	}
 	return

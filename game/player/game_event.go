@@ -14,11 +14,9 @@ func InitEvents() {
 
 // event handlers
 func LoginEventHandler(event event.Event) {
-	gameEvent := event.(*gameevent.GameEvent)
-	log.Infof("on login handler pid =%d eventid %d", gameEvent.PlayerId, event.EventId())
+	log.Infof("on login handler pid =%d eventid %d", event.Player().GetUid(), event.EventId())
 }
 
 func DisconnectEventHandler(event event.Event) {
-	gameEvent := event.(*gameevent.GameEvent)
-	log.Infof("on disconnected handler pid =%d eventid %d", gameEvent.PlayerId, event.EventId())
+	log.Infof("on disconnected handler pid =%d eventid %d", event.Player().GetUid(), event.EventId())
 }

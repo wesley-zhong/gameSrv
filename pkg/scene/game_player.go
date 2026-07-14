@@ -10,8 +10,6 @@ import (
 // IGamePlayer 玩家接口
 type IGamePlayer interface {
 	GetUid() int64
-
-	// GetAvatarTeam AvatarTeam 相关方法
 	GetAvatarTeam() IEntity
 	GetCurAvatarConfId() int64
 	InPrivatePhasing() bool
@@ -29,6 +27,6 @@ type IGamePlayer interface {
 
 	// OnTeamAvatarDead 事件处理
 	OnTeamAvatarDead(actor IEntity)
-	
+
 	SendMsg(msgId protoGen.MsgId, msg proto.Message)
 }

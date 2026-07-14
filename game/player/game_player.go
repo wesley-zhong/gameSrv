@@ -68,8 +68,9 @@ func (gp *GamePlayer) DispatchEvent(ev event.Event) {
 	event.Dispatcher.Dispatch(ev)
 }
 
-func GetModule[T any](gp *GamePlayer, moduleId modules.ModuleTypeId) *T {
-	module := gp.ModuleContainer.IModules[moduleId]
+func GetModule[T any](gp scene.IGamePlayer, moduleId modules.ModuleTypeId) *T {
+	gamePlayer := gp.(*GamePlayer)
+	module := gamePlayer.ModuleContainer.IModules[moduleId]
 	if module == nil {
 		return nil
 	}

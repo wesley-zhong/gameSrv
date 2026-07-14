@@ -1,9 +1,12 @@
 package event
 
+import "gameSrv/pkg/scene"
+
 type GameEventID int32
 type Event interface {
-	Init(pid int64, eventId GameEventID)
+	Init(gm scene.IGamePlayer, eventId GameEventID)
 	EventId() GameEventID
+	Player() scene.IGamePlayer
 }
 
 type Handler func(event Event)

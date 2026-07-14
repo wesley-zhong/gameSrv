@@ -3,12 +3,12 @@ package quest
 import (
 	"gameSrv/cnfGen/cfg"
 	"gameSrv/game/gameevent"
-	"gameSrv/game/player"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/log"
+	"gameSrv/pkg/scene"
 )
 
-var acceptCndProcess = make(map[int]func(*player.GamePlayer, *cfg.QuestAcceptCondition, event.Event) bool)
+var acceptCndProcess = make(map[int]func(scene.IGamePlayer, *cfg.QuestAcceptCondition, event.Event) bool)
 
 func acceptConditionInit() {
 	acceptCndProcess[cfg.QuestAcceptConditionType_ROLE_LEVEL_UP] = RoleLvlUpAcceptCnd
@@ -17,7 +17,7 @@ func acceptConditionInit() {
 	acceptCndProcess[cfg.QuestAcceptConditionType_OBTAIN_ITEM] = ObtainItemAcceptCnd
 }
 
-func processQuestAcceptByEvent(player *player.GamePlayer, cnd *cfg.QuestQuestCnf, ev event.Event) bool {
+func processQuestAcceptByEvent(player scene.IGamePlayer, cnd *cfg.QuestQuestCnf, ev event.Event) bool {
 	ret := true
 	for _, cond := range cnd.AcceptCond {
 		processFuc := acceptCndProcess[int(cond.Type)]
@@ -37,7 +37,7 @@ func processQuestAcceptByEvent(player *player.GamePlayer, cnd *cfg.QuestQuestCnf
 	return true
 }
 
-func RoleLvlUpAcceptCnd(player *player.GamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
+func RoleLvlUpAcceptCnd(player scene.IGamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
 	roleLvlUp := ev.(*gameevent.RoleLvlUpEvent)
 	log.Infof("on role lvl up  cur lvl ={}", roleLvlUp.CurLvl)
 
@@ -45,20 +45,20 @@ func RoleLvlUpAcceptCnd(player *player.GamePlayer, cnd *cfg.QuestAcceptCondition
 }
 
 // 完成主线任务 触发
-func MainQuestFinishAcceptCnd(player *player.GamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
+func MainQuestFinishAcceptCnd(player scene.IGamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
 	questFinsih := ev.(*gameevent.MainQuestFinishEvent)
 	log.Infof("on role lvl up  cur lvl ={}", questFinsih.MainQuestId)
 	return false
 }
 
 // 杀死 触发
-func KillMonsterAcceptCnd(player *player.GamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
+func KillMonsterAcceptCnd(player scene.IGamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
 
 	return false
 }
 
 // 获取道具 触发
-func ObtainItemAcceptCnd(player *player.GamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
+func ObtainItemAcceptCnd(player scene.IGamePlayer, cnd *cfg.QuestAcceptCondition, ev event.Event) bool {
 
 	return false
 }

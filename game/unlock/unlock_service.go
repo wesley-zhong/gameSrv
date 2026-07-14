@@ -76,12 +76,8 @@ func dispatch(unlockCndId int32, event event.Event) {
 	if cndConfigDatas == nil || len(cndConfigDatas) == 0 {
 		return
 	}
-	gmEv := event.(*gameevent.GameEvent)
-	gp := player.RoleOlineMgr.GetPlayerById(gmEv.PlayerId)
-	if gp == nil {
-		return
-	}
-	unlockModule := player.GetModule[modules.UnlockModule](gp, modules.UNLOCK_MODULE)
+
+	unlockModule := player.GetModule[modules.UnlockModule](event.Player(), modules.UNLOCK_MODULE)
 	for _, cdataId := range cndConfigDatas {
 		ftnUnlockData := gamedata.Tables.TbCommonUnlock.Get(cdataId)
 		if ftnUnlockData == nil {

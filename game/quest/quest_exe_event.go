@@ -2,11 +2,11 @@ package quest
 
 import (
 	"gameSrv/cnfGen/cfg"
-	"gameSrv/game/player"
 	"gameSrv/pkg/log"
+	"gameSrv/pkg/scene"
 )
 
-var questExeEvent = make(map[int32]func(*player.GamePlayer, *cfg.QuestQuestStepCnf))
+var questExeEvent = make(map[int32]func(scene.IGamePlayer, *cfg.QuestQuestStepCnf))
 
 func initQuestExeEventHandler() {
 	questExeEvent[cfg.QuestExecType_ADD_BUFF] = exeAddBuff
@@ -15,7 +15,7 @@ func initQuestExeEventHandler() {
 	// some other exec events
 }
 
-func exeQuestFinishedEvent(gp *player.GamePlayer, questStep *cfg.QuestQuestStepCnf) {
+func exeQuestFinishedEvent(gp scene.IGamePlayer, questStep *cfg.QuestQuestStepCnf) {
 	for _, event := range questStep.FinishExec {
 		eventFun := questExeEvent[event.Type]
 		if eventFun == nil {
@@ -26,7 +26,7 @@ func exeQuestFinishedEvent(gp *player.GamePlayer, questStep *cfg.QuestQuestStepC
 	}
 }
 
-func exeQuestBeginEvent(gp *player.GamePlayer, questStep *cfg.QuestQuestStepCnf) {
+func exeQuestBeginEvent(gp scene.IGamePlayer, questStep *cfg.QuestQuestStepCnf) {
 	for _, event := range questStep.BeginExec {
 		eventFun := questExeEvent[event.Type]
 		if eventFun == nil {
@@ -38,10 +38,10 @@ func exeQuestBeginEvent(gp *player.GamePlayer, questStep *cfg.QuestQuestStepCnf)
 }
 
 // ===========================================  some other exec events
-func exeTeleport(gamePlayer *player.GamePlayer, cnf *cfg.QuestQuestStepCnf) {
+func exeTeleport(gamePlayer scene.IGamePlayer, cnf *cfg.QuestQuestStepCnf) {
 
 }
 
-func exeAddBuff(gamePlayer *player.GamePlayer, cnf *cfg.QuestQuestStepCnf) {
+func exeAddBuff(gamePlayer scene.IGamePlayer, cnf *cfg.QuestQuestStepCnf) {
 
 }

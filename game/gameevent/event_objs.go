@@ -2,6 +2,7 @@ package gameevent
 
 import (
 	"gameSrv/pkg/event"
+	"gameSrv/pkg/scene"
 )
 
 const (
@@ -18,27 +19,32 @@ const (
 )
 
 type GameEvent struct {
-	PlayerId int64
-	eventId  event.GameEventID
+	//PlayerId int64
+	eventId event.GameEventID
+	player  scene.IGamePlayer
 }
 
 // 给基础结构体实现这个方法
-func (ge *GameEvent) Init(pid int64, eid event.GameEventID) {
-	ge.PlayerId = pid
+func (ge *GameEvent) Init(gm scene.IGamePlayer, eid event.GameEventID) {
+	ge.player = gm
 	ge.eventId = eid
+}
+
+func (ge *GameEvent) EventId() event.GameEventID {
+	return ge.eventId
+}
+
+func (ge *GameEvent) Player() scene.IGamePlayer {
+	return ge.player
 }
 
 func NewEvent[T any, PT interface {
 	*T
 	event.Event
-}](pid int64, evId event.GameEventID) PT {
-	ev := PT(new(T))   // 分配内存并转为接口类型
-	ev.Init(pid, evId) // 初始化基础字段
+}](gm scene.IGamePlayer, evId event.GameEventID) PT {
+	ev := PT(new(T))  // 分配内存并转为接口类型
+	ev.Init(gm, evId) // 初始化基础字段
 	return ev
-}
-
-func (ge *GameEvent) EventId() event.GameEventID {
-	return ge.eventId
 }
 
 type MainQuestFinishEvent struct {
