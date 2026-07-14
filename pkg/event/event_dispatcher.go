@@ -2,7 +2,7 @@ package event
 
 type GameEventID int32
 type Event interface {
-	Init(playerId int64, eventId GameEventID)
+	Init(pid int64, eventId GameEventID)
 	EventId() GameEventID
 }
 

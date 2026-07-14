@@ -2,7 +2,6 @@ package player
 
 import (
 	"gameSrv/game/gameevent"
-	"gameSrv/game/unlock"
 	"gameSrv/pkg/event"
 	"gameSrv/pkg/log"
 )
@@ -11,9 +10,6 @@ func InitEvents() {
 	event.InitEventDispatcher(1024)
 	event.Dispatcher.Register(gameevent.LoginEventID, LoginEventHandler)
 	event.Dispatcher.Register(gameevent.DisconnectEventID, DisconnectEventHandler)
-
-	//
-	unlock.InitEvents()
 }
 
 // event handlers

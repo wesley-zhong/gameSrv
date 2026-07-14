@@ -58,9 +58,7 @@ func main() {
 	discover.Init(viper.GetViper(), global.GATE_WAY)
 
 	//start server
-	loopWG.Add(1)
 	go func() {
-		defer loopWG.Done()
 		tcp.ServerStartWithDeCode(viper.GetInt32("port"), handler, &tcp.DefaultCodec{})
 	}()
 

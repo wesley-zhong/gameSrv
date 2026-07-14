@@ -10,6 +10,7 @@ import (
 	"gameSrv/game/network"
 	"gameSrv/game/player"
 	"gameSrv/game/quest"
+	"gameSrv/game/unlock"
 	"gameSrv/game/watcher"
 	"gameSrv/pkg/discover"
 	"gameSrv/pkg/global"
@@ -34,7 +35,6 @@ func main() {
 		if x := recover(); x != nil {
 			s := string(debug.Stack())
 			fmt.Printf("err=%v, stack=%s", x, s)
-			loopWG.Add(-1)
 		}
 	}()
 
@@ -71,6 +71,7 @@ func main() {
 	player.InitEvents()
 	// init modules
 	quest.Init()
+	unlock.InitEvents()
 
 	//start server
 	serverNetworkHandler := &network.ServerEventHandler{}

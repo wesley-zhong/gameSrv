@@ -13,14 +13,17 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"runtime/debug"
+	"sync"
 
 	"github.com/spf13/viper"
 	"go.uber.org/zap/zapcore"
 )
 
 func main() {
+	var loopWG sync.WaitGroup
+	loopWG.Add(1)
 	log.Init("./log/login.log", zapcore.InfoLevel, true)
-	
+
 	defer func() {
 		if x := recover(); x != nil {
 			s := string(debug.Stack())
@@ -62,4 +65,5 @@ func main() {
 		panic(err)
 	}
 	server.WebAppStart(viper.GetInt32("port"))
+	loopWG.Wait()
 }

@@ -5,7 +5,7 @@ import (
 )
 
 type UnlockDO struct {
-	fntId int32 // function id
+	fntId []int32 // function id
 }
 
 type UnlockModule struct {
@@ -26,7 +26,12 @@ func (unlock *UnlockModule) OnLogin() {
 	if unlock.DataDO == nil {
 		unlock.DataDO = &UnlockDO{}
 	}
-	unlock.MarkDirty()
 
 	//unlock.GamePlayer.SendMsg()
+}
+
+func (unlock *UnlockModule) AddFntId(fntId int32) {
+	unlock.fntIds = append(unlock.fntIds, fntId)
+	unlock.DataDO.fntId = unlock.fntIds
+	unlock.MarkDirty()
 }
