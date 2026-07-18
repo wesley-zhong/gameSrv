@@ -3,6 +3,7 @@ package actors
 import (
 	"errors"
 	"fmt"
+	"gameSrv/pkg/log"
 	"gameSrv/pkg/math"
 	"gameSrv/pkg/scene"
 
@@ -53,8 +54,6 @@ type Entity struct {
 
 	VisionLevelEnum scene.VisionLevelEnum
 	Grid            *scene.Grid
-
-	logger *zap.Logger
 }
 
 // NewEntity creates a new base Entity
@@ -262,7 +261,7 @@ func (entity *Entity) SetCustomInteractType(customType int32) {
 // SetActivated sets the activated state
 func (entity *Entity) SetActivated(state int32) {
 	if entity.InteractInfo == nil {
-		entity.logger.Warn("Entity setActivated fail, not Interact")
+		log.Warn("SetActivated: nil InteractInfo")
 		return
 	}
 	// TODO: implement logic state handling
@@ -271,7 +270,7 @@ func (entity *Entity) SetActivated(state int32) {
 // SetLockState sets the lock state
 func (entity *Entity) SetLockState(lockState int32) {
 	if entity.InteractInfo == nil {
-		entity.logger.Warn("Entity setLockMode fail, not Interact")
+		log.Warn("Entity setLockMode fail, not Interact")
 		return
 	}
 	// TODO: implement
@@ -280,7 +279,7 @@ func (entity *Entity) SetLockState(lockState int32) {
 // SetInteractMode sets the interact mode
 func (entity *Entity) SetInteractMode(mode int32) {
 	if entity.InteractInfo == nil {
-		entity.logger.Warn("Entity setInteractMode fail, not Interact")
+		log.Warn("Entity setInteractMode fail, not Interact")
 		return
 	}
 	// TODO: implement
@@ -294,7 +293,7 @@ func (entity *Entity) ChangeInteractMode(newMode int32) {
 // ChangeLogicState changes the logic state
 func (entity *Entity) ChangeLogicState(state int32) {
 	if entity.InteractInfo == nil {
-		entity.logger.Error("Entity change state failed, not interactable")
+		log.Errorf("Entity change state failed, not interactable")
 		return
 	}
 	entity.InteractInfo.LogicState = state
@@ -310,7 +309,7 @@ func (entity *Entity) SetBornObjectState(state int32) {
 // InitObjectState initializes the object state
 func (entity *Entity) InitObjectState(state int32) {
 	if entity.InteractInfo == nil {
-		entity.logger.Error("Entity init state failed, not interactable")
+		log.Errorf("Entity init state failed, not interactable")
 		return
 	}
 	entity.InteractInfo.ObjectState = state
@@ -320,7 +319,7 @@ func (entity *Entity) InitObjectState(state int32) {
 // ChangeObjectState changes the object state
 func (entity *Entity) ChangeObjectState(srcEntity scene.IEntity, state int32) {
 	if entity.InteractInfo == nil {
-		entity.logger.Error("Entity change state failed, not interactable")
+		log.Errorf("Entity change state failed, not interactable")
 		return
 	}
 	if entity.InteractInfo.ObjectState == state {
@@ -334,7 +333,7 @@ func (entity *Entity) ChangeObjectState(srcEntity scene.IEntity, state int32) {
 // GetLogicState returns the logic state
 func (entity *Entity) GetLogicState() int32 {
 	if entity.InteractInfo == nil {
-		entity.logger.Error("Entity getLogicState fail, not Interact")
+		log.Errorf("Entity getLogicState fail, not Interact")
 		return 0
 	}
 	return entity.InteractInfo.LogicState
@@ -343,7 +342,7 @@ func (entity *Entity) GetLogicState() int32 {
 // GetObjectState returns the object state
 func (entity *Entity) GetObjectState() int32 {
 	if entity.InteractInfo == nil {
-		entity.logger.Error("Entity getState fail, not Interact")
+		log.Errorf("Entity getState fail, not Interact")
 		return 0
 	}
 	return entity.InteractInfo.ObjectState
@@ -509,7 +508,7 @@ func (entity *Entity) SetGrid(grid *scene.Grid) {
 func (entity *Entity) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
 	defer func() {
 		if r := recover(); r != nil {
-			entity.logger.Error("Actor enterScene panic", zap.Any("error", r))
+			log.Errorf("Actor enterScene panic", zap.Any("error", r))
 		}
 	}()
 

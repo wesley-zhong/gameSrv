@@ -24,7 +24,6 @@ type GameEvent struct {
 	player  scene.IGamePlayer
 }
 
-// 给基础结构体实现这个方法
 func (ge *GameEvent) Init(gm scene.IGamePlayer, eid event.GameEventID) {
 	ge.player = gm
 	ge.eventId = eid
