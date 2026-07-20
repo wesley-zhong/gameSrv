@@ -4,6 +4,16 @@ import (
 	"gameSrv/pkg/scene"
 )
 
+// ActorBuffModule manages buffs for an actor (forward declaration)
+// The actual type is in game/battle/buff package to avoid circular imports
+type IActorBuffModule interface {
+	AddBuffTag(inTag int) bool
+	RemoveBuffTag(inTag int) bool
+	HasBuffTag(tagEnum int) bool
+	AddBuff(templateId int, casterActor, holder *Creature, uid int64, exParam int, bSystem bool) interface{}
+	RemoveBuffByConfId(cnfId int, reason int) bool
+}
+
 // Creature is a combatable entity in scene with abilities and properties
 type Creature struct {
 	Entity
@@ -11,6 +21,9 @@ type Creature struct {
 	Level     int32
 	CurState  int32
 	CampType  int32
+
+	// Buff module - will be set when the battle system is initialized
+	ActorBuffModule IActorBuffModule
 }
 
 func (c *Creature) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
@@ -97,4 +110,66 @@ func (c *Creature) OnExitPlayerView(p scene.IGamePlayer) {
 // ChangeObjectState changes the object state
 func (c *Creature) ChangeObjectState(srcEntity scene.IEntity, state int32) {
 	c.InteractInfo.ObjectState = state
+}
+
+// AddBuffTag adds a buff tag to this creature
+func (c *Creature) AddBuffTag(tag int) bool {
+	if c.ActorBuffModule == nil {
+		return false
+	}
+	return c.ActorBuffModule.AddBuffTag(tag)
+}
+
+// RemoveBuffTag removes a buff tag from this creature
+func (c *Creature) RemoveBuffTag(tag int) bool {
+	if c.ActorBuffModule == nil {
+		return false
+	}
+	return c.ActorBuffModule.RemoveBuffTag(tag)
+}
+
+// HasBuffTag checks if this creature has a specific buff tag
+func (c *Creature) HasBuffTag(tag int) bool {
+	if c.ActorBuffModule == nil {
+		return false
+	}
+	return c.ActorBuffModule.HasBuffTag(tag)
+}
+
+// AddBuff adds a buff to this creature
+func (c *Creature) AddBuff(templateId int, casterActor *Creature, uid int64, exParam int, bSystem bool) interface{} {
+	if c.ActorBuffModule == nil {
+		return nil
+	}
+	return c.ActorBuffModule.AddBuff(templateId, casterActor, c, uid, exParam, bSystem)
+}
+
+// RemoveBuffByConfId removes buffs by config ID from this creature
+func (c *Creature) RemoveBuffByConfId(cnfId int, reason int) bool {
+	if c.ActorBuffModule == nil {
+		return false
+	}
+	return c.ActorBuffModule.RemoveBuffByConfId(cnfId, reason)
+}
+
+// RemoveBuffByClass removes buffs by class from this creature
+func (c *Creature) RemoveBuffByClass(classType int, reason int) bool {
+	if c.ActorBuffModule == nil {
+		return false
+	}
+	if module, ok := c.ActorBuffModule.(interface{ RemoveBuffByClass(int, int) bool }); ok {
+		return module.RemoveBuffByClass(classType, reason)
+	}
+	return false
+}
+
+// RemoveBuffBySubClass removes buffs by subclass from this creature
+func (c *Creature) RemoveBuffBySubClass(classID, subClassID int, reason int) bool {
+	if c.ActorBuffModule == nil {
+		return false
+	}
+	if module, ok := c.ActorBuffModule.(interface{ RemoveBuffBySubClass(int, int, int) bool }); ok {
+		return module.RemoveBuffBySubClass(classID, subClassID, reason)
+	}
+	return false
 }

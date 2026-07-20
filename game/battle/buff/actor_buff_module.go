@@ -236,13 +236,14 @@ func (m *ActorBuffModule) SystemRemoveBuff(buffCnfId int, uid int64) bool {
 }
 
 // AddBuff adds a buff
+// Returns interface{} to satisfy IActorBuffModule (actually returns *FYBuff)
 func (m *ActorBuffModule) AddBuff(
 	templateId int,
 	casterActor, holder *actors.Creature,
 	uid int64,
 	exParam int,
 	bSystem bool,
-) *FYBuff {
+) interface{} {
 	return m.execAddBuff(templateId, casterActor, holder, uid, exParam, 0, 0, bSystem)
 }
 
@@ -269,9 +270,12 @@ func (m *ActorBuffModule) AddBuffWithTriggerFlag(
 ) *FYBuff {
 	fyBuff := m.AddBuff(templateId, casterActor, nil, uid, exParam, bSystem)
 	if fyBuff != nil {
-		fyBuff.TriggerFlag = triggerFlag
+		if buff, ok := fyBuff.(*FYBuff); ok {
+			buff.TriggerFlag = triggerFlag
+			return buff
+		}
 	}
-	return fyBuff
+	return nil
 }
 
 // StopAndRemoveBuff stops and removes a buff

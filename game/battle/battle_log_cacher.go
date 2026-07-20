@@ -230,13 +230,8 @@ func (c *FYBattleLogCacher) RecordBattleAction(entity *actors.Creature, logType 
 
 		// Set target entity info
 		if dr.Target != nil {
-			// Type assertion for Creature interface
-			if target, ok := dr.Target.(interface{ GetEntityId() int64 }); ok {
-				battleLog.TargetEntity.EntityID = target.GetEntityId()
-			}
-			if target, ok := dr.Target.(interface{ GetConfigId() int64 }); ok {
-				battleLog.TargetEntity.ConfigID = int(target.GetConfigId())
-			}
+			battleLog.TargetEntity.EntityID = dr.Target.GetEntityId()
+			battleLog.TargetEntity.ConfigID = int(dr.Target.GetConfigId())
 			// TODO: battleLog.TargetHash = dr.Target.CalculateBattleHash()
 		}
 	}
@@ -254,13 +249,8 @@ func (c *FYBattleLogCacher) RecordBuffValueChange(entity *actors.Creature, isSta
 	battleLog.DR = dr
 
 	if dr != nil && dr.Target != nil {
-		// Type assertion for Creature interface
-		if target, ok := dr.Target.(interface{ GetEntityId() int64 }); ok {
-			battleLog.TargetEntity.EntityID = target.GetEntityId()
-		}
-		if target, ok := dr.Target.(interface{ GetConfigId() int64 }); ok {
-			battleLog.TargetEntity.ConfigID = int(target.GetConfigId())
-		}
+		battleLog.TargetEntity.EntityID = dr.Target.GetEntityId()
+		battleLog.TargetEntity.ConfigID = int(dr.Target.GetConfigId())
 	}
 
 	// TODO: battleLog.CasterHash = entity.CalculateBattleHash()
@@ -274,13 +264,8 @@ func (c *FYBattleLogCacher) RecordCostEnergy(entity *actors.Creature, dr *Damage
 	battleLog.DR = dr
 
 	if dr != nil && dr.Target != nil {
-		// Type assertion for Creature interface
-		if target, ok := dr.Target.(interface{ GetEntityId() int64 }); ok {
-			battleLog.TargetEntity.EntityID = target.GetEntityId()
-		}
-		if target, ok := dr.Target.(interface{ GetConfigId() int64 }); ok {
-			battleLog.TargetEntity.ConfigID = int(target.GetConfigId())
-		}
+		battleLog.TargetEntity.EntityID = dr.Target.GetEntityId()
+		battleLog.TargetEntity.ConfigID = int(dr.Target.GetConfigId())
 	}
 
 	// TODO: battleLog.CasterHash = entity.CalculateBattleHash()

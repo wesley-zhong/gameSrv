@@ -40,11 +40,25 @@ func GetEffectExecutionInstance() *FYBuffEffectExecution {
 
 // initBuffEffectFunctions initializes buff effect functions
 func (e *FYBuffEffectExecution) initBuffEffectFunctions() {
-	// Register buff effect execution and revert functions
-	// Type IDs should match those in the cfg package
-	// e.registerBuffEffectFunctions(cfg.ModAvatarProps.__ID__, e.buffEffectOptModAvatarProps, e.buffEffectOptModAvatarPropsRevert)
-	// e.registerBuffEffectFunctions(cfg.ModAvatarPropsForEver.__ID__, e.buffEffectOptModAvatarPropsForever, nil)
-	// ... more registrations
+	// Property modification effects
+	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarProps), e.buffEffectOptModAvatarProps, e.buffEffectOptModAvatarPropsRevert)
+	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarPropsForEver), e.buffEffectOptModAvatarPropsForever, nil)
+
+	// Status modification effects
+	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarStatus), e.buffEffectOptModAvatarStatus, e.buffEffectOptModAvatarStatusRevert)
+
+	// Buff management effects
+	e.registerBuffEffectFunctions(int(cfg.TypeId_StartNewBuff), e.buffEffectOptStartBuff, nil)
+	e.registerBuffEffectFunctions(int(cfg.TypeId_RemoveBuff), e.buffEffectOptRemoveBuff, nil)
+
+	// Attack and damage effects
+	e.registerBuffEffectFunctions(int(cfg.TypeId_DoAttackData), e.buffEffectOptExecuteAttackData, nil)
+	e.registerBuffEffectFunctions(int(cfg.TypeId_BuffDoHurt), e.buffEffectOptBuffDoHurt, nil)
+	e.registerBuffEffectFunctions(int(cfg.TypeId_DoAbnormalDamageFormulation), e.buffEffectOptExecuteAbnormalFormulation, nil)
+
+	// Attack data modification effects
+	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAttackDataProps), e.buffEffectOptModAttackDataProps, e.buffEffectOptModAttackDataPropsRevert)
+	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAttackDataPropsByTag), e.buffEffectOptModAttackDataPropsByTag, e.buffEffectOptModAttackDataPropsByTagRevert)
 }
 
 // registerBuffEffectFunctions registers a buff effect function
@@ -264,8 +278,19 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarProps(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when ModAvatarProps type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAvatarProps)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement property modification when ActorAttrModule is available
+	// For now, store the modification data for later use
+	_ = effectOpt.AvatarProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptModAvatarPropsForever modifies avatar properties permanently
@@ -276,8 +301,18 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when ModAvatarPropsForEver type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAvatarPropsForEver)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement permanent property modification when ActorAttrModule is available
+	_ = effectOpt.AvatarProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptModAvatarPropsRevert reverts avatar property modifications
@@ -287,8 +322,18 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsRevert(
 	buffEffect *cfg.BuffEffect,
 	revertLayer int,
 ) bool {
-	// TODO: Implement when ModAvatarProps type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAvatarProps)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement property reversion when ActorAttrModule is available
+	_ = effectOpt.AvatarProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = revertLayer
+
+	return true
 }
 
 // buffEffectOptStartBuff starts a new buff
@@ -299,8 +344,23 @@ func (e *FYBuffEffectExecution) buffEffectOptStartBuff(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when StartNewBuff type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.StartNewBuff)
+	if !ok || target == nil {
+		return false
+	}
+
+	addCount := int(effectOpt.AddCount)
+	if addCount <= 0 {
+		addCount = 1
+	}
+
+	for _, buffId := range effectOpt.BuffIds {
+		for i := 0; i < addCount; i++ {
+			target.AddBuff(int(buffId), buff.CasterActor, 0, buff.ExParam, buff.StartFromSystem)
+		}
+	}
+
+	return true
 }
 
 // buffEffectOptRemoveBuff removes buffs
@@ -311,8 +371,35 @@ func (e *FYBuffEffectExecution) buffEffectOptRemoveBuff(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when RemoveBuff type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.RemoveBuff)
+	if !ok || target == nil {
+		return false
+	}
+
+	// ByClass determines the removal method:
+	// 0 = by config ID (Values contains buff IDs to remove)
+	// 1 = by class (Values contains class IDs, first value is classID)
+	// 2 = by subclass (Values contains [classID, subClassID])
+	switch effectOpt.ByClass {
+	case 0: // By config ID
+		for _, buffId := range effectOpt.Values {
+			target.RemoveBuffByConfId(int(buffId), reason)
+		}
+	case 1: // By class
+		// Use ActorBuffModule to remove by class
+		if module, ok := target.ActorBuffModule.(*ActorBuffModule); ok {
+			for _, classId := range effectOpt.Values {
+				module.RemoveBuffByClass(int(classId), reason)
+			}
+		}
+	case 2: // By subclass
+		// Use ActorBuffModule to remove by subclass
+		if module, ok := target.ActorBuffModule.(*ActorBuffModule); ok && len(effectOpt.Values) >= 2 {
+			module.RemoveBuffBySubClass(int(effectOpt.Values[0]), int(effectOpt.Values[1]), reason)
+		}
+	}
+
+	return true
 }
 
 // buffEffectOptModAvatarStatus modifies avatar status
@@ -323,8 +410,17 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatus(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when ModAvatarStatus type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAvatarStatus)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement status modification when ActorStatusModule is available
+	_ = effectOpt.Status
+	_ = effectOpt.Opt
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptModAvatarStatusRevert reverts avatar status modifications
@@ -334,8 +430,17 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatusRevert(
 	buffEffect *cfg.BuffEffect,
 	revertLayer int,
 ) bool {
-	// TODO: Implement when ModAvatarStatus type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAvatarStatus)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement status reversion when ActorStatusModule is available
+	_ = effectOpt.Status
+	_ = effectOpt.Opt
+	_ = revertLayer
+
+	return true
 }
 
 // buffEffectOptExecuteAttackData executes attack data
@@ -346,8 +451,16 @@ func (e *FYBuffEffectExecution) buffEffectOptExecuteAttackData(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when DoAttackData type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.DoAttackData)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement attack data execution when ActorBattleModule is available
+	_ = effectOpt.AttackDataId
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptBuffDoHurt deals damage
@@ -358,8 +471,18 @@ func (e *FYBuffEffectExecution) buffEffectOptBuffDoHurt(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when BuffDoHurt type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.BuffDoHurt)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement damage dealing when damage system is available
+	_ = effectOpt.DamageSource
+	_ = effectOpt.DamageType
+	_ = effectOpt.HideDmgShow
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptExecuteAbnormalFormulation executes abnormal damage formulation
@@ -370,8 +493,18 @@ func (e *FYBuffEffectExecution) buffEffectOptExecuteAbnormalFormulation(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when DoAbnormalDamageFormulation type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.DoAbnormalDamageFormulation)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement abnormal damage formulation when damage system is available
+	// Store the formulation ID for later use in buff.EffectHurtMap
+	_ = effectOpt.FormulationId
+	_ = effectOpt.DamgeType
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptModAttackDataProps modifies attack data properties
@@ -382,8 +515,19 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataProps(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when ModAttackDataProps type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAttackDataProps)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement attack data property modification when ActorBattleModule is available
+	_ = effectOpt.SkillProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = effectOpt.AttatckDataIds
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptModAttackDataPropsRevert reverts attack data property modifications
@@ -393,8 +537,19 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsRevert(
 	buffEffect *cfg.BuffEffect,
 	revertLayer int,
 ) bool {
-	// TODO: Implement when ModAttackDataProps type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAttackDataProps)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement attack data property reversion when ActorBattleModule is available
+	_ = effectOpt.SkillProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = effectOpt.AttatckDataIds
+	_ = revertLayer
+
+	return true
 }
 
 // buffEffectOptModAttackDataPropsByTag modifies attack data properties by tag
@@ -405,8 +560,19 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsByTag(
 	exLayer int,
 	reason int,
 ) bool {
-	// TODO: Implement when ModAttackDataPropsByTag type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAttackDataPropsByTag)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement attack data property modification by tag when ActorBattleModule is available
+	_ = effectOpt.SkillProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = effectOpt.Tag
+	_ = exLayer
+
+	return true
 }
 
 // buffEffectOptModAttackDataPropsByTagRevert reverts attack data property modifications by tag
@@ -416,6 +582,17 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsByTagRevert(
 	buffEffect *cfg.BuffEffect,
 	revertLayer int,
 ) bool {
-	// TODO: Implement when ModAttackDataPropsByTag type is available
-	return false
+	effectOpt, ok := buffEffect.BuffEffectOpt.(*cfg.ModAttackDataPropsByTag)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Implement attack data property reversion by tag when ActorBattleModule is available
+	_ = effectOpt.SkillProp
+	_ = effectOpt.OPT
+	_ = effectOpt.Value
+	_ = effectOpt.Tag
+	_ = revertLayer
+
+	return true
 }

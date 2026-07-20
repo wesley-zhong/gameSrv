@@ -204,17 +204,15 @@ func (b *FYBuff) DoBuffEffect(buffEffect *cfg.TriggerEvent, exLayer int, reason 
 
 // DoFullLayerEffect executes effects when reaching max layer
 func (b *FYBuff) DoFullLayerEffect() {
-	if b.Prop == nil {
+	if b.Prop == nil || b.HolderActor == nil {
 		return
 	}
 
 	for _, buffId := range b.Prop.StartBuffOnMaxLayer {
 		if buffId == 0 {
-			return
+			continue
 		}
-		// TODO: Call AddBuff when ActorBuffModule is implemented
-		// b.HolderActor.ActorBattleModule.ActorBuffModule.AddBuff(buffId, b.HolderActor, GenProcessLongId(), 0, false)
-		_ = buffId
+		b.HolderActor.AddBuff(int(buffId), b.CasterActor, GenProcessLongId(), 0, false)
 	}
 }
 
@@ -368,8 +366,7 @@ func (b *FYBuff) DoBuffTags() {
 	}
 
 	for _, buffTag := range b.Prop.BuffTags {
-		// TODO: Call AddBuffTag when implemented
-		_ = buffTag
+		b.HolderActor.AddBuffTag(int(buffTag))
 	}
 }
 
@@ -380,8 +377,7 @@ func (b *FYBuff) RemoveBuffTags() {
 	}
 
 	for _, buffTag := range b.Prop.BuffTags {
-		// TODO: Call RemoveBuffTag when implemented
-		_ = buffTag
+		b.HolderActor.RemoveBuffTag(int(buffTag))
 	}
 }
 
@@ -463,8 +459,10 @@ func (b *FYBuff) IsFullLayer() bool {
 func (b *FYBuff) TriggerBuffDeathCounterEvent() {
 	b.CurrentRemoveCounter++
 	if b.CheckRemoveCounterOver() {
-		// TODO: Call StopAndRemoveBuff when ActorBuffModule is implemented
-		_ = b.HolderActor
+		// Remove this buff when counter exceeds limit
+		if b.HolderActor != nil {
+			b.HolderActor.RemoveBuffByConfId(b.GetCnfID(), int(cfg.BuffEndTypeEnum_BUFF_END_NONE))
+		}
 	}
 }
 

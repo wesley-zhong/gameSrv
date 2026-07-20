@@ -68,13 +68,33 @@ func (p *FYBuffConditionProcess) CheckConditionValid(target *actors.Creature, co
 
 // CheckNeedTags checks if required buff tags exist
 func (p *FYBuffConditionProcess) CheckNeedTags(target *actors.Creature, cond interface{}) bool {
-	// TODO: Implement when BuffTagsNeed type is available from cfg
+	needTags, ok := cond.(*cfg.BuffTagsNeed)
+	if !ok || target == nil {
+		return false
+	}
+
+	// Check if creature has all required tags
+	for _, tag := range needTags.BuffTags {
+		if !target.HasBuffTag(int(tag)) {
+			return false
+		}
+	}
 	return true
 }
 
 // CheckNoNeedTags checks if buff tags don't exist
 func (p *FYBuffConditionProcess) CheckNoNeedTags(target *actors.Creature, cond interface{}) bool {
-	// TODO: Implement when BuffTagsNoNeed type is available from cfg
+	noNeedTags, ok := cond.(*cfg.BuffTagsNoNeed)
+	if !ok || target == nil {
+		return false
+	}
+
+	// Check if creature doesn't have any of the forbidden tags
+	for _, tag := range noNeedTags.BuffTags {
+		if target.HasBuffTag(int(tag)) {
+			return false
+		}
+	}
 	return true
 }
 
@@ -87,8 +107,15 @@ func (p *FYBuffConditionProcess) CheckInMontage(target *actors.Creature, cond in
 
 // CheckElementType checks if element type matches
 func (p *FYBuffConditionProcess) CheckElementType(target *actors.Creature, cond interface{}) bool {
-	// TODO: Implement when ElementTypeNeed type is available from cfg
-	return false
+	needElement, ok := cond.(*cfg.ElementTypeNeed)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Check creature's element type when element system is available
+	_ = needElement.ElementTypeIDs
+
+	return true
 }
 
 // CheckSermonType checks if sermon type matches
@@ -117,7 +144,14 @@ func (p *FYBuffConditionProcess) CheckHeroPropMeetThePropRate(target *actors.Cre
 
 // CheckAbnormal checks abnormal conditions
 func (p *FYBuffConditionProcess) CheckAbnormal(target *actors.Creature, cond interface{}) bool {
-	// TODO: Implement when AbnormalNeed type is available from cfg
+	needAbnormal, ok := cond.(*cfg.AbnormalNeed)
+	if !ok || target == nil {
+		return false
+	}
+
+	// TODO: Check creature's abnormal states when abnormal system is available
+	_ = needAbnormal.AbnormalCheckIDs
+
 	return true
 }
 
@@ -138,16 +172,12 @@ func (p *FYBuffConditionProcess) initConditionFunctions() {
 
 	p.buffConditionFunctions = make(map[int]CheckBuffEffectCondition)
 
-	// Register condition check functions
-	// Type IDs should match those in the cfg package
-	// These are placeholder mappings - actual IDs need to match cfg values
-	// p.buffConditionFunctions[cfg.BuffTagsNeed.__ID__] = p.CheckNeedTags
-	// p.buffConditionFunctions[cfg.BuffTagsNoNeed.__ID__] = p.CheckNoNeedTags
-	// p.buffConditionFunctions[cfg.InMontage.__ID__] = p.CheckInMontage
-	// p.buffConditionFunctions[cfg.AbnormalNeed.__ID__] = p.CheckAbnormal
-	// p.buffConditionFunctions[cfg.ElementTypeNeed.__ID__] = p.CheckElementType
-	// p.buffConditionFunctions[cfg.SermonTypeNeed.__ID__] = p.CheckSermonType
-	// p.buffConditionFunctions[cfg.HeroHasAllTalentNeed.__ID__] = p.CheckHeroHasAllTalent
-	// p.buffConditionFunctions[cfg.MonsterTypeNeed.__ID__] = p.CheckHeroPropMeetTheProp
-	// p.buffConditionFunctions[cfg.PropMeetThePropRate.__ID__] = p.CheckHeroPropMeetThePropRate
+	// Register condition check functions with their TypeId values
+	p.buffConditionFunctions[int(cfg.TypeId_BuffTagsNeed)] = p.CheckNeedTags
+	p.buffConditionFunctions[int(cfg.TypeId_BuffTagsNoNeed)] = p.CheckNoNeedTags
+	p.buffConditionFunctions[int(cfg.TypeId_ElementTypeNeed)] = p.CheckElementType
+	p.buffConditionFunctions[int(cfg.TypeId_AbnormalNeed)] = p.CheckAbnormal
+	// InMontage requires a TypeId constant - add when cfg.InMontage type is available
+	// SermonType requires a TypeId constant - add when cfg.SermonTypeNeed type is available
+	// HeroHasAllTalent requires a TypeId constant - add when cfg.HeroHasAllTalentNeed type is available
 }

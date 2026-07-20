@@ -1,5 +1,7 @@
 package battle
 
+import "gameSrv/pkg/actors"
+
 // FYAttackData placeholder for attack data
 type FYAttackData struct {
 	AtkDataId int
@@ -73,7 +75,7 @@ type ActorPropsChangeNtf struct {
 
 // ActorSkillModule manages skill data for a creature
 type ActorSkillModule struct {
-	creature *Creature
+	creature *actors.Creature
 	atkDataProps            map[int]*FYAttackData
 	atkDataPropsChanged     map[int]map[int]int
 	atkDataPropsByTag       map[int]map[int]int
@@ -81,7 +83,7 @@ type ActorSkillModule struct {
 }
 
 // NewActorSkillModule creates a new ActorSkillModule
-func NewActorSkillModule(creature *Creature) *ActorSkillModule {
+func NewActorSkillModule(creature *actors.Creature) *ActorSkillModule {
 	return &ActorSkillModule{
 		creature:            creature,
 		atkDataProps:        make(map[int]*FYAttackData),
