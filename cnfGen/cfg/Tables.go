@@ -31,6 +31,10 @@ type Tables struct {
     TbSkillLevel *SkilldataTbSkillLevel
     TbSkillLevelValue *SkilldataTbSkillLevelValue
     TbSkillLevelValueGroup *SkilldataTbSkillLevelValueGroup
+    TbBuff *TbBuff
+    TbBuffEffect *TbBuffEffect
+    TbBuffCond *TbBuffCond
+    TbAbnormalNeedCond *TbAbnormalNeedCond
     TbInitCnf *SysTbInitCnf
     TbInstruction *SysTbInstruction
     TbCommonUnlock *SysTbCommonUnlock
@@ -160,6 +164,30 @@ func NewTables(loader JsonLoader) (*Tables, error) {
         return nil, err
     }
     if tables.TbSkillLevelValueGroup, err = NewSkilldataTbSkillLevelValueGroup(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("tbbuff") ; err != nil {
+        return nil, err
+    }
+    if tables.TbBuff, err = NewTbBuff(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("tbbuffeffect") ; err != nil {
+        return nil, err
+    }
+    if tables.TbBuffEffect, err = NewTbBuffEffect(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("tbbuffcond") ; err != nil {
+        return nil, err
+    }
+    if tables.TbBuffCond, err = NewTbBuffCond(buf) ; err != nil {
+        return nil, err
+    }
+    if buf, err = loader("tbabnormalneedcond") ; err != nil {
+        return nil, err
+    }
+    if tables.TbAbnormalNeedCond, err = NewTbAbnormalNeedCond(buf) ; err != nil {
         return nil, err
     }
     if buf, err = loader("sys_tbinitcnf") ; err != nil {
