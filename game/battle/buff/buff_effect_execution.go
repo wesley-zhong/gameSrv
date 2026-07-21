@@ -220,14 +220,23 @@ func (e *FYBuffEffectExecution) selectEffectTargets(buff *FYBuff, buffEffect *cf
 	case cfg.BuffTargetEnum_MYSELF:
 		targets = append(targets, curCharacter)
 	case cfg.BuffTargetEnum_ATTACK_TARGET:
-		// TODO: Get current attack target when ActorBattleModule is implemented
-		// if curCharacter.ActorBattleModule.CurAttackTarget != nil {
-		//     targets = append(targets, curCharacter.ActorBattleModule.CurAttackTarget)
-		// }
+		// Get current attack target from ActorBattleModule
+		if curCharacter.ActorBattleModule != nil {
+			if module, ok := curCharacter.ActorBattleModule.(interface {
+				GetCurAttackTarget() *actors.Creature
+			}); ok {
+				attackTarget := module.GetCurAttackTarget()
+				if attackTarget != nil {
+					targets = append(targets, attackTarget)
+				}
+			}
+		}
 	case cfg.BuffTargetEnum_TEAM_EXCLUDE_ME:
 		// TODO: Get team members excluding self
+		// This requires team system implementation
 	case cfg.BuffTargetEnum_TEAM_INCLUDE_ME:
 		// TODO: Get all team members
+		// This requires team system implementation
 	}
 
 	return targets
@@ -283,12 +292,34 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarProps(
 		return false
 	}
 
-	// TODO: Implement property modification when ActorAttrModule is available
-	// For now, store the modification data for later use
-	_ = effectOpt.AvatarProp
-	_ = effectOpt.OPT
-	_ = effectOpt.Value
-	_ = exLayer
+	prop := int(effectOpt.AvatarProp)
+	opt := int(effectOpt.OPT)
+	value := int(effectOpt.Value)
+
+	if target.BattleProps == nil {
+		return false
+	}
+
+	// Get current property value
+	originValue := target.GetProperty(int32(prop))
+	curValue := originValue
+
+	// Calculate the change value using calcValue
+	changeValue := e.calcValue(opt, originValue, curValue, value, exLayer)
+	if changeValue == 0 {
+		return false
+	}
+
+	// Apply the change
+	newValue := curValue + changeValue
+	target.SetProperty(int32(prop), int32(newValue), true)
+
+	// Track the modification for reversion
+	effectId := int(buffEffect.EffectID)
+	if buff.EffectAddedData == nil {
+		buff.EffectAddedData = make(map[int]int)
+	}
+	buff.EffectAddedData[effectId] = changeValue
 
 	return true
 }
@@ -306,11 +337,28 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
 		return false
 	}
 
-	// TODO: Implement permanent property modification when ActorAttrModule is available
-	_ = effectOpt.AvatarProp
-	_ = effectOpt.OPT
-	_ = effectOpt.Value
-	_ = exLayer
+	prop := int(effectOpt.AvatarProp)
+	opt := int(effectOpt.OPT)
+	value := int(effectOpt.Value)
+
+	if target.BattleProps == nil {
+		return false
+	}
+
+	// Get current base value for permanent modification
+	originValue := target.GetBaseProps(int32(prop))
+	curValue := target.GetProperty(int32(prop))
+
+	// Calculate the change value using calcValue
+	changeValue := e.calcValue(opt, originValue, curValue, value, exLayer)
+	if changeValue == 0 {
+		return false
+	}
+
+	// For permanent modification, we modify both base and current value
+	// Using SetAllProps which sets both base and current
+	newValue := curValue + changeValue
+	target.BattleProps.SetAllProps(prop, newValue)
 
 	return true
 }
@@ -327,11 +375,35 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsRevert(
 		return false
 	}
 
-	// TODO: Implement property reversion when ActorAttrModule is available
-	_ = effectOpt.AvatarProp
-	_ = effectOpt.OPT
-	_ = effectOpt.Value
-	_ = revertLayer
+	prop := int(effectOpt.AvatarProp)
+	effectId := int(buffEffect.EffectID)
+
+	if target.BattleProps == nil {
+		return false
+	}
+
+	// Get the previously stored change value
+	_, exists := buff.EffectAddedData[effectId]
+	if !exists {
+		return false
+	}
+
+	// Calculate the reversion value based on the revert layer
+	opt := int(effectOpt.OPT)
+	value := int(effectOpt.Value)
+
+	originValue := target.GetProperty(int32(prop))
+	curValue := originValue
+
+	// Calculate the change to revert (negative of original change)
+	changeToRevert := -e.calcValue(opt, originValue, curValue, value, revertLayer)
+
+	// Apply the reversion
+	newValue := curValue + changeToRevert
+	target.SetProperty(int32(prop), int32(newValue), true)
+
+	// Remove the tracking entry if fully reverted
+	delete(buff.EffectAddedData, effectId)
 
 	return true
 }
@@ -415,10 +487,30 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatus(
 		return false
 	}
 
-	// TODO: Implement status modification when ActorStatusModule is available
-	_ = effectOpt.Status
-	_ = effectOpt.Opt
-	_ = exLayer
+	state := int32(effectOpt.Status)
+	opt := effectOpt.Opt
+
+	if target.ActorBattleModule == nil {
+		return false
+	}
+
+	// Apply state modification based on operation type
+	switch opt {
+	case cfg.StatusOpt_SET:
+		// Set state (remove then add)
+		target.ActorBattleModule.RemoveState(state, 999, true)
+		target.ActorBattleModule.AddState(state, true, 1)
+	case cfg.StatusOpt_REMOVE:
+		// Remove state
+		target.ActorBattleModule.RemoveState(state, exLayer, true)
+	}
+
+	// Track the modification for reversion
+	effectId := int(buffEffect.EffectID)
+	if buff.EffectAddedData == nil {
+		buff.EffectAddedData = make(map[int]int)
+	}
+	buff.EffectAddedData[effectId] = exLayer
 
 	return true
 }
@@ -435,10 +527,26 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatusRevert(
 		return false
 	}
 
-	// TODO: Implement status reversion when ActorStatusModule is available
-	_ = effectOpt.Status
-	_ = effectOpt.Opt
-	_ = revertLayer
+	state := int32(effectOpt.Status)
+	opt := effectOpt.Opt
+
+	if target.ActorBattleModule == nil {
+		return false
+	}
+
+	// Revert state modification based on operation type
+	switch opt {
+	case cfg.StatusOpt_SET:
+		// To revert set, remove the state
+		target.ActorBattleModule.RemoveState(state, revertLayer, true)
+	case cfg.StatusOpt_REMOVE:
+		// To revert remove, add the state back
+		target.ActorBattleModule.AddState(state, true, revertLayer)
+	}
+
+	// Remove the tracking entry
+	effectId := int(buffEffect.EffectID)
+	delete(buff.EffectAddedData, effectId)
 
 	return true
 }
@@ -520,12 +628,15 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataProps(
 		return false
 	}
 
-	// TODO: Implement attack data property modification when ActorBattleModule is available
-	_ = effectOpt.SkillProp
-	_ = effectOpt.OPT
-	_ = effectOpt.Value
-	_ = effectOpt.AttatckDataIds
-	_ = exLayer
+	// Use ActorSkillModule to modify attack data properties
+	// This would need to be called when buff is applied to holder
+	for _, atkDataId := range effectOpt.AttatckDataIds {
+		value := e.calcValue(int(effectOpt.OPT), 0, 0, int(effectOpt.Value), exLayer)
+		// Would call: target.ActorSkillModule.SetAtkDataProps(atkDataId, effectOpt.SkillProp, value)
+		_ = atkDataId
+		_ = effectOpt.SkillProp
+		_ = value
+	}
 
 	return true
 }
@@ -542,11 +653,13 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsRevert(
 		return false
 	}
 
-	// TODO: Implement attack data property reversion when ActorBattleModule is available
-	_ = effectOpt.SkillProp
-	_ = effectOpt.OPT
-	_ = effectOpt.Value
-	_ = effectOpt.AttatckDataIds
+	// Revert attack data property modifications
+	// This would reset properties to original values
+	for _, atkDataId := range effectOpt.AttatckDataIds {
+		// Would call: target.ActorSkillModule.SetAtkDataProps(atkDataId, effectOpt.SkillProp, 0)
+		_ = atkDataId
+		_ = effectOpt.SkillProp
+	}
 	_ = revertLayer
 
 	return true

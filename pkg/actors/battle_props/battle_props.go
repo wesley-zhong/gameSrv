@@ -31,7 +31,7 @@ type BattlePropsOwner interface {
 
 // ActorBattleModule defines the interface for battle module operations
 type ActorBattleModule interface {
-	ReCalculateBattleProps(prop int)
+	ReCalculateBattleModules(prop int32)
 	OnPropertyChange(prop, oldValue, newValue int)
 }
 
@@ -96,7 +96,7 @@ func (bp *BattleProps) SetPropertyWithRecalculate(prop, value int, needRecalcula
 	if needRecalculateProps {
 		module := bp.Owner.GetActorBattleModule()
 		if module != nil {
-			module.ReCalculateBattleProps(prop)
+			module.ReCalculateBattleModules(int32(prop))
 		}
 	}
 	return nowValue

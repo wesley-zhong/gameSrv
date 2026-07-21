@@ -176,7 +176,17 @@ func (e *FYBuffExecution) AddBuff(
 	}
 
 	// Check if can add buff
-	// TODO: Check invincible state and health when ActorBattleModule is implemented
+	// Check if holder is in invincible state or dead
+	if holder.ActorBattleModule != nil {
+		// Check if creature is invincible
+		if holder.ActorBattleModule.HasState(cfg.ECreatureActionState_STATE_INVINCIBLE) {
+			return nil
+		}
+		// Check if creature is dead (HP <= 0)
+		if holder.ActorBattleModule.GetCurHp() <= 0 {
+			return nil
+		}
+	}
 
 	buffProp := e.getBuffProperty(templateId)
 	if buffProp == nil || int(buffProp.CnfId) != templateId {

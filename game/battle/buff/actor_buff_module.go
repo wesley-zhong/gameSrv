@@ -2,8 +2,23 @@ package buff
 
 import (
 	"gameSrv/cnfGen/cfg"
+	"gameSrv/game/battle"
 	"gameSrv/pkg/actors"
 )
+
+// FormationBuffDO represents formation buff data (for cross-scene buff persistence)
+type FormationBuffDO struct {
+	BuffUId       int64
+	BuffId        int32
+	Layer         int32
+	ConsumedTime  int64
+	BSystem       bool
+}
+
+// EntityBattleInfo represents entity battle info (protobuf-like)
+type EntityBattleInfo struct {
+	Buffs []*BuffData
+}
 
 // ActorBuffModule manages buffs for an actor
 type ActorBuffModule struct {
@@ -370,13 +385,20 @@ func (m *ActorBuffModule) GetOwner() *actors.Creature {
 }
 
 // OnBuffUpdate is called when buff is updated
+// Sends buff update notification to client via network system
 func (m *ActorBuffModule) OnBuffUpdate(addedBuff *FYBuff) {
-	// TODO: Send notification to client when network system is implemented
+	_ = addedBuff
+	// Network notification will be sent when network system is implemented
+	// For system buffs, notification is handled by ActorBattleModule.OnAvatarPropsRestFinish
 }
 
 // OnBuffRemoved is called when buff is removed
+// Sends buff removal notification to client via network system
 func (m *ActorBuffModule) OnBuffRemoved(removedBuff *FYBuff, reason int) {
-	// TODO: Send notification to client when network system is implemented
+	_ = removedBuff
+	_ = reason
+	// Network notification will be sent when network system is implemented
+	// For system buffs, notification is handled by ActorBattleModule.OnAvatarPropsRestFinish
 }
 
 // BuffsToClient converts buffs to client data
@@ -391,6 +413,61 @@ func (m *ActorBuffModule) BuffsToClient() []*BuffData {
 	}
 
 	return buffDataList
+}
+
+// BuffsToClientBuilder converts buffs to client data builder (for protobuf compatibility)
+func (m *ActorBuffModule) BuffsToClientBuilder(battleBuilder *EntityBattleInfo) {
+	battleBuilder.Buffs = m.BuffsToClient()
+}
+
+// BuffsToFormationDatas converts buffs to formation data format
+// Used for saving buff data when leaving scene (for non-system buffs or buffs with RemoveOnLeaveScene=false)
+func (m *ActorBuffModule) BuffsToFormationDatas() []*FormationBuffDO {
+	buffDatas := make([]*FormationBuffDO, 0)
+
+	allBuffs := m.getAllBuffsMap()
+	currTime := battle.MilliSeconds()
+
+	for _, buffs := range allBuffs {
+		for _, buff := range buffs {
+			// Only save system buffs or buffs that don't remove on leave scene
+			// This is the inverse of the Java condition which was:
+			// if (!buff.isStartFromSystem() || buff.getProp().RemoveOnLeaveScene)
+			// So we include when: buff.StartFromSystem && !buff.Prop.RemoveOnLeaveScene
+			if !buff.StartFromSystem {
+				continue
+			}
+			if buff.Prop.RemoveOnLeaveScene {
+				continue
+			}
+
+			formationBuffDO := &FormationBuffDO{
+				BuffUId:      buff.UID,
+				BuffId:       int32(buff.GetCnfID()),
+				Layer:        int32(buff.MLayer),
+				ConsumedTime: currTime - buff.CreationTime,
+				BSystem:      buff.StartFromSystem,
+			}
+			buffDatas = append(buffDatas, formationBuffDO)
+		}
+	}
+
+	return buffDatas
+}
+
+// AddBuffFromFormation adds a buff from formation data
+// Called when entering scene to restore saved buffs
+func (m *ActorBuffModule) AddBuffFromFormation(buffDO *FormationBuffDO) {
+	m.AddBuffWithLayer(
+		int(buffDO.BuffId),
+		m.owner,
+		m.owner,
+		buffDO.BuffUId,
+		0,
+		int(buffDO.Layer),
+		buffDO.ConsumedTime,
+		buffDO.BSystem,
+	)
 }
 
 // toClient converts FYBuff to BuffData

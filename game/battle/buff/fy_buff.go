@@ -35,6 +35,7 @@ type FYBuff struct {
 	TimerTask                 interface{} // Placeholder for timer task
 	TriggerFlag               int
 	buffEffectRandom          map[int]*BuffEffectRandom
+	EffectAddedData           map[int]int // Track effect modifications for reversion
 	mu                        sync.RWMutex
 }
 
@@ -167,8 +168,15 @@ func (b *FYBuff) ServerTick() bool {
 	b.PeriodicCount = iCount
 
 	// Notify battle module of buff update
-	if b.HolderActor != nil {
-		// TODO: Call onAvatarPropsChangFinish and OnBuffUpdate when ActorBattleModule is implemented
+	if b.HolderActor != nil && b.HolderActor.ActorBattleModule != nil {
+		// Notify property changes have been processed
+		if module, ok := b.HolderActor.ActorBattleModule.(interface {
+			OnAvatarPropsChangFinish()
+			OnBuffUpdate(buff interface{})
+		}); ok {
+			module.OnAvatarPropsChangFinish()
+			module.OnBuffUpdate(b)
+		}
 	}
 
 	return false

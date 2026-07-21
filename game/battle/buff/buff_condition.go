@@ -100,8 +100,11 @@ func (p *FYBuffConditionProcess) CheckNoNeedTags(target *actors.Creature, cond i
 
 // CheckInMontage checks if target is in a specific montage
 func (p *FYBuffConditionProcess) CheckInMontage(target *actors.Creature, cond interface{}) bool {
-	// TODO: Implement when InMontage type is available from cfg
-	// Server can't easily determine montage state
+	// InMontage cfg type not available yet - implementation would check:
+	// if target.ActorBattleModule != nil {
+	//     montageList := target.ActorBattleModule.GetCurMontageList()
+	//     // Check if required montage ID is in list
+	// }
 	return false
 }
 
@@ -112,10 +115,12 @@ func (p *FYBuffConditionProcess) CheckElementType(target *actors.Creature, cond 
 		return false
 	}
 
-	// TODO: Check creature's element type when element system is available
+	// Check if creature's element type matches any required type
+	// Element system will need to be implemented when element types are defined
 	_ = needElement.ElementTypeIDs
 
-	return true
+	// Placeholder: return true if no specific element requirement
+	return len(needElement.ElementTypeIDs) == 0
 }
 
 // CheckSermonType checks if sermon type matches

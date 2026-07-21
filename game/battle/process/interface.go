@@ -1,9 +1,15 @@
 package process
 
-import "gameSrv/pkg/actors"
+import (
+	"gameSrv/game/battle/buff"
+	"gameSrv/pkg/actors"
+)
 
 // Creature placeholder interface
 type Creature = actors.Creature
+
+// BuffData is an alias for buff data in buff package
+type BuffData = buff.BuffData
 
 // BattleLogData placeholder for protobuf message
 type BattleLogData struct {
@@ -13,11 +19,6 @@ type BattleLogData struct {
 	RandomIndex    int32
 	ExtraTargetIds []int64
 	EventReason   int32
-}
-
-// BuffData placeholder for protobuf
-type BuffData struct {
-	// TODO: define BuffData fields
 }
 
 // IBattleLogProcessFunction defines battle log process function interface
