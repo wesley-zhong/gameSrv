@@ -20,7 +20,9 @@ build:
 	cp  -r ../router/configs   ./$(BIN_ROUTER)/
 	cp  ../router/Dockerfile  ./$(BIN_ROUTER)/
 	$(GOBUILD) -o $(BIN_GAME)/$(BIN_GAME)  ../game/cmd/game.go
-	cp -r ../game/configs ./$(BIN_GAME)
+	cp -r ../game/configs ./$(BIN_GAME)/
+	cp -r ../game-data-gen ./$(BIN_GAME)/
+
 	cp ../game/Dockerfile  ./$(BIN_GAME)/
 	$(GOBUILD) -o $(BIN_GATE_WAY)/$(BIN_GATE_WAY) ../gateway/cmd/gateway.go
 	cp -r ../gateway/configs ./$(BIN_GATE_WAY)
