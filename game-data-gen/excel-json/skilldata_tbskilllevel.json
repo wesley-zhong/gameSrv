@@ -1,0 +1,7295 @@
+[
+  {
+    "ID": 10020101,
+    "SkillID": 100201,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      74413,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020102,
+    "SkillID": 100201,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      80514,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020103,
+    "SkillID": 100201,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      86616,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020104,
+    "SkillID": 100201,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      93648,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020105,
+    "SkillID": 100201,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      100680,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020106,
+    "SkillID": 100201,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      109089,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020107,
+    "SkillID": 100201,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      117498,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020108,
+    "SkillID": 100201,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      127246,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020109,
+    "SkillID": 100201,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      136994,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020110,
+    "SkillID": 100201,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020201,
+    "SkillID": 100202,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020202,
+    "SkillID": 100202,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020203,
+    "SkillID": 100202,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020204,
+    "SkillID": 100202,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020205,
+    "SkillID": 100202,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020206,
+    "SkillID": 100202,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020207,
+    "SkillID": 100202,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020208,
+    "SkillID": 100202,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020209,
+    "SkillID": 100202,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020210,
+    "SkillID": 100202,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020401,
+    "SkillID": 100204,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020402,
+    "SkillID": 100204,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020403,
+    "SkillID": 100204,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020404,
+    "SkillID": 100204,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020405,
+    "SkillID": 100204,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020406,
+    "SkillID": 100204,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020407,
+    "SkillID": 100204,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020408,
+    "SkillID": 100204,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020409,
+    "SkillID": 100204,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020410,
+    "SkillID": 100204,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020601,
+    "SkillID": 100206,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020701,
+    "SkillID": 100207,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      2500,
+      10000,
+      1500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020702,
+    "SkillID": 100207,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      2750,
+      10000,
+      1650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020703,
+    "SkillID": 100207,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      3000,
+      10000,
+      1800
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020704,
+    "SkillID": 100207,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      3250,
+      10000,
+      1950
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020705,
+    "SkillID": 100207,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      3500,
+      10000,
+      2100
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020706,
+    "SkillID": 100207,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      3750,
+      10000,
+      2250
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020707,
+    "SkillID": 100207,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      4000,
+      10000,
+      2400
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020708,
+    "SkillID": 100207,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      4250,
+      10000,
+      2550
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020709,
+    "SkillID": 100207,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      4500,
+      10000,
+      2700
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10020710,
+    "SkillID": 100207,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      5000,
+      10000,
+      3000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010101,
+    "SkillID": 100101,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      66964,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010102,
+    "SkillID": 100101,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      72455,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010103,
+    "SkillID": 100101,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      77946,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010104,
+    "SkillID": 100101,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      84274,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010105,
+    "SkillID": 100101,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      90602,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010106,
+    "SkillID": 100101,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      98169,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010107,
+    "SkillID": 100101,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      105736,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010108,
+    "SkillID": 100101,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      114508,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010109,
+    "SkillID": 100101,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      123280,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010110,
+    "SkillID": 100101,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      133660,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010201,
+    "SkillID": 100102,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      20000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010202,
+    "SkillID": 100102,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      21640
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010203,
+    "SkillID": 100102,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      23280
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010204,
+    "SkillID": 100102,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      25170
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010205,
+    "SkillID": 100102,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      27060
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010206,
+    "SkillID": 100102,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      29320
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010207,
+    "SkillID": 100102,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      31580
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010208,
+    "SkillID": 100102,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      34200
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010209,
+    "SkillID": 100102,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      36820
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010210,
+    "SkillID": 100102,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      39920
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010401,
+    "SkillID": 100104,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      66964
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010402,
+    "SkillID": 100104,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      72455
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010403,
+    "SkillID": 100104,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      77946
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010404,
+    "SkillID": 100104,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      84274
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010405,
+    "SkillID": 100104,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      90602
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010406,
+    "SkillID": 100104,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      98169
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010407,
+    "SkillID": 100104,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      105736
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010408,
+    "SkillID": 100104,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      114508
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010409,
+    "SkillID": 100104,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      123280
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010410,
+    "SkillID": 100104,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      133660
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010601,
+    "SkillID": 100106,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010701,
+    "SkillID": 100107,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      1500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010702,
+    "SkillID": 100107,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      1650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010703,
+    "SkillID": 100107,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      1800
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010704,
+    "SkillID": 100107,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      1950
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010705,
+    "SkillID": 100107,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      2100
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010706,
+    "SkillID": 100107,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      2250
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010707,
+    "SkillID": 100107,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      2400
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010708,
+    "SkillID": 100107,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      2550
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010709,
+    "SkillID": 100107,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      2700
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10010710,
+    "SkillID": 100107,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      3000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050101,
+    "SkillID": 100501,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      62101,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050102,
+    "SkillID": 100501,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      67193,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050103,
+    "SkillID": 100501,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      72285,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050104,
+    "SkillID": 100501,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      78154,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050105,
+    "SkillID": 100501,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      84022,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050106,
+    "SkillID": 100501,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      91040,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050107,
+    "SkillID": 100501,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      98057,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050108,
+    "SkillID": 100501,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      106192,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050109,
+    "SkillID": 100501,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      114327,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050110,
+    "SkillID": 100501,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      123953,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050201,
+    "SkillID": 100502,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      12000,
+      12000,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050202,
+    "SkillID": 100502,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      12984,
+      12984,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050203,
+    "SkillID": 100502,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      13968,
+      13968,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050204,
+    "SkillID": 100502,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      15102,
+      15102,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050205,
+    "SkillID": 100502,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      16236,
+      16236,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050206,
+    "SkillID": 100502,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      17592,
+      17592,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050207,
+    "SkillID": 100502,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      18948,
+      18948,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050208,
+    "SkillID": 100502,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      20520,
+      20520,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050209,
+    "SkillID": 100502,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      22092,
+      22092,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050210,
+    "SkillID": 100502,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      23952,
+      23952,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050401,
+    "SkillID": 100504,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      698625
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050402,
+    "SkillID": 100504,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      755912
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050403,
+    "SkillID": 100504,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      813199
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050404,
+    "SkillID": 100504,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      879219
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050405,
+    "SkillID": 100504,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      945239
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050406,
+    "SkillID": 100504,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      1024184
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050407,
+    "SkillID": 100504,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      1103128
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050408,
+    "SkillID": 100504,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      1194648
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050409,
+    "SkillID": 100504,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      1286168
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050410,
+    "SkillID": 100504,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      1394455
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050601,
+    "SkillID": 100506,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050701,
+    "SkillID": 100507,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      1500,
+      5000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050702,
+    "SkillID": 100507,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      1650,
+      5500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050703,
+    "SkillID": 100507,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      1800,
+      6000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050704,
+    "SkillID": 100507,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      1950,
+      6500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050705,
+    "SkillID": 100507,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      2100,
+      7000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050706,
+    "SkillID": 100507,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      2250,
+      7500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050707,
+    "SkillID": 100507,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      2400,
+      8000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050708,
+    "SkillID": 100507,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      2550,
+      8500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050709,
+    "SkillID": 100507,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      2700,
+      9000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10050710,
+    "SkillID": 100507,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      3000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070101,
+    "SkillID": 100701,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      84314,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070102,
+    "SkillID": 100701,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      91227,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070103,
+    "SkillID": 100701,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      98141,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070104,
+    "SkillID": 100701,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      106109,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070105,
+    "SkillID": 100701,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      114076,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070106,
+    "SkillID": 100701,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      123604,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070107,
+    "SkillID": 100701,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      133131,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070108,
+    "SkillID": 100701,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      144176,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070109,
+    "SkillID": 100701,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      155222,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070110,
+    "SkillID": 100701,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      168290,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070201,
+    "SkillID": 100702,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      12606
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070202,
+    "SkillID": 100702,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      13639
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070203,
+    "SkillID": 100702,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      14673
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070204,
+    "SkillID": 100702,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      15864
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070205,
+    "SkillID": 100702,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      17055
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070206,
+    "SkillID": 100702,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      18480
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070207,
+    "SkillID": 100702,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      19904
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070208,
+    "SkillID": 100702,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      21556
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070209,
+    "SkillID": 100702,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      23207
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070210,
+    "SkillID": 100702,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      25161
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070401,
+    "SkillID": 100704,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      287314
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070402,
+    "SkillID": 100704,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      310873
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070403,
+    "SkillID": 100704,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      334433
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070404,
+    "SkillID": 100704,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      361584
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070405,
+    "SkillID": 100704,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      388735
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070406,
+    "SkillID": 100704,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      421202
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070407,
+    "SkillID": 100704,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      453668
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070408,
+    "SkillID": 100704,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      491306
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070409,
+    "SkillID": 100704,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      528945
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070410,
+    "SkillID": 100704,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      573478
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070701,
+    "SkillID": 100707,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      5000,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070702,
+    "SkillID": 100707,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      5500,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070703,
+    "SkillID": 100707,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      6000,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070704,
+    "SkillID": 100707,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      6500,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070705,
+    "SkillID": 100707,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      7000,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070706,
+    "SkillID": 100707,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      7500,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070707,
+    "SkillID": 100707,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      8000,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070708,
+    "SkillID": 100707,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      8500,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070709,
+    "SkillID": 100707,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      9000,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10070710,
+    "SkillID": 100707,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      10000,
+      4000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080101,
+    "SkillID": 100801,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      39000,
+      18000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080102,
+    "SkillID": 100801,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      42198,
+      19476
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080103,
+    "SkillID": 100801,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      45396,
+      20952
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080104,
+    "SkillID": 100801,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      49081,
+      22653
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080105,
+    "SkillID": 100801,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      52767,
+      24354
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080106,
+    "SkillID": 100801,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      57174,
+      26388
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080107,
+    "SkillID": 100801,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      61581,
+      28422
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080108,
+    "SkillID": 100801,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      66690,
+      30780
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080109,
+    "SkillID": 100801,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      71799,
+      33138
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080110,
+    "SkillID": 100801,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      77844,
+      35928
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080201,
+    "SkillID": 100802,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      24107,
+      24107,
+      60268
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080202,
+    "SkillID": 100802,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      26083,
+      26083,
+      65209
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080203,
+    "SkillID": 100802,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      28060,
+      28060,
+      70151
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080204,
+    "SkillID": 100802,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      30338,
+      30338,
+      75847
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080205,
+    "SkillID": 100802,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      32616,
+      32616,
+      81542
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080206,
+    "SkillID": 100802,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      35340,
+      35340,
+      88352
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080207,
+    "SkillID": 100802,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      38064,
+      38064,
+      95163
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080208,
+    "SkillID": 100802,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      41222,
+      41222,
+      103058
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080209,
+    "SkillID": 100802,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      44380,
+      44380,
+      110953
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080210,
+    "SkillID": 100802,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      48117,
+      48117,
+      120294
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080401,
+    "SkillID": 100804,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      160714
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080402,
+    "SkillID": 100804,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      173892
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080403,
+    "SkillID": 100804,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      187071
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080404,
+    "SkillID": 100804,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      202258
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080405,
+    "SkillID": 100804,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      217446
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080406,
+    "SkillID": 100804,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      235606
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080407,
+    "SkillID": 100804,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      253767
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080408,
+    "SkillID": 100804,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      274820
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080409,
+    "SkillID": 100804,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      295874
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080410,
+    "SkillID": 100804,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      320785
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080601,
+    "SkillID": 100806,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      36000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080701,
+    "SkillID": 100807,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      1500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080702,
+    "SkillID": 100807,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      1650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080703,
+    "SkillID": 100807,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      1800
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080704,
+    "SkillID": 100807,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      1950
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080705,
+    "SkillID": 100807,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      2100
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080706,
+    "SkillID": 100807,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      2250
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080707,
+    "SkillID": 100807,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      2400
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080708,
+    "SkillID": 100807,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      2550
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080709,
+    "SkillID": 100807,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      2700
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10080710,
+    "SkillID": 100807,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      3000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140101,
+    "SkillID": 101401,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      84314,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140102,
+    "SkillID": 101401,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      91227,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140103,
+    "SkillID": 101401,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      98141,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140104,
+    "SkillID": 101401,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      106109,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140105,
+    "SkillID": 101401,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      114076,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140106,
+    "SkillID": 101401,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      123604,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140107,
+    "SkillID": 101401,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      133131,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140108,
+    "SkillID": 101401,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      144176,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140109,
+    "SkillID": 101401,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      155222,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140110,
+    "SkillID": 101401,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      168290,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140201,
+    "SkillID": 101402,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      12606
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140202,
+    "SkillID": 101402,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      13639
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140203,
+    "SkillID": 101402,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      14673
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140204,
+    "SkillID": 101402,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      15864
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140205,
+    "SkillID": 101402,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      17055
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140206,
+    "SkillID": 101402,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      18480
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140207,
+    "SkillID": 101402,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      19904
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140208,
+    "SkillID": 101402,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      21556
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140209,
+    "SkillID": 101402,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      23207
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140210,
+    "SkillID": 101402,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      25161
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140401,
+    "SkillID": 101404,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      287314
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140402,
+    "SkillID": 101404,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      310873
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140403,
+    "SkillID": 101404,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      334433
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140404,
+    "SkillID": 101404,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      361584
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140405,
+    "SkillID": 101404,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      388735
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140406,
+    "SkillID": 101404,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      421202
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140407,
+    "SkillID": 101404,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      453668
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140408,
+    "SkillID": 101404,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      491306
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140409,
+    "SkillID": 101404,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      528945
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140410,
+    "SkillID": 101404,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      573478
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140701,
+    "SkillID": 101407,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      2500,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140702,
+    "SkillID": 101407,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      2750,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140703,
+    "SkillID": 101407,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      3000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140704,
+    "SkillID": 101407,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      3250,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140705,
+    "SkillID": 101407,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      3500,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140706,
+    "SkillID": 101407,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      3750,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140707,
+    "SkillID": 101407,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      4000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140708,
+    "SkillID": 101407,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      4250,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140709,
+    "SkillID": 101407,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      4500,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10140710,
+    "SkillID": 101407,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      5000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230101,
+    "SkillID": 102301,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      84314,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230102,
+    "SkillID": 102301,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      91227,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230103,
+    "SkillID": 102301,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      98141,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230104,
+    "SkillID": 102301,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      106109,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230105,
+    "SkillID": 102301,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      114076,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230106,
+    "SkillID": 102301,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      123604,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230107,
+    "SkillID": 102301,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      133131,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230108,
+    "SkillID": 102301,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      144176,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230109,
+    "SkillID": 102301,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      155222,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230110,
+    "SkillID": 102301,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      168290,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230201,
+    "SkillID": 102302,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      12606
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230202,
+    "SkillID": 102302,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      13639
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230203,
+    "SkillID": 102302,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      14673
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230204,
+    "SkillID": 102302,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      15864
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230205,
+    "SkillID": 102302,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      17055
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230206,
+    "SkillID": 102302,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      18480
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230207,
+    "SkillID": 102302,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      19904
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230208,
+    "SkillID": 102302,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      21556
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230209,
+    "SkillID": 102302,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      23207
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230210,
+    "SkillID": 102302,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      25161
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230401,
+    "SkillID": 102304,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      287314
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230402,
+    "SkillID": 102304,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      310873
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230403,
+    "SkillID": 102304,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      334433
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230404,
+    "SkillID": 102304,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      361584
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230405,
+    "SkillID": 102304,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      388735
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230406,
+    "SkillID": 102304,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      421202
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230407,
+    "SkillID": 102304,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      453668
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230408,
+    "SkillID": 102304,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      491306
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230409,
+    "SkillID": 102304,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      528945
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230410,
+    "SkillID": 102304,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      573478
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230701,
+    "SkillID": 102307,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      250,
+      600,
+      1000,
+      1500,
+      500,
+      1250,
+      2250,
+      4000,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230702,
+    "SkillID": 102307,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      275,
+      660,
+      1100,
+      1650,
+      550,
+      1375,
+      2475,
+      4400,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230703,
+    "SkillID": 102307,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      300,
+      720,
+      1200,
+      1800,
+      600,
+      1500,
+      2700,
+      4800,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230704,
+    "SkillID": 102307,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      325,
+      780,
+      1300,
+      1950,
+      650,
+      1625,
+      2925,
+      5200,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230705,
+    "SkillID": 102307,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      350,
+      840,
+      1400,
+      2100,
+      700,
+      1750,
+      3150,
+      5600,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230706,
+    "SkillID": 102307,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      375,
+      900,
+      1500,
+      2250,
+      750,
+      1875,
+      3375,
+      6000,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230707,
+    "SkillID": 102307,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      400,
+      960,
+      1600,
+      2400,
+      800,
+      2000,
+      3600,
+      6400,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230708,
+    "SkillID": 102307,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      425,
+      1020,
+      1700,
+      2550,
+      850,
+      2125,
+      3825,
+      6800,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230709,
+    "SkillID": 102307,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      450,
+      1080,
+      1800,
+      2700,
+      900,
+      2250,
+      4050,
+      7200,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10230710,
+    "SkillID": 102307,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      500,
+      1200,
+      2000,
+      3000,
+      1000,
+      2500,
+      4500,
+      8000,
+      2000,
+      4000,
+      6000,
+      10000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240101,
+    "SkillID": 102401,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      84314,
+      15000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240102,
+    "SkillID": 102401,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      91227,
+      16230
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240103,
+    "SkillID": 102401,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      98141,
+      17460
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240104,
+    "SkillID": 102401,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      106109,
+      18877
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240105,
+    "SkillID": 102401,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      114076,
+      20295
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240106,
+    "SkillID": 102401,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      123604,
+      21990
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240107,
+    "SkillID": 102401,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      133131,
+      23685
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240108,
+    "SkillID": 102401,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      144176,
+      25650
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240109,
+    "SkillID": 102401,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      155222,
+      27615
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240110,
+    "SkillID": 102401,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      168290,
+      29940
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240201,
+    "SkillID": 102402,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      12606
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240202,
+    "SkillID": 102402,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      13639
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240203,
+    "SkillID": 102402,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      14673
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240204,
+    "SkillID": 102402,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      15864
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240205,
+    "SkillID": 102402,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      17055
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240206,
+    "SkillID": 102402,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      18480
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240207,
+    "SkillID": 102402,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      19904
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240208,
+    "SkillID": 102402,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      21556
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240209,
+    "SkillID": 102402,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      23207
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240210,
+    "SkillID": 102402,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      25161
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240401,
+    "SkillID": 102404,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      287314
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240402,
+    "SkillID": 102404,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      310873
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240403,
+    "SkillID": 102404,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      334433
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240404,
+    "SkillID": 102404,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      361584
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240405,
+    "SkillID": 102404,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      388735
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240406,
+    "SkillID": 102404,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      421202
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240407,
+    "SkillID": 102404,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      453668
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240408,
+    "SkillID": 102404,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      491306
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240409,
+    "SkillID": 102404,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      528945
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240410,
+    "SkillID": 102404,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      573478
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240701,
+    "SkillID": 102407,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      1250
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240702,
+    "SkillID": 102407,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      1375
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240703,
+    "SkillID": 102407,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      1500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240704,
+    "SkillID": 102407,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      1625
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240705,
+    "SkillID": 102407,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      1750
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240706,
+    "SkillID": 102407,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      1875
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240707,
+    "SkillID": 102407,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      2000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240708,
+    "SkillID": 102407,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      2125
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240709,
+    "SkillID": 102407,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      2250
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 10240710,
+    "SkillID": 102407,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      2500
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000101,
+    "SkillID": 2000001,
+    "Level": 1,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 10000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 10000
+      }
+    ],
+    "PercentParameter": [
+      40000
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000102,
+    "SkillID": 2000001,
+    "Level": 2,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 11111
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 11111
+      }
+    ],
+    "PercentParameter": [
+      43280
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000103,
+    "SkillID": 2000001,
+    "Level": 3,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 12222
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 12222
+      }
+    ],
+    "PercentParameter": [
+      46560
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000104,
+    "SkillID": 2000001,
+    "Level": 4,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 13333
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 13333
+      }
+    ],
+    "PercentParameter": [
+      50340
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000105,
+    "SkillID": 2000001,
+    "Level": 5,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 14444
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 14444
+      }
+    ],
+    "PercentParameter": [
+      54120
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000106,
+    "SkillID": 2000001,
+    "Level": 6,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 15555
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 15555
+      }
+    ],
+    "PercentParameter": [
+      58640
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000107,
+    "SkillID": 2000001,
+    "Level": 7,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 16666
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 16666
+      }
+    ],
+    "PercentParameter": [
+      63160
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000108,
+    "SkillID": 2000001,
+    "Level": 8,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 17777
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 17777
+      }
+    ],
+    "PercentParameter": [
+      68400
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000109,
+    "SkillID": 2000001,
+    "Level": 9,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 18888
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 18888
+      }
+    ],
+    "PercentParameter": [
+      73640
+    ],
+    "FixedParameter": []
+  },
+  {
+    "ID": 200000110,
+    "SkillID": 2000001,
+    "Level": 10,
+    "UpSkillProps": [
+      {
+        "skillProp": 2,
+        "opt": 2,
+        "count": 20000
+      },
+      {
+        "skillProp": 28,
+        "opt": 2,
+        "count": 20000
+      }
+    ],
+    "PercentParameter": [
+      79840
+    ],
+    "FixedParameter": []
+  }
+]

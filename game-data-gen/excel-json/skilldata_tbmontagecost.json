@@ -1,0 +1,552 @@
+[
+  {
+    "ID": 100000,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 1,
+    "ExSkillEnergyCostRatio": 10000,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100001,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 1,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 1000,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100002,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 1,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 1000,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100003,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 1,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 10000,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100004,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 1,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 10000,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100005,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 1,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 10000,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100501,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 1,
+    "SP1CostRatio": 10000,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 100502,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": -10000,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 101401,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 1,
+    "SPCostRatio": 10000,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 101402,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": -5000,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 102401,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 3000,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 102402,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 3000,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 0,
+    "AbnormalCostProp": [
+      0
+    ],
+    "AbnormalCostValue": 0,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 200000,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 1,
+    "AbnormalCostProp": [
+      131,
+      130,
+      133
+    ],
+    "AbnormalCostValue": 1,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 200001,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 2,
+    "AbnormalCostProp": [
+      131
+    ],
+    "AbnormalCostValue": 4,
+    "AbnormalCostConversion": [
+      0
+    ],
+    "AbnormalCostConversionValue": [
+      0
+    ]
+  },
+  {
+    "ID": 200002,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 1,
+    "AbnormalCostProp": [
+      131,
+      130,
+      133
+    ],
+    "AbnormalCostValue": 1,
+    "AbnormalCostConversion": [
+      31
+    ],
+    "AbnormalCostConversionValue": [
+      500
+    ]
+  },
+  {
+    "ID": 200003,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 2,
+    "AbnormalCostProp": [
+      131
+    ],
+    "AbnormalCostValue": 4,
+    "AbnormalCostConversion": [
+      31
+    ],
+    "AbnormalCostConversionValue": [
+      500
+    ]
+  },
+  {
+    "ID": 200004,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 1,
+    "AbnormalCostProp": [
+      131,
+      130,
+      133
+    ],
+    "AbnormalCostValue": 1,
+    "AbnormalCostConversion": [
+      31,
+      65
+    ],
+    "AbnormalCostConversionValue": [
+      500,
+      1000
+    ]
+  },
+  {
+    "ID": 200005,
+    "Formulation": 1,
+    "StaminaCostValue": 0,
+    "StaminaCostRatioType": 0,
+    "StaminaCostRatio": 0,
+    "HpCostValue": 0,
+    "HpCostRatioType": 0,
+    "HpCostRatio": 0,
+    "ExSkillEnergyCostValue": 0,
+    "ExSkillEnergyCostRatioType": 0,
+    "ExSkillEnergyCostRatio": 0,
+    "SPCostValue": 0,
+    "SPCostRatioType": 0,
+    "SPCostRatio": 0,
+    "SP1CostValue": 0,
+    "SP1CostRatioType": 0,
+    "SP1CostRatio": 0,
+    "AbnormalCostType": 1,
+    "AbnormalCostProp": [
+      131
+    ],
+    "AbnormalCostValue": 4,
+    "AbnormalCostConversion": [
+      31,
+      29
+    ],
+    "AbnormalCostConversionValue": [
+      1000,
+      1000
+    ]
+  }
+]

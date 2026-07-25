@@ -1,0 +1,7580 @@
+[
+  {
+    "ID": 100111,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.AssistAttack1",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_CoopSkill",
+    "Combos": [],
+    "MontageActions": [
+      100111001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100109,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_DodgeSkill",
+    "Combos": [
+      1001092,
+      1001091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100115,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      100115001,
+      100115002,
+      100115003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100101,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      100101001,
+      100101002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100107,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_Parry",
+    "Combos": [],
+    "MontageActions": [
+      901102001,
+      100104001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100110,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100102,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100104,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      901102001,
+      100104001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100106,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100105,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100108,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      100108001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 206401,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206402,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_Skill01",
+    "Combos": [
+      2064021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206403,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_Skill02",
+    "Combos": [],
+    "MontageActions": [
+      206403001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206404,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_Skill03",
+    "Combos": [],
+    "MontageActions": [
+      206404001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206405,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_Skill04",
+    "Combos": [
+      2064051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206406,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.Grab",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_Skill05",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206407,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206408,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206409,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206410,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206411,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300101,
+    "ConfigID": 30000001,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000001/Ability/GA_30000001_Fire",
+    "Combos": [],
+    "MontageActions": [
+      300101001,
+      300101002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300201,
+    "ConfigID": 30000002,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000002/Ability/GA_30000002_Lighting",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300304,
+    "ConfigID": 30000003,
+    "AbilityTags": "Action.Skill.LevelMechanism.Active",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000003/Ability/GA_30000003_born",
+    "Combos": [],
+    "MontageActions": [
+      300304001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300303,
+    "ConfigID": 30000003,
+    "AbilityTags": "Action.Skill.LevelMechanism.Destroy",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000003/Ability/GA_30000003_die",
+    "Combos": [],
+    "MontageActions": [
+      300303001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300302,
+    "ConfigID": 30000003,
+    "AbilityTags": "Action.Skill.LevelMechanism.WaitAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000003/Ability/GA_30000003_idle",
+    "Combos": [],
+    "MontageActions": [
+      300302001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300301,
+    "ConfigID": 30000003,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000003/Ability/GA_30000003_laser",
+    "Combos": [],
+    "MontageActions": [
+      300301001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300404,
+    "ConfigID": 30000004,
+    "AbilityTags": "Action.Skill.LevelMechanism.Active",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000004/Ability/GA_30000004_born",
+    "Combos": [],
+    "MontageActions": [
+      300404001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300403,
+    "ConfigID": 30000004,
+    "AbilityTags": "Action.Skill.LevelMechanism.Destroy",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000004/Ability/GA_30000004_die",
+    "Combos": [],
+    "MontageActions": [
+      300403001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300402,
+    "ConfigID": 30000004,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000004/Ability/GA_30000004_idle",
+    "Combos": [],
+    "MontageActions": [
+      300402001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300401,
+    "ConfigID": 30000004,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000004/Ability/GA_30000004_laser",
+    "Combos": [],
+    "MontageActions": [
+      300401001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300601,
+    "ConfigID": 30000005,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000005/Ability/GA_30000005_Period1",
+    "Combos": [],
+    "MontageActions": [
+      300601001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300701,
+    "ConfigID": 30000006,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000006/Ability/GA_30000006_Attack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300702,
+    "ConfigID": 30000006,
+    "AbilityTags": "",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000006/Ability/GA_30000006_Attack_Item",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300703,
+    "ConfigID": 30000006,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000006/Ability/GA_30000006_LostTarget",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300704,
+    "ConfigID": 30000006,
+    "AbilityTags": "Action.Skill.LevelMechanism.WaitAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000006/Ability/GA_30000006_WaitAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100116,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.TakeGrab",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_TakeGrab",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206412,
+    "ConfigID": 200220011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/GA_200220011_CoreSkill03",
+    "Combos": [],
+    "MontageActions": [
+      206412001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206510,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_Attack01",
+    "Combos": [],
+    "MontageActions": [
+      206510001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900705,
+    "ConfigID": 0,
+    "AbilityTags": "Action.Skill.LevelMechanism.WaitAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/GA_WaitAttack_LevelMechanismCommon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206509,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_Attack04",
+    "Combos": [],
+    "MontageActions": [
+      206509001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206608,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_Attack01",
+    "Combos": [
+      2066081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206508,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_Attack06",
+    "Combos": [],
+    "MontageActions": [
+      206508001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206607,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206507,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_Attack07",
+    "Combos": [],
+    "MontageActions": [
+      206507001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206606,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_Skill03",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206506,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206605,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206505,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206604,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206504,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206603,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206503,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206602,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206502,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206601,
+    "ConfigID": 200220031,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/GA_200220031_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206501,
+    "ConfigID": 200220021,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200220021/GAS/GA_200220021_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900704,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill9",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill09_Test",
+    "Combos": [
+      9007041,
+      9007042
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900603,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill8",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill08_Test",
+    "Combos": [],
+    "MontageActions": [
+      900603001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900502,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill07_Test",
+    "Combos": [],
+    "MontageActions": [
+      900502001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900402,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill05_Test",
+    "Combos": [
+      9004021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900303,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill03-2_Test",
+    "Combos": [],
+    "MontageActions": [
+      900303001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900202,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill02_Test",
+    "Combos": [],
+    "MontageActions": [
+      900202001,
+      900202002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900101,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/GA_200110011_Normalskill01_Test",
+    "Combos": [
+      9001011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 901101,
+    "ConfigID": 90010,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90010/GAS/GA_90010_skill01",
+    "Combos": [],
+    "MontageActions": [
+      901101001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 901001,
+    "ConfigID": 90009,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90009/GAS/GA_90009_skill02",
+    "Combos": [],
+    "MontageActions": [
+      901001001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 901002,
+    "ConfigID": 90009,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90009/GAS/GA_90009_skill01",
+    "Combos": [
+      9010021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900901,
+    "ConfigID": 90008,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90008/GAS/GA_90008_skill02",
+    "Combos": [],
+    "MontageActions": [
+      900901001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900902,
+    "ConfigID": 90008,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90008/GAS/GA_90008_skill01",
+    "Combos": [],
+    "MontageActions": [
+      900902001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900801,
+    "ConfigID": 90007,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90007/GAS/GA_90007_skill02",
+    "Combos": [],
+    "MontageActions": [
+      900801001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900802,
+    "ConfigID": 90007,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90007/GAS/GA_90007_skill01",
+    "Combos": [],
+    "MontageActions": [
+      900802001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900701,
+    "ConfigID": 90006,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90006/GAS/GA_90006_skill03",
+    "Combos": [],
+    "MontageActions": [
+      900701001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900702,
+    "ConfigID": 90006,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90006/GAS/GA_90006_skill02",
+    "Combos": [],
+    "MontageActions": [
+      900702001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900703,
+    "ConfigID": 90006,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90006/GAS/GA_90006_skill01",
+    "Combos": [],
+    "MontageActions": [
+      900703001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900601,
+    "ConfigID": 90005,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90005/GAS/GA_90005_skill02",
+    "Combos": [],
+    "MontageActions": [
+      900601001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900602,
+    "ConfigID": 90005,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90005/GAS/GA_90005_skill01",
+    "Combos": [
+      9006021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900501,
+    "ConfigID": 90004,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90004/GAS/GA_90004_skill01",
+    "Combos": [],
+    "MontageActions": [
+      900501001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900401,
+    "ConfigID": 90003,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90003/GAS/GA_90003_skill01",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900301,
+    "ConfigID": 90002,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90002/GAS/GA_90002_skill01",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900302,
+    "ConfigID": 90002,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90002/GAS/GA_90002_born",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      1201903
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 900201,
+    "ConfigID": 90001,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90001/GAS/GA_90001_skill01",
+    "Combos": [],
+    "MontageActions": [
+      900201001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201501,
+    "ConfigID": 200131002,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/GA_200131002_NormalSkill5_DodgeForward",
+    "Combos": [],
+    "MontageActions": [
+      201501001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201502,
+    "ConfigID": 200131002,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/GA_200131002_NormalSkill4_Dodge",
+    "Combos": [],
+    "MontageActions": [
+      201502001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201503,
+    "ConfigID": 200131002,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/GA_200131002_NormalSkill3_Skill2",
+    "Combos": [],
+    "MontageActions": [
+      201503001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201504,
+    "ConfigID": 200131002,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/GA_200131002_NormalSkill2_Skill1",
+    "Combos": [
+      2015041
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201505,
+    "ConfigID": 200131002,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/GA_200131002_NormalSkill1_Attack",
+    "Combos": [
+      2015051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201701,
+    "ConfigID": 200130041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/GA_200130041_SpAttack2",
+    "Combos": [
+      2017011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201702,
+    "ConfigID": 200130041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/GA_200130041_SpAttack1",
+    "Combos": [
+      2017021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201703,
+    "ConfigID": 200130041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/GA_200130041_NormalAttack1",
+    "Combos": [
+      2017031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201704,
+    "ConfigID": 200130041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/GA_200130041_FDodge",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201705,
+    "ConfigID": 200130041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/GA_200130041_Dodge",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202501,
+    "ConfigID": 299920011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/299920011/Ability/GA_299920011_Skill03",
+    "Combos": [],
+    "MontageActions": [
+      202501001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202502,
+    "ConfigID": 299920011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/299920011/Ability/GA_299920011_Skill02",
+    "Combos": [
+      2025021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202503,
+    "ConfigID": 299920011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/299920011/Ability/GA_299920011_Skill01",
+    "Combos": [],
+    "MontageActions": [
+      202503001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202504,
+    "ConfigID": 299920011,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/299920011/Ability/GA_299920011_Performance01",
+    "Combos": [],
+    "MontageActions": [
+      202504001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205101,
+    "ConfigID": 210000023,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000023/GAS/GA_210000023_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      203903001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204501,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203901,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203902,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204502,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.Performance2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_Performance02",
+    "Combos": [],
+    "MontageActions": [
+      204305001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203903,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      203903002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203904,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_Performance",
+    "Combos": [],
+    "MontageActions": [
+      203402001,
+      203402002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203905,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_NormalSkill05",
+    "Combos": [],
+    "MontageActions": [
+      203905001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203906,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_NormalSkill04",
+    "Combos": [],
+    "MontageActions": [
+      203906001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203907,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_NormalSkill03R",
+    "Combos": [],
+    "MontageActions": [
+      203907001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203908,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_NormalSkill03L",
+    "Combos": [],
+    "MontageActions": [
+      203908001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203909,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      203909001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203910,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_NormalSkill01",
+    "Combos": [],
+    "MontageActions": [
+      203910001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203911,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_EnterWeak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203912,
+    "ConfigID": 210000021,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/210000021/GAS/GA_210000021_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      203912001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205709,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205708,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205707,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205706,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205702,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205705,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_NormalSkill03",
+    "Combos": [],
+    "MontageActions": [
+      205705001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205703,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      205703001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205704,
+    "ConfigID": 200200062,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200062/GAS/GA_200200062_NormalSkill01",
+    "Combos": [],
+    "MontageActions": [
+      205704001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205609,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205608,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205607,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205606,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205602,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205605,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_NormalSkill03",
+    "Combos": [],
+    "MontageActions": [
+      205605001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205604,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      205604001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205603,
+    "ConfigID": 200200061,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200061/GAS/GA_200200061_NormalSkill01",
+    "Combos": [],
+    "MontageActions": [
+      205603001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205803,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205804,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205805,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205806,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205810,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205909,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_NormalSkill03",
+    "Combos": [],
+    "MontageActions": [
+      205909001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205908,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      205908001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205907,
+    "ConfigID": 200200052,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200052/GAS/GA_200200052_NormalSkill01",
+    "Combos": [],
+    "MontageActions": [
+      205907001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205503,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205504,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205505,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205506,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205507,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205508,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_NormalSkill04",
+    "Combos": [],
+    "MontageActions": [
+      205508001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205509,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_NormalSkill03",
+    "Combos": [],
+    "MontageActions": [
+      205509001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205510,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      205510001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205511,
+    "ConfigID": 200200051,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/GA_200200051_NormalSkill01",
+    "Combos": [
+      2055111
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203001,
+    "ConfigID": 200100091,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100091/GAS/GA_200100091_NormalSkill01",
+    "Combos": [],
+    "MontageActions": [
+      203001001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202901,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202505,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202506,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202507,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_Performance01_EnterBattle1",
+    "Combos": [],
+    "MontageActions": [
+      202507001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202508,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_EnterWeak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202201,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202418,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202205,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202202,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_Skill2",
+    "Combos": [],
+    "MontageActions": [
+      202202001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202203,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_Skill",
+    "Combos": [],
+    "MontageActions": [
+      202203001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202206,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202419,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_Attack02",
+    "Combos": [],
+    "MontageActions": [
+      202201001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202204,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_Attack",
+    "Combos": [],
+    "MontageActions": [
+      202201001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202208,
+    "ConfigID": 200100051,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100051/GAS/GA_200100051_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      202208001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202101,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202207,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202106,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202107,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202108,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      202108001,
+      202108002,
+      202108003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202102,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_NormalSkill04",
+    "Combos": [
+      2021021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202103,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_NormalSkill03",
+    "Combos": [],
+    "MontageActions": [
+      202103001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202104,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      202104001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202105,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_NormalSkill01",
+    "Combos": [
+      2021011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202109,
+    "ConfigID": 200100041,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/GA_200100041_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      202109001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205802,
+    "ConfigID": 200100026,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100026/Ability/GA_200100026_attack",
+    "Combos": [],
+    "MontageActions": [
+      205802001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201601,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201604,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201602,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201603,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201302,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_Skill02",
+    "Combos": [
+      2013021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201303,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_Skill01",
+    "Combos": [
+      2013031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201304,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      201304001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201305,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_AttackCombo",
+    "Combos": [
+      2013011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201605,
+    "ConfigID": 200100022,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/GA_200100022_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      201605001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201506,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201511,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201507,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201508,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201202,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_skill03_far",
+    "Combos": [],
+    "MontageActions": [
+      201202001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201512,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_skill02",
+    "Combos": [],
+    "MontageActions": [
+      201202001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201203,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_skill01",
+    "Combos": [],
+    "MontageActions": [
+      201203001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201205,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      201205001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201509,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_attack02_far",
+    "Combos": [],
+    "MontageActions": [
+      201201001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201204,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_attack",
+    "Combos": [],
+    "MontageActions": [
+      201201001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201510,
+    "ConfigID": 200100021,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100021/Ability/GA_200100021_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      201510001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 200401,
+    "ConfigID": 200100019,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100019/Ability/GA_200100019_skill02",
+    "Combos": [],
+    "MontageActions": [
+      200401001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201401,
+    "ConfigID": 200100019,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100019/Ability/GA_200100019_skill01",
+    "Combos": [],
+    "MontageActions": [
+      201401001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201206,
+    "ConfigID": 200100019,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100019/Ability/GA_200100019_Collider_Test",
+    "Combos": [],
+    "MontageActions": [
+      201206001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202701,
+    "ConfigID": 200100018,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100018/Ability/GA_200100018_bugtest2",
+    "Combos": [],
+    "MontageActions": [
+      202701101
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202702,
+    "ConfigID": 200100018,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100018/Ability/GA_200100018_bugtest",
+    "Combos": [],
+    "MontageActions": [
+      202701001,
+      202701101,
+      202701102
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205701,
+    "ConfigID": 200100015,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100015/GAS/GA_200100015_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      205701001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204701,
+    "ConfigID": 200100015,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100015/GAS/GA_200100015_attack",
+    "Combos": [
+      2059021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205601,
+    "ConfigID": 200100014,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100014/GAS/GA_200100014_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      205601001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201101,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201201,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201105,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      -1
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201207,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201102,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_skill05_far",
+    "Combos": [],
+    "MontageActions": [
+      201102001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201103,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_skill03",
+    "Combos": [],
+    "MontageActions": [
+      201103001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201104,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_skill01",
+    "Combos": [
+      2011041
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201107,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      201107001,
+      201107002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201108,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill9",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_Coreskill09_Test",
+    "Combos": [],
+    "MontageActions": [
+      201108001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201106,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_attack",
+    "Combos": [
+      2011011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201208,
+    "ConfigID": 200100011,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/GA_200100011_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      201002001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204401,
+    "ConfigID": 200030021,
+    "AbilityTags": "Action.Skill.Monster.Performance3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200030021/GAS/GA_200030021_Performance03",
+    "Combos": [],
+    "MontageActions": [
+      204401001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204402,
+    "ConfigID": 200030021,
+    "AbilityTags": "Action.Skill.Monster.Performance2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200030021/GAS/GA_200030021_Performance02_Escape",
+    "Combos": [],
+    "MontageActions": [
+      204402001,
+      204402002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204403,
+    "ConfigID": 200030021,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200030021/GAS/GA_200030021_Performance01_EnterBattle",
+    "Combos": [
+      2044031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205401,
+    "ConfigID": 200000061,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200000061/GAS/GA_200000061_Attack01",
+    "Combos": [],
+    "MontageActions": [
+      205401001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204404,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010012/GAS/GA_210010011_PowerSkill02",
+    "Combos": [],
+    "MontageActions": [
+      204306001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205502,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010012/GAS/GA_210010011_PowerSkill01",
+    "Combos": [],
+    "MontageActions": [
+      205502001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205501,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204301,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204302,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204303,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204305,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.Performance2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_Performance02",
+    "Combos": [],
+    "MontageActions": [
+      204305002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204304,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204306,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_NormalSkill05",
+    "Combos": [],
+    "MontageActions": [
+      204306001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204307,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_NormalSkill04",
+    "Combos": [],
+    "MontageActions": [
+      204307001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204308,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_NormalSkill03R",
+    "Combos": [],
+    "MontageActions": [
+      204308001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204309,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_NormalSkill03L",
+    "Combos": [],
+    "MontageActions": [
+      204309001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204310,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_NormalSkill02",
+    "Combos": [],
+    "MontageActions": [
+      204310001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204311,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_NormalSkill01",
+    "Combos": [],
+    "MontageActions": [
+      204311001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204312,
+    "ConfigID": 210010011,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/210010011/GAS/GA_210010011_EnterWeak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206001,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206002,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206003,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206004,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206005,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205906,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_Skill03",
+    "Combos": [
+      2059061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205905,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_Skill01",
+    "Combos": [],
+    "MontageActions": [
+      205905001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 206006,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205904,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_Attack03",
+    "Combos": [],
+    "MontageActions": [
+      205904001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205903,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_Attack02",
+    "Combos": [],
+    "MontageActions": [
+      205903001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205902,
+    "ConfigID": 200210031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/GA_200210031_Attack01",
+    "Combos": [],
+    "MontageActions": [
+      205902001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203621,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203207,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203208,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203209,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202807,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill07R",
+    "Combos": [],
+    "MontageActions": [
+      202807001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202808,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill07L",
+    "Combos": [],
+    "MontageActions": [
+      202808001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202809,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill07F",
+    "Combos": [],
+    "MontageActions": [
+      202809001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202801,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill07",
+    "Combos": [],
+    "MontageActions": [
+      202801001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202802,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill04",
+    "Combos": [],
+    "MontageActions": [
+      202802001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202803,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill03",
+    "Combos": [],
+    "MontageActions": [
+      202803001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202806,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill02_2",
+    "Combos": [],
+    "MontageActions": [
+      202806001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202804,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill02",
+    "Combos": [],
+    "MontageActions": [
+      202804001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202805,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_skill01",
+    "Combos": [],
+    "MontageActions": [
+      202805001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203210,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      203210001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203211,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_Dodge",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203212,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      203212001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205901,
+    "ConfigID": 200100066,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100066/GAS/GA_200100066_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      99004
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205801,
+    "ConfigID": 200100065,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100065/GAS/GA_200100065_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      99004
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202409,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202601,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202410,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203401,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202411,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202412,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_Skill03",
+    "Combos": [],
+    "MontageActions": [
+      203403001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202413,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_Skill02",
+    "Combos": [
+      2024131
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202414,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_Skill01",
+    "Combos": [],
+    "MontageActions": [
+      203404001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202415,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_EnterBattle_Performance",
+    "Combos": [],
+    "MontageActions": [
+      202415001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202416,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_Attack01",
+    "Combos": [
+      2024161
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202417,
+    "ConfigID": 200100062,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/GA_200100062_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      202417001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202301,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202512,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202306,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202302,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202307,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202303,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_Skill03",
+    "Combos": [],
+    "MontageActions": [
+      202303001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202304,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_Skill02",
+    "Combos": [],
+    "MontageActions": [
+      202304001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202305,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_Skill01",
+    "Combos": [
+      2023051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202309,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      202307001,
+      202309001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202308,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_NormalAttack1",
+    "Combos": [
+      2023081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202310,
+    "ConfigID": 200100061,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/GA_200100061_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      202310001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202002,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_test",
+    "Combos": [],
+    "MontageActions": [
+      202002001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202001,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201913,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201914,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201915,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201916,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [
+      201916001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201917,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_NormalSkill05",
+    "Combos": [],
+    "MontageActions": [
+      201917001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202003,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_NormalSkill04",
+    "Combos": [
+      2020031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202004,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_NormalSkill03",
+    "Combos": [
+      2020041
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202005,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_NormalSkill02",
+    "Combos": [
+      2020051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202006,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_NormalSkill01",
+    "Combos": [
+      2020061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202007,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_NormalAttack",
+    "Combos": [
+      2020011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201918,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      201918001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203701,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204313,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203702,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203703,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204314,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203706,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill8",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill08",
+    "Combos": [],
+    "MontageActions": [
+      203706001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203707,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill07",
+    "Combos": [],
+    "MontageActions": [
+      203707001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203708,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill03_R",
+    "Combos": [],
+    "MontageActions": [
+      203708001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203709,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill03_L",
+    "Combos": [],
+    "MontageActions": [
+      203709001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203710,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill03_F",
+    "Combos": [],
+    "MontageActions": [
+      203710001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203711,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill03_B",
+    "Combos": [],
+    "MontageActions": [
+      203711001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203712,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill02",
+    "Combos": [],
+    "MontageActions": [
+      203712001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203713,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Skill01",
+    "Combos": [
+      2037131
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203305,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill07",
+    "Combos": [],
+    "MontageActions": [
+      203305001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203714,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill06",
+    "Combos": [],
+    "MontageActions": [
+      203714001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203715,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill05",
+    "Combos": [],
+    "MontageActions": [
+      203715001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203716,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill04",
+    "Combos": [
+      2037161
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203717,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill03",
+    "Combos": [],
+    "MontageActions": [
+      203717001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203718,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill02",
+    "Combos": [],
+    "MontageActions": [
+      203718101
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203719,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_PowerSkill01",
+    "Combos": [
+      2037191
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203720,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance9, Action.Skill.Monster.Stage.P2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance09",
+    "Combos": [],
+    "MontageActions": [
+      203720001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203721,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance8",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance08",
+    "Combos": [
+      2037211
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203722,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance07B",
+    "Combos": [],
+    "MontageActions": [
+      203722001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203723,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance06",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      1200201,
+      1200209
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203724,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance05",
+    "Combos": [],
+    "MontageActions": [
+      203724001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203727,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance2, Action.Skill.Monster.Stage.P4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance02",
+    "Combos": [],
+    "MontageActions": [
+      203727001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203728,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Performance1, Action.Skill.Monster.Stage.P3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Performance01",
+    "Combos": [],
+    "MontageActions": [
+      203728001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203729,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill8, Action.Skill.Monster.Stage.P3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_CoreSkill08",
+    "Combos": [],
+    "MontageActions": [
+      203729001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203730,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill7, Action.Skill.Monster.Stage.P2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_CoreSkill07",
+    "Combos": [],
+    "MontageActions": [
+      203729001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203731,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill6, Action.Skill.Monster.Stage.P1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_CoreSkill06",
+    "Combos": [],
+    "MontageActions": [
+      203729001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203732,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.Stage.P5, Action.Skill.Monster.CoreSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_CoreSkill03",
+    "Combos": [],
+    "MontageActions": [
+      203732001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203733,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_CoreSkill02",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      1200208,
+      1200210
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203734,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_CoreSkill01",
+    "Combos": [],
+    "MontageActions": [
+      203734001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203735,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack07",
+    "Combos": [
+      2037351
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203736,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack06",
+    "Combos": [],
+    "MontageActions": [
+      203736001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203737,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack05",
+    "Combos": [],
+    "MontageActions": [
+      203737001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203738,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack04",
+    "Combos": [],
+    "MontageActions": [
+      203738001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203739,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack03",
+    "Combos": [],
+    "MontageActions": [
+      203739001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203740,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack02",
+    "Combos": [],
+    "MontageActions": [
+      203740001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203741,
+    "ConfigID": 200120032,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/GA_200120032_Attack01",
+    "Combos": [],
+    "MontageActions": [
+      203741001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203601,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204201,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203602,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203603,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203604,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204202,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill8",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill08",
+    "Combos": [
+      2042021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203605,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill07",
+    "Combos": [
+      2036051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203606,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill06",
+    "Combos": [
+      2036061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203607,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill05",
+    "Combos": [],
+    "MontageActions": [
+      203607001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203608,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill04",
+    "Combos": [
+      2036081,
+      2025021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203609,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill03",
+    "Combos": [
+      2036091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203610,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill02",
+    "Combos": [],
+    "MontageActions": [
+      203610001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203611,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Skill01",
+    "Combos": [
+      2036111
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203612,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_PowerSkill04_R",
+    "Combos": [],
+    "MontageActions": [
+      203605102
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203613,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_PowerSkill03_L",
+    "Combos": [],
+    "MontageActions": [
+      203605101
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203614,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_PowerSkill02_B",
+    "Combos": [],
+    "MontageActions": [
+      203605103
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203615,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_PowerSkill01_F",
+    "Combos": [],
+    "MontageActions": [
+      203615001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203616,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_CoreSkill05",
+    "Combos": [
+      2036161
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203617,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Attack05",
+    "Combos": [
+      2036171
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203618,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Attack04",
+    "Combos": [],
+    "MontageActions": [
+      203618001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203619,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Attack03",
+    "Combos": [
+      2036191
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203620,
+    "ConfigID": 200120031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/GA_200120031_Attack01",
+    "Combos": [
+      2036201
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203501,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204101,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203502,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203201,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202907,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203503,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill9",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill09",
+    "Combos": [
+      2035031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203504,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill8",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill08",
+    "Combos": [
+      2035041
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203202,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill07",
+    "Combos": [
+      2032021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203505,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill06",
+    "Combos": [
+      2035051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204102,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill05B",
+    "Combos": [
+      2032031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203203,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill5",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill05",
+    "Combos": [
+      2025021
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203204,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill04",
+    "Combos": [
+      2032041
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203205,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill03",
+    "Combos": [],
+    "MontageActions": [
+      203205001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203206,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill02",
+    "Combos": [
+      2032061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203506,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Skill01_2",
+    "Combos": [
+      2035061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203507,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_PowerSkill04",
+    "Combos": [],
+    "MontageActions": [
+      203507001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203508,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_PowerSkill03",
+    "Combos": [],
+    "MontageActions": [
+      203508001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203509,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_PowerSkill02",
+    "Combos": [],
+    "MontageActions": [
+      203509001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203510,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_PowerSkill01",
+    "Combos": [],
+    "MontageActions": [
+      203510001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203511,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203512,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_CoreSkill04",
+    "Combos": [],
+    "MontageActions": [
+      203512001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203513,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill2, Action.Skill.Monster.Stage.P3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_CoreSkill02",
+    "Combos": [],
+    "MontageActions": [
+      203513001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203514,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill1, Action.Skill.Monster.Stage.P2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_CoreSkill01",
+    "Combos": [],
+    "MontageActions": [
+      203514001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203515,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Attack02",
+    "Combos": [
+      2035151
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203516,
+    "ConfigID": 200120021,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/GA_200120021_Attack01",
+    "Combos": [
+      2035161
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205301,
+    "ConfigID": 200120013,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120013/GAS/GA_200120013_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      99004
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205201,
+    "ConfigID": 200120012,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120012/GAS/GA_200120012_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      99004
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 204001,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201812,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203402,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201815,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203403,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201901,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Performance",
+    "Combos": [],
+    "MontageActions": [
+      203402002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205102,
+    "ConfigID": 200110038,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110038/GAS/GA_200110038_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      99004
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 205001,
+    "ConfigID": 200110037,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110037/GAS/GA_200110037_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      99004
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203301,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_WeakAbility",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203801,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203302,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202401,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203303,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202402,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_skill03",
+    "Combos": [],
+    "MontageActions": [
+      202402001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202403,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_skill02",
+    "Combos": [],
+    "MontageActions": [
+      202403001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202404,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_skill01",
+    "Combos": [],
+    "MontageActions": [
+      202404001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203304,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202405,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_NormalAttack3",
+    "Combos": [
+      2024051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202406,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_NormalAttack2",
+    "Combos": [],
+    "MontageActions": [
+      202406001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202407,
+    "ConfigID": 200110031,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/GA_200110031_NormalAttack1",
+    "Combos": [
+      2024071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203517,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.TakeStun",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_TakeStunned",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203101,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.TakeParry",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_TakeParry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      57
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201802,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.TakeExecution",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_TakeExecution",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203102,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.TakeBreakWeapon",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_TakeBreakWeapon",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203103,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.Performance1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Performance01_EnterBattle",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203518,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill9",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill09",
+    "Combos": [
+      2035181
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203519,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill8",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill08",
+    "Combos": [],
+    "MontageActions": [
+      201808102
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203520,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill7",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill07",
+    "Combos": [],
+    "MontageActions": [
+      203520001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203521,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill04",
+    "Combos": [],
+    "MontageActions": [
+      201806001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203522,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill03",
+    "Combos": [
+      2018071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203523,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill02",
+    "Combos": [],
+    "MontageActions": [
+      201808101,
+      202513001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203524,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Normalskill01",
+    "Combos": [
+      2035241
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202514,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_CoreSkill02",
+    "Combos": [],
+    "MontageActions": [
+      202514001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203525,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_CoreSkill01",
+    "Combos": [],
+    "MontageActions": [
+      203525001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203105,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.Performance6",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_AbyssPerformance",
+    "Combos": [],
+    "MontageActions": [
+      203105001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 901401,
+    "ConfigID": 90013,
+    "AbilityTags": "Action.Skill.Monster.NormalAttack.Attack1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Summoned/90013/GA_90013_AttackS01",
+    "Combos": [],
+    "MontageActions": [
+      901401001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102402,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.1024.UpdateEnergy, Action.Base.Assist.SwapOutKeepAbility",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_UpdateEnergy",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      1102400,
+      1102401
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102401,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      102401001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 102404,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102403,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      102403001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102414,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      102414001,
+      102414002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102411,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102415,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102405,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_Parry",
+    "Combos": [],
+    "MontageActions": [
+      102414001,
+      102414002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102409,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      102409002,
+      102409003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102407,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      102407003,
+      102407004,
+      102407005
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102406,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_Dodge",
+    "Combos": [
+      1024061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102301,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      102301001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 102302,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102303,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102313,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      102313001,
+      102313002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102311,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102314,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102304,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_Parry",
+    "Combos": [],
+    "MontageActions": [
+      102313001,
+      102313002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102305,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      102305001,
+      102305002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102306,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      102306001,
+      102306002,
+      102306003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102307,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_Dodge",
+    "Combos": [
+      1023071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102201,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      102201001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 102202,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102203,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102204,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      102204001,
+      102204002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102218,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102205,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_Parry",
+    "Combos": [],
+    "MontageActions": [
+      102204001,
+      102204002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102206,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      102206001,
+      102206002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102207,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      102207002,
+      102207001,
+      102207003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102208,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_Dodge",
+    "Combos": [
+      1022081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102221,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Charge.Logic",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeLogicQuick_Parry",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102220,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Charge.Logic",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeLogicQuick",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102219,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Charge.Logic",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeLogic",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102216,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Charge.LightAttack, Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeAttack_Light",
+    "Combos": [],
+    "MontageActions": [
+      102216001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102210,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Charge.SpecialAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeAttack_Jump",
+    "Combos": [],
+    "MontageActions": [
+      102210001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102217,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill, Action.Skill.Hero.Charge.HeavyAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeAttack_Heavy",
+    "Combos": [],
+    "MontageActions": [
+      102217001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102211,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.Charge.SpecialAttack02",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeAttack_Dodge",
+    "Combos": [],
+    "MontageActions": [
+      102211001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102212,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill, Action.Skill.Hero.Charge.AnimationQuick",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeAnimationQuick",
+    "Combos": [],
+    "MontageActions": [
+      102212001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102209,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill, Action.Skill.Hero.Charge.Animation",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_ChargeAnimation",
+    "Combos": [],
+    "MontageActions": [
+      102212001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101901,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      101901001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 101902,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101903,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101914,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      101904001,
+      101904002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101915,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101904,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_Parry",
+    "Combos": [],
+    "MontageActions": [
+      101904001,
+      101904002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101905,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      101905001,
+      101905002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101906,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      101906001,
+      101906002,
+      101906003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101913,
+    "ConfigID": 1019,
+    "AbilityTags": "",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_DodgeHitFeedback",
+    "Combos": [],
+    "MontageActions": [
+      101913001,
+      101913002
+    ],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101912,
+    "ConfigID": 1019,
+    "AbilityTags": "",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_DodgeCross",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101907,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_Dodge",
+    "Combos": [
+      1019071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101709,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      101709001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 101708,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101707,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101706,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      101704001,
+      101704002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101705,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101704,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_Parry",
+    "Combos": [],
+    "MontageActions": [
+      101704001,
+      101704002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101703,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      101703001,
+      101703002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101702,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      100115001,
+      101702001,
+      101702002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101701,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_Dodge",
+    "Combos": [
+      1017011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101513,
+    "ConfigID": 1015,
+    "AbilityTags": "",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_UpdateEnergy",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      1101501,
+      1101500
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101501,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      101501001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 101502,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101503,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101512,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      101512001,
+      101512002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101514,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101504,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_Parry",
+    "Combos": [],
+    "MontageActions": [
+      101512001,
+      101512002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101505,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      101505001,
+      101505002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101506,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      101506001,
+      101506002,
+      101506003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101507,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_Dodge",
+    "Combos": [
+      1015071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101401,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      101401001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 101414,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.TalentBuff.Default",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_SwapOutTalentBuff",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101402,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101403,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101415,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      101415001,
+      101415002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101411,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101416,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101404,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_Parry",
+    "Combos": [],
+    "MontageActions": [
+      101415001,
+      101415002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101410,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      101410001,
+      101410002,
+      101410003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101413,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      101413001,
+      101413002,
+      101413003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101406,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_Dodge",
+    "Combos": [
+      1014061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101101,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      101101001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 101102,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101103,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      900401001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101113,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      101113001,
+      101113002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101114,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101112,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101104,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_Parry",
+    "Combos": [],
+    "MontageActions": [
+      101113001,
+      101113002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101105,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      101105001,
+      101105002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101106,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      101106001,
+      101106002,
+      101106003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101107,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_Dodge",
+    "Combos": [
+      1011071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100805,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      100805001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 100801,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100802,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      100802001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100817,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      100803001,
+      100817001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100807,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100820,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100803,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_Parry",
+    "Combos": [],
+    "MontageActions": [
+      100803001,
+      100817001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100812,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      100812001,
+      100812002,
+      100812003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100804,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      100804001,
+      100804002,
+      100804003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100806,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_DodgeSkill",
+    "Combos": [
+      1008061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100808,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.AssistAttack1",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_CoopSkill",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100816,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill, Action.Skill.Hero.Charge.SpecialAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_ChargeSpecialAttack",
+    "Combos": [],
+    "MontageActions": [
+      100811003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100814,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.Charge.Logic",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_ChargeLogic",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100818,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.Charge.LightAttack, Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_ChargeLightAttack",
+    "Combos": [],
+    "MontageActions": [
+      100811002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100819,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill, Action.Skill.Hero.Charge.HeavyAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_ChargeHeavyAttack",
+    "Combos": [],
+    "MontageActions": [
+      100811003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100701,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      100701001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 100702,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100703,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      100703001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100713,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      100704001,
+      100713001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100711,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100714,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100704,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_Parry",
+    "Combos": [],
+    "MontageActions": [
+      100704001,
+      100713001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100710,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      100710002,
+      100710003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100705,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      100705001,
+      100705002,
+      100705003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100706,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_Dodge",
+    "Combos": [
+      1007061
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100508,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      100508001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 100503,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100504,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      100504001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100507,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      100505001,
+      100507001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100502,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100515,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100505,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_Parry",
+    "Combos": [],
+    "MontageActions": [
+      100505001,
+      100507001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100501,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      100501001,
+      100501002,
+      100501003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100506,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      100506001,
+      100506002,
+      100506003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100509,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_DodgeSkill",
+    "Combos": [
+      1005030
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100510,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.AssistAttack1",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_CoopSkill",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100207,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.ExSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_Ultimate",
+    "Combos": [],
+    "MontageActions": [
+      100207001
+    ],
+    "BuffIDs": [
+      1000004
+    ],
+    "SkillCostIDs": [
+      100000
+    ]
+  },
+  {
+    "ID": 100210,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.TalentBuff.Default",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_SwapOutTalentBuff",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100201,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Base.Assist.SwapOut",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_SwapOut",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100202,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Base.Assist.SwapIn",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_SwapIn",
+    "Combos": [],
+    "MontageActions": [
+      100202001
+    ],
+    "BuffIDs": [
+      20
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100203,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_SkillAttack",
+    "Combos": [
+      1002031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100215,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.RedParry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_RedParry",
+    "Combos": [],
+    "MontageActions": [
+      100204101,
+      100215001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100213,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.QuickSwapInAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_QuickSwapInAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100216,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Base.Move.Pivot",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_Pivot",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100204,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.Parry",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_Parry",
+    "Combos": [],
+    "MontageActions": [
+      100204101,
+      100215001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100205,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_NormalAttack",
+    "Combos": [
+      1002051
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100206,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      100206001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100212,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.Execution.Single",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_Execution_Single",
+    "Combos": [],
+    "MontageActions": [
+      100212001,
+      100212002,
+      100212003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100208,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.Execution.Multi",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_Execution_Multi",
+    "Combos": [],
+    "MontageActions": [
+      100208001,
+      100208002,
+      100208003
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100209,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.Dodge",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_DodgeSkill",
+    "Combos": [
+      1002091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [
+      15
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100211,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.AssistAttack1",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_CoopSkill",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100214,
+    "ConfigID": 1002,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1002/GAS/GA_1002_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      100214001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100514,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_DodgeAttack",
+    "Combos": [
+      1005141
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100511,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      100511001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100512,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_NormalAttack",
+    "Combos": [
+      1005121
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100513,
+    "ConfigID": 1005,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1005/GAS/GA_1005_NormalSkill",
+    "Combos": [
+      1005131
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100712,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      100710001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100707,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      100707001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100708,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_NormalAttack",
+    "Combos": [
+      1007081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100709,
+    "ConfigID": 1007,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1007/GAS/GA_1007_SkillAttack",
+    "Combos": [
+      1007091
+    ],
+    "MontageActions": [
+      100709101
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100813,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.BreakGuard",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_BreakGuard",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      1100803,
+      17
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100811,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill, Action.Skill.Hero.Charge.Animation",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_ChargeAnimation",
+    "Combos": [],
+    "MontageActions": [
+      100811001
+    ],
+    "BuffIDs": [
+      30,
+      1100802
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100815,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      100815001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100809,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      100809001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100810,
+    "ConfigID": 1008,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1008/GAS/GA_1008_NormalAttack",
+    "Combos": [
+      1008101
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101111,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      101111001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101110,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      101110001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101109,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_NormalAttack",
+    "Combos": [
+      1011091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101108,
+    "ConfigID": 1011,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1011/GAS/GA_1011_SkillAttack",
+    "Combos": [
+      1011081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101412,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      101412001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101409,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      101409001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101408,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_NormalAttack",
+    "Combos": [
+      1014081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101407,
+    "ConfigID": 1014,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1014/GAS/GA_1014_SkillAttack",
+    "Combos": [
+      1014071
+    ],
+    "MontageActions": [
+      101407001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101511,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      101511001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101510,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      101510001,
+      101510002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101509,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_NormalAttack",
+    "Combos": [
+      1015091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101508,
+    "ConfigID": 1015,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1015/GAS/GA_1015_SkillAttack",
+    "Combos": [
+      1015081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101710,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      101713102
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101711,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      101711001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101712,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_NormalAttack",
+    "Combos": [
+      1017121
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101713,
+    "ConfigID": 1017,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1017/GAS/GA_1017_SkillAttack",
+    "Combos": [
+      1017131
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101908,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      101908001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101909,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      101909001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101910,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_NormalAttack",
+    "Combos": [
+      1019101
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 101911,
+    "ConfigID": 1019,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1019/GAS/GA_1019_SkillAttack",
+    "Combos": [],
+    "MontageActions": [
+      101911001,
+      101911002,
+      101911003,
+      101911004,
+      101911008,
+      101911009,
+      101911005,
+      101911006,
+      101911007
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102213,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102214,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      102214001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102215,
+    "ConfigID": 1022,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1022/GAS/GA_1022_NormalAttack",
+    "Combos": [
+      1022151
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102312,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      102312001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102310,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      102310001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102309,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_NormalAttack",
+    "Combos": [
+      1023091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102308,
+    "ConfigID": 1023,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1023/GAS/GA_1023_SkillAttack",
+    "Combos": [
+      1023081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102413,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      102413001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102410,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      102410001,
+      102410002
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102408,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_NormalAttack",
+    "Combos": [
+      1024081
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 102412,
+    "ConfigID": 1024,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1024/GAS/GA_1024_SkillAttack",
+    "Combos": [
+      1024121
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203106,
+    "ConfigID": 200110011,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/GA_200110011_Weak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201908,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Combo1",
+    "Combos": [
+      2033032
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201907,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Combo2",
+    "Combos": [
+      2019071
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201912,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.CoreSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_ComboSP",
+    "Combos": [
+      2019121
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201911,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_skill1_Stab",
+    "Combos": [],
+    "MontageActions": [
+      203304001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201910,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill2_Stinger",
+    "Combos": [
+      2033031
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201909,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill3_Evade",
+    "Combos": [],
+    "MontageActions": [
+      201909001,
+      201906001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201906,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill3_SPEvade",
+    "Combos": [],
+    "MontageActions": [
+      201906001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201905,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill4_longRange",
+    "Combos": [],
+    "MontageActions": [
+      201905001,
+      201906001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201904,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill5_spStab",
+    "Combos": [
+      2019041
+    ],
+    "MontageActions": [
+      201906001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201903,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.PowerSkill3",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill6_Transition",
+    "Combos": [],
+    "MontageActions": [
+      201903001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201902,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill4",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Skill7_QuickStinger",
+    "Combos": [],
+    "MontageActions": [
+      203303205
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201813,
+    "ConfigID": 200120011,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/GA_200120011_Weak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 201919,
+    "ConfigID": 200100032,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/GA_200100032_Weak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 203213,
+    "ConfigID": 200110021,
+    "AbilityTags": "Action.Skill.Monster.Weak",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Elite/200110021/Ability/GA_200110021_Weak",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [
+      17,
+      51
+    ],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202511,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_Skill01",
+    "Combos": [
+      2023011
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202510,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.NormalSkill2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_Skill02",
+    "Combos": [
+      2025101
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 202509,
+    "ConfigID": 200100071,
+    "AbilityTags": "Action.Skill.Monster.Performance2",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/GA_200100071_Skill02S",
+    "Combos": [
+      2025091
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100103,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.DodgeAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_DodgeAttack",
+    "Combos": [],
+    "MontageActions": [
+      100114001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100113,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.JumpAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_JumpAttack",
+    "Combos": [],
+    "MontageActions": [
+      100113001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100114,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.NormalAttack",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_NormalAttack",
+    "Combos": [
+      1001142,
+      1001141
+    ],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 100112,
+    "ConfigID": 1001,
+    "AbilityTags": "Action.Skill.Hero.NormalSkill",
+    "AbilityPath": "/Game/FY/Gameplay/Hero/1001/GAS/GA_1001_SkillAttack",
+    "Combos": [
+      1001122,
+      1001121
+    ],
+    "MontageActions": [
+      100112001
+    ],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  },
+  {
+    "ID": 300801,
+    "ConfigID": 30000007,
+    "AbilityTags": "Action.Skill.LevelMechanism.Period.1",
+    "AbilityPath": "/Game/FY/Gameplay/Monster/Mechanism/30000007/Ability/GA_30000007_SpawnProjectile",
+    "Combos": [],
+    "MontageActions": [],
+    "BuffIDs": [],
+    "SkillCostIDs": []
+  }
+]

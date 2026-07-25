@@ -1,0 +1,1068 @@
+[
+  {
+    "ID": 1001092,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1001/GAS/CG_1001_DodgeStory.CG_1001_DodgeStory",
+    "Montage_Ids": [
+      100109101,
+      100109102
+    ]
+  },
+  {
+    "ID": 1001091,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1001/GAS/CG_1001_Dodge.CG_1001_Dodge",
+    "Montage_Ids": [
+      100103001,
+      100103002
+    ]
+  },
+  {
+    "ID": 2064021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/CG_200220011_Skill01.CG_200220011_Skill01",
+    "Montage_Ids": [
+      206402101,
+      206402102,
+      206402103,
+      206402104,
+      206402105,
+      206402106,
+      206402107
+    ]
+  },
+  {
+    "ID": 2064051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200220011/GAS/CG_200220011_Skill04.CG_200220011_Skill04",
+    "Montage_Ids": [
+      206405101,
+      206405102,
+      206405103,
+      206405104,
+      206405105,
+      206405106,
+      206405107
+    ]
+  },
+  {
+    "ID": 2066081,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200220031/GAS/CG_200220031_Attack01.CG_200220031_Attack01",
+    "Montage_Ids": []
+  },
+  {
+    "ID": 9007041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/CG_200110011_Normalskill09_Test2.CG_200110011_Normalskill09_Test2",
+    "Montage_Ids": [
+      900704101,
+      900704102,
+      900704103
+    ]
+  },
+  {
+    "ID": 9007042,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/CG_200110011_Normalskill09_Test.CG_200110011_Normalskill09_Test",
+    "Montage_Ids": [
+      900704103,
+      900704101,
+      900704102
+    ]
+  },
+  {
+    "ID": 9004021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/CG_200110011_Normalskill05_Test.CG_200110011_Normalskill05_Test",
+    "Montage_Ids": [
+      900402101
+    ]
+  },
+  {
+    "ID": 9001011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Test/Ability/CG_200110011_Normalskill01_Test.CG_200110011_Normalskill01_Test",
+    "Montage_Ids": [
+      900101101,
+      900101102
+    ]
+  },
+  {
+    "ID": 9010021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Summoned/90009/GAS/CG_90009_Skill01.CG_90009_Skill01",
+    "Montage_Ids": [
+      901002101,
+      901002102,
+      901002103
+    ]
+  },
+  {
+    "ID": 9006021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Summoned/90005/GAS/CG_90005_Skill01.CG_90005_Skill01",
+    "Montage_Ids": [
+      900602101,
+      900602102,
+      900602103
+    ]
+  },
+  {
+    "ID": 2015041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/CG_200131002_NormalSkill1.CG_200131002_NormalSkill1",
+    "Montage_Ids": [
+      201504101,
+      201504102,
+      201504103
+    ]
+  },
+  {
+    "ID": 2015051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/NPC/200131002/GAS/CG_200131002_NormalAttack.CG_200131002_NormalAttack",
+    "Montage_Ids": [
+      201505101,
+      201505102,
+      201505103,
+      201504102,
+      201504103,
+      201505104
+    ]
+  },
+  {
+    "ID": 2017011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/CG_200130041_SpAttack2.CG_200130041_SpAttack2",
+    "Montage_Ids": [
+      201701101,
+      201701102
+    ]
+  },
+  {
+    "ID": 2017021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/CG_200130041_SpAttack1.CG_200130041_SpAttack1",
+    "Montage_Ids": [
+      201702101,
+      201701102,
+      201702102,
+      201702103,
+      201702104
+    ]
+  },
+  {
+    "ID": 2017031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/NPC/200130041/Ability/CG_200130041_Attack1.CG_200130041_Attack1",
+    "Montage_Ids": [
+      201703101,
+      201703102,
+      201703103,
+      201703104
+    ]
+  },
+  {
+    "ID": 2025021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/299920011/Ability/CG_299920011Skill02.CG_299920011Skill02",
+    "Montage_Ids": [
+      202502001
+    ]
+  },
+  {
+    "ID": 2055111,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200200051/GAS/CG_200200051_Normalskill01.CG_200200051_Normalskill01",
+    "Montage_Ids": [
+      205511101
+    ]
+  },
+  {
+    "ID": 2021021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/CG_200100041_NormalSkill04.CG_200100041_NormalSkill04",
+    "Montage_Ids": [
+      202102001,
+      202102101
+    ]
+  },
+  {
+    "ID": 2021011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100041/GAS/CG_200100041_NormalSkill01.CG_200100041_NormalSkill01",
+    "Montage_Ids": [
+      202101101,
+      202101102
+    ]
+  },
+  {
+    "ID": 2013021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/CG_200100022_Skill02.CG_200100022_Skill02",
+    "Montage_Ids": [
+      201302101,
+      201302102,
+      201302103,
+      201302201
+    ]
+  },
+  {
+    "ID": 2013031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/CG_200100022_Skill01.CG_200100022_Skill01",
+    "Montage_Ids": [
+      201303002,
+      201303004,
+      201303003,
+      201303001
+    ]
+  },
+  {
+    "ID": 2013011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100022/Ability/CG_200100022_Attack01.CG_200100022_Attack01",
+    "Montage_Ids": [
+      201301101,
+      201301102
+    ]
+  },
+  {
+    "ID": 2059021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100015/GAS/CG_200100015_attack.CG_200100015_attack",
+    "Montage_Ids": [
+      205902101,
+      205902102,
+      205902103
+    ]
+  },
+  {
+    "ID": 2011041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/CG_200100011_skill01.CG_200100011_skill01",
+    "Montage_Ids": [
+      201104101,
+      201104102
+    ]
+  },
+  {
+    "ID": 2011011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100011/Ability/CG_200100011_attack.CG_200100011_attack",
+    "Montage_Ids": [
+      201101101,
+      201101102,
+      201101103
+    ]
+  },
+  {
+    "ID": 2044031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200030021/GAS/CG_200030021_Performance01.CG_200030021_Performance01",
+    "Montage_Ids": [
+      204403101,
+      204403102
+    ]
+  },
+  {
+    "ID": 2059061,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200210031/Ability/CG_200210031_Skill03.CG_200210031_Skill03",
+    "Montage_Ids": [
+      205906101,
+      205906102,
+      205906103,
+      205906104,
+      205906105,
+      205906106,
+      205906107,
+      205906108,
+      205906109
+    ]
+  },
+  {
+    "ID": 2024131,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/CG_200100062_Skill02.CG_200100062_Skill02",
+    "Montage_Ids": [
+      202413101,
+      202413102
+    ]
+  },
+  {
+    "ID": 2024161,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100062/GAS/CG_200100062_Attack01.CG_200100062_Attack01",
+    "Montage_Ids": [
+      202416101,
+      202416102
+    ]
+  },
+  {
+    "ID": 2023051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/CG_200100061_Skill01.CG_200100061_Skill01",
+    "Montage_Ids": [
+      202305101,
+      202305102,
+      202305103,
+      202305104
+    ]
+  },
+  {
+    "ID": 2023081,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100061/Ability/CG_200100061_NormalAttack1_1.CG_200100061_NormalAttack1_1",
+    "Montage_Ids": [
+      202308101,
+      202308102
+    ]
+  },
+  {
+    "ID": 2020031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/CG_200100032_NormalSkill04.CG_200100032_NormalSkill04",
+    "Montage_Ids": [
+      202003101,
+      202003102,
+      202003103
+    ]
+  },
+  {
+    "ID": 2020041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/CG_200100032_NormalSkill03.CG_200100032_NormalSkill03",
+    "Montage_Ids": [
+      202004101,
+      202003001
+    ]
+  },
+  {
+    "ID": 2020051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/CG_200100032_NormalSkill02.CG_200100032_NormalSkill02",
+    "Montage_Ids": [
+      202005001
+    ]
+  },
+  {
+    "ID": 2020061,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/CG_200100032_NormalSkill01.CG_200100032_NormalSkill01",
+    "Montage_Ids": [
+      202006101,
+      202003001
+    ]
+  },
+  {
+    "ID": 2020011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Elite/200100032/GAS/CG_200100032_NormalAttack.CG_200100032_NormalAttack",
+    "Montage_Ids": [
+      202001101,
+      202001102,
+      202001103
+    ]
+  },
+  {
+    "ID": 2037131,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/CG_200120032_Skill01.CG_200120032_Skill01",
+    "Montage_Ids": [
+      203713101,
+      203713102
+    ]
+  },
+  {
+    "ID": 2037161,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/CG_200120032_PowerSkill04.CG_200120032_PowerSkill04",
+    "Montage_Ids": [
+      203721105,
+      203716001
+    ]
+  },
+  {
+    "ID": 2037191,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/CG_200120032_PowerSkill01.CG_200120032_PowerSkill01",
+    "Montage_Ids": [
+      203719101,
+      203719102
+    ]
+  },
+  {
+    "ID": 2037211,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/CG_200120032_Performance08.CG_200120032_Performance08",
+    "Montage_Ids": [
+      203721101,
+      203721102,
+      203721103,
+      203721104,
+      203719101,
+      203719102,
+      203721105
+    ]
+  },
+  {
+    "ID": 2037351,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120032/GAS/CG_200120032_Attack07.CG_200120032_Attack07",
+    "Montage_Ids": [
+      203735101,
+      203735102,
+      203735103
+    ]
+  },
+  {
+    "ID": 2042021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Skill08.CG_200120031_Skill08",
+    "Montage_Ids": [
+      204202101,
+      204202102,
+      204202103,
+      204202104
+    ]
+  },
+  {
+    "ID": 2036051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Skill07.CG_200120031_Skill07",
+    "Montage_Ids": [
+      203605101,
+      203605102,
+      203605103
+    ]
+  },
+  {
+    "ID": 2036061,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Skill06.CG_200120031_Skill06",
+    "Montage_Ids": [
+      203606101,
+      203605101,
+      203605102,
+      203605103
+    ]
+  },
+  {
+    "ID": 2036081,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Skill04.CG_200120031_Skill04",
+    "Montage_Ids": [
+      203608101,
+      203605101,
+      203605102,
+      203605103
+    ]
+  },
+  {
+    "ID": 2036091,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Skill03.CG_200120031_Skill03",
+    "Montage_Ids": [
+      203609101,
+      203605101,
+      203605102,
+      203605103
+    ]
+  },
+  {
+    "ID": 2036111,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Skill01.CG_200120031_Skill01",
+    "Montage_Ids": [
+      203611101,
+      203611102
+    ]
+  },
+  {
+    "ID": 2036161,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_CoreSkill05.CG_200120031_CoreSkill05",
+    "Montage_Ids": [
+      203605101,
+      203605102,
+      203605103
+    ]
+  },
+  {
+    "ID": 2036171,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Attack05.CG_200120031_Attack05",
+    "Montage_Ids": [
+      203617001,
+      203615001
+    ]
+  },
+  {
+    "ID": 2036191,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Attack03.CG_200120031_Attack03",
+    "Montage_Ids": [
+      203605101,
+      203605102,
+      203605103,
+      203619101
+    ]
+  },
+  {
+    "ID": 2036201,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120031/GAS/CG_200120031_Attack01.CG_200120031_Attack01",
+    "Montage_Ids": [
+      203620101,
+      203617001
+    ]
+  },
+  {
+    "ID": 2035031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill09.CG_200120021_Skill09",
+    "Montage_Ids": [
+      203206101,
+      203503101
+    ]
+  },
+  {
+    "ID": 2035041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill08.CG_200120021_Skill08",
+    "Montage_Ids": [
+      203206101,
+      203504101
+    ]
+  },
+  {
+    "ID": 2032021,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill07.CG_200120021_Skill07",
+    "Montage_Ids": [
+      203202101,
+      203202102,
+      203202103,
+      203202104,
+      203202105,
+      203202106
+    ]
+  },
+  {
+    "ID": 2035051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill06.CG_200120021_Skill06",
+    "Montage_Ids": [
+      203505101,
+      203505102,
+      203505103,
+      203505104,
+      203505105,
+      203505106,
+      203505107
+    ]
+  },
+  {
+    "ID": 2032031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill05B.CG_200120021_Skill05B",
+    "Montage_Ids": [
+      203203101,
+      203203102,
+      203203103,
+      203203104,
+      203203105
+    ]
+  },
+  {
+    "ID": 2032041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill04.CG_200120021_Skill04",
+    "Montage_Ids": [
+      203204101,
+      203204102
+    ]
+  },
+  {
+    "ID": 2032061,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill02.CG_200120021_Skill02",
+    "Montage_Ids": [
+      203206101
+    ]
+  },
+  {
+    "ID": 2035061,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Skill01_2.CG_200120021_Skill01_2",
+    "Montage_Ids": [
+      203506101,
+      203506102,
+      203506103,
+      203506104
+    ]
+  },
+  {
+    "ID": 2035151,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Attack02.CG_200120021_Attack02",
+    "Montage_Ids": [
+      203206101,
+      203209001
+    ]
+  },
+  {
+    "ID": 2035161,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120021/GAS/CG_200120021_Attack01.CG_200120021_Attack01",
+    "Montage_Ids": [
+      203206101,
+      203516101
+    ]
+  },
+  {
+    "ID": 2024051,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/CG_200110031_NormalAttack3.CG_200110031_NormalAttack3",
+    "Montage_Ids": [
+      202405101,
+      202405102
+    ]
+  },
+  {
+    "ID": 2024071,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110031/Ability/CG_200110031_NormalAttack1.CG_200110031_NormalAttack1",
+    "Montage_Ids": [
+      202407101,
+      202407102,
+      202407103
+    ]
+  },
+  {
+    "ID": 2035181,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/CG_200110011_Normalskill09.CG_200110011_Normalskill09",
+    "Montage_Ids": [
+      201810101,
+      201810102,
+      201810103
+    ]
+  },
+  {
+    "ID": 2018071,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/CG_200110011_Skill03.CG_200110011_Skill03",
+    "Montage_Ids": [
+      201809101,
+      201807102
+    ]
+  },
+  {
+    "ID": 2035241,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200110011/Ability/CG_200110011_Normalskill01.CG_200110011_Normalskill01",
+    "Montage_Ids": [
+      201811101,
+      201811102
+    ]
+  },
+  {
+    "ID": 1024061,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1024/GAS/CG_1024_Dodge.CG_1024_Dodge",
+    "Montage_Ids": [
+      102406101,
+      102406102
+    ]
+  },
+  {
+    "ID": 1023071,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1023/GAS/CG_1023_Dodge.CG_1023_Dodge",
+    "Montage_Ids": [
+      102307101,
+      102307102
+    ]
+  },
+  {
+    "ID": 1022081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1022/GAS/CG_1022_Dodge.CG_1022_Dodge",
+    "Montage_Ids": [
+      102208101,
+      102208102
+    ]
+  },
+  {
+    "ID": 1019071,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1019/GAS/CG_1019_Dodge.CG_1019_Dodge",
+    "Montage_Ids": [
+      101907101,
+      101907102
+    ]
+  },
+  {
+    "ID": 1017011,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1017/GAS/CG_1017_Dodge.CG_1017_Dodge",
+    "Montage_Ids": [
+      101701101,
+      101701102
+    ]
+  },
+  {
+    "ID": 1015071,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1015/GAS/CG_1015_Dodge.CG_1015_Dodge",
+    "Montage_Ids": [
+      101507101,
+      101507102
+    ]
+  },
+  {
+    "ID": 1014061,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1014/GAS/CG_1014_Dodge.CG_1014_Dodge",
+    "Montage_Ids": [
+      101406101,
+      101406102
+    ]
+  },
+  {
+    "ID": 1011071,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1011/GAS/CG_1011_Dodge.CG_1011_Dodge",
+    "Montage_Ids": [
+      101107101,
+      101107102
+    ]
+  },
+  {
+    "ID": 1008061,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1008/GAS/CG_1008_Dodge.CG_1008_Dodge",
+    "Montage_Ids": [
+      100806101,
+      100806102
+    ]
+  },
+  {
+    "ID": 1007061,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1007/GAS/CG_1007_Dodge.CG_1007_Dodge",
+    "Montage_Ids": [
+      100706101,
+      100706102
+    ]
+  },
+  {
+    "ID": 1005030,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1005/GAS/CG_1005_Dodge.CG_1005_Dodge",
+    "Montage_Ids": [
+      100503002,
+      100503003
+    ]
+  },
+  {
+    "ID": 1002031,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1002/GAS/CG_1002_NormalSkill.CG_1002_NormalSkill",
+    "Montage_Ids": [
+      100203101,
+      100203102
+    ]
+  },
+  {
+    "ID": 1002051,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1002/GAS/CG_1002_NormalAttack.CG_1002_NormalAttack",
+    "Montage_Ids": [
+      100205101,
+      100205102,
+      100205103,
+      100205104,
+      100205105,
+      100205106
+    ]
+  },
+  {
+    "ID": 1002091,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1002/GAS/CG_1002_Dodge.CG_1002_Dodge",
+    "Montage_Ids": [
+      100209101,
+      100209102
+    ]
+  },
+  {
+    "ID": 1005141,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1005/GAS/CG_1005_DodgeAttack.CG_1005_DodgeAttack",
+    "Montage_Ids": [
+      100514001
+    ]
+  },
+  {
+    "ID": 1005121,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1005/GAS/CG_1005_NormalAttack.CG_1005_NormalAttack",
+    "Montage_Ids": [
+      100512104,
+      100512103,
+      100512105,
+      100512201,
+      100512106,
+      100513102,
+      100512101,
+      100512102,
+      100512107,
+      100512204
+    ]
+  },
+  {
+    "ID": 1005131,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1005/GAS/CG_1005_NormalSkill.CG_1005_NormalSkill",
+    "Montage_Ids": [
+      100513001,
+      100502001,
+      100512202
+    ]
+  },
+  {
+    "ID": 1007081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1007/GAS/CG_1007_NormalAttack.CG_1007_NormalAttack",
+    "Montage_Ids": [
+      100708101,
+      100708102,
+      100708103,
+      100708105,
+      100708104
+    ]
+  },
+  {
+    "ID": 1007091,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1007/GAS/CG_1007_SkillAttack.CG_1007_SkillAttack",
+    "Montage_Ids": [
+      100709101,
+      100709102,
+      100709103
+    ]
+  },
+  {
+    "ID": 1008101,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1008/GAS/CG_1008_NormalAttack.CG_1008_NormalAttack",
+    "Montage_Ids": [
+      100810101,
+      100810102,
+      100810103,
+      100810104
+    ]
+  },
+  {
+    "ID": 1011091,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1011/GAS/CG_1011_NormalAttack.CG_1011_NormalAttack",
+    "Montage_Ids": [
+      101109101,
+      101109102,
+      101109103,
+      101109104,
+      101109105,
+      101109106
+    ]
+  },
+  {
+    "ID": 1011081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1011/GAS/CG_1011_SkillAttack.CG_1011_SkillAttack",
+    "Montage_Ids": [
+      101108101,
+      101108102,
+      101108103,
+      101108104
+    ]
+  },
+  {
+    "ID": 1014081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1014/GAS/CG_1014_NormalAttack.CG_1014_NormalAttack",
+    "Montage_Ids": [
+      101408101,
+      101408102,
+      101408103,
+      101408104,
+      101408105
+    ]
+  },
+  {
+    "ID": 1014071,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1014/GAS/CG_1014_SkillAttack.CG_1014_SkillAttack",
+    "Montage_Ids": [
+      101407101,
+      101407102
+    ]
+  },
+  {
+    "ID": 1015091,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1015/GAS/CG_1015_NormalAttack.CG_1015_NormalAttack",
+    "Montage_Ids": [
+      101509101,
+      101509102,
+      101509103,
+      101511001,
+      101509104,
+      101509105,
+      101509106,
+      101509107,
+      101509108,
+      101509109
+    ]
+  },
+  {
+    "ID": 1015081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1015/GAS/CG_1015_SkillAttack.CG_1015_SkillAttack",
+    "Montage_Ids": [
+      101508101,
+      101508102,
+      101508103,
+      101508104,
+      101508105
+    ]
+  },
+  {
+    "ID": 1017121,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1017/GAS/CG_1017_NormalAttack.CG_1017_NormalAttack",
+    "Montage_Ids": [
+      101712101,
+      101712102,
+      101712103,
+      101712104
+    ]
+  },
+  {
+    "ID": 1017131,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1017/GAS/CG_1017_SkillAttack.CG_1017_SkillAttack",
+    "Montage_Ids": [
+      101713101,
+      101713102,
+      101713103,
+      101713104,
+      101713105,
+      101713106
+    ]
+  },
+  {
+    "ID": 1019101,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1019/GAS/CG_1019_NormalAttack.CG_1019_NormalAttack",
+    "Montage_Ids": [
+      101910101,
+      101910102,
+      101910103,
+      101910105,
+      101910104,
+      101910106
+    ]
+  },
+  {
+    "ID": 1022151,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1022/GAS/CG_1022_NormalAttack.CG_1022_NormalAttack",
+    "Montage_Ids": [
+      102215101,
+      102215102,
+      102215103,
+      102215104,
+      102215105,
+      102215106,
+      102215107
+    ]
+  },
+  {
+    "ID": 1023091,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1023/GAS/CG_1023_NormalAttack.CG_1023_NormalAttack",
+    "Montage_Ids": [
+      102309101,
+      102309102,
+      102309103,
+      102309104,
+      102309105,
+      102309106
+    ]
+  },
+  {
+    "ID": 1023081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1023/GAS/CG_1023_SkillAttack.CG_1023_SkillAttack",
+    "Montage_Ids": [
+      102308101,
+      102308102,
+      102308103,
+      102308105,
+      102308002,
+      102308001
+    ]
+  },
+  {
+    "ID": 1024081,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1024/GAS/CG_1024_NormalAttack.CG_1024_NormalAttack",
+    "Montage_Ids": [
+      102408101,
+      102408102,
+      102408103,
+      102408104,
+      102408105,
+      102408106,
+      102408001
+    ]
+  },
+  {
+    "ID": 1024121,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1024/GAS/CG_1024_SkillAttack.CG_1024_SkillAttack",
+    "Montage_Ids": [
+      102409001,
+      102407002,
+      102407001
+    ]
+  },
+  {
+    "ID": 2033032,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/CG_200120011_Combo1.CG_200120011_Combo1",
+    "Montage_Ids": [
+      203303201,
+      203303202,
+      203303203,
+      203303204,
+      203303205,
+      203303206,
+      203303207,
+      203303208
+    ]
+  },
+  {
+    "ID": 2019071,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/CG_200120011_Combo2.CG_200120011_Combo2",
+    "Montage_Ids": [
+      201907101,
+      201907102,
+      201907103
+    ]
+  },
+  {
+    "ID": 2019121,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/CG_200120011_ComboSP.CG_200120011_ComboSP",
+    "Montage_Ids": [
+      201912101,
+      201912102,
+      201912103,
+      201912104,
+      201912105,
+      201912106,
+      201912107,
+      201912108,
+      201912109,
+      201912110
+    ]
+  },
+  {
+    "ID": 2033031,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/CG_200120011_Skill2.CG_200120011_Skill2",
+    "Montage_Ids": [
+      203303101,
+      203303102,
+      203303103,
+      203303104
+    ]
+  },
+  {
+    "ID": 2019041,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Boss/200120011/Ability/CG_200120011_Skill5.CG_200120011_Skill5",
+    "Montage_Ids": [
+      201904101,
+      201904102
+    ]
+  },
+  {
+    "ID": 2023011,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/CG_200100071_Skill01.CG_200100071_Skill01",
+    "Montage_Ids": [
+      202301105,
+      202301106
+    ]
+  },
+  {
+    "ID": 2025101,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/CG_200100071_Skill02.CG_200100071_Skill02",
+    "Montage_Ids": [
+      202301103,
+      202301104
+    ]
+  },
+  {
+    "ID": 2025091,
+    "ComboPath": "/Game/FY/Gameplay/Monster/Mob/200100071/GAS/CG_200100071_Skill02S.CG_200100071_Skill02S",
+    "Montage_Ids": [
+      202301101,
+      202301102
+    ]
+  },
+  {
+    "ID": 1001142,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1001/GAS/CG_1001_NormalAttackStory.CG_1001_NormalAttackStory",
+    "Montage_Ids": [
+      100114201,
+      100114202,
+      100114203,
+      100114204,
+      100114205
+    ]
+  },
+  {
+    "ID": 1001141,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1001/GAS/CG_1001_NormalAttackNew.CG_1001_NormalAttackNew",
+    "Montage_Ids": [
+      100114101,
+      100114102,
+      100114103,
+      100114104,
+      100114105,
+      100114107,
+      100114106
+    ]
+  },
+  {
+    "ID": 1001122,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1001/GAS/CG_1001_SkillAttack_Story.CG_1001_SkillAttack_Story",
+    "Montage_Ids": [
+      100112201,
+      100112202,
+      100112203,
+      100114106
+    ]
+  },
+  {
+    "ID": 1001121,
+    "ComboPath": "/Game/FY/Gameplay/Hero/1001/GAS/CG_1001_SkillAttack.CG_1001_SkillAttack",
+    "Montage_Ids": [
+      100112101,
+      100112102,
+      100112103
+    ]
+  }
+]

@@ -1,0 +1,633 @@
+[
+  {
+    "CnfId": 100005,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        2
+      ]
+    }
+  },
+  {
+    "CnfId": 100006,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        2,
+        1
+      ]
+    }
+  },
+  {
+    "CnfId": 100007,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "InMontage",
+      "montageIDs": [
+        100512101
+      ]
+    }
+  },
+  {
+    "CnfId": 100010,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "HeroHasAllTalentNeed",
+      "TalentIDs": [
+        100205
+      ],
+      "bIsNoneHasAllTalent": 0
+    }
+  },
+  {
+    "CnfId": 100011,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNoNeed",
+      "buffTags": [
+        1
+      ]
+    }
+  },
+  {
+    "CnfId": 100012,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        2
+      ]
+    }
+  },
+  {
+    "CnfId": 100013,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        1
+      ]
+    }
+  },
+  {
+    "CnfId": 100014,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        4
+      ]
+    }
+  },
+  {
+    "CnfId": 100015,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        3
+      ]
+    }
+  },
+  {
+    "CnfId": 100016,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        6
+      ]
+    }
+  },
+  {
+    "CnfId": 100017,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        5
+      ]
+    }
+  },
+  {
+    "CnfId": 100018,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        2
+      ]
+    }
+  },
+  {
+    "CnfId": 100019,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        1
+      ]
+    }
+  },
+  {
+    "CnfId": 100020,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        4
+      ]
+    }
+  },
+  {
+    "CnfId": 100021,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        3
+      ]
+    }
+  },
+  {
+    "CnfId": 100022,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        6
+      ]
+    }
+  },
+  {
+    "CnfId": 100023,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        5
+      ]
+    }
+  },
+  {
+    "CnfId": 100024,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        8,
+        9
+      ]
+    }
+  },
+  {
+    "CnfId": 100025,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        8,
+        9
+      ]
+    }
+  },
+  {
+    "CnfId": 100026,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        7,
+        9
+      ]
+    }
+  },
+  {
+    "CnfId": 100027,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        7,
+        9
+      ]
+    }
+  },
+  {
+    "CnfId": 100028,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        7,
+        8
+      ]
+    }
+  },
+  {
+    "CnfId": 100029,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        7,
+        8
+      ]
+    }
+  },
+  {
+    "CnfId": 100030,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        8,
+        9
+      ]
+    }
+  },
+  {
+    "CnfId": 100031,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        7,
+        9
+      ]
+    }
+  },
+  {
+    "CnfId": 100032,
+    "CondType": 0,
+    "Condtion": {
+      "$type": "BuffTagsNeed",
+      "buffTags": [
+        7,
+        8
+      ]
+    }
+  },
+  {
+    "CnfId": 200040,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100501
+      ]
+    }
+  },
+  {
+    "CnfId": 200041,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100001
+      ]
+    }
+  },
+  {
+    "CnfId": 200042,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100002
+      ]
+    }
+  },
+  {
+    "CnfId": 200044,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100200
+      ]
+    }
+  },
+  {
+    "CnfId": 200045,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100200
+      ]
+    }
+  },
+  {
+    "CnfId": 200046,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100500
+      ]
+    }
+  },
+  {
+    "CnfId": 200047,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100500
+      ]
+    }
+  },
+  {
+    "CnfId": 200048,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100500
+      ]
+    }
+  },
+  {
+    "CnfId": 200049,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        101400
+      ]
+    }
+  },
+  {
+    "CnfId": 200050,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        101400
+      ]
+    }
+  },
+  {
+    "CnfId": 200051,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        101500
+      ]
+    }
+  },
+  {
+    "CnfId": 200052,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200053,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200054,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200055,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200056,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200057,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200058,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200059,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200060,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200061,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200062,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200063,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200064,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200065,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200066,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200067,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200068,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200069,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200070,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200071,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100101
+      ]
+    }
+  },
+  {
+    "CnfId": 200072,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100503
+      ]
+    }
+  },
+  {
+    "CnfId": 200073,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        100801
+      ]
+    }
+  },
+  {
+    "CnfId": 200074,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        102400
+      ]
+    }
+  },
+  {
+    "CnfId": 200075,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        102400
+      ]
+    }
+  },
+  {
+    "CnfId": 200076,
+    "CondType": 1,
+    "Condtion": {
+      "$type": "AbnormalNeed",
+      "abnormalCheckIDs": [
+        101900
+      ]
+    }
+  }
+]

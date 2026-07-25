@@ -1,0 +1,747 @@
+[
+  {
+    "Attribute": 1,
+    "MinValue": 0,
+    "Sort": 1
+  },
+  {
+    "Attribute": 3,
+    "MinValue": 0,
+    "Sort": 2
+  },
+  {
+    "Attribute": 4,
+    "MinValue": 0,
+    "Sort": 3
+  },
+  {
+    "Attribute": 5,
+    "MinValue": -20000,
+    "Sort": 4
+  },
+  {
+    "Attribute": 6,
+    "MinValue": -20000,
+    "Sort": 5
+  },
+  {
+    "Attribute": 103,
+    "MinValue": 0,
+    "Sort": 6
+  },
+  {
+    "Attribute": 110,
+    "MinValue": -20000,
+    "Sort": 7
+  },
+  {
+    "Attribute": 160,
+    "MinValue": 0,
+    "Sort": 8
+  },
+  {
+    "Attribute": 161,
+    "MinValue": 0,
+    "Sort": 9
+  },
+  {
+    "Attribute": 162,
+    "MinValue": 0,
+    "Sort": 10
+  },
+  {
+    "Attribute": 163,
+    "MinValue": 0,
+    "Sort": 11
+  },
+  {
+    "Attribute": 164,
+    "MinValue": 0,
+    "Sort": 12
+  },
+  {
+    "Attribute": 165,
+    "MinValue": 0,
+    "Sort": 13
+  },
+  {
+    "Attribute": 146,
+    "MinValue": 0,
+    "Sort": 14
+  },
+  {
+    "Attribute": 148,
+    "MinValue": 0,
+    "Sort": 15
+  },
+  {
+    "Attribute": 147,
+    "MinValue": 0,
+    "Sort": 16
+  },
+  {
+    "Attribute": 150,
+    "MinValue": 0,
+    "Sort": 17
+  },
+  {
+    "Attribute": 149,
+    "MinValue": 0,
+    "Sort": 18
+  },
+  {
+    "Attribute": 151,
+    "MinValue": 0,
+    "Sort": 19
+  },
+  {
+    "Attribute": 152,
+    "MinValue": 0,
+    "Sort": 20
+  },
+  {
+    "Attribute": 2,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 7,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 8,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 10,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 11,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 12,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 13,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 14,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 15,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 16,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 17,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 18,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 19,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 20,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 21,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 22,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 23,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 24,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 25,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 26,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 28,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 29,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 30,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 31,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 32,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 33,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 34,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 35,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 36,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 37,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 38,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 39,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 40,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 41,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 42,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 43,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 44,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 45,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 46,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 47,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 48,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 49,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 50,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 51,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 52,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 53,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 54,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 55,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 56,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 57,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 58,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 59,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 60,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 61,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 62,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 63,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 64,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 65,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 66,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 67,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 68,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 69,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 70,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 71,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 72,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 73,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 74,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 75,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 82,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 83,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 84,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 85,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 86,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 87,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 88,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 89,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 90,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 91,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 92,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 93,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 94,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 95,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 96,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 97,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 98,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 99,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 100,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 101,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 102,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 111,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 112,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 113,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 114,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 115,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 116,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 117,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 118,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 119,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 120,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 121,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 122,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 123,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 124,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 125,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 126,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 127,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 128,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 141,
+    "MinValue": -10000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 153,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 154,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 155,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 156,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 157,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 158,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 159,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 76,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 77,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 78,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 79,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 80,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 81,
+    "MinValue": -20000,
+    "Sort": 0
+  },
+  {
+    "Attribute": 166,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 168,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 169,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 174,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 142,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 144,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 145,
+    "MinValue": 0,
+    "Sort": 0
+  },
+  {
+    "Attribute": 27,
+    "MinValue": 0,
+    "Sort": 0
+  }
+]

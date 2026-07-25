@@ -1,0 +1,865 @@
+[
+  {
+    "ID": 1002001,
+    "HeroCnfId": 1002,
+    "SkillType": 1,
+    "Combos": [],
+    "MontageActions": [
+      55551
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 1002101,
+    "HeroCnfId": 1002,
+    "SkillType": 2,
+    "Combos": [
+      666662
+    ],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 1002102,
+    "HeroCnfId": 1002,
+    "SkillType": 2,
+    "Combos": [
+      666663
+    ],
+    "MontageActions": [
+      55554
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 1002201,
+    "HeroCnfId": 1002,
+    "SkillType": 3,
+    "Combos": [
+      666664
+    ],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 2000001,
+    "HeroCnfId": 0,
+    "SkillType": 4,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100100,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100101,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [
+      1001141
+    ],
+    "MontageActions": [
+      100113001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100102,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [
+      1001121
+    ],
+    "MontageActions": [
+      100112001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100103,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100104,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100108001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100106,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100111001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100107,
+    "HeroCnfId": 1001,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100200,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100201,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [
+      1002051
+    ],
+    "MontageActions": [
+      100206001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100202,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [
+      1002031
+    ],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100203,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100204,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100207001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100206,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100808101
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100207,
+    "HeroCnfId": 1002,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100500,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100501,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [
+      1005121
+    ],
+    "MontageActions": [
+      100511001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100502,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [
+      1005131
+    ],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100503,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100504,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100508001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100506,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100510101
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100507,
+    "HeroCnfId": 1005,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100700,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100701,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [
+      1007081
+    ],
+    "MontageActions": [
+      100707001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100702,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [
+      1007091
+    ],
+    "MontageActions": [
+      100709001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100703,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100704,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100701001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100706,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100707,
+    "HeroCnfId": 1007,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100800,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100801,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [
+      1008101
+    ],
+    "MontageActions": [
+      100809001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100802,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100811001,
+      100811002,
+      100811003
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100803,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100804,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100805001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100806,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      100808001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 100807,
+    "HeroCnfId": 1008,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101400,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101401,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [
+      1014081
+    ],
+    "MontageActions": [
+      101409001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101402,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [
+      1014071
+    ],
+    "MontageActions": [
+      101407001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101403,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101404,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      101401001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101406,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101407,
+    "HeroCnfId": 1014,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102300,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102301,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [
+      1023091
+    ],
+    "MontageActions": [
+      102310001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102302,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [
+      1023081
+    ],
+    "MontageActions": [
+      102308001,
+      102308002
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102303,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102304,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      102301001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102306,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102307,
+    "HeroCnfId": 1023,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102400,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102401,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [
+      1024081
+    ],
+    "MontageActions": [
+      102410001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102402,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      102407001,
+      102407002,
+      102409001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102403,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102404,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [
+      102401001
+    ],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102406,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102407,
+    "HeroCnfId": 1024,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101100,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101101,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101102,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101103,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101104,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101106,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101107,
+    "HeroCnfId": 1011,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101500,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101501,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101502,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101503,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101504,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101506,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101507,
+    "HeroCnfId": 1015,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101700,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101701,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101702,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101703,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101704,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101706,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101707,
+    "HeroCnfId": 1017,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101900,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101901,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101902,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101903,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101904,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101906,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 101907,
+    "HeroCnfId": 1019,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102200,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102201,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102202,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102203,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102204,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102206,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  },
+  {
+    "ID": 102207,
+    "HeroCnfId": 1022,
+    "SkillType": 0,
+    "Combos": [],
+    "MontageActions": [],
+    "LevelLimit": 10
+  }
+]

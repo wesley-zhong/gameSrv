@@ -1,0 +1,162 @@
+[
+  {
+    "ID": 100000,
+    "Logic_Gate_Type": 0,
+    "Ice_Abnormal_Layer": 2,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100001,
+    "Logic_Gate_Type": 0,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 2,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100002,
+    "Logic_Gate_Type": 0,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 1,
+    "Light_Abnormal_Layer": 2,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100101,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 1,
+    "Light_Abnormal_Layer": 1,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100200,
+    "Logic_Gate_Type": 0,
+    "Ice_Abnormal_Layer": 1,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100500,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 1,
+    "Wind_Abnormal_Layer": 1,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 1,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100501,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 1,
+    "Fire_Abnormal_Layer": 1,
+    "Wind_Abnormal_Layer": 1,
+    "Thunder_Abnormal_Layer": 1,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100502,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 2,
+    "Fire_Abnormal_Layer": 1,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 100801,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 1,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 1,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 101400,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 1,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 102400,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 1,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 102401,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 2,
+    "Thunder_Abnormal_Layer": 2,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 102402,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 2,
+    "Dark_Abnormal_Layer": 2
+  },
+  {
+    "ID": 100503,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 1,
+    "Wind_Abnormal_Layer": 1,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 1,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 101900,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 1,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 0,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  },
+  {
+    "ID": 101500,
+    "Logic_Gate_Type": 1,
+    "Ice_Abnormal_Layer": 0,
+    "Fire_Abnormal_Layer": 0,
+    "Wind_Abnormal_Layer": 0,
+    "Thunder_Abnormal_Layer": 1,
+    "Light_Abnormal_Layer": 0,
+    "Dark_Abnormal_Layer": 0
+  }
+]

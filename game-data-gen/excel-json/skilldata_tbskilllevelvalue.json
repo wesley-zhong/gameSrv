@@ -1,0 +1,6842 @@
+[
+  {
+    "ID": 1001070101,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070101_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070102,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070102_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070103,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070103_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070104,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070104_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070105,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070105_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070106,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070106_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070107,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070107_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070108,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070108_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070109,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070109_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070110,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070110_SkillValue",
+    "SkillValue_L10n": "1%"
+  },
+  {
+    "ID": 1001070201,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070201_SkillValue",
+    "SkillValue_L10n": "15%"
+  },
+  {
+    "ID": 1001070202,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070202_SkillValue",
+    "SkillValue_L10n": "16.5%"
+  },
+  {
+    "ID": 1001070203,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070203_SkillValue",
+    "SkillValue_L10n": "18%"
+  },
+  {
+    "ID": 1001070204,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070204_SkillValue",
+    "SkillValue_L10n": "19.5%"
+  },
+  {
+    "ID": 1001070205,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070205_SkillValue",
+    "SkillValue_L10n": "21%"
+  },
+  {
+    "ID": 1001070206,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070206_SkillValue",
+    "SkillValue_L10n": "22.5%"
+  },
+  {
+    "ID": 1001070207,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070207_SkillValue",
+    "SkillValue_L10n": "24%"
+  },
+  {
+    "ID": 1001070208,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070208_SkillValue",
+    "SkillValue_L10n": "25.5%"
+  },
+  {
+    "ID": 1001070209,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070209_SkillValue",
+    "SkillValue_L10n": "27%"
+  },
+  {
+    "ID": 1001070210,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070210_SkillValue",
+    "SkillValue_L10n": "30%"
+  },
+  {
+    "ID": 1001070301,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070301_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070302,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070302_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070303,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070303_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070304,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070304_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070305,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070305_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070306,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070306_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070307,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070307_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070308,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070308_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070309,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070309_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001070310,
+    "GroupID": 100107,
+    "SkillValue": "skill_level_skill_level_value_1001070310_SkillValue",
+    "SkillValue_L10n": "60秒"
+  },
+  {
+    "ID": 1001010101,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010101_SkillValue",
+    "SkillValue_L10n": "48.65%"
+  },
+  {
+    "ID": 1001010102,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010102_SkillValue",
+    "SkillValue_L10n": "54.06%"
+  },
+  {
+    "ID": 1001010103,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010103_SkillValue",
+    "SkillValue_L10n": "59.46%"
+  },
+  {
+    "ID": 1001010104,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010104_SkillValue",
+    "SkillValue_L10n": "64.87%"
+  },
+  {
+    "ID": 1001010105,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010105_SkillValue",
+    "SkillValue_L10n": "70.27%"
+  },
+  {
+    "ID": 1001010106,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010106_SkillValue",
+    "SkillValue_L10n": "75.68%"
+  },
+  {
+    "ID": 1001010107,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010107_SkillValue",
+    "SkillValue_L10n": "81.08%"
+  },
+  {
+    "ID": 1001010108,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010108_SkillValue",
+    "SkillValue_L10n": "86.49%"
+  },
+  {
+    "ID": 1001010109,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010109_SkillValue",
+    "SkillValue_L10n": "91.89%"
+  },
+  {
+    "ID": 1001010110,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010110_SkillValue",
+    "SkillValue_L10n": "97.30%"
+  },
+  {
+    "ID": 1001010201,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010201_SkillValue",
+    "SkillValue_L10n": "52.13%"
+  },
+  {
+    "ID": 1001010202,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010202_SkillValue",
+    "SkillValue_L10n": "57.92%"
+  },
+  {
+    "ID": 1001010203,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010203_SkillValue",
+    "SkillValue_L10n": "63.71%"
+  },
+  {
+    "ID": 1001010204,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010204_SkillValue",
+    "SkillValue_L10n": "69.50%"
+  },
+  {
+    "ID": 1001010205,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010205_SkillValue",
+    "SkillValue_L10n": "75.30%"
+  },
+  {
+    "ID": 1001010206,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010206_SkillValue",
+    "SkillValue_L10n": "81.09%"
+  },
+  {
+    "ID": 1001010207,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010207_SkillValue",
+    "SkillValue_L10n": "86.88%"
+  },
+  {
+    "ID": 1001010208,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010208_SkillValue",
+    "SkillValue_L10n": "92.67%"
+  },
+  {
+    "ID": 1001010209,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010209_SkillValue",
+    "SkillValue_L10n": "98.46%"
+  },
+  {
+    "ID": 1001010210,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010210_SkillValue",
+    "SkillValue_L10n": "104.26%"
+  },
+  {
+    "ID": 1001010301,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010301_SkillValue",
+    "SkillValue_L10n": "55.60%"
+  },
+  {
+    "ID": 1001010302,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010302_SkillValue",
+    "SkillValue_L10n": "61.78%"
+  },
+  {
+    "ID": 1001010303,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010303_SkillValue",
+    "SkillValue_L10n": "67.95%"
+  },
+  {
+    "ID": 1001010304,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010304_SkillValue",
+    "SkillValue_L10n": "74.13%"
+  },
+  {
+    "ID": 1001010305,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010305_SkillValue",
+    "SkillValue_L10n": "80.31%"
+  },
+  {
+    "ID": 1001010306,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010306_SkillValue",
+    "SkillValue_L10n": "86.49%"
+  },
+  {
+    "ID": 1001010307,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010307_SkillValue",
+    "SkillValue_L10n": "92.66%"
+  },
+  {
+    "ID": 1001010308,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010308_SkillValue",
+    "SkillValue_L10n": "98.84%"
+  },
+  {
+    "ID": 1001010309,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010309_SkillValue",
+    "SkillValue_L10n": "105.02%"
+  },
+  {
+    "ID": 1001010310,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010310_SkillValue",
+    "SkillValue_L10n": "111.20%"
+  },
+  {
+    "ID": 1001010401,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010401_SkillValue",
+    "SkillValue_L10n": "83.40%"
+  },
+  {
+    "ID": 1001010402,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010402_SkillValue",
+    "SkillValue_L10n": "92.67%"
+  },
+  {
+    "ID": 1001010403,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010403_SkillValue",
+    "SkillValue_L10n": "101.93%"
+  },
+  {
+    "ID": 1001010404,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010404_SkillValue",
+    "SkillValue_L10n": "111.20%"
+  },
+  {
+    "ID": 1001010405,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010405_SkillValue",
+    "SkillValue_L10n": "120.46%"
+  },
+  {
+    "ID": 1001010406,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010406_SkillValue",
+    "SkillValue_L10n": "129.73%"
+  },
+  {
+    "ID": 1001010407,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010407_SkillValue",
+    "SkillValue_L10n": "138.99%"
+  },
+  {
+    "ID": 1001010408,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010408_SkillValue",
+    "SkillValue_L10n": "148.26%"
+  },
+  {
+    "ID": 1001010409,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010409_SkillValue",
+    "SkillValue_L10n": "157.53%"
+  },
+  {
+    "ID": 1001010410,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010410_SkillValue",
+    "SkillValue_L10n": "166.80%"
+  },
+  {
+    "ID": 1001010501,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010501_SkillValue",
+    "SkillValue_L10n": "107.73%"
+  },
+  {
+    "ID": 1001010502,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010502_SkillValue",
+    "SkillValue_L10n": "119.70%"
+  },
+  {
+    "ID": 1001010503,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010503_SkillValue",
+    "SkillValue_L10n": "131.67%"
+  },
+  {
+    "ID": 1001010504,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010504_SkillValue",
+    "SkillValue_L10n": "143.64%"
+  },
+  {
+    "ID": 1001010505,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010505_SkillValue",
+    "SkillValue_L10n": "155.61%"
+  },
+  {
+    "ID": 1001010506,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010506_SkillValue",
+    "SkillValue_L10n": "167.57%"
+  },
+  {
+    "ID": 1001010507,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010507_SkillValue",
+    "SkillValue_L10n": "179.54%"
+  },
+  {
+    "ID": 1001010508,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010508_SkillValue",
+    "SkillValue_L10n": "191.51%"
+  },
+  {
+    "ID": 1001010509,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010509_SkillValue",
+    "SkillValue_L10n": "203.48%"
+  },
+  {
+    "ID": 1001010510,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010510_SkillValue",
+    "SkillValue_L10n": "215.46%"
+  },
+  {
+    "ID": 1001010601,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010601_SkillValue",
+    "SkillValue_L10n": "38.77%*3"
+  },
+  {
+    "ID": 1001010602,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010602_SkillValue",
+    "SkillValue_L10n": "43.08%*3"
+  },
+  {
+    "ID": 1001010603,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010603_SkillValue",
+    "SkillValue_L10n": "47.38%*3"
+  },
+  {
+    "ID": 1001010604,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010604_SkillValue",
+    "SkillValue_L10n": "51.69%*3"
+  },
+  {
+    "ID": 1001010605,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010605_SkillValue",
+    "SkillValue_L10n": "56.00%*3"
+  },
+  {
+    "ID": 1001010606,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010606_SkillValue",
+    "SkillValue_L10n": "60.31%*3"
+  },
+  {
+    "ID": 1001010607,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010607_SkillValue",
+    "SkillValue_L10n": "64.61%*3"
+  },
+  {
+    "ID": 1001010608,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010608_SkillValue",
+    "SkillValue_L10n": "68.92%*3"
+  },
+  {
+    "ID": 1001010609,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010609_SkillValue",
+    "SkillValue_L10n": "73.23%*3"
+  },
+  {
+    "ID": 1001010610,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010610_SkillValue",
+    "SkillValue_L10n": "77.54%*3"
+  },
+  {
+    "ID": 1001010701,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010701_SkillValue",
+    "SkillValue_L10n": "193.89%"
+  },
+  {
+    "ID": 1001010702,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010702_SkillValue",
+    "SkillValue_L10n": "215.43%"
+  },
+  {
+    "ID": 1001010703,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010703_SkillValue",
+    "SkillValue_L10n": "236.97%"
+  },
+  {
+    "ID": 1001010704,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010704_SkillValue",
+    "SkillValue_L10n": "258.51%"
+  },
+  {
+    "ID": 1001010705,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010705_SkillValue",
+    "SkillValue_L10n": "280.05%"
+  },
+  {
+    "ID": 1001010706,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010706_SkillValue",
+    "SkillValue_L10n": "301.60%"
+  },
+  {
+    "ID": 1001010707,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010707_SkillValue",
+    "SkillValue_L10n": "323.14%"
+  },
+  {
+    "ID": 1001010708,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010708_SkillValue",
+    "SkillValue_L10n": "344.68%"
+  },
+  {
+    "ID": 1001010709,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010709_SkillValue",
+    "SkillValue_L10n": "366.22%"
+  },
+  {
+    "ID": 1001010710,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010710_SkillValue",
+    "SkillValue_L10n": "387.78%"
+  },
+  {
+    "ID": 1001010801,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010801_SkillValue",
+    "SkillValue_L10n": "89.17%"
+  },
+  {
+    "ID": 1001010802,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010802_SkillValue",
+    "SkillValue_L10n": "99.08%"
+  },
+  {
+    "ID": 1001010803,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010803_SkillValue",
+    "SkillValue_L10n": "108.98%"
+  },
+  {
+    "ID": 1001010804,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010804_SkillValue",
+    "SkillValue_L10n": "118.89%"
+  },
+  {
+    "ID": 1001010805,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010805_SkillValue",
+    "SkillValue_L10n": "128.80%"
+  },
+  {
+    "ID": 1001010806,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010806_SkillValue",
+    "SkillValue_L10n": "138.70%"
+  },
+  {
+    "ID": 1001010807,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010807_SkillValue",
+    "SkillValue_L10n": "148.61%"
+  },
+  {
+    "ID": 1001010808,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010808_SkillValue",
+    "SkillValue_L10n": "158.52%"
+  },
+  {
+    "ID": 1001010809,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010809_SkillValue",
+    "SkillValue_L10n": "168.42%"
+  },
+  {
+    "ID": 1001010810,
+    "GroupID": 100101,
+    "SkillValue": "skill_level_skill_level_value_1001010810_SkillValue",
+    "SkillValue_L10n": "178.34%"
+  },
+  {
+    "ID": 1001020101,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020101_SkillValue",
+    "SkillValue_L10n": "89.17%"
+  },
+  {
+    "ID": 1001020102,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020102_SkillValue",
+    "SkillValue_L10n": "99.08%"
+  },
+  {
+    "ID": 1001020103,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020103_SkillValue",
+    "SkillValue_L10n": "108.98%"
+  },
+  {
+    "ID": 1001020104,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020104_SkillValue",
+    "SkillValue_L10n": "118.89%"
+  },
+  {
+    "ID": 1001020105,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020105_SkillValue",
+    "SkillValue_L10n": "128.80%"
+  },
+  {
+    "ID": 1001020106,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020106_SkillValue",
+    "SkillValue_L10n": "138.70%"
+  },
+  {
+    "ID": 1001020107,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020107_SkillValue",
+    "SkillValue_L10n": "148.61%"
+  },
+  {
+    "ID": 1001020108,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020108_SkillValue",
+    "SkillValue_L10n": "158.52%"
+  },
+  {
+    "ID": 1001020109,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020109_SkillValue",
+    "SkillValue_L10n": "168.42%"
+  },
+  {
+    "ID": 1001020110,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020110_SkillValue",
+    "SkillValue_L10n": "178.34%"
+  },
+  {
+    "ID": 1001020201,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020201_SkillValue",
+    "SkillValue_L10n": "290.91%"
+  },
+  {
+    "ID": 1001020202,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020202_SkillValue",
+    "SkillValue_L10n": "323.23%"
+  },
+  {
+    "ID": 1001020203,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020203_SkillValue",
+    "SkillValue_L10n": "355.55%"
+  },
+  {
+    "ID": 1001020204,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020204_SkillValue",
+    "SkillValue_L10n": "387.87%"
+  },
+  {
+    "ID": 1001020205,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020205_SkillValue",
+    "SkillValue_L10n": "420.19%"
+  },
+  {
+    "ID": 1001020206,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020206_SkillValue",
+    "SkillValue_L10n": "452.51%"
+  },
+  {
+    "ID": 1001020207,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020207_SkillValue",
+    "SkillValue_L10n": "484.83%"
+  },
+  {
+    "ID": 1001020208,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020208_SkillValue",
+    "SkillValue_L10n": "517.15%"
+  },
+  {
+    "ID": 1001020209,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020209_SkillValue",
+    "SkillValue_L10n": "549.47%"
+  },
+  {
+    "ID": 1001020210,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020210_SkillValue",
+    "SkillValue_L10n": "581.82%"
+  },
+  {
+    "ID": 1001020301,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020301_SkillValue",
+    "SkillValue_L10n": "227.13%*1+45.42%*3"
+  },
+  {
+    "ID": 1001020302,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020302_SkillValue",
+    "SkillValue_L10n": "252.36%*1+50.47%*3"
+  },
+  {
+    "ID": 1001020303,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020303_SkillValue",
+    "SkillValue_L10n": "277.60%*1+55.51%*3"
+  },
+  {
+    "ID": 1001020304,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020304_SkillValue",
+    "SkillValue_L10n": "302.83%*1+60.56%*3"
+  },
+  {
+    "ID": 1001020305,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020305_SkillValue",
+    "SkillValue_L10n": "328.07%*1+65.60%*3"
+  },
+  {
+    "ID": 1001020306,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020306_SkillValue",
+    "SkillValue_L10n": "353.30%*1+70.65%*3"
+  },
+  {
+    "ID": 1001020307,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020307_SkillValue",
+    "SkillValue_L10n": "378.53%*1+75.70%*3"
+  },
+  {
+    "ID": 1001020308,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020308_SkillValue",
+    "SkillValue_L10n": "403.77%*1+80.74%*3"
+  },
+  {
+    "ID": 1001020309,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020309_SkillValue",
+    "SkillValue_L10n": "429.00%*1+85.79%*3"
+  },
+  {
+    "ID": 1001020310,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020310_SkillValue",
+    "SkillValue_L10n": "454.26%*1+90.84%*3"
+  },
+  {
+    "ID": 1001020401,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020401_SkillValue",
+    "SkillValue_L10n": "450.91%"
+  },
+  {
+    "ID": 1001020402,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020402_SkillValue",
+    "SkillValue_L10n": "501.01%"
+  },
+  {
+    "ID": 1001020403,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020403_SkillValue",
+    "SkillValue_L10n": "551.10%"
+  },
+  {
+    "ID": 1001020404,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020404_SkillValue",
+    "SkillValue_L10n": "601.20%"
+  },
+  {
+    "ID": 1001020405,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020405_SkillValue",
+    "SkillValue_L10n": "651.29%"
+  },
+  {
+    "ID": 1001020406,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020406_SkillValue",
+    "SkillValue_L10n": "701.39%"
+  },
+  {
+    "ID": 1001020407,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020407_SkillValue",
+    "SkillValue_L10n": "751.49%"
+  },
+  {
+    "ID": 1001020408,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020408_SkillValue",
+    "SkillValue_L10n": "801.58%"
+  },
+  {
+    "ID": 1001020409,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020409_SkillValue",
+    "SkillValue_L10n": "851.68%"
+  },
+  {
+    "ID": 1001020410,
+    "GroupID": 100102,
+    "SkillValue": "skill_level_skill_level_value_1001020410_SkillValue",
+    "SkillValue_L10n": "901.82%"
+  },
+  {
+    "ID": 1001040101,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040101_SkillValue",
+    "SkillValue_L10n": "352.49%*5"
+  },
+  {
+    "ID": 1001040102,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040102_SkillValue",
+    "SkillValue_L10n": "391.65%*5"
+  },
+  {
+    "ID": 1001040103,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040103_SkillValue",
+    "SkillValue_L10n": "430.81%*5"
+  },
+  {
+    "ID": 1001040104,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040104_SkillValue",
+    "SkillValue_L10n": "469.97%*5"
+  },
+  {
+    "ID": 1001040105,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040105_SkillValue",
+    "SkillValue_L10n": "509.14%*5"
+  },
+  {
+    "ID": 1001040106,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040106_SkillValue",
+    "SkillValue_L10n": "548.30%*5"
+  },
+  {
+    "ID": 1001040107,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040107_SkillValue",
+    "SkillValue_L10n": "587.46%*5"
+  },
+  {
+    "ID": 1001040108,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040108_SkillValue",
+    "SkillValue_L10n": "626.62%*5"
+  },
+  {
+    "ID": 1001040109,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040109_SkillValue",
+    "SkillValue_L10n": "665.78%*5"
+  },
+  {
+    "ID": 1001040110,
+    "GroupID": 100104,
+    "SkillValue": "skill_level_skill_level_value_1001040110_SkillValue",
+    "SkillValue_L10n": "704.98%*5"
+  },
+  {
+    "ID": 1002070101,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070101_SkillValue",
+    "SkillValue_L10n": "25%"
+  },
+  {
+    "ID": 1002070102,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070102_SkillValue",
+    "SkillValue_L10n": "27.5%"
+  },
+  {
+    "ID": 1002070103,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070103_SkillValue",
+    "SkillValue_L10n": "30%"
+  },
+  {
+    "ID": 1002070104,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070104_SkillValue",
+    "SkillValue_L10n": "32.5%"
+  },
+  {
+    "ID": 1002070105,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070105_SkillValue",
+    "SkillValue_L10n": "35%"
+  },
+  {
+    "ID": 1002070106,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070106_SkillValue",
+    "SkillValue_L10n": "37.5%"
+  },
+  {
+    "ID": 1002070107,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070107_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1002070108,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070108_SkillValue",
+    "SkillValue_L10n": "42.5%"
+  },
+  {
+    "ID": 1002070109,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070109_SkillValue",
+    "SkillValue_L10n": "45%"
+  },
+  {
+    "ID": 1002070110,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070110_SkillValue",
+    "SkillValue_L10n": "50%"
+  },
+  {
+    "ID": 1002070201,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070201_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070202,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070202_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070203,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070203_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070204,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070204_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070205,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070205_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070206,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070206_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070207,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070207_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070208,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070208_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070209,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070209_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070210,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070210_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1002070301,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070301_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070302,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070302_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070303,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070303_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070304,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070304_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070305,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070305_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070306,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070306_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070307,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070307_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070308,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070308_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070309,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070309_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070310,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070310_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070401,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070401_SkillValue",
+    "SkillValue_L10n": "15.00%"
+  },
+  {
+    "ID": 1002070402,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070402_SkillValue",
+    "SkillValue_L10n": "16.50%"
+  },
+  {
+    "ID": 1002070403,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070403_SkillValue",
+    "SkillValue_L10n": "18.00%"
+  },
+  {
+    "ID": 1002070404,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070404_SkillValue",
+    "SkillValue_L10n": "19.50%"
+  },
+  {
+    "ID": 1002070405,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070405_SkillValue",
+    "SkillValue_L10n": "21.00%"
+  },
+  {
+    "ID": 1002070406,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070406_SkillValue",
+    "SkillValue_L10n": "22.50%"
+  },
+  {
+    "ID": 1002070407,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070407_SkillValue",
+    "SkillValue_L10n": "24.00%"
+  },
+  {
+    "ID": 1002070408,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070408_SkillValue",
+    "SkillValue_L10n": "25.50%"
+  },
+  {
+    "ID": 1002070409,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070409_SkillValue",
+    "SkillValue_L10n": "27.00%"
+  },
+  {
+    "ID": 1002070410,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070410_SkillValue",
+    "SkillValue_L10n": "30.00%"
+  },
+  {
+    "ID": 1002070501,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070501_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070502,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070502_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070503,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070503_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070504,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070504_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070505,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070505_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070506,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070506_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070507,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070507_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070508,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070508_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070509,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070509_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002070510,
+    "GroupID": 100207,
+    "SkillValue": "skill_level_skill_level_value_1002070510_SkillValue",
+    "SkillValue_L10n": "30秒"
+  },
+  {
+    "ID": 1002010101,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010101_SkillValue",
+    "SkillValue_L10n": "55.00%"
+  },
+  {
+    "ID": 1002010102,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010102_SkillValue",
+    "SkillValue_L10n": "61.11%"
+  },
+  {
+    "ID": 1002010103,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010103_SkillValue",
+    "SkillValue_L10n": "67.22%"
+  },
+  {
+    "ID": 1002010104,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010104_SkillValue",
+    "SkillValue_L10n": "73.33%"
+  },
+  {
+    "ID": 1002010105,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010105_SkillValue",
+    "SkillValue_L10n": "79.44%"
+  },
+  {
+    "ID": 1002010106,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010106_SkillValue",
+    "SkillValue_L10n": "85.55%"
+  },
+  {
+    "ID": 1002010107,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010107_SkillValue",
+    "SkillValue_L10n": "91.66%"
+  },
+  {
+    "ID": 1002010108,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010108_SkillValue",
+    "SkillValue_L10n": "97.77%"
+  },
+  {
+    "ID": 1002010109,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010109_SkillValue",
+    "SkillValue_L10n": "103.88%"
+  },
+  {
+    "ID": 1002010110,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010110_SkillValue",
+    "SkillValue_L10n": "110.00%"
+  },
+  {
+    "ID": 1002010201,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010201_SkillValue",
+    "SkillValue_L10n": "55.00%"
+  },
+  {
+    "ID": 1002010202,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010202_SkillValue",
+    "SkillValue_L10n": "61.11%"
+  },
+  {
+    "ID": 1002010203,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010203_SkillValue",
+    "SkillValue_L10n": "67.22%"
+  },
+  {
+    "ID": 1002010204,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010204_SkillValue",
+    "SkillValue_L10n": "73.33%"
+  },
+  {
+    "ID": 1002010205,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010205_SkillValue",
+    "SkillValue_L10n": "79.44%"
+  },
+  {
+    "ID": 1002010206,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010206_SkillValue",
+    "SkillValue_L10n": "85.55%"
+  },
+  {
+    "ID": 1002010207,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010207_SkillValue",
+    "SkillValue_L10n": "91.66%"
+  },
+  {
+    "ID": 1002010208,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010208_SkillValue",
+    "SkillValue_L10n": "97.77%"
+  },
+  {
+    "ID": 1002010209,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010209_SkillValue",
+    "SkillValue_L10n": "103.88%"
+  },
+  {
+    "ID": 1002010210,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010210_SkillValue",
+    "SkillValue_L10n": "110.00%"
+  },
+  {
+    "ID": 1002010301,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010301_SkillValue",
+    "SkillValue_L10n": "77.50%"
+  },
+  {
+    "ID": 1002010302,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010302_SkillValue",
+    "SkillValue_L10n": "86.11%"
+  },
+  {
+    "ID": 1002010303,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010303_SkillValue",
+    "SkillValue_L10n": "94.72%"
+  },
+  {
+    "ID": 1002010304,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010304_SkillValue",
+    "SkillValue_L10n": "103.33%"
+  },
+  {
+    "ID": 1002010305,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010305_SkillValue",
+    "SkillValue_L10n": "111.94%"
+  },
+  {
+    "ID": 1002010306,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010306_SkillValue",
+    "SkillValue_L10n": "120.55%"
+  },
+  {
+    "ID": 1002010307,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010307_SkillValue",
+    "SkillValue_L10n": "129.16%"
+  },
+  {
+    "ID": 1002010308,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010308_SkillValue",
+    "SkillValue_L10n": "137.77%"
+  },
+  {
+    "ID": 1002010309,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010309_SkillValue",
+    "SkillValue_L10n": "146.38%"
+  },
+  {
+    "ID": 1002010310,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010310_SkillValue",
+    "SkillValue_L10n": "155.00%"
+  },
+  {
+    "ID": 1002010401,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010401_SkillValue",
+    "SkillValue_L10n": "75.00%"
+  },
+  {
+    "ID": 1002010402,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010402_SkillValue",
+    "SkillValue_L10n": "83.33%"
+  },
+  {
+    "ID": 1002010403,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010403_SkillValue",
+    "SkillValue_L10n": "91.67%"
+  },
+  {
+    "ID": 1002010404,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010404_SkillValue",
+    "SkillValue_L10n": "100.00%"
+  },
+  {
+    "ID": 1002010405,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010405_SkillValue",
+    "SkillValue_L10n": "108.33%"
+  },
+  {
+    "ID": 1002010406,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010406_SkillValue",
+    "SkillValue_L10n": "116.66%"
+  },
+  {
+    "ID": 1002010407,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010407_SkillValue",
+    "SkillValue_L10n": "125.00%"
+  },
+  {
+    "ID": 1002010408,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010408_SkillValue",
+    "SkillValue_L10n": "133.33%"
+  },
+  {
+    "ID": 1002010409,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010409_SkillValue",
+    "SkillValue_L10n": "141.66%"
+  },
+  {
+    "ID": 1002010410,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010410_SkillValue",
+    "SkillValue_L10n": "150.00%"
+  },
+  {
+    "ID": 1002010501,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010501_SkillValue",
+    "SkillValue_L10n": "51.25%*1+12.81%*4"
+  },
+  {
+    "ID": 1002010502,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010502_SkillValue",
+    "SkillValue_L10n": "56.94%*1+14.23%*4"
+  },
+  {
+    "ID": 1002010503,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010503_SkillValue",
+    "SkillValue_L10n": "62.64%*1+15.66%*4"
+  },
+  {
+    "ID": 1002010504,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010504_SkillValue",
+    "SkillValue_L10n": "68.33%*1+17.08%*4"
+  },
+  {
+    "ID": 1002010505,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010505_SkillValue",
+    "SkillValue_L10n": "74.03%*1+18.50%*4"
+  },
+  {
+    "ID": 1002010506,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010506_SkillValue",
+    "SkillValue_L10n": "79.72%*1+19.93%*4"
+  },
+  {
+    "ID": 1002010507,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010507_SkillValue",
+    "SkillValue_L10n": "85.41%*1+21.35%*4"
+  },
+  {
+    "ID": 1002010508,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010508_SkillValue",
+    "SkillValue_L10n": "91.11%*1+22.77%*4"
+  },
+  {
+    "ID": 1002010509,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010509_SkillValue",
+    "SkillValue_L10n": "96.80%*1+24.20%*4"
+  },
+  {
+    "ID": 1002010510,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010510_SkillValue",
+    "SkillValue_L10n": "102.50%*1+25.62%*4"
+  },
+  {
+    "ID": 1002010601,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010601_SkillValue",
+    "SkillValue_L10n": "157.50%"
+  },
+  {
+    "ID": 1002010602,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010602_SkillValue",
+    "SkillValue_L10n": "175.00%"
+  },
+  {
+    "ID": 1002010603,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010603_SkillValue",
+    "SkillValue_L10n": "192.50%"
+  },
+  {
+    "ID": 1002010604,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010604_SkillValue",
+    "SkillValue_L10n": "209.99%"
+  },
+  {
+    "ID": 1002010605,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010605_SkillValue",
+    "SkillValue_L10n": "227.49%"
+  },
+  {
+    "ID": 1002010606,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010606_SkillValue",
+    "SkillValue_L10n": "244.99%"
+  },
+  {
+    "ID": 1002010607,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010607_SkillValue",
+    "SkillValue_L10n": "262.49%"
+  },
+  {
+    "ID": 1002010608,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010608_SkillValue",
+    "SkillValue_L10n": "279.99%"
+  },
+  {
+    "ID": 1002010609,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010609_SkillValue",
+    "SkillValue_L10n": "297.49%"
+  },
+  {
+    "ID": 1002010610,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010610_SkillValue",
+    "SkillValue_L10n": "315.00%"
+  },
+  {
+    "ID": 1002010701,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010701_SkillValue",
+    "SkillValue_L10n": "66.67%"
+  },
+  {
+    "ID": 1002010702,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010702_SkillValue",
+    "SkillValue_L10n": "74.08%"
+  },
+  {
+    "ID": 1002010703,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010703_SkillValue",
+    "SkillValue_L10n": "81.48%"
+  },
+  {
+    "ID": 1002010704,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010704_SkillValue",
+    "SkillValue_L10n": "88.89%"
+  },
+  {
+    "ID": 1002010705,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010705_SkillValue",
+    "SkillValue_L10n": "96.30%"
+  },
+  {
+    "ID": 1002010706,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010706_SkillValue",
+    "SkillValue_L10n": "103.71%"
+  },
+  {
+    "ID": 1002010707,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010707_SkillValue",
+    "SkillValue_L10n": "111.11%"
+  },
+  {
+    "ID": 1002010708,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010708_SkillValue",
+    "SkillValue_L10n": "118.52%"
+  },
+  {
+    "ID": 1002010709,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010709_SkillValue",
+    "SkillValue_L10n": "125.93%"
+  },
+  {
+    "ID": 1002010710,
+    "GroupID": 100201,
+    "SkillValue": "skill_level_skill_level_value_1002010710_SkillValue",
+    "SkillValue_L10n": "133.34%"
+  },
+  {
+    "ID": 1002020101,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020101_SkillValue",
+    "SkillValue_L10n": "34.85%*3+174.25%*1"
+  },
+  {
+    "ID": 1002020102,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020102_SkillValue",
+    "SkillValue_L10n": "38.72%*3+193.61%*1"
+  },
+  {
+    "ID": 1002020103,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020103_SkillValue",
+    "SkillValue_L10n": "42.59%*3+212.97%*1"
+  },
+  {
+    "ID": 1002020104,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020104_SkillValue",
+    "SkillValue_L10n": "46.47%*3+232.33%*1"
+  },
+  {
+    "ID": 1002020105,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020105_SkillValue",
+    "SkillValue_L10n": "50.34%*3+251.69%*1"
+  },
+  {
+    "ID": 1002020106,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020106_SkillValue",
+    "SkillValue_L10n": "54.21%*3+271.05%*1"
+  },
+  {
+    "ID": 1002020107,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020107_SkillValue",
+    "SkillValue_L10n": "58.08%*3+290.41%*1"
+  },
+  {
+    "ID": 1002020108,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020108_SkillValue",
+    "SkillValue_L10n": "61.95%*3+309.76%*1"
+  },
+  {
+    "ID": 1002020109,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020109_SkillValue",
+    "SkillValue_L10n": "65.82%*3+329.12%*1"
+  },
+  {
+    "ID": 1002020110,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020110_SkillValue",
+    "SkillValue_L10n": "69.70%*3+348.50%*1"
+  },
+  {
+    "ID": 1002020201,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020201_SkillValue",
+    "SkillValue_L10n": "203.99%*1+339.98%*1"
+  },
+  {
+    "ID": 1002020202,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020202_SkillValue",
+    "SkillValue_L10n": "226.65%*1+377.75%*1"
+  },
+  {
+    "ID": 1002020203,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020203_SkillValue",
+    "SkillValue_L10n": "249.32%*1+415.52%*1"
+  },
+  {
+    "ID": 1002020204,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020204_SkillValue",
+    "SkillValue_L10n": "271.98%*1+453.30%*1"
+  },
+  {
+    "ID": 1002020205,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020205_SkillValue",
+    "SkillValue_L10n": "294.64%*1+491.07%*1"
+  },
+  {
+    "ID": 1002020206,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020206_SkillValue",
+    "SkillValue_L10n": "317.31%*1+528.84%*1"
+  },
+  {
+    "ID": 1002020207,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020207_SkillValue",
+    "SkillValue_L10n": "339.97%*1+566.61%*1"
+  },
+  {
+    "ID": 1002020208,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020208_SkillValue",
+    "SkillValue_L10n": "362.63%*1+604.38%*1"
+  },
+  {
+    "ID": 1002020209,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020209_SkillValue",
+    "SkillValue_L10n": "385.30%*1+642.15%*1"
+  },
+  {
+    "ID": 1002020210,
+    "GroupID": 100202,
+    "SkillValue": "skill_level_skill_level_value_1002020210_SkillValue",
+    "SkillValue_L10n": "407.98%*1+679.96%*1"
+  },
+  {
+    "ID": 1002040101,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040101_SkillValue",
+    "SkillValue_L10n": "86.30%*5+129.45%*6"
+  },
+  {
+    "ID": 1002040102,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040102_SkillValue",
+    "SkillValue_L10n": "95.89%*5+143.83%*6"
+  },
+  {
+    "ID": 1002040103,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040103_SkillValue",
+    "SkillValue_L10n": "105.48%*5+158.21%*6"
+  },
+  {
+    "ID": 1002040104,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040104_SkillValue",
+    "SkillValue_L10n": "115.06%*5+172.60%*6"
+  },
+  {
+    "ID": 1002040105,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040105_SkillValue",
+    "SkillValue_L10n": "124.65%*5+186.98%*6"
+  },
+  {
+    "ID": 1002040106,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040106_SkillValue",
+    "SkillValue_L10n": "134.24%*5+201.36%*6"
+  },
+  {
+    "ID": 1002040107,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040107_SkillValue",
+    "SkillValue_L10n": "143.83%*5+215.74%*6"
+  },
+  {
+    "ID": 1002040108,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040108_SkillValue",
+    "SkillValue_L10n": "153.42%*5+230.12%*6"
+  },
+  {
+    "ID": 1002040109,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040109_SkillValue",
+    "SkillValue_L10n": "163.00%*5+244.51%*6"
+  },
+  {
+    "ID": 1002040110,
+    "GroupID": 100204,
+    "SkillValue": "skill_level_skill_level_value_1002040110_SkillValue",
+    "SkillValue_L10n": "172.60%*5+258.90%*6"
+  },
+  {
+    "ID": 1005070101,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070101_SkillValue",
+    "SkillValue_L10n": "15.00%"
+  },
+  {
+    "ID": 1005070102,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070102_SkillValue",
+    "SkillValue_L10n": "16.50%"
+  },
+  {
+    "ID": 1005070103,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070103_SkillValue",
+    "SkillValue_L10n": "18.00%"
+  },
+  {
+    "ID": 1005070104,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070104_SkillValue",
+    "SkillValue_L10n": "19.50%"
+  },
+  {
+    "ID": 1005070105,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070105_SkillValue",
+    "SkillValue_L10n": "21.00%"
+  },
+  {
+    "ID": 1005070106,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070106_SkillValue",
+    "SkillValue_L10n": "22.50%"
+  },
+  {
+    "ID": 1005070107,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070107_SkillValue",
+    "SkillValue_L10n": "24.00%"
+  },
+  {
+    "ID": 1005070108,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070108_SkillValue",
+    "SkillValue_L10n": "25.50%"
+  },
+  {
+    "ID": 1005070109,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070109_SkillValue",
+    "SkillValue_L10n": "27.00%"
+  },
+  {
+    "ID": 1005070110,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070110_SkillValue",
+    "SkillValue_L10n": "30.00%"
+  },
+  {
+    "ID": 1005070201,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070201_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1005070202,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070202_SkillValue",
+    "SkillValue_L10n": "55.00%"
+  },
+  {
+    "ID": 1005070203,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070203_SkillValue",
+    "SkillValue_L10n": "60.00%"
+  },
+  {
+    "ID": 1005070204,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070204_SkillValue",
+    "SkillValue_L10n": "65.00%"
+  },
+  {
+    "ID": 1005070205,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070205_SkillValue",
+    "SkillValue_L10n": "70.00%"
+  },
+  {
+    "ID": 1005070206,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070206_SkillValue",
+    "SkillValue_L10n": "75.00%"
+  },
+  {
+    "ID": 1005070207,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070207_SkillValue",
+    "SkillValue_L10n": "80.00%"
+  },
+  {
+    "ID": 1005070208,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070208_SkillValue",
+    "SkillValue_L10n": "85.00%"
+  },
+  {
+    "ID": 1005070209,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070209_SkillValue",
+    "SkillValue_L10n": "90.00%"
+  },
+  {
+    "ID": 1005070210,
+    "GroupID": 100507,
+    "SkillValue": "skill_level_skill_level_value_1005070210_SkillValue",
+    "SkillValue_L10n": "100.00%"
+  },
+  {
+    "ID": 1005010101,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010101_SkillValue",
+    "SkillValue_L10n": "67.60%"
+  },
+  {
+    "ID": 1005010102,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010102_SkillValue",
+    "SkillValue_L10n": "75.11%"
+  },
+  {
+    "ID": 1005010103,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010103_SkillValue",
+    "SkillValue_L10n": "82.62%"
+  },
+  {
+    "ID": 1005010104,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010104_SkillValue",
+    "SkillValue_L10n": "90.13%"
+  },
+  {
+    "ID": 1005010105,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010105_SkillValue",
+    "SkillValue_L10n": "97.64%"
+  },
+  {
+    "ID": 1005010106,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010106_SkillValue",
+    "SkillValue_L10n": "105.15%"
+  },
+  {
+    "ID": 1005010107,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010107_SkillValue",
+    "SkillValue_L10n": "112.66%"
+  },
+  {
+    "ID": 1005010108,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010108_SkillValue",
+    "SkillValue_L10n": "120.17%"
+  },
+  {
+    "ID": 1005010109,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010109_SkillValue",
+    "SkillValue_L10n": "127.68%"
+  },
+  {
+    "ID": 1005010110,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010110_SkillValue",
+    "SkillValue_L10n": "135.20%"
+  },
+  {
+    "ID": 1005010201,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010201_SkillValue",
+    "SkillValue_L10n": "44.20%*2"
+  },
+  {
+    "ID": 1005010202,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010202_SkillValue",
+    "SkillValue_L10n": "49.11%*2"
+  },
+  {
+    "ID": 1005010203,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010203_SkillValue",
+    "SkillValue_L10n": "54.02%*2"
+  },
+  {
+    "ID": 1005010204,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010204_SkillValue",
+    "SkillValue_L10n": "58.93%*2"
+  },
+  {
+    "ID": 1005010205,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010205_SkillValue",
+    "SkillValue_L10n": "63.84%*2"
+  },
+  {
+    "ID": 1005010206,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010206_SkillValue",
+    "SkillValue_L10n": "68.75%*2"
+  },
+  {
+    "ID": 1005010207,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010207_SkillValue",
+    "SkillValue_L10n": "73.66%*2"
+  },
+  {
+    "ID": 1005010208,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010208_SkillValue",
+    "SkillValue_L10n": "78.57%*2"
+  },
+  {
+    "ID": 1005010209,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010209_SkillValue",
+    "SkillValue_L10n": "83.48%*2"
+  },
+  {
+    "ID": 1005010210,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010210_SkillValue",
+    "SkillValue_L10n": "88.40%*2"
+  },
+  {
+    "ID": 1005010301,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010301_SkillValue",
+    "SkillValue_L10n": "52.00%*3"
+  },
+  {
+    "ID": 1005010302,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010302_SkillValue",
+    "SkillValue_L10n": "57.78%*3"
+  },
+  {
+    "ID": 1005010303,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010303_SkillValue",
+    "SkillValue_L10n": "63.55%*3"
+  },
+  {
+    "ID": 1005010304,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010304_SkillValue",
+    "SkillValue_L10n": "69.33%*3"
+  },
+  {
+    "ID": 1005010305,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010305_SkillValue",
+    "SkillValue_L10n": "75.11%*3"
+  },
+  {
+    "ID": 1005010306,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010306_SkillValue",
+    "SkillValue_L10n": "80.89%*3"
+  },
+  {
+    "ID": 1005010307,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010307_SkillValue",
+    "SkillValue_L10n": "86.66%*3"
+  },
+  {
+    "ID": 1005010308,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010308_SkillValue",
+    "SkillValue_L10n": "92.44%*3"
+  },
+  {
+    "ID": 1005010309,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010309_SkillValue",
+    "SkillValue_L10n": "98.22%*3"
+  },
+  {
+    "ID": 1005010310,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010310_SkillValue",
+    "SkillValue_L10n": "104.00%*3"
+  },
+  {
+    "ID": 1005010401,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010401_SkillValue",
+    "SkillValue_L10n": "117.00%*2"
+  },
+  {
+    "ID": 1005010402,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010402_SkillValue",
+    "SkillValue_L10n": "130.00%*2"
+  },
+  {
+    "ID": 1005010403,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010403_SkillValue",
+    "SkillValue_L10n": "143.00%*2"
+  },
+  {
+    "ID": 1005010404,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010404_SkillValue",
+    "SkillValue_L10n": "156.00%*2"
+  },
+  {
+    "ID": 1005010405,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010405_SkillValue",
+    "SkillValue_L10n": "168.99%*2"
+  },
+  {
+    "ID": 1005010406,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010406_SkillValue",
+    "SkillValue_L10n": "181.99%*2"
+  },
+  {
+    "ID": 1005010407,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010407_SkillValue",
+    "SkillValue_L10n": "194.99%*2"
+  },
+  {
+    "ID": 1005010408,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010408_SkillValue",
+    "SkillValue_L10n": "207.99%*2"
+  },
+  {
+    "ID": 1005010409,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010409_SkillValue",
+    "SkillValue_L10n": "220.99%*2"
+  },
+  {
+    "ID": 1005010410,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010410_SkillValue",
+    "SkillValue_L10n": "234.00%*2"
+  },
+  {
+    "ID": 1005010501,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010501_SkillValue",
+    "SkillValue_L10n": "52.00%*3"
+  },
+  {
+    "ID": 1005010502,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010502_SkillValue",
+    "SkillValue_L10n": "57.78%*3"
+  },
+  {
+    "ID": 1005010503,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010503_SkillValue",
+    "SkillValue_L10n": "63.55%*3"
+  },
+  {
+    "ID": 1005010504,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010504_SkillValue",
+    "SkillValue_L10n": "69.33%*3"
+  },
+  {
+    "ID": 1005010505,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010505_SkillValue",
+    "SkillValue_L10n": "75.11%*3"
+  },
+  {
+    "ID": 1005010506,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010506_SkillValue",
+    "SkillValue_L10n": "80.89%*3"
+  },
+  {
+    "ID": 1005010507,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010507_SkillValue",
+    "SkillValue_L10n": "86.66%*3"
+  },
+  {
+    "ID": 1005010508,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010508_SkillValue",
+    "SkillValue_L10n": "92.44%*3"
+  },
+  {
+    "ID": 1005010509,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010509_SkillValue",
+    "SkillValue_L10n": "98.22%*3"
+  },
+  {
+    "ID": 1005010510,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010510_SkillValue",
+    "SkillValue_L10n": "104.00%*3"
+  },
+  {
+    "ID": 1005010601,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010601_SkillValue",
+    "SkillValue_L10n": "320.75%"
+  },
+  {
+    "ID": 1005010602,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010602_SkillValue",
+    "SkillValue_L10n": "356.39%"
+  },
+  {
+    "ID": 1005010603,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010603_SkillValue",
+    "SkillValue_L10n": "392.02%"
+  },
+  {
+    "ID": 1005010604,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010604_SkillValue",
+    "SkillValue_L10n": "427.66%"
+  },
+  {
+    "ID": 1005010605,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010605_SkillValue",
+    "SkillValue_L10n": "463.29%"
+  },
+  {
+    "ID": 1005010606,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010606_SkillValue",
+    "SkillValue_L10n": "498.93%"
+  },
+  {
+    "ID": 1005010607,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010607_SkillValue",
+    "SkillValue_L10n": "534.56%"
+  },
+  {
+    "ID": 1005010608,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010608_SkillValue",
+    "SkillValue_L10n": "570.20%"
+  },
+  {
+    "ID": 1005010609,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010609_SkillValue",
+    "SkillValue_L10n": "605.83%"
+  },
+  {
+    "ID": 1005010610,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010610_SkillValue",
+    "SkillValue_L10n": "641.50%"
+  },
+  {
+    "ID": 1005010801,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010801_SkillValue",
+    "SkillValue_L10n": "317.63%*2"
+  },
+  {
+    "ID": 1005010802,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010802_SkillValue",
+    "SkillValue_L10n": "352.92%*2"
+  },
+  {
+    "ID": 1005010803,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010803_SkillValue",
+    "SkillValue_L10n": "388.21%*2"
+  },
+  {
+    "ID": 1005010804,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010804_SkillValue",
+    "SkillValue_L10n": "423.50%*2"
+  },
+  {
+    "ID": 1005010805,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010805_SkillValue",
+    "SkillValue_L10n": "458.78%*2"
+  },
+  {
+    "ID": 1005010806,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010806_SkillValue",
+    "SkillValue_L10n": "494.07%*2"
+  },
+  {
+    "ID": 1005010807,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010807_SkillValue",
+    "SkillValue_L10n": "529.36%*2"
+  },
+  {
+    "ID": 1005010808,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010808_SkillValue",
+    "SkillValue_L10n": "564.65%*2"
+  },
+  {
+    "ID": 1005010809,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010809_SkillValue",
+    "SkillValue_L10n": "599.94%*2"
+  },
+  {
+    "ID": 1005010810,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010810_SkillValue",
+    "SkillValue_L10n": "635.26%*2"
+  },
+  {
+    "ID": 1005010701,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010701_SkillValue",
+    "SkillValue_L10n": "90.83%"
+  },
+  {
+    "ID": 1005010702,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010702_SkillValue",
+    "SkillValue_L10n": "100.92%"
+  },
+  {
+    "ID": 1005010703,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010703_SkillValue",
+    "SkillValue_L10n": "111.01%"
+  },
+  {
+    "ID": 1005010704,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010704_SkillValue",
+    "SkillValue_L10n": "121.10%"
+  },
+  {
+    "ID": 1005010705,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010705_SkillValue",
+    "SkillValue_L10n": "131.19%"
+  },
+  {
+    "ID": 1005010706,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010706_SkillValue",
+    "SkillValue_L10n": "141.29%"
+  },
+  {
+    "ID": 1005010707,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010707_SkillValue",
+    "SkillValue_L10n": "151.38%"
+  },
+  {
+    "ID": 1005010708,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010708_SkillValue",
+    "SkillValue_L10n": "161.47%"
+  },
+  {
+    "ID": 1005010709,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010709_SkillValue",
+    "SkillValue_L10n": "171.56%"
+  },
+  {
+    "ID": 1005010710,
+    "GroupID": 100501,
+    "SkillValue": "skill_level_skill_level_value_1005010710_SkillValue",
+    "SkillValue_L10n": "181.66%"
+  },
+  {
+    "ID": 1005020101,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020101_SkillValue",
+    "SkillValue_L10n": "22.50%*4+15.00%*3"
+  },
+  {
+    "ID": 1005020102,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020102_SkillValue",
+    "SkillValue_L10n": "25.00%*4+16.67%*3"
+  },
+  {
+    "ID": 1005020103,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020103_SkillValue",
+    "SkillValue_L10n": "27.50%*4+18.33%*3"
+  },
+  {
+    "ID": 1005020104,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020104_SkillValue",
+    "SkillValue_L10n": "30.00%*4+20.00%*3"
+  },
+  {
+    "ID": 1005020105,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020105_SkillValue",
+    "SkillValue_L10n": "32.50%*4+21.67%*3"
+  },
+  {
+    "ID": 1005020106,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020106_SkillValue",
+    "SkillValue_L10n": "35.00%*4+23.33%*3"
+  },
+  {
+    "ID": 1005020107,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020107_SkillValue",
+    "SkillValue_L10n": "37.50%*4+25.00%*3"
+  },
+  {
+    "ID": 1005020108,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020108_SkillValue",
+    "SkillValue_L10n": "40.00%*4+26.67%*3"
+  },
+  {
+    "ID": 1005020109,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020109_SkillValue",
+    "SkillValue_L10n": "42.50%*4+28.33%*3"
+  },
+  {
+    "ID": 1005020110,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020110_SkillValue",
+    "SkillValue_L10n": "45.00%*4+30.00%*3"
+  },
+  {
+    "ID": 1005020201,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020201_SkillValue",
+    "SkillValue_L10n": "1378.00%"
+  },
+  {
+    "ID": 1005020202,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020202_SkillValue",
+    "SkillValue_L10n": "1531.10%"
+  },
+  {
+    "ID": 1005020203,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020203_SkillValue",
+    "SkillValue_L10n": "1684.19%"
+  },
+  {
+    "ID": 1005020204,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020204_SkillValue",
+    "SkillValue_L10n": "1837.29%"
+  },
+  {
+    "ID": 1005020205,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020205_SkillValue",
+    "SkillValue_L10n": "1990.38%"
+  },
+  {
+    "ID": 1005020206,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020206_SkillValue",
+    "SkillValue_L10n": "2143.48%"
+  },
+  {
+    "ID": 1005020207,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020207_SkillValue",
+    "SkillValue_L10n": "2296.57%"
+  },
+  {
+    "ID": 1005020208,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020208_SkillValue",
+    "SkillValue_L10n": "2449.67%"
+  },
+  {
+    "ID": 1005020209,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020209_SkillValue",
+    "SkillValue_L10n": "2602.77%"
+  },
+  {
+    "ID": 1005020210,
+    "GroupID": 100502,
+    "SkillValue": "skill_level_skill_level_value_1005020210_SkillValue",
+    "SkillValue_L10n": "2756.00%"
+  },
+  {
+    "ID": 1005040101,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040101_SkillValue",
+    "SkillValue_L10n": "2271.40%"
+  },
+  {
+    "ID": 1005040102,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040102_SkillValue",
+    "SkillValue_L10n": "2523.75%"
+  },
+  {
+    "ID": 1005040103,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040103_SkillValue",
+    "SkillValue_L10n": "2776.11%"
+  },
+  {
+    "ID": 1005040104,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040104_SkillValue",
+    "SkillValue_L10n": "3028.46%"
+  },
+  {
+    "ID": 1005040105,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040105_SkillValue",
+    "SkillValue_L10n": "3280.81%"
+  },
+  {
+    "ID": 1005040106,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040106_SkillValue",
+    "SkillValue_L10n": "3533.16%"
+  },
+  {
+    "ID": 1005040107,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040107_SkillValue",
+    "SkillValue_L10n": "3785.52%"
+  },
+  {
+    "ID": 1005040108,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040108_SkillValue",
+    "SkillValue_L10n": "4037.87%"
+  },
+  {
+    "ID": 1005040109,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040109_SkillValue",
+    "SkillValue_L10n": "4290.22%"
+  },
+  {
+    "ID": 1005040110,
+    "GroupID": 100504,
+    "SkillValue": "skill_level_skill_level_value_1005040110_SkillValue",
+    "SkillValue_L10n": "4542.80%"
+  },
+  {
+    "ID": 1007070101,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070101_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1007070102,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070102_SkillValue",
+    "SkillValue_L10n": "55.00%"
+  },
+  {
+    "ID": 1007070103,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070103_SkillValue",
+    "SkillValue_L10n": "60.00%"
+  },
+  {
+    "ID": 1007070104,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070104_SkillValue",
+    "SkillValue_L10n": "65.00%"
+  },
+  {
+    "ID": 1007070105,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070105_SkillValue",
+    "SkillValue_L10n": "70.00%"
+  },
+  {
+    "ID": 1007070106,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070106_SkillValue",
+    "SkillValue_L10n": "75.00%"
+  },
+  {
+    "ID": 1007070107,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070107_SkillValue",
+    "SkillValue_L10n": "80.00%"
+  },
+  {
+    "ID": 1007070108,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070108_SkillValue",
+    "SkillValue_L10n": "85.00%"
+  },
+  {
+    "ID": 1007070109,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070109_SkillValue",
+    "SkillValue_L10n": "90.00%"
+  },
+  {
+    "ID": 1007070110,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070110_SkillValue",
+    "SkillValue_L10n": "100.00%"
+  },
+  {
+    "ID": 1007070201,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070201_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070202,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070202_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070203,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070203_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070204,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070204_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070205,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070205_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070206,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070206_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070207,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070207_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070208,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070208_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070209,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070209_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007070210,
+    "GroupID": 100707,
+    "SkillValue": "skill_level_skill_level_value_1007070210_SkillValue",
+    "SkillValue_L10n": "40%"
+  },
+  {
+    "ID": 1007010101,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010101_SkillValue",
+    "SkillValue_L10n": "35.71%*1+47.62%*1"
+  },
+  {
+    "ID": 1007010102,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010102_SkillValue",
+    "SkillValue_L10n": "39.68%*1+52.91%*1"
+  },
+  {
+    "ID": 1007010103,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010103_SkillValue",
+    "SkillValue_L10n": "43.64%*1+58.20%*1"
+  },
+  {
+    "ID": 1007010104,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010104_SkillValue",
+    "SkillValue_L10n": "47.61%*1+63.49%*1"
+  },
+  {
+    "ID": 1007010105,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010105_SkillValue",
+    "SkillValue_L10n": "51.58%*1+68.78%*1"
+  },
+  {
+    "ID": 1007010106,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010106_SkillValue",
+    "SkillValue_L10n": "55.55%*1+74.07%*1"
+  },
+  {
+    "ID": 1007010107,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010107_SkillValue",
+    "SkillValue_L10n": "59.51%*1+79.36%*1"
+  },
+  {
+    "ID": 1007010108,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010108_SkillValue",
+    "SkillValue_L10n": "63.48%*1+84.65%*1"
+  },
+  {
+    "ID": 1007010109,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010109_SkillValue",
+    "SkillValue_L10n": "67.45%*1+89.94%*1"
+  },
+  {
+    "ID": 1007010110,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010110_SkillValue",
+    "SkillValue_L10n": "71.42%*1+95.24%*1"
+  },
+  {
+    "ID": 1007010201,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010201_SkillValue",
+    "SkillValue_L10n": "90.00%"
+  },
+  {
+    "ID": 1007010202,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010202_SkillValue",
+    "SkillValue_L10n": "100.00%"
+  },
+  {
+    "ID": 1007010203,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010203_SkillValue",
+    "SkillValue_L10n": "110.00%"
+  },
+  {
+    "ID": 1007010204,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010204_SkillValue",
+    "SkillValue_L10n": "120.00%"
+  },
+  {
+    "ID": 1007010205,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010205_SkillValue",
+    "SkillValue_L10n": "130.00%"
+  },
+  {
+    "ID": 1007010206,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010206_SkillValue",
+    "SkillValue_L10n": "140.00%"
+  },
+  {
+    "ID": 1007010207,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010207_SkillValue",
+    "SkillValue_L10n": "149.99%"
+  },
+  {
+    "ID": 1007010208,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010208_SkillValue",
+    "SkillValue_L10n": "159.99%"
+  },
+  {
+    "ID": 1007010209,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010209_SkillValue",
+    "SkillValue_L10n": "169.99%"
+  },
+  {
+    "ID": 1007010210,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010210_SkillValue",
+    "SkillValue_L10n": "180.00%"
+  },
+  {
+    "ID": 1007010301,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010301_SkillValue",
+    "SkillValue_L10n": "43.75%*2"
+  },
+  {
+    "ID": 1007010302,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010302_SkillValue",
+    "SkillValue_L10n": "48.61%*2"
+  },
+  {
+    "ID": 1007010303,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010303_SkillValue",
+    "SkillValue_L10n": "53.47%*2"
+  },
+  {
+    "ID": 1007010304,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010304_SkillValue",
+    "SkillValue_L10n": "58.33%*2"
+  },
+  {
+    "ID": 1007010305,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010305_SkillValue",
+    "SkillValue_L10n": "63.19%*2"
+  },
+  {
+    "ID": 1007010306,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010306_SkillValue",
+    "SkillValue_L10n": "68.05%*2"
+  },
+  {
+    "ID": 1007010307,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010307_SkillValue",
+    "SkillValue_L10n": "72.91%*2"
+  },
+  {
+    "ID": 1007010308,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010308_SkillValue",
+    "SkillValue_L10n": "77.77%*2"
+  },
+  {
+    "ID": 1007010309,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010309_SkillValue",
+    "SkillValue_L10n": "82.64%*2"
+  },
+  {
+    "ID": 1007010310,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010310_SkillValue",
+    "SkillValue_L10n": "87.50%*2"
+  },
+  {
+    "ID": 1007010401,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010401_SkillValue",
+    "SkillValue_L10n": "70.00%*2"
+  },
+  {
+    "ID": 1007010402,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010402_SkillValue",
+    "SkillValue_L10n": "77.78%*2"
+  },
+  {
+    "ID": 1007010403,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010403_SkillValue",
+    "SkillValue_L10n": "85.55%*2"
+  },
+  {
+    "ID": 1007010404,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010404_SkillValue",
+    "SkillValue_L10n": "93.33%*2"
+  },
+  {
+    "ID": 1007010405,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010405_SkillValue",
+    "SkillValue_L10n": "101.11%*2"
+  },
+  {
+    "ID": 1007010406,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010406_SkillValue",
+    "SkillValue_L10n": "108.89%*2"
+  },
+  {
+    "ID": 1007010407,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010407_SkillValue",
+    "SkillValue_L10n": "116.66%*2"
+  },
+  {
+    "ID": 1007010408,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010408_SkillValue",
+    "SkillValue_L10n": "124.44%*2"
+  },
+  {
+    "ID": 1007010409,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010409_SkillValue",
+    "SkillValue_L10n": "132.22%*2"
+  },
+  {
+    "ID": 1007010410,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010410_SkillValue",
+    "SkillValue_L10n": "140.00%*2"
+  },
+  {
+    "ID": 1007010501,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010501_SkillValue",
+    "SkillValue_L10n": "33.96%*3+135.83%*1"
+  },
+  {
+    "ID": 1007010502,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010502_SkillValue",
+    "SkillValue_L10n": "37.73%*3+150.92%*1"
+  },
+  {
+    "ID": 1007010503,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010503_SkillValue",
+    "SkillValue_L10n": "41.51%*3+166.01%*1"
+  },
+  {
+    "ID": 1007010504,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010504_SkillValue",
+    "SkillValue_L10n": "45.28%*3+181.10%*1"
+  },
+  {
+    "ID": 1007010505,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010505_SkillValue",
+    "SkillValue_L10n": "49.05%*3+196.19%*1"
+  },
+  {
+    "ID": 1007010506,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010506_SkillValue",
+    "SkillValue_L10n": "52.82%*3+211.28%*1"
+  },
+  {
+    "ID": 1007010507,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010507_SkillValue",
+    "SkillValue_L10n": "56.60%*3+226.37%*1"
+  },
+  {
+    "ID": 1007010508,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010508_SkillValue",
+    "SkillValue_L10n": "60.37%*3+241.46%*1"
+  },
+  {
+    "ID": 1007010509,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010509_SkillValue",
+    "SkillValue_L10n": "64.14%*3+256.56%*1"
+  },
+  {
+    "ID": 1007010510,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010510_SkillValue",
+    "SkillValue_L10n": "67.92%*3+271.66%*1"
+  },
+  {
+    "ID": 1007010601,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010601_SkillValue",
+    "SkillValue_L10n": "73.18%"
+  },
+  {
+    "ID": 1007010602,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010602_SkillValue",
+    "SkillValue_L10n": "81.31%"
+  },
+  {
+    "ID": 1007010603,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010603_SkillValue",
+    "SkillValue_L10n": "89.44%"
+  },
+  {
+    "ID": 1007010604,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010604_SkillValue",
+    "SkillValue_L10n": "97.57%"
+  },
+  {
+    "ID": 1007010605,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010605_SkillValue",
+    "SkillValue_L10n": "105.70%"
+  },
+  {
+    "ID": 1007010606,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010606_SkillValue",
+    "SkillValue_L10n": "113.83%"
+  },
+  {
+    "ID": 1007010607,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010607_SkillValue",
+    "SkillValue_L10n": "121.96%"
+  },
+  {
+    "ID": 1007010608,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010608_SkillValue",
+    "SkillValue_L10n": "130.09%"
+  },
+  {
+    "ID": 1007010609,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010609_SkillValue",
+    "SkillValue_L10n": "138.22%"
+  },
+  {
+    "ID": 1007010610,
+    "GroupID": 100701,
+    "SkillValue": "skill_level_skill_level_value_1007010610_SkillValue",
+    "SkillValue_L10n": "146.36%"
+  },
+  {
+    "ID": 1007020101,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020101_SkillValue",
+    "SkillValue_L10n": "215.28%"
+  },
+  {
+    "ID": 1007020102,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020102_SkillValue",
+    "SkillValue_L10n": "239.20%"
+  },
+  {
+    "ID": 1007020103,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020103_SkillValue",
+    "SkillValue_L10n": "263.12%"
+  },
+  {
+    "ID": 1007020104,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020104_SkillValue",
+    "SkillValue_L10n": "287.03%"
+  },
+  {
+    "ID": 1007020105,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020105_SkillValue",
+    "SkillValue_L10n": "310.95%"
+  },
+  {
+    "ID": 1007020106,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020106_SkillValue",
+    "SkillValue_L10n": "334.87%"
+  },
+  {
+    "ID": 1007020107,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020107_SkillValue",
+    "SkillValue_L10n": "358.79%"
+  },
+  {
+    "ID": 1007020108,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020108_SkillValue",
+    "SkillValue_L10n": "382.70%"
+  },
+  {
+    "ID": 1007020109,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020109_SkillValue",
+    "SkillValue_L10n": "406.62%"
+  },
+  {
+    "ID": 1007020110,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020110_SkillValue",
+    "SkillValue_L10n": "430.56%"
+  },
+  {
+    "ID": 1007020201,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020201_SkillValue",
+    "SkillValue_L10n": "435.71%"
+  },
+  {
+    "ID": 1007020202,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020202_SkillValue",
+    "SkillValue_L10n": "484.12%"
+  },
+  {
+    "ID": 1007020203,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020203_SkillValue",
+    "SkillValue_L10n": "532.52%"
+  },
+  {
+    "ID": 1007020204,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020204_SkillValue",
+    "SkillValue_L10n": "580.93%"
+  },
+  {
+    "ID": 1007020205,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020205_SkillValue",
+    "SkillValue_L10n": "629.34%"
+  },
+  {
+    "ID": 1007020206,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020206_SkillValue",
+    "SkillValue_L10n": "677.75%"
+  },
+  {
+    "ID": 1007020207,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020207_SkillValue",
+    "SkillValue_L10n": "726.15%"
+  },
+  {
+    "ID": 1007020208,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020208_SkillValue",
+    "SkillValue_L10n": "774.56%"
+  },
+  {
+    "ID": 1007020209,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020209_SkillValue",
+    "SkillValue_L10n": "822.97%"
+  },
+  {
+    "ID": 1007020210,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020210_SkillValue",
+    "SkillValue_L10n": "871.42%"
+  },
+  {
+    "ID": 1007020301,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020301_SkillValue",
+    "SkillValue_L10n": "726.18%"
+  },
+  {
+    "ID": 1007020302,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020302_SkillValue",
+    "SkillValue_L10n": "806.86%"
+  },
+  {
+    "ID": 1007020303,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020303_SkillValue",
+    "SkillValue_L10n": "887.54%"
+  },
+  {
+    "ID": 1007020304,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020304_SkillValue",
+    "SkillValue_L10n": "968.22%"
+  },
+  {
+    "ID": 1007020305,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020305_SkillValue",
+    "SkillValue_L10n": "1048.89%"
+  },
+  {
+    "ID": 1007020306,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020306_SkillValue",
+    "SkillValue_L10n": "1129.57%"
+  },
+  {
+    "ID": 1007020307,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020307_SkillValue",
+    "SkillValue_L10n": "1210.25%"
+  },
+  {
+    "ID": 1007020308,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020308_SkillValue",
+    "SkillValue_L10n": "1290.93%"
+  },
+  {
+    "ID": 1007020309,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020309_SkillValue",
+    "SkillValue_L10n": "1371.61%"
+  },
+  {
+    "ID": 1007020310,
+    "GroupID": 100702,
+    "SkillValue": "skill_level_skill_level_value_1007020310_SkillValue",
+    "SkillValue_L10n": "1452.36%"
+  },
+  {
+    "ID": 1007040101,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040101_SkillValue",
+    "SkillValue_L10n": "85.72%*7"
+  },
+  {
+    "ID": 1007040102,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040102_SkillValue",
+    "SkillValue_L10n": "95.24%*7"
+  },
+  {
+    "ID": 1007040103,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040103_SkillValue",
+    "SkillValue_L10n": "104.77%*7"
+  },
+  {
+    "ID": 1007040104,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040104_SkillValue",
+    "SkillValue_L10n": "114.29%*7"
+  },
+  {
+    "ID": 1007040105,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040105_SkillValue",
+    "SkillValue_L10n": "123.81%*7"
+  },
+  {
+    "ID": 1007040106,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040106_SkillValue",
+    "SkillValue_L10n": "133.34%*7"
+  },
+  {
+    "ID": 1007040107,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040107_SkillValue",
+    "SkillValue_L10n": "142.86%*7"
+  },
+  {
+    "ID": 1007040108,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040108_SkillValue",
+    "SkillValue_L10n": "152.38%*7"
+  },
+  {
+    "ID": 1007040109,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040109_SkillValue",
+    "SkillValue_L10n": "161.91%*7"
+  },
+  {
+    "ID": 1007040110,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040110_SkillValue",
+    "SkillValue_L10n": "171.44%*7"
+  },
+  {
+    "ID": 1007040201,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040201_SkillValue",
+    "SkillValue_L10n": "600.00%"
+  },
+  {
+    "ID": 1007040202,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040202_SkillValue",
+    "SkillValue_L10n": "666.66%"
+  },
+  {
+    "ID": 1007040203,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040203_SkillValue",
+    "SkillValue_L10n": "733.32%"
+  },
+  {
+    "ID": 1007040204,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040204_SkillValue",
+    "SkillValue_L10n": "799.98%"
+  },
+  {
+    "ID": 1007040205,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040205_SkillValue",
+    "SkillValue_L10n": "866.64%"
+  },
+  {
+    "ID": 1007040206,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040206_SkillValue",
+    "SkillValue_L10n": "933.30%"
+  },
+  {
+    "ID": 1007040207,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040207_SkillValue",
+    "SkillValue_L10n": "999.96%"
+  },
+  {
+    "ID": 1007040208,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040208_SkillValue",
+    "SkillValue_L10n": "1066.62%"
+  },
+  {
+    "ID": 1007040209,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040209_SkillValue",
+    "SkillValue_L10n": "1133.28%"
+  },
+  {
+    "ID": 1007040210,
+    "GroupID": 100704,
+    "SkillValue": "skill_level_skill_level_value_1007040210_SkillValue",
+    "SkillValue_L10n": "1200.00%"
+  },
+  {
+    "ID": 1008070101,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070101_SkillValue",
+    "SkillValue_L10n": "15%"
+  },
+  {
+    "ID": 1008070102,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070102_SkillValue",
+    "SkillValue_L10n": "16.5%"
+  },
+  {
+    "ID": 1008070103,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070103_SkillValue",
+    "SkillValue_L10n": "18%"
+  },
+  {
+    "ID": 1008070104,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070104_SkillValue",
+    "SkillValue_L10n": "19.5%"
+  },
+  {
+    "ID": 1008070105,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070105_SkillValue",
+    "SkillValue_L10n": "21%"
+  },
+  {
+    "ID": 1008070106,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070106_SkillValue",
+    "SkillValue_L10n": "22.5%"
+  },
+  {
+    "ID": 1008070107,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070107_SkillValue",
+    "SkillValue_L10n": "24%"
+  },
+  {
+    "ID": 1008070108,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070108_SkillValue",
+    "SkillValue_L10n": "25.5%"
+  },
+  {
+    "ID": 1008070109,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070109_SkillValue",
+    "SkillValue_L10n": "27%"
+  },
+  {
+    "ID": 1008070110,
+    "GroupID": 100807,
+    "SkillValue": "skill_level_skill_level_value_1008070110_SkillValue",
+    "SkillValue_L10n": "30%"
+  },
+  {
+    "ID": 1008010101,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010101_SkillValue",
+    "SkillValue_L10n": "98.44%"
+  },
+  {
+    "ID": 1008010102,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010102_SkillValue",
+    "SkillValue_L10n": "109.38%"
+  },
+  {
+    "ID": 1008010103,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010103_SkillValue",
+    "SkillValue_L10n": "120.31%"
+  },
+  {
+    "ID": 1008010104,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010104_SkillValue",
+    "SkillValue_L10n": "131.25%"
+  },
+  {
+    "ID": 1008010105,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010105_SkillValue",
+    "SkillValue_L10n": "142.19%"
+  },
+  {
+    "ID": 1008010106,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010106_SkillValue",
+    "SkillValue_L10n": "153.12%"
+  },
+  {
+    "ID": 1008010107,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010107_SkillValue",
+    "SkillValue_L10n": "164.06%"
+  },
+  {
+    "ID": 1008010108,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010108_SkillValue",
+    "SkillValue_L10n": "175.00%"
+  },
+  {
+    "ID": 1008010109,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010109_SkillValue",
+    "SkillValue_L10n": "185.93%"
+  },
+  {
+    "ID": 1008010110,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010110_SkillValue",
+    "SkillValue_L10n": "196.88%"
+  },
+  {
+    "ID": 1008010201,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010201_SkillValue",
+    "SkillValue_L10n": "120.31%"
+  },
+  {
+    "ID": 1008010202,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010202_SkillValue",
+    "SkillValue_L10n": "133.68%"
+  },
+  {
+    "ID": 1008010203,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010203_SkillValue",
+    "SkillValue_L10n": "147.04%"
+  },
+  {
+    "ID": 1008010204,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010204_SkillValue",
+    "SkillValue_L10n": "160.41%"
+  },
+  {
+    "ID": 1008010205,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010205_SkillValue",
+    "SkillValue_L10n": "173.78%"
+  },
+  {
+    "ID": 1008010206,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010206_SkillValue",
+    "SkillValue_L10n": "187.14%"
+  },
+  {
+    "ID": 1008010207,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010207_SkillValue",
+    "SkillValue_L10n": "200.51%"
+  },
+  {
+    "ID": 1008010208,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010208_SkillValue",
+    "SkillValue_L10n": "213.88%"
+  },
+  {
+    "ID": 1008010209,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010209_SkillValue",
+    "SkillValue_L10n": "227.24%"
+  },
+  {
+    "ID": 1008010210,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010210_SkillValue",
+    "SkillValue_L10n": "240.62%"
+  },
+  {
+    "ID": 1008010301,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010301_SkillValue",
+    "SkillValue_L10n": "54.69%"
+  },
+  {
+    "ID": 1008010302,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010302_SkillValue",
+    "SkillValue_L10n": "60.77%"
+  },
+  {
+    "ID": 1008010303,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010303_SkillValue",
+    "SkillValue_L10n": "66.84%"
+  },
+  {
+    "ID": 1008010304,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010304_SkillValue",
+    "SkillValue_L10n": "72.92%"
+  },
+  {
+    "ID": 1008010305,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010305_SkillValue",
+    "SkillValue_L10n": "78.99%"
+  },
+  {
+    "ID": 1008010306,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010306_SkillValue",
+    "SkillValue_L10n": "85.07%"
+  },
+  {
+    "ID": 1008010307,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010307_SkillValue",
+    "SkillValue_L10n": "91.15%"
+  },
+  {
+    "ID": 1008010308,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010308_SkillValue",
+    "SkillValue_L10n": "97.22%"
+  },
+  {
+    "ID": 1008010309,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010309_SkillValue",
+    "SkillValue_L10n": "103.30%"
+  },
+  {
+    "ID": 1008010310,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010310_SkillValue",
+    "SkillValue_L10n": "109.38%"
+  },
+  {
+    "ID": 1008010401,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010401_SkillValue",
+    "SkillValue_L10n": "164.06%"
+  },
+  {
+    "ID": 1008010402,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010402_SkillValue",
+    "SkillValue_L10n": "182.29%"
+  },
+  {
+    "ID": 1008010403,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010403_SkillValue",
+    "SkillValue_L10n": "200.51%"
+  },
+  {
+    "ID": 1008010404,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010404_SkillValue",
+    "SkillValue_L10n": "218.74%"
+  },
+  {
+    "ID": 1008010405,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010405_SkillValue",
+    "SkillValue_L10n": "236.97%"
+  },
+  {
+    "ID": 1008010406,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010406_SkillValue",
+    "SkillValue_L10n": "255.20%"
+  },
+  {
+    "ID": 1008010407,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010407_SkillValue",
+    "SkillValue_L10n": "273.42%"
+  },
+  {
+    "ID": 1008010408,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010408_SkillValue",
+    "SkillValue_L10n": "291.65%"
+  },
+  {
+    "ID": 1008010409,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010409_SkillValue",
+    "SkillValue_L10n": "309.88%"
+  },
+  {
+    "ID": 1008010410,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010410_SkillValue",
+    "SkillValue_L10n": "328.12%"
+  },
+  {
+    "ID": 1008010501,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010501_SkillValue",
+    "SkillValue_L10n": "99.58%"
+  },
+  {
+    "ID": 1008010502,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010502_SkillValue",
+    "SkillValue_L10n": "110.64%"
+  },
+  {
+    "ID": 1008010503,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010503_SkillValue",
+    "SkillValue_L10n": "121.71%"
+  },
+  {
+    "ID": 1008010504,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010504_SkillValue",
+    "SkillValue_L10n": "132.77%"
+  },
+  {
+    "ID": 1008010505,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010505_SkillValue",
+    "SkillValue_L10n": "143.83%"
+  },
+  {
+    "ID": 1008010506,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010506_SkillValue",
+    "SkillValue_L10n": "154.90%"
+  },
+  {
+    "ID": 1008010507,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010507_SkillValue",
+    "SkillValue_L10n": "165.96%"
+  },
+  {
+    "ID": 1008010508,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010508_SkillValue",
+    "SkillValue_L10n": "177.02%"
+  },
+  {
+    "ID": 1008010509,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010509_SkillValue",
+    "SkillValue_L10n": "188.09%"
+  },
+  {
+    "ID": 1008010510,
+    "GroupID": 100801,
+    "SkillValue": "skill_level_skill_level_value_1008010510_SkillValue",
+    "SkillValue_L10n": "199.16%"
+  },
+  {
+    "ID": 1008020101,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020101_SkillValue",
+    "SkillValue_L10n": "622.37%"
+  },
+  {
+    "ID": 1008020102,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020102_SkillValue",
+    "SkillValue_L10n": "691.52%"
+  },
+  {
+    "ID": 1008020103,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020103_SkillValue",
+    "SkillValue_L10n": "760.66%"
+  },
+  {
+    "ID": 1008020104,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020104_SkillValue",
+    "SkillValue_L10n": "829.81%"
+  },
+  {
+    "ID": 1008020105,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020105_SkillValue",
+    "SkillValue_L10n": "898.95%"
+  },
+  {
+    "ID": 1008020106,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020106_SkillValue",
+    "SkillValue_L10n": "968.10%"
+  },
+  {
+    "ID": 1008020107,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020107_SkillValue",
+    "SkillValue_L10n": "1037.24%"
+  },
+  {
+    "ID": 1008020108,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020108_SkillValue",
+    "SkillValue_L10n": "1106.39%"
+  },
+  {
+    "ID": 1008020109,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020109_SkillValue",
+    "SkillValue_L10n": "1175.53%"
+  },
+  {
+    "ID": 1008020110,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020110_SkillValue",
+    "SkillValue_L10n": "1244.74%"
+  },
+  {
+    "ID": 1008020201,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020201_SkillValue",
+    "SkillValue_L10n": "354.87%"
+  },
+  {
+    "ID": 1008020202,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020202_SkillValue",
+    "SkillValue_L10n": "394.30%"
+  },
+  {
+    "ID": 1008020203,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020203_SkillValue",
+    "SkillValue_L10n": "433.72%"
+  },
+  {
+    "ID": 1008020204,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020204_SkillValue",
+    "SkillValue_L10n": "473.15%"
+  },
+  {
+    "ID": 1008020205,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020205_SkillValue",
+    "SkillValue_L10n": "512.57%"
+  },
+  {
+    "ID": 1008020206,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020206_SkillValue",
+    "SkillValue_L10n": "552.00%"
+  },
+  {
+    "ID": 1008020207,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020207_SkillValue",
+    "SkillValue_L10n": "591.43%"
+  },
+  {
+    "ID": 1008020208,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020208_SkillValue",
+    "SkillValue_L10n": "630.85%"
+  },
+  {
+    "ID": 1008020209,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020209_SkillValue",
+    "SkillValue_L10n": "670.28%"
+  },
+  {
+    "ID": 1008020210,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020210_SkillValue",
+    "SkillValue_L10n": "709.74%"
+  },
+  {
+    "ID": 1008020301,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020301_SkillValue",
+    "SkillValue_L10n": "622.37%"
+  },
+  {
+    "ID": 1008020302,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020302_SkillValue",
+    "SkillValue_L10n": "691.52%"
+  },
+  {
+    "ID": 1008020303,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020303_SkillValue",
+    "SkillValue_L10n": "760.66%"
+  },
+  {
+    "ID": 1008020304,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020304_SkillValue",
+    "SkillValue_L10n": "829.81%"
+  },
+  {
+    "ID": 1008020305,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020305_SkillValue",
+    "SkillValue_L10n": "898.95%"
+  },
+  {
+    "ID": 1008020306,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020306_SkillValue",
+    "SkillValue_L10n": "968.10%"
+  },
+  {
+    "ID": 1008020307,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020307_SkillValue",
+    "SkillValue_L10n": "1037.24%"
+  },
+  {
+    "ID": 1008020308,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020308_SkillValue",
+    "SkillValue_L10n": "1106.39%"
+  },
+  {
+    "ID": 1008020309,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020309_SkillValue",
+    "SkillValue_L10n": "1175.53%"
+  },
+  {
+    "ID": 1008020310,
+    "GroupID": 100802,
+    "SkillValue": "skill_level_skill_level_value_1008020310_SkillValue",
+    "SkillValue_L10n": "1244.74%"
+  },
+  {
+    "ID": 1008040101,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040101_SkillValue",
+    "SkillValue_L10n": "1290.00%"
+  },
+  {
+    "ID": 1008040102,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040102_SkillValue",
+    "SkillValue_L10n": "1433.32%"
+  },
+  {
+    "ID": 1008040103,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040103_SkillValue",
+    "SkillValue_L10n": "1576.64%"
+  },
+  {
+    "ID": 1008040104,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040104_SkillValue",
+    "SkillValue_L10n": "1719.96%"
+  },
+  {
+    "ID": 1008040105,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040105_SkillValue",
+    "SkillValue_L10n": "1863.28%"
+  },
+  {
+    "ID": 1008040106,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040106_SkillValue",
+    "SkillValue_L10n": "2006.60%"
+  },
+  {
+    "ID": 1008040107,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040107_SkillValue",
+    "SkillValue_L10n": "2149.91%"
+  },
+  {
+    "ID": 1008040108,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040108_SkillValue",
+    "SkillValue_L10n": "2293.23%"
+  },
+  {
+    "ID": 1008040109,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040109_SkillValue",
+    "SkillValue_L10n": "2436.55%"
+  },
+  {
+    "ID": 1008040110,
+    "GroupID": 100804,
+    "SkillValue": "skill_level_skill_level_value_1008040110_SkillValue",
+    "SkillValue_L10n": "2580.00%"
+  },
+  {
+    "ID": 1014070101,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070101_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070102,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070102_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070103,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070103_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070104,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070104_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070105,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070105_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070106,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070106_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070107,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070107_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070108,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070108_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070109,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070109_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070110,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070110_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070201,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070201_SkillValue",
+    "SkillValue_L10n": "25.00%"
+  },
+  {
+    "ID": 1014070202,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070202_SkillValue",
+    "SkillValue_L10n": "27.50%"
+  },
+  {
+    "ID": 1014070203,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070203_SkillValue",
+    "SkillValue_L10n": "30.00%"
+  },
+  {
+    "ID": 1014070204,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070204_SkillValue",
+    "SkillValue_L10n": "32.50%"
+  },
+  {
+    "ID": 1014070205,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070205_SkillValue",
+    "SkillValue_L10n": "35.00%"
+  },
+  {
+    "ID": 1014070206,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070206_SkillValue",
+    "SkillValue_L10n": "37.50%"
+  },
+  {
+    "ID": 1014070207,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070207_SkillValue",
+    "SkillValue_L10n": "40.00%"
+  },
+  {
+    "ID": 1014070208,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070208_SkillValue",
+    "SkillValue_L10n": "42.50%"
+  },
+  {
+    "ID": 1014070209,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070209_SkillValue",
+    "SkillValue_L10n": "45.00%"
+  },
+  {
+    "ID": 1014070210,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070210_SkillValue",
+    "SkillValue_L10n": "50.00%"
+  },
+  {
+    "ID": 1014070301,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070301_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070302,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070302_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070303,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070303_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070304,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070304_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070305,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070305_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070306,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070306_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070307,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070307_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070308,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070308_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070309,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070309_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014070310,
+    "GroupID": 101407,
+    "SkillValue": "skill_level_skill_level_value_1014070310_SkillValue",
+    "SkillValue_L10n": "100%"
+  },
+  {
+    "ID": 1014010101,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010101_SkillValue",
+    "SkillValue_L10n": "75.00%"
+  },
+  {
+    "ID": 1014010102,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010102_SkillValue",
+    "SkillValue_L10n": "83.33%"
+  },
+  {
+    "ID": 1014010103,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010103_SkillValue",
+    "SkillValue_L10n": "91.67%"
+  },
+  {
+    "ID": 1014010104,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010104_SkillValue",
+    "SkillValue_L10n": "100.00%"
+  },
+  {
+    "ID": 1014010105,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010105_SkillValue",
+    "SkillValue_L10n": "108.33%"
+  },
+  {
+    "ID": 1014010106,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010106_SkillValue",
+    "SkillValue_L10n": "116.66%"
+  },
+  {
+    "ID": 1014010107,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010107_SkillValue",
+    "SkillValue_L10n": "125.00%"
+  },
+  {
+    "ID": 1014010108,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010108_SkillValue",
+    "SkillValue_L10n": "133.33%"
+  },
+  {
+    "ID": 1014010109,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010109_SkillValue",
+    "SkillValue_L10n": "141.66%"
+  },
+  {
+    "ID": 1014010110,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010110_SkillValue",
+    "SkillValue_L10n": "150.00%"
+  },
+  {
+    "ID": 1014010201,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010201_SkillValue",
+    "SkillValue_L10n": "137.50%"
+  },
+  {
+    "ID": 1014010202,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010202_SkillValue",
+    "SkillValue_L10n": "152.78%"
+  },
+  {
+    "ID": 1014010203,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010203_SkillValue",
+    "SkillValue_L10n": "168.05%"
+  },
+  {
+    "ID": 1014010204,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010204_SkillValue",
+    "SkillValue_L10n": "183.33%"
+  },
+  {
+    "ID": 1014010205,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010205_SkillValue",
+    "SkillValue_L10n": "198.61%"
+  },
+  {
+    "ID": 1014010206,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010206_SkillValue",
+    "SkillValue_L10n": "213.88%"
+  },
+  {
+    "ID": 1014010207,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010207_SkillValue",
+    "SkillValue_L10n": "229.16%"
+  },
+  {
+    "ID": 1014010208,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010208_SkillValue",
+    "SkillValue_L10n": "244.43%"
+  },
+  {
+    "ID": 1014010209,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010209_SkillValue",
+    "SkillValue_L10n": "259.71%"
+  },
+  {
+    "ID": 1014010210,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010210_SkillValue",
+    "SkillValue_L10n": "275.00%"
+  },
+  {
+    "ID": 1014010301,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010301_SkillValue",
+    "SkillValue_L10n": "62.50%"
+  },
+  {
+    "ID": 1014010302,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010302_SkillValue",
+    "SkillValue_L10n": "69.44%"
+  },
+  {
+    "ID": 1014010303,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010303_SkillValue",
+    "SkillValue_L10n": "76.39%"
+  },
+  {
+    "ID": 1014010304,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010304_SkillValue",
+    "SkillValue_L10n": "83.33%"
+  },
+  {
+    "ID": 1014010305,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010305_SkillValue",
+    "SkillValue_L10n": "90.28%"
+  },
+  {
+    "ID": 1014010306,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010306_SkillValue",
+    "SkillValue_L10n": "97.22%"
+  },
+  {
+    "ID": 1014010307,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010307_SkillValue",
+    "SkillValue_L10n": "104.16%"
+  },
+  {
+    "ID": 1014010308,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010308_SkillValue",
+    "SkillValue_L10n": "111.11%"
+  },
+  {
+    "ID": 1014010309,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010309_SkillValue",
+    "SkillValue_L10n": "118.05%"
+  },
+  {
+    "ID": 1014010310,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010310_SkillValue",
+    "SkillValue_L10n": "125.00%"
+  },
+  {
+    "ID": 1014010401,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010401_SkillValue",
+    "SkillValue_L10n": "53.33%*3"
+  },
+  {
+    "ID": 1014010402,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010402_SkillValue",
+    "SkillValue_L10n": "59.25%*3"
+  },
+  {
+    "ID": 1014010403,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010403_SkillValue",
+    "SkillValue_L10n": "65.18%*3"
+  },
+  {
+    "ID": 1014010404,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010404_SkillValue",
+    "SkillValue_L10n": "71.10%*3"
+  },
+  {
+    "ID": 1014010405,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010405_SkillValue",
+    "SkillValue_L10n": "77.03%*3"
+  },
+  {
+    "ID": 1014010406,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010406_SkillValue",
+    "SkillValue_L10n": "82.95%*3"
+  },
+  {
+    "ID": 1014010407,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010407_SkillValue",
+    "SkillValue_L10n": "88.88%*3"
+  },
+  {
+    "ID": 1014010408,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010408_SkillValue",
+    "SkillValue_L10n": "94.80%*3"
+  },
+  {
+    "ID": 1014010409,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010409_SkillValue",
+    "SkillValue_L10n": "100.73%*3"
+  },
+  {
+    "ID": 1014010410,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010410_SkillValue",
+    "SkillValue_L10n": "106.66%*3"
+  },
+  {
+    "ID": 1014010501,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010501_SkillValue",
+    "SkillValue_L10n": "250.00%"
+  },
+  {
+    "ID": 1014010502,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010502_SkillValue",
+    "SkillValue_L10n": "277.78%"
+  },
+  {
+    "ID": 1014010503,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010503_SkillValue",
+    "SkillValue_L10n": "305.55%"
+  },
+  {
+    "ID": 1014010504,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010504_SkillValue",
+    "SkillValue_L10n": "333.33%"
+  },
+  {
+    "ID": 1014010505,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010505_SkillValue",
+    "SkillValue_L10n": "361.10%"
+  },
+  {
+    "ID": 1014010506,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010506_SkillValue",
+    "SkillValue_L10n": "388.88%"
+  },
+  {
+    "ID": 1014010507,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010507_SkillValue",
+    "SkillValue_L10n": "416.65%"
+  },
+  {
+    "ID": 1014010508,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010508_SkillValue",
+    "SkillValue_L10n": "444.43%"
+  },
+  {
+    "ID": 1014010509,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010509_SkillValue",
+    "SkillValue_L10n": "472.20%"
+  },
+  {
+    "ID": 1014010510,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010510_SkillValue",
+    "SkillValue_L10n": "500.00%"
+  },
+  {
+    "ID": 1014010601,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010601_SkillValue",
+    "SkillValue_L10n": "112.50%"
+  },
+  {
+    "ID": 1014010602,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010602_SkillValue",
+    "SkillValue_L10n": "125.00%"
+  },
+  {
+    "ID": 1014010603,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010603_SkillValue",
+    "SkillValue_L10n": "137.50%"
+  },
+  {
+    "ID": 1014010604,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010604_SkillValue",
+    "SkillValue_L10n": "150.00%"
+  },
+  {
+    "ID": 1014010605,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010605_SkillValue",
+    "SkillValue_L10n": "162.50%"
+  },
+  {
+    "ID": 1014010606,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010606_SkillValue",
+    "SkillValue_L10n": "174.99%"
+  },
+  {
+    "ID": 1014010607,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010607_SkillValue",
+    "SkillValue_L10n": "187.49%"
+  },
+  {
+    "ID": 1014010608,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010608_SkillValue",
+    "SkillValue_L10n": "199.99%"
+  },
+  {
+    "ID": 1014010609,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010609_SkillValue",
+    "SkillValue_L10n": "212.49%"
+  },
+  {
+    "ID": 1014010610,
+    "GroupID": 101401,
+    "SkillValue": "skill_level_skill_level_value_1014010610_SkillValue",
+    "SkillValue_L10n": "225.00%"
+  },
+  {
+    "ID": 1014020101,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020101_SkillValue",
+    "SkillValue_L10n": "60.00%"
+  },
+  {
+    "ID": 1014020102,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020102_SkillValue",
+    "SkillValue_L10n": "66.67%"
+  },
+  {
+    "ID": 1014020103,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020103_SkillValue",
+    "SkillValue_L10n": "73.33%"
+  },
+  {
+    "ID": 1014020104,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020104_SkillValue",
+    "SkillValue_L10n": "80.00%"
+  },
+  {
+    "ID": 1014020105,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020105_SkillValue",
+    "SkillValue_L10n": "86.66%"
+  },
+  {
+    "ID": 1014020106,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020106_SkillValue",
+    "SkillValue_L10n": "93.33%"
+  },
+  {
+    "ID": 1014020107,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020107_SkillValue",
+    "SkillValue_L10n": "100.00%"
+  },
+  {
+    "ID": 1014020108,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020108_SkillValue",
+    "SkillValue_L10n": "106.66%"
+  },
+  {
+    "ID": 1014020109,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020109_SkillValue",
+    "SkillValue_L10n": "113.33%"
+  },
+  {
+    "ID": 1014020110,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020110_SkillValue",
+    "SkillValue_L10n": "120.00%"
+  },
+  {
+    "ID": 1014020201,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020201_SkillValue",
+    "SkillValue_L10n": "159.60%*1+266.00%*1"
+  },
+  {
+    "ID": 1014020202,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020202_SkillValue",
+    "SkillValue_L10n": "177.33%*1+295.55%*1"
+  },
+  {
+    "ID": 1014020203,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020203_SkillValue",
+    "SkillValue_L10n": "195.06%*1+325.11%*1"
+  },
+  {
+    "ID": 1014020204,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020204_SkillValue",
+    "SkillValue_L10n": "212.79%*1+354.66%*1"
+  },
+  {
+    "ID": 1014020205,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020205_SkillValue",
+    "SkillValue_L10n": "230.53%*1+384.21%*1"
+  },
+  {
+    "ID": 1014020206,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020206_SkillValue",
+    "SkillValue_L10n": "248.26%*1+413.76%*1"
+  },
+  {
+    "ID": 1014020207,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020207_SkillValue",
+    "SkillValue_L10n": "265.99%*1+443.32%*1"
+  },
+  {
+    "ID": 1014020208,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020208_SkillValue",
+    "SkillValue_L10n": "283.72%*1+472.87%*1"
+  },
+  {
+    "ID": 1014020209,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020209_SkillValue",
+    "SkillValue_L10n": "301.45%*1+502.42%*1"
+  },
+  {
+    "ID": 1014020210,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020210_SkillValue",
+    "SkillValue_L10n": "319.20%*1+532.00%*1"
+  },
+  {
+    "ID": 1014020301,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020301_SkillValue",
+    "SkillValue_L10n": "171.22%*3+513.70%*1"
+  },
+  {
+    "ID": 1014020302,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020302_SkillValue",
+    "SkillValue_L10n": "190.24%*3+570.77%*1"
+  },
+  {
+    "ID": 1014020303,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020303_SkillValue",
+    "SkillValue_L10n": "209.27%*3+627.84%*1"
+  },
+  {
+    "ID": 1014020304,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020304_SkillValue",
+    "SkillValue_L10n": "228.29%*3+684.92%*1"
+  },
+  {
+    "ID": 1014020305,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020305_SkillValue",
+    "SkillValue_L10n": "247.31%*3+741.99%*1"
+  },
+  {
+    "ID": 1014020306,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020306_SkillValue",
+    "SkillValue_L10n": "266.33%*3+799.06%*1"
+  },
+  {
+    "ID": 1014020307,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020307_SkillValue",
+    "SkillValue_L10n": "285.36%*3+856.13%*1"
+  },
+  {
+    "ID": 1014020308,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020308_SkillValue",
+    "SkillValue_L10n": "304.38%*3+913.20%*1"
+  },
+  {
+    "ID": 1014020309,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020309_SkillValue",
+    "SkillValue_L10n": "323.40%*3+970.28%*1"
+  },
+  {
+    "ID": 1014020310,
+    "GroupID": 101402,
+    "SkillValue": "skill_level_skill_level_value_1014020310_SkillValue",
+    "SkillValue_L10n": "342.44%*3+1027.40%*1"
+  },
+  {
+    "ID": 1014040101,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040101_SkillValue",
+    "SkillValue_L10n": "127.37%*4+849.12%*1"
+  },
+  {
+    "ID": 1014040102,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040102_SkillValue",
+    "SkillValue_L10n": "141.52%*4+943.46%*1"
+  },
+  {
+    "ID": 1014040103,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040103_SkillValue",
+    "SkillValue_L10n": "155.67%*4+1037.79%*1"
+  },
+  {
+    "ID": 1014040104,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040104_SkillValue",
+    "SkillValue_L10n": "169.82%*4+1132.13%*1"
+  },
+  {
+    "ID": 1014040105,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040105_SkillValue",
+    "SkillValue_L10n": "183.97%*4+1226.47%*1"
+  },
+  {
+    "ID": 1014040106,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040106_SkillValue",
+    "SkillValue_L10n": "198.12%*4+1320.81%*1"
+  },
+  {
+    "ID": 1014040107,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040107_SkillValue",
+    "SkillValue_L10n": "212.27%*4+1415.14%*1"
+  },
+  {
+    "ID": 1014040108,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040108_SkillValue",
+    "SkillValue_L10n": "226.43%*4+1509.48%*1"
+  },
+  {
+    "ID": 1014040109,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040109_SkillValue",
+    "SkillValue_L10n": "240.58%*4+1603.82%*1"
+  },
+  {
+    "ID": 1014040110,
+    "GroupID": 101404,
+    "SkillValue": "skill_level_skill_level_value_1014040110_SkillValue",
+    "SkillValue_L10n": "254.74%*4+1698.24%*1"
+  },
+  {
+    "ID": 1023070101,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070101_SkillValue",
+    "SkillValue_L10n": "2.00%/4.00%/8.00%/12.00%"
+  },
+  {
+    "ID": 1023070102,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070102_SkillValue",
+    "SkillValue_L10n": "2.20%/4.40%/8.80%/13.20%"
+  },
+  {
+    "ID": 1023070103,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070103_SkillValue",
+    "SkillValue_L10n": "2.40%/4.80%/9.60%/14.40%"
+  },
+  {
+    "ID": 1023070104,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070104_SkillValue",
+    "SkillValue_L10n": "2.60%/5.20%/10.40%/15.60%"
+  },
+  {
+    "ID": 1023070105,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070105_SkillValue",
+    "SkillValue_L10n": "2.80%/5.60%/11.20%/16.80%"
+  },
+  {
+    "ID": 1023070106,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070106_SkillValue",
+    "SkillValue_L10n": "3.00%/6.00%/12.00%/18.00%"
+  },
+  {
+    "ID": 1023070107,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070107_SkillValue",
+    "SkillValue_L10n": "3.20%/6.40%/12.80%/19.20%"
+  },
+  {
+    "ID": 1023070108,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070108_SkillValue",
+    "SkillValue_L10n": "3.40%/6.80%/13.60%/20.40%"
+  },
+  {
+    "ID": 1023070109,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070109_SkillValue",
+    "SkillValue_L10n": "3.60%/7.20%/14.40%/21.60%"
+  },
+  {
+    "ID": 1023070110,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070110_SkillValue",
+    "SkillValue_L10n": "4.00%/8.00%/16.00%/24.00%"
+  },
+  {
+    "ID": 1023070201,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070201_SkillValue",
+    "SkillValue_L10n": "5%/12.5%/20%/40%"
+  },
+  {
+    "ID": 1023070202,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070202_SkillValue",
+    "SkillValue_L10n": "5.5%/13.75%/22%/44%"
+  },
+  {
+    "ID": 1023070203,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070203_SkillValue",
+    "SkillValue_L10n": "6%/15%/24%/48%"
+  },
+  {
+    "ID": 1023070204,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070204_SkillValue",
+    "SkillValue_L10n": "6.5%/16.25%/26%/52%"
+  },
+  {
+    "ID": 1023070205,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070205_SkillValue",
+    "SkillValue_L10n": "7%/17.5%/28%/56%"
+  },
+  {
+    "ID": 1023070206,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070206_SkillValue",
+    "SkillValue_L10n": "7.5%/18.75%/30%/60%"
+  },
+  {
+    "ID": 1023070207,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070207_SkillValue",
+    "SkillValue_L10n": "8%/20%/32%/64%"
+  },
+  {
+    "ID": 1023070208,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070208_SkillValue",
+    "SkillValue_L10n": "8.5%/21.25%/34%/68%"
+  },
+  {
+    "ID": 1023070209,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070209_SkillValue",
+    "SkillValue_L10n": "9%/22.5%/36%/72%"
+  },
+  {
+    "ID": 1023070210,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070210_SkillValue",
+    "SkillValue_L10n": "10%/25%/40%/80%"
+  },
+  {
+    "ID": 1023070301,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070301_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070302,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070302_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070303,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070303_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070304,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070304_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070305,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070305_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070306,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070306_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070307,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070307_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070308,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070308_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070309,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070309_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023070310,
+    "GroupID": 102307,
+    "SkillValue": "skill_level_skill_level_value_1023070310_SkillValue",
+    "SkillValue_L10n": "20.00%/40.00%/60.00%/100.00%"
+  },
+  {
+    "ID": 1023010101,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010101_SkillValue",
+    "SkillValue_L10n": "90.42%"
+  },
+  {
+    "ID": 1023010102,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010102_SkillValue",
+    "SkillValue_L10n": "100.47%"
+  },
+  {
+    "ID": 1023010103,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010103_SkillValue",
+    "SkillValue_L10n": "110.51%"
+  },
+  {
+    "ID": 1023010104,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010104_SkillValue",
+    "SkillValue_L10n": "120.56%"
+  },
+  {
+    "ID": 1023010105,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010105_SkillValue",
+    "SkillValue_L10n": "130.60%"
+  },
+  {
+    "ID": 1023010106,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010106_SkillValue",
+    "SkillValue_L10n": "140.65%"
+  },
+  {
+    "ID": 1023010107,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010107_SkillValue",
+    "SkillValue_L10n": "150.69%"
+  },
+  {
+    "ID": 1023010108,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010108_SkillValue",
+    "SkillValue_L10n": "160.74%"
+  },
+  {
+    "ID": 1023010109,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010109_SkillValue",
+    "SkillValue_L10n": "170.79%"
+  },
+  {
+    "ID": 1023010110,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010110_SkillValue",
+    "SkillValue_L10n": "180.84%"
+  },
+  {
+    "ID": 1023010201,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010201_SkillValue",
+    "SkillValue_L10n": "103.33%"
+  },
+  {
+    "ID": 1023010202,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010202_SkillValue",
+    "SkillValue_L10n": "114.81%"
+  },
+  {
+    "ID": 1023010203,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010203_SkillValue",
+    "SkillValue_L10n": "126.29%"
+  },
+  {
+    "ID": 1023010204,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010204_SkillValue",
+    "SkillValue_L10n": "137.77%"
+  },
+  {
+    "ID": 1023010205,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010205_SkillValue",
+    "SkillValue_L10n": "149.25%"
+  },
+  {
+    "ID": 1023010206,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010206_SkillValue",
+    "SkillValue_L10n": "160.73%"
+  },
+  {
+    "ID": 1023010207,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010207_SkillValue",
+    "SkillValue_L10n": "172.21%"
+  },
+  {
+    "ID": 1023010208,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010208_SkillValue",
+    "SkillValue_L10n": "183.69%"
+  },
+  {
+    "ID": 1023010209,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010209_SkillValue",
+    "SkillValue_L10n": "195.17%"
+  },
+  {
+    "ID": 1023010210,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010210_SkillValue",
+    "SkillValue_L10n": "206.66%"
+  },
+  {
+    "ID": 1023010301,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010301_SkillValue",
+    "SkillValue_L10n": "40.37%*4"
+  },
+  {
+    "ID": 1023010302,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010302_SkillValue",
+    "SkillValue_L10n": "44.86%*4"
+  },
+  {
+    "ID": 1023010303,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010303_SkillValue",
+    "SkillValue_L10n": "49.34%*4"
+  },
+  {
+    "ID": 1023010304,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010304_SkillValue",
+    "SkillValue_L10n": "53.83%*4"
+  },
+  {
+    "ID": 1023010305,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010305_SkillValue",
+    "SkillValue_L10n": "58.31%*4"
+  },
+  {
+    "ID": 1023010306,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010306_SkillValue",
+    "SkillValue_L10n": "62.80%*4"
+  },
+  {
+    "ID": 1023010307,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010307_SkillValue",
+    "SkillValue_L10n": "67.28%*4"
+  },
+  {
+    "ID": 1023010308,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010308_SkillValue",
+    "SkillValue_L10n": "71.77%*4"
+  },
+  {
+    "ID": 1023010309,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010309_SkillValue",
+    "SkillValue_L10n": "76.25%*4"
+  },
+  {
+    "ID": 1023010310,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010310_SkillValue",
+    "SkillValue_L10n": "80.74%*4"
+  },
+  {
+    "ID": 1023010401,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010401_SkillValue",
+    "SkillValue_L10n": "113.02%"
+  },
+  {
+    "ID": 1023010402,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010402_SkillValue",
+    "SkillValue_L10n": "125.58%"
+  },
+  {
+    "ID": 1023010403,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010403_SkillValue",
+    "SkillValue_L10n": "138.13%"
+  },
+  {
+    "ID": 1023010404,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010404_SkillValue",
+    "SkillValue_L10n": "150.69%"
+  },
+  {
+    "ID": 1023010405,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010405_SkillValue",
+    "SkillValue_L10n": "163.25%"
+  },
+  {
+    "ID": 1023010406,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010406_SkillValue",
+    "SkillValue_L10n": "175.80%"
+  },
+  {
+    "ID": 1023010407,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010407_SkillValue",
+    "SkillValue_L10n": "188.36%"
+  },
+  {
+    "ID": 1023010408,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010408_SkillValue",
+    "SkillValue_L10n": "200.92%"
+  },
+  {
+    "ID": 1023010409,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010409_SkillValue",
+    "SkillValue_L10n": "213.47%"
+  },
+  {
+    "ID": 1023010410,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010410_SkillValue",
+    "SkillValue_L10n": "226.04%"
+  },
+  {
+    "ID": 1023010501,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010501_SkillValue",
+    "SkillValue_L10n": "43.06%*1+10.76%*8"
+  },
+  {
+    "ID": 1023010502,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010502_SkillValue",
+    "SkillValue_L10n": "47.84%*1+11.96%*8"
+  },
+  {
+    "ID": 1023010503,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010503_SkillValue",
+    "SkillValue_L10n": "52.63%*1+13.15%*8"
+  },
+  {
+    "ID": 1023010504,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010504_SkillValue",
+    "SkillValue_L10n": "57.41%*1+14.35%*8"
+  },
+  {
+    "ID": 1023010505,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010505_SkillValue",
+    "SkillValue_L10n": "62.20%*1+15.54%*8"
+  },
+  {
+    "ID": 1023010506,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010506_SkillValue",
+    "SkillValue_L10n": "66.98%*1+16.74%*8"
+  },
+  {
+    "ID": 1023010507,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010507_SkillValue",
+    "SkillValue_L10n": "71.76%*1+17.93%*8"
+  },
+  {
+    "ID": 1023010508,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010508_SkillValue",
+    "SkillValue_L10n": "76.55%*1+19.13%*8"
+  },
+  {
+    "ID": 1023010509,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010509_SkillValue",
+    "SkillValue_L10n": "81.33%*1+20.32%*8"
+  },
+  {
+    "ID": 1023010510,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010510_SkillValue",
+    "SkillValue_L10n": "86.12%*1+21.52%*8"
+  },
+  {
+    "ID": 1023010601,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010601_SkillValue",
+    "SkillValue_L10n": "177.60%"
+  },
+  {
+    "ID": 1023010602,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010602_SkillValue",
+    "SkillValue_L10n": "197.33%"
+  },
+  {
+    "ID": 1023010603,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010603_SkillValue",
+    "SkillValue_L10n": "217.06%"
+  },
+  {
+    "ID": 1023010604,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010604_SkillValue",
+    "SkillValue_L10n": "236.79%"
+  },
+  {
+    "ID": 1023010605,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010605_SkillValue",
+    "SkillValue_L10n": "256.53%"
+  },
+  {
+    "ID": 1023010606,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010606_SkillValue",
+    "SkillValue_L10n": "276.26%"
+  },
+  {
+    "ID": 1023010607,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010607_SkillValue",
+    "SkillValue_L10n": "295.99%"
+  },
+  {
+    "ID": 1023010608,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010608_SkillValue",
+    "SkillValue_L10n": "315.72%"
+  },
+  {
+    "ID": 1023010609,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010609_SkillValue",
+    "SkillValue_L10n": "335.45%"
+  },
+  {
+    "ID": 1023010610,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010610_SkillValue",
+    "SkillValue_L10n": "355.20%"
+  },
+  {
+    "ID": 1023010701,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010701_SkillValue",
+    "SkillValue_L10n": "108.33%"
+  },
+  {
+    "ID": 1023010702,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010702_SkillValue",
+    "SkillValue_L10n": "120.37%"
+  },
+  {
+    "ID": 1023010703,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010703_SkillValue",
+    "SkillValue_L10n": "132.40%"
+  },
+  {
+    "ID": 1023010704,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010704_SkillValue",
+    "SkillValue_L10n": "144.44%"
+  },
+  {
+    "ID": 1023010705,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010705_SkillValue",
+    "SkillValue_L10n": "156.47%"
+  },
+  {
+    "ID": 1023010706,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010706_SkillValue",
+    "SkillValue_L10n": "168.51%"
+  },
+  {
+    "ID": 1023010707,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010707_SkillValue",
+    "SkillValue_L10n": "180.54%"
+  },
+  {
+    "ID": 1023010708,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010708_SkillValue",
+    "SkillValue_L10n": "192.58%"
+  },
+  {
+    "ID": 1023010709,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010709_SkillValue",
+    "SkillValue_L10n": "204.61%"
+  },
+  {
+    "ID": 1023010710,
+    "GroupID": 102301,
+    "SkillValue": "skill_level_skill_level_value_1023010710_SkillValue",
+    "SkillValue_L10n": "216.66%"
+  },
+  {
+    "ID": 1023020101,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020101_SkillValue",
+    "SkillValue_L10n": "85.00%"
+  },
+  {
+    "ID": 1023020102,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020102_SkillValue",
+    "SkillValue_L10n": "94.44%"
+  },
+  {
+    "ID": 1023020103,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020103_SkillValue",
+    "SkillValue_L10n": "103.89%"
+  },
+  {
+    "ID": 1023020104,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020104_SkillValue",
+    "SkillValue_L10n": "113.33%"
+  },
+  {
+    "ID": 1023020105,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020105_SkillValue",
+    "SkillValue_L10n": "122.77%"
+  },
+  {
+    "ID": 1023020106,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020106_SkillValue",
+    "SkillValue_L10n": "132.22%"
+  },
+  {
+    "ID": 1023020107,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020107_SkillValue",
+    "SkillValue_L10n": "141.66%"
+  },
+  {
+    "ID": 1023020108,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020108_SkillValue",
+    "SkillValue_L10n": "151.10%"
+  },
+  {
+    "ID": 1023020109,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020109_SkillValue",
+    "SkillValue_L10n": "160.55%"
+  },
+  {
+    "ID": 1023020110,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020110_SkillValue",
+    "SkillValue_L10n": "170.00%"
+  },
+  {
+    "ID": 1023020201,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020201_SkillValue",
+    "SkillValue_L10n": "110.00%*1+120.00%*3"
+  },
+  {
+    "ID": 1023020202,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020202_SkillValue",
+    "SkillValue_L10n": "122.22%*1+133.33%*3"
+  },
+  {
+    "ID": 1023020203,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020203_SkillValue",
+    "SkillValue_L10n": "134.44%*1+146.66%*3"
+  },
+  {
+    "ID": 1023020204,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020204_SkillValue",
+    "SkillValue_L10n": "146.66%*1+160.00%*3"
+  },
+  {
+    "ID": 1023020205,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020205_SkillValue",
+    "SkillValue_L10n": "158.88%*1+173.33%*3"
+  },
+  {
+    "ID": 1023020206,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020206_SkillValue",
+    "SkillValue_L10n": "171.11%*1+186.66%*3"
+  },
+  {
+    "ID": 1023020207,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020207_SkillValue",
+    "SkillValue_L10n": "183.33%*1+199.99%*3"
+  },
+  {
+    "ID": 1023020208,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020208_SkillValue",
+    "SkillValue_L10n": "195.55%*1+213.32%*3"
+  },
+  {
+    "ID": 1023020209,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020209_SkillValue",
+    "SkillValue_L10n": "207.77%*1+226.66%*3"
+  },
+  {
+    "ID": 1023020210,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020210_SkillValue",
+    "SkillValue_L10n": "220.00%*1+240.00%*3"
+  },
+  {
+    "ID": 1023020301,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020301_SkillValue",
+    "SkillValue_L10n": "400.42%"
+  },
+  {
+    "ID": 1023020302,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020302_SkillValue",
+    "SkillValue_L10n": "444.91%"
+  },
+  {
+    "ID": 1023020303,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020303_SkillValue",
+    "SkillValue_L10n": "489.39%"
+  },
+  {
+    "ID": 1023020304,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020304_SkillValue",
+    "SkillValue_L10n": "533.88%"
+  },
+  {
+    "ID": 1023020305,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020305_SkillValue",
+    "SkillValue_L10n": "578.37%"
+  },
+  {
+    "ID": 1023020306,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020306_SkillValue",
+    "SkillValue_L10n": "622.85%"
+  },
+  {
+    "ID": 1023020307,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020307_SkillValue",
+    "SkillValue_L10n": "667.34%"
+  },
+  {
+    "ID": 1023020308,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020308_SkillValue",
+    "SkillValue_L10n": "711.83%"
+  },
+  {
+    "ID": 1023020309,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020309_SkillValue",
+    "SkillValue_L10n": "756.31%"
+  },
+  {
+    "ID": 1023020310,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020310_SkillValue",
+    "SkillValue_L10n": "800.84%"
+  },
+  {
+    "ID": 1023020401,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020401_SkillValue",
+    "SkillValue_L10n": "150.00%"
+  },
+  {
+    "ID": 1023020402,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020402_SkillValue",
+    "SkillValue_L10n": "166.67%"
+  },
+  {
+    "ID": 1023020403,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020403_SkillValue",
+    "SkillValue_L10n": "183.33%"
+  },
+  {
+    "ID": 1023020404,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020404_SkillValue",
+    "SkillValue_L10n": "200.00%"
+  },
+  {
+    "ID": 1023020405,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020405_SkillValue",
+    "SkillValue_L10n": "216.66%"
+  },
+  {
+    "ID": 1023020406,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020406_SkillValue",
+    "SkillValue_L10n": "233.33%"
+  },
+  {
+    "ID": 1023020407,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020407_SkillValue",
+    "SkillValue_L10n": "249.99%"
+  },
+  {
+    "ID": 1023020408,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020408_SkillValue",
+    "SkillValue_L10n": "266.66%"
+  },
+  {
+    "ID": 1023020409,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020409_SkillValue",
+    "SkillValue_L10n": "283.32%"
+  },
+  {
+    "ID": 1023020410,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020410_SkillValue",
+    "SkillValue_L10n": "300.00%"
+  },
+  {
+    "ID": 1023020501,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020501_SkillValue",
+    "SkillValue_L10n": "64.67%*8"
+  },
+  {
+    "ID": 1023020502,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020502_SkillValue",
+    "SkillValue_L10n": "71.85%*8"
+  },
+  {
+    "ID": 1023020503,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020503_SkillValue",
+    "SkillValue_L10n": "79.04%*8"
+  },
+  {
+    "ID": 1023020504,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020504_SkillValue",
+    "SkillValue_L10n": "86.22%*8"
+  },
+  {
+    "ID": 1023020505,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020505_SkillValue",
+    "SkillValue_L10n": "93.41%*8"
+  },
+  {
+    "ID": 1023020506,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020506_SkillValue",
+    "SkillValue_L10n": "100.59%*8"
+  },
+  {
+    "ID": 1023020507,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020507_SkillValue",
+    "SkillValue_L10n": "107.78%*8"
+  },
+  {
+    "ID": 1023020508,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020508_SkillValue",
+    "SkillValue_L10n": "114.96%*8"
+  },
+  {
+    "ID": 1023020509,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020509_SkillValue",
+    "SkillValue_L10n": "122.15%*8"
+  },
+  {
+    "ID": 1023020510,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020510_SkillValue",
+    "SkillValue_L10n": "129.34%*8"
+  },
+  {
+    "ID": 1023020601,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020601_SkillValue",
+    "SkillValue_L10n": "761.21%"
+  },
+  {
+    "ID": 1023020602,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020602_SkillValue",
+    "SkillValue_L10n": "845.78%"
+  },
+  {
+    "ID": 1023020603,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020603_SkillValue",
+    "SkillValue_L10n": "930.35%"
+  },
+  {
+    "ID": 1023020604,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020604_SkillValue",
+    "SkillValue_L10n": "1014.92%"
+  },
+  {
+    "ID": 1023020605,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020605_SkillValue",
+    "SkillValue_L10n": "1099.49%"
+  },
+  {
+    "ID": 1023020606,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020606_SkillValue",
+    "SkillValue_L10n": "1184.06%"
+  },
+  {
+    "ID": 1023020607,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020607_SkillValue",
+    "SkillValue_L10n": "1268.63%"
+  },
+  {
+    "ID": 1023020608,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020608_SkillValue",
+    "SkillValue_L10n": "1353.20%"
+  },
+  {
+    "ID": 1023020609,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020609_SkillValue",
+    "SkillValue_L10n": "1437.77%"
+  },
+  {
+    "ID": 1023020610,
+    "GroupID": 102302,
+    "SkillValue": "skill_level_skill_level_value_1023020610_SkillValue",
+    "SkillValue_L10n": "1522.42%"
+  },
+  {
+    "ID": 1023040101,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040101_SkillValue",
+    "SkillValue_L10n": "144.00%攻击*6+600.00%元素纯度*6"
+  },
+  {
+    "ID": 1023040102,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040102_SkillValue",
+    "SkillValue_L10n": "160.00%攻击*6+666.66%元素纯度*6"
+  },
+  {
+    "ID": 1023040103,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040103_SkillValue",
+    "SkillValue_L10n": "176.00%攻击*6+733.32%元素纯度*6"
+  },
+  {
+    "ID": 1023040104,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040104_SkillValue",
+    "SkillValue_L10n": "192.00%攻击*6+799.98%元素纯度*6"
+  },
+  {
+    "ID": 1023040105,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040105_SkillValue",
+    "SkillValue_L10n": "207.99%攻击*6+866.64%元素纯度*6"
+  },
+  {
+    "ID": 1023040106,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040106_SkillValue",
+    "SkillValue_L10n": "223.99%攻击*6+933.30%元素纯度*6"
+  },
+  {
+    "ID": 1023040107,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040107_SkillValue",
+    "SkillValue_L10n": "239.99%攻击*6+999.96%元素纯度*6"
+  },
+  {
+    "ID": 1023040108,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040108_SkillValue",
+    "SkillValue_L10n": "255.99%攻击*6+1066.62%元素纯度*6"
+  },
+  {
+    "ID": 1023040109,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040109_SkillValue",
+    "SkillValue_L10n": "271.99%攻击*6+1133.28%元素纯度*6"
+  },
+  {
+    "ID": 1023040110,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040110_SkillValue",
+    "SkillValue_L10n": "288.00%攻击*6+1200.00%元素纯度*6"
+  },
+  {
+    "ID": 1023040201,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040201_SkillValue",
+    "SkillValue_L10n": "576.00%攻击+2400.02%元素纯度"
+  },
+  {
+    "ID": 1023040202,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040202_SkillValue",
+    "SkillValue_L10n": "639.99%攻击+2666.66%元素纯度"
+  },
+  {
+    "ID": 1023040203,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040203_SkillValue",
+    "SkillValue_L10n": "703.99%攻击+2933.30%元素纯度"
+  },
+  {
+    "ID": 1023040204,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040204_SkillValue",
+    "SkillValue_L10n": "767.98%攻击+3199.95%元素纯度"
+  },
+  {
+    "ID": 1023040205,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040205_SkillValue",
+    "SkillValue_L10n": "831.97%攻击+3466.59%元素纯度"
+  },
+  {
+    "ID": 1023040206,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040206_SkillValue",
+    "SkillValue_L10n": "895.97%攻击+3733.23%元素纯度"
+  },
+  {
+    "ID": 1023040207,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040207_SkillValue",
+    "SkillValue_L10n": "959.96%攻击+3999.87%元素纯度"
+  },
+  {
+    "ID": 1023040208,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040208_SkillValue",
+    "SkillValue_L10n": "1023.96%攻击+4266.52%元素纯度"
+  },
+  {
+    "ID": 1023040209,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040209_SkillValue",
+    "SkillValue_L10n": "1087.95%攻击+4533.16%元素纯度"
+  },
+  {
+    "ID": 1023040210,
+    "GroupID": 102304,
+    "SkillValue": "skill_level_skill_level_value_1023040210_SkillValue",
+    "SkillValue_L10n": "1152.00%攻击+4800.04%元素纯度"
+  },
+  {
+    "ID": 1024070101,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070101_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070102,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070102_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070103,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070103_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070104,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070104_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070105,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070105_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070106,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070106_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070107,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070107_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070108,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070108_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070109,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070109_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070110,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070110_SkillValue",
+    "SkillValue_L10n": "0.12"
+  },
+  {
+    "ID": 1024070201,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070201_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070202,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070202_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070203,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070203_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070204,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070204_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070205,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070205_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070206,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070206_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070207,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070207_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070208,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070208_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070209,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070209_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070210,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070210_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070301,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070301_SkillValue",
+    "SkillValue_L10n": "12.50%"
+  },
+  {
+    "ID": 1024070302,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070302_SkillValue",
+    "SkillValue_L10n": "13.75%"
+  },
+  {
+    "ID": 1024070303,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070303_SkillValue",
+    "SkillValue_L10n": "15.00%"
+  },
+  {
+    "ID": 1024070304,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070304_SkillValue",
+    "SkillValue_L10n": "16.25%"
+  },
+  {
+    "ID": 1024070305,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070305_SkillValue",
+    "SkillValue_L10n": "17.50%"
+  },
+  {
+    "ID": 1024070306,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070306_SkillValue",
+    "SkillValue_L10n": "18.75%"
+  },
+  {
+    "ID": 1024070307,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070307_SkillValue",
+    "SkillValue_L10n": "20.00%"
+  },
+  {
+    "ID": 1024070308,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070308_SkillValue",
+    "SkillValue_L10n": "21.25%"
+  },
+  {
+    "ID": 1024070309,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070309_SkillValue",
+    "SkillValue_L10n": "22.50%"
+  },
+  {
+    "ID": 1024070310,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070310_SkillValue",
+    "SkillValue_L10n": "25.00%"
+  },
+  {
+    "ID": 1024070401,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070401_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070402,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070402_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070403,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070403_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070404,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070404_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070405,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070405_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070406,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070406_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070407,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070407_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070408,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070408_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070409,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070409_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024070410,
+    "GroupID": 102407,
+    "SkillValue": "skill_level_skill_level_value_1024070410_SkillValue",
+    "SkillValue_L10n": "12%"
+  },
+  {
+    "ID": 1024010101,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010101_SkillValue",
+    "SkillValue_L10n": "35.00%"
+  },
+  {
+    "ID": 1024010102,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010102_SkillValue",
+    "SkillValue_L10n": "38.89%"
+  },
+  {
+    "ID": 1024010103,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010103_SkillValue",
+    "SkillValue_L10n": "42.78%"
+  },
+  {
+    "ID": 1024010104,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010104_SkillValue",
+    "SkillValue_L10n": "46.67%"
+  },
+  {
+    "ID": 1024010105,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010105_SkillValue",
+    "SkillValue_L10n": "50.55%"
+  },
+  {
+    "ID": 1024010106,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010106_SkillValue",
+    "SkillValue_L10n": "54.44%"
+  },
+  {
+    "ID": 1024010107,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010107_SkillValue",
+    "SkillValue_L10n": "58.33%"
+  },
+  {
+    "ID": 1024010108,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010108_SkillValue",
+    "SkillValue_L10n": "62.22%"
+  },
+  {
+    "ID": 1024010109,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010109_SkillValue",
+    "SkillValue_L10n": "66.11%"
+  },
+  {
+    "ID": 1024010110,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010110_SkillValue",
+    "SkillValue_L10n": "70.00%"
+  },
+  {
+    "ID": 1024010201,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010201_SkillValue",
+    "SkillValue_L10n": "70.00%"
+  },
+  {
+    "ID": 1024010202,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010202_SkillValue",
+    "SkillValue_L10n": "77.78%"
+  },
+  {
+    "ID": 1024010203,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010203_SkillValue",
+    "SkillValue_L10n": "85.55%"
+  },
+  {
+    "ID": 1024010204,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010204_SkillValue",
+    "SkillValue_L10n": "93.33%"
+  },
+  {
+    "ID": 1024010205,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010205_SkillValue",
+    "SkillValue_L10n": "101.11%"
+  },
+  {
+    "ID": 1024010206,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010206_SkillValue",
+    "SkillValue_L10n": "108.89%"
+  },
+  {
+    "ID": 1024010207,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010207_SkillValue",
+    "SkillValue_L10n": "116.66%"
+  },
+  {
+    "ID": 1024010208,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010208_SkillValue",
+    "SkillValue_L10n": "124.44%"
+  },
+  {
+    "ID": 1024010209,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010209_SkillValue",
+    "SkillValue_L10n": "132.22%"
+  },
+  {
+    "ID": 1024010210,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010210_SkillValue",
+    "SkillValue_L10n": "140.00%"
+  },
+  {
+    "ID": 1024010301,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010301_SkillValue",
+    "SkillValue_L10n": "72.50%*2"
+  },
+  {
+    "ID": 1024010302,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010302_SkillValue",
+    "SkillValue_L10n": "80.55%*2"
+  },
+  {
+    "ID": 1024010303,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010303_SkillValue",
+    "SkillValue_L10n": "88.61%*2"
+  },
+  {
+    "ID": 1024010304,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010304_SkillValue",
+    "SkillValue_L10n": "96.66%*2"
+  },
+  {
+    "ID": 1024010305,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010305_SkillValue",
+    "SkillValue_L10n": "104.72%*2"
+  },
+  {
+    "ID": 1024010306,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010306_SkillValue",
+    "SkillValue_L10n": "112.77%*2"
+  },
+  {
+    "ID": 1024010307,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010307_SkillValue",
+    "SkillValue_L10n": "120.83%*2"
+  },
+  {
+    "ID": 1024010308,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010308_SkillValue",
+    "SkillValue_L10n": "128.88%*2"
+  },
+  {
+    "ID": 1024010309,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010309_SkillValue",
+    "SkillValue_L10n": "136.94%*2"
+  },
+  {
+    "ID": 1024010310,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010310_SkillValue",
+    "SkillValue_L10n": "145.00%*2"
+  },
+  {
+    "ID": 1024010401,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010401_SkillValue",
+    "SkillValue_L10n": "41.88%*2+83.76%*1"
+  },
+  {
+    "ID": 1024010402,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010402_SkillValue",
+    "SkillValue_L10n": "46.53%*2+93.07%*1"
+  },
+  {
+    "ID": 1024010403,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010403_SkillValue",
+    "SkillValue_L10n": "51.19%*2+102.37%*1"
+  },
+  {
+    "ID": 1024010404,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010404_SkillValue",
+    "SkillValue_L10n": "55.84%*2+111.68%*1"
+  },
+  {
+    "ID": 1024010405,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010405_SkillValue",
+    "SkillValue_L10n": "60.49%*2+120.98%*1"
+  },
+  {
+    "ID": 1024010406,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010406_SkillValue",
+    "SkillValue_L10n": "65.14%*2+130.29%*1"
+  },
+  {
+    "ID": 1024010407,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010407_SkillValue",
+    "SkillValue_L10n": "69.80%*2+139.59%*1"
+  },
+  {
+    "ID": 1024010408,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010408_SkillValue",
+    "SkillValue_L10n": "74.45%*2+148.90%*1"
+  },
+  {
+    "ID": 1024010409,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010409_SkillValue",
+    "SkillValue_L10n": "79.10%*2+158.21%*1"
+  },
+  {
+    "ID": 1024010410,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010410_SkillValue",
+    "SkillValue_L10n": "83.76%*2+167.52%*1"
+  },
+  {
+    "ID": 1024010501,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010501_SkillValue",
+    "SkillValue_L10n": "50.63%*2"
+  },
+  {
+    "ID": 1024010502,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010502_SkillValue",
+    "SkillValue_L10n": "56.25%*2"
+  },
+  {
+    "ID": 1024010503,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010503_SkillValue",
+    "SkillValue_L10n": "61.88%*2"
+  },
+  {
+    "ID": 1024010504,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010504_SkillValue",
+    "SkillValue_L10n": "67.50%*2"
+  },
+  {
+    "ID": 1024010505,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010505_SkillValue",
+    "SkillValue_L10n": "73.13%*2"
+  },
+  {
+    "ID": 1024010506,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010506_SkillValue",
+    "SkillValue_L10n": "78.75%*2"
+  },
+  {
+    "ID": 1024010507,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010507_SkillValue",
+    "SkillValue_L10n": "84.38%*2"
+  },
+  {
+    "ID": 1024010508,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010508_SkillValue",
+    "SkillValue_L10n": "90.00%*2"
+  },
+  {
+    "ID": 1024010509,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010509_SkillValue",
+    "SkillValue_L10n": "95.63%*2"
+  },
+  {
+    "ID": 1024010510,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010510_SkillValue",
+    "SkillValue_L10n": "101.26%*2"
+  },
+  {
+    "ID": 1024010701,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010701_SkillValue",
+    "SkillValue_L10n": "272.48%"
+  },
+  {
+    "ID": 1024010702,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010702_SkillValue",
+    "SkillValue_L10n": "302.75%"
+  },
+  {
+    "ID": 1024010703,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010703_SkillValue",
+    "SkillValue_L10n": "333.03%"
+  },
+  {
+    "ID": 1024010704,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010704_SkillValue",
+    "SkillValue_L10n": "363.30%"
+  },
+  {
+    "ID": 1024010705,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010705_SkillValue",
+    "SkillValue_L10n": "393.57%"
+  },
+  {
+    "ID": 1024010706,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010706_SkillValue",
+    "SkillValue_L10n": "423.84%"
+  },
+  {
+    "ID": 1024010707,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010707_SkillValue",
+    "SkillValue_L10n": "454.12%"
+  },
+  {
+    "ID": 1024010708,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010708_SkillValue",
+    "SkillValue_L10n": "484.39%"
+  },
+  {
+    "ID": 1024010709,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010709_SkillValue",
+    "SkillValue_L10n": "514.66%"
+  },
+  {
+    "ID": 1024010710,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010710_SkillValue",
+    "SkillValue_L10n": "544.96%"
+  },
+  {
+    "ID": 1024010801,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010801_SkillValue",
+    "SkillValue_L10n": "139.51%*3"
+  },
+  {
+    "ID": 1024010802,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010802_SkillValue",
+    "SkillValue_L10n": "155.01%*3"
+  },
+  {
+    "ID": 1024010803,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010803_SkillValue",
+    "SkillValue_L10n": "170.51%*3"
+  },
+  {
+    "ID": 1024010804,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010804_SkillValue",
+    "SkillValue_L10n": "186.01%*3"
+  },
+  {
+    "ID": 1024010805,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010805_SkillValue",
+    "SkillValue_L10n": "201.51%*3"
+  },
+  {
+    "ID": 1024010806,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010806_SkillValue",
+    "SkillValue_L10n": "217.01%*3"
+  },
+  {
+    "ID": 1024010807,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010807_SkillValue",
+    "SkillValue_L10n": "232.51%*3"
+  },
+  {
+    "ID": 1024010808,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010808_SkillValue",
+    "SkillValue_L10n": "248.01%*3"
+  },
+  {
+    "ID": 1024010809,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010809_SkillValue",
+    "SkillValue_L10n": "263.51%*3"
+  },
+  {
+    "ID": 1024010810,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010810_SkillValue",
+    "SkillValue_L10n": "279.02%*3"
+  },
+  {
+    "ID": 1024010901,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010901_SkillValue",
+    "SkillValue_L10n": "119.58%*3+478.32%*1"
+  },
+  {
+    "ID": 1024010902,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010902_SkillValue",
+    "SkillValue_L10n": "132.87%*3+531.46%*1"
+  },
+  {
+    "ID": 1024010903,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010903_SkillValue",
+    "SkillValue_L10n": "146.15%*3+584.60%*1"
+  },
+  {
+    "ID": 1024010904,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010904_SkillValue",
+    "SkillValue_L10n": "159.44%*3+637.74%*1"
+  },
+  {
+    "ID": 1024010905,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010905_SkillValue",
+    "SkillValue_L10n": "172.72%*3+690.89%*1"
+  },
+  {
+    "ID": 1024010906,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010906_SkillValue",
+    "SkillValue_L10n": "186.01%*3+744.03%*1"
+  },
+  {
+    "ID": 1024010907,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010907_SkillValue",
+    "SkillValue_L10n": "199.29%*3+797.17%*1"
+  },
+  {
+    "ID": 1024010908,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010908_SkillValue",
+    "SkillValue_L10n": "212.58%*3+850.31%*1"
+  },
+  {
+    "ID": 1024010909,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010909_SkillValue",
+    "SkillValue_L10n": "225.86%*3+903.45%*1"
+  },
+  {
+    "ID": 1024010910,
+    "GroupID": 102401,
+    "SkillValue": "skill_level_skill_level_value_1024010910_SkillValue",
+    "SkillValue_L10n": "239.16%*3+956.64%*1"
+  },
+  {
+    "ID": 1024020101,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020101_SkillValue",
+    "SkillValue_L10n": "178.49%"
+  },
+  {
+    "ID": 1024020102,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020102_SkillValue",
+    "SkillValue_L10n": "198.32%"
+  },
+  {
+    "ID": 1024020103,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020103_SkillValue",
+    "SkillValue_L10n": "218.15%"
+  },
+  {
+    "ID": 1024020104,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020104_SkillValue",
+    "SkillValue_L10n": "237.98%"
+  },
+  {
+    "ID": 1024020105,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020105_SkillValue",
+    "SkillValue_L10n": "257.81%"
+  },
+  {
+    "ID": 1024020106,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020106_SkillValue",
+    "SkillValue_L10n": "277.64%"
+  },
+  {
+    "ID": 1024020107,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020107_SkillValue",
+    "SkillValue_L10n": "297.47%"
+  },
+  {
+    "ID": 1024020108,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020108_SkillValue",
+    "SkillValue_L10n": "317.30%"
+  },
+  {
+    "ID": 1024020109,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020109_SkillValue",
+    "SkillValue_L10n": "337.13%"
+  },
+  {
+    "ID": 1024020110,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020110_SkillValue",
+    "SkillValue_L10n": "356.98%"
+  },
+  {
+    "ID": 1024020201,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020201_SkillValue",
+    "SkillValue_L10n": "133.06%*2"
+  },
+  {
+    "ID": 1024020202,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020202_SkillValue",
+    "SkillValue_L10n": "147.84%*2"
+  },
+  {
+    "ID": 1024020203,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020203_SkillValue",
+    "SkillValue_L10n": "162.63%*2"
+  },
+  {
+    "ID": 1024020204,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020204_SkillValue",
+    "SkillValue_L10n": "177.41%*2"
+  },
+  {
+    "ID": 1024020205,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020205_SkillValue",
+    "SkillValue_L10n": "192.19%*2"
+  },
+  {
+    "ID": 1024020206,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020206_SkillValue",
+    "SkillValue_L10n": "206.97%*2"
+  },
+  {
+    "ID": 1024020207,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020207_SkillValue",
+    "SkillValue_L10n": "221.76%*2"
+  },
+  {
+    "ID": 1024020208,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020208_SkillValue",
+    "SkillValue_L10n": "236.54%*2"
+  },
+  {
+    "ID": 1024020209,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020209_SkillValue",
+    "SkillValue_L10n": "251.32%*2"
+  },
+  {
+    "ID": 1024020210,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020210_SkillValue",
+    "SkillValue_L10n": "266.12%*2"
+  },
+  {
+    "ID": 1024020301,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020301_SkillValue",
+    "SkillValue_L10n": "53.22%*6+212.93%*1"
+  },
+  {
+    "ID": 1024020302,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020302_SkillValue",
+    "SkillValue_L10n": "59.13%*6+236.59%*1"
+  },
+  {
+    "ID": 1024020303,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020303_SkillValue",
+    "SkillValue_L10n": "65.05%*6+260.24%*1"
+  },
+  {
+    "ID": 1024020304,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020304_SkillValue",
+    "SkillValue_L10n": "70.96%*6+283.90%*1"
+  },
+  {
+    "ID": 1024020305,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020305_SkillValue",
+    "SkillValue_L10n": "76.87%*6+307.56%*1"
+  },
+  {
+    "ID": 1024020306,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020306_SkillValue",
+    "SkillValue_L10n": "82.78%*6+331.21%*1"
+  },
+  {
+    "ID": 1024020307,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020307_SkillValue",
+    "SkillValue_L10n": "88.70%*6+354.87%*1"
+  },
+  {
+    "ID": 1024020308,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020308_SkillValue",
+    "SkillValue_L10n": "94.61%*6+378.53%*1"
+  },
+  {
+    "ID": 1024020309,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020309_SkillValue",
+    "SkillValue_L10n": "100.52%*6+402.18%*1"
+  },
+  {
+    "ID": 1024020310,
+    "GroupID": 102402,
+    "SkillValue": "skill_level_skill_level_value_1024020310_SkillValue",
+    "SkillValue_L10n": "106.44%*6+425.86%*1"
+  },
+  {
+    "ID": 1024040101,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040101_SkillValue",
+    "SkillValue_L10n": "106.38%*8+425.52%*1"
+  },
+  {
+    "ID": 1024040102,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040102_SkillValue",
+    "SkillValue_L10n": "118.20%*8+472.80%*1"
+  },
+  {
+    "ID": 1024040103,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040103_SkillValue",
+    "SkillValue_L10n": "130.02%*8+520.07%*1"
+  },
+  {
+    "ID": 1024040104,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040104_SkillValue",
+    "SkillValue_L10n": "141.84%*8+567.35%*1"
+  },
+  {
+    "ID": 1024040105,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040105_SkillValue",
+    "SkillValue_L10n": "153.66%*8+614.62%*1"
+  },
+  {
+    "ID": 1024040106,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040106_SkillValue",
+    "SkillValue_L10n": "165.47%*8+661.90%*1"
+  },
+  {
+    "ID": 1024040107,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040107_SkillValue",
+    "SkillValue_L10n": "177.29%*8+709.17%*1"
+  },
+  {
+    "ID": 1024040108,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040108_SkillValue",
+    "SkillValue_L10n": "189.11%*8+756.45%*1"
+  },
+  {
+    "ID": 1024040109,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040109_SkillValue",
+    "SkillValue_L10n": "200.93%*8+803.72%*1"
+  },
+  {
+    "ID": 1024040110,
+    "GroupID": 102404,
+    "SkillValue": "skill_level_skill_level_value_1024040110_SkillValue",
+    "SkillValue_L10n": "212.76%*8+851.04%*1"
+  }
+]
