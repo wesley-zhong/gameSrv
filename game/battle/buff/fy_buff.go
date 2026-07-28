@@ -106,6 +106,28 @@ func (b *FYBuff) GetSubClass() int {
 	return int(b.Prop.SubClass)
 }
 
+// ==================== actors.IBuff interface implementation ====================
+
+// GetBuffId returns the unique ID of the buff
+func (b *FYBuff) GetBuffId() int64 {
+	return b.UID
+}
+
+// GetCnfId returns the config ID of the buff (int32 version for IBuff interface)
+func (b *FYBuff) GetCnfId() int32 {
+	if b.Prop == nil {
+		return 0
+	}
+	return b.Prop.CnfId
+}
+
+// GetHolderActor returns the holder (creature) of this buff
+func (b *FYBuff) GetHolderActor() *actors.Creature {
+	return b.HolderActor
+}
+
+// ==================== End of IBuff interface implementation ====================
+
 // ClientTick handles client-side buff tick
 func (b *FYBuff) ClientTick() bool {
 	if b.TickTriggerEvent == nil {
@@ -170,13 +192,8 @@ func (b *FYBuff) ServerTick() bool {
 	// Notify battle module of buff update
 	if b.HolderActor != nil && b.HolderActor.ActorBattleModule != nil {
 		// Notify property changes have been processed
-		if module, ok := b.HolderActor.ActorBattleModule.(interface {
-			OnAvatarPropsChangFinish()
-			OnBuffUpdate(buff interface{})
-		}); ok {
-			module.OnAvatarPropsChangFinish()
-			module.OnBuffUpdate(b)
-		}
+		b.HolderActor.ActorBattleModule.OnAvatarPropsChangFinish()
+		b.HolderActor.ActorBattleModule.OnBuffUpdate(b)
 	}
 
 	return false

@@ -33,37 +33,37 @@ func (p *FYBuffTriggerProcess) CheckEvent(triggerEventParam interface{}, trigger
 // initTriggerFunctions initializes trigger check functions
 func (p *FYBuffTriggerProcess) initTriggerFunctions() {
 	// Register trigger event check functions
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_ENTER_TEAM), p.onAvatarEnterTeamTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_LEAVE_TEAM), p.onAvatarLeaveTeamTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_PROPS_CHANGE), p.onAvatarPropertyChangeIntoTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_PROPS_CHANGE_RATE), p.onAvatarPropertyChangeIntoTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_STATE_CHANGE), p.onAvatarStatusChangeIntoTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_BUFF_MOUNTED), p.onOtherBuffMountedTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_MONTAGE_ID), p.onMtgIdAttackTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_MONTAGE_END), p.onMontageEndTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_MONTAGE_TAG), p.onMtgTagAttackTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_HITED), p.onHitedTargetTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_HITED_SKILLTYPE), p.onHitedSkillTypeTargetTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_DO_DAMGE), p.onDoDamageTrigger)
-	p.registerCheckFunctions(26, p.onDoDamageBySkillTypeTrigger) // DO_DAMGE_BY_SKILLTYPE - define if needed
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_DO_HEAL), p.onDoDamageTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE), p.onDoCriticalDamageTrigger)
-	p.registerCheckFunctions(27, p.onDoCriticalDamageBySkillTypeTrigger) // DO_CRITICAL_DAMAGE_BYSKILLTYPE - define if needed
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_BE_HITED), p.onBeHitedTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_BE_DAMAGED), p.onBeDamagedTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_BE_HEAL), p.onBeDamagedTrigger)
-	p.registerCheckFunctions(28, p.onActionSubAbnormal) // CHARACTER_ACTION_CONSUME_ABNORMAL - define if needed
-	p.registerCheckFunctions(29, p.onActionSubAbnormal) // CHARACTER_ACTION_CONSUME_ABNORMAL_ALL - define if needed
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_ABNORMAL_LAYER_CLOSING), p.onAbnormalLayerClosing)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_EXECUTION_END), p.onExecutionEndTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_Kill_MONSTER_TARGET), p.onKilledMonsterTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_PERFECT_DODGE), p.onDefaultTrueTrigger)
-	p.registerCheckFunctions(int(cfg.BuffTriggerEventEnum_PARRY_BEGIN), p.onDefaultTrueTrigger)
-	p.registerCheckFunctions(30, p.onShipFiredTrigger) // SHIP_FIRE - define if needed
-	p.registerCheckFunctions(31, p.onShipFiredBulletTrigger) // SHIP_FIRE_EFFECT - define if needed
-	p.registerCheckFunctions(32, p.onClipChangeTrigger) // CLIP_CHANGE - define if needed
-	p.registerCheckFunctions(33, p.onClipReloadTrigger) // CLIP_REALOD - define if needed
-	p.registerCheckFunctions(34, p.onShipSpeedUpTrigger) // SHIP_SPEED_UP - define if needed
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_ENTER_TEAM, p.onAvatarEnterTeamTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_LEAVE_TEAM, p.onAvatarLeaveTeamTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PROPS_CHANGE, p.onAvatarPropertyChangeIntoTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PROPS_CHANGE_RATE, p.onAvatarPropertyChangeIntoTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_STATE_CHANGE, p.onAvatarStatusChangeIntoTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BUFF_MOUNTED, p.onOtherBuffMountedTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_MONTAGE_ID, p.onMtgIdAttackTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_MONTAGE_END, p.onMontageEndTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_MONTAGE_TAG, p.onMtgTagAttackTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_HITED, p.onHitedTargetTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_HITED_SKILLTYPE, p.onHitedSkillTypeTargetTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_DAMGE, p.onDoDamageTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_DAMGE_BY_SKILLTYPE, p.onDoDamageBySkillTypeTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_HEAL, p.onDoDamageTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE, p.onDoCriticalDamageTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE_BY_SKILLTYPE, p.onDoCriticalDamageBySkillTypeTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BE_HITED, p.onBeHitedTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BE_DAMAGED, p.onBeDamagedTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BE_HEAL, p.onBeDamagedTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL, p.onActionSubAbnormal)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL_ALL, p.onActionSubAbnormal)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_ABNORMAL_LAYER_CLOSING, p.onAbnormalLayerClosing)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_EXECUTION_END, p.onExecutionEndTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_Kill_MONSTER_TARGET, p.onKilledMonsterTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PERFECT_DODGE, p.onDefaultTrueTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PARRY_BEGIN, p.onDefaultTrueTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_SHIP_FIRE, p.onShipFiredTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_SHIP_FIRE_EFFECT, p.onShipFiredBulletTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CLIP_CHANGE, p.onClipChangeTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CLIP_RELOAD, p.onClipReloadTrigger)
+	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_SHIP_SPEED_UP, p.onShipSpeedUpTrigger)
 }
 
 // registerCheckFunctions registers a trigger check function

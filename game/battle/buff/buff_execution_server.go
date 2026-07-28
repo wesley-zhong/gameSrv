@@ -25,13 +25,17 @@ func (s *FYBuffExecutionServer) AddBuff(
 	exParam, layer int,
 	life int64,
 	bSystem bool,
-) *FYBuff {
+) actors.IBuff {
 	newBuff := s.FYBuffExecution.AddBuff(templateId, casterActor, holder, uid, exParam, layer, life, bSystem)
 	if newBuff == nil {
 		return nil
 	}
 
-	s.startBuffServerTick(newBuff)
+	fyBuff, ok := newBuff.(*FYBuff)
+	if !ok {
+		return newBuff
+	}
+	s.startBuffServerTick(fyBuff)
 	return newBuff
 }
 

@@ -222,13 +222,9 @@ func (e *FYBuffEffectExecution) selectEffectTargets(buff *FYBuff, buffEffect *cf
 	case cfg.BuffTargetEnum_ATTACK_TARGET:
 		// Get current attack target from ActorBattleModule
 		if curCharacter.ActorBattleModule != nil {
-			if module, ok := curCharacter.ActorBattleModule.(interface {
-				GetCurAttackTarget() *actors.Creature
-			}); ok {
-				attackTarget := module.GetCurAttackTarget()
-				if attackTarget != nil {
-					targets = append(targets, attackTarget)
-				}
+			attackTarget := curCharacter.ActorBattleModule.GetCurAttackTarget()
+			if attackTarget != nil {
+				targets = append(targets, attackTarget)
 			}
 		}
 	case cfg.BuffTargetEnum_TEAM_EXCLUDE_ME:
@@ -296,7 +292,11 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarProps(
 	opt := int(effectOpt.OPT)
 	value := int(effectOpt.Value)
 
-	if target.BattleProps == nil {
+	if target.ActorBattleModule == nil {
+		return false
+	}
+	battleProps := target.ActorBattleModule.GetBattleProps()
+	if battleProps == nil {
 		return false
 	}
 
@@ -341,7 +341,11 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
 	opt := int(effectOpt.OPT)
 	value := int(effectOpt.Value)
 
-	if target.BattleProps == nil {
+	if target.ActorBattleModule == nil {
+		return false
+	}
+	battleProps := target.ActorBattleModule.GetBattleProps()
+	if battleProps == nil {
 		return false
 	}
 
@@ -358,7 +362,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
 	// For permanent modification, we modify both base and current value
 	// Using SetAllProps which sets both base and current
 	newValue := curValue + changeValue
-	target.BattleProps.SetAllProps(prop, newValue)
+	battleProps.SetAllProps(prop, newValue)
 
 	return true
 }
@@ -378,7 +382,11 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsRevert(
 	prop := int(effectOpt.AvatarProp)
 	effectId := int(buffEffect.EffectID)
 
-	if target.BattleProps == nil {
+	if target.ActorBattleModule == nil {
+		return false
+	}
+	battleProps := target.ActorBattleModule.GetBattleProps()
+	if battleProps == nil {
 		return false
 	}
 
@@ -459,15 +467,19 @@ func (e *FYBuffEffectExecution) buffEffectOptRemoveBuff(
 		}
 	case 1: // By class
 		// Use ActorBuffModule to remove by class
-		if module, ok := target.ActorBuffModule.(*ActorBuffModule); ok {
-			for _, classId := range effectOpt.Values {
-				module.RemoveBuffByClass(int(classId), reason)
+		if target.ActorBattleModule != nil {
+			if buffModule := target.ActorBattleModule.GetBuffModule(); buffModule != nil {
+				for _, classId := range effectOpt.Values {
+					buffModule.RemoveBuffByClass(int(classId), reason)
+				}
 			}
 		}
 	case 2: // By subclass
 		// Use ActorBuffModule to remove by subclass
-		if module, ok := target.ActorBuffModule.(*ActorBuffModule); ok && len(effectOpt.Values) >= 2 {
-			module.RemoveBuffBySubClass(int(effectOpt.Values[0]), int(effectOpt.Values[1]), reason)
+		if target.ActorBattleModule != nil && len(effectOpt.Values) >= 2 {
+			if buffModule := target.ActorBattleModule.GetBuffModule(); buffModule != nil {
+				buffModule.RemoveBuffBySubClass(int(effectOpt.Values[0]), int(effectOpt.Values[1]), reason)
+			}
 		}
 	}
 

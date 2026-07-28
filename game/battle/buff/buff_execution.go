@@ -8,6 +8,30 @@ import (
 	"sync"
 )
 
+// IFYBuffExecution defines the interface for buff execution operations
+type IFYBuffExecution interface {
+	// Core methods
+	TriggerBuffEvent(eventEnum int, triggerEventParam interface{}) bool
+	AddBuff(templateId int, casterActor, holder *actors.Creature, uid int64, exParam, layer int, life int64, bSystem bool) actors.IBuff
+	StopAndRemoveBuff(removedBuff *FYBuff, reason int) bool
+	RemoveBuffByConfId(cnfId int, reason int) bool
+	RemoveBuffByClass(classType int, reason int) bool
+	RemoveBuffBySubClass(classID, subClassID int, reason int) bool
+	RemoveBuffByUid(cnfId int, bufUid int64, reason int) bool
+	ClearBuff(death bool)
+	ClearNotSystemBuff()
+	ClearLeaveBattleBuff()
+	HasBuffTag(tagEnum int) bool
+	AddBuffTag(inTag int) bool
+	RemoveBuffTag(inTag int) bool
+
+	// Getter methods for buff lookup
+	GetBuffByConfId(cnfId int) actors.IBuff
+	GetBuffByClass(classID int) actors.IBuff
+	GetBuffBySubClass(classId, subClassID int) actors.IBuff
+	GetAllBuffsMap() map[int][]*FYBuff
+}
+
 // CheckBuffCondition is a function type for checking buff conditions
 type CheckBuffCondition func(buff *FYBuff, param0, param1 int64) bool
 
@@ -166,7 +190,7 @@ func (e *FYBuffExecution) AddBuff(
 	exParam, layer int,
 	life int64,
 	bSystem bool,
-) *FYBuff {
+) actors.IBuff {
 	if templateId == 0 {
 		return nil
 	}
@@ -242,17 +266,17 @@ func (e *FYBuffExecution) AddBuff(
 }
 
 // StopAndRemoveBuff stops and removes a buff
-func (e *FYBuffExecution) StopAndRemoveBuff(removedBuff *FYBuff, reason int) {
+func (e *FYBuffExecution) StopAndRemoveBuff(removedBuff *FYBuff, reason int) bool {
 	GetBuffPoolInstance().DelBuff(removedBuff)
 
 	if removedBuff.Prop == nil {
-		return
+		return false
 	}
 
 	cnfId := int(removedBuff.Prop.CnfId)
 	buffs := e.allBuffsMap[cnfId]
 	if len(buffs) == 0 {
-		return
+		return false
 	}
 
 	for i, buff := range buffs {
@@ -269,6 +293,7 @@ func (e *FYBuffExecution) StopAndRemoveBuff(removedBuff *FYBuff, reason int) {
 					e.removeBuffTriggers(buff.Prop)
 					delete(e.allBuffsMap, cnfId)
 				}
+				return true
 			}
 			break
 		}
@@ -290,6 +315,7 @@ func (e *FYBuffExecution) StopAndRemoveBuff(removedBuff *FYBuff, reason int) {
 			}
 		}
 	}
+	return true
 }
 
 // RemoveSameBuffRef removes reference to same buff
@@ -462,6 +488,12 @@ func (e *FYBuffExecution) findFirstBuffByConfId(cnfId int) *FYBuff {
 	return buffs[0]
 }
 
+// GetBuffByConfId returns first buff by config ID
+func (e *FYBuffExecution) GetBuffByConfId(cnfId int) actors.IBuff {
+	buff := e.findFirstBuffByConfId(cnfId)
+	return buff
+}
+
 // findBuffByClass finds buff by class
 func (e *FYBuffExecution) findBuffByClass(classID int) *FYBuff {
 	for _, buffs := range e.allBuffsMap {
@@ -474,6 +506,12 @@ func (e *FYBuffExecution) findBuffByClass(classID int) *FYBuff {
 	return nil
 }
 
+// GetBuffByClass returns buff by class
+func (e *FYBuffExecution) GetBuffByClass(classID int) actors.IBuff {
+	buff := e.findBuffByClass(classID)
+	return buff
+}
+
 // findBuffBySubClass finds buff by subclass
 func (e *FYBuffExecution) findBuffBySubClass(classId, subClassID int) *FYBuff {
 	for _, buffs := range e.allBuffsMap {
@@ -484,6 +522,12 @@ func (e *FYBuffExecution) findBuffBySubClass(classId, subClassID int) *FYBuff {
 		}
 	}
 	return nil
+}
+
+// GetBuffBySubClass returns buff by subclass
+func (e *FYBuffExecution) GetBuffBySubClass(classId, subClassID int) actors.IBuff {
+	buff := e.findBuffBySubClass(classId, subClassID)
+	return buff
 }
 
 // getBuffProperty gets buff property by ID
@@ -641,4 +685,9 @@ func (e *FYBuffExecution) onPlayerLeaveScene() {
 // synBuffToClient syncs buff to client
 func (e *FYBuffExecution) synBuffToClient() {
 	// To be implemented by subclasses
+}
+
+// GetAllBuffsMap returns all buffs map
+func (e *FYBuffExecution) GetAllBuffsMap() map[int][]*FYBuff {
+	return e.allBuffsMap
 }

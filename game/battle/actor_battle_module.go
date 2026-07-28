@@ -3,15 +3,27 @@ package battle
 import (
 	"gameSrv/cnfGen/cfg"
 	"gameSrv/pkg/actors"
+	"gameSrv/pkg/actors/battle_props"
 )
 
 // BuffModule defines the interface for buff module operations
 // This interface is implemented by buff.ActorBuffModule to avoid circular imports
+// It extends actors.IActorBuffModule with additional internal methods
 type BuffModule interface {
+	// Methods from actors.IActorBuffModule (for external access)
+	AddBuffTag(inTag int) bool
+	RemoveBuffTag(inTag int) bool
+	HasBuffTag(tagEnum int) bool
+	AddBuff(templateId int, casterActor, holder *actors.Creature, uid int64, exParam int, bSystem bool) actors.IBuff
+	RemoveBuffByConfId(cnfId int, reason int) bool
+	ClearLeaveBattleBuff()
+	RemoveBuffByClass(classType int, reason int) bool
+	RemoveBuffBySubClass(classID, subClassID int, reason int) bool
+
+	// Internal methods for battle module
 	TriggerBuffEvent(event int, param interface{}) bool
 	ClearNotSystemBuff()
 	ClearChangedData()
-	ClearLeaveBattleBuff()
 	ClearBuff(death bool)
 	SystemAddBuff(confId int, uid int64) bool
 	SystemRemoveBuff(buffCnfId int, uid int64) bool
@@ -78,6 +90,9 @@ type ActorBattleModule struct {
 	actorBuffModule  BuffModule
 	actorSkillModule *ActorSkillModule
 
+	// Battle properties - manages combat stats and attributes
+	BattleProps *battle_props.BattleProps
+
 	// Combat state
 	CurGaList        []int
 	CurComboList     []int
@@ -118,6 +133,9 @@ func NewActorBattleModule(owner *actors.Creature, isServer bool) *ActorBattleMod
 		ElementTerminalStrength: make(map[int32]int),
 	}
 
+	// Initialize BattleProps with owner
+	m.BattleProps = battle_props.NewBattlePropsWithOwner(m)
+
 	// Initialize sub-modules - type assertion will be done when methods are called
 	// These are created in the buff package to avoid circular imports
 	// m.actorSkillModule = buff.NewActorSkillModule(owner)
@@ -145,8 +163,16 @@ func (m *ActorBattleModule) SetSkillModule(skillModule *ActorSkillModule) {
 }
 
 // GetBuffModule returns the buff module
-func (m *ActorBattleModule) GetBuffModule() BuffModule {
+func (m *ActorBattleModule) GetBuffModule() actors.IActorBuffModule {
+	if m.actorBuffModule == nil {
+		return nil
+	}
 	return m.actorBuffModule
+}
+
+// GetBattleProps returns the battle properties module
+func (m *ActorBattleModule) GetBattleProps() *battle_props.BattleProps {
+	return m.BattleProps
 }
 
 // GetSkillModule returns the skill module
@@ -204,8 +230,8 @@ func (m *ActorBattleModule) ResetBattleInfo() {
 // ClearAllChanged clears all changed data
 func (m *ActorBattleModule) ClearAllChanged() {
 	// Clear changed props from BattleProps
-	if m.owner != nil && m.owner.BattleProps != nil {
-		m.owner.BattleProps.ClearChangedProps()
+	if m.BattleProps != nil {
+		m.BattleProps.ClearChangedProps()
 	}
 	// Clear skill module changed data
 	if m.actorSkillModule != nil {
@@ -379,14 +405,14 @@ func (m *ActorBattleModule) OnAvatarPropsRestFinish(reason int32) {
 
 // OnBuffUpdate is called when a buff is updated
 // Sends buff update notification to client via network system
-func (m *ActorBattleModule) OnBuffUpdate(buff interface{}) {
+func (m *ActorBattleModule) OnBuffUpdate(buff actors.IBuff) {
 	_ = buff
 	// Network notification will be sent when network system is implemented
 }
 
 // OnBuffRemoved is called when a buff is removed
 // Sends buff remove notification to client via network system
-func (m *ActorBattleModule) OnBuffRemoved(removedBuff interface{}, reason int) {
+func (m *ActorBattleModule) OnBuffRemoved(removedBuff actors.IBuff, reason int) {
 	_ = removedBuff
 	_ = reason
 	// Network notification will be sent when network system is implemented
@@ -867,4 +893,27 @@ func (m *ActorBattleModule) GetCurMontageList() []int {
 	result := make([]int, len(m.CurMontageList))
 	copy(result, m.CurMontageList)
 	return result
+}
+
+// ==================== BattlePropsOwner interface implementation ====================
+
+// GetEntityId returns the entity ID of the owner
+func (m *ActorBattleModule) GetEntityId() int64 {
+	if m.owner == nil {
+		return 0
+	}
+	return m.owner.GetEntityId()
+}
+
+// GetConfigId returns the config ID of the owner
+func (m *ActorBattleModule) GetConfigId() int64 {
+	if m.owner == nil {
+		return 0
+	}
+	return m.owner.GetConfigId()
+}
+
+// GetActorBattleModule returns this battle module (implements BattlePropsOwner)
+func (m *ActorBattleModule) GetActorBattleModule() battle_props.ActorBattleModule {
+	return m
 }

@@ -1,9 +1,17 @@
 package actors
 
 import (
-	"gameSrv/pkg/scene"
 	"gameSrv/pkg/actors/battle_props"
+	"gameSrv/pkg/scene"
 )
+
+// IBuff defines the interface for buff objects
+// This allows the battle module to work with buffs without circular imports
+type IBuff interface {
+	GetBuffId() int64
+	GetCnfId() int32
+	GetHolderActor() *Creature
+}
 
 // IActorBuffModule manages buffs for an actor (forward declaration)
 // The actual type is in game/battle/buff package to avoid circular imports
@@ -11,15 +19,23 @@ type IActorBuffModule interface {
 	AddBuffTag(inTag int) bool
 	RemoveBuffTag(inTag int) bool
 	HasBuffTag(tagEnum int) bool
-	AddBuff(templateId int, casterActor, holder *Creature, uid int64, exParam int, bSystem bool) interface{}
+	AddBuff(templateId int, casterActor, holder *Creature, uid int64, exParam int, bSystem bool) IBuff
 	RemoveBuffByConfId(cnfId int, reason int) bool
 	ClearLeaveBattleBuff()
+	RemoveBuffByClass(classType int, reason int) bool
+	RemoveBuffBySubClass(classID, subClassID int, reason int) bool
 }
 
 // IActorBattleModule manages battle data for an actor (forward declaration)
 // The actual type is in game/battle package to avoid circular imports
 type IActorBattleModule interface {
 	GetOwner() *Creature
+	GetBuffModule() IActorBuffModule
+	GetBattleProps() *battle_props.BattleProps
+	GetCurAttackTarget() *Creature
+	GetCurBeAttackTarget() *Creature
+	SetCurAttackTarget(target *Creature)
+	SetCurBeAttackTarget(target *Creature)
 	GetRandomValue() int
 	GetBuffUidStart() int64
 	GetRandomStartIndex() int
@@ -39,14 +55,15 @@ type IActorBattleModule interface {
 	AddProperty(prop, value int32) int
 	OnAvatarPropsChangFinish()
 	OnAvatarPropsRestFinish(reason int32)
-	OnBuffUpdate(buff interface{})
-	OnBuffRemoved(removedBuff interface{}, reason int)
+	OnBuffUpdate(buff IBuff)
+	OnBuffRemoved(removedBuff IBuff, reason int)
 	OnPlayerLeaveScene()
 	HandleDead(killerActor *Entity) bool
 	SystemAddBuff(confId int, uid int64) bool
 	SystemDelBuff(buffCnfId int, uid int64) bool
 	ReCalculateBattleProps(prop int32)
 	OnPropertyChange(prop, oldValue, newValue int)
+	CanChangeProp(prop, value int) bool
 }
 
 // Creature is a combatable entity in scene with abilities and properties
@@ -57,12 +74,8 @@ type Creature struct {
 	CurState  int32
 	CampType  int32
 
-	// Battle modules - will be set when the battle system is initialized
-	ActorBuffModule  IActorBuffModule
+	// Battle module - manages all battle-related data including buffs and properties
 	ActorBattleModule IActorBattleModule
-
-	// Battle properties - manages combat stats and attributes
-	BattleProps *battle_props.BattleProps
 }
 
 func (c *Creature) EnterScene(scn scene.IScene, context *scene.VisionContext) error {
@@ -113,8 +126,10 @@ func (c *Creature) Reset() bool {
 	c.CurState = 0
 
 	// Clear buffs when not in battle
-	if c.ActorBuffModule != nil {
-		c.ActorBuffModule.ClearLeaveBattleBuff()
+	if c.ActorBattleModule != nil {
+		if buffModule := c.ActorBattleModule.GetBuffModule(); buffModule != nil {
+			buffModule.ClearLeaveBattleBuff()
+		}
 	}
 
 	// Reset battle module
@@ -181,104 +196,146 @@ func (c *Creature) ChangeObjectState(srcEntity scene.IEntity, state int32) {
 
 // AddBuffTag adds a buff tag to this creature
 func (c *Creature) AddBuffTag(tag int) bool {
-	if c.ActorBuffModule == nil {
+	if c.ActorBattleModule == nil {
 		return false
 	}
-	return c.ActorBuffModule.AddBuffTag(tag)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return false
+	}
+	return buffModule.AddBuffTag(tag)
 }
 
 // RemoveBuffTag removes a buff tag from this creature
 func (c *Creature) RemoveBuffTag(tag int) bool {
-	if c.ActorBuffModule == nil {
+	if c.ActorBattleModule == nil {
 		return false
 	}
-	return c.ActorBuffModule.RemoveBuffTag(tag)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return false
+	}
+	return buffModule.RemoveBuffTag(tag)
 }
 
 // HasBuffTag checks if this creature has a specific buff tag
 func (c *Creature) HasBuffTag(tag int) bool {
-	if c.ActorBuffModule == nil {
+	if c.ActorBattleModule == nil {
 		return false
 	}
-	return c.ActorBuffModule.HasBuffTag(tag)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return false
+	}
+	return buffModule.HasBuffTag(tag)
 }
 
 // AddBuff adds a buff to this creature
-func (c *Creature) AddBuff(templateId int, casterActor *Creature, uid int64, exParam int, bSystem bool) interface{} {
-	if c.ActorBuffModule == nil {
+func (c *Creature) AddBuff(templateId int, casterActor *Creature, uid int64, exParam int, bSystem bool) IBuff {
+	if c.ActorBattleModule == nil {
 		return nil
 	}
-	return c.ActorBuffModule.AddBuff(templateId, casterActor, c, uid, exParam, bSystem)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return nil
+	}
+	return buffModule.AddBuff(templateId, casterActor, c, uid, exParam, bSystem)
 }
 
 // RemoveBuffByConfId removes buffs by config ID from this creature
 func (c *Creature) RemoveBuffByConfId(cnfId int, reason int) bool {
-	if c.ActorBuffModule == nil {
+	if c.ActorBattleModule == nil {
 		return false
 	}
-	return c.ActorBuffModule.RemoveBuffByConfId(cnfId, reason)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return false
+	}
+	return buffModule.RemoveBuffByConfId(cnfId, reason)
 }
 
 // RemoveBuffByClass removes buffs by class from this creature
 func (c *Creature) RemoveBuffByClass(classType int, reason int) bool {
-	if c.ActorBuffModule == nil {
+	if c.ActorBattleModule == nil {
 		return false
 	}
-	if module, ok := c.ActorBuffModule.(interface{ RemoveBuffByClass(int, int) bool }); ok {
-		return module.RemoveBuffByClass(classType, reason)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return false
 	}
-	return false
+	return buffModule.RemoveBuffByClass(classType, reason)
 }
 
 // RemoveBuffBySubClass removes buffs by subclass from this creature
 func (c *Creature) RemoveBuffBySubClass(classID, subClassID int, reason int) bool {
-	if c.ActorBuffModule == nil {
+	if c.ActorBattleModule == nil {
 		return false
 	}
-	if module, ok := c.ActorBuffModule.(interface{ RemoveBuffBySubClass(int, int, int) bool }); ok {
-		return module.RemoveBuffBySubClass(classID, subClassID, reason)
+	buffModule := c.ActorBattleModule.GetBuffModule()
+	if buffModule == nil {
+		return false
 	}
-	return false
+	return buffModule.RemoveBuffBySubClass(classID, subClassID, reason)
 }
 
 // ==================== Battle Properties Methods ====================
 
 // GetBattleProps returns the battle properties module
 func (c *Creature) GetBattleProps() *battle_props.BattleProps {
-	return c.BattleProps
+	if c.ActorBattleModule == nil {
+		return nil
+	}
+	return c.ActorBattleModule.GetBattleProps()
 }
 
 // SetBattleProps sets the battle properties module
 func (c *Creature) SetBattleProps(props *battle_props.BattleProps) {
-	c.BattleProps = props
+	if c.ActorBattleModule == nil {
+		return
+	}
+	// Note: BattleProps is now managed by ActorBattleModule
+	// This method may need to be refactored or removed
 }
 
 // InitBattleProps initializes battle properties for this creature
 func (c *Creature) InitBattleProps() {
-	if c.BattleProps == nil {
-		c.BattleProps = battle_props.NewBattlePropsWithOwner(c)
+	if c.ActorBattleModule == nil {
+		return
 	}
+	// BattleProps is initialized in ActorBattleModule constructor
 }
 
 // GetProperty returns a property value from battle properties
 func (c *Creature) GetProperty(prop int32) int {
-	if c.BattleProps == nil {
+	if c.ActorBattleModule == nil {
 		return 0
 	}
-	return c.BattleProps.GetProperty(int(prop))
+	props := c.ActorBattleModule.GetBattleProps()
+	if props == nil {
+		return 0
+	}
+	return props.GetProperty(int(prop))
 }
 
 // SetProperty sets a property value in battle properties
 func (c *Creature) SetProperty(prop, value int32, isNeedRecalculate bool) int {
-	if c.BattleProps == nil {
+	if c.ActorBattleModule == nil {
 		return 0
 	}
-	return c.BattleProps.SetPropertyWithRecalculate(int(prop), int(value), isNeedRecalculate)
+	props := c.ActorBattleModule.GetBattleProps()
+	if props == nil {
+		return 0
+	}
+	return props.SetPropertyWithRecalculate(int(prop), int(value), isNeedRecalculate)
 }
 
 // AddProperty adds value to a property in battle properties
 func (c *Creature) AddProperty(prop, value int32) int {
-	if c.BattleProps == nil {
+	if c.ActorBattleModule == nil {
+		return 0
+	}
+	props := c.ActorBattleModule.GetBattleProps()
+	if props == nil {
 		return 0
 	}
 	oldValue := c.GetProperty(prop)
@@ -288,10 +345,14 @@ func (c *Creature) AddProperty(prop, value int32) int {
 
 // GetBaseProps returns base property value from battle properties
 func (c *Creature) GetBaseProps(prop int32) int {
-	if c.BattleProps == nil {
+	if c.ActorBattleModule == nil {
 		return 0
 	}
-	return c.BattleProps.GetBasePropsByInt(int(prop))
+	props := c.ActorBattleModule.GetBattleProps()
+	if props == nil {
+		return 0
+	}
+	return props.GetBasePropsByInt(int(prop))
 }
 
 // CanChangeProp checks if a property can be changed
@@ -299,13 +360,7 @@ func (c *Creature) CanChangeProp(prop, value int) bool {
 	if c.ActorBattleModule == nil {
 		return true
 	}
-	// Use ActorBattleModule.CanChangeProp if available
-	if module, ok := c.ActorBattleModule.(interface {
-		CanChangeProp(prop, value int) bool
-	}); ok {
-		return module.CanChangeProp(prop, value)
-	}
-	return true
+	return c.ActorBattleModule.CanChangeProp(prop, value)
 }
 
 // GetActorBattleModule returns the actor battle module

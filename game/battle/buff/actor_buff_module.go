@@ -22,167 +22,83 @@ type EntityBattleInfo struct {
 
 // ActorBuffModule manages buffs for an actor
 type ActorBuffModule struct {
-	owner           *actors.Creature
-	serverBuffExec  *FYBuffExecutionServer
-	clientBuffExec  *FYBuffExecutionClient
-	changedBuffs    []*BuffData
+	owner        *actors.Creature
+	BuffExec     IFYBuffExecution
+	changedBuffs []*BuffData
 }
 
-// getBuffExec returns the appropriate buff execution instance
-func (m *ActorBuffModule) getBuffExec() *FYBuffExecution {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.FYBuffExecution
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.FYBuffExecution
-	}
-	return nil
-}
-
-// execRemoveBuffByUid executes RemoveBuffByUid on the appropriate executor
+// execRemoveBuffByUid executes RemoveBuffByUid
 func (m *ActorBuffModule) execRemoveBuffByUid(buffCnfId int, uid int64, reason int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.RemoveBuffByUid(buffCnfId, uid, reason)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.RemoveBuffByUid(buffCnfId, uid, reason)
-	}
-	return false
+	return m.BuffExec.RemoveBuffByUid(buffCnfId, uid, reason)
 }
 
-// execAddBuff executes AddBuff on the appropriate executor
+// execAddBuff executes AddBuff
 func (m *ActorBuffModule) execAddBuff(templateId int, casterActor, holder *actors.Creature, uid int64, exParam, layer int, life int64, bSystem bool) *FYBuff {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.AddBuff(templateId, casterActor, holder, uid, exParam, layer, life, bSystem)
+	result := m.BuffExec.AddBuff(templateId, casterActor, holder, uid, exParam, layer, life, bSystem)
+	if result == nil {
+		return nil
 	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.AddBuff(templateId, casterActor, holder, uid, exParam, layer, life, bSystem)
-	}
-	return nil
+	return result.(*FYBuff)
 }
 
-// execStopAndRemoveBuff executes StopAndRemoveBuff on the appropriate executor
+// execStopAndRemoveBuff executes StopAndRemoveBuff
 func (m *ActorBuffModule) execStopAndRemoveBuff(removedBuff *FYBuff, reason int) {
-	if m.serverBuffExec != nil {
-		m.serverBuffExec.StopAndRemoveBuff(removedBuff, reason)
-	} else if m.clientBuffExec != nil {
-		m.clientBuffExec.StopAndRemoveBuff(removedBuff, reason)
-	}
+	m.BuffExec.StopAndRemoveBuff(removedBuff, reason)
 }
 
-// execTriggerBuffEvent executes TriggerBuffEvent on the appropriate executor
+// execTriggerBuffEvent executes TriggerBuffEvent
 func (m *ActorBuffModule) execTriggerBuffEvent(eventEnum int, triggerEventParam interface{}) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.TriggerBuffEvent(eventEnum, triggerEventParam)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.TriggerBuffEvent(eventEnum, triggerEventParam)
-	}
-	return false
+	return m.BuffExec.TriggerBuffEvent(eventEnum, triggerEventParam)
 }
 
-// execHasBuffTag executes HasBuffTag on the appropriate executor
+// execHasBuffTag executes HasBuffTag
 func (m *ActorBuffModule) execHasBuffTag(tagEnum int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.HasBuffTag(tagEnum)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.HasBuffTag(tagEnum)
-	}
-	return false
+	return m.BuffExec.HasBuffTag(tagEnum)
 }
 
-// execRemoveBuffTag executes RemoveBuffTag on the appropriate executor
+// execRemoveBuffTag executes RemoveBuffTag
 func (m *ActorBuffModule) execRemoveBuffTag(inTag int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.RemoveBuffTag(inTag)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.RemoveBuffTag(inTag)
-	}
-	return false
+	return m.BuffExec.RemoveBuffTag(inTag)
 }
 
-// execAddBuffTag executes AddBuffTag on the appropriate executor
+// execAddBuffTag executes AddBuffTag
 func (m *ActorBuffModule) execAddBuffTag(inTag int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.AddBuffTag(inTag)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.AddBuffTag(inTag)
-	}
-	return false
+	return m.BuffExec.AddBuffTag(inTag)
 }
 
-// execClearBuff executes ClearBuff on the appropriate executor
+// execClearBuff executes ClearBuff
 func (m *ActorBuffModule) execClearBuff(death bool) {
-	if m.serverBuffExec != nil {
-		m.serverBuffExec.ClearBuff(death)
-	} else if m.clientBuffExec != nil {
-		m.clientBuffExec.ClearBuff(death)
-	}
+	m.BuffExec.ClearBuff(death)
 }
 
-// execClearNotSystemBuff executes ClearNotSystemBuff on the appropriate executor
+// execClearNotSystemBuff executes ClearNotSystemBuff
 func (m *ActorBuffModule) execClearNotSystemBuff() {
-	if m.serverBuffExec != nil {
-		m.serverBuffExec.ClearNotSystemBuff()
-	} else if m.clientBuffExec != nil {
-		m.clientBuffExec.ClearNotSystemBuff()
-	}
+	m.BuffExec.ClearNotSystemBuff()
 }
 
-// execClearLeaveBattleBuff executes ClearLeaveBattleBuff on the appropriate executor
+// execClearLeaveBattleBuff executes ClearLeaveBattleBuff
 func (m *ActorBuffModule) execClearLeaveBattleBuff() {
-	if m.serverBuffExec != nil {
-		m.serverBuffExec.ClearLeaveBattleBuff()
-	} else if m.clientBuffExec != nil {
-		m.clientBuffExec.ClearLeaveBattleBuff()
-	}
+	m.BuffExec.ClearLeaveBattleBuff()
 }
 
-// execRemoveBuffByConfId executes RemoveBuffByConfId on the appropriate executor
+// execRemoveBuffByConfId executes RemoveBuffByConfId
 func (m *ActorBuffModule) execRemoveBuffByConfId(cnfId int, reason int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.RemoveBuffByConfId(cnfId, reason)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.RemoveBuffByConfId(cnfId, reason)
-	}
-	return false
+	return m.BuffExec.RemoveBuffByConfId(cnfId, reason)
 }
 
-// execRemoveBuffBySubClass executes RemoveBuffBySubClass on the appropriate executor
+// execRemoveBuffBySubClass executes RemoveBuffBySubClass
 func (m *ActorBuffModule) execRemoveBuffBySubClass(classID, subClassID int, reason int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.RemoveBuffBySubClass(classID, subClassID, reason)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.RemoveBuffBySubClass(classID, subClassID, reason)
-	}
-	return false
+	return m.BuffExec.RemoveBuffBySubClass(classID, subClassID, reason)
 }
 
-// execRemoveBuffByClass executes RemoveBuffByClass on the appropriate executor
+// execRemoveBuffByClass executes RemoveBuffByClass
 func (m *ActorBuffModule) execRemoveBuffByClass(classType int, reason int) bool {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.RemoveBuffByClass(classType, reason)
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.RemoveBuffByClass(classType, reason)
-	}
-	return false
+	return m.BuffExec.RemoveBuffByClass(classType, reason)
 }
 
-// getAllBuffsMap returns the buffs map from the appropriate executor
+// getAllBuffsMap returns the buffs map
 func (m *ActorBuffModule) getAllBuffsMap() map[int][]*FYBuff {
-	if m.serverBuffExec != nil {
-		return m.serverBuffExec.allBuffsMap
-	}
-	if m.clientBuffExec != nil {
-		return m.clientBuffExec.allBuffsMap
-	}
-	return nil
+	return m.BuffExec.GetAllBuffsMap()
 }
 
 // BuffData represents buff data for client communication
@@ -205,20 +121,16 @@ const (
 
 // NewActorBuffModule creates a new ActorBuffModule
 func NewActorBuffModule(creature *actors.Creature, isServer bool) *ActorBuffModule {
+	var exec IFYBuffExecution
 	if isServer {
-		exec := NewFYBuffExecutionServer(creature)
-		return &ActorBuffModule{
-			owner:           creature,
-			serverBuffExec:  exec,
-			changedBuffs:    make([]*BuffData, 0),
-		}
+		exec = NewFYBuffExecutionServer(creature)
+	} else {
+		exec = NewFYBuffExecutionClient(creature)
 	}
-
-	exec := NewFYBuffExecutionClient(creature)
 	return &ActorBuffModule{
-		owner:           creature,
-		clientBuffExec:  exec,
-		changedBuffs:    make([]*BuffData, 0),
+		owner:        creature,
+		BuffExec:     exec,
+		changedBuffs: make([]*BuffData, 0),
 	}
 }
 
@@ -251,14 +163,13 @@ func (m *ActorBuffModule) SystemRemoveBuff(buffCnfId int, uid int64) bool {
 }
 
 // AddBuff adds a buff
-// Returns interface{} to satisfy IActorBuffModule (actually returns *FYBuff)
 func (m *ActorBuffModule) AddBuff(
 	templateId int,
 	casterActor, holder *actors.Creature,
 	uid int64,
 	exParam int,
 	bSystem bool,
-) interface{} {
+) actors.IBuff {
 	return m.execAddBuff(templateId, casterActor, holder, uid, exParam, 0, 0, bSystem)
 }
 
@@ -358,25 +269,18 @@ func (m *ActorBuffModule) RemoveBuffByClass(classType int, reason int) bool {
 
 // RebornAddBuff adds buffs on rebirth
 func (m *ActorBuffModule) RebornAddBuff() {
-	if m.serverBuffExec != nil {
-		for _, buffId := range m.serverBuffExec.rebornAddBuffIds {
-			m.AddBuff(buffId, m.owner, m.owner, GenProcessLongId(), 0, false)
-		}
-		m.serverBuffExec.rebornAddBuffIds = make([]int, 0)
-	}
+	// TODO: Implement when reborn system is ready
 }
 
 // TickFromClient handles client-side buff tick
 func (m *ActorBuffModule) TickFromClient(buffId int) {
-	if m.clientBuffExec != nil {
-		// TODO: Implement client tick when needed
-		_ = buffId
-	}
+	// Client doesn't tick buffs - server handles all buff ticking
+	_ = buffId
 }
 
 // GetBuffExecution returns the buff execution instance
-func (m *ActorBuffModule) GetBuffExecution() *FYBuffExecution {
-	return m.getBuffExec()
+func (m *ActorBuffModule) GetBuffExecution() IFYBuffExecution {
+	return m.BuffExec
 }
 
 // GetOwner returns the owner creature
@@ -516,37 +420,33 @@ func (m *ActorBuffModule) BuffsRemovedToPB() []*BuffData {
 
 // GetBuffByConfId gets first buff by config ID
 func (m *ActorBuffModule) GetBuffByConfId(cnfId int) *FYBuff {
-	exec := m.getBuffExec()
-	if exec == nil {
+	buff := m.BuffExec.GetBuffByConfId(cnfId)
+	if buff == nil {
 		return nil
 	}
-	return exec.findFirstBuffByConfId(cnfId)
+	return buff.(*FYBuff)
 }
 
 // FindBuffByClass finds buff by class
 func (m *ActorBuffModule) FindBuffByClass(classID int) *FYBuff {
-	exec := m.getBuffExec()
-	if exec == nil {
+	buff := m.BuffExec.GetBuffByClass(classID)
+	if buff == nil {
 		return nil
 	}
-	return exec.findBuffByClass(classID)
+	return buff.(*FYBuff)
 }
 
 // FindBuffBySubClass finds buff by subclass
 func (m *ActorBuffModule) FindBuffBySubClass(classId, subClassID int) *FYBuff {
-	exec := m.getBuffExec()
-	if exec == nil {
+	buff := m.BuffExec.GetBuffBySubClass(classId, subClassID)
+	if buff == nil {
 		return nil
 	}
-	return exec.findBuffBySubClass(classId, subClassID)
+	return buff.(*FYBuff)
 }
 
 // FindBuffByCastActor finds buff by caster actor
 func (m *ActorBuffModule) FindBuffByCastActor(id int, castActor *actors.Creature) *FYBuff {
-	exec := m.getBuffExec()
-	if exec == nil {
-		return nil
-	}
 	allBuffs := m.getAllBuffsMap()
 	for _, buffs := range allBuffs {
 		for _, buff := range buffs {
