@@ -2,28 +2,21 @@ package buff
 
 import (
 	"gameSrv/cnfGen/cfg"
+	"sync"
 )
 
 // CheckBuffOnTriggerFunction checks conditions on buff trigger
 type CheckBuffOnTriggerFunction func(param interface{}, event *cfg.TriggerEvent) bool
 
-// FYBuffTriggerProcess handles buff trigger processing
-type FYBuffTriggerProcess struct {
+var (
 	buffTriggerFunctions map[int]CheckBuffOnTriggerFunction
-}
-
-// NewFYBuffTriggerProcess creates a new FYBuffTriggerProcess
-func NewFYBuffTriggerProcess() *FYBuffTriggerProcess {
-	p := &FYBuffTriggerProcess{
-		buffTriggerFunctions: make(map[int]CheckBuffOnTriggerFunction),
-	}
-	p.initTriggerFunctions()
-	return p
-}
+	initTriggerOnce      sync.Once
+)
 
 // CheckEvent checks if event should trigger
-func (p *FYBuffTriggerProcess) CheckEvent(triggerEventParam interface{}, triggerEvent *cfg.TriggerEvent) bool {
-	checkFunc := p.buffTriggerFunctions[int(triggerEvent.EventId)]
+func CheckEvent(triggerEventParam interface{}, triggerEvent *cfg.TriggerEvent) bool {
+	initTriggerOnce.Do(initTriggerFunctions)
+	checkFunc := buffTriggerFunctions[int(triggerEvent.EventId)]
 	if checkFunc == nil {
 		return false
 	}
@@ -31,63 +24,61 @@ func (p *FYBuffTriggerProcess) CheckEvent(triggerEventParam interface{}, trigger
 }
 
 // initTriggerFunctions initializes trigger check functions
-func (p *FYBuffTriggerProcess) initTriggerFunctions() {
-	// Register trigger event check functions
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_ENTER_TEAM, p.onAvatarEnterTeamTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_LEAVE_TEAM, p.onAvatarLeaveTeamTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PROPS_CHANGE, p.onAvatarPropertyChangeIntoTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PROPS_CHANGE_RATE, p.onAvatarPropertyChangeIntoTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_STATE_CHANGE, p.onAvatarStatusChangeIntoTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BUFF_MOUNTED, p.onOtherBuffMountedTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_MONTAGE_ID, p.onMtgIdAttackTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_MONTAGE_END, p.onMontageEndTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_MONTAGE_TAG, p.onMtgTagAttackTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_HITED, p.onHitedTargetTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_HITED_SKILLTYPE, p.onHitedSkillTypeTargetTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_DAMGE, p.onDoDamageTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_DAMGE_BY_SKILLTYPE, p.onDoDamageBySkillTypeTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_HEAL, p.onDoDamageTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE, p.onDoCriticalDamageTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE_BY_SKILLTYPE, p.onDoCriticalDamageBySkillTypeTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BE_HITED, p.onBeHitedTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BE_DAMAGED, p.onBeDamagedTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_BE_HEAL, p.onBeDamagedTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL, p.onActionSubAbnormal)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL_ALL, p.onActionSubAbnormal)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_ABNORMAL_LAYER_CLOSING, p.onAbnormalLayerClosing)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_EXECUTION_END, p.onExecutionEndTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_Kill_MONSTER_TARGET, p.onKilledMonsterTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PERFECT_DODGE, p.onDefaultTrueTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_PARRY_BEGIN, p.onDefaultTrueTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_SHIP_FIRE, p.onShipFiredTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_SHIP_FIRE_EFFECT, p.onShipFiredBulletTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CLIP_CHANGE, p.onClipChangeTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_CLIP_RELOAD, p.onClipReloadTrigger)
-	p.registerCheckFunctions(cfg.BuffTriggerEventEnum_SHIP_SPEED_UP, p.onShipSpeedUpTrigger)
-}
+func initTriggerFunctions() {
+	if buffTriggerFunctions != nil {
+		return
+	}
 
-// registerCheckFunctions registers a trigger check function
-func (p *FYBuffTriggerProcess) registerCheckFunctions(
-	eventEnum int,
-	checkFunc CheckBuffOnTriggerFunction,
-) {
-	p.buffTriggerFunctions[eventEnum] = checkFunc
+	buffTriggerFunctions = make(map[int]CheckBuffOnTriggerFunction)
+
+	// Register trigger event check functions
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_ENTER_TEAM] = onAvatarEnterTeamTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_LEAVE_TEAM] = onAvatarLeaveTeamTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_PROPS_CHANGE] = onAvatarPropertyChangeIntoTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_PROPS_CHANGE_RATE] = onAvatarPropertyChangeIntoTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_STATE_CHANGE] = onAvatarStatusChangeIntoTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_BUFF_MOUNTED] = onOtherBuffMountedTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_MONTAGE_ID] = onMtgIdAttackTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_MONTAGE_END] = onMontageEndTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_MONTAGE_TAG] = onMtgTagAttackTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_HITED] = onHitedTargetTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_HITED_SKILLTYPE] = onHitedSkillTypeTargetTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_DO_DAMGE] = onDoDamageTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_DO_DAMGE_BY_SKILLTYPE] = onDoDamageBySkillTypeTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_DO_HEAL] = onDoDamageTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE] = onDoCriticalDamageTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_DO_CRITICAL_DAMAGE_BY_SKILLTYPE] = onDoCriticalDamageBySkillTypeTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_BE_HITED] = onBeHitedTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_BE_DAMAGED] = onBeDamagedTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_BE_HEAL] = onBeDamagedTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL] = onActionSubAbnormal
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL_ALL] = onActionSubAbnormal
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_ABNORMAL_LAYER_CLOSING] = onAbnormalLayerClosing
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_EXECUTION_END] = onExecutionEndTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_Kill_MONSTER_TARGET] = onKilledMonsterTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_PERFECT_DODGE] = onDefaultTrueTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_PARRY_BEGIN] = onDefaultTrueTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_SHIP_FIRE] = onShipFiredTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_SHIP_FIRE_EFFECT] = onShipFiredBulletTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_CLIP_CHANGE] = onClipChangeTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_CLIP_RELOAD] = onClipReloadTrigger
+	buffTriggerFunctions[cfg.BuffTriggerEventEnum_SHIP_SPEED_UP] = onShipSpeedUpTrigger
 }
 
 // onAvatarEnterTeamTrigger checks enter team condition
-func (p *FYBuffTriggerProcess) onAvatarEnterTeamTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onAvatarEnterTeamTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	// TODO: Implement when TeamTriggerEvent type is available
 	return false
 }
 
 // onAvatarLeaveTeamTrigger checks leave team condition
-func (p *FYBuffTriggerProcess) onAvatarLeaveTeamTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onAvatarLeaveTeamTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	// TODO: Implement when TeamTriggerEvent type is available
 	return false
 }
 
 // onAvatarPropertyChangeIntoTrigger checks property change condition
-func (p *FYBuffTriggerProcess) onAvatarPropertyChangeIntoTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onAvatarPropertyChangeIntoTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	propsChangeParam, ok := param.(*PropsChangeBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -100,7 +91,7 @@ func (p *FYBuffTriggerProcess) onAvatarPropertyChangeIntoTrigger(param interface
 }
 
 // onAvatarStatusChangeIntoTrigger checks status change condition
-func (p *FYBuffTriggerProcess) onAvatarStatusChangeIntoTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onAvatarStatusChangeIntoTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	stateChangeParam, ok := param.(*StateChangeBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -112,7 +103,7 @@ func (p *FYBuffTriggerProcess) onAvatarStatusChangeIntoTrigger(param interface{}
 }
 
 // onOtherBuffMountedTrigger checks other buff mounted condition
-func (p *FYBuffTriggerProcess) onOtherBuffMountedTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onOtherBuffMountedTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	buffMountedParam, ok := param.(*BuffMountedBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -124,7 +115,7 @@ func (p *FYBuffTriggerProcess) onOtherBuffMountedTrigger(param interface{}, even
 }
 
 // onHitedTargetTrigger checks hit target condition
-func (p *FYBuffTriggerProcess) onHitedTargetTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onHitedTargetTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	hitedParam, ok := param.(*HitedBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -136,7 +127,7 @@ func (p *FYBuffTriggerProcess) onHitedTargetTrigger(param interface{}, event *cf
 }
 
 // onHitedSkillTypeTargetTrigger checks skill type hit condition
-func (p *FYBuffTriggerProcess) onHitedSkillTypeTargetTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onHitedSkillTypeTargetTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	hitedParam, ok := param.(*HitedBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -148,7 +139,7 @@ func (p *FYBuffTriggerProcess) onHitedSkillTypeTargetTrigger(param interface{}, 
 }
 
 // onExecutionEndTrigger checks execution end condition
-func (p *FYBuffTriggerProcess) onExecutionEndTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onExecutionEndTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	executionParam, ok := param.(*ExecutionEndParam)
 	if !ok {
 		return false
@@ -160,7 +151,7 @@ func (p *FYBuffTriggerProcess) onExecutionEndTrigger(param interface{}, event *c
 }
 
 // onAbnormalLayerClosing checks abnormal layer closing condition
-func (p *FYBuffTriggerProcess) onAbnormalLayerClosing(param interface{}, event *cfg.TriggerEvent) bool {
+func onAbnormalLayerClosing(param interface{}, event *cfg.TriggerEvent) bool {
 	abnormalParam, ok := param.(*AbnormalLayerClosing)
 	if !ok {
 		return false
@@ -172,7 +163,7 @@ func (p *FYBuffTriggerProcess) onAbnormalLayerClosing(param interface{}, event *
 }
 
 // onActionSubAbnormal checks action sub abnormal condition
-func (p *FYBuffTriggerProcess) onActionSubAbnormal(param interface{}, event *cfg.TriggerEvent) bool {
+func onActionSubAbnormal(param interface{}, event *cfg.TriggerEvent) bool {
 	actionParam, ok := param.(*ActionSubAbnormalEventParam)
 	if !ok {
 		return false
@@ -184,7 +175,7 @@ func (p *FYBuffTriggerProcess) onActionSubAbnormal(param interface{}, event *cfg
 }
 
 // onDoDamageTrigger checks damage dealing condition
-func (p *FYBuffTriggerProcess) onDoDamageTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onDoDamageTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	damageParam, ok := param.(*DodamageBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -196,7 +187,7 @@ func (p *FYBuffTriggerProcess) onDoDamageTrigger(param interface{}, event *cfg.T
 }
 
 // onDoDamageBySkillTypeTrigger checks skill type damage condition
-func (p *FYBuffTriggerProcess) onDoDamageBySkillTypeTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onDoDamageBySkillTypeTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	damageParam, ok := param.(*DodamageBySkillTypeBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -208,7 +199,7 @@ func (p *FYBuffTriggerProcess) onDoDamageBySkillTypeTrigger(param interface{}, e
 }
 
 // onDoCriticalDamageTrigger checks critical damage condition
-func (p *FYBuffTriggerProcess) onDoCriticalDamageTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onDoCriticalDamageTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	criticalParam, ok := param.(*DoCriticalBySkillTypeDamageBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -220,7 +211,7 @@ func (p *FYBuffTriggerProcess) onDoCriticalDamageTrigger(param interface{}, even
 }
 
 // onDoCriticalDamageBySkillTypeTrigger checks skill type critical damage condition
-func (p *FYBuffTriggerProcess) onDoCriticalDamageBySkillTypeTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onDoCriticalDamageBySkillTypeTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	criticalParam, ok := param.(*DoCriticalBySkillTypeDamageBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -232,7 +223,7 @@ func (p *FYBuffTriggerProcess) onDoCriticalDamageBySkillTypeTrigger(param interf
 }
 
 // onBeHitedTrigger checks being hit condition
-func (p *FYBuffTriggerProcess) onBeHitedTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onBeHitedTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	beHitedParam, ok := param.(*BeHitedBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -244,7 +235,7 @@ func (p *FYBuffTriggerProcess) onBeHitedTrigger(param interface{}, event *cfg.Tr
 }
 
 // onBeDamagedTrigger checks being damaged condition
-func (p *FYBuffTriggerProcess) onBeDamagedTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onBeDamagedTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	beDamagedParam, ok := param.(*BeDamagedBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -256,7 +247,7 @@ func (p *FYBuffTriggerProcess) onBeDamagedTrigger(param interface{}, event *cfg.
 }
 
 // onShipFiredTrigger checks ship fire condition
-func (p *FYBuffTriggerProcess) onShipFiredTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onShipFiredTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	shipFireParam, ok := param.(*ShipFireEventParam)
 	if !ok {
 		return false
@@ -268,7 +259,7 @@ func (p *FYBuffTriggerProcess) onShipFiredTrigger(param interface{}, event *cfg.
 }
 
 // onShipFiredBulletTrigger checks ship fire bullet condition
-func (p *FYBuffTriggerProcess) onShipFiredBulletTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onShipFiredBulletTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	shipEffectParam, ok := param.(*ShipFireEffectEventParam)
 	if !ok {
 		return false
@@ -280,7 +271,7 @@ func (p *FYBuffTriggerProcess) onShipFiredBulletTrigger(param interface{}, event
 }
 
 // onClipChangeTrigger checks clip change condition
-func (p *FYBuffTriggerProcess) onClipChangeTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onClipChangeTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	clipParam, ok := param.(*ClipCapacityChange)
 	if !ok {
 		return false
@@ -292,17 +283,17 @@ func (p *FYBuffTriggerProcess) onClipChangeTrigger(param interface{}, event *cfg
 }
 
 // onClipReloadTrigger checks clip reload condition
-func (p *FYBuffTriggerProcess) onClipReloadTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onClipReloadTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	return true
 }
 
 // onShipSpeedUpTrigger checks ship speed up condition
-func (p *FYBuffTriggerProcess) onShipSpeedUpTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onShipSpeedUpTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	return true
 }
 
 // onMtgIdAttackTrigger checks montage ID condition
-func (p *FYBuffTriggerProcess) onMtgIdAttackTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onMtgIdAttackTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	mtgParam, ok := param.(*MtgIdBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -314,7 +305,7 @@ func (p *FYBuffTriggerProcess) onMtgIdAttackTrigger(param interface{}, event *cf
 }
 
 // onKilledMonsterTrigger checks killed monster condition
-func (p *FYBuffTriggerProcess) onKilledMonsterTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onKilledMonsterTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	killedParam, ok := param.(*KilledMonsterEventParam)
 	if !ok {
 		return false
@@ -326,7 +317,7 @@ func (p *FYBuffTriggerProcess) onKilledMonsterTrigger(param interface{}, event *
 }
 
 // onMontageEndTrigger checks montage end condition
-func (p *FYBuffTriggerProcess) onMontageEndTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onMontageEndTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	mtgParam, ok := param.(*MontageEndBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -338,7 +329,7 @@ func (p *FYBuffTriggerProcess) onMontageEndTrigger(param interface{}, event *cfg
 }
 
 // onMtgTagAttackTrigger checks montage tag condition
-func (p *FYBuffTriggerProcess) onMtgTagAttackTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onMtgTagAttackTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	mtgParam, ok := param.(*MtgIdBuffTriggerEventParam)
 	if !ok {
 		return false
@@ -350,6 +341,6 @@ func (p *FYBuffTriggerProcess) onMtgTagAttackTrigger(param interface{}, event *c
 }
 
 // onDefaultTrueTrigger always returns true
-func (p *FYBuffTriggerProcess) onDefaultTrueTrigger(param interface{}, event *cfg.TriggerEvent) bool {
+func onDefaultTrueTrigger(param interface{}, event *cfg.TriggerEvent) bool {
 	return true
 }

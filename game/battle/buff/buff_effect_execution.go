@@ -14,75 +14,65 @@ type BuffEffectExeFunction func(buff *FYBuff, target *actors.Creature, buffEffec
 // BuffEffectRevertFunction reverts buff effect
 type BuffEffectRevertFunction func(buff *FYBuff, target *actors.Creature, buffEffect *cfg.BuffEffect, revertLayer int) bool
 
-// FYBuffEffectExecution handles buff effect execution
-type FYBuffEffectExecution struct {
+var (
 	buffEffectExeFunctions    map[int]BuffEffectExeFunction
 	buffEffectRevertFunctions map[int]BuffEffectRevertFunction
-}
-
-var (
-	// Global instance for effect execution
-	effectExecutionInstance *FYBuffEffectExecution
-	effectExecutionOnce     sync.Once
+	initOnce                  sync.Once
 )
 
-// GetEffectExecutionInstance returns the singleton instance
-func GetEffectExecutionInstance() *FYBuffEffectExecution {
-	effectExecutionOnce.Do(func() {
-		effectExecutionInstance = &FYBuffEffectExecution{
-			buffEffectExeFunctions:    make(map[int]BuffEffectExeFunction),
-			buffEffectRevertFunctions: make(map[int]BuffEffectRevertFunction),
-		}
-		effectExecutionInstance.initBuffEffectFunctions()
-	})
-	return effectExecutionInstance
-}
-
 // initBuffEffectFunctions initializes buff effect functions
-func (e *FYBuffEffectExecution) initBuffEffectFunctions() {
+func initBuffEffectFunctions() {
+	if buffEffectExeFunctions != nil {
+		return
+	}
+	buffEffectExeFunctions = make(map[int]BuffEffectExeFunction)
+	buffEffectRevertFunctions = make(map[int]BuffEffectRevertFunction)
+
 	// Property modification effects
-	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarProps), e.buffEffectOptModAvatarProps, e.buffEffectOptModAvatarPropsRevert)
-	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarPropsForEver), e.buffEffectOptModAvatarPropsForever, nil)
+	registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarProps), buffEffectOptModAvatarProps, buffEffectOptModAvatarPropsRevert)
+	registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarPropsForEver), buffEffectOptModAvatarPropsForever, nil)
 
 	// Status modification effects
-	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarStatus), e.buffEffectOptModAvatarStatus, e.buffEffectOptModAvatarStatusRevert)
+	registerBuffEffectFunctions(int(cfg.TypeId_ModAvatarStatus), buffEffectOptModAvatarStatus, buffEffectOptModAvatarStatusRevert)
 
 	// Buff management effects
-	e.registerBuffEffectFunctions(int(cfg.TypeId_StartNewBuff), e.buffEffectOptStartBuff, nil)
-	e.registerBuffEffectFunctions(int(cfg.TypeId_RemoveBuff), e.buffEffectOptRemoveBuff, nil)
+	registerBuffEffectFunctions(int(cfg.TypeId_StartNewBuff), buffEffectOptStartBuff, nil)
+	registerBuffEffectFunctions(int(cfg.TypeId_RemoveBuff), buffEffectOptRemoveBuff, nil)
 
 	// Attack and damage effects
-	e.registerBuffEffectFunctions(int(cfg.TypeId_DoAttackData), e.buffEffectOptExecuteAttackData, nil)
-	e.registerBuffEffectFunctions(int(cfg.TypeId_BuffDoHurt), e.buffEffectOptBuffDoHurt, nil)
-	e.registerBuffEffectFunctions(int(cfg.TypeId_DoAbnormalDamageFormulation), e.buffEffectOptExecuteAbnormalFormulation, nil)
+	registerBuffEffectFunctions(int(cfg.TypeId_DoAttackData), buffEffectOptExecuteAttackData, nil)
+	registerBuffEffectFunctions(int(cfg.TypeId_BuffDoHurt), buffEffectOptBuffDoHurt, nil)
+	registerBuffEffectFunctions(int(cfg.TypeId_DoAbnormalDamageFormulation), buffEffectOptExecuteAbnormalFormulation, nil)
 
 	// Attack data modification effects
-	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAttackDataProps), e.buffEffectOptModAttackDataProps, e.buffEffectOptModAttackDataPropsRevert)
-	e.registerBuffEffectFunctions(int(cfg.TypeId_ModAttackDataPropsByTag), e.buffEffectOptModAttackDataPropsByTag, e.buffEffectOptModAttackDataPropsByTagRevert)
+	registerBuffEffectFunctions(int(cfg.TypeId_ModAttackDataProps), buffEffectOptModAttackDataProps, buffEffectOptModAttackDataPropsRevert)
+	registerBuffEffectFunctions(int(cfg.TypeId_ModAttackDataPropsByTag), buffEffectOptModAttackDataPropsByTag, buffEffectOptModAttackDataPropsByTagRevert)
 }
 
 // registerBuffEffectFunctions registers a buff effect function
-func (e *FYBuffEffectExecution) registerBuffEffectFunctions(
+func registerBuffEffectFunctions(
 	effectType int,
 	exeFunction BuffEffectExeFunction,
 	revertFunction BuffEffectRevertFunction,
 ) {
-	if _, exists := e.buffEffectExeFunctions[effectType]; exists {
+	if _, exists := buffEffectExeFunctions[effectType]; exists {
 		panic("BuffEffectExeFunctions already contains EffectType: " + string(rune(effectType)))
 	}
-	e.buffEffectExeFunctions[effectType] = exeFunction
+	buffEffectExeFunctions[effectType] = exeFunction
 	if revertFunction != nil {
-		e.buffEffectRevertFunctions[effectType] = revertFunction
+		buffEffectRevertFunctions[effectType] = revertFunction
 	}
 }
 
 // ExeBuffEffect executes buff effects
-func (e *FYBuffEffectExecution) ExeBuffEffect(
+func ExeBuffEffect(
 	buff *FYBuff,
 	buffEffect *cfg.BuffEffect,
 	exLayer int,
 	reason int,
 ) bool {
+	initOnce.Do(initBuffEffectFunctions)
+
 	if buffEffect == nil || buffEffect.BuffEffectOpt == nil {
 		return false
 	}
@@ -95,7 +85,7 @@ func (e *FYBuffEffectExecution) ExeBuffEffect(
 		return false
 	}
 
-	buffEffectFunc := e.buffEffectExeFunctions[effectType]
+	buffEffectFunc := buffEffectExeFunctions[effectType]
 	if buffEffectFunc == nil {
 		return false
 	}
@@ -108,14 +98,14 @@ func (e *FYBuffEffectExecution) ExeBuffEffect(
 	}
 
 	// Check random
-	if !e.checkBuffEffectRandom(buff, buffEffect) {
+	if !checkBuffEffectRandom(buff, buffEffect) {
 		return false
 	}
 
 	buff.SetStartEffectTime(now)
 
 	// Select targets and execute effect
-	targets := e.selectEffectTargets(buff, buffEffect)
+	targets := selectEffectTargets(buff, buffEffect)
 	changed := false
 
 	for _, target := range targets {
@@ -128,7 +118,7 @@ func (e *FYBuffEffectExecution) ExeBuffEffect(
 }
 
 // ExeBuffEffects executes multiple buff effects
-func (e *FYBuffEffectExecution) ExeBuffEffects(
+func ExeBuffEffects(
 	buff *FYBuff,
 	buffEffectIds []int,
 	exLayer int,
@@ -144,7 +134,7 @@ func (e *FYBuffEffectExecution) ExeBuffEffects(
 			continue
 		}
 
-		if e.ExeBuffEffect(buff, buffEffect, exLayer, reason) {
+		if ExeBuffEffect(buff, buffEffect, exLayer, reason) {
 			executed = true
 		}
 	}
@@ -152,14 +142,16 @@ func (e *FYBuffEffectExecution) ExeBuffEffects(
 }
 
 // checkBuffEffectRandom checks if effect should execute based on random chance
-func (e *FYBuffEffectExecution) checkBuffEffectRandom(buff *FYBuff, buffEffect *cfg.BuffEffect) bool {
+func checkBuffEffectRandom(buff *FYBuff, buffEffect *cfg.BuffEffect) bool {
 	// ExePercent field doesn't exist in current cfg structure, default to always execute
 	// TODO: Add ExePercent field to BuffEffect config if needed
 	return true
 }
 
 // RevertBuffAllEffectsWithLayer reverts all buff effects for a given layer
-func (e *FYBuffEffectExecution) RevertBuffAllEffectsWithLayer(buff *FYBuff, removeLayer int) bool {
+func RevertBuffAllEffectsWithLayer(buff *FYBuff, removeLayer int) bool {
+	initOnce.Do(initBuffEffectFunctions)
+
 	if len(buff.ImmediateExeTriggerEvents) == 0 {
 		return false
 	}
@@ -184,12 +176,12 @@ func (e *FYBuffEffectExecution) RevertBuffAllEffectsWithLayer(buff *FYBuff, remo
 				continue
 			}
 
-			revertFunc := e.buffEffectRevertFunctions[effectType]
+			revertFunc := buffEffectRevertFunctions[effectType]
 			if revertFunc == nil {
 				continue
 			}
 
-			targets := e.selectEffectTargets(buff, buffEffect)
+			targets := selectEffectTargets(buff, buffEffect)
 			if len(targets) == 0 {
 				continue
 			}
@@ -206,7 +198,7 @@ func (e *FYBuffEffectExecution) RevertBuffAllEffectsWithLayer(buff *FYBuff, remo
 }
 
 // selectEffectTargets selects targets for buff effect
-func (e *FYBuffEffectExecution) selectEffectTargets(buff *FYBuff, buffEffect *cfg.BuffEffect) []*actors.Creature {
+func selectEffectTargets(buff *FYBuff, buffEffect *cfg.BuffEffect) []*actors.Creature {
 	targets := make([]*actors.Creature, 0)
 
 	if buff.HolderActor == nil {
@@ -239,7 +231,7 @@ func (e *FYBuffEffectExecution) selectEffectTargets(buff *FYBuff, buffEffect *cf
 }
 
 // calcValue calculates value based on operation type
-func (e *FYBuffEffectExecution) calcValue(
+func calcValue(
 	dataType int, // cfg.BuffOpt
 	origin, curValue, value, exLayer int,
 ) int {
@@ -276,7 +268,7 @@ func (e *FYBuffEffectExecution) calcValue(
 }
 
 // buffEffectOptModAvatarProps modifies avatar properties
-func (e *FYBuffEffectExecution) buffEffectOptModAvatarProps(
+func buffEffectOptModAvatarProps(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -305,7 +297,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarProps(
 	curValue := originValue
 
 	// Calculate the change value using calcValue
-	changeValue := e.calcValue(opt, originValue, curValue, value, exLayer)
+	changeValue := calcValue(opt, originValue, curValue, value, exLayer)
 	if changeValue == 0 {
 		return false
 	}
@@ -325,7 +317,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarProps(
 }
 
 // buffEffectOptModAvatarPropsForever modifies avatar properties permanently
-func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
+func buffEffectOptModAvatarPropsForever(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -354,7 +346,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
 	curValue := target.GetProperty(int32(prop))
 
 	// Calculate the change value using calcValue
-	changeValue := e.calcValue(opt, originValue, curValue, value, exLayer)
+	changeValue := calcValue(opt, originValue, curValue, value, exLayer)
 	if changeValue == 0 {
 		return false
 	}
@@ -368,7 +360,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsForever(
 }
 
 // buffEffectOptModAvatarPropsRevert reverts avatar property modifications
-func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsRevert(
+func buffEffectOptModAvatarPropsRevert(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -404,7 +396,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsRevert(
 	curValue := originValue
 
 	// Calculate the change to revert (negative of original change)
-	changeToRevert := -e.calcValue(opt, originValue, curValue, value, revertLayer)
+	changeToRevert := -calcValue(opt, originValue, curValue, value, revertLayer)
 
 	// Apply the reversion
 	newValue := curValue + changeToRevert
@@ -417,7 +409,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarPropsRevert(
 }
 
 // buffEffectOptStartBuff starts a new buff
-func (e *FYBuffEffectExecution) buffEffectOptStartBuff(
+func buffEffectOptStartBuff(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -444,7 +436,7 @@ func (e *FYBuffEffectExecution) buffEffectOptStartBuff(
 }
 
 // buffEffectOptRemoveBuff removes buffs
-func (e *FYBuffEffectExecution) buffEffectOptRemoveBuff(
+func buffEffectOptRemoveBuff(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -487,7 +479,7 @@ func (e *FYBuffEffectExecution) buffEffectOptRemoveBuff(
 }
 
 // buffEffectOptModAvatarStatus modifies avatar status
-func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatus(
+func buffEffectOptModAvatarStatus(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -528,7 +520,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatus(
 }
 
 // buffEffectOptModAvatarStatusRevert reverts avatar status modifications
-func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatusRevert(
+func buffEffectOptModAvatarStatusRevert(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -564,7 +556,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAvatarStatusRevert(
 }
 
 // buffEffectOptExecuteAttackData executes attack data
-func (e *FYBuffEffectExecution) buffEffectOptExecuteAttackData(
+func buffEffectOptExecuteAttackData(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -584,7 +576,7 @@ func (e *FYBuffEffectExecution) buffEffectOptExecuteAttackData(
 }
 
 // buffEffectOptBuffDoHurt deals damage
-func (e *FYBuffEffectExecution) buffEffectOptBuffDoHurt(
+func buffEffectOptBuffDoHurt(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -606,7 +598,7 @@ func (e *FYBuffEffectExecution) buffEffectOptBuffDoHurt(
 }
 
 // buffEffectOptExecuteAbnormalFormulation executes abnormal damage formulation
-func (e *FYBuffEffectExecution) buffEffectOptExecuteAbnormalFormulation(
+func buffEffectOptExecuteAbnormalFormulation(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -628,7 +620,7 @@ func (e *FYBuffEffectExecution) buffEffectOptExecuteAbnormalFormulation(
 }
 
 // buffEffectOptModAttackDataProps modifies attack data properties
-func (e *FYBuffEffectExecution) buffEffectOptModAttackDataProps(
+func buffEffectOptModAttackDataProps(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -643,7 +635,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataProps(
 	// Use ActorSkillModule to modify attack data properties
 	// This would need to be called when buff is applied to holder
 	for _, atkDataId := range effectOpt.AttatckDataIds {
-		value := e.calcValue(int(effectOpt.OPT), 0, 0, int(effectOpt.Value), exLayer)
+		value := calcValue(int(effectOpt.OPT), 0, 0, int(effectOpt.Value), exLayer)
 		// Would call: target.ActorSkillModule.SetAtkDataProps(atkDataId, effectOpt.SkillProp, value)
 		_ = atkDataId
 		_ = effectOpt.SkillProp
@@ -654,7 +646,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataProps(
 }
 
 // buffEffectOptModAttackDataPropsRevert reverts attack data property modifications
-func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsRevert(
+func buffEffectOptModAttackDataPropsRevert(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -678,7 +670,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsRevert(
 }
 
 // buffEffectOptModAttackDataPropsByTag modifies attack data properties by tag
-func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsByTag(
+func buffEffectOptModAttackDataPropsByTag(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,
@@ -701,7 +693,7 @@ func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsByTag(
 }
 
 // buffEffectOptModAttackDataPropsByTagRevert reverts attack data property modifications by tag
-func (e *FYBuffEffectExecution) buffEffectOptModAttackDataPropsByTagRevert(
+func buffEffectOptModAttackDataPropsByTagRevert(
 	buff *FYBuff,
 	target *actors.Creature,
 	buffEffect *cfg.BuffEffect,

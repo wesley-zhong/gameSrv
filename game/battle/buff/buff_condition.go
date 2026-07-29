@@ -4,6 +4,7 @@ import (
 	"gameSrv/cnfGen/cfg"
 	"gameSrv/game/gamedata"
 	"gameSrv/pkg/actors"
+	"sync"
 )
 
 // CondType represents condition type
@@ -17,14 +18,13 @@ const (
 // CheckBuffEffectCondition is a function type for checking buff conditions
 type CheckBuffEffectCondition func(target *actors.Creature, cond interface{}) bool
 
-// FYBuffConditionProcess handles buff condition processing
-type FYBuffConditionProcess struct {
-	// buffConditionFunctions maps condition type IDs to check functions
+var (
 	buffConditionFunctions map[int]CheckBuffEffectCondition
-}
+	initConditionOnce      sync.Once
+)
 
 // CheckCondType checks if condition type matches
-func (p *FYBuffConditionProcess) CheckCondType(condConfig *cfg.BuffCond, condId int, condType CondType) bool {
+func CheckCondType(condConfig *cfg.BuffCond, condId int, condType CondType) bool {
 	if condId == 0 {
 		return true
 	}
@@ -35,7 +35,7 @@ func (p *FYBuffConditionProcess) CheckCondType(condConfig *cfg.BuffCond, condId 
 }
 
 // CheckConditionValid checks if condition is valid for target
-func (p *FYBuffConditionProcess) CheckConditionValid(target *actors.Creature, condId int, condType CondType) bool {
+func CheckConditionValid(target *actors.Creature, condId int, condType CondType) bool {
 	if condId == 0 {
 		return true
 	}
@@ -57,8 +57,9 @@ func (p *FYBuffConditionProcess) CheckConditionValid(target *actors.Creature, co
 		return false
 	}
 
-	// Get check function based on condition type
-	checkFunc := p.getBuffConditionFunction(typeId)
+	// Initialize and get check function based on condition type
+	initConditionOnce.Do(initConditionFunctions)
+	checkFunc := buffConditionFunctions[typeId]
 	if checkFunc == nil {
 		return false
 	}
@@ -67,7 +68,7 @@ func (p *FYBuffConditionProcess) CheckConditionValid(target *actors.Creature, co
 }
 
 // CheckNeedTags checks if required buff tags exist
-func (p *FYBuffConditionProcess) CheckNeedTags(target *actors.Creature, cond interface{}) bool {
+func CheckNeedTags(target *actors.Creature, cond interface{}) bool {
 	needTags, ok := cond.(*cfg.BuffTagsNeed)
 	if !ok || target == nil {
 		return false
@@ -83,7 +84,7 @@ func (p *FYBuffConditionProcess) CheckNeedTags(target *actors.Creature, cond int
 }
 
 // CheckNoNeedTags checks if buff tags don't exist
-func (p *FYBuffConditionProcess) CheckNoNeedTags(target *actors.Creature, cond interface{}) bool {
+func CheckNoNeedTags(target *actors.Creature, cond interface{}) bool {
 	noNeedTags, ok := cond.(*cfg.BuffTagsNoNeed)
 	if !ok || target == nil {
 		return false
@@ -99,7 +100,7 @@ func (p *FYBuffConditionProcess) CheckNoNeedTags(target *actors.Creature, cond i
 }
 
 // CheckInMontage checks if target is in a specific montage
-func (p *FYBuffConditionProcess) CheckInMontage(target *actors.Creature, cond interface{}) bool {
+func CheckInMontage(target *actors.Creature, cond interface{}) bool {
 	// InMontage cfg type not available yet - implementation would check:
 	// if target.ActorBattleModule != nil {
 	//     montageList := target.ActorBattleModule.GetCurMontageList()
@@ -109,7 +110,7 @@ func (p *FYBuffConditionProcess) CheckInMontage(target *actors.Creature, cond in
 }
 
 // CheckElementType checks if element type matches
-func (p *FYBuffConditionProcess) CheckElementType(target *actors.Creature, cond interface{}) bool {
+func CheckElementType(target *actors.Creature, cond interface{}) bool {
 	needElement, ok := cond.(*cfg.ElementTypeNeed)
 	if !ok || target == nil {
 		return false
@@ -124,31 +125,31 @@ func (p *FYBuffConditionProcess) CheckElementType(target *actors.Creature, cond 
 }
 
 // CheckSermonType checks if sermon type matches
-func (p *FYBuffConditionProcess) CheckSermonType(target *actors.Creature, cond interface{}) bool {
+func CheckSermonType(target *actors.Creature, cond interface{}) bool {
 	// TODO: Implement when SermonTypeNeed type is available from cfg
 	return false
 }
 
 // CheckHeroHasAllTalent checks if hero has all required talents
-func (p *FYBuffConditionProcess) CheckHeroHasAllTalent(target *actors.Creature, cond interface{}) bool {
+func CheckHeroHasAllTalent(target *actors.Creature, cond interface{}) bool {
 	// TODO: Implement when HeroHasAllTalentNeed type is available from cfg
 	return true
 }
 
 // CheckHeroPropMeetTheProp checks if hero property meets condition
-func (p *FYBuffConditionProcess) CheckHeroPropMeetTheProp(target *actors.Creature, cond interface{}) bool {
+func CheckHeroPropMeetTheProp(target *actors.Creature, cond interface{}) bool {
 	// TODO: Implement when PropMeetTheProp type is available from cfg
 	return false
 }
 
 // CheckHeroPropMeetThePropRate checks if hero property rate meets condition
-func (p *FYBuffConditionProcess) CheckHeroPropMeetThePropRate(target *actors.Creature, cond interface{}) bool {
+func CheckHeroPropMeetThePropRate(target *actors.Creature, cond interface{}) bool {
 	// TODO: Implement when PropMeetThePropRate type is available from cfg
 	return false
 }
 
 // CheckAbnormal checks abnormal conditions
-func (p *FYBuffConditionProcess) CheckAbnormal(target *actors.Creature, cond interface{}) bool {
+func CheckAbnormal(target *actors.Creature, cond interface{}) bool {
 	needAbnormal, ok := cond.(*cfg.AbnormalNeed)
 	if !ok || target == nil {
 		return false
@@ -160,28 +161,19 @@ func (p *FYBuffConditionProcess) CheckAbnormal(target *actors.Creature, cond int
 	return true
 }
 
-// getBuffConditionFunction returns the condition check function for a given type
-func (p *FYBuffConditionProcess) getBuffConditionFunction(typeId int) CheckBuffEffectCondition {
-	// Initialize map if not exists
-	if p.buffConditionFunctions == nil {
-		p.initConditionFunctions()
-	}
-	return p.buffConditionFunctions[typeId]
-}
-
 // initConditionFunctions initializes condition check functions
-func (p *FYBuffConditionProcess) initConditionFunctions() {
-	if p.buffConditionFunctions != nil {
+func initConditionFunctions() {
+	if buffConditionFunctions != nil {
 		return
 	}
 
-	p.buffConditionFunctions = make(map[int]CheckBuffEffectCondition)
+	buffConditionFunctions = make(map[int]CheckBuffEffectCondition)
 
 	// Register condition check functions with their TypeId values
-	p.buffConditionFunctions[int(cfg.TypeId_BuffTagsNeed)] = p.CheckNeedTags
-	p.buffConditionFunctions[int(cfg.TypeId_BuffTagsNoNeed)] = p.CheckNoNeedTags
-	p.buffConditionFunctions[int(cfg.TypeId_ElementTypeNeed)] = p.CheckElementType
-	p.buffConditionFunctions[int(cfg.TypeId_AbnormalNeed)] = p.CheckAbnormal
+	buffConditionFunctions[int(cfg.TypeId_BuffTagsNeed)] = CheckNeedTags
+	buffConditionFunctions[int(cfg.TypeId_BuffTagsNoNeed)] = CheckNoNeedTags
+	buffConditionFunctions[int(cfg.TypeId_ElementTypeNeed)] = CheckElementType
+	buffConditionFunctions[int(cfg.TypeId_AbnormalNeed)] = CheckAbnormal
 	// InMontage requires a TypeId constant - add when cfg.InMontage type is available
 	// SermonType requires a TypeId constant - add when cfg.SermonTypeNeed type is available
 	// HeroHasAllTalent requires a TypeId constant - add when cfg.HeroHasAllTalentNeed type is available

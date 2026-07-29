@@ -71,7 +71,6 @@ func (e *FYBuffExecution) TriggerBuffEvent(
 	}
 
 	changed := false
-	triggerProcess := NewFYBuffTriggerProcess()
 
 	// Create copy to avoid concurrent modification
 	for _, buffEvent := range eventBuffs {
@@ -86,7 +85,7 @@ func (e *FYBuffExecution) TriggerBuffEvent(
 			continue
 		}
 
-		if e.doTriggerOpt(triggerEventParam, triggerEvent, buffTemplateId, eventEnum, buffEvent.EventType, triggerProcess) {
+		if e.doTriggerOpt(triggerEventParam, triggerEvent, buffTemplateId, eventEnum, buffEvent.EventType) {
 			changed = true
 		}
 	}
@@ -135,9 +134,8 @@ func (e *FYBuffExecution) doTriggerOpt(
 	buffTemplateId int,
 	inReason int,
 	eventType EBuffEventType,
-	triggerProcess *FYBuffTriggerProcess,
 ) bool {
-	if !triggerProcess.CheckEvent(triggerEventParam, triggerEvent) {
+	if !CheckEvent(triggerEventParam, triggerEvent) {
 		return false
 	}
 

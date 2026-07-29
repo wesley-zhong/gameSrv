@@ -133,12 +133,11 @@ func (b *FYBuff) ClientTick() bool {
 	if b.TickTriggerEvent == nil {
 		return false
 	}
-	execution := GetEffectExecutionInstance()
 	effectIds := make([]int, len(b.TickTriggerEvent.EffectIds))
 	for i, id := range b.TickTriggerEvent.EffectIds {
 		effectIds[i] = int(id)
 	}
-	execution.ExeBuffEffects(b, effectIds, 1, int(cfg.BuffTriggerEventEnum_TICK))
+	ExeBuffEffects(b, effectIds, 1, int(cfg.BuffTriggerEventEnum_TICK))
 	return false
 }
 
@@ -178,13 +177,12 @@ func (b *FYBuff) ServerTick() bool {
 	iCount := mTime / b.PeriodicTime
 	iPeriodic := iCount - b.PeriodicCount
 
-	execution := GetEffectExecutionInstance()
 	effectIds := make([]int, len(b.TickTriggerEvent.EffectIds))
 	for i, id := range b.TickTriggerEvent.EffectIds {
 		effectIds[i] = int(id)
 	}
 	for i := 0; i < iPeriodic; i++ {
-		execution.ExeBuffEffects(b, effectIds, 1, int(cfg.BuffTriggerEventEnum_TICK))
+		ExeBuffEffects(b, effectIds, 1, int(cfg.BuffTriggerEventEnum_TICK))
 	}
 
 	b.PeriodicCount = iCount
@@ -207,12 +205,11 @@ func (b *FYBuff) DoBuffEffect(buffEffect *cfg.TriggerEvent, exLayer int, reason 
 			continue
 		}
 		buffCond := gamedata.Tables.TbBuffCond.Get(cndId)
-		conditionProcess := &FYBuffConditionProcess{}
-		if !conditionProcess.CheckCondType(buffCond, int(cndId), CondTypeHoldCond) {
+		if !CheckCondType(buffCond, int(cndId), CondTypeHoldCond) {
 			continue
 		}
 
-		if !conditionProcess.CheckConditionValid(b.HolderActor, int(cndId), CondTypeHoldCond) {
+		if !CheckConditionValid(b.HolderActor, int(cndId), CondTypeHoldCond) {
 			return
 		}
 	}
@@ -221,7 +218,7 @@ func (b *FYBuff) DoBuffEffect(buffEffect *cfg.TriggerEvent, exLayer int, reason 
 	for i, id := range buffEffect.EffectIds {
 		effectIds[i] = int(id)
 	}
-	executed := (&FYBuffEffectExecution{}).ExeBuffEffects(b, effectIds, exLayer, reason)
+	executed := ExeBuffEffects(b, effectIds, exLayer, reason)
 	if executed && b.StartEffectTime == 0 {
 		b.SetStartEffectTime(battle.MilliSeconds())
 	}
@@ -413,7 +410,7 @@ func (b *FYBuff) RemoveLayer(revertLayer int) bool {
 	}
 
 	b.MLayer -= revertLayer
-	(&FYBuffEffectExecution{}).RevertBuffAllEffectsWithLayer(b, revertLayer)
+	RevertBuffAllEffectsWithLayer(b, revertLayer)
 	b.Refresh()
 	return false
 }
@@ -429,7 +426,7 @@ func (b *FYBuff) Stop(endType int) bool {
 	}
 
 	b.MLayer -= revertLayer
-	(&FYBuffEffectExecution{}).RevertBuffAllEffectsWithLayer(b, revertLayer)
+	RevertBuffAllEffectsWithLayer(b, revertLayer)
 	b.Refresh()
 
 	if revertLayer == 0 || b.MLayer == 0 {
