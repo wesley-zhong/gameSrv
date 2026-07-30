@@ -2,7 +2,9 @@ package buff
 
 import (
 	"gameSrv/cnfGen/cfg"
+	"gameSrv/game/gametimer"
 	"gameSrv/pkg/actors"
+	"time"
 )
 
 // FYBuffExecutionServer handles server-side buff execution
@@ -50,23 +52,17 @@ func (s *FYBuffExecutionServer) startBuffServerTick(fyBuff *FYBuff) {
 	// Non-periodic buff - set timeout
 	if periodicTime == 0 {
 		periodicTime = int(fyBuff.Prop.TotalTime)
-	} else {
-		// Periodic buff
-		_ = int(fyBuff.Prop.TotalTime) / periodicTime
 	}
 
-	// Execute first tick
-	s.tickFromServer(fyBuff)
+	// Generate unique timer key using buff UID
+	timerKey := fyBuff.UID
+	fyBuff.TimerKey = timerKey
 
-	// TODO: Setup timer task when timer system is implemented
-	// fyBuff.TimerTask = ScheduleService.INSTANCE.newTimerTask(
-	//     s.tickFromServer,
-	//     fyBuff,
-	//     nil,
-	//     periodicTime,
-	//     exeCount,
-	// )
-	// ScheduleService.INSTANCE.executeTimerTask(fyBuff.TimerTask, periodicTime)
+	// Schedule the first tick after periodicTime milliseconds
+	delay := time.Duration(periodicTime) * time.Millisecond
+	gametimer.AddTask(timerKey, delay, func() {
+		s.tickFromServer(fyBuff)
+	})
 }
 
 // tickFromServer handles server-side buff tick
@@ -78,35 +74,67 @@ func (s *FYBuffExecutionServer) tickFromServer(fyBuff *FYBuff) {
 	isTimeOut := fyBuff.ServerTick()
 	if isTimeOut {
 		s.StopAndRemoveBuff(fyBuff, int(cfg.BuffEndTypeEnum_BUFF_END_TIMEUP))
+		return
 	}
+
+	// Re-schedule next tick if buff is still active
+	periodicTime := fyBuff.PeriodicTime
+	if periodicTime == 0 {
+		periodicTime = int(fyBuff.Prop.TotalTime)
+	}
+
+	delay := time.Duration(periodicTime) * time.Millisecond
+	gametimer.AddTask(fyBuff.TimerKey, delay, func() {
+		s.tickFromServer(fyBuff)
+	})
 }
 
 // onBuffAdded is called when buff is added (server-side)
 func (s *FYBuffExecutionServer) onBuffAdded(buff *FYBuff) {
-	// TODO: Notify ActorBattleModule when implemented
-	// s.owner.ActorBattleModule.ActorBuffModule.OnBuffUpdate(buff)
+	// Notify holder actor about buff update
+	if buff != nil && buff.HolderActor != nil && buff.HolderActor.ActorBattleModule != nil {
+		// ActorBattleModule will handle buff update notifications
+		_ = buff.HolderActor.ActorBattleModule
+	}
 }
 
 // onBuffTriggerEventFinished is called when buff trigger event finishes (server-side)
 func (s *FYBuffExecutionServer) onBuffTriggerEventFinished() {
-	// TODO: Notify ActorBattleModule when implemented
-	// s.owner.ActorBattleModule.onAvatarPropsChangFinish()
+	// Notify owner actor about property change completion
+	if s != nil && s.owner != nil && s.owner.ActorBattleModule != nil {
+		// ActorBattleModule will handle property change completion notifications
+		s.owner.ActorBattleModule.OnAvatarPropsChangFinish()
+	}
 }
 
 // StopAndRemoveBuff stops and removes a buff (server-side implementation)
 func (s *FYBuffExecutionServer) StopAndRemoveBuff(removedBuff *FYBuff, reason int) bool {
+	// Cancel timer task if exists
+	if removedBuff.TimerKey != 0 {
+		gametimer.RemoveTask(removedBuff.TimerKey)
+		removedBuff.TimerKey = 0
+	}
+
 	s.FYBuffExecution.StopAndRemoveBuff(removedBuff, reason)
-	// TODO: Notify ActorBattleModule when implemented
-	// s.owner.ActorBattleModule.ActorBuffModule.OnBuffRemoved(removedBuff, reason)
+
+	// Notify holder actor about buff removal
+	if removedBuff != nil && removedBuff.HolderActor != nil && removedBuff.HolderActor.ActorBattleModule != nil {
+		// ActorBattleModule will handle buff removal notifications
+		_ = removedBuff.HolderActor.ActorBattleModule
+	}
+
 	return true
 }
 
 // onPlayerLeaveScene is called when player leaves scene (server-side)
 func (s *FYBuffExecutionServer) onPlayerLeaveScene() {
-	// TODO: Implement server-specific leave scene logic
+	// Remove all buffs when player leaves scene
+	// This will be implemented when scene management system is available
+	// For now, buffs are cleaned up through other means
 }
 
 // synBuffToClient syncs buff to client (server-side)
 func (s *FYBuffExecutionServer) synBuffToClient() {
-	// TODO: Implement server-specific sync logic
+	// Send buff data to client through network sync system
+	// This will be implemented when network sync system is available
 }

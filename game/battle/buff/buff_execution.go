@@ -297,18 +297,20 @@ func (e *FYBuffExecution) StopAndRemoveBuff(removedBuff *FYBuff, reason int) boo
 		}
 	}
 
-	// Handle rebirth buffs
+	// Handle rebirth buffs when buff ends due to death
 	if reason == int(cfg.BuffEndTypeEnum_BUFF_END_TIMEUP) && removedBuff.Prop != nil {
 		for _, startBufId := range removedBuff.Prop.OnNaturalDeadAddBuffIds {
 			if startBufId > 0 {
-				// TODO: Add buff on rebirth
+				// TODO: Add buff on rebirth - requires rebirth system
+				// When rebirth system is implemented, call:
+				// s.AddBuff(startBufId, removedBuff.CasterActor, removedBuff.HolderActor, ...)
 				_ = startBufId
 			}
 		}
 	} else if removedBuff.Prop != nil {
 		for _, startBufId := range removedBuff.Prop.OnUnnaturalDeathAddBuffIds {
 			if startBufId > 0 {
-				// TODO: Add buff
+				// TODO: Add buff on unnatural death - requires death handling system
 				_ = startBufId
 			}
 		}

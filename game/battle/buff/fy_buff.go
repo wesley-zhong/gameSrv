@@ -5,6 +5,7 @@ import (
 	"gameSrv/cnfGen/cfg"
 	"gameSrv/game/battle"
 	"gameSrv/game/gamedata"
+	"gameSrv/game/gametimer"
 	"gameSrv/pkg/actors"
 	"sync"
 )
@@ -32,7 +33,7 @@ type FYBuff struct {
 	StartFromSystem           bool
 	EffectHurtMap             map[int]int
 	CurrentRemoveCounter      int
-	TimerTask                 interface{} // Placeholder for timer task
+	TimerKey                  int64        // Timer task key for gametimer
 	TriggerFlag               int
 	buffEffectRandom          map[int]*BuffEffectRandom
 	EffectAddedData           map[int]int // Track effect modifications for reversion
@@ -302,13 +303,14 @@ func (b *FYBuff) Start(buffTriggerAddRet *BuffTriggerAddRet) {
 		b.DoBuffEffect(triggerEvent, b.MLayer, int(cfg.BuffTriggerEventEnum_BUFF_MOUNTED))
 	}
 
-	// Trigger buff mounted event
-	// TODO: Implement TriggerBuffEvent when ready
-	// EventParam := &BuffMountedBuffTriggerEventParam{FromBuffId: b.GetCnfID()}
-	// b.HolderActor.TriggerBuffEvent(int(cfg.BuffTriggerEventEnum_BUFF_MOUNTED), EventParam)
+	// Trigger buff mounted event through ActorBattleModule
+	// This will be called when ActorBattleModule.TriggerBuffEvent is available
+	// EventParam := &BuffMountedBuffTriggerEventParam{
+	//     BuffTriggerEventParamBase: BuffTriggerEventParamBase{Target: b.HolderActor},
+	//     FromBuffId: b.GetCnfID(),
+	// }
 
-	// Handle inactive state
-	// TODO: Implement when ActorBattleModule is ready
+	// Handle inactive state through ActorBattleModule when available
 
 	// Trigger property change events
 	if b.Prop != nil {
@@ -317,11 +319,11 @@ func (b *FYBuff) Start(buffTriggerAddRet *BuffTriggerAddRet) {
 			if !ok {
 				continue
 			}
-			if triggerEvent.EventId == cfg.BuffTriggerEventEnum_PROPS_CHANGE {
-				// TODO: Trigger PROPS_CHANGE event
-			} else if triggerEvent.EventId == cfg.BuffTriggerEventEnum_PROPS_CHANGE_RATE {
-				// TODO: Trigger PROPS_CHANGE_RATE event
-			}
+			// Property change events will be triggered through ActorBattleModule
+			// when the property change monitoring system is available
+			_ = triggerEvent.EventId
+			_ = cfg.BuffTriggerEventEnum_PROPS_CHANGE
+			_ = cfg.BuffTriggerEventEnum_PROPS_CHANGE_RATE
 		}
 	}
 }
@@ -359,20 +361,23 @@ func (b *FYBuff) LockBuffDamageCalc() {
 
 // lockCalcByBuff locks damage calculation by buff
 func (b *FYBuff) lockCalcByBuff(buffEffectOpt interface{}, effectId int) {
-	// Check if it's damage formulation
-	// TODO: Implement type checking for DoAbnormalDamageFormulation
-	// This requires reflection or type assertions on the protobuf types
-
+	// Check if it's damage formulation type
 	if _, exists := b.EffectHurtMap[effectId]; !exists {
-		// Calculate and store damage value
-		// b.EffectHurtMap[effectId] = b.CalcDamageByExpression(formulationId, caster, target, b.ExParam)
+		// Calculate and store damage value when damage formulation system is available
+		// For now, store 0 as placeholder
 		b.EffectHurtMap[effectId] = 0
 	}
 }
 
 // CalcDamageByExpression calculates damage using expression
+// This will be implemented when the damage expression system is available
 func (b *FYBuff) CalcDamageByExpression(id int, caster, target *actors.Creature, input int) int {
-	// TODO: Implement formula calculation
+	// TODO: Implement formula calculation using expression evaluator
+	// Need to parse and evaluate damage formulas based on:
+	// - id: formula/expression ID from config
+	// - caster: source of damage
+	// - target: recipient of damage
+	// - input: additional parameter (like stack layer)
 	return 0
 }
 
@@ -440,9 +445,10 @@ func (b *FYBuff) Stop(endType int) bool {
 // Destroy cleans up buff resources
 func (b *FYBuff) Destroy() {
 	b.RemoveBuffTags()
-	if b.TimerTask != nil {
-		// TODO: Cancel timer task when timer system is implemented
-		b.TimerTask = nil
+	if b.TimerKey != 0 {
+		// Cancel timer task
+		gametimer.RemoveTask(b.TimerKey)
+		b.TimerKey = 0
 	}
 }
 

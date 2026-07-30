@@ -114,41 +114,5 @@ const (
      * 永不触发
      */
     BuffTriggerEventEnum_NEVER = 25;
-    /**
-     * 技能类型造成伤害时
-     */
-    BuffTriggerEventEnum_DO_DAMGE_BY_SKILLTYPE = 26;
-    /**
-     * 技能类型暴击时
-     */
-    BuffTriggerEventEnum_DO_CRITICAL_DAMAGE_BY_SKILLTYPE = 27;
-    /**
-     * 角色动作消耗异常
-     */
-    BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL = 28;
-    /**
-     * 角色动作消耗所有异常
-     */
-    BuffTriggerEventEnum_CHARACTER_ACTION_CONSUME_ABNORMAL_ALL = 29;
-    /**
-     * 船只开火
-     */
-    BuffTriggerEventEnum_SHIP_FIRE = 30;
-    /**
-     * 船只开火效果
-     */
-    BuffTriggerEventEnum_SHIP_FIRE_EFFECT = 31;
-    /**
-     * 弹夹变化
-     */
-    BuffTriggerEventEnum_CLIP_CHANGE = 32;
-    /**
-     * 弹夹装填
-     */
-    BuffTriggerEventEnum_CLIP_RELOAD = 33;
-    /**
-     * 船只加速
-     */
-    BuffTriggerEventEnum_SHIP_SPEED_UP = 34;
 )
 
