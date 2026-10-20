@@ -9,20 +9,10 @@ import (
 
 	"github.com/panjf2000/gnet/v2"
 	"google.golang.org/protobuf/proto"
-	"sync"
 )
 
 const (
-	bodySize      = 4
 	MaxPackageLen = 16 * 1024
-)
-
-var (
-	bufferPool = sync.Pool{
-		New: func() interface{} {
-			return &bytes.Buffer{}
-		},
-	}
 )
 
 type ICodec interface {
@@ -32,8 +22,6 @@ type ICodec interface {
 	UnPacket(msgId int16, body *bytes.Buffer, method *protoMethod[int64]) *MsgPacket
 }
 
-var ErrIncompletePacket = errors.New("incomplete packet")
-
 type DefaultCodec struct{}
 
 type MsgPacket struct {
@@ -41,6 +29,8 @@ type MsgPacket struct {
 	Header proto.Message
 	Body   proto.Message
 }
+
+var ErrIncompletePacket = errors.New("incomplete packet")
 
 func (codec *DefaultCodec) Decode(c gnet.Conn) ([]byte, error) {
 	const headerSize = 4
@@ -92,22 +82,18 @@ func (codec *DefaultCodec) InnerEncode(packet *MsgPacket) ([]byte, error) {
 
 	msgLen := 2 + 2 + headerLen + bodyLen
 
-	buf := bufferPool.Get().(*bytes.Buffer)
-	buf.Reset()
-
-	binary.Write(buf, binary.BigEndian, int32(msgLen))
-	binary.Write(buf, binary.BigEndian, packet.MsgId)
-	binary.Write(buf, binary.BigEndian, int16(headerLen))
-
+	result := make([]byte, 0, 4+msgLen)
+	result = append(result,
+		byte(msgLen>>24), byte(msgLen>>16), byte(msgLen>>8), byte(msgLen),
+		byte(packet.MsgId>>8), byte(packet.MsgId),
+		byte(headerLen>>8), byte(headerLen),
+	)
 	if headerLen > 0 {
-		buf.Write(header)
+		result = append(result, header...)
 	}
 	if bodyLen > 0 {
-		buf.Write(body)
+		result = append(result, body...)
 	}
-
-	result := make([]byte, buf.Len())
-	copy(result, buf.Bytes())
 	return result, nil
 }
 
@@ -132,18 +118,14 @@ func (codec *DefaultCodec) Encode(packet *MsgPacket) ([]byte, error) {
 
 	msgLen := 2 + bodyLen
 
-	buf := bufferPool.Get().(*bytes.Buffer)
-	buf.Reset()
-
-	binary.Write(buf, binary.BigEndian, int32(msgLen))
-	binary.Write(buf, binary.BigEndian, packet.MsgId)
-
+	result := make([]byte, 0, 4+msgLen)
+	result = append(result,
+		byte(msgLen>>24), byte(msgLen>>16), byte(msgLen>>8), byte(msgLen),
+		byte(packet.MsgId>>8), byte(packet.MsgId),
+	)
 	if bodyLen > 0 {
-		buf.Write(body)
+		result = append(result, body...)
 	}
-
-	result := make([]byte, buf.Len())
-	copy(result, buf.Bytes())
 	return result, nil
 }
 

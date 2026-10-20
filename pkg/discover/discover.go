@@ -137,6 +137,13 @@ func (s *ServiceDiscovery) GetServices() []*Node {
 	return result
 }
 
+// GetNode returns the node registered under the given service id, or nil if absent.
+func (s *ServiceDiscovery) GetNode(serviceId string) *Node {
+	s.lock.RLock()
+	defer s.lock.RUnlock()
+	return s.serverList[serviceId]
+}
+
 func (s *ServiceDiscovery) Close() error {
 	return s.cli.Close()
 }

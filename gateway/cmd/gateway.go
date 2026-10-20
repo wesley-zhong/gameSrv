@@ -13,8 +13,6 @@ import (
 	"gameSrv/pkg/utils"
 	"net/http"
 	_ "net/http/pprof"
-	"runtime/debug"
-	"sync"
 
 	"github.com/panjf2000/gnet/v2"
 	"github.com/spf13/viper"
@@ -22,21 +20,10 @@ import (
 )
 
 func main() {
-	var loopWG sync.WaitGroup
-	loopWG.Add(1)
 	utils.IdGenInit(11, 23)
-	defer func() {
-		if x := recover(); x != nil {
-			s := string(debug.Stack())
-			fmt.Printf("err=%v, stack=%s", x, s)
-			loopWG.Add(-1)
-		}
-	}()
 
 	//for performance
-	loopWG.Add(1)
 	go func() {
-		defer loopWG.Done()
 		http.ListenAndServe("localhost:6062", nil)
 	}()
 
@@ -47,7 +34,6 @@ func main() {
 	viper.AddConfigPath("./gateway/configs/") // 查找配置文件的路径
 	err := viper.ReadInConfig()               // 查找并读取配置文件
 	if err != nil {
-		loopWG.Add(-1) // 处理错误
 		panic(fmt.Errorf("Fatal error configs file: %w \n", err))
 	}
 
@@ -75,5 +61,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	loopWG.Wait()
+
+	// block forever; servers run in background goroutines
+	select {}
 }

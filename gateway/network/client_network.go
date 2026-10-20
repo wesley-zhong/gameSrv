@@ -3,6 +3,7 @@ package network
 import (
 	"encoding/binary"
 	"gameSrv/gateway/player"
+	"gameSrv/gateway/watcher"
 	"gameSrv/pkg/client"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
@@ -27,13 +28,12 @@ func (clientNetwork *ClientEventHandler) OnOpened(c tcp.Channel) (out []byte, ac
 // OnClosed fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (clientNetwork *ClientEventHandler) OnClosed(c tcp.Channel, err error) (action int) {
-	log.Infof("XXXXXXXXXXXXXXXXXXXX  client closed addr =%s ", c.RemoteAddr())
-	if c.Context() == nil {
-		return 0
+	log.Infof("client closed addr=%s err=%v", c.RemoteAddr(), err)
+	if innerCtx, ok := c.Context().(*client.ConnInnerClientContext); ok {
+		// 清理 InnerClientMap 中的过期条目，并按 etcd 节点信息异步重连
+		watcher.OnInnerClientClosed(innerCtx)
 	}
-
 	return 1
-
 }
 
 // PreWrite fires just before a packet is written to the peer socket, this event function is usually where
@@ -126,8 +126,11 @@ func (clientNetwork *ClientEventHandler) React(packet []byte, ctx tcp.Channel) (
 		newLen := 2 + payloadLen // msgId + payload
 		binary.BigEndian.PutUint32(packet[:4], uint32(newLen))
 
-		// Send modified packet (no new allocation)
-		p.Context.Send(packet[:4+newLen])
+		// packet 底层是 gnet 入站 ring buffer 的别名切片，AsyncWrite 是异步投递，
+		// OnTraffic 返回后该缓冲会被复用，必须拷贝出独立副本再发送。
+		out := make([]byte, 4+newLen)
+		copy(out, packet[:4+newLen])
+		p.Context.Send(out)
 		return 0
 	}
 

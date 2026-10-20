@@ -1,6 +1,8 @@
 package tcp
 
 import (
+	"errors"
+	"gameSrv/pkg/log"
 	"time"
 
 	"github.com/panjf2000/gnet/v2"
@@ -43,14 +45,14 @@ func ClientInited() bool {
 
 func Dial(network, address string) (Channel, error) {
 	if gClient == nil {
-		return &ChannelGnet{}, nil
+		return nil, errors.New("tcp client not started, call ClientStart first")
 	}
 
 	conn, err := gClient.Dial(network, address)
 	if err != nil {
-		return &ChannelGnet{}, err
+		return nil, err
 	}
-	return &ChannelGnet{conn: conn, ctx: nil}, nil
+	return &ChannelGnet{conn: conn}, nil
 }
 
 func (h *gnetHandler) OnBoot(eng gnet.Engine) (action gnet.Action) {
@@ -76,18 +78,26 @@ func (h *gnetHandler) OnClose(c gnet.Conn, err error) (action gnet.Action) {
 }
 
 func (h *gnetHandler) OnTraffic(c gnet.Conn) (action gnet.Action) {
-	bytes, err := h.codec.Decode(c)
-	if err != nil {
-		return gnet.None
-	}
-
 	ctx, ok := c.Context().(Channel)
 	if !ok {
 		return gnet.Close
 	}
 
-	a := h.gameHandler.React(bytes, ctx)
-	return gnet.Action(a)
+	for c.InboundBuffered() > 0 {
+		packet, err := h.codec.Decode(c)
+		if err != nil {
+			if err == ErrIncompletePacket {
+				return gnet.None
+			}
+			log.Errorf("Decode error: %v, addr=%s", err, c.RemoteAddr())
+			return gnet.Close
+		}
+		a := h.gameHandler.React(packet, ctx)
+		if gnet.Action(a) == gnet.Close {
+			return gnet.Close
+		}
+	}
+	return gnet.None
 }
 
 func (h *gnetHandler) OnTick() (delay time.Duration, action gnet.Action) {

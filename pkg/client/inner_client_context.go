@@ -2,12 +2,12 @@ package client
 
 import (
 	"errors"
-	"fmt"
 	"gameSrv/pkg/common"
 	"gameSrv/pkg/global"
 	"gameSrv/pkg/log"
 	"gameSrv/pkg/tcp"
 	"gameSrv/protoGen"
+	"sync"
 	"sync/atomic"
 	"time"
 
@@ -22,7 +22,10 @@ func genSid() int64 {
 
 var ICodec = &tcp.DefaultCodec{}
 
-var InnerClientMap = make(map[global.GameServerType]*ConnInnerClientContext)
+var (
+	innerClientLock sync.RWMutex
+	InnerClientMap  = make(map[global.GameServerType]*ConnInnerClientContext)
+)
 
 func Connect(addr string) (tcp.Channel, error) {
 	context, err := tcp.Dial("tcp", addr)
@@ -49,7 +52,10 @@ connect:
 
 	log.Infof("----- connect  success  %s ", addr)
 	gameInnerClient := NewInnerClientContext(context)
+
+	innerClientLock.Lock()
 	InnerClientMap[serverType] = gameInnerClient
+	innerClientLock.Unlock()
 
 	handShake := &protoGen.InnerServerHandShakeReq{
 		FromServerId:   common.BuildServerUid(int(serverType), 35),
@@ -68,16 +74,34 @@ connect:
 }
 
 func AddInnerClientConnect(key global.GameServerType, ctx *ConnInnerClientContext) {
+	innerClientLock.Lock()
 	InnerClientMap[key] = ctx
+	innerClientLock.Unlock()
 }
+
 func DelInnerClientConnect(key global.GameServerType, serviceId string) {
+	innerClientLock.Lock()
+	defer innerClientLock.Unlock()
 	ctx, ok := InnerClientMap[key]
 	if ok && ctx.ServiceId == serviceId {
 		delete(InnerClientMap, key)
 	}
 }
 
+// RemoveInnerClient 清理 map 中指向同一连接的过期条目（断线时调用）。
+func RemoveInnerClient(stale *ConnInnerClientContext) {
+	innerClientLock.Lock()
+	defer innerClientLock.Unlock()
+	for k, v := range InnerClientMap {
+		if v == stale {
+			delete(InnerClientMap, k)
+		}
+	}
+}
+
 func getInnerClient(clientType global.GameServerType) *ConnInnerClientContext {
+	innerClientLock.RLock()
+	defer innerClientLock.RUnlock()
 	return InnerClientMap[clientType]
 }
 
@@ -100,16 +124,9 @@ func (client *ConnInnerClientContext) Send(packet *tcp.MsgPacket) {
 		log.Error(err)
 		return
 	}
-
-	sendLen, err := client.Ctx.SendTo(encode)
-	if err != nil {
+	if err := client.Ctx.AsyncWrite(encode); err != nil {
 		log.Error(err)
-		return
 	}
-	if sendLen != len(encode) {
-		log.Error(errors.New(fmt.Sprintf(" send = %d  total en = %d", sendLen, len(encode))))
-	}
-
 }
 
 //func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, pid int64, body proto.Message) {
@@ -133,7 +150,9 @@ func (client *ConnInnerClientContext) SendMsg(protoCode int16, pid int64, body p
 }
 
 func (client *ConnInnerClientContext) sendBytesMsg(body []byte) {
-	client.Ctx.SendTo(body)
+	if err := client.Ctx.AsyncWrite(body); err != nil {
+		log.Error(err)
+	}
 }
 
 func (client *ConnInnerClientContext) SendInnerMsg(innerCode protoGen.InnerProtoCode, pid int64, body proto.Message) {

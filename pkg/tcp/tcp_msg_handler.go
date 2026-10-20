@@ -2,6 +2,7 @@ package tcp
 
 import (
 	"gameSrv/pkg/log"
+	"math"
 	"runtime/debug"
 
 	"google.golang.org/protobuf/proto"
@@ -26,7 +27,7 @@ func (m *protoMethod[T]) execute(ctx T, body []byte) {
 		return
 	}
 	if err := proto.Unmarshal(body, param); err != nil {
-		log.Infof("protobuf unmarshal error: %v", err)
+		log.Errorf("protobuf unmarshal error: %v", err)
 		return
 	}
 	m.methodFuc(ctx, param)
@@ -42,13 +43,21 @@ func (m *protoMethod[T]) Parse(body []byte) (proto.Message, error) {
 	}
 	param := m.param.ProtoReflect().New().Interface()
 	if err := proto.Unmarshal(body, param); err != nil {
-		log.Infof("protobuf unmarshal error: %v", err)
+		log.Errorf("protobuf unmarshal error: %v", err)
 		return nil, err
 	}
 	return param, nil
 }
 
 func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, proto.Message]) {
+	if _, dup := msgIdContextMap[msgId]; dup {
+		log.Errorf("RegisterMethod: duplicate msgId=%d", msgId)
+		return
+	}
+	if _, dup := msgPlayerIdMap[msgId]; dup {
+		log.Errorf("RegisterMethod: msgId=%d conflicts with player-id method registry", msgId)
+		return
+	}
 	msgIdContextMap[msgId] = &protoMethod[Channel]{
 		methodFuc: fuc,
 		param:     param,
@@ -56,7 +65,20 @@ func RegisterMethod(msgId int16, param proto.Message, fuc MsgIdFuc[Channel, prot
 }
 
 func RegisterCallPlayerMethod(msgId int32, param proto.Message, fuc MsgIdFuc[int64, proto.Message]) {
-	msgPlayerIdMap[int16(msgId)] = &protoMethod[int64]{
+	if msgId > math.MaxInt16 || msgId < math.MinInt16 {
+		log.Errorf("RegisterCallPlayerMethod: msgId=%d out of int16 range", msgId)
+		return
+	}
+	id := int16(msgId)
+	if _, dup := msgPlayerIdMap[id]; dup {
+		log.Errorf("RegisterCallPlayerMethod: duplicate msgId=%d", id)
+		return
+	}
+	if _, dup := msgIdContextMap[id]; dup {
+		log.Errorf("RegisterCallPlayerMethod: msgId=%d conflicts with channel method registry", id)
+		return
+	}
+	msgPlayerIdMap[id] = &protoMethod[int64]{
 		methodFuc: fuc,
 		param:     param,
 	}

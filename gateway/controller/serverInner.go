@@ -13,7 +13,11 @@ import (
 
 func handShakeResp(ctx tcp.Channel, request proto.Message) {
 	handShake := request.(*protoGen.InnerServerHandShakeRes)
-	validInnerClient := ctx.Context().(*client.ConnInnerClientContext)
+	validInnerClient, ok := ctx.Context().(*client.ConnInnerClientContext)
+	if !ok {
+		log.Errorf("handShake response with unexpected context type=%T addr=%s", ctx.Context(), ctx.RemoteAddr())
+		return
+	}
 	log.Infof("handShake response finished from serverId=%s  addr =%s handshake finished  ",
 		handShake.FromServerSid, validInnerClient.Ctx.RemoteAddr())
 }

@@ -20,7 +20,7 @@ type tcpServer struct {
 // OnBoot fires when the engine is ready for accepting connections.
 // The parameter engine has information and various utilities.
 func (ts tcpServer) OnBoot(srv gnet.Engine) (action gnet.Action) {
-	log.Infof("game server  started)\n")
+	log.Infof("game server started")
 	return
 }
 
@@ -49,7 +49,10 @@ func (ts tcpServer) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
 // OnClose fires when a connection has been closed.
 // The parameter err is the last known connection error.
 func (ts tcpServer) OnClose(c gnet.Conn, err error) (action gnet.Action) {
-	channel := c.Context().(Channel)
+	channel, ok := c.Context().(Channel)
+	if !ok {
+		return gnet.Close
+	}
 	return gnet.Action(gEventHandler.OnClosed(channel, err))
 }
 
@@ -60,19 +63,26 @@ func (ts tcpServer) OnClose(c gnet.Conn, err error) (action gnet.Action) {
 // If you have to use this []byte in a new goroutine, you should either make a copy of it or call Conn.Read([]byte)
 // to read data into your own []byte, then pass the new []byte to the new goroutine.
 func (ts tcpServer) OnTraffic(c gnet.Conn) (action gnet.Action) {
+	channel, ok := c.Context().(Channel)
+	if !ok {
+		return gnet.Close
+	}
+
 	for c.InboundBuffered() > 0 {
-		bytes, err := ts.codec.Decode(c)
+		packet, err := ts.codec.Decode(c)
 		if err != nil {
 			if err == ErrIncompletePacket {
-				return 0
+				return gnet.None
 			}
-			log.Errorf("Decode error: %v", err)
+			log.Errorf("Decode error: %v, addr=%s", err, c.RemoteAddr())
 			return gnet.Close
 		}
-		channel := c.Context().(Channel)
-		gEventHandler.React(bytes, channel)
+		a := gEventHandler.React(packet, channel)
+		if gnet.Action(a) == gnet.Close {
+			return gnet.Close
+		}
 	}
-	return 0
+	return gnet.None
 }
 
 func (ts tcpServer) OnTick() (delay time.Duration, action gnet.Action) {
@@ -92,7 +102,11 @@ func ServerStartWithDeCode(port int32, eventHandler EventHandler, codec ICodec) 
 		codec:     codec,
 	}
 	log.Infof("###### server  start: %v", port)
-	err := gnet.Run(ss, ss.network+"://"+ss.addr, gnet.WithMulticore(true), gnet.WithReuseAddr(true), gnet.WithReusePort(true))
+	err := gnet.Run(ss, ss.network+"://"+ss.addr,
+		gnet.WithMulticore(true),
+		gnet.WithReuseAddr(true),
+		gnet.WithReusePort(true),
+		gnet.WithTicker(true))
 	log.Infof("server exits with error: %v", err)
 	if err != nil {
 		log.Error(err)

@@ -42,9 +42,13 @@ func (c *ConnContext) SendMsg(code protoGen.MsgId, body proto.Message) {
 		log.Error(err)
 		return
 	}
-	c.Ctx.SendTo(encode)
+	if err := c.Ctx.AsyncWrite(encode); err != nil {
+		log.Error(err)
+	}
 }
 
 func (c *ConnContext) Send(data []byte) {
-	c.Ctx.SendTo(data)
+	if err := c.Ctx.AsyncWrite(data); err != nil {
+		log.Error(err)
+	}
 }
